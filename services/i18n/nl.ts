@@ -1,13 +1,23 @@
-import { Messages } from "./types";
+import { Messages } from './types';
 
 /**
  * The Dutch translations
  */
 export const nl: Messages = {
   pages: {
-    i18n: {
-      title: "Vind de sproeitip voor uw bedrijf in no time!",
-      description: "Zoek, vergelijk en koop de producten die u nodig heeft aan",
+    docs: {
+      i18n: {
+        title: 'Internationalisatie',
+        description: 'Documentatie rond i18n in het project',
+      },
+      testing: {
+        title: 'Testen',
+        description: 'Documentatie rond testen in het project',
+      },
+      projectSetup: {
+        title: 'Project Configuratie',
+        description: 'Documentatie rond project setup and configuraties in het project',
+      },
     },
   },
 };

@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const supportedLocales = ["en", "nl", "nl-BE", "en-US", "fr-CA"];
 module.exports = {
   async redirects() {
-    return process.env.Node_ENV === "production"
+    return process.env.Node_ENV === 'production'
       ? [
           {
-            source: "/docs/i18n",
-            destination: "/404",
+            source: '/docs/i18n',
+            destination: '/404',
             permanent: false,
           },
         ]
@@ -15,11 +14,7 @@ module.exports = {
   },
   reactStrictMode: true,
   i18n: {
-    locales: supportedLocales,
-    defaultLocale: "en",
-  },
-  env: {
-    supportedLocales: supportedLocales.join(","),
-    baseUrl: "https://localhost:3000",
+    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
+    defaultLocale: 'en',
   },
 };

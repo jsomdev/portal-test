@@ -2,6 +2,14 @@ type I18NMessages = {
   title: string;
   description: string;
 };
+type ITestingMessages = {
+  title: string;
+  description: string;
+};
+type IProjectSetupMessages = {
+  title: string;
+  description: string;
+};
 
 /**
  * Tree structure that represents all messages used throughout the application.
@@ -9,6 +17,10 @@ type I18NMessages = {
  */
 export type Messages = {
   pages: {
-    i18n: I18NMessages;
+    docs: {
+      i18n: I18NMessages;
+      testing: ITestingMessages;
+      projectSetup: IProjectSetupMessages;
+    };
   };
 };

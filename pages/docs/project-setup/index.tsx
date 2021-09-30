@@ -7,19 +7,19 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 
-interface ITestingProps {
+interface IProjectSetupProps {
   markdown: string;
 }
 
-const Testing: NextPage<ITestingProps> = (props: ITestingProps) => {
+const ProjectSetup: NextPage<IProjectSetupProps> = (props: IProjectSetupProps) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
   return (
     <div>
       <Head
         pathname={pathname}
-        title={formatMessage({ id: messageIds.pages.docs.testing.title })}
-        description={formatMessage({ id: messageIds.pages.docs.testing.description })}
+        title={formatMessage({ id: messageIds.pages.docs.projectSetup.title })}
+        description={formatMessage({ id: messageIds.pages.docs.projectSetup.description })}
       />
       <ReactMarkdown className={'reactMarkdown'}>{props.markdown}</ReactMarkdown>
     </div>
@@ -28,8 +28,8 @@ const Testing: NextPage<ITestingProps> = (props: ITestingProps) => {
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<ITestingProps>> => {
-  const markdown = getMarkdownByFileName('testing', ['content']);
+): Promise<GetStaticPropsResult<IProjectSetupProps>> => {
+  const markdown = getMarkdownByFileName('project-setup', ['content']);
   return {
     props: {
       markdown: markdown.content,
@@ -37,4 +37,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Testing;
+export default ProjectSetup;

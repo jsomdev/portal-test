@@ -1,12 +1,12 @@
-import { en, nl } from ".";
-import { Messages } from "./types";
+import { en, nl } from '.';
+import { Messages } from './types';
 
 export function getMessages(locale?: string, exact: boolean = false): Messages {
-  const language: string | undefined = exact ? locale : locale?.split("-")?.[0];
+  const language: string | undefined = exact ? locale : locale?.split('-')?.[0];
 
   if (!!language) {
     switch (language) {
-      case "nl":
+      case 'nl':
         return nl;
     }
   }
@@ -14,4 +14,5 @@ export function getMessages(locale?: string, exact: boolean = false): Messages {
   return en;
 }
 
-export const supportedLocales: string[] | undefined = process.env.supportedLocales?.split(",");
+export const supportedLocales: string[] | undefined = process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(',');
+export const defaultLocale: string = 'en';

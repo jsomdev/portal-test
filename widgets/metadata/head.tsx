@@ -1,9 +1,9 @@
-import { useRouter } from "next/dist/client/router";
-import NextHead from "next/head";
-import { supportedLocales } from "../../services/i18n/helper";
+import NextHead from 'next/head';
+import { supportedLocales } from '../../services/i18n/helper';
 
 export interface IHeadProps {
   title: string;
+  pathname: string;
   description: string;
   icon?: {
     href: string;
@@ -22,19 +22,20 @@ function renderAlternateLinks(pathname: string) {
       key={locale}
       rel="alternate"
       hrefLang={locale}
-      href={`${process.env.baseUrl}/${locale}${pathname}`}
+      href={`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}${pathname}`}
     />
   ));
 }
 export const Head: React.FC<IHeadProps> = (props) => {
-  const { title, description, icon = { href: "/favicon.ico" } } = props;
-  const { pathname } = useRouter();
+  const { title, pathname, description, icon = { href: '/favicon.ico' } } = props;
+
   return (
     <NextHead>
       <title>{title}</title>
+      <meta name="title" content={title} />
       <meta name="description" content={description} />
       <link rel="icon" href={icon.href} />
-      {renderAlternateLinks(pathname)}
+      {renderAlternateLinks(pathname || '')}
     </NextHead>
   );
 };

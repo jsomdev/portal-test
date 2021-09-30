@@ -1,14 +1,23 @@
-import { Messages } from "./types";
+import { Messages } from './types';
 
 /**
- * The English translations
+ * The Dutch translations
  */
 export const en: Messages = {
   pages: {
-    i18n: {
-      title: "The nozzle you need is at your fingertips",
-      description:
-        "Use the SprayFinder to search, compare and purchase the products you need",
+    docs: {
+      i18n: {
+        title: 'Internationalization',
+        description: 'Documentation about i18n in the project',
+      },
+      testing: {
+        title: 'Testing',
+        description: 'Documentation about testing in the project',
+      },
+      projectSetup: {
+        title: 'Project Setup',
+        description: 'Documentation about project setup and configuration in the project',
+      },
     },
   },
 };

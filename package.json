@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3002",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 3002",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "cross-env  NODE_ENV='test' jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "flat": "^5.0.2",
@@ -15,21 +18,31 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl": "^5.20.10",
-    "react-markdown": "^7.0.1",
-    "rehype-highlight": "^5.0.0"
+    "react-markdown": "^7.0.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.6.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@types/flat": "^5.0.2",
-    "babel-jest": "^27.2.1",
-    "eslint": "7.32.0",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "axe-core": "^4.3.3",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.1.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.2.1",
-    "msw": "^0.35.0",
-    "next-page-tester": "^0.28.0",
-    "react-test-renderer": "^17.0.2",
+    "prettier": "^2.4.1",
     "typescript": "4.4.3"
   }
 }
