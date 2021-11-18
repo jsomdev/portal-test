@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 3002",
+    "dev:proxy": "concurrently --kill-others \"local-ssl-proxy --source 3000 --target 3002\" \"cross-env NODE_OPTIONS='--inspect' next dev -p 3002\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,13 +13,19 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@azure/msal-browser": "^2.18.0",
+    "@azure/msal-react": "^1.1.0",
+    "@fluentui/react": "^8.37.0",
     "flat": "^5.0.2",
     "gray-matter": "^4.0.3",
+    "guid-typescript": "^1.0.9",
     "next": "11.1.2",
+    "next-plugin-preval": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl": "^5.20.10",
-    "react-markdown": "^7.0.1"
+    "react-markdown": "^7.0.1",
+    "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.6.0",
@@ -26,9 +33,11 @@
     "@testing-library/react": "^12.1.0",
     "@types/flat": "^5.0.2",
     "@types/jest": "^27.0.2",
+    "@types/ua-parser-js": "^0.7.36",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "axe-core": "^4.3.3",
+    "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",

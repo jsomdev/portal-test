@@ -1,6 +1,11 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import React from 'react';
+
+import type {
+  GetServerSideProps,
+  NextPage,
+} from 'next';
+import Head from 'next/head';
+
 const Documentation: NextPage = () => {
   return (
     <div>
@@ -13,6 +18,14 @@ const Documentation: NextPage = () => {
       <h1>Documentation</h1>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {
+      userAgent: context.req.headers['user-agent'],
+    },
+  };
 };
 
 export default Documentation;

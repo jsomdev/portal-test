@@ -1,6 +1,6 @@
 import { defaultLocale, en, getMessages, Messages, nl, supportedLocales } from '@services/i18n';
 import { render } from '@testing-library/react';
-import { Head, IHeadProps } from 'widgets/metadata/head';
+import { Head, IHeadProps } from '@widgets/metadata/head';
 jest.mock('next/head', () => {
   return {
     __esModule: true,
@@ -20,8 +20,8 @@ describe('I18N Tests', () => {
     }
     const actualMessages = getMessages(notSupportedLocale);
     const expectedMessages = getMessages(defaultLocale);
-    expect(actualMessages.pages.i18n.title).toBe(actualMessages.pages.i18n.title);
-    expect(expectedMessages.pages.i18n.description).toBe(expectedMessages.pages.i18n.description);
+    expect(actualMessages.pages.docs.i18n.title).toBe(actualMessages.pages.docs.i18n.title);
+    expect(expectedMessages.pages.docs.i18n.description).toBe(expectedMessages.pages.docs.i18n.description);
   });
 
   it('getMessages returns the messages for a supported locale correctly', () => {
@@ -32,13 +32,13 @@ describe('I18N Tests', () => {
     }
     const actualMessagesNL: Messages = getMessages('nl-BE');
     const expectedMessagesNL: Messages = nl;
-    expect(actualMessagesNL.pages.i18n.title).toBe(expectedMessagesNL.pages.i18n.title);
-    expect(actualMessagesNL.pages.i18n.description).toBe(expectedMessagesNL.pages.i18n.description);
+    expect(actualMessagesNL.pages.docs.i18n.title).toBe(expectedMessagesNL.pages.docs.i18n.title);
+    expect(actualMessagesNL.pages.docs.i18n.description).toBe(expectedMessagesNL.pages.docs.i18n.description);
 
     const actualMessagesEN: Messages = getMessages('en-US');
     const expectedMessagesEN: Messages = en;
-    expect(actualMessagesEN.pages.i18n.title).toBe(expectedMessagesEN.pages.i18n.title);
-    expect(actualMessagesEN.pages.i18n.description).toBe(expectedMessagesEN.pages.i18n.description);
+    expect(actualMessagesEN.pages.docs.i18n.title).toBe(expectedMessagesEN.pages.docs.i18n.title);
+    expect(actualMessagesEN.pages.docs.i18n.description).toBe(expectedMessagesEN.pages.docs.i18n.description);
   });
 
   it('<Head> renders alternate links correctly', async () => {

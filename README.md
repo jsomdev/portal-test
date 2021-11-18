@@ -20,3 +20,5 @@ To start the development server execute the dev script:
 2. This will start the development server on specified port [default: 3002].
 3. In your terminal you should see: ready - started server on 0.0.0.0:3002, url: http://localhost:3002
 4. Once it's running, use your proxy to navigate to the server.
+
+You can also run the command: npm run dev:proxy. This will pipe the proxy command and dev command.

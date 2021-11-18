@@ -1,6 +1,7 @@
+const createNextPluginPreval = require('next-plugin-preval/config');
+const withNextPluginPreval = createNextPluginPreval();
 /** @type {import('next').NextConfig} */
-
-module.exports = {
+module.exports = withNextPluginPreval({
   async redirects() {
     return process.env.Node_ENV === 'production'
       ? [
@@ -17,4 +18,4 @@ module.exports = {
     locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
     defaultLocale: 'en',
   },
-};
+});

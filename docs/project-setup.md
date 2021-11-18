@@ -177,6 +177,7 @@ Except for absolute paths, which were introduced to get rid of long relative pat
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@public/*": ["public/*"],
       "@pages/*": ["pages/*"],
       "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],

@@ -6,17 +6,15 @@
   30/09/2021 | Jan Somers | Initial version
 ---
 
-
-
 # Testing
 
 ## Introduction
 
-Automated tests are paramount to have. In this project, the focus will be on *Unit tests* and *Smoke tests*. If found advantageous, *End-to-end tests*  will be included as well. It is important that tests are written because the developer has to. They have to be fully automated, trusthworthy, readable and maintanable. In other words. They must **test** code and not just **run** it. [Jest](https://jestjs.io/) is a testing framework that will be used for adding tests to the project.
+Automated tests are paramount to have. In this project, the focus will be on _Unit tests_ and _Smoke tests_. If found advantageous, _End-to-end tests_ will be included as well. It is important that tests are written because the developer has to. They have to be fully automated, trusthworthy, readable and maintanable. In other words. They must **test** code and not just **run** it. [Jest](https://jestjs.io/) is a testing framework that will be used for adding tests to the project.
 
 ## Jest configuration
 
-The Jest configuration can be found in `jest.config.js`.  The project's configuration essentially comes down to:
+The Jest configuration can be found in `jest.config.js`. The project's configuration essentially comes down to:
 
 - Defining the test environment
 - Defining paths to skip or to map to relative paths
@@ -35,6 +33,7 @@ module.exports = {
   moduleDirectories: ['<rootDir>/node_modules'],
   // Have to map the absolute paths defined in tsconfig.json to their relative path
   moduleNameMapper: {
+    '@public/(.*)': '<rootDir>/public/$1',
     '@pages/(.*)': '<rootDir>/pages/$1',
     '@styles/(.*)': '<rootDir>/styles/$1',
     '@docs/(.*)': '<rootDir>/docs/$1',
@@ -65,12 +64,11 @@ module.exports = {
     },
   },
 };
-
 ```
 
 ### Test Folder
 
-Tests will be added to the *\__tests__* folder. Jest will consider every file in this folder to be a test (testMatch option defaults to this). Tests can still be grouped under a subdirectory.  In this project developers are still required to suffix their filename with  *.test.ts*.
+Tests will be added to the _\_\_tests\_\__ folder. Jest will consider every file in this folder to be a test (testMatch option defaults to this). Tests can still be grouped under a subdirectory. In this project developers are still required to suffix their filename with _.test.ts_.
 
 ```
 📦__tests__
@@ -86,14 +84,14 @@ More information can be found in the [Jest documentation](https://jestjs.io/docs
 
 Each file should have 1 (sometimes more) **test suite** that included 1 or more **tests**.
 
-*From [The Art Of Unit Testing](https://livebook.manning.com/book/the-art-of-unit-testing-second-edition/chapter-1)*:
+_From [The Art Of Unit Testing](https://livebook.manning.com/book/the-art-of-unit-testing-second-edition/chapter-1)_:
 
 **A unit test is one of the best ways a developer can:**
 
-- Improve code quality 
+- Improve code quality
 - Gain deeper understanding of the functional requirements of a class or method
 
-**A unit test *should* have the following properties:**
+**A unit test _should_ have the following properties:**
 
 - It should be automated and repeatable.
 - It should be easy to implement.
@@ -167,4 +165,3 @@ describe('I18N Tests', () => {
   });
 });
 ```
-

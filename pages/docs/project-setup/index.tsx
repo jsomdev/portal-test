@@ -1,11 +1,18 @@
+import React from 'react';
+
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage,
+} from 'next';
+import { useRouter } from 'next/dist/client/router';
+import { useIntl } from 'react-intl';
+import ReactMarkdown from 'react-markdown';
+
 import { getMarkdownByFileName } from '@docs/data';
 import { messageIds } from '@services/i18n';
 import { Head } from '@widgets/metadata';
-import { GetStaticProps, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import React from 'react';
-import { useIntl } from 'react-intl';
-import ReactMarkdown from 'react-markdown';
 
 interface IProjectSetupProps {
   markdown: string;

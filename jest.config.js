@@ -9,6 +9,7 @@ module.exports = {
   moduleDirectories: ['<rootDir>/node_modules'],
   // Have to map the absolute paths defined in tsconfig.json to their relative path
   moduleNameMapper: {
+    '@public/(.*)': '<rootDir>/public/$1',
     '@pages/(.*)': '<rootDir>/pages/$1',
     '@styles/(.*)': '<rootDir>/styles/$1',
     '@docs/(.*)': '<rootDir>/docs/$1',

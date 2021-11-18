@@ -17,6 +17,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@public/*": ["public/*"],
       "@pages/*": ["pages/*"],
       "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],
@@ -27,6 +28,6 @@
       "@providers/*": ["providers/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js"],
   "exclude": ["node_modules"]
 }

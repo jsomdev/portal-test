@@ -1,12 +1,23 @@
-import { getMarkdownByFileName } from '@docs/data';
-import { messageIds, supportedLocales } from '@services/i18n';
-import type { GetStaticProps, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
+import React from 'react';
+
+import type {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage,
+} from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import React from 'react';
 import { useIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import { Head } from 'widgets/metadata/head';
+
+import { getMarkdownByFileName } from '@docs/data';
+import {
+  messageIds,
+  supportedLocales,
+} from '@services/i18n';
+
 interface II18NProps {
   markdown: string;
 }
@@ -74,7 +85,7 @@ const I18N: NextPage<II18NProps> = (props: II18NProps) => {
   const { pathname } = useRouter();
 
   return (
-    <div>
+    <>
       <Head
         pathname={pathname}
         title={formatMessage({ id: messageIds.pages.docs.i18n.title })}
@@ -82,7 +93,7 @@ const I18N: NextPage<II18NProps> = (props: II18NProps) => {
       />
       <ReactMarkdown className={'reactMarkdown'}>{props.markdown}</ReactMarkdown>
       <I18NExamples {...props} />
-    </div>
+    </>
   );
 };
 
