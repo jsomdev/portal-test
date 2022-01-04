@@ -8,36 +8,39 @@ export const messageIds: Messages = {
     main: {
       title: 'navigation.main.title',
       collapseLabel: 'navigation.main.collapseLabel',
-      expandLabel: 'navigation.main.expandLabel',
+      expandLabel: 'navigation.main.expandLabel'
     },
     site: {
       title: 'navigation.site.title',
       collapseLabel: 'navigation.site.collapseLabel',
-      expandLabel: 'navigation.site.expandLabel',
+      expandLabel: 'navigation.site.expandLabel'
     },
     user: {
       title: 'navigation.user.title',
       collapseLabel: 'navigation.user.collapseLabel',
       expandLabel: 'navigation.user.expandLabel',
-    },
+      signIn: 'navigation.user.signIn',
+      myProfile: 'navigation.user.myProfile'
+    }
   },
   pages: {
     docs: {
       i18n: {
         title: 'pages.docs.i18n.title',
-        description: 'pages.docs.i18n.description',
-      }, userInterfaces: {
+        description: 'pages.docs.i18n.description'
+      },
+      userInterfaces: {
         title: 'pages.docs.userInterfaces.title',
-        description: 'pages.docs.userInterfaces.description',
+        description: 'pages.docs.userInterfaces.description'
       },
       testing: {
         title: 'pages.docs.testing.title',
-        description: 'pages.docs.testing.description',
+        description: 'pages.docs.testing.description'
       },
       projectSetup: {
         title: 'pages.docs.projectSetup.title',
-        description: 'pages.docs.projectSetup.description',
-      },
-    },
-  },
+        description: 'pages.docs.projectSetup.description'
+      }
+    }
+  }
 };

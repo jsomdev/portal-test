@@ -1,4 +1,5 @@
 import { Guid } from 'guid-typescript';
+
 import { QueryOptions } from '../o-data/queryOptions';
 
 export class ODataQueryHelper {
@@ -67,6 +68,7 @@ export class ODataQueryHelper {
     }
     return undefined;
   };
+
   public static formatQueryOptionsToOdataQueryOptions = (
     queryOptions: Partial<QueryOptions>
   ): string => {
@@ -77,10 +79,10 @@ export class ODataQueryHelper {
       ODataQueryHelper.formatFilterQuery(queryOptions),
       ODataQueryHelper.formatOrderByQuery(queryOptions),
       ODataQueryHelper.formatTopQuery(queryOptions),
-      ODataQueryHelper.formatSkipQuery(queryOptions),
+      ODataQueryHelper.formatSkipQuery(queryOptions)
     ];
     const definedQueries: string[] = queries.filter(
-      (query) => query !== undefined
+      query => query !== undefined
     ) as string[];
 
     if (definedQueries.length === 0) {
@@ -93,7 +95,7 @@ export class ODataQueryHelper {
     baseResourcePath: string,
     resourceId: number | string
   ): string {
-    let entity: string = `(${resourceId})`;
+    let entity = `(${resourceId})`;
     const isGuid: boolean = Guid.isGuid(resourceId);
     if (typeof resourceId === 'string' && !isGuid) {
       entity = `('${resourceId}')`;

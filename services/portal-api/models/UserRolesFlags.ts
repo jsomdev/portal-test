@@ -6,7 +6,7 @@ export enum UserRoles {
   'VerifiedCustomer' = 4,
   'AccountManager' = 8,
   'ProductManager' = 16,
-  'Administrator' = 32,
+  'Administrator' = 32
 }
 
 export type UserRolesFlags = Flags<UserRoles>;

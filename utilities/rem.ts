@@ -25,8 +25,14 @@ export function rem(input: number | string): string {
       strippedValue = Number(input.replace('px', ''));
     }
 
-    if (type === 'invalid' || strippedValue === undefined || isNaN(strippedValue)) {
-      throw new TypeError('Incorrect parameter value for pixels. Cannot calculate rem value.');
+    if (
+      type === 'invalid' ||
+      strippedValue === undefined ||
+      isNaN(strippedValue)
+    ) {
+      throw new TypeError(
+        'Incorrect parameter value for pixels. Cannot calculate rem value.'
+      );
     }
 
     if (type === 'percentage') {

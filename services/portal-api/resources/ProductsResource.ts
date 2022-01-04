@@ -17,13 +17,12 @@ export class ProductsResource extends BaseResource<Product> {
     urlEncodedOperatingConditions?: string | undefined
   ): Promise<OdataCollection<Product>> {
     // eg: ?$select=id,number&$top=10&@filters=<urlEncodedValue>
-    const queryOptionsString: string = ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(
-      queryOptions
-    )
-      .concat(!!urlEncodedFilters ? `&${urlEncodedFilters}` : '')
-      .concat(
-        `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
-      );
+    const queryOptionsString: string =
+      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions)
+        .concat(urlEncodedFilters ? `&${urlEncodedFilters}` : '')
+        .concat(
+          `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
+        );
     // eg: Products/Find(filters@filters,query='1%2F4')
     const resourcePath: string = this.getFindResourcePath(urlEncodedQuery);
     return this.fetch(resourcePath, queryOptionsString, {}) as Promise<
@@ -32,7 +31,7 @@ export class ProductsResource extends BaseResource<Product> {
   }
   private getFindResourcePath(urlEncodedQuery?: string): string {
     return `${this.getResourcePath()}/Find${
-      !!urlEncodedQuery
+      urlEncodedQuery
         ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
             urlEncodedQuery
           )}')`

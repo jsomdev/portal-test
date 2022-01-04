@@ -10,11 +10,12 @@ interface IPageLayoutStyles {
  */
 export const PageLayout: React.FC = ({ children }) => {
   const isLarge = useLarge();
-
   const styles: IPageLayoutStyles = {
     main: {
-      paddingTop: isLarge ? rem(124) : rem(80),
-    },
+      maxWidth: rem(1280),
+      margin: 'auto',
+      paddingTop: isLarge ? rem(124) : rem(80)
+    }
   };
 
   return (

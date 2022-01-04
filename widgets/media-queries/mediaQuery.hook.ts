@@ -1,9 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-} from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { getInitialMediaQueryMatchState } from './';
 import { getMediaQueries } from './mediaQuery.helper';
@@ -13,14 +8,17 @@ import {
   MediaQueryMatchAction,
   MediaQueryMatchState,
   MediaQueryMatchType,
-  MediaQueryPreset,
+  MediaQueryPreset
 } from './mediaQuery.types';
 
-function mediaQueryReducer(state: MediaQueryMatchState, action: MediaQueryMatchAction): MediaQueryMatchState {
+function mediaQueryReducer(
+  state: MediaQueryMatchState,
+  action: MediaQueryMatchAction
+): MediaQueryMatchState {
   switch (action.type) {
     case 'update':
       return {
-        [action.query]: action.isMatch,
+        [action.query]: action.isMatch
       };
   }
   return state;
@@ -32,7 +30,10 @@ function mediaQueryReducer(state: MediaQueryMatchState, action: MediaQueryMatchA
  * @returns true if matches the passed media query
  * TODO: Create MediaQueryProvider and Provide Server Side initial values
  */
-export const useMediaQuery = (mediaQuery: string | MediaQuery, initialState?: MediaQueryMatchState): MediaQueryHook => {
+export const useMediaQuery = (
+  mediaQuery: string | MediaQuery,
+  initialState?: MediaQueryMatchState
+): MediaQueryHook => {
   const [state, dispatch] = useReducer(mediaQueryReducer, initialState || {});
 
   const matchesAny: boolean = useMemo(() => {
@@ -44,7 +45,7 @@ export const useMediaQuery = (mediaQuery: string | MediaQuery, initialState?: Me
       dispatch({
         type: 'update',
         isMatch: matches,
-        query: media,
+        query: media
       });
     },
     [dispatch]
@@ -59,7 +60,9 @@ export const useMediaQuery = (mediaQuery: string | MediaQuery, initialState?: Me
 
   useEffect(() => {
     if (!window) {
-      console.error('You cannot use this hook in a node.js environment. It must be run client-side');
+      console.error(
+        'You cannot use this hook in a node.js environment. It must be run client-side'
+      );
       return;
     }
     const queries: string[] = getMediaQueries(mediaQuery);
@@ -76,40 +79,57 @@ export const useMediaQuery = (mediaQuery: string | MediaQuery, initialState?: Me
   }, []);
 
   return {
-    isMatch: matchesAny,
+    isMatch: matchesAny
   };
 };
 
-export const useExtraSmall = (matchType: MediaQueryMatchType = MediaQueryMatchType.From) => {
+export const useExtraSmall = (
+  matchType: MediaQueryMatchType = MediaQueryMatchType.From
+) => {
   const query: MediaQuery = {
     query: MediaQueryPreset.ExtraSmall,
-    matchType,
+    matchType
   };
-  const { isMatch: isExtraSmall } = useMediaQuery(query, getInitialMediaQueryMatchState(query));
+  const { isMatch: isExtraSmall } = useMediaQuery(
+    query,
+    getInitialMediaQueryMatchState(query)
+  );
   return isExtraSmall;
 };
-export const useSmall = (matchType: MediaQueryMatchType = MediaQueryMatchType.From) => {
+export const useSmall = (
+  matchType: MediaQueryMatchType = MediaQueryMatchType.From
+) => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Small,
-    matchType,
+    matchType
   };
-  const { isMatch: isSmall } = useMediaQuery(query, getInitialMediaQueryMatchState(query));
+  const { isMatch: isSmall } = useMediaQuery(
+    query,
+    getInitialMediaQueryMatchState(query)
+  );
 
   return isSmall;
 };
-export const useMedium = (matchType: MediaQueryMatchType = MediaQueryMatchType.From) => {
+export const useMedium = (
+  matchType: MediaQueryMatchType = MediaQueryMatchType.From
+) => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Medium,
-    matchType,
+    matchType
   };
-  const { isMatch: isMedium } = useMediaQuery(query, getInitialMediaQueryMatchState(query));
+  const { isMatch: isMedium } = useMediaQuery(
+    query,
+    getInitialMediaQueryMatchState(query)
+  );
 
   return isMedium;
 };
-export const useLarge = (matchType: MediaQueryMatchType = MediaQueryMatchType.From) => {
+export const useLarge = (
+  matchType: MediaQueryMatchType = MediaQueryMatchType.From
+) => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Large,
-    matchType,
+    matchType
   };
   const initialState = getInitialMediaQueryMatchState(query);
   const { isMatch: isLarge } = useMediaQuery(query, initialState);
@@ -117,11 +137,16 @@ export const useLarge = (matchType: MediaQueryMatchType = MediaQueryMatchType.Fr
   return isLarge;
 };
 
-export const useExtraLarge = (matchType: MediaQueryMatchType = MediaQueryMatchType.From) => {
+export const useExtraLarge = (
+  matchType: MediaQueryMatchType = MediaQueryMatchType.From
+) => {
   const query: MediaQuery = {
     query: MediaQueryPreset.ExtraLarge,
-    matchType,
+    matchType
   };
-  const { isMatch: isExtraLarge } = useMediaQuery(query, getInitialMediaQueryMatchState(query));
+  const { isMatch: isExtraLarge } = useMediaQuery(
+    query,
+    getInitialMediaQueryMatchState(query)
+  );
   return isExtraLarge;
 };

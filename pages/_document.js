@@ -1,16 +1,10 @@
 import * as React from 'react';
 
-import Document, {
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+/* eslint-disable no-redeclare */
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import {
-  resetIds,
-  Stylesheet,
-} from '@fluentui/react';
+import { resetIds, Stylesheet } from '@fluentui/react';
 
 // Fluent UI React (Fabric) 7 or earlier
 // import { Stylesheet, resetIds } from 'office-ui-fabric-react';
@@ -22,23 +16,31 @@ export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     resetIds(1);
 
-    const page = renderPage((App) => (props) => <App {...props} />);
+    // eslint-disable-next-line react/display-name
+    const page = renderPage(App => props => <App {...props} />);
 
-    return { ...page, styleTags: stylesheet.getRules(true), serializedStylesheet: stylesheet.serialize() };
+    return {
+      ...page,
+      styleTags: stylesheet.getRules(true),
+      serializedStylesheet: stylesheet.serialize()
+    };
   }
 
   render() {
     return (
       <Html>
         <Head>
-          <style type="text/css" dangerouslySetInnerHTML={{ __html: this.props.styleTags }} />
+          <style
+            type="text/css"
+            dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
+          />
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `
             window.FabricConfig = window.FabricConfig || {};
             window.FabricConfig.serializedStylesheet = ${this.props.serializedStylesheet};
-          `,
+          `
             }}
           />
         </Head>

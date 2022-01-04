@@ -29,6 +29,8 @@ type IUserNavigationMessages = {
   title: string;
   expandLabel: string;
   collapseLabel: string;
+  signIn: string;
+  myProfile: string;
 };
 
 /**

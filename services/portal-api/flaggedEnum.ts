@@ -10,7 +10,7 @@ export class FlaggedEnum {
       }
       const keys: string[] = value.split(', ');
       let mappedValue: TEnum | undefined = undefined;
-      keys.forEach((key) => {
+      keys.forEach(key => {
         (mappedValue as any) |= Enum[key];
       });
       return mappedValue ? mappedValue : Enum[0];

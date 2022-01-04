@@ -8,7 +8,7 @@ import {
   IButtonStyles,
   IconButton,
   IProcessedStyleSet,
-  mergeStyleSets,
+  mergeStyleSets
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 
@@ -22,20 +22,23 @@ interface IHeaderButtonStyles {
   root: IButtonStyles;
 }
 
-export const HeaderButton: React.FC<IHeaderButtonProps> = (props) => {
+export const HeaderButton: React.FC<IHeaderButtonProps> = props => {
   const defaultStyles: IHeaderButtonStyles = {
     root: {
       label: {
         fontSize: FontSizes.large,
         letterSpacing: rem(0.38),
-        fontWeight: FontWeights.regular,
+        fontWeight: FontWeights.regular
       },
       icon: {
-        fontSize: FontSizes.large,
-      },
-    },
+        fontSize: FontSizes.large
+      }
+    }
   };
-  const mergedStyles: IProcessedStyleSet<IButtonStyles> = mergeStyleSets(defaultStyles.root, props.styles);
+  const mergedStyles: IProcessedStyleSet<IButtonStyles> = mergeStyleSets(
+    defaultStyles.root,
+    props.styles
+  );
 
   if (props.type === 'actionButton') {
     return <ActionButton {...props} styles={mergedStyles} />;

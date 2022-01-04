@@ -23,29 +23,23 @@ export const fetchFacetResults = async (
   searchQuery: string | undefined,
   encodedOperatingConditions: string
 ): Promise<FacetResult[]> => {
-  try {
-    const baseResource: BaseResource<FacetResult> = new BaseResource(
-      `/Products/GroupByFacets(seriesId=${productSeriesId || 'null'},modelId=${
-        productModelId || 'null'
-      },operatingConditions=@operatingConditions,filters=@filters${
-        !!searchQuery
-          ? `,query='${BaseResource.escapeSearchQuery(searchQuery) || ''}'`
-          : ',query=null'
-      })${
-        encodedExternalFilters.length > 0
-          ? `?@filters=${encodedExternalFilters}&@operatingConditions=${encodedOperatingConditions}`
-          : `?@filters=${encodeURIComponent(
-              JSON.stringify([])
-            )}&@operatingConditions=${encodedOperatingConditions}`
-      }`
-    );
-    const data: OdataCollection<FacetResult> = await baseResource.getEntities(
-      {}
-    );
-    return data.value;
-  } catch (e) {
-    throw e;
-  }
+  const baseResource: BaseResource<FacetResult> = new BaseResource(
+    `/Products/GroupByFacets(seriesId=${productSeriesId || 'null'},modelId=${
+      productModelId || 'null'
+    },operatingConditions=@operatingConditions,filters=@filters${
+      searchQuery
+        ? `,query='${BaseResource.escapeSearchQuery(searchQuery) || ''}'`
+        : ',query=null'
+    })${
+      encodedExternalFilters.length > 0
+        ? `?@filters=${encodedExternalFilters}&@operatingConditions=${encodedOperatingConditions}`
+        : `?@filters=${encodeURIComponent(
+            JSON.stringify([])
+          )}&@operatingConditions=${encodedOperatingConditions}`
+    }`
+  );
+  const data: OdataCollection<FacetResult> = await baseResource.getEntities({});
+  return data.value;
 };
 
 /**
@@ -69,37 +63,33 @@ export const fetchProductDataForListView = async (
   skip: number
 ): Promise<OdataCollection<Product>> => {
   let parentQuery: string | null = null;
-  if (!!productModelId) {
+  if (productModelId) {
     parentQuery = `modelId eq ${productModelId}`;
-  } else if (!!productSeriesId) {
+  } else if (productSeriesId) {
     parentQuery = `model/seriesId eq ${productSeriesId}`;
   }
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,name,number',
-      filterQuery: parentQuery || undefined,
-      top,
-      skip,
-      expandQuery: `image($select=url),attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
-        AttributeSettings,
-        AttributeSettings.DisplayOnProductCharacteristics
-      )}')`,
-      includeCount: true,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,name,number',
+    filterQuery: parentQuery || undefined,
+    top,
+    skip,
+    expandQuery: `image($select=url),attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
+      AttributeSettings,
+      AttributeSettings.DisplayOnProductCharacteristics
+    )}')`,
+    includeCount: true
+  };
 
-    const data: OdataCollection<Product> = await productsResource.find(
-      queryOptions,
-      `@filters=${encodedExternalFilters}`,
-      searchQuery,
-      encodedOperatingConditions
-    );
+  const data: OdataCollection<Product> = await productsResource.find(
+    queryOptions,
+    `@filters=${encodedExternalFilters}`,
+    searchQuery,
+    encodedOperatingConditions
+  );
 
-    return data;
-  } catch (error) {
-    throw error;
-  }
+  return data;
 };
 
 /**
@@ -110,20 +100,16 @@ export const fetchProductDataForListView = async (
 export const fetchProductDataForProductListItem = async (
   id: string
 ): Promise<OdataEntity & Product> => {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,name,number',
-      expandQuery: `image($select=url),attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,value,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
-        AttributeSettings,
-        AttributeSettings.DisplayOnProductCharacteristics
-      )}')`,
-    };
-    const data = await productsResource.getEntity(id, queryOptions);
-    return data;
-  } catch (error) {
-    throw error;
-  }
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,name,number',
+    expandQuery: `image($select=url),attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,value,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
+      AttributeSettings,
+      AttributeSettings.DisplayOnProductCharacteristics
+    )}')`
+  };
+  const data = await productsResource.getEntity(id, queryOptions);
+  return data;
 };
 /**
  * Function that calls the /Products/Find function to retrieve the data expected to be displayed on the ProductListView
@@ -145,34 +131,30 @@ export const fetchProductDataForGridView = async (
   top: number,
   skip: number
 ): Promise<OdataCollection<Product>> => {
-  try {
-    let parentQuery: string | null = null;
-    if (!!productModelId) {
-      parentQuery = `modelId eq ${productModelId}`;
-    } else if (!!productSeriesId) {
-      parentQuery = `model/seriesId eq ${productSeriesId}`;
-    }
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,name,number',
-      expandQuery: 'image($select=url)',
-      filterQuery: parentQuery || undefined,
-      top,
-      skip,
-      includeCount: true,
-    };
-
-    const data: OdataCollection<Product> = await productsResource.find(
-      queryOptions,
-      `@filters=${encodedExternalFilters}`,
-      searchQuery,
-      encodedOperatingConditions
-    );
-
-    return data;
-  } catch (error) {
-    throw error;
+  let parentQuery: string | null = null;
+  if (productModelId) {
+    parentQuery = `modelId eq ${productModelId}`;
+  } else if (productSeriesId) {
+    parentQuery = `model/seriesId eq ${productSeriesId}`;
   }
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,name,number',
+    expandQuery: 'image($select=url)',
+    filterQuery: parentQuery || undefined,
+    top,
+    skip,
+    includeCount: true
+  };
+
+  const data: OdataCollection<Product> = await productsResource.find(
+    queryOptions,
+    `@filters=${encodedExternalFilters}`,
+    searchQuery,
+    encodedOperatingConditions
+  );
+
+  return data;
 };
 /**
  * Function that calls the /Products/Find function to retrieve the data expected to be displayed on the Expanded model of the Grouped Table View
@@ -193,30 +175,26 @@ export const fetchProductDataForGroupedTableView = async (
   skip: number
 ): Promise<OdataCollection<Product>> => {
   const filterQuery: string = `modelId eq ${productModelId}`;
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,number',
-      expandQuery: `attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,name,value,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
-        AttributeSettings,
-        AttributeSettings.DisplayOnProductTableRow
-      )}')`,
-      filterQuery,
-      top,
-      skip,
-      orderbyQuery: 'number asc',
-      includeCount: true,
-    };
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,number',
+    expandQuery: `attributes($orderby=sortIndex asc,typeCode asc;$select=id,typeCode,name,value,displays,settings;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
+      AttributeSettings,
+      AttributeSettings.DisplayOnProductTableRow
+    )}')`,
+    filterQuery,
+    top,
+    skip,
+    orderbyQuery: 'number asc',
+    includeCount: true
+  };
 
-    const data: OdataCollection<Product> = await productsResource.find(
-      queryOptions,
-      `@filters=${encodedExternalFilters}`,
-      searchQuery,
-      encodedOperatingConditions
-    );
+  const data: OdataCollection<Product> = await productsResource.find(
+    queryOptions,
+    `@filters=${encodedExternalFilters}`,
+    searchQuery,
+    encodedOperatingConditions
+  );
 
-    return data;
-  } catch (error) {
-    throw error;
-  }
+  return data;
 };

@@ -1,9 +1,10 @@
 import {
   addProductToBookmarksArray,
-  removeProductFromBookmarksArray,
-} from '../../scenes/providers/product-bookmarks/productBookmarksHelpers';
-import { ProductView } from '../../scenes/providers/recently-viewed/models';
-import { combineProductViews } from '../../scenes/providers/recently-viewed/recentlyViewedHelpers';
+  removeProductFromBookmarksArray
+} from '@providers/product-bookmarks/productBookmarksHelpers';
+import { ProductView } from '@providers/recently-viewed/models';
+import { combineProductViews } from '@providers/recently-viewed/recentlyViewedHelpers';
+
 import { BaseResource } from './base/baseResource';
 import { SETTINGKEYS } from './constants';
 import { Json } from './models/Json';
@@ -19,29 +20,24 @@ import { QueryOptions } from './o-data/queryOptions';
 export const fetchProductBookmarksSetting = async (
   isAuthenticated: boolean
 ): Promise<Setting | undefined> => {
-  try {
-    if (!isAuthenticated) {
-      return undefined;
-    }
-    const baseResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
-    const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `key eq '${SETTINGKEYS.productBookmarks}'`,
-    };
-    const settings:
-      | OdataCollection<Setting>
-      | undefined = await baseResource.getEntities(queryOptions);
-
-    if (settings.value.length > 1) {
-      console.warn(
-        "Found more than 1 setting for product bookmarks. This shouldn't happen"
-      );
-    }
-    return settings.value[0];
-  } catch (e) {
-    throw e;
+  if (!isAuthenticated) {
+    return undefined;
   }
+  const baseResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  const queryOptions: Partial<QueryOptions> = {
+    filterQuery: `key eq '${SETTINGKEYS.productBookmarks}'`
+  };
+  const settings: OdataCollection<Setting> | undefined =
+    await baseResource.getEntities(queryOptions);
+
+  if (settings.value.length > 1) {
+    console.warn(
+      "Found more than 1 setting for product bookmarks. This shouldn't happen"
+    );
+  }
+  return settings.value[0];
 };
 
 /**
@@ -52,29 +48,25 @@ export const clearProductBookmarksSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  try {
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
-    if (!setting) {
-      setting = await fetchProductBookmarksSetting(isAuthenticated);
-    }
-    if (!!setting?.id) {
-      return settingsResource.putEntity(
-        setting.id,
-        JSON.stringify({
-          ...setting,
-
-          value: {
-            productBookmarks: [],
-          },
-        })
-      );
-    }
-    return undefined;
-  } catch (e) {
-    throw e;
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  if (!setting) {
+    setting = await fetchProductBookmarksSetting(isAuthenticated);
   }
+  if (setting?.id) {
+    return settingsResource.putEntity(
+      setting.id,
+      JSON.stringify({
+        ...setting,
+
+        value: {
+          productBookmarks: []
+        }
+      })
+    );
+  }
+  return undefined;
 };
 
 /**
@@ -87,32 +79,28 @@ export const removeProductBookmarkFromSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  try {
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
-    if (!setting) {
-      setting = await fetchProductBookmarksSetting(isAuthenticated);
-    }
-
-    if (!!setting?.id) {
-      return settingsResource.putEntity(
-        setting.id,
-        JSON.stringify({
-          ...setting,
-          value: {
-            productBookmarks: removeProductFromBookmarksArray(
-              productIdToToggle,
-              setting.value?.productBookmarks || []
-            ),
-          },
-        })
-      );
-    }
-    return undefined;
-  } catch (e) {
-    throw e;
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  if (!setting) {
+    setting = await fetchProductBookmarksSetting(isAuthenticated);
   }
+
+  if (setting?.id) {
+    return settingsResource.putEntity(
+      setting.id,
+      JSON.stringify({
+        ...setting,
+        value: {
+          productBookmarks: removeProductFromBookmarksArray(
+            productIdToToggle,
+            setting.value?.productBookmarks || []
+          )
+        }
+      })
+    );
+  }
+  return undefined;
 };
 /**
  * Async function that attempts to add the productBookmark from the setting.
@@ -124,46 +112,42 @@ export const addProductBookmarkToSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  try {
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  if (!setting) {
+    setting = await fetchProductBookmarksSetting(isAuthenticated);
+  }
+
+  if (setting?.id) {
+    setting = {
+      ...setting,
+
+      value: {
+        productBookmarks: addProductToBookmarksArray(
+          productIdToToggle,
+          setting.value?.productBookmarks || []
+        )
+      }
+    };
+    return settingsResource.putEntity(
+      setting.id || '',
+      JSON.stringify({
+        ...setting
+      })
     );
-    if (!setting) {
-      setting = await fetchProductBookmarksSetting(isAuthenticated);
-    }
-
-    if (!!setting?.id) {
-      setting = {
-        ...setting,
-
-        value: {
-          productBookmarks: addProductToBookmarksArray(
-            productIdToToggle,
-            setting.value?.productBookmarks || []
-          ),
-        },
-      };
-      return settingsResource.putEntity(
-        setting.id || '',
-        JSON.stringify({
-          ...setting,
-        })
-      );
-    } else {
-      setting = {
-        key: SETTINGKEYS.productBookmarks,
-        value: {
-          productBookmarks: addProductToBookmarksArray(productIdToToggle, []),
-        } as Json,
-      } as Setting;
-      return settingsResource.postEntity(
-        JSON.stringify({
-          ...setting,
-        })
-      );
-    }
-  } catch (e) {
-    throw e;
+  } else {
+    setting = {
+      key: SETTINGKEYS.productBookmarks,
+      value: {
+        productBookmarks: addProductToBookmarksArray(productIdToToggle, [])
+      } as Json
+    } as Setting;
+    return settingsResource.postEntity(
+      JSON.stringify({
+        ...setting
+      })
+    );
   }
 };
 
@@ -178,24 +162,21 @@ export const fetchRecentlyViewedProductsSettings = async (
   if (!isAuthenticated) {
     return undefined;
   }
-  try {
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
-    const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `key eq '${SETTINGKEYS.recentlyViewedProducts}'`,
-    };
-    const settings = await settingsResource.getEntities(queryOptions);
 
-    if (settings.value.length > 1) {
-      console.warn(
-        "Found more than 1 setting for recently viewed. This shouldn't happen"
-      );
-    }
-    return settings.value[0];
-  } catch (e) {
-    throw e;
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  const queryOptions: Partial<QueryOptions> = {
+    filterQuery: `key eq '${SETTINGKEYS.recentlyViewedProducts}'`
+  };
+  const settings = await settingsResource.getEntities(queryOptions);
+
+  if (settings.value.length > 1) {
+    console.warn(
+      "Found more than 1 setting for recently viewed. This shouldn't happen"
+    );
   }
+  return settings.value[0];
 };
 
 export const addProductViewToSessionProductIds = (
@@ -216,45 +197,41 @@ export const addViewToRecentlyViewedProductsSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  try {
-    if (!isAuthenticated) {
-      return undefined;
-    }
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
+  if (!isAuthenticated) {
+    return undefined;
+  }
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
 
-    if (!setting) {
-      setting = await fetchRecentlyViewedProductsSettings(isAuthenticated);
-    }
-    if (!!setting?.id) {
-      return settingsResource.putEntity(
-        setting.id,
-        JSON.stringify({
-          ...setting,
-          value: {
-            productViews: combineProductViews(
-              productView,
-              setting?.value?.productViews || []
-            ),
-          },
-        })
-      );
-    } else {
-      setting = {
-        key: SETTINGKEYS.recentlyViewedProducts,
+  if (!setting) {
+    setting = await fetchRecentlyViewedProductsSettings(isAuthenticated);
+  }
+  if (setting?.id) {
+    return settingsResource.putEntity(
+      setting.id,
+      JSON.stringify({
+        ...setting,
         value: {
-          productViews: combineProductViews(productView, []),
-        } as Json,
-      } as Setting;
-      return settingsResource.postEntity(
-        JSON.stringify({
-          ...setting,
-        })
-      );
-    }
-  } catch (e) {
-    throw e;
+          productViews: combineProductViews(
+            productView,
+            setting?.value?.productViews || []
+          )
+        }
+      })
+    );
+  } else {
+    setting = {
+      key: SETTINGKEYS.recentlyViewedProducts,
+      value: {
+        productViews: combineProductViews(productView, [])
+      } as Json
+    } as Setting;
+    return settingsResource.postEntity(
+      JSON.stringify({
+        ...setting
+      })
+    );
   }
 };
 /**
@@ -268,27 +245,24 @@ export const clearRecentlyViewedProductsSetting = async (
   if (!isAuthenticated) {
     return undefined;
   }
-  try {
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
 
-    if (!setting) {
-      setting = await fetchRecentlyViewedProductsSettings(isAuthenticated);
-    }
-    if (!!setting?.id) {
-      return settingsResource.putEntity(
-        setting.id,
-        JSON.stringify({
-          ...setting,
-          value: {
-            productViews: [],
-          },
-        })
-      );
-    }
-    return undefined;
-  } catch (e) {
-    throw e;
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+
+  if (!setting) {
+    setting = await fetchRecentlyViewedProductsSettings(isAuthenticated);
   }
+  if (setting?.id) {
+    return settingsResource.putEntity(
+      setting.id,
+      JSON.stringify({
+        ...setting,
+        value: {
+          productViews: []
+        }
+      })
+    );
+  }
+  return undefined;
 };

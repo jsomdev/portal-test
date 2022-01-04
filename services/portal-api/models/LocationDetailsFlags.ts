@@ -5,7 +5,7 @@ export enum LocationDetails {
   'HomeOffice' = 2,
   'ManufacturingSite' = 4,
   'Warehouse' = 8,
-  'TestLab' = 16,
+  'TestLab' = 16
 }
 
 export type LocationDetailsFlags = Flags<LocationDetails>;

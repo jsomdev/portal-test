@@ -7,7 +7,7 @@ import { supportedLocales } from '@services/i18n';
  * @returns an Array of alternate <link> components
  */
 export function getHeadAlternateLinks(pathname: string) {
-  return (supportedLocales || []).map((locale) => (
+  return (supportedLocales || []).map(locale => (
     <link
       key={locale}
       rel="alternate"

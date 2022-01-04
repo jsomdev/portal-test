@@ -15,7 +15,7 @@ export const getDigitalhighwayEnvironment = (): Environment => {
     'test',
     'stage',
     'prod',
-    'production',
+    'production'
   ];
   if (
     !!overrideParameter &&
@@ -57,7 +57,7 @@ export const getDigitalhighwayEnvironment = (): Environment => {
 };
 
 export const LISTIDS: ListIds = {
-  liquidSpecificGravity: '90c57f4f-bdcf-4a5c-9375-7f9f9eba180a',
+  liquidSpecificGravity: '90c57f4f-bdcf-4a5c-9375-7f9f9eba180a'
 };
 export function shouldDisableCache(): boolean {
   const defaultValue: boolean = false;
@@ -79,7 +79,7 @@ export const SPRAYPORTALAPPLICATIONID = 'e2def0bf-0225-4b77-b363-08d800aaae12';
 export const SETTINGKEYS: SettingKeys = {
   productBookmarks: 'ProductBookmarks',
   recentlyViewedProducts: 'RecentlyViewedProducts',
-  recentlySearchedQueries: 'RecentlySearchedQueries',
+  recentlySearchedQueries: 'RecentlySearchedQueries'
 };
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
@@ -189,5 +189,5 @@ export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   marketingScore: 'MarketingScore',
   netWeight: 'NetWeight',
   brand: 'Brand',
-  sprayPattern: 'SprayPattern',
+  sprayPattern: 'SprayPattern'
 };

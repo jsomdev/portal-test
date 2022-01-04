@@ -4,7 +4,7 @@ import {
   MediaQuery,
   MediaQueryMatchState,
   MediaQueryMatchType,
-  MediaQueryPreset,
+  MediaQueryPreset
 } from './mediaQuery.types';
 
 /**
@@ -12,7 +12,9 @@ import {
  *
  * @returns The most conform device type value.
  */
-export function getDeviceTypeClientHint(parser: UAParser): 'mobile' | 'tablet' | 'other' {
+export function getDeviceTypeClientHint(
+  parser: UAParser
+): 'mobile' | 'tablet' | 'other' {
   /**
    * @see UAParser.IDevice for possible values
    */
@@ -34,15 +36,19 @@ export function getDeviceTypeClientHint(parser: UAParser): 'mobile' | 'tablet' |
  * @param query MediaQuery with MediaQueryPreset or string value representing the mediaQuery
  * @returns MediaQueryMatchState that's either empty if there's no match or has the [query] value set to true
  */
-export function getInitialMediaQueryMatchState(query: MediaQuery): MediaQueryMatchState {
+export function getInitialMediaQueryMatchState(
+  query: MediaQuery
+): MediaQueryMatchState {
   let matchState: MediaQueryMatchState = {};
   const mediaQueries: string[] = getMediaQueries(query);
 
-  let deviceType: 'mobile' | 'tablet' | 'other' = getDeviceTypeClientHint(new UAParser());
+  const deviceType: 'mobile' | 'tablet' | 'other' = getDeviceTypeClientHint(
+    new UAParser()
+  );
 
   function matchQueries(isMatch: boolean) {
     matchState = {
-      [mediaQueries.join(',')]: isMatch,
+      [mediaQueries.join(',')]: isMatch
     };
   }
   if (deviceType)
@@ -107,7 +113,9 @@ export function getMediaQueries(query: MediaQuery | string): string[] {
 
   // Note: this should not happen
   if (queryIndex === -1) {
-    console.warn('The expected media query was not found in the list of presets');
+    console.warn(
+      'The expected media query was not found in the list of presets'
+    );
     return [query.query];
   }
 

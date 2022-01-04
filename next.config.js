@@ -14,6 +14,9 @@ module.exports = withNextPluginPreval({
       : [];
   },
   reactStrictMode: true,
+  images: {
+    domains: ['spray.widen.net'],
+  },
   i18n: {
     locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
     defaultLocale: 'en',
