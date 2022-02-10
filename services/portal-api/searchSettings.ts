@@ -1,5 +1,3 @@
-import { Json } from '.';
-import { combineRecentlySearchedQueries } from '../../scenes/shared/app-header/main-header/search/recentlySearchedHelper';
 import { BaseResource } from './base/baseResource';
 import { SETTINGKEYS } from './constants';
 import { Setting } from './models/Setting';
@@ -13,71 +11,21 @@ import { QueryOptions } from './o-data/queryOptions';
 export const fetchRecentlySearchedQueriesSettings = async (
   isAuthenticated: boolean
 ): Promise<Setting | undefined> => {
-  try {
-    if (!isAuthenticated) {
-      return undefined;
-    }
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
-    );
-    const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `key eq '${SETTINGKEYS.recentlySearchedQueries}'`,
-    };
-    const settings = await settingsResource.getEntities(queryOptions);
-
-    if (settings.value.length > 1) {
-      console.warn(
-        "Found more than 1 setting for recently viewed. This shouldn't happen"
-      );
-    }
-    return settings.value[0];
-  } catch (e) {
-    throw e;
+  if (!isAuthenticated) {
+    return undefined;
   }
-};
+  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+    '/Me/settings'
+  );
+  const queryOptions: Partial<QueryOptions> = {
+    filterQuery: `key eq '${SETTINGKEYS.recentlySearchedQueries}'`
+  };
+  const settings = await settingsResource.getEntities(queryOptions);
 
-export const addSearchQueryToRecentlySearchedQueriesSetting = async (
-  query: string,
-  isAuthenticated: boolean,
-  setting?: Setting
-): Promise<Setting | undefined> => {
-  try {
-    if (!isAuthenticated) {
-      return undefined;
-    }
-    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-      '/Me/settings'
+  if (settings.value.length > 1) {
+    console.warn(
+      "Found more than 1 setting for recently viewed. This shouldn't happen"
     );
-    if (!setting) {
-      setting = await fetchRecentlySearchedQueriesSettings(isAuthenticated);
-    }
-    if (!!setting?.id) {
-      return settingsResource.putEntity(
-        setting.id,
-        JSON.stringify({
-          ...setting,
-          value: {
-            searchQueries: combineRecentlySearchedQueries(
-              query,
-              setting.value?.searchQueries
-            ),
-          },
-        })
-      );
-    } else {
-      setting = {
-        key: SETTINGKEYS.recentlySearchedQueries,
-        value: {
-          searchQueries: combineRecentlySearchedQueries(query, []),
-        } as Json,
-      } as Setting;
-      return settingsResource.postEntity(
-        JSON.stringify({
-          ...setting,
-        })
-      );
-    }
-  } catch (e) {
-    throw e;
   }
+  return settings.value[0];
 };

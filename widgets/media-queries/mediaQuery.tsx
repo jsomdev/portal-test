@@ -4,7 +4,7 @@ import { useMediaQuery } from './mediaQuery.hook';
 import {
   MediaQuery,
   MediaQueryMatchType,
-  MediaQueryPreset,
+  MediaQueryPreset
 } from './mediaQuery.types';
 
 /**
@@ -26,7 +26,7 @@ export const Media: React.FC<MediaQuery> = ({ matchType, query, children }) => {
  */
 export const Medium: React.FC<Partial<Pick<MediaQuery, 'matchType'>>> = ({
   matchType = MediaQueryMatchType.From,
-  children,
+  children
 }) => {
   return (
     <Media matchType={matchType} query={MediaQueryPreset.Medium}>
@@ -41,7 +41,7 @@ export const Medium: React.FC<Partial<Pick<MediaQuery, 'matchType'>>> = ({
  */
 export const Large: React.FC<Partial<Pick<MediaQuery, 'matchType'>>> = ({
   matchType = MediaQueryMatchType.From,
-  children,
+  children
 }) => {
   return (
     <Media matchType={matchType} query={MediaQueryPreset.Large}>

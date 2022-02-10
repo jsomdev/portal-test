@@ -19,7 +19,8 @@ export interface IAppHeaderStyles {
  */
 export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
   const { semanticColors } = useTheme();
-  const [sideNavigationType, setSideNavigationType] = useState<null | SiteNavigationType>(null);
+  const [sideNavigationType, setSideNavigationType] =
+    useState<null | SiteNavigationType>(null);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
@@ -32,8 +33,8 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
       backgroundColor: semanticColors.bodyBackground,
       top: 0,
       left: 0,
-      right: 0,
-    },
+      right: 0
+    }
   };
   return (
     <header style={styles.root}>
@@ -41,7 +42,10 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
       {showMainHeader && <MainHeader />}
       <SitePanel
         type={sideNavigationType}
-        panelProps={{ isOpen: !!sideNavigationType, onDismiss: onSitePanelDismiss }}
+        panelProps={{
+          isOpen: !!sideNavigationType,
+          onDismiss: onSitePanelDismiss
+        }}
       />
     </header>
   );

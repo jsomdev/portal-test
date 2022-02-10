@@ -4,7 +4,7 @@ import {
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
-  NextPage,
+  NextPage
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { useIntl } from 'react-intl';
@@ -26,9 +26,13 @@ const Testing: NextPage<ITestingProps> = (props: ITestingProps) => {
       <Head
         pathname={pathname}
         title={formatMessage({ id: messageIds.pages.docs.testing.title })}
-        description={formatMessage({ id: messageIds.pages.docs.testing.description })}
+        description={formatMessage({
+          id: messageIds.pages.docs.testing.description
+        })}
       />
-      <ReactMarkdown className={'reactMarkdown'}>{props.markdown}</ReactMarkdown>
+      <ReactMarkdown className={'reactMarkdown'}>
+        {props.markdown}
+      </ReactMarkdown>
     </div>
   );
 };
@@ -39,8 +43,8 @@ export const getStaticProps: GetStaticProps = async (
   const markdown = getMarkdownByFileName('testing', ['content']);
   return {
     props: {
-      markdown: markdown.content,
-    },
+      markdown: markdown.content
+    }
   };
 };
 

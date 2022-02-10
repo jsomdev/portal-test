@@ -1,12 +1,15 @@
 import { useMsal } from '@azure/msal-react';
 import { useCallback, useMemo } from 'react';
-import { customerLoginRequest, employeeLoginRequest } from './authenticationConfiguration';
+import {
+  customerLoginRequest,
+  employeeLoginRequest
+} from './authenticationConfiguration';
 
 enum ExtensionRole {
   VerifiedCustomer = 'VerifiedCustomer',
   Employee = 'Employee',
   Administrator = 'Administrator',
-  AccountManager = 'AccountManager',
+  AccountManager = 'AccountManager'
 }
 
 interface ClaimsHook {
@@ -78,14 +81,18 @@ export const useClaims = (): ClaimsHook => {
 
   const forceRefresh: () => Promise<boolean> = useCallback(async () => {
     try {
-      const loginRequest = isEmployee ? employeeLoginRequest : customerLoginRequest;
+      const loginRequest = isEmployee
+        ? employeeLoginRequest
+        : customerLoginRequest;
 
       const authResult = await instance.ssoSilent({
         account: accounts?.[0],
-        ...loginRequest,
+        ...loginRequest
       });
 
-      const isVerified = (authResult.idTokenClaims as ExtendedClaims | undefined)?.extension_Roles
+      const isVerified = (
+        authResult.idTokenClaims as ExtendedClaims | undefined
+      )?.extension_Roles
         ?.split(',')
         .includes(ExtensionRole.VerifiedCustomer);
 
@@ -102,6 +109,6 @@ export const useClaims = (): ClaimsHook => {
     accountNumber: claims?.extension_AccountNumber,
     isAccountManager,
     isAdmin,
-    forceRefresh,
+    forceRefresh
   };
 };

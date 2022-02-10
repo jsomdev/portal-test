@@ -19,22 +19,18 @@ import { ProductsResource } from './resources/ProductsResource';
  * @returns Product with basic information
  */
 export async function fetchBaseDesign(id: string): Promise<Product> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id,number,name,description,modelId`,
-      expandQuery: `image,model($select=id,number,seoPath;$expand=series($select=id,name,seoPath))`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,number,name,description,modelId`,
+    expandQuery: `image,model($select=id,number,seoPath;$expand=series($select=id,name,seoPath))`
+  };
 
-    const data: Product | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Product | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data || [];
 }
 
 /**
@@ -43,43 +39,35 @@ export async function fetchBaseDesign(id: string): Promise<Product> {
  * @returns Array of Resource
  */
 export async function fetchDesignResources(id: string): Promise<Resource[]> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `resources($select=id,type,variation,caption,url,thumbnail)`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `resources($select=id,type,variation,caption,url,thumbnail)`
+  };
 
-    const data: Model | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data.resources || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Model | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data.resources || [];
 }
 
 export async function fetchDesignAccessories(
   id: string
 ): Promise<Array<ProductAccessory>> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url)))`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url)))`
+  };
 
-    const data: Product | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data.accessories || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Product | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data.accessories || [];
 }
 
 /**
@@ -90,24 +78,20 @@ export async function fetchDesignAccessories(
 export async function fetchDesignsCadenasIdentifier(
   id: string
 ): Promise<Identifier | undefined> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `identifiers`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `identifiers`
+  };
 
-    const data: Model | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data.identifiers?.filter(
-      (identifier) => identifier.type === IdentifierType.CADENAS_IDENTIFIER
-    )?.[0];
-  } catch (e) {
-    throw e;
-  }
+  const data: Model | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data.identifiers?.filter(
+    identifier => identifier.type === IdentifierType.CADENAS_IDENTIFIER
+  )?.[0];
 }
 /**
  * Function that retrieves basic information of Products for the passed ids. (RecentlyViewed, Bookmarks,...)
@@ -117,29 +101,25 @@ export async function fetchDesignsCadenasIdentifier(
 export const fetchBaseDesignsByIds = async (
   ids: string[]
 ): Promise<OdataCollection<Product>> => {
-  try {
-    const filteredIds: string[] = ids.filter((id) => !!id);
-    if (filteredIds.length === 0) {
-      return {
-        '@odata.context': '',
-        value: [] as Array<Product & OdataEntity>,
-      };
-    }
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,name,description,number',
-      expandQuery: `image`,
-      filterQuery:
-        filteredIds.length > 0
-          ? filteredIds.map((id) => `id eq ${id}`).join(' or ')
-          : undefined,
-      includeCount: true,
+  const filteredIds: string[] = ids.filter(id => !!id);
+  if (filteredIds.length === 0) {
+    return {
+      '@odata.context': '',
+      value: [] as Array<Product & OdataEntity>
     };
-    const data = await productsResource.getEntities(queryOptions);
-    return data;
-  } catch (error) {
-    throw error;
   }
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,name,description,number',
+    expandQuery: `image`,
+    filterQuery:
+      filteredIds.length > 0
+        ? filteredIds.map(id => `id eq ${id}`).join(' or ')
+        : undefined,
+    includeCount: true
+  };
+  const data = await productsResource.getEntities(queryOptions);
+  return data;
 };
 
 /**
@@ -150,25 +130,21 @@ export const fetchBaseDesignsByIds = async (
 export async function fetchDesignKeySpecifications(
   id: string
 ): Promise<Attribute[]> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `attributes($select=sortIndex,typeCode,groupCode,settings,value,displays,conditions,sortIndex,id;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
-        AttributeSettings,
-        AttributeSettings.DisplayOnProductCharacteristics
-      )}')`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `attributes($select=sortIndex,typeCode,groupCode,settings,value,displays,conditions,sortIndex,id;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
+      AttributeSettings,
+      AttributeSettings.DisplayOnProductCharacteristics
+    )}')`
+  };
 
-    const data: Product | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data.attributes || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Product | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data.attributes || [];
 }
 
 /**
@@ -177,22 +153,18 @@ export async function fetchDesignKeySpecifications(
  * @returns Array of Options that represent the Configurations of a Product
  */
 export async function fetchDesignConfigurations(id: string): Promise<Option[]> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `options($orderby=typeCode asc)`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `options($orderby=typeCode asc)`
+  };
 
-    const data: Product | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data?.options || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Product | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data?.options || [];
 }
 
 /**
@@ -203,22 +175,18 @@ export async function fetchDesignConfigurations(id: string): Promise<Option[]> {
 export async function fetchDesignSpecifications(
   id: string
 ): Promise<Attribute[]> {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: `attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id)`,
-    };
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: `attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id)`
+  };
 
-    const data: Model | undefined = await productsResource.getEntity(
-      id,
-      queryOptions
-    );
-    return data.attributes || [];
-  } catch (e) {
-    throw e;
-  }
+  const data: Model | undefined = await productsResource.getEntity(
+    id,
+    queryOptions
+  );
+  return data.attributes || [];
 }
 
 /**
@@ -229,21 +197,14 @@ export async function fetchDesignSpecifications(
 export const fetchSearchedProductsSuggestions = async (
   searchQuery: string
 ): Promise<OdataCollection<Product>> => {
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,number',
-      orderbyQuery: 'number asc',
-      top: 10,
-    };
-    const data = await productsResource.searchEntities(
-      queryOptions,
-      searchQuery
-    );
-    return data;
-  } catch (error) {
-    throw error;
-  }
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,number',
+    orderbyQuery: 'number asc',
+    top: 10
+  };
+  const data = await productsResource.searchEntities(queryOptions, searchQuery);
+  return data;
 };
 
 /**
@@ -257,43 +218,36 @@ export const fetchProductPriceBreaksByNumber = async (
   isVerified: boolean,
   isEmployee: boolean
 ): Promise<PriceBreak[]> => {
-  try {
-    if (!isAuthenticated || (!isVerified && !isEmployee)) {
-      return [];
-    }
+  if (!isAuthenticated || (!isVerified && !isEmployee)) {
+    return [];
+  }
 
-    const productsResource: ProductsResource = new ProductsResource();
+  const productsResource: ProductsResource = new ProductsResource();
 
-    let priceFunction: string = '/StandardPrice';
+  let priceFunction: string = '/StandardPrice';
 
-    if (isVerified) {
-      priceFunction = '/CustomerPrice';
-    }
-    const data:
-      | OdataCollection<PriceBreak & OdataEntity>
-      | Response
-      | undefined = await productsResource.fetch(
+  if (isVerified) {
+    priceFunction = '/CustomerPrice';
+  }
+  const data: OdataCollection<PriceBreak & OdataEntity> | Response | undefined =
+    await productsResource.fetch(
       `/Products(number='${productNumber}')${priceFunction}`,
       {},
       {},
       true
     );
-    if ((data as Response | undefined)?.status === 204) {
-      // if there's no prices then we show "Quoted Price" to the user
-      return [];
-    }
-    if ((data as Response | undefined)?.status === 403) {
-      // if user isn't authorized to fetch the prices then we show "Quote Price" to the user
-      // TODO: once B2C tokens are used, backend checks for presence of the "VerifiedCustomer" value in the "extension_Roles" claim to authorize the request, the frontend should do the same (in case of B2C tokens) and not fetch the function but instead return "[]" immediately to avoid making unneeded API calls
-      return [];
-    }
-    return (
-      (data as OdataCollection<PriceBreak & OdataEntity> | undefined)?.value ||
-      []
-    );
-  } catch (error) {
-    throw error;
+  if ((data as Response | undefined)?.status === 204) {
+    // if there's no prices then we show "Quoted Price" to the user
+    return [];
   }
+  if ((data as Response | undefined)?.status === 403) {
+    // if user isn't authorized to fetch the prices then we show "Quote Price" to the user
+    // TODO: once B2C tokens are used, backend checks for presence of the "VerifiedCustomer" value in the "extension_Roles" claim to authorize the request, the frontend should do the same (in case of B2C tokens) and not fetch the function but instead return "[]" immediately to avoid making unneeded API calls
+    return [];
+  }
+  return (
+    (data as OdataCollection<PriceBreak & OdataEntity> | undefined)?.value || []
+  );
 };
 
 /**
@@ -314,37 +268,36 @@ export async function fetchAllPriceBreaksByNumber(
   | undefined
 > {
   if (!isAuthenticated || (!isVerified && !isEmployee)) {
-    return productNumbers.map((productNumber) => ({
+    return productNumbers.map(productNumber => ({
       productNumber,
-      priceBreaks: [],
+      priceBreaks: []
     }));
   }
-  try {
-    const priceBreaksPromises: Promise<PriceBreak[]>[] = productNumbers.map(
-      (productNumber) => {
-        return fetchProductPriceBreaksByNumber(
-          productNumber,
-          isAuthenticated,
-          isVerified,
-          isEmployee
-        );
-      }
-    );
 
-    const priceBreaksResponses: PriceBreak[][] = await Promise.all(
-      priceBreaksPromises
-    );
+  const priceBreaksPromises: Promise<PriceBreak[]>[] = productNumbers.map(
+    productNumber => {
+      return fetchProductPriceBreaksByNumber(
+        productNumber,
+        isAuthenticated,
+        isVerified,
+        isEmployee
+      );
+    }
+  );
 
-    const mappedResponses: {
-      productNumber: string;
-      priceBreaks: PriceBreak[];
-    }[] = priceBreaksResponses.map((response, index) => ({
-      productNumber: productNumbers[index],
-      priceBreaks: response,
-    }));
+  const priceBreaksResponses: PriceBreak[][] = await Promise.all(
+    priceBreaksPromises
+  );
 
-    return mappedResponses;
-  } catch (e) {}
+  const mappedResponses: {
+    productNumber: string;
+    priceBreaks: PriceBreak[];
+  }[] = priceBreaksResponses.map((response, index) => ({
+    productNumber: productNumbers[index],
+    priceBreaks: response
+  }));
+
+  return mappedResponses;
 }
 /**
  * Function that fetches the bookmarked products
@@ -357,26 +310,23 @@ export const fetchBookmarks = async (
   if (productIds.length === 0) {
     return {
       '@odata.context': '',
-      value: [],
+      value: []
     };
   }
-  try {
-    const productsResource: ProductsResource = new ProductsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: 'id,name,description,number',
-      expandQuery: `image`,
-      filterQuery:
-        // productIds.length > 0 ? `id in (${productIds.join(', ')})` : undefined,s
-        productIds.length > 0
-          ? productIds.map((id) => `id eq ${id}`).join(' or ')
-          : undefined,
-      includeCount: true,
-    };
-    const data = await productsResource.getEntities(queryOptions);
-    return data;
-  } catch (error) {
-    throw error;
-  }
+
+  const productsResource: ProductsResource = new ProductsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,name,description,number',
+    expandQuery: `image`,
+    filterQuery:
+      // productIds.length > 0 ? `id in (${productIds.join(', ')})` : undefined,s
+      productIds.length > 0
+        ? productIds.map(id => `id eq ${id}`).join(' or ')
+        : undefined,
+    includeCount: true
+  };
+  const data = await productsResource.getEntities(queryOptions);
+  return data;
 };
 
 /**
@@ -391,7 +341,7 @@ export async function getDesignsForDetailedCompare(
     if (ids.length === 0) {
       return {
         '@odata.context': 'Products with attributes',
-        value: [],
+        value: []
       };
     }
 
@@ -400,13 +350,12 @@ export async function getDesignsForDetailedCompare(
     const queryOptions: Partial<QueryOptions> = {
       filterQuery: `id in (${ids.join(', ')})`,
       selectQuery: 'id,name,description,number',
-      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`,
+      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`
     };
 
     // eslint-disable-next-line max-len
-    const products: OdataCollection<Product> = await productsResource.getEntities(
-      queryOptions
-    );
+    const products: OdataCollection<Product> =
+      await productsResource.getEntities(queryOptions);
     return products;
   } catch (e) {
     throw new Error('Could not get the product previews');

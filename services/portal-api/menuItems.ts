@@ -1,4 +1,4 @@
-import { MenuItem } from '.';
+import { MenuItem } from './';
 import { Menu } from './models/Menu';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
@@ -9,18 +9,14 @@ import { MenuItemsResource } from './resources/MenuItemsResource';
  * @returns an OdataCollection of MenuItems in the order it should be displayed.
  */
 export async function fetchSiteMenuItems(): Promise<OdataCollection<MenuItem>> {
-  try {
-    const menuItemsResource: MenuItemsResource = new MenuItemsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id,url`,
-      orderbyQuery: 'sortIndex asc',
-      filterQuery: `menu eq '${Menu.SITE}' and parentId eq null`,
-    };
-    const data = await menuItemsResource.getEntities(queryOptions);
-    return data;
-  } catch (e) {
-    throw e;
-  }
+  const menuItemsResource: MenuItemsResource = new MenuItemsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,url`,
+    orderbyQuery: 'sortIndex asc',
+    filterQuery: `menu eq '${Menu.SITE}' and parentId eq null`
+  };
+  const data = await menuItemsResource.getEntities(queryOptions);
+  return data;
 }
 /**
  * Function that fetches the MenuItems that should be displayed on the MainCommandBar (Menu).
@@ -29,16 +25,12 @@ export async function fetchSiteMenuItems(): Promise<OdataCollection<MenuItem>> {
  * It is expected that this flat array gets mapped correctly.
  */
 export async function fetchMainMenuItems(): Promise<OdataCollection<MenuItem>> {
-  try {
-    const menuItemsResource: MenuItemsResource = new MenuItemsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id,url,parentId`,
-      orderbyQuery: 'sortIndex asc',
-      filterQuery: `menu eq '${Menu.MAIN}'`,
-    };
-    const data = await menuItemsResource.getEntities(queryOptions);
-    return data;
-  } catch (e) {
-    throw e;
-  }
+  const menuItemsResource: MenuItemsResource = new MenuItemsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,url,parentId`,
+    orderbyQuery: 'sortIndex asc',
+    filterQuery: `menu eq '${Menu.MAIN}'`
+  };
+  const data = await menuItemsResource.getEntities(queryOptions);
+  return data;
 }

@@ -26,7 +26,7 @@ export interface OrderPost {
 export enum CustomerVerificationRequestStatus {
   Pending = 'Pending',
   Denied = 'Denied',
-  Approved = 'Approved',
+  Approved = 'Approved'
 }
 
 export interface CustomerVerificationRequest {

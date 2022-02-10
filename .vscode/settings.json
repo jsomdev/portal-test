@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["hreflang"]
+  "cSpell.words": ["hreflang"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

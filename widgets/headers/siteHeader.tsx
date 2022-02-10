@@ -8,7 +8,7 @@ import {
   IVerticalDividerStyles,
   Stack,
   useTheme,
-  VerticalDivider,
+  VerticalDivider
 } from '@fluentui/react';
 import { siteMenuItems } from '@services/preval';
 import { rem } from '@utilities/rem';
@@ -28,7 +28,9 @@ export interface ISiteHeaderProps {
  * Based on the screen size a different version will be displayed.
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
-export const SiteHeader: React.FC<ISiteHeaderProps> = ({ onOpenSideNavigation }) => {
+export const SiteHeader: React.FC<ISiteHeaderProps> = ({
+  onOpenSideNavigation
+}) => {
   const isLarge = useLarge();
   if (isLarge) {
     return <LargeSiteHeader />;
@@ -47,22 +49,24 @@ interface IDefaultSiteHeaderStyles {
   divider: Partial<IVerticalDividerStyles>;
 }
 
-const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({ onOpenSideNavigation }) => {
+const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
+  onOpenSideNavigation
+}) => {
   const { spacing } = useTheme();
   const { locale } = useIntl();
 
   const styles: IDefaultSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80),
-      },
+        height: rem(80)
+      }
     },
     divider: {
       wrapper: {
         padding: rem(spacing.s2),
-        height: rem(32),
-      },
-    },
+        height: rem(32)
+      }
+    }
   };
   return (
     <nav>
@@ -70,27 +74,37 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({ onOpenSideNavigation })
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.s1)}`,
+          padding: `0 ${rem(spacing.s1)}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
       >
-        <Stack horizontal grow verticalFill tokens={{ childrenGap: rem(spacing.s1) }} verticalAlign="center">
+        <Stack
+          horizontal
+          grow
+          verticalFill
+          tokens={{ childrenGap: rem(spacing.s1) }}
+          verticalAlign="center"
+        >
           <HeaderButton
             onClick={() => {
               onOpenSideNavigation?.('site');
             }}
             iconProps={{
-              iconName: 'GlobalNavButton',
+              iconName: 'GlobalNavButton'
             }}
           />
           <SiteLogo />
         </Stack>
-        <Stack horizontal verticalAlign="center" tokens={{ childrenGap: rem(spacing.s2) }}>
+        <Stack
+          horizontal
+          verticalAlign="center"
+          tokens={{ childrenGap: rem(spacing.s2) }}
+        >
           <Medium>
             <HeaderButton
               iconProps={{
-                iconName: 'Globe',
+                iconName: 'Globe'
               }}
               type="actionButton"
               text={locale.toLocaleUpperCase()}
@@ -99,12 +113,12 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({ onOpenSideNavigation })
           </Medium>
           <HeaderButton
             iconProps={{
-              iconName: 'Search',
+              iconName: 'Search'
             }}
           />
           <HeaderButton
             iconProps={{
-              iconName: 'ShoppingCart',
+              iconName: 'ShoppingCart'
             }}
           />
 
@@ -113,7 +127,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({ onOpenSideNavigation })
               onOpenSideNavigation?.('user');
             }}
             iconProps={{
-              iconName: 'Contact',
+              iconName: 'Contact'
             }}
           />
         </Stack>
@@ -139,21 +153,21 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = () => {
   const styles: ILargeSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80),
-      },
+        height: rem(80)
+      }
     },
     button: {
       label: {
         fontSize: rem(14),
-        fontWeight: 500,
-      },
+        fontWeight: 500
+      }
     },
     divider: {
       wrapper: {
         padding: rem(spacing.s2),
-        height: rem(32),
-      },
-    },
+        height: rem(32)
+      }
+    }
   };
   return (
     <nav>
@@ -161,16 +175,26 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = () => {
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.l1)}`,
+          padding: `0 ${rem(spacing.l1)}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
       >
-        <Stack horizontal grow verticalFill tokens={{ childrenGap: rem(spacing.s1) }} verticalAlign="center">
+        <Stack
+          horizontal
+          grow
+          verticalFill
+          tokens={{ childrenGap: rem(spacing.s1) }}
+          verticalAlign="center"
+        >
           <SiteLogo />
         </Stack>
-        <Stack horizontal verticalAlign="center" tokens={{ childrenGap: rem(spacing.s2) }}>
-          {siteMenuItems.map((item) => (
+        <Stack
+          horizontal
+          verticalAlign="center"
+          tokens={{ childrenGap: rem(spacing.s2) }}
+        >
+          {siteMenuItems.map(item => (
             <HeaderButton
               type="actionButton"
               key={item.id}
@@ -183,7 +207,7 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = () => {
           <HeaderButton
             id="random"
             iconProps={{
-              iconName: 'Globe',
+              iconName: 'Globe'
             }}
             type="actionButton"
             styles={styles.button}

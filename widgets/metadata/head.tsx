@@ -15,8 +15,13 @@ export interface IHeadProps {
  * Wrapper Component for the NextHead component.
  * Adds metadata and SEO specific information to the 'head' of the html page.
  */
-export const Head: React.FC<IHeadProps> = (props) => {
-  const { title, pathname, description, icon = { href: '/favicon.ico' } } = props;
+export const Head: React.FC<IHeadProps> = props => {
+  const {
+    title,
+    pathname,
+    description,
+    icon = { href: '/favicon.ico' }
+  } = props;
 
   return (
     <NextHead>

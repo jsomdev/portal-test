@@ -10,12 +10,11 @@ describe('queryOptions are formatted correctly to an odata query', () => {
       orderbyQuery: '$orderby=number asc',
       selectQuery: '$select=id,name,number',
       skip: 5,
-      top: 5,
+      top: 5
     };
 
-    const odataQuery: string = ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(
-      queryOptions
-    );
+    const odataQuery: string =
+      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions);
     // tslint:disable-next-line:no-console
     console.debug(odataQuery);
     expect(odataQuery.length > 0).toBe(true);

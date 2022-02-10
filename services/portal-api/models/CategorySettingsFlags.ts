@@ -7,7 +7,7 @@ export enum CategorySettings {
   'DisplayGridViewOption' = 8,
   'ProductFinderBasicExperience' = 11,
   'DisplayListViewOption' = 16,
-  'ProductFinderFullExperience' = 31,
+  'ProductFinderFullExperience' = 31
 }
 
 export type CategorySettingsFlags = Flags<CategorySettings>;

@@ -4,26 +4,22 @@ import { Order } from './models/Order';
 import { OdataCollection, OdataEntity, QueryOptions } from './o-data';
 
 export const createOrder = async (order: OrderPost): Promise<Order> => {
-  try {
-    const customOrderResource: BaseResource<unknown> = new BaseResource(
-      '/me/cart/checkout?$expand=lines'
-    );
+  const customOrderResource: BaseResource<unknown> = new BaseResource(
+    '/me/cart/checkout?$expand=lines'
+  );
 
-    const data: Order = await customOrderResource.fetch<Order>(
-      '/me/cart/checkout?$expand=lines',
-      {},
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(order),
-      }
-    );
-    return data;
-  } catch (e) {
-    throw e;
-  }
+  const data: Order = await customOrderResource.fetch<Order>(
+    '/me/cart/checkout?$expand=lines',
+    {},
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    }
+  );
+  return data;
 };
 /**
  * Function that retrieves the orders of the user's linked account
@@ -47,19 +43,15 @@ export const fetchMyOrders = async (
     includeCount: true,
     orderbyQuery: 'submittedOn desc',
     top,
-    skip,
+    skip
   };
-  try {
-    const baseResource: BaseResource<Order> = new BaseResource<Order>(
-      '/Me/Account/Orders'
-    );
-    const orders: OdataCollection<Order> = await baseResource.getEntities(
-      queryOptions
-    );
-    return orders;
-  } catch (e) {
-    throw e;
-  }
+  const baseResource: BaseResource<Order> = new BaseResource<Order>(
+    '/Me/Account/Orders'
+  );
+  const orders: OdataCollection<Order> = await baseResource.getEntities(
+    queryOptions
+  );
+  return orders;
 };
 
 export const fetchMyOrder = async (
@@ -68,23 +60,19 @@ export const fetchMyOrder = async (
   isVerified: boolean,
   accountId: string | undefined
 ): Promise<Order | undefined> => {
-  try {
-    if (!isVerified || !accountId || !isAuthenticated) {
-      return undefined;
-    }
-    const baseResource: BaseResource<Order> = new BaseResource<Order>(
-      '/Me/Account/Orders'
-    );
-    const queryOptions: Partial<QueryOptions> = {
-      expandQuery:
-        'lines($expand=product($select=id;$expand=image($select=url))),transactions($select=card($select=number,issuer))',
-    };
-    const data: Order & OdataEntity = await baseResource.getEntity(
-      orderId,
-      queryOptions
-    );
-    return data;
-  } catch (error) {
-    throw error;
+  if (!isVerified || !accountId || !isAuthenticated) {
+    return undefined;
   }
+  const baseResource: BaseResource<Order> = new BaseResource<Order>(
+    '/Me/Account/Orders'
+  );
+  const queryOptions: Partial<QueryOptions> = {
+    expandQuery:
+      'lines($expand=product($select=id;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
+  };
+  const data: Order & OdataEntity = await baseResource.getEntity(
+    orderId,
+    queryOptions
+  );
+  return data;
 };

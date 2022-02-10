@@ -1,11 +1,6 @@
 import React from 'react';
 
-import type {
-  GetStaticProps,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-  NextPage,
-} from 'next';
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
@@ -13,27 +8,24 @@ import ReactMarkdown from 'react-markdown';
 import { Head } from 'widgets/metadata/head';
 
 import { getMarkdownByFileName } from '@docs/data';
-import {
-  messageIds,
-  supportedLocales,
-} from '@services/i18n';
+import { messageIds, supportedLocales } from '@services/i18n';
 
 interface II18NProps {
   markdown: string;
 }
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<II18NProps>> => {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<II18NProps>
+> => {
   const markdown = getMarkdownByFileName('i18n', ['content']);
   return {
     props: {
-      markdown: markdown.content,
-    },
+      markdown: markdown.content
+    }
   };
 };
 
-const I18NExamples: React.FC<Pick<II18NProps, 'markdown'>> = (props) => {
+const I18NExamples: React.FC<Pick<II18NProps, 'markdown'>> = () => {
   const { formatMessage } = useIntl();
   const { pathname, locale } = useRouter();
   return (
@@ -42,19 +34,27 @@ const I18NExamples: React.FC<Pick<II18NProps, 'markdown'>> = (props) => {
       <h4>
         Translated title:{' '}
         {formatMessage({
-          id: messageIds.pages.docs.i18n.title,
+          id: messageIds.pages.docs.i18n.title
         })}
       </h4>
       <p>
         Translated description:{' '}
         {formatMessage({
-          id: messageIds.pages.docs.i18n.description,
+          id: messageIds.pages.docs.i18n.description
         })}
       </p>
       <h3>Supported Locales</h3>
-      {supportedLocales?.map((supportedLocale) => (
-        <Link key={supportedLocale} href={pathname} locale={supportedLocale} passHref>
-          <a className={supportedLocale === locale ? 'active' : ''} rel="canonical">
+      {supportedLocales?.map(supportedLocale => (
+        <Link
+          key={supportedLocale}
+          href={pathname}
+          locale={supportedLocale}
+          passHref
+        >
+          <a
+            className={supportedLocale === locale ? 'active' : ''}
+            rel="canonical"
+          >
             {' '}
             {supportedLocale}
           </a>
@@ -89,9 +89,13 @@ const I18N: NextPage<II18NProps> = (props: II18NProps) => {
       <Head
         pathname={pathname}
         title={formatMessage({ id: messageIds.pages.docs.i18n.title })}
-        description={formatMessage({ id: messageIds.pages.docs.i18n.description })}
+        description={formatMessage({
+          id: messageIds.pages.docs.i18n.description
+        })}
       />
-      <ReactMarkdown className={'reactMarkdown'}>{props.markdown}</ReactMarkdown>
+      <ReactMarkdown className={'reactMarkdown'}>
+        {props.markdown}
+      </ReactMarkdown>
       <I18NExamples {...props} />
     </>
   );

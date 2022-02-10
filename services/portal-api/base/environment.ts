@@ -3,5 +3,5 @@ export enum Environment {
   Develop,
   Test,
   Stage,
-  Production,
+  Production
 }

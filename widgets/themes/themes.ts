@@ -29,13 +29,13 @@ export const appTheme: PartialTheme = {
     accent: '#0065a4',
     yellowDark: '#FEC857',
     green: '#12B83F',
-    blueDark: '#33658A',
+    blueDark: '#33658A'
   },
   effects: {},
   fonts: {
     medium: {
-      color: 'red',
-    },
+      color: '#222'
+    }
   },
   semanticColors: {
     link: '#0065a4',
@@ -43,6 +43,6 @@ export const appTheme: PartialTheme = {
     cardStandoutBackground: '#075671',
     bodyStandoutBackground: '#242F37',
     bodySubtext: '#AEBDC6',
-    variantBorder: '#e6e6e6',
-  },
+    variantBorder: '#e6e6e6'
+  }
 };

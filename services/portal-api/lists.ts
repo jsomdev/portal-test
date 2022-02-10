@@ -11,18 +11,14 @@ import { ListsResource } from './resources/ListsResource';
  * @returns Array of ListItems that represents the Liquids with their Specific Gravity
  */
 export async function fetchLiquidsWithSpecificGravity(): Promise<ListItem[]> {
-  try {
-    const listsResource: ListsResource = new ListsResource();
-    const queryOptions: Partial<QueryOptions> = {
-      selectQuery: `id`,
-      expandQuery: 'items($select=value,displays,id;$orderby=sortIndex asc)',
-    };
-    const data = await listsResource.getEntity(
-      LISTIDS.liquidSpecificGravity,
-      queryOptions
-    );
-    return data?.items || [];
-  } catch (e) {
-    throw e;
-  }
+  const listsResource: ListsResource = new ListsResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id`,
+    expandQuery: 'items($select=value,displays,id;$orderby=sortIndex asc)'
+  };
+  const data = await listsResource.getEntity(
+    LISTIDS.liquidSpecificGravity,
+    queryOptions
+  );
+  return data?.items || [];
 }

@@ -5,7 +5,7 @@ import {
   FontWeights,
   IButtonStyles,
   ICommandBarItemProps,
-  PartialTheme,
+  PartialTheme
 } from '@fluentui/react';
 import { MenuItem } from '@services/portal-api/models/MenuItem';
 import { rem } from '@utilities/rem';
@@ -22,7 +22,10 @@ import { rem } from '@utilities/rem';
 export function getMainCommandBarItems(
   menuItems: MenuItem[],
   onItemClick: (
-    ev: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+    ev:
+      | React.MouseEvent<HTMLElement, MouseEvent>
+      | React.KeyboardEvent<HTMLElement>
+      | undefined,
     path: string
   ) => void,
   theme: PartialTheme,
@@ -33,23 +36,23 @@ export function getMainCommandBarItems(
     return [];
   }
   const hasSubItems = (id: string | undefined) => {
-    return !!menuItems.filter((child) => child.parentId === id).length;
+    return !!menuItems.filter(child => child.parentId === id).length;
   };
 
   return menuItems
-    .filter((menuItem) => menuItem.parentId === parentId)
+    .filter(menuItem => menuItem.parentId === parentId)
     .map((menuItem): ICommandBarItemProps => {
       return {
         key: menuItem.id || '',
         text: menuItem.url?.text?.en || '',
         // TODO: Add href
         href: 'TODO',
-        onClick: (ev) => {
+        onClick: ev => {
           if (menuItem.url?.value) {
             onItemClick(ev, menuItem.url?.value);
           }
         },
-        commandBarButtonAs: (props) => (
+        commandBarButtonAs: props => (
           <CommandBarButton
             {...(props as unknown)}
             // Need to overwrite the menuProps here so that we can display a beak
@@ -65,25 +68,27 @@ export function getMainCommandBarItems(
                 gapSpace: -2,
                 styles: {
                   beak: {
-                    background: '#dde3e7',
+                    background: '#dde3e7'
                   },
                   root: {
-                    marginTop: rem(-3),
+                    marginTop: rem(-3)
                   },
                   calloutMain: {
                     borderRadius: 0,
                     '& .ms-ContextualMenu-list': {
                       position: 'relative',
-                      background: 'linear-gradient(to bottom, #dde3e7 0%, #EEF1F4 10px)',
+                      background:
+                        'linear-gradient(to bottom, #dde3e7 0%, #EEF1F4 10px)',
                       width: '240px',
                       padding: '10px 0 12px 0',
                       '& .ms-ContextualMenu-link:hover': {
-                        background: theme?.palette?.themePrimary,
+                        background: theme?.palette?.themePrimary
                       },
-                      '& .ms-ContextualMenu-link:hover .ms-ContextualMenu-itemText': {
-                        textDecoration: 'underline',
-                        color: theme?.palette?.white,
-                      },
+                      '& .ms-ContextualMenu-link:hover .ms-ContextualMenu-itemText':
+                        {
+                          textDecoration: 'underline',
+                          color: theme?.palette?.white
+                        },
                       '& .ms-ContextualMenu-link': {
                         background: '#EEF1F4',
                         padding: '10px 24px',
@@ -91,25 +96,25 @@ export function getMainCommandBarItems(
 
                         '& .ms-ContextualMenu-linkContent': {
                           lineHeight: 'normal',
-                          whiteSpace: 'normal',
+                          whiteSpace: 'normal'
                         },
                         '& .ms-ContextualMenu-itemText': {
                           fontSize: FontSizes.medium,
                           fontWeight: FontWeights.semibold,
                           '@media(min-width: 1200px)': {
-                            fontSize: FontSizes.mediumPlus,
+                            fontSize: FontSizes.mediumPlus
                           },
                           whiteSpace: 'normal',
                           textOverflow: 'clip',
                           color: '#5E7C8E',
-                          margin: rem(0),
-                        },
-                      },
-                    },
-                  },
-                },
+                          margin: rem(0)
+                        }
+                      }
+                    }
+                  }
+                }
               },
-              items: props.subMenuProps?.items || [],
+              items: props.subMenuProps?.items || []
             }}
             styles={buttonStyles}
             text={props.text}
@@ -120,9 +125,15 @@ export function getMainCommandBarItems(
         subMenuProps:
           parentId === null && hasSubItems(menuItem.id)
             ? {
-                items: getMainCommandBarItems(menuItems, onItemClick, theme, buttonStyles, menuItem.id || null),
+                items: getMainCommandBarItems(
+                  menuItems,
+                  onItemClick,
+                  theme,
+                  buttonStyles,
+                  menuItem.id || null
+                )
               }
-            : undefined,
+            : undefined
       };
     });
 }
