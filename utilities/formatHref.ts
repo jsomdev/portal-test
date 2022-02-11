@@ -1,11 +1,10 @@
-import { DrilldownCardType } from '@components/cards/drilldownCards.types';
 import { Category, Model, Product, Series } from '@services/portal-api';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { CategorySettings } from '@services/portal-api/models/CategorySettingsFlags';
 
 /**
  * Function that will format the href for a Category.
- * Example usaged:
+ * Example usages:
  *  - (Origin included) to set as href of a <Link> / <a> href that links to a Product. This is used for browser based functionality (right click -> open in new tab)
  *  - (Origin excluded) to as 'pathname' in the toPath() function of useNavigate, or to so as the 'to' prop on a Link (react-router-dom). This is used for client-side navigation without additional state / location behaviour
  * @param category Category which the href is for
@@ -33,29 +32,6 @@ export function formatCategoryHref(
     '/categories/not-found';
 
   return `${origin}${path}`;
-}
-
-/**
- * Function that will format the href for a Drilldown Card
- * Currently there are only Category, Models and Series Drilldown cards.
- * @param data Model, Series  or MenuItem
- * @param includeOrigin Whether to include window.location.origin (DO NOT INCLUDE for client-side-routing)
- */
-export function formatDrilldownCardHref(
-  data: Product | Category | Model | Series, // TODO: Remove Product
-  type: DrilldownCardType,
-  includeOrigin = true
-): string {
-  switch (type) {
-    case 'category':
-      return formatCategoryHref(data as Category, includeOrigin);
-    case 'model':
-      return formatModelHref(data as Model, includeOrigin);
-    case 'series':
-      return formatSeriesHref(data as Series, includeOrigin);
-    default:
-      return '';
-  }
 }
 
 /**

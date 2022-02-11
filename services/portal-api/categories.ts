@@ -19,37 +19,19 @@ export async function fetchCategory(id: string): Promise<Category> {
 }
 
 /**
- * Function that retrieves the basic information about the root categories that are displayed on the home page.
- * @returns Collection of Categories that represent the root categories
+ * Function that retrieves all necessary infromation about the categories that are displayed on the homepage
+ * @returns Collection of Categories that are displayed on the homepage
  */
-export async function fetchHomepageCategories(): Promise<
+export async function fetchCategoriesForHomePage(): Promise<
   OdataCollection<Category>
 > {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: 'id,name,description,settings,seoPath',
-    expandQuery: 'image($select=url)',
+    expandQuery:
+      'image($select=url),children($select=id,name,settings,seoPath;$expand=image($select=url);$orderby=sortIndex asc)',
     filterQuery: `parentId eq null`,
     orderbyQuery: 'sortIndex asc'
-  };
-  const data = await categoriesResource.getEntities(queryOptions);
-  return data;
-}
-/**
- * Function that retrieves the basic information about the sub categories of a category.
- * @param parentId Guid of the parent Category
- * @returns Collection of the children Categories
- */
-export async function fetchSubCategories(
-  language: string,
-  parentId?: string
-): Promise<OdataCollection<Category>> {
-  const categoriesResource: CategoriesResource = new CategoriesResource();
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,name,settings,seoPath`,
-    expandQuery: 'image($select=url)',
-    filterQuery: `parentId eq ${parentId || 'null'}`,
-    orderbyQuery: `sortIndex asc, name/${language} asc`
   };
   const data = await categoriesResource.getEntities(queryOptions);
 

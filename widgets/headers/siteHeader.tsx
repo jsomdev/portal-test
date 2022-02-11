@@ -10,17 +10,18 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { siteMenuItems } from '@services/preval';
+import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { Medium } from '@widgets/media-queries/mediaQuery';
 import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
-import { SiteNavigationType } from '@widgets/panels/siteNavigationPanel.types';
+import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
 
 export interface ISiteHeaderProps {
-  onOpenSideNavigation?: (type: SiteNavigationType) => void;
+  onOpenSideNavigation?: (type: AppNavigationType) => void;
+  items: MenuItem[];
 }
 
 /**
@@ -29,14 +30,20 @@ export interface ISiteHeaderProps {
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
 export const SiteHeader: React.FC<ISiteHeaderProps> = ({
-  onOpenSideNavigation
+  onOpenSideNavigation,
+  items
 }) => {
   const isLarge = useLarge();
   if (isLarge) {
-    return <LargeSiteHeader />;
+    return <LargeSiteHeader items={items} />;
   }
 
-  return <DefaultSiteHeader onOpenSideNavigation={onOpenSideNavigation} />;
+  return (
+    <DefaultSiteHeader
+      items={items}
+      onOpenSideNavigation={onOpenSideNavigation}
+    />
+  );
 };
 
 // ### Default Site Header
@@ -146,7 +153,7 @@ interface ILargeSiteHeaderStyles {
 /**
  * Large version of the Site Header
  */
-const LargeSiteHeader: React.FC<ISiteHeaderProps> = () => {
+const LargeSiteHeader: React.FC<ISiteHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
   const { locale } = useIntl();
 
@@ -194,7 +201,7 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = () => {
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          {siteMenuItems.map(item => (
+          {items.map(item => (
             <HeaderButton
               type="actionButton"
               key={item.id}

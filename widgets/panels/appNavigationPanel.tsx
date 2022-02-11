@@ -14,28 +14,36 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { HeaderButton } from '@widgets/headers/headerButton';
 
-import { getSiteNavigationPanelLinkGroups } from './siteNavigationPanel.helper';
-import { SiteNavigationType } from './siteNavigationPanel.types';
+import { getAppNavigationPanelLinkGroups } from './appNavigationPanel.helper';
+import { AppNavigationType } from './appNavigationPanel.types';
 
-export interface ISitePanelProps {
+export interface IAppPanelProps {
   panelProps: Partial<IPanelProps>;
-  type: SiteNavigationType | null;
+  siteMenuItems: MenuItem[];
+  mainMenuItems: MenuItem[];
+  type: AppNavigationType | null;
 }
 
-export interface ISitePanelStyles {
+export interface IAppPanelStyles {
   panel: Partial<IPanelStyles>;
   panelHeader: IStackStyles;
   nav: Partial<INavStyles>;
   navGroupHeader: IStackStyles;
 }
 
-export const SitePanel: React.FC<ISitePanelProps> = ({ panelProps, type }) => {
+export const AppPanel: React.FC<IAppPanelProps> = ({
+  panelProps,
+  type,
+  siteMenuItems,
+  mainMenuItems
+}) => {
   const { spacing, palette, semanticColors } = useTheme();
 
-  const styles: ISitePanelStyles = {
+  const styles: IAppPanelStyles = {
     panel: {
       content: {
         padding: 0,
@@ -113,7 +121,11 @@ export const SitePanel: React.FC<ISitePanelProps> = ({ panelProps, type }) => {
     >
       <Nav
         styles={styles.nav}
-        groups={getSiteNavigationPanelLinkGroups(type)}
+        groups={getAppNavigationPanelLinkGroups(
+          type,
+          siteMenuItems,
+          mainMenuItems
+        )}
         onRenderGroupHeader={props => (
           <Stack
             horizontal

@@ -37,7 +37,7 @@ There are some main principles -*guidelines*- that should be considered when cre
 3. **CCS in JS**:  Strongly typed interfaces should be used for styling our components. FluentUI comes with a built-in api that does this really well.
 4. **Search Engine Optimization**: Follow the SEO guidelines closely (e.g. [Google SEO Guidelines](https://developers.google.com/search/docs/advanced/guidelines/webmaster-guidelines))
 5. **I18n**: Text, dates, numbers,... should be i18n compliant.
-6. **Rendering approach**:  Determine the best rendering approach for pages and their components. [Comparison and explanation](https://medium.com/nerd-for-tech/compare-and-contrast-csr-ssr-and-ssg-in-nextjs-58e3caf2e15e). The Next.js [preval plugin](https://www.npmjs.com/package/next-plugin-preval) can be used for statically generated data for application wide usage. 
+6. **Rendering approach**:  Determine the best rendering approach for pages and their components. [Comparison and explanation](https://medium.com/nerd-for-tech/compare-and-contrast-csr-ssr-and-ssg-in-nextjs-58e3caf2e15e). 
 6. **Document and Test**: To improve the understanding and stability of the code, documentation and tests should be written.
 
 ## New Components
