@@ -21,7 +21,6 @@ import {
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import { CustomNavigationClient } from '@utilities/navigationClient';
-import { PageLayout } from '@widgets/layouts/pageLayout';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -46,27 +45,25 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AppThemeProvider>
           <ReactQueryClientProvider>
             <UserProvider>
-              <PageLayout>
-                <Component {...pageProps} />
-                <UnauthenticatedTemplate>
-                  <PrimaryButton
-                    onClick={() =>
-                      msalInstance.loginRedirect(customerLoginRequest)
-                    }
-                  >
-                    Login
-                  </PrimaryButton>
-                </UnauthenticatedTemplate>
-                <AuthenticatedTemplate>
-                  <PrimaryButton
-                    onClick={() =>
-                      msalInstance.logoutRedirect(customerLoginRequest)
-                    }
-                  >
-                    Logout
-                  </PrimaryButton>
-                </AuthenticatedTemplate>
-              </PageLayout>
+              <Component {...pageProps} />
+              <UnauthenticatedTemplate>
+                <PrimaryButton
+                  onClick={() =>
+                    msalInstance.loginRedirect(customerLoginRequest)
+                  }
+                >
+                  Login
+                </PrimaryButton>
+              </UnauthenticatedTemplate>
+              <AuthenticatedTemplate>
+                <PrimaryButton
+                  onClick={() =>
+                    msalInstance.logoutRedirect(customerLoginRequest)
+                  }
+                >
+                  Logout
+                </PrimaryButton>
+              </AuthenticatedTemplate>
             </UserProvider>
           </ReactQueryClientProvider>
         </AppThemeProvider>

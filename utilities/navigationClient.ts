@@ -18,7 +18,10 @@ export class CustomNavigationClient extends NavigationClient {
    * @param url
    * @param options
    */
-  async navigateInternal(url: string, options: NavigationOptions) {
+  async navigateInternal(
+    url: string,
+    options: NavigationOptions
+  ): Promise<boolean> {
     const relativePath = url.replace(window.location.origin, '');
     if (options.noHistory) {
       this.router.replace(relativePath);

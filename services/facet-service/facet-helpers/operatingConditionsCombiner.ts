@@ -1,7 +1,7 @@
-import { UnitOfMeasurement } from '../../../utilities/measurement';
 import { Facet } from '../models/facet/facet';
 import { FacetKey } from '../models/facet/facetKey';
 import { FacetOption } from '../models/facet/facetOption';
+import { UnitOfMeasurement } from '../models/facet/facetUnitOfMeasurement';
 import { RangeFacetOptionKey } from '../models/range-facets/rangeFacetOptionKey';
 
 /**

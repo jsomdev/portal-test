@@ -8,7 +8,9 @@ import { MenuItemsResource } from './resources/MenuItemsResource';
  * Function that fetches the MenuItems that should be displayed on the SiteCommandBar (Menu)
  * @returns an OdataCollection of MenuItems in the order it should be displayed.
  */
-export async function fetchSiteMenuItems(): Promise<OdataCollection<MenuItem>> {
+export async function fetchMenuItemsForSiteHeader(): Promise<
+  OdataCollection<MenuItem>
+> {
   const menuItemsResource: MenuItemsResource = new MenuItemsResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,url`,
@@ -24,7 +26,9 @@ export async function fetchSiteMenuItems(): Promise<OdataCollection<MenuItem>> {
  * @returns an OdataCollection of MenuItems as a flat array in the order they should be displayed.
  * It is expected that this flat array gets mapped correctly.
  */
-export async function fetchMainMenuItems(): Promise<OdataCollection<MenuItem>> {
+export async function fetchMenuItemsForMainHeader(): Promise<
+  OdataCollection<MenuItem>
+> {
   const menuItemsResource: MenuItemsResource = new MenuItemsResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,url,parentId`,
