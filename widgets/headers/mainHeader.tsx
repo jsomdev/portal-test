@@ -194,9 +194,9 @@ const MainHeaderCommandBar: React.FC<{ items: MenuItem[] }> = ({ items }) => {
       styles={styles.commandBar}
       items={getMainCommandBarItems(
         items,
-        ev => {
+        (ev, path) => {
           ev?.preventDefault();
-          push('/docs/i18n');
+          push(path);
         },
         theme,
         styles.button,

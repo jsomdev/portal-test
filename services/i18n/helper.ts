@@ -16,25 +16,6 @@ export function getMessages(locale?: string, exact: boolean = false): Messages {
   return en;
 }
 
-export function getMultilingualKey(
-  locale?: string,
-  obj?: MultilingualString | null | undefined
-): string {
-  const defaultKey = defaultLocale;
-  const language: string | undefined = locale?.split('-')[0];
-  console.log(language);
-  if (language) {
-    if (!obj) {
-      return language;
-    }
-    if (obj[language]) {
-      return language;
-    }
-  }
-
-  return defaultKey;
-}
-
 export function formatMultilingualString(
   object: MultilingualString | null | undefined,
   locale: string | undefined
@@ -46,7 +27,24 @@ export function formatMultilingualString(
   }
   return '';
 }
+export function getMultilingualKey(
+  locale?: string,
+  obj?: MultilingualString | null | undefined
+): string {
+  const defaultKey = defaultLocale;
+  const language: string | undefined = locale?.split('-')[0];
 
+  if (language) {
+    if (!obj) {
+      return language;
+    }
+    if (obj[language]) {
+      return language;
+    }
+  }
+
+  return defaultKey;
+}
 export const supportedLocales: string[] | undefined =
   process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(',');
 export const defaultLocale: string = 'en';

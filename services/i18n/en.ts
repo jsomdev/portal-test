@@ -24,6 +24,22 @@ export const en: Messages = {
     }
   },
   pages: {
+    home: {
+      headTitle: 'Welcome',
+      headDescription: 'Experts in Spray Technology | Spraying Systems Co.'
+    },
+    model: {
+      headTitle: 'Model',
+      headDescription: '{name} | Spraying Systems Co.'
+    },
+    category: {
+      headTitle: 'Category',
+      headDescription: '{name} | Spraying Systems Co.'
+    },
+    series: {
+      headTitle: 'Series',
+      headDescription: '{name} | Spraying Systems Co.'
+    },
     docs: {
       i18n: {
         title: 'Internationalization',

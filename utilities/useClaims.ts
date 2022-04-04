@@ -54,7 +54,6 @@ export const useClaims = (): ClaimsHook => {
   const { accounts, instance } = useMsal();
 
   const claims = useMemo(() => {
-    console.log(accounts?.[0]?.idTokenClaims as ExtendedClaims | undefined);
     return accounts?.[0]?.idTokenClaims as ExtendedClaims | undefined;
   }, [accounts]);
 

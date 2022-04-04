@@ -14,12 +14,12 @@ import { getMarkdownByFileName } from '@docs/data';
 import { messageIds } from '@services/i18n';
 import { Head } from '@widgets/metadata';
 
-interface IUserInterfacesProps {
+interface UserInterfacesProps {
   markdown: string;
 }
 
-const UserInterfaces: NextPage<IUserInterfacesProps> = (
-  props: IUserInterfacesProps
+const UserInterfaces: NextPage<UserInterfacesProps> = (
+  props: UserInterfacesProps
 ) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
@@ -43,7 +43,7 @@ const UserInterfaces: NextPage<IUserInterfacesProps> = (
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<IUserInterfacesProps>> => {
+): Promise<GetStaticPropsResult<UserInterfacesProps>> => {
   const markdown = getMarkdownByFileName('user-interfaces', ['content']);
   return {
     props: {

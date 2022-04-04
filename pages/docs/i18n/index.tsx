@@ -10,12 +10,12 @@ import { Head } from 'widgets/metadata/head';
 import { getMarkdownByFileName } from '@docs/data';
 import { messageIds, supportedLocales } from '@services/i18n';
 
-interface II18NProps {
+interface I18NProps {
   markdown: string;
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<II18NProps>
+  GetStaticPropsResult<I18NProps>
 > => {
   const markdown = getMarkdownByFileName('i18n', ['content']);
   return {
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   };
 };
 
-const I18NExamples: React.FC<Pick<II18NProps, 'markdown'>> = () => {
+const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
   const { formatMessage } = useIntl();
   const { pathname, locale } = useRouter();
   return (
@@ -80,7 +80,7 @@ const I18NExamples: React.FC<Pick<II18NProps, 'markdown'>> = () => {
   );
 };
 
-const I18N: NextPage<II18NProps> = (props: II18NProps) => {
+const I18N: NextPage<I18NProps> = (props: I18NProps) => {
   const { formatMessage } = useIntl();
   const { pathname } = useRouter();
 

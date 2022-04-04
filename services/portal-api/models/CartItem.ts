@@ -13,3 +13,4 @@ export type CartItem = LinkedEntity & {
   quantity?: number;
   product?: Product | null;
 };
+

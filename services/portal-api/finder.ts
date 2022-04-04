@@ -1,7 +1,11 @@
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
+
 import { FacetResult } from '../facet-service/models/facet/facetResult';
 import { BaseResource } from './base/baseResource';
+import { digitalHighWayFetch } from './base/fetch';
 import { FlaggedEnum } from './flaggedEnum';
 import { AttributeSettings } from './models/AttributeSettingsFlags';
+import { ModelSeriesGrouping } from './models/ModelSeriesGrouping';
 import { Product } from './models/Product';
 import { OdataCollection, OdataEntity } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
@@ -18,10 +22,10 @@ import { ProductsResource } from './resources/ProductsResource';
  */
 export const fetchFacetResults = async (
   encodedExternalFilters: string,
-  productModelId: string | undefined,
-  productSeriesId: string | undefined,
-  searchQuery: string | undefined,
-  encodedOperatingConditions: string
+  productModelId?: string | undefined,
+  productSeriesId?: string | undefined,
+  searchQuery?: string | undefined,
+  encodedOperatingConditions?: string | undefined
 ): Promise<FacetResult[]> => {
   const baseResource: BaseResource<FacetResult> = new BaseResource(
     `/Products/GroupByFacets(seriesId=${productSeriesId || 'null'},modelId=${
@@ -32,10 +36,12 @@ export const fetchFacetResults = async (
         : ',query=null'
     })${
       encodedExternalFilters.length > 0
-        ? `?@filters=${encodedExternalFilters}&@operatingConditions=${encodedOperatingConditions}`
+        ? `?@filters=${encodedExternalFilters}&@operatingConditions=${
+            encodedOperatingConditions || 'null'
+          }`
         : `?@filters=${encodeURIComponent(
             JSON.stringify([])
-          )}&@operatingConditions=${encodedOperatingConditions}`
+          )}&@operatingConditions=${encodedOperatingConditions || 'null'}`
     }`
   );
   const data: OdataCollection<FacetResult> = await baseResource.getEntities({});
@@ -198,3 +204,50 @@ export const fetchProductDataForGroupedTableView = async (
 
   return data;
 };
+
+const illegalCharacterSetsEncodedSearchQuery = ['%25', '%09'];
+
+function isEncodedSearchQueryValid(encodedQuery: string): boolean {
+  let isValid: boolean = true;
+  illegalCharacterSetsEncodedSearchQuery.forEach(illegalCharSet => {
+    if (encodedQuery.includes(illegalCharSet)) {
+      isValid = false;
+    }
+  });
+  return isValid;
+}
+
+export async function fetchCountByModelSeries(
+  filterParams: string,
+  operatingConditions?: string,
+  productModelId?: string,
+  productSeriesId?: string,
+  searchQuery?: string
+): Promise<ModelSeriesGrouping[]> {
+  try {
+    const serviceRootUrl: string = ENVIRONMENT_VARIABLES.portalApi.baseUrl;
+    const resourcePath: string = `/Products/CountByModelSeries(productModelId=${
+      productModelId || 'null'
+    },productSeriesId=${
+      productSeriesId || 'null'
+    },operatingConditions=@operatingConditions,filters=@filters${
+      searchQuery ? `,query='${encodeURIComponent(searchQuery)}'` : ''
+    })`;
+    const data: OdataCollection<ModelSeriesGrouping> =
+      (await digitalHighWayFetch<OdataCollection<ModelSeriesGrouping>>(
+        serviceRootUrl,
+        resourcePath,
+        `?@filters=${filterParams}&@operatingConditions=${
+          operatingConditions || 'null'
+        }`,
+        {}
+      )) as OdataCollection<ModelSeriesGrouping>;
+    return data.value;
+  } catch (error) {
+    if (!isEncodedSearchQueryValid(encodeURIComponent(searchQuery || ''))) {
+      return [];
+    } else {
+      throw error;
+    }
+  }
+}

@@ -1,9 +1,4 @@
-import React from 'react';
-
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import { Head } from 'widgets/metadata/head';
-
+import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import {
@@ -11,29 +6,50 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { HomeCategoriesSection } from '@widgets/categories/homeCategories';
-import { IPageLayoutProps, PageLayout } from '@widgets/layouts/pageLayout';
+import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
+import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
+import { Head } from 'widgets/metadata/head';
 
-export interface IHomeProps {
+export interface HomeProps {
   categories: Category[];
 }
 
-const Home: NextPage<IHomeProps & IPageLayoutProps> = ({
+const Home: NextPage<HomeProps & AppLayoutProps> = ({
   categories,
   siteMenuItems,
   mainMenuItems
 }) => {
   const { pathname } = useRouter();
-
+  const { formatMessage } = useIntl();
+  const messages = defineMessages({
+    headTitle: {
+      id: messageIds.pages.home.headTitle,
+      description: 'Page metadata title',
+      defaultMessage: 'Welcome'
+    },
+    headDescription: {
+      id: messageIds.pages.home.headDescription,
+      description: 'Page metadata description',
+      defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
+    }
+  });
   return (
-    <PageLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head pathname={pathname} title="Home" description="Home Description" />
+    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
+      <Head
+        pathname={pathname}
+        title={formatMessage(messages.headTitle)}
+        description={formatMessage(messages.headDescription)}
+      />
       <HomeCategoriesSection categories={categories} />
-    </PageLayout>
+    </AppLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<IHomeProps & IPageLayoutProps>
+  GetStaticPropsResult<HomeProps & AppLayoutProps>
 > => {
   try {
     const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
@@ -45,8 +61,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     return {
       props: {
         categories: categoriesData?.value || [],
-        siteMenuItems: siteMenuData?.value || [],
-        mainMenuItems: mainMenuData?.value || []
+        siteMenuItems: siteMenuData || [],
+        mainMenuItems: mainMenuData || []
       }
     };
   } catch (e) {

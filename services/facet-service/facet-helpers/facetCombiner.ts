@@ -18,6 +18,14 @@ import {
 import { RangeFacetOptionKey } from '../models/range-facets/rangeFacetOptionKey';
 import { RangeFacet } from '../models/range-facets/rangeProductFacet';
 
+export function mapCategoryIdToExternalFilter(id: string): ExternalFilter {
+  const categoryFilter: ExternalFilter = {
+    key: formatCamelCase(FacetKey.SprayPortalDemoCategoryPage), // the api needs a camelCase key
+    operator: 'eq',
+    value: id.toUpperCase() // guid must be uppercase and string value
+  };
+  return categoryFilter;
+}
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
  * At the time of writing all relevant facets are the one with FacetCategory.Default.
@@ -37,12 +45,9 @@ export function combineFacetsToEncodedExternalFiltersString(
   // If a category id was included, create an external filter that will be added to the external filters array.
   // Note: Inside the application the category filter is treated as a 'Pre-filter'. However, in the api call it needs to be part of the @filters parameter
   if (sprayPortalDemoCategoryPageId) {
-    const categoryFilter: ExternalFilter = {
-      key: formatCamelCase(FacetKey.SprayPortalDemoCategoryPage), // the api needs a camelCase key
-      operator: 'eq',
-      value: sprayPortalDemoCategoryPageId.toUpperCase() // guid must be uppercase and string value
-    };
-    extraFilters.push(categoryFilter);
+    extraFilters.push(
+      mapCategoryIdToExternalFilter(sprayPortalDemoCategoryPageId)
+    );
   }
 
   // Map the facets to externalfilters and concatenate with the extra filters.

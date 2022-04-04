@@ -1,22 +1,15 @@
+import path from 'path';
+
+import { DataCacheManager } from '@services/cache/dataCache';
+
 import { Category } from './models/Category';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { CategoriesResource } from './resources/CategoriesResource';
 
-/**
- * Function that retrieves the info of a category to be displayed on a category page (Title & Breadcrumb)
- * @param id Guid of the Category that needs to be retrieved
- * @returns Category
- */
-export async function fetchCategory(id: string): Promise<Category> {
-  const listItemsResource: CategoriesResource = new CategoriesResource();
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,seoPath,settings,image`,
-    expandQuery:
-      'parent($select=id,name,settings,seoPath;$expand=parent($select=id,settings,name,seoPath;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
-  };
-  return listItemsResource.getEntity(id, queryOptions);
-}
+const CATEGORIES_CACHE_PATH = path.resolve('./data-cache/categories.json');
+const categoriesDataCacheManager: DataCacheManager<Category[]> =
+  new DataCacheManager<Category[]>('Categories', CATEGORIES_CACHE_PATH);
 
 /**
  * Function that retrieves all necessary infromation about the categories that are displayed on the homepage
@@ -59,3 +52,27 @@ export const fetchSearchedCategoriesSuggestions = async (
   );
   return result;
 };
+
+/**
+ * Function that will retrieve all Categories with their relevant information included.
+ * @returns Array of Categories that will be referenced throughout the pages (e.g. BreadCrumbs, Title & Description, Navigation)
+ */
+export async function fetchAllCategories(): Promise<Category[]> {
+  const cachedData: Category[] | undefined =
+    await categoriesDataCacheManager.get();
+  if (cachedData) {
+    return cachedData;
+  }
+  const categoriesResource: CategoriesResource = new CategoriesResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,number,name,description,slug,settings,image`,
+    expandQuery:
+      'parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
+  };
+  const data: OdataCollection<Category> = await categoriesResource.getEntities(
+    queryOptions
+  );
+  console.log(data);
+  categoriesDataCacheManager.set(data.value);
+  return data.value;
+}

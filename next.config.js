@@ -11,6 +11,18 @@ module.exports = {
         ]
       : [];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/categorieen/:categorySlug',
+        destination: '/categories/:categorySlug'
+      },
+      {
+        source: '/producten/:productSlug',
+        destination: '/products/:productSlug'
+      }
+    ];
+  },
   reactStrictMode: true,
   images: {
     domains: ['spray.widen.net']

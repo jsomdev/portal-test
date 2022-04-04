@@ -30,7 +30,7 @@ export async function fetchBaseDesign(id: string): Promise<Product> {
     id,
     queryOptions
   );
-  return data || [];
+  return data;
 }
 
 /**
@@ -93,6 +93,7 @@ export async function fetchDesignsCadenasIdentifier(
     identifier => identifier.type === IdentifierType.CADENAS_IDENTIFIER
   )?.[0];
 }
+
 /**
  * Function that retrieves basic information of Products for the passed ids. (RecentlyViewed, Bookmarks,...)
  * @param ids Guids of the Products that need to retrieved
@@ -360,4 +361,50 @@ export async function getDesignsForDetailedCompare(
   } catch (e) {
     throw new Error('Could not get the product previews');
   }
+}
+
+/**
+ * Function that retrieves information about the Products that need to be statically optimized
+ */
+export async function fetchProductsForStaticPaths(): Promise<Product[]> {
+  // const slugs: { Slug: MultilingualString }[] = (slugsJson as any).slugs as {
+  //   Slug: MultilingualString;
+  // }[];
+  // console.log(slugs);
+  // return slugs.map(slug => ({
+  //   slug: slug.Slug
+  // }));
+  const productsResource: ProductsResource = new ProductsResource();
+
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,slug`,
+    top: 20
+  };
+
+  const data: OdataCollection<Product> | undefined =
+    await productsResource.getEntities(queryOptions);
+  return data.value;
+}
+
+export async function fetchProductForProductPage(
+  slug: string
+): Promise<Product> {
+  const productsResource: ProductsResource = new ProductsResource();
+
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,number,name,description,modelId`,
+    filterQuery: `slug/en eq '${slug}'`,
+    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,seoPath;$expand=series($select=id,name,seoPath)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail)`
+  };
+
+  const data: OdataCollection<Product> = await productsResource.getEntities(
+    queryOptions
+  );
+
+  if (!data.value[0]) {
+    throw new Error(
+      'Could not find a product for the slug that was passed as parameter'
+    );
+  }
+  return data.value[0];
 }

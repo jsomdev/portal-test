@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
 
-import { fetchBaseDesignsByIds } from '../../services/portal-api/designs';
+import { fetchBaseDesignsByIds } from '../../services/portal-api/products';
 import { Setting } from '../../services/portal-api/models/Setting';
 import {
   addProductBookmarkToSetting,

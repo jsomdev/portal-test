@@ -14,11 +14,11 @@ import { getMarkdownByFileName } from '@docs/data';
 import { messageIds } from '@services/i18n';
 import { Head } from '@widgets/metadata';
 
-interface ITestingProps {
+interface TestingProps {
   markdown: string;
 }
 
-const Testing: NextPage<ITestingProps> = (props: ITestingProps) => {
+const Testing: NextPage<TestingProps> = (props: TestingProps) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
   return (
@@ -39,7 +39,7 @@ const Testing: NextPage<ITestingProps> = (props: ITestingProps) => {
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<ITestingProps>> => {
+): Promise<GetStaticPropsResult<TestingProps>> => {
   const markdown = getMarkdownByFileName('testing', ['content']);
   return {
     props: {

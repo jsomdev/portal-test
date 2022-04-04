@@ -1,10 +1,12 @@
 import '@styles/globals.css';
+import '../public/nprogress.css';
 
 import { useEffect, useMemo } from 'react';
 
 import { flatten } from 'flat';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/dist/client/router';
+import nProgress from 'nprogress';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
 import {
@@ -20,10 +22,9 @@ import {
 } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
-import { CustomNavigationClient } from '@utilities/navigationClient';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
   const { locale, defaultLocale = 'en' } = router;
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
@@ -31,8 +32,22 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [locale]);
 
   useEffect(() => {
-    const navigationClient = new CustomNavigationClient(router);
-    msalInstance.setNavigationClient(navigationClient);
+    const handleStart = () => {
+      nProgress.start();
+    };
+    const handleStop = () => {
+      nProgress.done();
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleStop);
+    router.events.on('routeChangeError', handleStop);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleStop);
+      router.events.off('routeChangeError', handleStop);
+    };
   }, [router]);
 
   return (
