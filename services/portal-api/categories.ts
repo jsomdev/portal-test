@@ -1,55 +1,30 @@
+import path from 'path';
+
+import { DataCacheManager } from '@services/cache/dataCache';
+
 import { Category } from './models/Category';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { CategoriesResource } from './resources/CategoriesResource';
 
-/**
- * Function that retrieves the info of a category to be displayed on a category page (Title & Breadcrumb)
- * @param id Guid of the Category that needs to be retrieved
- * @returns Category
- */
-export async function fetchCategory(id: string): Promise<Category> {
-  const listItemsResource: CategoriesResource = new CategoriesResource();
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,seoPath,settings,image`,
-    expandQuery:
-      'parent($select=id,name,settings,seoPath;$expand=parent($select=id,settings,name,seoPath;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
-  };
-  return listItemsResource.getEntity(id, queryOptions);
-}
+const CATEGORIES_CACHE_PATH = path.resolve('./data-cache/categories.json');
+const categoriesDataCacheManager: DataCacheManager<Category[]> =
+  new DataCacheManager<Category[]>('Categories', CATEGORIES_CACHE_PATH);
 
 /**
- * Function that retrieves the basic information about the root categories that are displayed on the home page.
- * @returns Collection of Categories that represent the root categories
+ * Function that retrieves all necessary infromation about the categories that are displayed on the homepage
+ * @returns Collection of Categories that are displayed on the homepage
  */
-export async function fetchHomepageCategories(): Promise<
+export async function fetchCategoriesForHomePage(): Promise<
   OdataCollection<Category>
 > {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: 'id,name,description,settings,seoPath',
-    expandQuery: 'image($select=url)',
+    expandQuery:
+      'image($select=url),children($select=id,name,settings,seoPath;$expand=image($select=url);$orderby=sortIndex asc)',
     filterQuery: `parentId eq null`,
     orderbyQuery: 'sortIndex asc'
-  };
-  const data = await categoriesResource.getEntities(queryOptions);
-  return data;
-}
-/**
- * Function that retrieves the basic information about the sub categories of a category.
- * @param parentId Guid of the parent Category
- * @returns Collection of the children Categories
- */
-export async function fetchSubCategories(
-  language: string,
-  parentId?: string
-): Promise<OdataCollection<Category>> {
-  const categoriesResource: CategoriesResource = new CategoriesResource();
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,name,settings,seoPath`,
-    expandQuery: 'image($select=url)',
-    filterQuery: `parentId eq ${parentId || 'null'}`,
-    orderbyQuery: `sortIndex asc, name/${language} asc`
   };
   const data = await categoriesResource.getEntities(queryOptions);
 
@@ -77,3 +52,27 @@ export const fetchSearchedCategoriesSuggestions = async (
   );
   return result;
 };
+
+/**
+ * Function that will retrieve all Categories with their relevant information included.
+ * @returns Array of Categories that will be referenced throughout the pages (e.g. BreadCrumbs, Title & Description, Navigation)
+ */
+export async function fetchAllCategories(): Promise<Category[]> {
+  const cachedData: Category[] | undefined =
+    await categoriesDataCacheManager.get();
+  if (cachedData) {
+    return cachedData;
+  }
+  const categoriesResource: CategoriesResource = new CategoriesResource();
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: `id,number,name,description,slug,settings,image`,
+    expandQuery:
+      'parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
+  };
+  const data: OdataCollection<Category> = await categoriesResource.getEntities(
+    queryOptions
+  );
+  console.log(data);
+  categoriesDataCacheManager.set(data.value);
+  return data.value;
+}

@@ -24,6 +24,22 @@ export const messageIds: Messages = {
     }
   },
   pages: {
+    home: {
+      headTitle: 'pages.home.headTitle',
+      headDescription: 'pages.home.headDescription'
+    },
+    model: {
+      headTitle: 'pages.model.headTitle',
+      headDescription: 'pages.model.headDescription'
+    },
+    category: {
+      headTitle: 'pages.category.headTitle',
+      headDescription: 'pages.category.headDescription'
+    },
+    series: {
+      headTitle: 'pages.series.headTitle',
+      headDescription: 'pages.series.headDescription'
+    },
     docs: {
       i18n: {
         title: 'pages.docs.i18n.title',

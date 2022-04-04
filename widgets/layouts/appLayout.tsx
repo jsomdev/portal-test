@@ -1,16 +1,26 @@
+import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { AppHeader } from '@widgets/headers/appHeader';
 import { useLarge } from '@widgets/media-queries';
 
-interface IPageLayoutStyles {
+interface AppLayoutStyles {
   main: React.CSSProperties;
+}
+
+export interface AppLayoutProps {
+  siteMenuItems: MenuItem[];
+  mainMenuItems: MenuItem[];
 }
 /**
  * Layout component for a page.
  */
-export const PageLayout: React.FC = ({ children }) => {
+export const AppLayout: React.FC<AppLayoutProps> = ({
+  children,
+  siteMenuItems,
+  mainMenuItems
+}) => {
   const isLarge = useLarge();
-  const styles: IPageLayoutStyles = {
+  const styles: AppLayoutStyles = {
     main: {
       maxWidth: rem(1280),
       margin: 'auto',
@@ -20,7 +30,11 @@ export const PageLayout: React.FC = ({ children }) => {
 
   return (
     <>
-      <AppHeader showMainHeader={isLarge} />
+      <AppHeader
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+        showMainHeader={isLarge}
+      />
       <main style={styles.main}>{children}</main>
       <footer>Footer</footer>
     </>

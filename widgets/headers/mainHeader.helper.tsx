@@ -49,7 +49,11 @@ export function getMainCommandBarItems(
         href: 'TODO',
         onClick: ev => {
           if (menuItem.url?.value) {
-            onItemClick(ev, menuItem.url?.value);
+            const tempNewPath: string = `/${menuItem.url?.value
+              .split('/')
+              .slice(1, 3)
+              .join('/')}`;
+            onItemClick(ev, tempNewPath);
           }
         },
         commandBarButtonAs: props => (

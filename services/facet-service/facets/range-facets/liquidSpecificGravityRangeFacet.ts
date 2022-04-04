@@ -1,8 +1,8 @@
-import { UnitOfMeasurement } from '../../../../utilities/measurement';
 import { FacetCategory } from '../../models/facet/facetCategory';
 import { FacetControlType } from '../../models/facet/facetControlType';
 import { FacetKey } from '../../models/facet/facetKey';
 import { FacetSelectType } from '../../models/facet/facetSelectType';
+import { UnitOfMeasurement } from '../../models/facet/facetUnitOfMeasurement';
 import { RangeFacet } from '../../models/range-facets/rangeProductFacet';
 import { defaultFacet } from '../defaultFacet';
 import { RangeFacetMatchType } from './rangeFacetHelper';

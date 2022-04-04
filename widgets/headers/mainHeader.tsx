@@ -18,13 +18,15 @@ import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { MenuItem } from '@services/portal-api';
-import { mainMenuItems } from '@services/preval';
 import { formatUserDisplayName } from '@utilities/formatText';
 import { rem } from '@utilities/rem';
 
 import { HeaderButton } from './headerButton';
 import { getMainCommandBarItems } from './mainHeader.helper';
 
+interface IMainHeaderProps {
+  items: MenuItem[];
+}
 interface IMainHeaderStyles {
   commandBarContainer: IStackItemStyles;
   root: IStackStyles;
@@ -34,7 +36,7 @@ interface IMainCommandBarStyles {
   button: Partial<IButtonStyles>;
 }
 
-export const MainHeader: React.FC = () => {
+export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
   const { instance, inProgress } = useMsal();
   const { me } = useMe();
@@ -82,7 +84,7 @@ export const MainHeader: React.FC = () => {
         horizontalAlign="space-between"
       >
         <Stack.Item styles={styles.commandBarContainer}>
-          <MainHeaderCommandBar items={mainMenuItems} />
+          <MainHeaderCommandBar items={items} />
         </Stack.Item>
         <Stack
           horizontal
@@ -192,9 +194,9 @@ const MainHeaderCommandBar: React.FC<{ items: MenuItem[] }> = ({ items }) => {
       styles={styles.commandBar}
       items={getMainCommandBarItems(
         items,
-        ev => {
+        (ev, path) => {
           ev?.preventDefault();
-          push('/docs/i18n');
+          push(path);
         },
         theme,
         styles.button,

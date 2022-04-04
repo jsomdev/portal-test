@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 
 import { useTheme } from '@fluentui/react';
-import { SitePanel } from '@widgets/panels/siteNavigationPanel';
-import { SiteNavigationType } from '@widgets/panels/siteNavigationPanel.types';
+import { MenuItem } from '@services/portal-api';
+import { AppPanel } from '@widgets/panels/appNavigationPanel';
+import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { MainHeader } from './mainHeader';
 import { SiteHeader } from './siteHeader';
 
 export interface IAppHeaderProps {
   showMainHeader: boolean;
+  mainMenuItems: MenuItem[];
+  siteMenuItems: MenuItem[];
 }
 
 export interface IAppHeaderStyles {
@@ -17,10 +20,14 @@ export interface IAppHeaderStyles {
 /**
  * Header component that is displayed at the top of each page.
  */
-export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
+export const AppHeader: React.FC<IAppHeaderProps> = ({
+  showMainHeader,
+  siteMenuItems,
+  mainMenuItems
+}) => {
   const { semanticColors } = useTheme();
   const [sideNavigationType, setSideNavigationType] =
-    useState<null | SiteNavigationType>(null);
+    useState<null | AppNavigationType>(null);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
@@ -30,6 +37,7 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
     root: {
       borderBottom: `1px solid ${semanticColors.variantBorder}`,
       position: 'fixed',
+      zIndex: 1,
       backgroundColor: semanticColors.bodyBackground,
       top: 0,
       left: 0,
@@ -38,9 +46,14 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
   };
   return (
     <header style={styles.root}>
-      <SiteHeader onOpenSideNavigation={setSideNavigationType} />
-      {showMainHeader && <MainHeader />}
-      <SitePanel
+      <SiteHeader
+        items={siteMenuItems}
+        onOpenSideNavigation={setSideNavigationType}
+      />
+      {showMainHeader && <MainHeader items={mainMenuItems} />}
+      <AppPanel
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
         type={sideNavigationType}
         panelProps={{
           isOpen: !!sideNavigationType,

@@ -1,10 +1,21 @@
 // import { liquidFlowRateRangeFacet } from '../facet-service/facets/range-facets/liquidFlowRateRangeProductFacet';
 // import { liquidPressureRangeFacet } from '../facet-service/facets/range-facets/liquidPressureRangeProductFacet';
 // import { liquidSpecificGravityFacet } from '../facet-service/facets/range-facets/liquidSpecificGravityRangeFacet';
+import { DataCacheManager } from '@services/cache/dataCache';
+import path from 'path';
 import { AttributeType } from './models/AttributeType';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { AttributeTypesResource } from './resources/AttributeTypesResource';
+
+const ATTRIBUTE_TYPES_CACHE_PATH = path.resolve(
+  './data-cache/attributeTypes.json'
+);
+const attributeTypesDataCacheManager: DataCacheManager<AttributeType[]> =
+  new DataCacheManager<AttributeType[]>(
+    'AttributeTypes',
+    ATTRIBUTE_TYPES_CACHE_PATH
+  );
 
 const sprayFinderAttributeTypes: AttributeType[] = [
   // {
@@ -50,7 +61,12 @@ const sprayFinderAttributeTypes: AttributeType[] = [
  * Function that retrieves information about the AttributeTypes that need to be globally available
  * @returns Array of AttributeTypes that will be referenced throughout the application  (e.g Product Specification Name --> Attribute Type)
  */
-export async function fetchGlobalAttributeTypes(): Promise<AttributeType[]> {
+export async function fetchAllAttributeTypes(): Promise<AttributeType[]> {
+  const cachedData: AttributeType[] | undefined =
+    await attributeTypesDataCacheManager.get();
+  if (cachedData) {
+    return cachedData;
+  }
   const attributeTypesResource: AttributeTypesResource =
     new AttributeTypesResource();
 
@@ -60,6 +76,9 @@ export async function fetchGlobalAttributeTypes(): Promise<AttributeType[]> {
 
   const data: OdataCollection<AttributeType> =
     await attributeTypesResource.getEntities(queryOptions);
-
+  attributeTypesDataCacheManager.set([
+    ...data.value,
+    ...sprayFinderAttributeTypes
+  ]);
   return [...data.value, ...sprayFinderAttributeTypes];
 }

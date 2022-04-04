@@ -1,9 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { camelCase } from '../../../utilities/formatText';
-import {
-  SystemOfMeasurement,
-  UnitOfMeasurement
-} from '../../../utilities/measurement';
+import { formatCamelCase } from '../../../utilities/formatText';
 import { ExternalFilter } from '../../portal-api/base/types';
 import { Json } from '../../portal-api/models/Json';
 import {
@@ -15,9 +11,21 @@ import { FacetCategory } from '../models/facet/facetCategory';
 import { FacetKey } from '../models/facet/facetKey';
 import { FacetOptionValueType } from '../models/facet/facetOption';
 import { FacetSelectType } from '../models/facet/facetSelectType';
+import {
+  SystemOfMeasurement,
+  UnitOfMeasurement
+} from '../models/facet/facetUnitOfMeasurement';
 import { RangeFacetOptionKey } from '../models/range-facets/rangeFacetOptionKey';
 import { RangeFacet } from '../models/range-facets/rangeProductFacet';
 
+export function mapCategoryIdToExternalFilter(id: string): ExternalFilter {
+  const categoryFilter: ExternalFilter = {
+    key: formatCamelCase(FacetKey.SprayPortalDemoCategoryPage), // the api needs a camelCase key
+    operator: 'eq',
+    value: id.toUpperCase() // guid must be uppercase and string value
+  };
+  return categoryFilter;
+}
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
  * At the time of writing all relevant facets are the one with FacetCategory.Default.
@@ -37,12 +45,9 @@ export function combineFacetsToEncodedExternalFiltersString(
   // If a category id was included, create an external filter that will be added to the external filters array.
   // Note: Inside the application the category filter is treated as a 'Pre-filter'. However, in the api call it needs to be part of the @filters parameter
   if (sprayPortalDemoCategoryPageId) {
-    const categoryFilter: ExternalFilter = {
-      key: camelCase(FacetKey.SprayPortalDemoCategoryPage), // the api needs a camelCase key
-      operator: 'eq',
-      value: sprayPortalDemoCategoryPageId.toUpperCase() // guid must be uppercase and string value
-    };
-    extraFilters.push(categoryFilter);
+    extraFilters.push(
+      mapCategoryIdToExternalFilter(sprayPortalDemoCategoryPageId)
+    );
   }
 
   // Map the facets to externalfilters and concatenate with the extra filters.
@@ -128,7 +133,7 @@ function mapSingleSelectFacetToExternalFilter(
   lookupValueId?: string,
   value?: FacetOptionValueType
 ): ExternalFilter {
-  facetKey = camelCase(facetKey); //  api expects camelCase key
+  facetKey = formatCamelCase(facetKey); //  api expects camelCase key
   const externalFilter: ExternalFilter = {
     key: facetKey,
     operator: 'eq',
@@ -160,7 +165,7 @@ function mapMultiSelectFacetToExternalFilter(
     facetKey === FacetKey.StrainerScreenMeshSize
       ? '#Collection(Decimal)'
       : '#Collection(String)';
-  facetKey = camelCase(facetKey); // api requires camel case key
+  facetKey = formatCamelCase(facetKey); // api requires camel case key
   const externalFilter: ExternalFilter = {
     key: facetKey,
     operator: 'in',
@@ -203,7 +208,7 @@ function mapRangeBetweenFacetToExternalFilters(
   if (!isAnyNumericOptionActive) {
     return [];
   }
-  const facetKey: string = camelCase(facet.key);
+  const facetKey: string = formatCamelCase(facet.key);
   const rangeFacetUnit: UnitOfMeasurement = getRangeFacetUnit(
     facet,
     systemOfMeasurement

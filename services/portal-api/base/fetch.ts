@@ -29,7 +29,7 @@ async function handleResponse<T>(
   if (response.status === 400) {
     const error: OdataCollection<string> | OdataException =
       await response.json();
-
+    console.log(error);
     throw new ErpApiError(response.status, method, error);
   }
   throw new ErpApiError(response.status, method);

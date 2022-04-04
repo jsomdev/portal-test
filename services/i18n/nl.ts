@@ -24,6 +24,22 @@ export const nl: Messages = {
     }
   },
   pages: {
+    home: {
+      headTitle: 'Experten in Sproeitechnologie | Spraying Systems Co.',
+      headDescription: 'pages.home.headDescription'
+    },
+    model: {
+      headTitle: '{name} | Spraying Systems Co.',
+      headDescription: 'pages.model.headDescription'
+    },
+    category: {
+      headTitle: '{name} | Spraying Systems Co.',
+      headDescription: 'pages.category.headDescription'
+    },
+    series: {
+      headTitle: '{name} | Spraying Systems Co.',
+      headDescription: 'pages.series.headDescription'
+    },
     docs: {
       i18n: {
         title: 'Internationalisatie',

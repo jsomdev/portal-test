@@ -13,5 +13,6 @@ export type CatalogEntry = TracedEntity & {
   imageId?: string | null;
   seoPath?: string | null;
   image?: Resource | null;
+  slug?: MultilingualString;
   resources?: Array<Resource>;
 };

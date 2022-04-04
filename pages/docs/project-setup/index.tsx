@@ -14,12 +14,12 @@ import { getMarkdownByFileName } from '@docs/data';
 import { messageIds } from '@services/i18n';
 import { Head } from '@widgets/metadata';
 
-interface IProjectSetupProps {
+interface ProjectSetupProps {
   markdown: string;
 }
 
-const ProjectSetup: NextPage<IProjectSetupProps> = (
-  props: IProjectSetupProps
+const ProjectSetup: NextPage<ProjectSetupProps> = (
+  props: ProjectSetupProps
 ) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
@@ -41,7 +41,7 @@ const ProjectSetup: NextPage<IProjectSetupProps> = (
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<IProjectSetupProps>> => {
+): Promise<GetStaticPropsResult<ProjectSetupProps>> => {
   const markdown = getMarkdownByFileName('project-setup', ['content']);
   return {
     props: {

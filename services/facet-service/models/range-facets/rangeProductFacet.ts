@@ -1,6 +1,6 @@
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
 
-import { UnitOfMeasurement } from '../../../../utilities/measurement';
+import { UnitOfMeasurement } from '../../models/facet/facetUnitOfMeasurement';
 import { Facet } from '../facet/facet';
 import { FacetOption } from '../facet/facetOption';
 import { RangeFacetOptionKey } from './rangeFacetOptionKey';

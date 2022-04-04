@@ -33,6 +33,15 @@ type IUserNavigationMessages = {
   myProfile: string;
 };
 
+type INextHeadMessages = {
+  headTitle: string;
+  headDescription: string;
+};
+
+type IHomeMessages = INextHeadMessages;
+type ICategoryMessages = INextHeadMessages;
+type IModelMessages = INextHeadMessages;
+type ISeriesMessages = INextHeadMessages;
 /**
  * Tree structure that represents all messages used throughout the application.
  * The messagesIds object can be used to reference their ids used when formatting messages using react-intl.
@@ -44,6 +53,10 @@ export type Messages = {
     user: IUserNavigationMessages;
   };
   pages: {
+    home: IHomeMessages;
+    category: ICategoryMessages;
+    model: IModelMessages;
+    series: ISeriesMessages;
     docs: {
       i18n: I18NMessages;
       userInterfaces: IUserInterfacesMessages;
