@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString } from '@services/i18n';
+import { formatMultilingualString, getAudience } from '@services/i18n';
 import {
   AttributeGroup,
   AttributeType,
@@ -90,6 +90,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<ProductsProps & AppLayoutProps>> => {
   try {
+    const { locale } = context;
     const { productSlug } = context.params as ProductsParsedUrlQuery;
 
     const [
@@ -104,8 +105,8 @@ export const getStaticProps: GetStaticProps = async (
       fetchProductForProductPage(productSlug),
       fetchAllSeries(),
       fetchAllModels(),
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader(),
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale)),
       fetchAllAttributeTypes(),
       fetchAllAttributeGroups()
     ]);

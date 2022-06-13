@@ -1,5 +1,11 @@
-import { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
 
+import { getAudience } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -10,13 +16,14 @@ const Account: NextPage<AppLayoutProps> = () => {
   return <div>TODO</div>;
 };
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<AppLayoutProps>
-> => {
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+): Promise<GetStaticPropsResult<AppLayoutProps>> => {
   try {
+    const { locale } = context;
     const [siteMenuData, mainMenuData] = await Promise.all([
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader()
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale))
     ]);
 
     return {

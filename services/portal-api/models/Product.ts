@@ -12,8 +12,8 @@ import type { ProductCategory } from './ProductCategory';
 import type { ProductSettingsFlags } from './ProductSettingsFlags';
 
 export type Product = CatalogEntry & {
-  settings?: ProductSettingsFlags | null;
   modelId?: string | null;
+  settings?: ProductSettingsFlags | null;
   accessories?: Array<ProductAccessory>;
   alternatives?: Array<ProductAlternative>;
   attributes?: Array<Attribute>;

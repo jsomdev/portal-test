@@ -7,7 +7,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString } from '@services/i18n';
+import { formatMultilingualString, getAudience } from '@services/i18n';
 import {
   AttributeGroup,
   AttributeType,
@@ -75,6 +75,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<ModelProps & AppLayoutProps>> => {
   try {
+    const { locale } = context;
     const { modelSlug } = context.params as IModelParsedUrlQuery;
 
     const [
@@ -87,8 +88,8 @@ export const getStaticProps: GetStaticProps = async (
     ] = await Promise.all([
       fetchAllModels(),
       fetchAllSeries(),
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader(),
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale)),
       fetchAllAttributeTypes(),
       fetchAllAttributeGroups()
     ]);
@@ -105,7 +106,7 @@ export const getStaticProps: GetStaticProps = async (
     }
 
     const series: Series | undefined = seriesData.find(
-      series => series.id === model.id
+      series => series.id === model.seriesId
     );
 
     return {

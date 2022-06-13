@@ -1,6 +1,8 @@
 {
   "cSpell.words": ["hreflang"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+    "source.fixAll.eslint": true,
+    "source.formatDocument": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

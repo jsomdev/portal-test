@@ -206,7 +206,7 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = ({ items }) => {
               type="actionButton"
               key={item.id}
               text={item.url?.text?.en}
-              href={item?.url?.value}
+              href={item?.url?.value || undefined}
               styles={styles.button}
             />
           ))}

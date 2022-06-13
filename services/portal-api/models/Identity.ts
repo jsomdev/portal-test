@@ -5,5 +5,5 @@
 import type { TracedEntity } from './TracedEntity';
 
 export type Identity = TracedEntity & {
-  name?: string;
+  name?: string | null;
 };

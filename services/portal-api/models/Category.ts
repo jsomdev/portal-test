@@ -2,13 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AudienceFlags } from './AudienceFlags';
 import type { CatalogEntry } from './CatalogEntry';
 import type { CategorySettingsFlags } from './CategorySettingsFlags';
 
 export type Category = CatalogEntry & {
-  settings?: CategorySettingsFlags | null;
   parentId?: string | null;
+  settings?: CategorySettingsFlags | null;
   sortIndex?: number;
-  parent?: Category | null;
+  audience?: AudienceFlags | null;
   children?: Array<Category>;
+  parent?: Category | null;
 };

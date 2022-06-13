@@ -8,11 +8,11 @@ import type { MultilingualString } from './MultilingualString';
 import type { TracedEntity } from './TracedEntity';
 
 export type List = TracedEntity & {
-  settings?: ListSettingsFlags | null;
+  description?: MultilingualString | null;
   groupId?: string | null;
   unitSymbol?: string | null;
-  name?: MultilingualString;
-  description?: MultilingualString | null;
+  name?: MultilingualString | null;
+  settings?: ListSettingsFlags | null;
   items?: Array<ListItem>;
   group?: List | null;
 };

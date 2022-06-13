@@ -9,5 +9,5 @@ import type { UrlType } from './UrlType';
 export type Url = ComplexLinkedEntity & {
   type?: UrlType;
   text?: MultilingualString | null;
-  value?: string;
+  value?: string | null;
 };

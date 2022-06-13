@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type ModelSeriesGrouping = {
-    modelId?: string | null;
-    seriesId?: string | null;
-    count?: number;
-}
+  modelId?: string | null;
+  seriesId?: string | null;
+  count?: number;
+};

@@ -6,5 +6,5 @@ import type { Json } from './Json';
 import type { KeyedEntity } from './KeyedEntity';
 
 export type Setting = KeyedEntity & {
-  value?: Json;
+  value?: Json | null;
 };

@@ -7,8 +7,8 @@ import type { MultilingualString } from './MultilingualString';
 import type { TracedEntity } from './TracedEntity';
 
 export type Enumeration = TracedEntity & {
-  type?: string;
-  name?: MultilingualString;
+  type?: string | null;
+  name?: MultilingualString | null;
   description?: MultilingualString | null;
   isFlag?: boolean;
   items?: Array<EnumerationItem>;

@@ -11,4 +11,6 @@ export enum ResourceType {
   PRODUCT_BULLETIN = 'ProductBulletin',
   CASE_STUDY = 'CaseStudy',
   INTERACTIVE_MODEL = 'InteractiveModel',
+  WHITE_PAPER = 'WhitePaper',
+  TECHNICAL_MANUAL = 'TechnicalManual',
 }

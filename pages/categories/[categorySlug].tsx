@@ -12,7 +12,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { FacetResult } from '@services/facet-service/models/facet/facetResult';
-import { formatMultilingualString } from '@services/i18n/helper';
+import { formatMultilingualString, getAudience } from '@services/i18n/helper';
 import { messageIds } from '@services/i18n/ids';
 import {
   AttributeGroup,
@@ -114,6 +114,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<CategoryProps & AppLayoutProps>> => {
   try {
+    const { locale } = context;
     const { categorySlug } = context.params as CategoryParsedUrlQuery;
     const [
       seriesData,
@@ -127,8 +128,8 @@ export const getStaticProps: GetStaticProps = async (
       fetchAllSeries(),
       fetchAllModels(),
       fetchAllCategories(),
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader(),
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale)),
       fetchAllAttributeTypes(),
       fetchAllAttributeGroups()
     ]);

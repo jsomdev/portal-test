@@ -7,5 +7,5 @@ import type { LinkedEntity } from './LinkedEntity';
 
 export type Identifier = LinkedEntity & {
   type?: IdentifierType;
-  value?: string;
+  value?: string | null;
 };

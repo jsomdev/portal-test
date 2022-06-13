@@ -9,7 +9,7 @@ import type { MultilingualString } from './MultilingualString';
 export type Variant = ComplexLinkedEntity & {
   productId?: string;
   productNumber?: string | null;
-  productName?: MultilingualString;
+  productName?: MultilingualString | null;
   productSeoPath?: string | null;
   displays?: Array<Display | null>;
   sortIndex?: number;

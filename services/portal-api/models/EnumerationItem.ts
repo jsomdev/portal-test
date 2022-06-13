@@ -7,6 +7,6 @@ import type { MultilingualString } from './MultilingualString';
 
 export type EnumerationItem = KeyedEntity & {
   value?: number;
-  name?: MultilingualString;
+  name?: MultilingualString | null;
   description?: MultilingualString | null;
 };

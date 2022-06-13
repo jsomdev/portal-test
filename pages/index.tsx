@@ -1,4 +1,11 @@
-import { messageIds } from '@services/i18n';
+import React from 'react';
+
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
+import { defineMessages, useIntl } from 'react-intl';
+import { Head } from 'widgets/metadata/head';
+
+import { getAudience, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import {
@@ -7,11 +14,6 @@ import {
 } from '@services/portal-api/menuItems';
 import { HomeCategoriesSection } from '@widgets/categories/homeCategories';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
-import { Head } from 'widgets/metadata/head';
 
 export interface HomeProps {
   categories: Category[];
@@ -48,14 +50,15 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<HomeProps & AppLayoutProps>
-> => {
+export const getStaticProps: GetStaticProps = async (
+  context
+): Promise<GetStaticPropsResult<HomeProps & AppLayoutProps>> => {
+  const { locale } = context;
   try {
     const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
       fetchCategoriesForHomePage(),
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader()
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale))
     ]);
 
     return {

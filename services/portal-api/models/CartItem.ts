@@ -8,9 +8,8 @@ import type { Product } from './Product';
 
 export type CartItem = LinkedEntity & {
   productId?: string | null;
-  productNumber?: string | null;
   productName?: MultilingualString | null;
+  productNumber?: string | null;
   quantity?: number;
   product?: Product | null;
 };
-

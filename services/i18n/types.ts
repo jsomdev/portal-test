@@ -1,3 +1,5 @@
+import { Audience } from '@services/portal-api/models/AudienceFlags';
+
 type I18NMessages = {
   title: string;
   description: string;
@@ -65,3 +67,39 @@ export type Messages = {
     };
   };
 };
+
+export interface Language {
+  name: string;
+  code: LanguageCode;
+}
+
+export interface Country {
+  name: string;
+  languages: Language[];
+  code: string;
+}
+
+export interface Region {
+  audience: Audience;
+  name: string;
+  countries: Country[];
+}
+
+export type LanguageCode =
+  | 'bg'
+  | 'nl'
+  | 'en'
+  | 'et'
+  | 'fi'
+  | 'fr'
+  | 'de'
+  | 'el'
+  | 'hu'
+  | 'it'
+  | 'lv'
+  | 'lt'
+  | 'pl'
+  | 'sk'
+  | 'sl'
+  | 'es'
+  | 'tr';

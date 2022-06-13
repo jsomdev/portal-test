@@ -6,9 +6,9 @@ import type { MultilingualString } from './MultilingualString';
 import type { TracedEntity } from './TracedEntity';
 
 export type AttributeType = TracedEntity & {
-  code?: string;
-  unitSymbol?: string | null;
-  name?: MultilingualString;
+  code?: string | null;
   description?: MultilingualString | null;
+  name?: MultilingualString | null;
   sortIndex?: number;
+  unitSymbol?: string | null;
 };

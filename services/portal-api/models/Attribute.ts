@@ -8,13 +8,13 @@ import type { Display } from './Display';
 import type { LinkedEntity } from './LinkedEntity';
 
 export type Attribute = LinkedEntity & {
-  groupCode?: string;
-  typeCode?: string;
+  conditions?: Array<Condition | null>;
+  displays?: Array<Display | null>;
+  groupCode?: string | null;
   settings?: AttributeSettingsFlags | null;
+  sortIndex?: number;
+  typeCode?: string | null;
   unitSymbol?: string | null;
   value?: any;
   valueId?: string | null;
-  displays?: Array<Display | null>;
-  conditions?: Array<Condition | null>;
-  sortIndex?: number;
 };

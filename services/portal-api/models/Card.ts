@@ -3,10 +3,10 @@
 /* eslint-disable */
 
 export type Card = {
+  firstName?: string | null;
   identifier?: string | null;
-  number?: string;
-  firstName?: string;
-  lastName?: string;
-  validThru?: string;
-  issuer?: string;
+  issuer?: string | null;
+  lastName?: string | null;
+  number?: string | null;
+  validThru?: string | null;
 };

@@ -7,7 +7,7 @@ import type { SiteArea } from './SiteArea';
 import type { TracedEntity } from './TracedEntity';
 
 export type Site = TracedEntity & {
-  name?: string;
+  name?: string | null;
   areas?: Array<SiteArea>;
   locations?: Array<Location>;
 };

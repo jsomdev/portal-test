@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AudienceFlags } from './AudienceFlags';
 import type { LinkedEntity } from './LinkedEntity';
 import type { MultilingualString } from './MultilingualString';
 import type { ResourceSettingsFlags } from './ResourceSettingsFlags';
@@ -13,6 +14,7 @@ export type Resource = LinkedEntity & {
   settings?: ResourceSettingsFlags | null;
   variation?: VariationFlags;
   caption?: MultilingualString | null;
-  url?: string;
+  url?: string | null;
   thumbnail?: string | null;
+  audience?: AudienceFlags | null;
 };

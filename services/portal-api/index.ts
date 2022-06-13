@@ -74,6 +74,5 @@ export type { Translation } from './models/Translation';
 export type { Url } from './models/Url';
 export { UrlType } from './models/UrlType';
 export type { User } from './models/User';
-export { UserType } from './models/UserType';
 export type { Variant } from './models/Variant';
 export type { VariationFlags } from './models/VariationFlags';

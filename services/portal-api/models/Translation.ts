@@ -6,5 +6,5 @@ import type { KeyedEntity } from './KeyedEntity';
 import type { MultilingualString } from './MultilingualString';
 
 export type Translation = KeyedEntity & {
-  value?: MultilingualString;
+  value?: MultilingualString | null;
 };

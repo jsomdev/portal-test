@@ -6,8 +6,8 @@ import type { MultilingualString } from './MultilingualString';
 import type { TracedEntity } from './TracedEntity';
 
 export type ConditionType = TracedEntity & {
-  code?: string;
+  code?: string | null;
   unitSymbol?: string | null;
-  name?: MultilingualString;
+  name?: MultilingualString | null;
   sortIndex?: number;
 };

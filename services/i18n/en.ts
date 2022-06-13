@@ -1,7 +1,7 @@
 import { Messages } from './types';
 
 /**
- * The Dutch translations
+ * The English translations
  */
 export const en: Messages = {
   navigation: {

@@ -5,6 +5,6 @@
 import type { Relationship } from './Relationship';
 
 export type SiteArea = Relationship & {
-  countryCode?: string;
+  countryCode?: string | null;
   postalCode?: string | null;
 };

@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString } from '@services/i18n';
+import { formatMultilingualString, getAudience } from '@services/i18n';
 import { AttributeGroup, AttributeType } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
@@ -77,6 +77,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<SeriesProps & AppLayoutProps>> => {
   try {
+    const { locale } = context;
     const { seriesSlug } = context.params as ISeriesParsedUrlQuery;
 
     const [
@@ -87,8 +88,8 @@ export const getStaticProps: GetStaticProps = async (
       attributeGroupsData
     ] = await Promise.all([
       fetchAllSeries(),
-      fetchMenuItemsForSiteHeader(),
-      fetchMenuItemsForMainHeader(),
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale)),
       fetchAllAttributeTypes(),
       fetchAllAttributeGroups()
     ]);

@@ -7,6 +7,8 @@
   28/09/2021 | Jan Somers | Added some introductory text and link wrappers to Linting and Formatting
   29/09/2021 | Jan Somers | Added folder structure
   30/09/2021 | Jan Somers | Definitive version [1]
+  07/06/2022 | Jan Somers | Updated Content of files
+
 ---
 
 # Project Setup
@@ -23,9 +25,7 @@ Next.js is client-server oriented and comes with a handful of useful features th
 - [React](https://github.com/yannickcr/eslint-plugin-react)
 - [Typescript](https://github.com/typescript-eslint/typescript-eslint)
 - [Prettier](https://github.com/prettier/eslint-plugin-prettier)
-- [Imports](https://github.com/import-js/eslint-plugin-import)
 - [Accessibility](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#readme)
-- [Airbnb config](https://github.com/airbnb/javascript)
 - More...
 
 ### ESLint Configuration
@@ -34,97 +34,50 @@ The configuration for ESLint is found in `.eslintrc.js`.
 
 ```js
 module.exports = {
-  /**
-   * Environment the script should run in.
-   */
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   env: {
     browser: true,
     es2021: true,
     jest: true,
-    node: true,
+    node: true
   },
-  /**
-   * Globals & Default Rules this configuration is extended with
-   */
   extends: [
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@next/next/recommended',
+    'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'airbnb',
-    'plugin:prettier/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended' // Make sure this is always the last element in the array.
   ],
-  /**
-   * Using the typescript parser
-   */
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    /**
-     * Jsx support
-     */
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
-    /**
-     * Using ECMAScript modules
-     */
-    sourceType: 'module',
-  },
-  /**
-   * Plugins (make sure they are added to the dev dependencies)
-   */
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier', 'import', 'jsx-a11y'],
-  /**
-   * Define rules. Defaults are applied otherwise (see Extends)
-   */
   rules: {
-    'prettier/prettier': ['prettier/prettier', { endOfLine: 'auto' }],
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': 'off',
-    'import/extensions': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'import/prefer-default-export': 'off',
-    'import/no-default-export': 'off',
-    'import/no-unresolved': 'error',
-    'import/order': [
+    'react/prop-types': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'jsx-a11y/anchor-is-valid': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'object', 'index']],
-        pathGroups: [
-          {
-            pattern: 'react',
-            group: 'external',
-            position: 'before',
-          },
-        ],
-        pathGroupsExcludedImportTypes: ['react'],
-        'newlines-between': 'never',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-      },
-    ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['jest.setup.ts', '**/*.test.tsx', '**/*.spec.tsx', '**/*.test.ts', '**/*.spec.ts'] },
-    ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    // Tells the resolver where the tsconfig file can be found
-    'import/resolver': {
-      typescript: {
-        project: '.',
-      },
-    },
-  },
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ]
+  }
 };
 ```
 
@@ -142,20 +95,33 @@ The configuration for Prettier is found in `.prettierrc`.
 
 ```json
 {
-  "printWidth": 120,
-  "singleQuote": true,
-  "trailingComma": "es5",
   "tabWidth": 2,
+  "printWidth": 80,
+  "endOfLine": "auto",
+  "arrowParens": "avoid",
+  "trailingComma": "none",
   "semi": true,
-  // Linux & Mac endOfLines are different compared to Windows
-  "endOfLine": "auto"
+  "useTabs": false,
+  "singleQuote": true,
+  "bracketSpacing": true
 }
 ```
+
+## Suggested Extensions
+
+To get started, it is advised to install following extensions (vs-code):
+
+- Azure Account (Microsoft)
+- Azure Resource (Microsoft)
+- Azure Storage (Microsoft)
+- ESLint (Microsoft)
+- Prettier (Prettier)
 
 ### Typescript Configuration
 
 The configuration for Typescript is found in `tsconfig.json`.
 Except for absolute paths, which were introduced to get rid of long relative paths, this is the default configuration that comes with the scaffolding.
+Make sure to add any absolute path references to the array and to include any necessary files when building the application.
 
 ```json
 {
@@ -183,19 +149,21 @@ Except for absolute paths, which were introduced to get rid of long relative pat
       "@styles/*": ["styles/*"],
       "@docs/*": ["docs/*"],
       "@components/*": ["components/*"],
+      "@widgets/*": ["widgets/*"],
+      "@utilities/*": ["utilities/*"],
       "@providers/*": ["providers/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js"],
   "exclude": ["node_modules"]
 }
 ```
 
 ## Folder Structure
 
-Lamentably, there is no ideal folder structure for Next.js projects. However, there are some opiniated versions out there. Some are very edgy but overall they share good ideas. The`create-next-app` script comes with a minimal folder structure   that we have expanded on.  Some additional folders have been added next to the initial ones: (_pages; styles; public_): _components; docs (temporary); providers; services; utilities;mocks;tests_
+Lamentably, there is no ideal folder structure for Next.js projects. However, there are some opiniated versions out there. Some are very edgy but overall they share good ideas. The`create-next-app` script comes with a minimal folder structure that we have expanded on. Some additional folders have been added next to the initial ones: (_pages; styles; public_): _components; docs (temporary); providers; services; utilities;mocks;tests_
 
-The other folders and files are used for building / running the project,  version control, configuration,...
+The other folders and files are used for building / running the project, version control, configuration,...
 
 ```
 📦digitalhighway-next-sprayportal
@@ -216,6 +184,7 @@ The other folders and files are used for building / running the project,  versio
  ┣ 📂__tests__
  ┣ 📜.babelrc
  ┣ 📜.env
+ ┣ 📜.env.local
  ┣ 📜.eslintignore
  ┣ 📜.eslintrc.js
  ┣ 📜.gitignore
@@ -234,49 +203,50 @@ The other folders and files are used for building / running the project,  versio
 
 **Build and Version Control**
 
-- *.git* : contains all necessary information about version controls (commits, remote location,...)
-- *.next* :  where the build is produced to (added to gitignore)
-- *.vscode* : launch information and settings for vscode (eg. attach a debugger)
-- *node_modules*: all installed dependencies (including dev dependencies)
+- _.git_ : contains all necessary information about version controls (commits, remote location,...)
+- _.next_ : where the build is produced to (added to gitignore)
+- _.vscode_ : launch information and settings for vscode (eg. attach a debugger)
+- _node_modules_: all installed dependencies (including dev dependencies)
 
 **Next.js standard**
 
-- *pages* : content is connected with routing. every file / folder should represent a (sub)route
-- *styles*: contains (global) styles (can contain css modules as well but the project is not configured to use css modules)
-- *public*: contains publicly available static media (eg. favicon)
+- _pages_ : content is connected with routing. every file / folder should represent a (sub)route
+- _styles_: contains (global) styles (can contain css modules as well but the project is not configured to use css modules)
+- _public_: contains publicly available static media (eg. favicon)
 
 **Additional folders**
 
-- *components*: contains dumb and reusable components (eg. Badge);
-- *docs*: contains markdown files that document the project
-- *providers*: contains contexts with their providers and helper classes
-- *services*: contains internal (eg. faceting), external (eg. portal-api) or hybrid (eg. i18n) services
-- *widgets*: contains parts of the user-interface that can be bundled together and serve a specific purpose. 
-- *utilities*: contains utility functions, tools, ...
+- _components_: contains dumb and reusable components (eg. Badge);
+- _docs_: contains markdown files that document the project
+- _providers_: contains contexts with their providers and helper classes
+- _services_: contains internal (eg. faceting), external (eg. portal-api) or hybrid (eg. i18n) services
+- _widgets_: contains parts of the user-interface that can be bundled together and serve a specific purpose.
+- _utilities_: contains utility functions, tools, ...
 
 ### Files
 
 **Next.js standard**
 
-- *package.json*:  the heart of any node project and contains important metadata
-- *package-lock.json*: manifest of dependencies to be installed
-- *next-env.d.ts*:  references file for typing Next.js
-- *tsconfig.json*: Typescript configuration file
-- *next.config.js*: Next.js configuration file
+- _package.json_: the heart of any node project and contains important metadata
+- _package-lock.json_: manifest of dependencies to be installed
+- _next-env.d.ts_: references file for typing Next.js
+- _tsconfig.json_: Typescript configuration file
+- _next.config.js_: Next.js configuration file
 
 **Linting and formatting**
 
-- *.eslintrc*: ESLint configuration file
-- *.eslintignore*:  paths that the linter should ignore
-- *.prettierrc*: Prettier configuration file
+- _.eslintrc_: ESLint configuration file
+- _.eslintignore_: paths that the linter should ignore
+- _.prettierrc_: Prettier configuration file
 
 **Testing**
 
-- *.jest.config.js*: Jest configuration file
-- *.jest.setup.ts*: script that is run when test suites are run
-- *.babelrc*:  Babel configuration file
+- _.jest.config.js_: Jest configuration file
+- _.jest.setup.ts_: script that is run when test suites are run
+- _.babelrc_: Babel configuration file
 
 **Other**
 
-- *.env*: contains environment variables
-- *README.md*: contains important information any developer should read before doing anything
+- _.env_: contains environment variables
+- _.env.local_: contains environment variables used while locally developing
+- _README.md_: contains important information any developer should read before doing anything

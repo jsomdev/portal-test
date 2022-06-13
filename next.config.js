@@ -28,7 +28,7 @@ module.exports = {
     domains: ['spray.widen.net']
   },
   i18n: {
-    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
-    defaultLocale: 'en'
+    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+    defaultLocale: 'en-US'
   }
 };

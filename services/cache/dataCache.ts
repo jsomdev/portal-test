@@ -5,12 +5,23 @@ interface DataCache<TData> {
   set: (data: TData) => void;
 }
 
+const DATA_CACHE_DIR_PATH = './data-cache';
+
 export class DataCacheManager<TData> implements DataCache<TData> {
   private title: string;
   private path: string;
   constructor(title: string, path: string) {
     this.title = title;
     this.path = path;
+    this.initialize();
+  }
+
+  initialize() {
+    const dataCacheDirExists: boolean = fs.existsSync(DATA_CACHE_DIR_PATH);
+
+    if (!dataCacheDirExists) {
+      fs.mkdirSync(DATA_CACHE_DIR_PATH);
+    }
   }
   async get(): Promise<TData | undefined> {
     let cachedMenuItems: TData | undefined = undefined;
