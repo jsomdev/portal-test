@@ -36,7 +36,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
         showMainHeader={isLarge}
       />
       <main style={styles.main}>{children}</main>
-      <footer>Footer</footer>
+      <footer></footer>
     </>
   );
 };

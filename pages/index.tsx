@@ -12,7 +12,6 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { HomeCategoriesSection } from '@widgets/categories/homeCategories';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 
 export interface HomeProps {
@@ -45,7 +44,6 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
         title={formatMessage(messages.headTitle)}
         description={formatMessage(messages.headDescription)}
       />
-      <HomeCategoriesSection categories={categories} />
     </AppLayout>
   );
 };

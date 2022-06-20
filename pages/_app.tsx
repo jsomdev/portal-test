@@ -9,17 +9,9 @@ import { useRouter } from 'next/dist/client/router';
 import nProgress from 'nprogress';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
-import {
-  AuthenticatedTemplate,
-  MsalProvider,
-  UnauthenticatedTemplate
-} from '@azure/msal-react';
-import { PrimaryButton } from '@fluentui/react';
+import { MsalProvider } from '@azure/msal-react';
 import { UserProvider } from '@providers/user/userProvider';
-import {
-  customerLoginRequest,
-  msalInstance
-} from '@services/authentication/authenticationConfiguration';
+import { msalInstance } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
@@ -61,24 +53,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <ReactQueryClientProvider>
             <UserProvider>
               <Component {...pageProps} />
-              <UnauthenticatedTemplate>
-                <PrimaryButton
-                  onClick={() =>
-                    msalInstance.loginRedirect(customerLoginRequest)
-                  }
-                >
-                  Login
-                </PrimaryButton>
-              </UnauthenticatedTemplate>
-              <AuthenticatedTemplate>
-                <PrimaryButton
-                  onClick={() =>
-                    msalInstance.logoutRedirect(customerLoginRequest)
-                  }
-                >
-                  Logout
-                </PrimaryButton>
-              </AuthenticatedTemplate>
             </UserProvider>
           </ReactQueryClientProvider>
         </AppThemeProvider>
