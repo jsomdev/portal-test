@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+### Before you start contributing
+
+Please make sure you read all the documentation on all topics.
+If you have any questions please refer to Jan Somers (jan.somers@spray.com).
+
 ### Before you run the development server
 
 We want to run the nextjs project over https.
