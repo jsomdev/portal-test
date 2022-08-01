@@ -10,11 +10,13 @@ export interface EnvironmentVariables {
   };
   forceLogin: boolean;
   supportedLocales: string[] | undefined;
+  defaultLocale: string | undefined;
 }
 
 export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {
   forceLogin: process.env.NEXT_PUBLIC_FORCE_LOGIN === 'false' ? false : true,
   supportedLocales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+  defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'en',
   redirectUri: process.env.NEXT_PUBLIC_REDIRECT_URI || '',
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
   tenantId: process.env.NEXT_PUBLIC_TENANT_ID || '',
