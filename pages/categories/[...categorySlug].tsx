@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -14,7 +16,8 @@ import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { FacetResult } from '@services/facet-service/models/facet/facetResult';
-import { formatMultilingualString, getAudience } from '@services/i18n/helper';
+import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
+import { getAudience } from '@services/i18n/helper';
 import { messageIds } from '@services/i18n/ids';
 import {
   AttributeGroup,
@@ -55,10 +58,21 @@ export interface CategoryProps {
 const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   category,
   siteMenuItems,
-  mainMenuItems
+  mainMenuItems,
+  initialFacetResults,
+  initialSeriesGroupingResults
 }) => {
   const router = useRouter();
   const { formatMessage, locale } = useIntl();
+  const categoryFormatter: CategoryFormatter = new CategoryFormatter(
+    category,
+    locale
+  );
+
+  useEffect(() => {
+    console.log(initialFacetResults);
+    console.log(initialSeriesGroupingResults);
+  }, []);
   const messages = defineMessages({
     headTitle: {
       id: messageIds.pages.category.headTitle,
@@ -77,7 +91,7 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
       <Head
         pathname={router.pathname}
         title={formatMessage(messages.headTitle, {
-          name: formatMultilingualString(category?.name, locale)
+          name: categoryFormatter.formatName()
         })}
         description={formatMessage(messages.headDescription)}
       />
@@ -86,9 +100,7 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
           categoryId: category?.id
         }}
         initialFacets={getInitialFacetsFromFiles([], router.query)}
-      >
-        
-      </FacetsProvider>
+      ></FacetsProvider>
     </AppLayout>
   );
 };
@@ -107,9 +119,13 @@ export const getStaticPaths: GetStaticPaths = async (
       params: CategoryParsedUrlQuery;
       locale?: string | undefined;
     }[] = categoriesData.map(category => {
+      const categoryFormatter: CategoryFormatter = new CategoryFormatter(
+        category,
+        locale
+      );
       return {
         params: {
-          categorySlug: [formatMultilingualString(category.slug, locale)]
+          categorySlug: [categoryFormatter.formatSlug()]
         },
         locale
       };
@@ -125,6 +141,7 @@ export const getStaticProps: GetStaticProps = async (
 ): Promise<GetStaticPropsResult<CategoryProps & AppLayoutProps>> => {
   try {
     const { locale } = context;
+
     const { categorySlug } = context.params as CategoryParsedUrlQuery;
     const [
       seriesData,
@@ -145,9 +162,13 @@ export const getStaticProps: GetStaticProps = async (
     ]);
 
     const category: CategoryModel | undefined = categoriesData.find(
-      category =>
-        formatMultilingualString(category.slug, context.locale) ===
-        categorySlug?.[0]
+      category => {
+        const categoryFormatter: CategoryFormatter = new CategoryFormatter(
+          category,
+          locale
+        );
+        return categoryFormatter.formatSlug() === categorySlug?.[0];
+      }
     );
     if (category === undefined || category.id === undefined) {
       return {

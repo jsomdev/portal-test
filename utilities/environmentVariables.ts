@@ -10,7 +10,7 @@ export interface EnvironmentVariables {
   };
   forceLogin: boolean;
   supportedLocales: string[] | undefined;
-  defaultLocale: string | undefined;
+  defaultLocale: string;
 }
 
 export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {

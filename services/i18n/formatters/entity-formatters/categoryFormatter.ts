@@ -1,4 +1,5 @@
 import { Category } from '@services/portal-api';
+
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 
 export class CategoryFormatter {
@@ -15,5 +16,9 @@ export class CategoryFormatter {
 
   formatDescription(): string {
     return this.multilingualStringFormatter.format(this.category.description);
+  }
+
+  formatSlug(): string {
+    return this.multilingualStringFormatter.format(this.category.slug);
   }
 }
