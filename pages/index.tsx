@@ -13,6 +13,9 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { HomeCategoriesSection } from '@widgets/categories/homeCategories';
+import { Audience } from '@services/portal-api/models/AudienceFlags';
+import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 
 export interface HomeProps {
   categories: Category[];
@@ -44,6 +47,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
         title={formatMessage(messages.headTitle)}
         description={formatMessage(messages.headDescription)}
       />
+      <HomeCategoriesSection categories={categories} />
     </AppLayout>
   );
 };
@@ -54,14 +58,22 @@ export const getStaticProps: GetStaticProps = async (
   const { locale } = context;
   try {
     const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
-      fetchCategoriesForHomePage(),
+      fetchCategoriesForHomePage(getAudience(locale)),
       fetchMenuItemsForSiteHeader(getAudience(locale)),
       fetchMenuItemsForMainHeader(getAudience(locale))
     ]);
 
     return {
       props: {
-        categories: categoriesData?.value || [],
+        categories:
+          categoriesData?.value.filter(category => {
+            const audience = FlaggedEnum.create<Audience>(
+              Audience,
+              category.audience || ''
+            );
+            const currentAudience = getAudience(locale);
+            return audience & currentAudience;
+          }) || [],
         siteMenuItems: siteMenuData || [],
         mainMenuItems: mainMenuData || []
       }

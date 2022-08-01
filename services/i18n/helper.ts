@@ -20,37 +20,7 @@ export function getMessages(locale?: string, exact: boolean = false): Messages {
   return en;
 }
 
-export function formatMultilingualString(
-  object: MultilingualString | null | undefined,
-  locale: string | undefined
-): string {
-  const multilingualKey: string = getMultilingualKey(locale, object);
-
-  if (object) {
-    return object[multilingualKey];
-  }
-  return '';
-}
-export function getMultilingualKey(
-  locale?: string,
-  obj?: MultilingualString | null | undefined
-): string {
-  const defaultKey = defaultLocale;
-  const language: string | undefined = locale?.split('-')[0];
-
-  if (language) {
-    if (!obj) {
-      return language;
-    }
-    if (obj[language]) {
-      return language;
-    }
-  }
-
-  return defaultKey;
-}
-
-export function getAudience(locale: string | undefined): Audience | undefined {
+export function getAudience(locale: string | undefined): Audience {
   const countryCode: string | undefined = locale?.split('-')[1];
   if (!countryCode) {
     return Audience.NorthAmerica;
