@@ -16,7 +16,7 @@ export class DataCacheManager<TData> implements DataCache<TData> {
     this.initialize();
   }
 
-  initialize() {
+  initialize(): void {
     const dataCacheDirExists: boolean = fs.existsSync(DATA_CACHE_DIR_PATH);
 
     if (!dataCacheDirExists) {

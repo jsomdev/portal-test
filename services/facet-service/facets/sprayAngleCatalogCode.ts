@@ -61,7 +61,7 @@ export const sprayAngleCatalogCodeFacet: Facet<
   key: FacetKey.SprayAngleCatalogCode,
   attributeTypeCode: 'SprayAngleCatalogCode',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

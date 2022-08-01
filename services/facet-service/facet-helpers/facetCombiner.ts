@@ -28,7 +28,7 @@ export function mapCategoryIdToExternalFilter(id: string): ExternalFilter {
 }
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
- * At the time of writing all relevant facets are the one with FacetCategory.Default.
+ * At the time of writing all relevant facets are the one with FacetCategory.Main.
  * At the time of writing relevant product finder api calls are: GroupByFacets, Find, CountBySeriesModels.
  * @param facets Array of relevant facets
  * @param systemOfMeasurement SystemOfMeasurement that is currently active in the application
@@ -70,9 +70,9 @@ export function mapFacetsToExernalFilters(
 ): ExternalFilter[] {
   const externalFilters: Array<ExternalFilter | undefined> = [];
 
-  // Map through the facets that: 1) Have FacetCategory.Default as their category; 2) Have at least a single active option
+  // Map through the facets that: 1) Have FacetCategory.Main as their category; 2) Have at least a single active option
   facets
-    .filter(facet => facet.configuration.category === FacetCategory.Default)
+    .filter(facet => facet.configuration.category === FacetCategory.Main)
     .filter(facet => !!facet.options.find(option => !!option.isActive))
     .forEach(facet => {
       // Based on their selectType, the external filter must be built differently.

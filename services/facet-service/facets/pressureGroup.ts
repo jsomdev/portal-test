@@ -7,74 +7,74 @@ import { FacetSelectType } from '../models/facet/facetSelectType';
 import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
-export enum RelativeDropSizeGroupFacetOptionKey {
-  _1000to5000Microns = '_1000to5000Microns',
-  _100to500Microns = '_100to500Microns',
-  _10to100Microns = '_10to100Microns',
-  _500to1000Microns = '_500to1000Microns'
+export enum PressureGroupFacetOptionKey {
+  HighPressure = 'HighPressure',
+  LowPressure = 'LowPressure',
+  MediumPressure = 'MediumPressure',
+  UltraHighPressure = 'UltraHighPressure'
 }
 
-export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGroupFacetOptionKey>[] =
+export const pressureGroupFacetOptions: FacetOption<PressureGroupFacetOptionKey>[] =
   [
     {
-      key: RelativeDropSizeGroupFacetOptionKey._1000to5000Microns,
+      key: PressureGroupFacetOptionKey.HighPressure,
       ...defaultFacetOption,
-      valueId: '4a359ecc-8acb-4512-898f-bfecd9ffc9cc',
-      value: '1000to5000Microns',
+      valueId: '0c4d01f7-cccd-4a82-8bcd-bd66b8e210a8',
+      value: 'HighPressure',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '{1000} - {5000} µm (Heavy Rain)' }
+            value: { en: 'High Pressure' }
           }
         ],
         sortIndex: 1
       }
     },
     {
-      key: RelativeDropSizeGroupFacetOptionKey._100to500Microns,
+      key: PressureGroupFacetOptionKey.LowPressure,
       ...defaultFacetOption,
-      valueId: 'e038003d-f51d-4f91-8f09-e60cf5e7a69b',
-      value: '100to500Microns',
+      valueId: 'c84e2fb5-371e-4a45-8a15-1dc07ca28157',
+      value: 'LowPressure',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '100 - 500 µm (Light Rain)' }
+            value: { en: 'Low Pressure' }
           }
         ],
         sortIndex: 2
       }
     },
     {
-      key: RelativeDropSizeGroupFacetOptionKey._10to100Microns,
+      key: PressureGroupFacetOptionKey.MediumPressure,
       ...defaultFacetOption,
-      valueId: '98082f59-2cbf-439a-a0c5-b3f56aa8d71a',
-      value: '10to100Microns',
+      valueId: 'eea96f87-0afd-4752-8c1b-53a16833fed7',
+      value: 'MediumPressure',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '10 - 100 µm (Fog)' }
+            value: { en: 'Medium Pressure' }
           }
         ],
         sortIndex: 3
       }
     },
     {
-      key: RelativeDropSizeGroupFacetOptionKey._500to1000Microns,
+      key: PressureGroupFacetOptionKey.UltraHighPressure,
       ...defaultFacetOption,
-      valueId: 'c059f05f-6a87-4a82-9a62-1fd38b618377',
-      value: '500to1000Microns',
+      valueId: 'b8a921de-31d5-4101-a958-67d5a1213932',
+      value: 'Ultra-HighPressure',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '500 - {1000} µm (Moderate Rain)' }
+            value: { en: 'Ultra-High Pressure' }
           }
         ],
         sortIndex: 4
@@ -82,18 +82,18 @@ export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGrou
     }
   ];
 
-export const relativeDropSizeGroupFacet: Facet<
-  RelativeDropSizeGroupFacetOptionKey,
-  FacetOption<RelativeDropSizeGroupFacetOptionKey>
+export const pressureGroupFacet: Facet<
+  PressureGroupFacetOptionKey,
+  FacetOption<PressureGroupFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.RelativeDropSizeGroup,
-  attributeTypeCode: 'RelativeDropSizeGroup',
+  key: FacetKey.PressureGroup,
+  attributeTypeCode: 'PressureGroup',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true
   },
-  options: relativeDropSizeGroupFacetOptions
+  options: pressureGroupFacetOptions
 };

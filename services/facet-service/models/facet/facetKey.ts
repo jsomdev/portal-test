@@ -37,5 +37,6 @@ export enum FacetKey {
   LiquidPressure = 'LiquidPressure',
   LiquidFlowRate = 'LiquidFlowRate',
   SprayAngle = 'SprayAngle',
-  ProductSeries = 'ProductSeries'
+  ProductSeries = 'ProductSeries',
+  InletConnectionGender = 'InletConnectionGender'
 }

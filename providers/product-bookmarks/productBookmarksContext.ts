@@ -29,10 +29,10 @@ const initialContextProps: ProductBookmarksContextProps = {
     throw new Error('Not implemented');
   },
 
-  addBookmark: (productId: string) => {
+  addBookmark: () => {
     throw new Error('Not implemented');
   },
-  removeBookmark: (productId: string) => {
+  removeBookmark: () => {
     throw new Error('Not implemented');
   },
   setting: undefined,

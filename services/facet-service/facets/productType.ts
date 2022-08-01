@@ -91,7 +91,7 @@ export const productTypeFacet: Facet<
   key: FacetKey.ProductType,
   attributeTypeCode: 'ProductType',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

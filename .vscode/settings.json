@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["hreflang"],
+  "cSpell.words": ["hreflang", "LOCALSTORAGEKEYS", "QUERYKEYS"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.formatDocument": true

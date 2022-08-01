@@ -8,18 +8,92 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum DesignFeatureFacetOptionKey {
+  ExtraLongTrigger = 'ExtraLongTrigger',
+  HasCleanoutNeedle = 'HasCleanoutNeedle',
+  HasGuideVane = 'HasGuideVane',
+  HasShutoffNeedle = 'HasShutoffNeedle',
   Integralstrainer = 'Integralstrainer',
-  Nointegralstrainer = 'Nointegralstrainer',
+  IsCast = 'IsCast',
+  IsCleanInPlace = 'IsCleanInPlace',
+  IsRecirculating = 'IsRecirculating',
+  IsSelfCleaning = 'IsSelfCleaning',
+  IsVaneless = 'IsVaneless',
   Onepiecebody = 'Onepiecebody',
   Onepiececasttype = 'Onepiececasttype',
   Onepiecedesign = 'Onepiecedesign',
   Removablecapandvane = 'Removablecapandvane',
+  Swivel = 'Swivel',
   Twopiececasttype = 'Twopiececasttype',
-  Twopiecedesign = 'Twopiecedesign'
+  Twopiecedesign = 'Twopiecedesign',
+  WallMount = 'WallMount'
 }
 
 export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>[] =
   [
+    {
+      key: DesignFeatureFacetOptionKey.ExtraLongTrigger,
+      ...defaultFacetOption,
+      valueId: '18f4356c-515c-43ed-88bc-eeb06ba22701',
+      value: 'ExtraLongTrigger',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Extra long trigger' }
+          }
+        ],
+        sortIndex: 1
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.HasCleanoutNeedle,
+      ...defaultFacetOption,
+      valueId: '49a91a3d-a8ea-40a7-b5e1-9de857194f0d',
+      value: 'HasCleanoutNeedle',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Has cleanout needle' }
+          }
+        ],
+        sortIndex: 2
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.HasGuideVane,
+      ...defaultFacetOption,
+      valueId: '2b6f2e04-ff95-48b1-a465-29f78675896c',
+      value: 'HasGuideVane',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Has guide vane' }
+          }
+        ],
+        sortIndex: 3
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.HasShutoffNeedle,
+      ...defaultFacetOption,
+      valueId: 'b7bba6ec-2440-413e-96e9-60e2183667de',
+      value: 'HasShutoffNeedle',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Has shutoff needle' }
+          }
+        ],
+        sortIndex: 4
+      }
+    },
     {
       key: DesignFeatureFacetOptionKey.Integralstrainer,
       ...defaultFacetOption,
@@ -33,23 +107,83 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'Integral strainer' }
           }
         ],
-        sortIndex: 1
+        sortIndex: 5
       }
     },
     {
-      key: DesignFeatureFacetOptionKey.Nointegralstrainer,
+      key: DesignFeatureFacetOptionKey.IsCast,
       ...defaultFacetOption,
-      valueId: '02385f5d-b1ab-4fcc-b3e0-c4d2a23632cc',
-      value: 'Nointegralstrainer',
+      valueId: 'be62846f-10fd-4e33-9382-afd6df7d147d',
+      value: 'IsCast',
+      configuration: {
+        displays: [
+          { variation: 'Invariant', unitSymbol: '', value: { en: 'Is cast' } }
+        ],
+        sortIndex: 6
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.IsCleanInPlace,
+      ...defaultFacetOption,
+      valueId: '11381827-769f-428b-accb-c8fa41b27aa2',
+      value: 'IsCleanInPlace',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'No integral strainer' }
+            value: { en: 'Is clean in place' }
           }
         ],
-        sortIndex: 2
+        sortIndex: 7
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.IsRecirculating,
+      ...defaultFacetOption,
+      valueId: 'ad588e8a-a7d7-47ab-b668-a914ebdfbd57',
+      value: 'IsRecirculating',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Is recirculating' }
+          }
+        ],
+        sortIndex: 8
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.IsSelfCleaning,
+      ...defaultFacetOption,
+      valueId: '0228ce4b-80a5-4118-9a3b-746087ff0cac',
+      value: 'IsSelfCleaning',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Is self cleaning' }
+          }
+        ],
+        sortIndex: 9
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.IsVaneless,
+      ...defaultFacetOption,
+      valueId: 'df7a048b-fe56-4e6a-a5c7-95f4e861d775',
+      value: 'IsVaneless',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Is vaneless' }
+          }
+        ],
+        sortIndex: 10
       }
     },
     {
@@ -65,7 +199,7 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'One-piece body' }
           }
         ],
-        sortIndex: 3
+        sortIndex: 11
       }
     },
     {
@@ -81,7 +215,7 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'One-piece cast type' }
           }
         ],
-        sortIndex: 4
+        sortIndex: 12
       }
     },
     {
@@ -97,7 +231,7 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'One-piece design' }
           }
         ],
-        sortIndex: 5
+        sortIndex: 13
       }
     },
     {
@@ -113,7 +247,19 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'Removable cap and vane' }
           }
         ],
-        sortIndex: 6
+        sortIndex: 14
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.Swivel,
+      ...defaultFacetOption,
+      valueId: '7cb84fc8-dbd0-42ac-bb8a-3cb5b0bbd413',
+      value: 'Swivel',
+      configuration: {
+        displays: [
+          { variation: 'Invariant', unitSymbol: '', value: { en: 'Swivel' } }
+        ],
+        sortIndex: 15
       }
     },
     {
@@ -129,7 +275,7 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'Two-piece cast-type' }
           }
         ],
-        sortIndex: 7
+        sortIndex: 16
       }
     },
     {
@@ -145,7 +291,23 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
             value: { en: 'Two-piece design' }
           }
         ],
-        sortIndex: 8
+        sortIndex: 17
+      }
+    },
+    {
+      key: DesignFeatureFacetOptionKey.WallMount,
+      ...defaultFacetOption,
+      valueId: '3bcf7da4-eeb7-4e07-929d-0d9cc5b0eb8a',
+      value: 'WallMount',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Wall mount' }
+          }
+        ],
+        sortIndex: 18
       }
     }
   ];
@@ -158,9 +320,11 @@ export const designFeatureFacet: Facet<
   key: FacetKey.DesignFeature,
   attributeTypeCode: 'DesignFeature',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
+    displayName: 'Category',
+    description: 'Category',
     isFacetingEnabled: true
   },
   options: designFeatureFacetOptions

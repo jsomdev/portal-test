@@ -9,7 +9,7 @@ export const defaultFacet: Pick<
 > = {
   options: [],
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     isFacetingEnabled: false,
     displayName: '',

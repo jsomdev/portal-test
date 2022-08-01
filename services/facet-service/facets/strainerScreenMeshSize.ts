@@ -44,7 +44,7 @@ export const strainerScreenMeshSizeFacet: Facet<
   key: FacetKey.StrainerScreenMeshSize,
   attributeTypeCode: 'StrainerScreenMeshSize',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

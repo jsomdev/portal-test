@@ -10,6 +10,8 @@ import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
+import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { FacetResult } from '@services/facet-service/models/facet/facetResult';
 import { formatMultilingualString, getAudience } from '@services/i18n/helper';
@@ -41,7 +43,7 @@ import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
 export interface CategoryProps {
-  category: CategoryModel | undefined;
+  category: CategoryModel;
   series: Series[];
   models: Model[];
   attributeTypes: AttributeType[];
@@ -55,7 +57,7 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   siteMenuItems,
   mainMenuItems
 }) => {
-  const { pathname } = useRouter();
+  const router = useRouter();
   const { formatMessage, locale } = useIntl();
   const messages = defineMessages({
     headTitle: {
@@ -69,22 +71,30 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
       defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
     }
   });
+
   return (
     <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
       <Head
-        pathname={pathname}
+        pathname={router.pathname}
         title={formatMessage(messages.headTitle, {
           name: formatMultilingualString(category?.name, locale)
         })}
         description={formatMessage(messages.headDescription)}
       />
-      {category?.name?.en}
+      <FacetsProvider
+        preFilters={{
+          categoryId: category?.id
+        }}
+        initialFacets={getInitialFacetsFromFiles([], router.query)}
+      >
+        
+      </FacetsProvider>
     </AppLayout>
   );
 };
 
 interface CategoryParsedUrlQuery extends ParsedUrlQuery {
-  categorySlug: string | undefined;
+  categorySlug: string[] | undefined;
 }
 
 export const getStaticPaths: GetStaticPaths = async (
@@ -99,7 +109,7 @@ export const getStaticPaths: GetStaticPaths = async (
     }[] = categoriesData.map(category => {
       return {
         params: {
-          categorySlug: formatMultilingualString(category.slug, locale)
+          categorySlug: [formatMultilingualString(category.slug, locale)]
         },
         locale
       };
@@ -136,7 +146,8 @@ export const getStaticProps: GetStaticProps = async (
 
     const category: CategoryModel | undefined = categoriesData.find(
       category =>
-        formatMultilingualString(category.slug, context.locale) === categorySlug
+        formatMultilingualString(category.slug, context.locale) ===
+        categorySlug?.[0]
     );
     if (category === undefined || category.id === undefined) {
       return {

@@ -28,7 +28,7 @@ const initialContextProps: RecentlyViewedContextProps = {
   refresh: () => {
     throw new Error('Not implemented');
   },
-  registerView: (productView: ProductView) => {
+  registerView: () => {
     throw new Error('Not implemented');
   },
   setting: undefined,
