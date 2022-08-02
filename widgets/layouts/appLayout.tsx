@@ -22,7 +22,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   const isLarge = useLarge();
   const styles: AppLayoutStyles = {
     main: {
-      maxWidth: rem(1280),
+      maxWidth: '100%',
       margin: 'auto',
       paddingTop: isLarge ? rem(124) : rem(80)
     }

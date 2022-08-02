@@ -32,6 +32,10 @@ There are some main principles -_guidelines_- that should be considered when cre
 1. **User Friendly**: Consider the behavior of the user. All scenario's should be covered in a user friendly manner (happy path versus unhappy path).
 1. **Fluent UI Layout System**: [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) inspired _Stacks_ and _StackItems_ controls from FluentUI should be used.
 1. **CCS in JS**: Strongly typed interfaces should be used for styling our components. FluentUI comes with a built-in api that does this really well.
+   1. Use FluentUI Api whenever possible.
+   1. Use Typed Interfaces if applicable.
+   1. Use Styled JSX (scoped) otherwise.
+
 1. **Search Engine Optimization**: Follow the SEO guidelines closely (e.g. [Google SEO Guidelines](https://developers.google.com/search/docs/advanced/guidelines/webmaster-guidelines))
 1. **I18n**: Text, dates, numbers,... should be i18n compliant.
 1. **Rendering approach**: Determine the best rendering approach for pages and their components. [Comparison and explanation](https://medium.com/nerd-for-tech/compare-and-contrast-csr-ssr-and-ssg-in-nextjs-58e3caf2e15e).
@@ -39,7 +43,7 @@ There are some main principles -_guidelines_- that should be considered when cre
 
 ## New Components
 
-To create a new component, make a `{componentName}.tsx`file. Typically a component plus occasionally a helper file will do for simple components and widgets. Technical widgets, which will not be documented in this chapter, usually require different files and
+To create a new component, make a `{componentName}.tsx`file. Typically a component plus occasionally a helper file will do for simple components and widgets. Technical widgets, which will not be documented in this chapter, usually require different files and implementations.
 
 <u>The file name:</u>
 

@@ -4,8 +4,8 @@ import { MultilingualStringFormatter } from '../multilingual-string-formatter/mu
 
 export class CategoryFormatter {
   multilingualStringFormatter: MultilingualStringFormatter;
-  category: Category;
-  constructor(category: Category, locale?: string) {
+  category: Partial<Category>;
+  constructor(category: Partial<Category>, locale?: string) {
     this.multilingualStringFormatter = new MultilingualStringFormatter(locale);
     this.category = category;
   }

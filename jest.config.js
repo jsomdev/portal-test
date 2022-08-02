@@ -4,7 +4,12 @@ module.exports = {
   // Where the setup script can be found (run before tests)
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   // Skip paths
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/', '<rootDir>/coverage', '<rootDir>/dist'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage',
+    '<rootDir>/dist'
+  ],
   // Search node_modules
   moduleDirectories: ['<rootDir>/node_modules'],
   // Have to map the absolute paths defined in tsconfig.json to their relative path
@@ -22,7 +27,7 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.js',
     // Switch to identity-obj-proxy and configure if more advanced css transforming should be supported (e.g: modules)
-    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
   },
   // Coverage output
   coverageDirectory: 'coverage',
@@ -36,7 +41,7 @@ module.exports = {
       branches: 0,
       functions: 0,
       lines: 0,
-      statements: 0,
-    },
-  },
+      statements: 0
+    }
+  }
 };

@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -69,10 +67,6 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
     locale
   );
 
-  useEffect(() => {
-    console.log(initialFacetResults);
-    console.log(initialSeriesGroupingResults);
-  }, []);
   const messages = defineMessages({
     headTitle: {
       id: messageIds.pages.category.headTitle,
