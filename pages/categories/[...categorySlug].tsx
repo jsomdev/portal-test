@@ -56,9 +56,7 @@ export interface CategoryProps {
 const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   category,
   siteMenuItems,
-  mainMenuItems,
-  initialFacetResults,
-  initialSeriesGroupingResults
+  mainMenuItems
 }) => {
   const router = useRouter();
   const { formatMessage, locale } = useIntl();

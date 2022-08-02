@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString, getAudience } from '@services/i18n';
+import { getAudience } from '@services/i18n';
 import {
   AttributeGroup,
   AttributeType,
@@ -31,6 +31,7 @@ import {
 import { fetchAllSeries } from '@services/portal-api/series';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface ProductsProps {
   product: Product;
@@ -73,9 +74,12 @@ export const getStaticPaths: GetStaticPaths = async (
       params: ProductsParsedUrlQuery;
       locale?: string | undefined;
     }[] = productsData.map(product => {
+      const multilingualStringFormatter = new MultilingualStringFormatter(
+        locale
+      );
       return {
         params: {
-          productSlug: formatMultilingualString(product.slug, locale)
+          productSlug: multilingualStringFormatter.format(product.slug)
         },
         locale
       };

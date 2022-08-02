@@ -12,8 +12,6 @@ import {
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 
-import { HeaderButtonType } from './headerButton.types';
-
 interface HeaderButtonProps extends IButtonProps {
   type?: HeaderButtonType;
 }
@@ -22,11 +20,10 @@ interface HeaderButtonStyles {
   root: IButtonStyles;
 }
 
-export type HeaderButtonType = 'actionButton' | 'iconButton';
+type HeaderButtonType = 'actionButton' | 'iconButton';
 
-
-export const HeaderButton: React.FC<IHeaderButtonProps> = props => {
-  const defaultStyles: IHeaderButtonStyles = {
+export const HeaderButton: React.FC<HeaderButtonProps> = props => {
+  const defaultStyles: HeaderButtonStyles = {
     root: {
       label: {
         fontSize: FontSizes.large,

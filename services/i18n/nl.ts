@@ -26,7 +26,8 @@ export const nl: Messages = {
   pages: {
     home: {
       headTitle: 'Experten in Sproeitechnologie | Spraying Systems Co.',
-      headDescription: 'pages.home.headDescription'
+      headDescription: 'pages.home.headDescription',
+      backgroundImageAlt: ''
     },
     model: {
       headTitle: '{name} | Spraying Systems Co.',

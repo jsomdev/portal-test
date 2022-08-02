@@ -1,4 +1,3 @@
-import { MultilingualString } from '@services/portal-api';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';

@@ -76,6 +76,7 @@ export const useMediaQuery = (
     return () => {
       mediaQueryList.onchange = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
@@ -85,7 +86,7 @@ export const useMediaQuery = (
 
 export const useExtraSmall = (
   matchType: MediaQueryMatchType = MediaQueryMatchType.From
-) => {
+): boolean => {
   const query: MediaQuery = {
     query: MediaQueryPreset.ExtraSmall,
     matchType
@@ -98,7 +99,7 @@ export const useExtraSmall = (
 };
 export const useSmall = (
   matchType: MediaQueryMatchType = MediaQueryMatchType.From
-) => {
+): boolean => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Small,
     matchType
@@ -112,7 +113,7 @@ export const useSmall = (
 };
 export const useMedium = (
   matchType: MediaQueryMatchType = MediaQueryMatchType.From
-) => {
+): boolean => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Medium,
     matchType
@@ -126,7 +127,7 @@ export const useMedium = (
 };
 export const useLarge = (
   matchType: MediaQueryMatchType = MediaQueryMatchType.From
-) => {
+): boolean => {
   const query: MediaQuery = {
     query: MediaQueryPreset.Large,
     matchType
@@ -139,7 +140,7 @@ export const useLarge = (
 
 export const useExtraLarge = (
   matchType: MediaQueryMatchType = MediaQueryMatchType.From
-) => {
+): boolean => {
   const query: MediaQuery = {
     query: MediaQueryPreset.ExtraLarge,
     matchType

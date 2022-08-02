@@ -38,5 +38,11 @@ export enum FacetKey {
   LiquidFlowRate = 'LiquidFlowRate',
   SprayAngle = 'SprayAngle',
   ProductSeries = 'ProductSeries',
-  InletConnectionGender = 'InletConnectionGender'
+  InletConnectionGender = 'InletConnectionGender',
+  MotorType = 'MotorType',
+  ShaftLength = 'ShaftLength',
+  TankMountingOptions = 'TankMountingOptions',
+  PressureGroup = 'PressureGroup',
+  SprayCoverage = 'SprayCoverage',
+  SprayCoverageDiameter = 'SprayCoverageDiameter'
 }

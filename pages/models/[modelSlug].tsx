@@ -7,7 +7,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString, getAudience } from '@services/i18n';
+import { getAudience } from '@services/i18n';
 import {
   AttributeGroup,
   AttributeType,
@@ -24,6 +24,7 @@ import { fetchAllModels } from '@services/portal-api/models';
 import { fetchAllSeries } from '@services/portal-api/series';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface ModelProps {
   model: ModelModel;
@@ -54,13 +55,14 @@ interface IModelParsedUrlQuery extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths = async context => {
   const modelsData = await fetchAllModels();
   const localizedPaths = (context.locales || []).map(locale => {
+    const multilingualFormatter = new MultilingualStringFormatter(locale);
     const pathForLocale: {
       params: IModelParsedUrlQuery;
       locale?: string | undefined;
     }[] = modelsData.map(model => {
       return {
         params: {
-          modelSlug: formatMultilingualString(model.slug, locale)
+          modelSlug: multilingualFormatter.format(model.slug)
         },
         locale
       };
@@ -77,7 +79,7 @@ export const getStaticProps: GetStaticProps = async (
   try {
     const { locale } = context;
     const { modelSlug } = context.params as IModelParsedUrlQuery;
-
+    const multilingualFormatter = new MultilingualStringFormatter(locale);
     const [
       modelsData,
       seriesData,
@@ -95,8 +97,7 @@ export const getStaticProps: GetStaticProps = async (
     ]);
 
     const model: ModelModel | undefined = modelsData.find(
-      model =>
-        formatMultilingualString(model.slug, context.locale) === modelSlug
+      model => multilingualFormatter.format(model.slug) === modelSlug
     );
 
     if (model === undefined) {

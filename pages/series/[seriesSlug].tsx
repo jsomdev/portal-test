@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { formatMultilingualString, getAudience } from '@services/i18n';
+import { getAudience } from '@services/i18n';
 import { AttributeGroup, AttributeType } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
@@ -24,6 +24,7 @@ import {
 } from '@services/portal-api/series';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface SeriesProps {
   series: SeriesModel;
@@ -60,9 +61,12 @@ export const getStaticPaths: GetStaticPaths = async (
       params: ISeriesParsedUrlQuery;
       locale?: string | undefined;
     }[] = seriesData.value.map(series => {
+      const multilingualStringFormatter = new MultilingualStringFormatter(
+        locale
+      );
       return {
         params: {
-          seriesSlug: formatMultilingualString(series.slug, locale)
+          seriesSlug: multilingualStringFormatter.format(series.slug)
         },
         locale
       };
@@ -79,7 +83,7 @@ export const getStaticProps: GetStaticProps = async (
   try {
     const { locale } = context;
     const { seriesSlug } = context.params as ISeriesParsedUrlQuery;
-
+    const multilingualStringFormatter = new MultilingualStringFormatter(locale);
     const [
       seriesData,
       siteMenuData,
@@ -94,10 +98,9 @@ export const getStaticProps: GetStaticProps = async (
       fetchAllAttributeGroups()
     ]);
 
-    const series: SeriesModel | undefined = seriesData.find(
-      series =>
-        formatMultilingualString(series.slug, context.locale) === seriesSlug
-    );
+    const series: SeriesModel | undefined = seriesData.find(series => {
+      return multilingualStringFormatter.format(series.slug) === seriesSlug;
+    });
 
     if (series === undefined) {
       return {

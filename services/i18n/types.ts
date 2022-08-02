@@ -36,7 +36,6 @@ type IUserNavigationMessages = {
 };
 
 type INextHeadMessages = {
-  backgroundImageAlt: string;
   headTitle: string;
   headDescription: string;
 };
@@ -56,7 +55,9 @@ export type Messages = {
     user: IUserNavigationMessages;
   };
   pages: {
-    home: IHomeMessages;
+    home: IHomeMessages & {
+      backgroundImageAlt: string;
+    };
     category: ICategoryMessages;
     model: IModelMessages;
     series: ISeriesMessages;
