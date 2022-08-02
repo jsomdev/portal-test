@@ -4,8 +4,8 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
 
-import { fetchBaseDesignsByIds } from '../../services/portal-api/products';
 import { Setting } from '../../services/portal-api/models/Setting';
+import { fetchBaseDesignsByIds } from '../../services/portal-api/products';
 import {
   addProductBookmarkToSetting,
   clearProductBookmarksSetting,
@@ -160,7 +160,7 @@ export const ProductBookmarksProvider: React.FC = ({ children }) => {
         return previousValue;
       },
 
-      onSettled: setting =>
+      onSettled: () =>
         queryClient.refetchQueries([
           (QUERYKEYS.appBookmarkedProductsSetting, isAuthenticated)
         ])

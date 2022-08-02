@@ -8,19 +8,24 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum InletConnectionSizeFacetOptionKey {
-  _00625 = '_00625',
-  _0125 = '_0125',
-  _025 = '_025',
-  _0375 = '_0375',
-  _05 = '_05',
-  _075 = '_075',
+  _0_0625 = '_0_0625',
+  _0_125 = '_0_125',
+  _0_139 = '_0_139',
+  _0_25 = '_0_25',
+  _0_375 = '_0_375',
+  _0_5 = '_0_5',
+  _0_716 = '_0_716',
+  _0_75 = '_0_75',
+  _0_756 = '_0_756',
+  _0_992 = '_0_992',
   _1 = '_1',
-  _125 = '_125',
-  _15 = '_15',
+  _1_012 = '_1_012',
+  _1_25 = '_1_25',
+  _1_5 = '_1_5',
   _10 = '_10',
   _12 = '_12',
   _2 = '_2',
-  _25 = '_25',
+  _2_5 = '_2_5',
   _3 = '_3',
   _4 = '_4',
   _5 = '_5',
@@ -31,7 +36,7 @@ export enum InletConnectionSizeFacetOptionKey {
 export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFacetOptionKey>[] =
   [
     {
-      key: InletConnectionSizeFacetOptionKey._00625,
+      key: InletConnectionSizeFacetOptionKey._0_0625,
       ...defaultFacetOption,
       valueId: '',
       value: 0.0625,
@@ -41,7 +46,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._0125,
+      key: InletConnectionSizeFacetOptionKey._0_125,
       ...defaultFacetOption,
       valueId: '',
       value: 0.125,
@@ -51,43 +56,92 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._025,
+      key: InletConnectionSizeFacetOptionKey._0_139,
+      ...defaultFacetOption,
+      valueId: '',
+      value: 0.139,
+      configuration: {
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '5/32' }],
+        sortIndex: 3
+      }
+    },
+    {
+      key: InletConnectionSizeFacetOptionKey._0_25,
       ...defaultFacetOption,
       valueId: '',
       value: 0.25,
       configuration: {
         displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '1/4' }],
-        sortIndex: 3
+        sortIndex: 4
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._0375,
+      key: InletConnectionSizeFacetOptionKey._0_375,
       ...defaultFacetOption,
       valueId: '',
       value: 0.375,
       configuration: {
         displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '3/8' }],
-        sortIndex: 4
+        sortIndex: 5
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._05,
+      key: InletConnectionSizeFacetOptionKey._0_5,
       ...defaultFacetOption,
       valueId: '',
       value: 0.5,
       configuration: {
         displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '1/2' }],
-        sortIndex: 5
+        sortIndex: 6
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._075,
+      key: InletConnectionSizeFacetOptionKey._0_716,
+      ...defaultFacetOption,
+      valueId: '',
+      value: 0.716,
+      configuration: {
+        displays: [
+          { variation: 'Metric', unitSymbol: 'mm', value: 18.2 },
+          { variation: 'Us', unitSymbol: 'in', value: 0.716 }
+        ],
+        sortIndex: 7
+      }
+    },
+    {
+      key: InletConnectionSizeFacetOptionKey._0_75,
       ...defaultFacetOption,
       valueId: '',
       value: 0.75,
       configuration: {
         displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '3/4' }],
-        sortIndex: 6
+        sortIndex: 8
+      }
+    },
+    {
+      key: InletConnectionSizeFacetOptionKey._0_756,
+      ...defaultFacetOption,
+      valueId: '',
+      value: 0.756,
+      configuration: {
+        displays: [
+          { variation: 'Us', unitSymbol: 'in', value: 0.756 },
+          { variation: 'Metric', unitSymbol: 'mm', value: 19.2 }
+        ],
+        sortIndex: 9
+      }
+    },
+    {
+      key: InletConnectionSizeFacetOptionKey._0_992,
+      ...defaultFacetOption,
+      valueId: '',
+      value: 0.992,
+      configuration: {
+        displays: [
+          { variation: 'Us', unitSymbol: 'in', value: 0.992 },
+          { variation: 'Metric', unitSymbol: 'mm', value: 25.2 }
+        ],
+        sortIndex: 10
       }
     },
     {
@@ -96,12 +150,25 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 1,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '1' }],
-        sortIndex: 7
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 1 }],
+        sortIndex: 11
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._125,
+      key: InletConnectionSizeFacetOptionKey._1_012,
+      ...defaultFacetOption,
+      valueId: '',
+      value: 1.012,
+      configuration: {
+        displays: [
+          { variation: 'Metric', unitSymbol: 'mm', value: 25.7 },
+          { variation: 'Us', unitSymbol: 'in', value: 1.012 }
+        ],
+        sortIndex: 12
+      }
+    },
+    {
+      key: InletConnectionSizeFacetOptionKey._1_25,
       ...defaultFacetOption,
       valueId: '',
       value: 1.25,
@@ -109,11 +176,11 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
         displays: [
           { variation: 'Invariant', unitSymbol: 'in', value: '1-1/4' }
         ],
-        sortIndex: 8
+        sortIndex: 13
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._15,
+      key: InletConnectionSizeFacetOptionKey._1_5,
       ...defaultFacetOption,
       valueId: '',
       value: 1.5,
@@ -121,7 +188,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
         displays: [
           { variation: 'Invariant', unitSymbol: 'in', value: '1-1/2' }
         ],
-        sortIndex: 9
+        sortIndex: 14
       }
     },
     {
@@ -130,8 +197,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 10,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '10' }],
-        sortIndex: 10
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 10 }],
+        sortIndex: 15
       }
     },
     {
@@ -140,8 +207,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 12,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '12' }],
-        sortIndex: 11
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 12 }],
+        sortIndex: 16
       }
     },
     {
@@ -150,12 +217,12 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 2,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '2' }],
-        sortIndex: 12
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 2 }],
+        sortIndex: 17
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._25,
+      key: InletConnectionSizeFacetOptionKey._2_5,
       ...defaultFacetOption,
       valueId: '',
       value: 2.5,
@@ -163,7 +230,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
         displays: [
           { variation: 'Invariant', unitSymbol: 'in', value: '2-1/2' }
         ],
-        sortIndex: 13
+        sortIndex: 18
       }
     },
     {
@@ -172,8 +239,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 3,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '3' }],
-        sortIndex: 14
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 3 }],
+        sortIndex: 19
       }
     },
     {
@@ -182,8 +249,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 4,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '4' }],
-        sortIndex: 15
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 4 }],
+        sortIndex: 20
       }
     },
     {
@@ -192,8 +259,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 5,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '5' }],
-        sortIndex: 16
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 5 }],
+        sortIndex: 21
       }
     },
     {
@@ -202,8 +269,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 6,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '6' }],
-        sortIndex: 17
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 6 }],
+        sortIndex: 22
       }
     },
     {
@@ -212,8 +279,8 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       valueId: '',
       value: 8,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: '8' }],
-        sortIndex: 18
+        displays: [{ variation: 'Invariant', unitSymbol: 'in', value: 8 }],
+        sortIndex: 23
       }
     }
   ];
@@ -226,7 +293,7 @@ export const inletConnectionSizeFacet: Facet<
   key: FacetKey.InletConnectionSize,
   attributeTypeCode: 'InletConnectionSize',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

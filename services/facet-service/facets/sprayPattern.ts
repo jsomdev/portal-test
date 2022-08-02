@@ -12,6 +12,7 @@ export enum SprayPatternFacetOptionKey {
   FlatFan = 'FlatFan',
   FullCone = 'FullCone',
   HollowCone = 'HollowCone',
+  RoundSpray = 'RoundSpray',
   SolidStream = 'SolidStream',
   SquareSpray = 'SquareSpray'
 }
@@ -75,6 +76,22 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
       }
     },
     {
+      key: SprayPatternFacetOptionKey.RoundSpray,
+      ...defaultFacetOption,
+      valueId: '1237556b-e465-41bb-8627-55fd2d7b543c',
+      value: 'RoundSpray',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Round Spray' }
+          }
+        ],
+        sortIndex: 5
+      }
+    },
+    {
       key: SprayPatternFacetOptionKey.SolidStream,
       ...defaultFacetOption,
       valueId: '3c26ba69-0e11-490f-a6d7-e24d978d01aa',
@@ -87,7 +104,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Solid Stream' }
           }
         ],
-        sortIndex: 5
+        sortIndex: 6
       }
     },
     {
@@ -103,7 +120,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Square Spray' }
           }
         ],
-        sortIndex: 6
+        sortIndex: 7
       }
     }
   ];
@@ -116,7 +133,7 @@ export const sprayPatternFacet: Facet<
   key: FacetKey.SprayPattern,
   attributeTypeCode: 'SprayPattern',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

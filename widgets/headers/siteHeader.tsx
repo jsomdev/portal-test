@@ -34,6 +34,7 @@ export const SiteHeader: React.FC<ISiteHeaderProps> = ({
   items
 }) => {
   const isLarge = useLarge();
+
   if (isLarge) {
     return <LargeSiteHeader items={items} />;
   }

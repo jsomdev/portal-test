@@ -37,9 +37,9 @@ const Testing: NextPage<TestingProps> = (props: TestingProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<TestingProps>> => {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<TestingProps>
+> => {
   const markdown = getMarkdownByFileName('testing', ['content']);
   return {
     props: {

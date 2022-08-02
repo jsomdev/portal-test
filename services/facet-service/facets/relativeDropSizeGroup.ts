@@ -26,7 +26,7 @@ export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGrou
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '1,000 - 5,000 µm (Heavy Rain)' }
+            value: { en: '{1000} - {5000} µm (Heavy Rain)' }
           }
         ],
         sortIndex: 1
@@ -74,7 +74,7 @@ export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGrou
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '500 - 1,000 µm (Moderate Rain)' }
+            value: { en: '500 - {1000} µm (Moderate Rain)' }
           }
         ],
         sortIndex: 4
@@ -90,7 +90,7 @@ export const relativeDropSizeGroupFacet: Facet<
   key: FacetKey.RelativeDropSizeGroup,
   attributeTypeCode: 'RelativeDropSizeGroup',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true

@@ -7,15 +7,15 @@ import { FacetSelectType } from '../models/facet/facetSelectType';
 import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
-export enum ConnectionGenderFacetOptionKey {
+export enum InletConnectionGenderFacetOptionKey {
   Female = 'Female',
   Male = 'Male'
 }
 
-export const connectionGenderFacetOptions: FacetOption<ConnectionGenderFacetOptionKey>[] =
+export const inletConnectionGenderFacetOptions: FacetOption<InletConnectionGenderFacetOptionKey>[] =
   [
     {
-      key: ConnectionGenderFacetOptionKey.Female,
+      key: InletConnectionGenderFacetOptionKey.Female,
       ...defaultFacetOption,
       valueId: '3e8fdfc2-5631-493a-91f4-32b931ab3738',
       value: 'Female',
@@ -27,7 +27,7 @@ export const connectionGenderFacetOptions: FacetOption<ConnectionGenderFacetOpti
       }
     },
     {
-      key: ConnectionGenderFacetOptionKey.Male,
+      key: InletConnectionGenderFacetOptionKey.Male,
       ...defaultFacetOption,
       valueId: '839a8ef5-08dc-4fe5-9c62-f88d11960ad5',
       value: 'Male',
@@ -40,18 +40,18 @@ export const connectionGenderFacetOptions: FacetOption<ConnectionGenderFacetOpti
     }
   ];
 
-export const connectionGenderFacet: Facet<
-  ConnectionGenderFacetOptionKey,
-  FacetOption<ConnectionGenderFacetOptionKey>
+export const inletConnectionGenderFacet: Facet<
+  InletConnectionGenderFacetOptionKey,
+  FacetOption<InletConnectionGenderFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.ConnectionGender,
-  attributeTypeCode: 'ConnectionGender',
+  key: FacetKey.InletConnectionGender,
+  attributeTypeCode: 'InletConnectionGender',
   configuration: {
-    category: FacetCategory.Default,
+    category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true
   },
-  options: connectionGenderFacetOptions
+  options: inletConnectionGenderFacetOptions
 };

@@ -26,6 +26,7 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:prettier/recommended' // Make sure this is always the last element in the array.
   ],
   rules: {

@@ -28,6 +28,6 @@
       "@providers/*": ["providers/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "pages/categories/[...categorySlug].tsx"],
   "exclude": ["node_modules"]
 }

@@ -36,6 +36,7 @@ type IUserNavigationMessages = {
 };
 
 type INextHeadMessages = {
+  backgroundImageAlt: string;
   headTitle: string;
   headDescription: string;
 };

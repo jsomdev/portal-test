@@ -29,6 +29,6 @@ module.exports = {
   },
   i18n: {
     locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
-    defaultLocale: 'en-US'
+    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE
   }
 };

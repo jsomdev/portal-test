@@ -17,8 +17,8 @@ import {
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { MenuItem } from '@services/portal-api';
-import { formatUserDisplayName } from '@utilities/formatText';
 import { rem } from '@utilities/rem';
 
 import { HeaderButton } from './headerButton';
@@ -42,6 +42,7 @@ export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
   const { me } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
+  const userFormatter = new UserFormatter(me, instance.getActiveAccount());
   const messages = defineMessages({
     signIn: {
       id: messageIds.navigation.user.signIn,
@@ -103,9 +104,7 @@ export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
               onClick={() => (isAuthenticated ? null : signIn())}
               text={
                 isAuthenticated
-                  ? formatUserDisplayName(
-                      me,
-                      instance.getActiveAccount(),
+                  ? userFormatter.formatDisplayName(
                       formatMessage(messages.myProfile)
                     )
                   : formatMessage(messages.signIn)

@@ -6,6 +6,8 @@ import { Category } from './models/Category';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { CategoriesResource } from './resources/CategoriesResource';
+import { FlaggedEnum } from './flaggedEnum';
+import { Audience } from './models/AudienceFlags';
 
 const CATEGORIES_CACHE_PATH = path.resolve('./data-cache/categories.json');
 const categoriesDataCacheManager: DataCacheManager<Category[]> =
@@ -15,15 +17,18 @@ const categoriesDataCacheManager: DataCacheManager<Category[]> =
  * Function that retrieves all necessary infromation about the categories that are displayed on the homepage
  * @returns Collection of Categories that are displayed on the homepage
  */
-export async function fetchCategoriesForHomePage(): Promise<
-  OdataCollection<Category>
-> {
+export async function fetchCategoriesForHomePage(
+  audience: Audience
+): Promise<OdataCollection<Category>> {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,settings,seoPath',
+    selectQuery: 'id,name,description,settings,seoPath,audience',
     expandQuery:
       'image($select=url),children($select=id,name,settings,seoPath;$expand=image($select=url);$orderby=sortIndex asc)',
-    filterQuery: `parentId eq null`,
+    filterQuery: `parentId eq null and audience has SSCo.DigitalHighway.Portal.Data.Enumerations.Audience'${FlaggedEnum.toString(
+      Audience,
+      audience
+    )}'`,
     orderbyQuery: 'sortIndex asc'
   };
   const data = await categoriesResource.getEntities(queryOptions);

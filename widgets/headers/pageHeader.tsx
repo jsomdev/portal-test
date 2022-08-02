@@ -2,21 +2,21 @@ import React, { CSSProperties, FC } from 'react';
 
 import { Stack, useTheme } from '@fluentui/react';
 
-interface IPageHeaderProps {
+interface PageHeaderProps {
   title: string | JSX.Element;
   description?: string;
 }
-interface IPagesHeaderStyles {
+interface PagesHeaderStyles {
   title?: CSSProperties;
   description?: CSSProperties;
 }
-export const PagesHeader: FC<IPageHeaderProps> = ({
+export const PagesHeader: FC<PageHeaderProps> = ({
   title,
   children,
   description
 }) => {
   const { spacing, palette } = useTheme();
-  const styles: IPagesHeaderStyles = {
+  const styles: PagesHeaderStyles = {
     title: {
       color: palette.themeDarker
     },
