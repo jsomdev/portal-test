@@ -1,5 +1,5 @@
+import { SystemOfMeasurement } from '@utilities/measurement';
 import { createContext } from 'react';
-import { SystemOfMeasurement } from '../../../utilities/measurement';
 
 type SystemOfMeasurementState = {
   systemOfMeasurement: SystemOfMeasurement;

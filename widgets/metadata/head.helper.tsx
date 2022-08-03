@@ -6,7 +6,7 @@ import { supportedLocales } from '@services/i18n';
  * @param pathname name of the path that the links are generated for (e.g. /docs/i18n)
  * @returns an Array of alternate <link> components
  */
-export function getHeadAlternateLinks(pathname: string) {
+export function getHeadAlternateLinks(pathname: string): JSX.Element[] {
   return (supportedLocales || []).map(locale => (
     <link
       key={locale}

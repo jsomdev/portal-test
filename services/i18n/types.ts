@@ -56,7 +56,9 @@ export type Messages = {
     user: IUserNavigationMessages;
   };
   pages: {
-    home: IHomeMessages;
+    home: IHomeMessages & {
+      backgroundImageAlt: string;
+    };
     category: ICategoryMessages;
     model: IModelMessages;
     series: ISeriesMessages;

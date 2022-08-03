@@ -26,6 +26,7 @@ export const en: Messages = {
   pages: {
     home: {
       headTitle: 'Welcome',
+      backgroundImageAlt: '',
       headDescription: 'Experts in Spray Technology | Spraying Systems Co.'
     },
     model: {

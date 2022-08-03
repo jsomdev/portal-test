@@ -26,7 +26,8 @@ export const messageIds: Messages = {
   pages: {
     home: {
       headTitle: 'pages.home.headTitle',
-      headDescription: 'pages.home.headDescription'
+      headDescription: 'pages.home.headDescription',
+      backgroundImageAlt: 'pages.home.backgroundImageAlt'
     },
     model: {
       headTitle: 'pages.model.headTitle',
