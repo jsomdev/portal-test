@@ -38,8 +38,20 @@ type IUserNavigationMessages = {
   myProfile: string;
 };
 
+type IStepsMessages = {
+  actions: {
+    proceed: string;
+    previous: string;
+  };
+};
+
+type ILoadingUserMessages = {
+  signingIn: string;
+  signingOut: string;
+  redirecting: string;
+};
+
 type INextHeadMessages = {
-  backgroundImageAlt: string;
   headTitle: string;
   headDescription: string;
 };
@@ -53,12 +65,17 @@ type ISeriesMessages = INextHeadMessages;
  * The messagesIds object can be used to reference their ids used when formatting messages using react-intl.
  */
 export type Messages = {
+  steps: IStepsMessages;
   navigation: {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
   };
   searchBar: ISiteSearchBarMessages;
+  loading: {
+    default: string;
+    user: ILoadingUserMessages;
+  };
   pages: {
     home: IHomeMessages & {
       backgroundImageAlt: string;

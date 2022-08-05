@@ -6,7 +6,28 @@ import Link from 'next/link';
 import { IStackStyles, Stack } from '@fluentui/react';
 import siteLogo from '@public/site-logo.svg';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
+import {
+  useExtraSmall,
+  useLarge
+} from '@widgets/media-queries/mediaQuery.hook';
+
+/**
+ * Logo component for the Spray.com logo.
+ * Based on the screen size a different version will be displayed.
+ */
+export const SiteLogo: React.FC = ({ items, onOpenSideNavigation }) => {
+  const isExtraSmall = useExtraSmall();
+
+  // Desktop Logo
+  if (isLarge) {
+    return <LargeSiteLogo items={items} />;
+  }
+
+  // Default Logo
+  return (
+    <SmallSiteLogo items={items} onOpenSideNavigation={onOpenSideNavigation} />
+  );
+};
 
 interface ISiteLogoStyles {
   root: IStackStyles;

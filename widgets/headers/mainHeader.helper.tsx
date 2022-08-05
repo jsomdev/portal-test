@@ -3,6 +3,7 @@ import {
   DirectionalHint,
   FontSizes,
   FontWeights,
+  IButtonProps,
   IButtonStyles,
   ICommandBarItemProps,
   PartialTheme
@@ -58,7 +59,7 @@ export function getMainCommandBarItems(
         },
         commandBarButtonAs: props => (
           <CommandBarButton
-            {...(props as unknown)}
+            {...(props as IButtonProps)}
             // Need to overwrite the menuProps here so that we can display a beak
             // (by fluentUI design, a commandbar does not show beaks)
             menuProps={{

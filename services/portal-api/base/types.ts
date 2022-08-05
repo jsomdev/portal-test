@@ -23,28 +23,19 @@ export interface OrderPost {
   referenceNumber?: string;
 }
 
-export enum CustomerVerificationRequestStatus {
-  Pending = 'Pending',
-  Denied = 'Denied',
-  Approved = 'Approved'
-}
-
-export interface CustomerVerificationRequest {
-  accountNumber: string;
-  addressCity: string;
-  addressCountry: string;
-  addressLines: string[];
-  addressPostalCode: string;
-  addressRegion: string;
-  companyName: string;
-  status: CustomerVerificationRequestStatus;
-  userId: string;
-}
-
 export interface UserContactInfoPut {
   firstName: string;
   lastName: string;
   company: string;
+  jobTitle: string;
+  emailAddresses: string[];
+  phoneNumber: string;
+  urls: string[];
+}
+
+export interface ContactDetailsPut {
+  firstName: string;
+  lastName: string;
   jobTitle: string;
   emailAddresses: string[];
   phoneNumber: string;

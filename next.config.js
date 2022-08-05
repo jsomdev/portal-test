@@ -7,6 +7,11 @@ module.exports = {
             source: '/docs/i18n',
             destination: '/404',
             permanent: false
+          },
+          {
+            source: '/dev/user',
+            destination: '/404',
+            permanent: true
           }
         ]
       : [];

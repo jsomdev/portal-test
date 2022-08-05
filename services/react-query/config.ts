@@ -5,7 +5,6 @@ export const ENABLE_REACT_QUERY_DEVTOOLS = true;
 const DEFAULT_QUERY_OPTIONS: UseQueryOptions | undefined = {
   refetchOnWindowFocus: false,
   refetchOnMount: false,
-  cacheTime: 1000 * 60 * 60 * 24,
   retry: false
 };
 

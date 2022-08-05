@@ -61,5 +61,19 @@ export const en: Messages = {
           'Documentation about project setup and configuration in the project'
       }
     }
+  },
+  loading: {
+    default: 'Loading...',
+    user: {
+      signingIn: 'Signing in...',
+      signingOut: 'Signing out...',
+      redirecting: 'Redirecting...'
+    }
+  },
+  steps: {
+    actions: {
+      proceed: 'Proceed',
+      previous: 'Previous step'
+    }
   }
 };
