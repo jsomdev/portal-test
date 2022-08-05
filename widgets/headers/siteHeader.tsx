@@ -8,11 +8,12 @@ import {
   VerticalDivider
 } from '@fluentui/react';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
+import { messageIds } from '@services/i18n/ids';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
 
@@ -56,6 +57,15 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
+  const { locale, formatMessage } = useIntl();
+
+  const messages = defineMessages({
+    searchPlaceholder: {
+      id: messageIds.searchBar.placeholder,
+      description: 'Page search bar placeholder',
+      defaultMessage: 'Search by part number...'
+    }
+  });
 
   const styles: SmallSiteHeaderStyles = {
     root: {
@@ -126,7 +136,7 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
       >
         <TextField
           iconProps={{ iconName: 'Search' }}
-          placeholder="Search by part number"
+          placeholder={formatMessage(messages.searchPlaceholder)}
         />
       </Stack>
     </nav>
@@ -145,9 +155,17 @@ interface DesktopSiteHeaderStyles {
  */
 const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
-  const { locale } = useIntl();
+  const { locale, formatMessage } = useIntl();
 
   const formatter = new MultilingualStringFormatter();
+
+  const messages = defineMessages({
+    searchPlaceholder: {
+      id: messageIds.searchBar.placeholder,
+      description: 'Page search bar placeholder',
+      defaultMessage: 'Search by part number...'
+    }
+  });
 
   const styles: DesktopSiteHeaderStyles = {
     root: {
@@ -192,7 +210,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           <TextField
             styles={{ root: { maxWidth: 550, width: '100%' } }}
             iconProps={{ iconName: 'Search' }}
-            placeholder="Search by part number"
+            placeholder={formatMessage(messages.searchPlaceholder)}
           />
         </Stack>
         <Stack

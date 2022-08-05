@@ -28,7 +28,7 @@ type IMainNavigationMessages = {
   collapseLabel: string;
 };
 type ISiteSearchBarMessages = {
-  title: string;
+  placeholder: string;
 };
 type IUserNavigationMessages = {
   title: string;

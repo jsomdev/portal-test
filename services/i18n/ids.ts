@@ -21,10 +21,10 @@ export const messageIds: Messages = {
       expandLabel: 'navigation.user.expandLabel',
       signIn: 'navigation.user.signIn',
       myProfile: 'navigation.user.myProfile'
-    },
-    searchBar: {
-      title: 'navigation.site.searchBar'
     }
+  },
+  searchBar: {
+    placeholder: 'navigation.site.searchBar'
   },
   pages: {
     home: {
