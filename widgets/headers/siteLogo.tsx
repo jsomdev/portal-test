@@ -50,8 +50,9 @@ const MobileSiteLogo: React.FC = () => {
   const styles: SiteLogoStyles = {
     root: {
       root: {
-        maxWidth: rem(50),
-        transition: 'all 0.3s'
+        transition: 'all 0.3s',
+        width: rem(40),
+        height: rem(40)
       }
     }
   };

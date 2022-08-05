@@ -1,6 +1,7 @@
 import {
   IButtonStyles,
   IStackStyles,
+  ITextFieldStyles,
   IVerticalDividerStyles,
   Stack,
   TextField,
@@ -50,14 +51,14 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 
 interface SmallSiteHeaderStyles {
   root: IStackStyles;
-  divider: Partial<IVerticalDividerStyles>;
+  logoContainer: IStackStyles;
 }
 
 const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
-  const { locale, formatMessage } = useIntl();
+  const { formatMessage } = useIntl();
 
   const messages = defineMessages({
     searchPlaceholder: {
@@ -70,13 +71,15 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
   const styles: SmallSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80)
+        height: rem(80),
+        position: 'relative'
       }
     },
-    divider: {
-      wrapper: {
-        padding: rem(spacing.s2),
-        height: rem(32)
+    logoContainer: {
+      root: {
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)'
       }
     }
   };
@@ -106,6 +109,8 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
               iconName: 'GlobalNavButton'
             }}
           />
+        </Stack>
+        <Stack styles={styles.logoContainer}>
           <SiteLogo />
         </Stack>
         <Stack
@@ -149,6 +154,8 @@ interface DesktopSiteHeaderStyles {
   root: IStackStyles;
   button: Partial<IButtonStyles>;
   divider: Partial<IVerticalDividerStyles>;
+  logoContainer: IStackStyles;
+  searchBarContainer: Partial<ITextFieldStyles>;
 }
 /**
  * Large version of the Site Header
@@ -184,7 +191,13 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
         padding: rem(spacing.s2),
         height: rem(32)
       }
-    }
+    },
+    logoContainer: {
+      root: {
+        width: rem(280)
+      }
+    },
+    searchBarContainer: { root: { width: '100%' } }
   };
   return (
     <nav>
@@ -199,16 +212,16 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
       >
         <Stack
           horizontal
-          grow
           verticalFill
           tokens={{ childrenGap: rem(spacing.s1) }}
           verticalAlign="center"
+          styles={styles.logoContainer}
         >
           <SiteLogo />
         </Stack>
-        <Stack grow horizontal>
+        <Stack grow horizontal tokens={{ padding: `0 ${rem(spacing.l1)}` }}>
           <TextField
-            styles={{ root: { maxWidth: 550, width: '100%' } }}
+            styles={styles.searchBarContainer}
             iconProps={{ iconName: 'Search' }}
             placeholder={formatMessage(messages.searchPlaceholder)}
           />
