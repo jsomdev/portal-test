@@ -1,10 +1,8 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
-import Image from 'next/image';
 import { defineMessages, useIntl } from 'react-intl';
 import { Head } from 'widgets/metadata/head';
 
-import backgroundImage from '@public/bigcard_spraylance.png';
 import { getAudience, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
@@ -42,7 +40,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
     },
     backgroundImageAlt: {
-      id: messageIds.pages.home.backgroundImageAlt,
+      id: 'messageIds.pages.home.backgroundImageAlt',
       description: 'Alternative for background image',
       defaultMessage: 'Big spray lance background image'
     }
@@ -56,13 +54,13 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       />
       <Large>
         <div id="get-started">
-          <Image
+          {/* <Image
             src={backgroundImage}
             layout="fill"
             quality={100}
             objectFit="cover"
             objectPosition={'top center'}
-          />
+          /> */}
           <style jsx>
             {`
               #get-started {

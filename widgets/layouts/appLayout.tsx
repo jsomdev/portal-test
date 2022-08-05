@@ -24,6 +24,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
     main: {
       maxWidth: '100%',
       margin: 'auto',
+      verticalAlign: 'fill',
       paddingTop: isLarge ? rem(124) : rem(80)
     }
   };

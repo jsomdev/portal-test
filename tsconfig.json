@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -25,9 +25,15 @@
       "@components/*": ["components/*"],
       "@widgets/*": ["widgets/*"],
       "@utilities/*": ["utilities/*"],
-      "@providers/*": ["providers/*"],
+      "@providers/*": ["providers/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.js", "pages/categories/[...categorySlug].tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/_document.js",
+    "pages/categories/[...categorySlug].tsx"
+  ],
   "exclude": ["node_modules"]
 }

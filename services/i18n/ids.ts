@@ -59,5 +59,19 @@ export const messageIds: Messages = {
         description: 'pages.docs.projectSetup.description'
       }
     }
+  },
+  loading: {
+    default: 'loading.default',
+    user: {
+      signingIn: 'loading.user.signingIn',
+      signingOut: 'loading.user.signingIn',
+      redirecting: 'loading.user.redirecting'
+    }
+  },
+  steps: {
+    actions: {
+      proceed: 'steps.actions.proceed',
+      previous: 'steps.actions.previous'
+    }
   }
 };

@@ -1,6 +1,8 @@
 import { BaseResource } from './base/baseResource';
-import { CustomerVerificationRequestStatus } from './base/types';
+import { ContactDetailsPut } from './base/types';
 import { CartItem } from './models/CartItem';
+import { CustomerVerificationRequest } from './models/CustomerVerificationRequest';
+import { CustomerVerificationRequestStatus } from './models/CustomerVerificationRequestStatus';
 import { User } from './models/User';
 import { OdataCollection } from './o-data';
 
@@ -16,7 +18,7 @@ export const fetchMe = async (
     '/Me',
     {
       selectQuery: 'id,accountId,contactInfo,roles,name',
-      expandQuery: `account($select=number,name,paymentMethod),cart,customerVerificationRequests($select=status;$filter=status eq '${CustomerVerificationRequestStatus.Pending}')`
+      expandQuery: `account($select=number,name,paymentMethod),cart,customerVerificationRequests($select=status;$filter=status eq '${CustomerVerificationRequestStatus.PENDING}')`
     },
     {},
     true
@@ -52,4 +54,46 @@ export const updateCart = async (
       true
     );
   return cartItems;
+};
+
+export const updateContactDetails = async (
+  contactDetails: ContactDetailsPut
+): Promise<User> => {
+  const customUserResource: BaseResource<unknown> = new BaseResource('/me');
+  const data: User = await customUserResource.fetch<User>(
+    '/me/contactInfo',
+    {},
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ...contactDetails })
+    }
+  );
+  return data;
+};
+
+export const createUserVerification = async (
+  contactDetails: ContactDetailsPut,
+  verification: CustomerVerificationRequest
+): Promise<CustomerVerificationRequest> => {
+  const customUserVerificationResource: BaseResource<unknown> =
+    new BaseResource('/me/customerVerificationRequests');
+
+  await updateContactDetails(contactDetails);
+
+  const data: CustomerVerificationRequest =
+    await customUserVerificationResource.fetch<CustomerVerificationRequest>(
+      '/me/customerVerificationRequests',
+      {},
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(verification)
+      }
+    );
+  return data;
 };

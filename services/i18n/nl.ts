@@ -61,5 +61,19 @@ export const nl: Messages = {
           'Documentatie rond project setup and configuraties in het project'
       }
     }
+  },
+  loading: {
+    default: 'Aan het laden...',
+    user: {
+      signingIn: 'Inloggen...',
+      signingOut: 'Afmelden...',
+      redirecting: 'Even geduld...'
+    }
+  },
+  steps: {
+    actions: {
+      proceed: 'Volgende stap',
+      previous: 'Vorige stap'
+    }
   }
 };

@@ -33,6 +33,7 @@ export interface ReactQueryKeys {
   appRecentlyViewedProducts: string;
   appRecentlyViewedProductsSetting: string;
   appRecentySearchedSetting: string;
+  appAudienceSetting: string;
   appSearchCategories: string;
   appSearchProducts: string;
   appSiteMenu: string;
@@ -54,11 +55,15 @@ export interface ReactQueryKeys {
   globalModels: string;
   globalSeries: string;
   homeCategoryPages: string;
+  matchEmailToCustomer: string;
   modelKeySpecifications: string;
   modelResources: string;
   orderDetail: string;
   orderLineProducts: string;
   orders: string;
+  quoteRequests: string;
+  quoteRequestDetail: string;
+  quoteRequestLineProducts: string;
   productFinderGridViewItems: string;
   productFinderLiquidsWithRelativeDensity: string;
   productFinderListViewItems: string;
