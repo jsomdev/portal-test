@@ -27,6 +27,9 @@ type IMainNavigationMessages = {
   expandLabel: string;
   collapseLabel: string;
 };
+type ISiteSearchBarMessages = {
+  title: string;
+};
 type IUserNavigationMessages = {
   title: string;
   expandLabel: string;
@@ -55,6 +58,7 @@ export type Messages = {
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
   };
+  searchBar: ISiteSearchBarMessages;
   pages: {
     home: IHomeMessages & {
       backgroundImageAlt: string;

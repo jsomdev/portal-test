@@ -1,25 +1,23 @@
-import React from 'react';
-
-import { useIntl } from 'react-intl';
-
 import {
   IButtonStyles,
   IStackStyles,
   IVerticalDividerStyles,
   Stack,
+  TextField,
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
-import { Medium } from '@widgets/media-queries/mediaQuery';
-import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
+import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
-
+import { useIntl } from 'react-intl';
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
 
-export interface ISiteHeaderProps {
+//items prop has Menu Items from the api
+export interface SiteHeaderProps {
   onOpenSideNavigation?: (type: AppNavigationType) => void;
   items: MenuItem[];
 }
@@ -29,41 +27,37 @@ export interface ISiteHeaderProps {
  * Based on the screen size a different version will be displayed.
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
-export const SiteHeader: React.FC<ISiteHeaderProps> = ({
-  onOpenSideNavigation,
-  items
+export const SiteHeader: React.FC<SiteHeaderProps> = ({
+  items,
+  onOpenSideNavigation
 }) => {
   const isLarge = useLarge();
 
   if (isLarge) {
-    return <LargeSiteHeader items={items} />;
+    return <DesktopSiteHeader items={items} />;
   }
 
   return (
-    <DefaultSiteHeader
+    <SmallSiteHeader
       items={items}
       onOpenSideNavigation={onOpenSideNavigation}
     />
   );
 };
 
-// ### Default Site Header
+// ### Small Site Header
 
-/**
- * Default version of the Site Header
- */
-interface IDefaultSiteHeaderStyles {
+interface SmallSiteHeaderStyles {
   root: IStackStyles;
   divider: Partial<IVerticalDividerStyles>;
 }
 
-const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
+const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
-  const { locale } = useIntl();
 
-  const styles: IDefaultSiteHeaderStyles = {
+  const styles: SmallSiteHeaderStyles = {
     root: {
       root: {
         height: rem(80)
@@ -109,21 +103,6 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          <Medium>
-            <HeaderButton
-              iconProps={{
-                iconName: 'Globe'
-              }}
-              type="actionButton"
-              text={locale.toLocaleUpperCase()}
-            />
-            <VerticalDivider styles={styles.divider} />
-          </Medium>
-          <HeaderButton
-            iconProps={{
-              iconName: 'Search'
-            }}
-          />
           <HeaderButton
             iconProps={{
               iconName: 'ShoppingCart'
@@ -140,13 +119,23 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           />
         </Stack>
       </Stack>
+      <Stack
+        tokens={{
+          padding: `0 ${rem(12)}`
+        }}
+      >
+        <TextField
+          iconProps={{ iconName: 'Search' }}
+          placeholder="Search by part number"
+        />
+      </Stack>
     </nav>
   );
 };
 
-// ###LargeSiteHeader
+// ###DesktopSiteHeader
 
-interface ILargeSiteHeaderStyles {
+interface DesktopSiteHeaderStyles {
   root: IStackStyles;
   button: Partial<IButtonStyles>;
   divider: Partial<IVerticalDividerStyles>;
@@ -154,11 +143,13 @@ interface ILargeSiteHeaderStyles {
 /**
  * Large version of the Site Header
  */
-const LargeSiteHeader: React.FC<ISiteHeaderProps> = ({ items }) => {
+const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
   const { locale } = useIntl();
 
-  const styles: ILargeSiteHeaderStyles = {
+  const formatter = new MultilingualStringFormatter();
+
+  const styles: DesktopSiteHeaderStyles = {
     root: {
       root: {
         height: rem(80)
@@ -197,6 +188,13 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = ({ items }) => {
         >
           <SiteLogo />
         </Stack>
+        <Stack grow horizontal>
+          <TextField
+            styles={{ root: { maxWidth: 550, width: '100%' } }}
+            iconProps={{ iconName: 'Search' }}
+            placeholder="Search by part number"
+          />
+        </Stack>
         <Stack
           horizontal
           verticalAlign="center"
@@ -206,7 +204,7 @@ const LargeSiteHeader: React.FC<ISiteHeaderProps> = ({ items }) => {
             <HeaderButton
               type="actionButton"
               key={item.id}
-              text={item.url?.text?.en}
+              text={formatter.format(item.url?.text)}
               href={item?.url?.value || undefined}
               styles={styles.button}
             />
