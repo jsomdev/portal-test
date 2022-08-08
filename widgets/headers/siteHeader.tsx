@@ -8,7 +8,7 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
+import { UrlFormatter } from '@services/i18n/formatters/entity-formatters/urlFormatter';
 import { messageIds } from '@services/i18n/ids';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
@@ -164,8 +164,6 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
   const { locale, formatMessage } = useIntl();
 
-  const formatter = new MultilingualStringFormatter();
-
   const messages = defineMessages({
     searchPlaceholder: {
       id: messageIds.searchBar.placeholder,
@@ -231,15 +229,18 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          {items.map(item => (
-            <HeaderButton
-              type="actionButton"
-              key={item.id}
-              text={formatter.format(item.url?.text)}
-              href={item?.url?.value || undefined}
-              styles={styles.button}
-            />
-          ))}
+          {items.map(item => {
+            if (item?.url) {
+              const formatter = new UrlFormatter(item.url);
+              <HeaderButton
+                type="actionButton"
+                key={item.id}
+                text={formatter.formatText()}
+                href={item?.url?.value || undefined}
+                styles={styles.button}
+              />;
+            }
+          })}
           <VerticalDivider styles={styles.divider} />
           <HeaderButton
             id="random"
