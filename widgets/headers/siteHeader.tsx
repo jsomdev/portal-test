@@ -236,11 +236,11 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           role="navigation"
         >
           <ul className="horizontal">
-            {items.map(item => {
+            {items.map((item, index) => {
               if (item?.url) {
                 const formatter = new UrlFormatter(item.url);
                 return (
-                  <li className="horizontal">
+                  <li className="horizontal" key={`site-menu-item-${index}`}>
                     <HeaderButton
                       type="actionButton"
                       key={item?.id}
