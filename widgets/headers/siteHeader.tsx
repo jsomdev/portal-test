@@ -62,7 +62,7 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
 
   const messages = defineMessages({
     searchPlaceholder: {
-      id: messageIds.searchBar.placeholder,
+      id: messageIds.navigation.searchBar.placeholder,
       description: 'Page search bar placeholder',
       defaultMessage: 'Search by part number...'
     }
@@ -166,7 +166,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
 
   const messages = defineMessages({
     searchPlaceholder: {
-      id: messageIds.searchBar.placeholder,
+      id: messageIds.navigation.searchBar.placeholder,
       description: 'Page search bar placeholder',
       defaultMessage: 'Search by part number...'
     }

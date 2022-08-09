@@ -70,8 +70,8 @@ export type Messages = {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
+    searchBar: ISiteSearchBarMessages;
   };
-  searchBar: ISiteSearchBarMessages;
   loading: {
     default: string;
     user: ILoadingUserMessages;
