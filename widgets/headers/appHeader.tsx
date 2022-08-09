@@ -5,6 +5,7 @@ import { MenuItem } from '@services/portal-api';
 import { AppPanel } from '@widgets/panels/appNavigationPanel';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
+import { MainHeader } from './mainHeader';
 import { SiteHeader } from './siteHeader';
 
 export interface IAppHeaderProps {
@@ -49,7 +50,7 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({
         items={siteMenuItems}
         onOpenSideNavigation={setSideNavigationType}
       />
-      {/* {showMainHeader && <MainHeader items={mainMenuItems} />} */}
+      {showMainHeader && <MainHeader items={mainMenuItems} />}
       <AppPanel
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}

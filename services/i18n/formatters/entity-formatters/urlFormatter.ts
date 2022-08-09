@@ -14,5 +14,4 @@ export class UrlFormatter {
   }
 
   //formatHref()
-  //format
 }
