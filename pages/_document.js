@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 /* eslint-disable no-redeclare */
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from 'next/document';
