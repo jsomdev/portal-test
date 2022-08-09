@@ -84,7 +84,7 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
     }
   };
   return (
-    <nav>
+    <Stack>
       <Stack
         horizontal
         verticalAlign="center"
@@ -144,7 +144,7 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
           placeholder={formatMessage(messages.searchPlaceholder)}
         />
       </Stack>
-    </nav>
+    </Stack>
   );
 };
 
@@ -195,10 +195,10 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
         width: rem(280)
       }
     },
-    searchBarContainer: { root: { width: '100%' } }
+    searchBarContainer: { root: { width: '100%', maxWidth: rem(450) } }
   };
   return (
-    <nav>
+    <Stack>
       <Stack
         horizontal
         verticalAlign="center"
@@ -217,7 +217,12 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
         >
           <SiteLogo />
         </Stack>
-        <Stack grow horizontal tokens={{ padding: `0 ${rem(spacing.l1)}` }}>
+        <Stack
+          grow
+          horizontal
+          tokens={{ padding: `0 ${rem(spacing.l1)}` }}
+          horizontalAlign="center"
+        >
           <TextField
             styles={styles.searchBarContainer}
             iconProps={{ iconName: 'Search' }}
@@ -228,19 +233,26 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           horizontal
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
+          role="navigation"
         >
-          {items.map(item => {
-            if (item?.url) {
-              const formatter = new UrlFormatter(item.url);
-              <HeaderButton
-                type="actionButton"
-                key={item.id}
-                text={formatter.formatText()}
-                href={item?.url?.value || undefined}
-                styles={styles.button}
-              />;
-            }
-          })}
+          <ul className="horizontal">
+            {items.map(item => {
+              if (item?.url) {
+                const formatter = new UrlFormatter(item.url);
+                return (
+                  <li className="horizontal">
+                    <HeaderButton
+                      type="actionButton"
+                      key={item?.id}
+                      text={formatter.formatText()}
+                      href={item?.url?.value || undefined}
+                      styles={styles.button}
+                    />
+                  </li>
+                );
+              }
+            })}
+          </ul>
           <VerticalDivider styles={styles.divider} />
           <HeaderButton
             id="random"
@@ -253,6 +265,6 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           />
         </Stack>
       </Stack>
-    </nav>
+    </Stack>
   );
 };
