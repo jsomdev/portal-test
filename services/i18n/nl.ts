@@ -21,6 +21,9 @@ export const nl: Messages = {
       expandLabel: 'navigation.user.expandLabel',
       signIn: 'Inloggen',
       myProfile: 'Mijn Profiel'
+    },
+    searchBar: {
+      placeholder: 'Zoek onderdeel nummer...'
     }
   },
   pages: {

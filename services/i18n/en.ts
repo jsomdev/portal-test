@@ -21,6 +21,9 @@ export const en: Messages = {
       expandLabel: 'navigation.user.expandLabel',
       signIn: 'Sign in',
       myProfile: 'My Profile'
+    },
+    searchBar: {
+      placeholder: 'Search by part number...'
     }
   },
   pages: {

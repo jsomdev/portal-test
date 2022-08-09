@@ -31,42 +31,43 @@ interface DrillDownCardContainerStyles {
  * Compound component that displays an (optional) title
  * and renders the childs inside a stack that will be wrapped if the screensize becomes to small
  */
-export const DrillDownCardsContainer: React.FC<DrillDownCardContainerProps> =
-  props => {
-    const theme = useTheme();
-    const { spacing } = theme;
-    const { title, children } = props;
+export const DrillDownCardsContainer: React.FC<
+  DrillDownCardContainerProps
+> = props => {
+  const theme = useTheme();
+  const { spacing } = theme;
+  const { title, children } = props;
 
-    const styles: DrillDownCardContainerStyles = {
-      title: {
-        root: {
-          fontWeight: FontWeights.semibold
-        }
-      },
-      contentContainer: { root: { width: '100%' } }
-    };
-    return (
-      <Stack tokens={{ childrenGap: spacing.m }}>
-        {title && (
-          <Text styles={styles.title} variant="large">
-            {title}
-          </Text>
-        )}
-        {children && (
-          <Stack.Item>
-            <Stack
-              horizontal={true}
-              wrap={true}
-              styles={styles.contentContainer}
-              tokens={{ childrenGap: '14px' }}
-            >
-              {children}
-            </Stack>
-          </Stack.Item>
-        )}
-      </Stack>
-    );
+  const styles: DrillDownCardContainerStyles = {
+    title: {
+      root: {
+        fontWeight: FontWeights.semibold
+      }
+    },
+    contentContainer: { root: { width: '100%' } }
   };
+  return (
+    <Stack tokens={{ childrenGap: spacing.m }}>
+      {title && (
+        <Text styles={styles.title} variant="large">
+          {title}
+        </Text>
+      )}
+      {children && (
+        <Stack.Item>
+          <Stack
+            horizontal={true}
+            wrap={true}
+            styles={styles.contentContainer}
+            tokens={{ childrenGap: '14px' }}
+          >
+            {children}
+          </Stack>
+        </Stack.Item>
+      )}
+    </Stack>
+  );
+};
 
 export interface DrillDownCardProps<TData> {
   styles?: DrillDownCardStyles;
