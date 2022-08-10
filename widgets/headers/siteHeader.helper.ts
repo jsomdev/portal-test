@@ -1,22 +1,23 @@
-import { SiteHeaderMenuUrlFormatter } from '@services/i18n/formatters/entity-formatters/siteMenuItemFormatter';
+import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from './../../services/portal-api/models/MenuItem';
-export function mapSiteMenuItemsToMenuItems(
-  items: MenuItem[],
+import { SiteHeaderItemProps } from './siteHeader';
+export function mapMenuItemsToSiteHeaderItemProps(
+  menuItems: MenuItem[],
   locale?: string
-): MenuItem[] {
-  const returnItems: MenuItem[] = [];
-  items.map(menuItem => {
-    if (menuItem && menuItem.url) {
-      const formatter = new SiteHeaderMenuUrlFormatter(menuItem.url, locale);
-      returnItems.push({
-        ...menuItem,
-        url: {
-          text: formatter.formatText(),
-          type: '',
-          value: formatter.formatHref()
-        }
-      });
-    }
-  });
-  return [];
+): SiteHeaderItemProps[] {
+  return menuItems.map(menuItem =>
+    mapMenuItemToSiteHeaderItemProps(menuItem, locale)
+  );
+}
+
+function mapMenuItemToSiteHeaderItemProps(
+  menuItem: MenuItem,
+  locale?: string
+): SiteHeaderItemProps {
+  const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
+  return {
+    //TODO add route path isntead of hardcoded 404 @Jan
+    href: menuItemFormatter.formatHref() || '/404',
+    text: menuItemFormatter.formatText()
+  };
 }

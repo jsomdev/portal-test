@@ -7,13 +7,11 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
+import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
+import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { getAudience } from '@services/i18n';
-import {
-  AttributeGroup,
-  AttributeType,
-  Model as ModelModel,
-  Series
-} from '@services/portal-api';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
+import { Model as ModelModel, Series } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
@@ -22,29 +20,35 @@ import {
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
 import { fetchAllSeries } from '@services/portal-api/series';
-import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
-import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface ModelProps {
   model: ModelModel;
   series: Series | undefined;
-  attributeTypes: AttributeType[];
-  attributeTypeGroups: AttributeGroup[];
 }
 
-const Model: NextPage<ModelProps & AppLayoutProps> = ({
-  model,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+const Model: NextPage<
+  ModelProps &
+    Partial<
+      Pick<
+        GlobalDataContextProps,
+        'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
+      >
+    >
+> = ({ model, siteMenuItems, mainMenuItems }) => {
   const { pathname } = useRouter();
 
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head pathname={pathname} title="Home" description="Home Description" />
-      {model.id}
-    </AppLayout>
+    <GlobalDataProvider
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
+    >
+      <AppLayout>
+        <Head pathname={pathname} title="Home" description="Home Description" />
+        {model.id}
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 
@@ -75,7 +79,20 @@ export const getStaticPaths: GetStaticPaths = async context => {
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<ModelProps & AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<
+    ModelProps &
+      Partial<
+        Pick<
+          GlobalDataContextProps,
+          | 'attributeGroups'
+          | 'attributeTypes'
+          | 'mainMenuItems'
+          | 'siteMenuItems'
+        >
+      >
+  >
+> => {
   try {
     const { locale } = context;
     const { modelSlug } = context.params as IModelParsedUrlQuery;
@@ -114,7 +131,7 @@ export const getStaticProps: GetStaticProps = async (
       props: {
         model: model,
         series: series,
-        attributeTypeGroups: attributeTypeGroupsData,
+        attributeGroups: attributeTypeGroupsData,
         attributeTypes: attributeTypesData,
         siteMenuItems: siteMenuData,
         mainMenuItems: mainMenuData

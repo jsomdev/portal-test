@@ -3,6 +3,10 @@ import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 import { Head } from 'widgets/metadata/head';
 
+import {
+  GlobalDataProvider,
+  GlobalDataProviderProps
+} from '@providers/global-data/globalDataProvider';
 import { getAudience, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
@@ -14,18 +18,17 @@ import {
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { rem } from '@utilities/rem';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
-import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { AppLayout } from '@widgets/layouts/appLayout';
 import { Large } from '@widgets/media-queries';
 
 export interface HomeProps {
   categories: Category[];
 }
 
-const Home: NextPage<HomeProps & AppLayoutProps> = ({
-  categories,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+const Home: NextPage<
+  HomeProps &
+    Partial<Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>>
+> = ({ categories, siteMenuItems, mainMenuItems }) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
   const messages = defineMessages({
@@ -46,40 +49,50 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
     }
   });
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head
-        pathname={pathname}
-        title={formatMessage(messages.headTitle)}
-        description={formatMessage(messages.headDescription)}
-      />
-      <Large>
-        <div id="get-started">
-          {/* <Image
+    <GlobalDataProvider
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
+    >
+      <AppLayout>
+        <Head
+          pathname={pathname}
+          title={formatMessage(messages.headTitle)}
+          description={formatMessage(messages.headDescription)}
+        />
+        <Large>
+          <div id="get-started">
+            {/* <Image
             src={backgroundImage}
             layout="fill"
             quality={100}
             objectFit="cover"
             objectPosition={'top center'}
           /> */}
-          <style jsx>
-            {`
-              #get-started {
-                width: 100%;
-                height: ${rem(500)};
-                position: relative;
-              }
-            `}
-          </style>
-        </div>
-      </Large>
-      <HomeCategoriesSection categories={categories} />
-    </AppLayout>
+            <style jsx>
+              {`
+                #get-started {
+                  width: 100%;
+                  height: ${rem(500)};
+                  position: relative;
+                }
+              `}
+            </style>
+          </div>
+        </Large>
+        <HomeCategoriesSection categories={categories} />
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<HomeProps & AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<
+    HomeProps &
+      Partial<Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>>
+  >
+> => {
   const { locale } = context;
   try {
     const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([

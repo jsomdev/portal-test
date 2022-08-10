@@ -1,3 +1,5 @@
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IButtonStyles,
   IStackStyles,
@@ -9,20 +11,18 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { SiteHeaderMenuUrlFormatter } from '@services/i18n/formatters/entity-formatters/siteMenuItemFormatter';
 import { messageIds } from '@services/i18n/ids';
-import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
-import { defineMessages, useIntl } from 'react-intl';
+
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
 export interface SiteHeaderProps {
+  items: SiteHeaderItemProps[];
   onOpenSideNavigation?: (type: AppNavigationType) => void;
-  items: MenuItem[];
 }
 
 /**
@@ -36,10 +36,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const isLarge = useLarge();
 
-  //const mappedItems =
-
   if (isLarge) {
-    return <DesktopSiteHeader items={items} />;
+    return <DesktopSiteHeader items={items || []} />;
   }
 
   return (
@@ -50,7 +48,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   );
 };
 
-// ### Small Site Header
+//### Mobile Header
 
 interface MobileSiteHeaderStyles {
   root: IStackStyles;
@@ -151,8 +149,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
   );
 };
 
-// ###DesktopSiteHeader
-
 interface DesktopSiteHeaderStyles {
   root: IStackStyles;
   button: Partial<IButtonStyles>;
@@ -160,6 +156,9 @@ interface DesktopSiteHeaderStyles {
   logoContainer: IStackStyles;
   searchBarContainer: Partial<ITextFieldStyles>;
 }
+
+//### Desktop Header
+
 /**
  * Large version of the Site Header
  */
@@ -239,37 +238,12 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           role="navigation"
         >
           <ul className="horizontal">
-            {items.map((item, index) => {
-              if (item?.url) {
-                const formatter = new SiteHeaderMenuUrlFormatter(item.url);
-                return (
-                  <li className="horizontal" key={`site-menu-item-${index}`}>
-                    <HeaderButton
-                      type="actionButton"
-                      key={item?.id}
-                      text={formatter.formatText()}
-                      href={formatter.formatHref()}
-                      styles={styles.button}
-                    />
-                  </li>
-                );
-              }
+            {items.map(item => {
+              return (
+                <SiteHeaderItem {...item} key={`site-menu-item-${item.text}`} />
+              );
             })}
           </ul>
-          {/* <BasicList
-            items={items}
-            onRenderItem={(item: MenuItem) => {
-              return (
-                <HeaderButton
-                  type="actionButton"
-                  key={item?.id}
-                  text={formatter.formatText()}
-                  href={formatter.formatHref()}
-                  styles={styles.button}
-                />
-              );
-            }}
-          /> */}
           <List items={items} />
           <VerticalDivider styles={styles.divider} />
           <HeaderButton
@@ -284,5 +258,35 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
         </Stack>
       </Stack>
     </Stack>
+  );
+};
+
+export interface SiteHeaderItemProps {
+  text: string;
+  href: string;
+}
+
+interface SiteHeaderItemStyles {
+  button: Partial<IButtonStyles>;
+}
+
+const SiteHeaderItem: React.FC<SiteHeaderItemProps> = ({ text, href }) => {
+  const styles: SiteHeaderItemStyles = {
+    button: {
+      label: {
+        fontSize: rem(14),
+        fontWeight: 500
+      }
+    }
+  };
+  return (
+    <li className="horizontal">
+      <HeaderButton
+        type="actionButton"
+        text={text}
+        href={href}
+        styles={styles.button}
+      />
+    </li>
   );
 };

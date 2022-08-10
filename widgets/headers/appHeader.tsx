@@ -1,39 +1,40 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { useTheme } from '@fluentui/react';
-import { MenuItem } from '@services/portal-api';
+import { useLarge } from '@widgets/media-queries';
 import { AppPanel } from '@widgets/panels/appNavigationPanel';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
+import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { useIntl } from 'react-intl';
 import { MainHeader } from './mainHeader';
-import { SiteHeader } from './siteHeader';
+import { SiteHeader, SiteHeaderItemProps } from './siteHeader';
+import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
 
-export interface IAppHeaderProps {
-  showMainHeader: boolean;
-  mainMenuItems: MenuItem[];
-  siteMenuItems: MenuItem[];
-}
-
-export interface IAppHeaderStyles {
+export interface AppHeaderStyles {
   root: React.CSSProperties;
 }
 /**
  * Header component that is displayed at the top of each page.
  */
-export const AppHeader: React.FC<IAppHeaderProps> = ({
-  showMainHeader,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+export const AppHeader: React.FC = () => {
+  const showMainHeader = useLarge();
   const { semanticColors } = useTheme();
+  const { siteMenuItems } = useGlobalData();
+  const { locale } = useIntl();
+
   const [sideNavigationType, setSideNavigationType] =
     useState<null | AppNavigationType>(null);
+
+  const items: SiteHeaderItemProps[] = useMemo(() => {
+    return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
+  }, [locale, siteMenuItems]);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
   }
 
-  const styles: IAppHeaderStyles = {
+  const styles: AppHeaderStyles = {
     root: {
       borderBottom: `1px solid ${semanticColors.variantBorder}`,
       position: 'fixed',
@@ -46,14 +47,9 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({
   };
   return (
     <header style={styles.root}>
-      <SiteHeader
-        items={siteMenuItems}
-        onOpenSideNavigation={setSideNavigationType}
-      />
-      {showMainHeader && <MainHeader items={mainMenuItems} />}
+      <SiteHeader items={items} onOpenSideNavigation={setSideNavigationType} />
+      {showMainHeader && <MainHeader />}
       <AppPanel
-        siteMenuItems={siteMenuItems}
-        mainMenuItems={mainMenuItems}
         type={sideNavigationType}
         panelProps={{
           isOpen: !!sideNavigationType,

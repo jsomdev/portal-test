@@ -14,36 +14,29 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import { MenuItem } from '@services/portal-api';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { rem } from '@utilities/rem';
 import { HeaderButton } from '@widgets/headers/headerButton';
 
 import { getAppNavigationPanelLinkGroups } from './appNavigationPanel.helper';
 import { AppNavigationType } from './appNavigationPanel.types';
 
-export interface IAppPanelProps {
+export interface AppPanelProps {
   panelProps: Partial<IPanelProps>;
-  siteMenuItems: MenuItem[];
-  mainMenuItems: MenuItem[];
   type: AppNavigationType | null;
 }
 
-export interface IAppPanelStyles {
+export interface AppPanelStyles {
   panel: Partial<IPanelStyles>;
   panelHeader: IStackStyles;
   nav: Partial<INavStyles>;
   navGroupHeader: IStackStyles;
 }
 
-export const AppPanel: React.FC<IAppPanelProps> = ({
-  panelProps,
-  type,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+export const AppPanel: React.FC<AppPanelProps> = ({ panelProps, type }) => {
   const { spacing, palette, semanticColors } = useTheme();
-
-  const styles: IAppPanelStyles = {
+  const { siteMenuItems, mainMenuItems } = useGlobalData();
+  const styles: AppPanelStyles = {
     panel: {
       content: {
         padding: 0,
@@ -123,8 +116,8 @@ export const AppPanel: React.FC<IAppPanelProps> = ({
         styles={styles.nav}
         groups={getAppNavigationPanelLinkGroups(
           type,
-          siteMenuItems,
-          mainMenuItems
+          siteMenuItems || [],
+          mainMenuItems || []
         )}
         onRenderGroupHeader={props => (
           <Stack
