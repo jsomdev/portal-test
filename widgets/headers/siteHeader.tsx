@@ -1,3 +1,5 @@
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IButtonStyles,
   IStackStyles,
@@ -8,20 +10,19 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { UrlFormatter } from '@services/i18n/formatters/entity-formatters/urlFormatter';
 import { messageIds } from '@services/i18n/ids';
-import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
-import { defineMessages, useIntl } from 'react-intl';
+
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
 export interface SiteHeaderProps {
   onOpenSideNavigation?: (type: AppNavigationType) => void;
-  items: MenuItem[];
 }
 
 /**
@@ -30,13 +31,15 @@ export interface SiteHeaderProps {
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
 export const SiteHeader: React.FC<SiteHeaderProps> = ({
-  items,
   onOpenSideNavigation
 }) => {
+  const { siteMenuItems } = useGlobalData();
   const isLarge = useLarge();
 
+  // const items: SiteHeaderItem[] = useMemo(() => {}, [siteMenuItems])
+
   if (isLarge) {
-    return <DesktopSiteHeader items={items} />;
+    return <DesktopSiteHeader items={items || []} />;
   }
 
   return (

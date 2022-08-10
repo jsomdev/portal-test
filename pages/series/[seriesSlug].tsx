@@ -9,8 +9,10 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
+import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
+import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { getAudience } from '@services/i18n';
-import { AttributeGroup, AttributeType } from '@services/portal-api';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
@@ -22,28 +24,34 @@ import {
   fetchAllSeries,
   fetchSeriesForStaticPaths
 } from '@services/portal-api/series';
-import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
-import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface SeriesProps {
   series: SeriesModel;
-  attributeTypes: AttributeType[];
-  attributeTypeGroups: AttributeGroup[];
 }
 
-const Series: NextPage<SeriesProps & AppLayoutProps> = ({
-  series,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+const Series: NextPage<
+  SeriesProps &
+    Partial<
+      Pick<
+        GlobalDataContextProps,
+        'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
+      >
+    >
+> = ({ series, siteMenuItems, mainMenuItems }) => {
   const { pathname } = useRouter();
 
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head pathname={pathname} title="Home" description="Home Description" />
-      {series.id}
-    </AppLayout>
+    <GlobalDataProvider
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
+    >
+      <AppLayout>
+        <Head pathname={pathname} title="Home" description="Home Description" />
+        {series.id}
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 
@@ -79,7 +87,20 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<SeriesProps & AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<
+    SeriesProps &
+      Partial<
+        Pick<
+          GlobalDataContextProps,
+          | 'attributeGroups'
+          | 'attributeTypes'
+          | 'mainMenuItems'
+          | 'siteMenuItems'
+        >
+      >
+  >
+> => {
   try {
     const { locale } = context;
     const { seriesSlug } = context.params as ISeriesParsedUrlQuery;
@@ -111,7 +132,7 @@ export const getStaticProps: GetStaticProps = async (
     return {
       props: {
         series: series,
-        attributeTypeGroups: attributeGroupsData,
+        attributeGroups: attributeGroupsData,
         attributeTypes: attributeTypesData,
         siteMenuItems: siteMenuData,
         mainMenuItems: mainMenuData

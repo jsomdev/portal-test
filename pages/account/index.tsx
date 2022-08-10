@@ -5,20 +5,26 @@ import {
   NextPage
 } from 'next';
 
+import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { getAudience } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { AppLayoutProps } from '@widgets/layouts/appLayout';
 
-const Account: NextPage<AppLayoutProps> = () => {
+const Account: NextPage<
+  Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
+> = () => {
   return <div>TODO</div>;
 };
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<
+    Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
+  >
+> => {
   try {
     const { locale } = context;
     const [siteMenuData, mainMenuData] = await Promise.all([

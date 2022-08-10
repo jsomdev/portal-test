@@ -14,6 +14,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
@@ -24,21 +25,19 @@ import { rem } from '@utilities/rem';
 import { HeaderButton } from './headerButton';
 import { getMainCommandBarItems } from './mainHeader.helper';
 
-interface IMainHeaderProps {
-  items: MenuItem[];
-}
-interface IMainHeaderStyles {
+interface MainHeaderStyles {
   commandBarContainer: IStackItemStyles;
   root: IStackStyles;
 }
-interface IMainCommandBarStyles {
+interface MainCommandBarStyles {
   commandBar: Partial<ICommandBarStyles>;
   button: Partial<IButtonStyles>;
 }
 
-export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
+export const MainHeader: React.FC = () => {
   const { spacing } = useTheme();
   const { instance, inProgress } = useMsal();
+  const { mainMenuItems: items } = useGlobalData();
   const { me } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
@@ -59,7 +58,7 @@ export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
   function signIn() {
     instance.loginRedirect(customerLoginRequest);
   }
-  const styles: IMainHeaderStyles = {
+  const styles: MainHeaderStyles = {
     root: {
       root: {
         height: 44,
@@ -85,7 +84,7 @@ export const MainHeader: React.FC<IMainHeaderProps> = ({ items }) => {
         horizontalAlign="space-between"
       >
         <Stack.Item styles={styles.commandBarContainer}>
-          <MainHeaderCommandBar items={items} />
+          <MainHeaderCommandBar items={items || []} />
         </Stack.Item>
         <Stack
           horizontal
@@ -136,7 +135,7 @@ const MainHeaderCommandBar: React.FC<{ items: MenuItem[] }> = ({ items }) => {
   const theme = useTheme();
   const { spacing, palette } = theme;
   const { push } = useRouter();
-  const styles: IMainCommandBarStyles = {
+  const styles: MainCommandBarStyles = {
     commandBar: {
       root: {
         width: '100%',
