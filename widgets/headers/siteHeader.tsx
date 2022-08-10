@@ -3,12 +3,13 @@ import {
   IStackStyles,
   ITextFieldStyles,
   IVerticalDividerStyles,
+  List,
   Stack,
   TextField,
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { UrlFormatter } from '@services/i18n/formatters/entity-formatters/urlFormatter';
+import { SiteHeaderMenuUrlFormatter } from '@services/i18n/formatters/entity-formatters/siteMenuItemFormatter';
 import { messageIds } from '@services/i18n/ids';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
@@ -35,12 +36,14 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const isLarge = useLarge();
 
+  //const mappedItems =
+
   if (isLarge) {
     return <DesktopSiteHeader items={items} />;
   }
 
   return (
-    <SmallSiteHeader
+    <MobileSiteHeader
       items={items}
       onOpenSideNavigation={onOpenSideNavigation}
     />
@@ -49,12 +52,12 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 
 // ### Small Site Header
 
-interface SmallSiteHeaderStyles {
+interface MobileSiteHeaderStyles {
   root: IStackStyles;
   logoContainer: IStackStyles;
 }
 
-const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
+const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
@@ -68,7 +71,7 @@ const SmallSiteHeader: React.FC<SiteHeaderProps> = ({
     }
   });
 
-  const styles: SmallSiteHeaderStyles = {
+  const styles: MobileSiteHeaderStyles = {
     root: {
       root: {
         height: rem(80),
@@ -238,14 +241,14 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           <ul className="horizontal">
             {items.map((item, index) => {
               if (item?.url) {
-                const formatter = new UrlFormatter(item.url);
+                const formatter = new SiteHeaderMenuUrlFormatter(item.url);
                 return (
                   <li className="horizontal" key={`site-menu-item-${index}`}>
                     <HeaderButton
                       type="actionButton"
                       key={item?.id}
                       text={formatter.formatText()}
-                      href={item?.url?.value || undefined}
+                      href={formatter.formatHref()}
                       styles={styles.button}
                     />
                   </li>
@@ -253,6 +256,21 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
               }
             })}
           </ul>
+          {/* <BasicList
+            items={items}
+            onRenderItem={(item: MenuItem) => {
+              return (
+                <HeaderButton
+                  type="actionButton"
+                  key={item?.id}
+                  text={formatter.formatText()}
+                  href={formatter.formatHref()}
+                  styles={styles.button}
+                />
+              );
+            }}
+          /> */}
+          <List items={items} />
           <VerticalDivider styles={styles.divider} />
           <HeaderButton
             id="random"

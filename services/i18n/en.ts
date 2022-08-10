@@ -24,6 +24,12 @@ export const en: Messages = {
     },
     searchBar: {
       placeholder: 'Search by part number...'
+    },
+    desktopLogo: {
+      imageAlt: 'Spraying Systems Company Site Logo'
+    },
+    mobileLogo: {
+      imageAlt: 'Spraying Systems Company Site Logo'
     }
   },
   pages: {

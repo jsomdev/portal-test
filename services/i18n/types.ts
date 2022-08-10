@@ -30,6 +30,12 @@ type IMainNavigationMessages = {
 type ISiteSearchBarMessages = {
   placeholder: string;
 };
+type IDesktopLogoImageMessages = {
+  imageAlt: string;
+};
+type IMobileLogoImageMessages = {
+  imageAlt: string;
+};
 type IUserNavigationMessages = {
   title: string;
   expandLabel: string;
@@ -71,6 +77,8 @@ export type Messages = {
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
     searchBar: ISiteSearchBarMessages;
+    desktopLogo: IDesktopLogoImageMessages;
+    mobileLogo: IMobileLogoImageMessages;
   };
   loading: {
     default: string;

@@ -24,6 +24,12 @@ export const messageIds: Messages = {
     },
     searchBar: {
       placeholder: 'navigation.site.searchBar'
+    },
+    desktopLogo: {
+      imageAlt: 'navigation.desktopLogo.imageAlt'
+    },
+    mobileLogo: {
+      imageAlt: 'navigation.mobileLogo.imageAlt'
     }
   },
   pages: {

@@ -4,10 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { IStackStyles, Stack } from '@fluentui/react';
-import siteIcon from '@public/site-icon.svg';
-import siteLogo from '@public/site-logo.svg';
+import { STATIC_IMAGES } from '@public/media/images';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
+import { defineMessages, useIntl } from 'react-intl';
 
 export const SiteLogo: React.FC = () => {
   const isLarge = useLarge();
@@ -23,6 +24,16 @@ interface SiteLogoStyles {
 }
 
 const DesktopSiteLogo: React.FC = () => {
+  const { formatMessage } = useIntl();
+
+  const messages = defineMessages({
+    desktopLogoImageAlt: {
+      id: messageIds.navigation.desktopLogo.imageAlt,
+      description: 'Desktop logo image alt tag',
+      defaultMessage: 'Spraying Systems Company Site Logo'
+    }
+  });
+
   const styles: SiteLogoStyles = {
     root: {
       root: {
@@ -36,9 +47,9 @@ const DesktopSiteLogo: React.FC = () => {
       <Link href={'/'}>
         <a>
           <Image
-            src={siteLogo}
+            src={STATIC_IMAGES.branding.siteLogo}
             layout="responsive"
-            alt="Spraying Systems Company Site Logo"
+            alt={formatMessage(messages.desktopLogoImageAlt)}
           />
         </a>
       </Link>
@@ -47,6 +58,15 @@ const DesktopSiteLogo: React.FC = () => {
 };
 
 const MobileSiteLogo: React.FC = () => {
+  const { formatMessage } = useIntl();
+
+  const messages = defineMessages({
+    mobileLogoImageAlt: {
+      id: messageIds.navigation.mobileLogo.imageAlt,
+      description: 'Mobile logo image alt tag',
+      defaultMessage: 'Spraying Systems Company Site Logo'
+    }
+  });
   const styles: SiteLogoStyles = {
     root: {
       root: {
@@ -61,9 +81,9 @@ const MobileSiteLogo: React.FC = () => {
       <Link href={'/'}>
         <a>
           <Image
-            src={siteIcon}
+            src={STATIC_IMAGES.branding.siteIcon}
             layout="responsive"
-            alt="Spraying Systems Company Site Logo"
+            alt={formatMessage(messages.mobileLogoImageAlt)}
           />
         </a>
       </Link>

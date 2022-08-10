@@ -24,6 +24,12 @@ export const nl: Messages = {
     },
     searchBar: {
       placeholder: 'Zoek onderdeel nummer...'
+    },
+    desktopLogo: {
+      imageAlt: 'Spraying Systems Bedrijf Website Logo'
+    },
+    mobileLogo: {
+      imageAlt: 'Spraying Systems Bedrijf Website Logo'
     }
   },
   pages: {

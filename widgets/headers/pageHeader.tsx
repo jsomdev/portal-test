@@ -5,7 +5,6 @@ import { Stack, useTheme } from '@fluentui/react';
 interface PageHeaderProps {
   title: string | JSX.Element;
   description?: string;
-  children: JSX.Element;
 }
 interface PagesHeaderStyles {
   title?: CSSProperties;

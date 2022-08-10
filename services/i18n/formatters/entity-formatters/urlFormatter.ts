@@ -13,5 +13,7 @@ export class UrlFormatter {
     return this.multilingualStringFormatter.format(this.url.text);
   }
 
-  //formatHref()
+  formatHref(): string | undefined {
+    return this.url.value || undefined;
+  }
 }
