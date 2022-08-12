@@ -22,8 +22,8 @@ import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userF
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 
-import { HeaderButton } from './headerButton';
 import { getMainCommandBarItems } from './mainHeader.helper';
+import { SiteHeaderButton } from './siteHeaderButton';
 
 interface MainHeaderStyles {
   commandBarContainer: IStackItemStyles;
@@ -95,7 +95,7 @@ export const MainHeader: React.FC = () => {
           verticalAlign="center"
         >
           {inProgress === InteractionStatus.None && (
-            <HeaderButton
+            <SiteHeaderButton
               type="actionButton"
               iconProps={{
                 iconName: 'Contact'
@@ -110,17 +110,17 @@ export const MainHeader: React.FC = () => {
               }
             />
           )}
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'Search'
             }}
           />
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'ShoppingCart'
             }}
           />
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'FavoriteList'
             }}

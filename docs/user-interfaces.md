@@ -32,6 +32,7 @@ There are some main principles -_guidelines_- that should be considered when cre
 1. **User Friendly**: Consider the behavior of the user. All scenario's should be covered in a user friendly manner (happy path versus unhappy path).
 1. **Fluent UI Layout System**: [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) inspired _Stacks_ and _StackItems_ controls from FluentUI should be used.
 1. **CCS in JS**: Strongly typed interfaces should be used for styling our components. FluentUI comes with a built-in api that does this really well.
+
    1. Use FluentUI Api whenever possible.
    1. Use Typed Interfaces if applicable.
    1. Use Styled JSX (scoped) otherwise.
@@ -80,49 +81,62 @@ export interface ISiteHeaderProps {
  * Based on the screen size a different version will be displayed.
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
-export const SiteHeader: React.FC<ISiteHeaderProps> = ({
+export const SiteHeader: React.FC<SiteHeaderProps> = ({
+  items,
   onOpenSideNavigation
 }) => {
   const isLarge = useLarge();
+
   if (isLarge) {
-    return <LargeSiteHeader />;
+    return <DesktopSiteHeader items={items || []} />;
   }
 
-  return <DefaultSiteHeader onOpenSideNavigation={onOpenSideNavigation} />;
+  return (
+    <MobileSiteHeader
+      items={items}
+      onOpenSideNavigation={onOpenSideNavigation}
+    />
+  );
 };
 
-// ### Default Site Header
+// ### Mobile Site Header
 
-/**
- * Default version of the Site Header
- */
-interface IDefaultSiteHeaderStyles {
+interface MobileSiteHeaderStyles {
   root: IStackStyles;
-  divider: Partial<IVerticalDividerStyles>;
+  logoContainer: IStackStyles;
 }
 
-const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
+const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
-  const { locale } = useIntl();
+  const { formatMessage } = useIntl();
 
-  const styles: IDefaultSiteHeaderStyles = {
+  const messages = defineMessages({
+    searchPlaceholder: {
+      id: messageIds.navigation.searchBar.placeholder,
+      description: 'Page search bar placeholder',
+      defaultMessage: 'Search by part number...'
+    }
+  });
+
+  const styles: MobileSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80)
+        height: rem(80),
+        position: 'relative'
       }
     },
-    divider: {
-      wrapper: {
-        padding: rem(spacing.s2),
-        height: rem(32)
+    logoContainer: {
+      root: {
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)'
       }
     }
   };
-
   return (
-    <nav>
+    <Stack>
       <Stack
         horizontal
         verticalAlign="center"
@@ -139,7 +153,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           tokens={{ childrenGap: rem(spacing.s1) }}
           verticalAlign="center"
         >
-          <HeaderButton
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('site');
             }}
@@ -147,6 +161,8 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
               iconName: 'GlobalNavButton'
             }}
           />
+        </Stack>
+        <Stack styles={styles.logoContainer}>
           <SiteLogo />
         </Stack>
         <Stack
@@ -154,27 +170,13 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          <Medium>
-            <HeaderButton
-              iconProps={{
-                iconName: 'Globe'
-              }}
-              type="actionButton"
-              text={locale.toLocaleUpperCase()}
-            />
-            <VerticalDivider styles={styles.divider} />
-          </Medium>
-          <HeaderButton
-            iconProps={{
-              iconName: 'Search'
-            }}
-          />
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'ShoppingCart'
             }}
           />
-          <HeaderButton
+
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('user');
             }}
@@ -184,7 +186,17 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           />
         </Stack>
       </Stack>
-    </nav>
+      <Stack
+        tokens={{
+          padding: `0 ${rem(12)}`
+        }}
+      >
+        <TextField
+          iconProps={{ iconName: 'Search' }}
+          placeholder={formatMessage(messages.searchPlaceholder)}
+        />
+      </Stack>
+    </Stack>
   );
 };
 

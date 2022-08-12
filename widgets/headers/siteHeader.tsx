@@ -16,7 +16,7 @@ import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
-import { HeaderButton } from './headerButton';
+import { SiteHeaderButton } from './siteHeaderButton';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
@@ -48,7 +48,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   );
 };
 
-//### Mobile Header
+// ### Mobile Site Header
 
 interface MobileSiteHeaderStyles {
   root: IStackStyles;
@@ -102,7 +102,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           tokens={{ childrenGap: rem(spacing.s1) }}
           verticalAlign="center"
         >
-          <HeaderButton
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('site');
             }}
@@ -119,13 +119,13 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'ShoppingCart'
             }}
           />
 
-          <HeaderButton
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('user');
             }}
@@ -157,7 +157,7 @@ interface DesktopSiteHeaderStyles {
   searchBarContainer: Partial<ITextFieldStyles>;
 }
 
-//### Desktop Header
+// ### Desktop Site Header
 
 /**
  * Large version of the Site Header
@@ -246,7 +246,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           </ul>
           <List items={items} />
           <VerticalDivider styles={styles.divider} />
-          <HeaderButton
+          <SiteHeaderButton
             id="random"
             iconProps={{
               iconName: 'Globe'
@@ -281,7 +281,7 @@ const SiteHeaderItem: React.FC<SiteHeaderItemProps> = ({ text, href }) => {
   };
   return (
     <li className="horizontal">
-      <HeaderButton
+      <SiteHeaderButton
         type="actionButton"
         text={text}
         href={href}

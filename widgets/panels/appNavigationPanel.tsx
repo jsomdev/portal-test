@@ -16,8 +16,8 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { rem } from '@utilities/rem';
-import { HeaderButton } from '@widgets/headers/headerButton';
 
+import { SiteHeaderButton } from '@widgets/headers/siteHeaderButton';
 import { getAppNavigationPanelLinkGroups } from './appNavigationPanel.helper';
 import { AppNavigationType } from './appNavigationPanel.types';
 
@@ -100,7 +100,7 @@ export const AppPanel: React.FC<AppPanelProps> = ({ panelProps, type }) => {
           tokens={{ padding: rem(spacing.s1) }}
           styles={styles.panelHeader}
         >
-          <HeaderButton
+          <SiteHeaderButton
             type="iconButton"
             iconProps={{
               iconName: 'Back'
