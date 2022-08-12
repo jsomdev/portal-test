@@ -25,29 +25,31 @@ export interface HomeProps {
   categories: Category[];
 }
 
+const messages = defineMessages({
+  headTitle: {
+    id: messageIds.pages.home.headTitle,
+    description: 'Page metadata title',
+    defaultMessage: 'Welcome'
+  },
+  headDescription: {
+    id: messageIds.pages.home.headDescription,
+    description: 'Page metadata description',
+    defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
+  },
+  backgroundImageAlt: {
+    id: 'messageIds.pages.home.backgroundImageAlt',
+    description: 'Alternative for background image',
+    defaultMessage: 'Big spray lance background image'
+  }
+});
+
 const Home: NextPage<
   HomeProps &
     Partial<Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ categories, siteMenuItems, mainMenuItems }) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
-  const messages = defineMessages({
-    headTitle: {
-      id: messageIds.pages.home.headTitle,
-      description: 'Page metadata title',
-      defaultMessage: 'Welcome'
-    },
-    headDescription: {
-      id: messageIds.pages.home.headDescription,
-      description: 'Page metadata description',
-      defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
-    },
-    backgroundImageAlt: {
-      id: 'messageIds.pages.home.backgroundImageAlt',
-      description: 'Alternative for background image',
-      defaultMessage: 'Big spray lance background image'
-    }
-  });
+
   return (
     <GlobalDataProvider
       siteMenuItems={siteMenuItems}

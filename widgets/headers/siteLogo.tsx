@@ -5,35 +5,27 @@ import Link from 'next/link';
 
 import { IStackStyles, Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
-import { defineMessages, useIntl } from 'react-intl';
 
-export const SiteLogo: React.FC = () => {
+interface SiteLogoProps {
+  alt: string;
+}
+
+export const SiteLogo: React.FC<SiteLogoProps> = ({ alt }) => {
   const isLarge = useLarge();
 
   if (isLarge) {
-    return <DesktopSiteLogo />;
+    return <DesktopSiteLogo alt={alt} />;
   }
-  return <MobileSiteLogo />;
+  return <MobileSiteLogo alt={alt} />;
 };
 
 interface SiteLogoStyles {
   root: IStackStyles;
 }
 
-const DesktopSiteLogo: React.FC = () => {
-  const { formatMessage } = useIntl();
-
-  const messages = defineMessages({
-    desktopLogoImageAlt: {
-      id: messageIds.navigation.desktopLogo.imageAlt,
-      description: 'Desktop logo image alt tag',
-      defaultMessage: 'Spraying Systems Company Site Logo'
-    }
-  });
-
+const DesktopSiteLogo: React.FC<SiteLogoProps> = ({ alt }) => {
   const styles: SiteLogoStyles = {
     root: {
       root: {
@@ -49,7 +41,7 @@ const DesktopSiteLogo: React.FC = () => {
           <Image
             src={STATIC_IMAGES.branding.siteLogo}
             layout="responsive"
-            alt={formatMessage(messages.desktopLogoImageAlt)}
+            alt={alt}
           />
         </a>
       </Link>
@@ -57,16 +49,7 @@ const DesktopSiteLogo: React.FC = () => {
   );
 };
 
-const MobileSiteLogo: React.FC = () => {
-  const { formatMessage } = useIntl();
-
-  const messages = defineMessages({
-    mobileLogoImageAlt: {
-      id: messageIds.navigation.mobileLogo.imageAlt,
-      description: 'Mobile logo image alt tag',
-      defaultMessage: 'Spraying Systems Company Site Logo'
-    }
-  });
+const MobileSiteLogo: React.FC<SiteLogoProps> = ({ alt }) => {
   const styles: SiteLogoStyles = {
     root: {
       root: {
@@ -83,7 +66,7 @@ const MobileSiteLogo: React.FC = () => {
           <Image
             src={STATIC_IMAGES.branding.siteIcon}
             layout="responsive"
-            alt={formatMessage(messages.mobileLogoImageAlt)}
+            alt={alt}
           />
         </a>
       </Link>

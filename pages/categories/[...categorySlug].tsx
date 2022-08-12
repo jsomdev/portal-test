@@ -47,6 +47,19 @@ export interface CategoryProps {
   initialSeriesGroupingResults: SeriesGroupingResult[];
 }
 
+const messages = defineMessages({
+  headTitle: {
+    id: messageIds.pages.category.headTitle,
+    description: 'Page metadata title',
+    defaultMessage: 'Welcome'
+  },
+  headDescription: {
+    id: messageIds.pages.category.headDescription,
+    description: 'Page metadata description',
+    defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
+  }
+});
+
 const Category: NextPage<
   CategoryProps &
     Partial<
@@ -68,19 +81,6 @@ const Category: NextPage<
     category,
     locale
   );
-
-  const messages = defineMessages({
-    headTitle: {
-      id: messageIds.pages.category.headTitle,
-      description: 'Page metadata title',
-      defaultMessage: 'Welcome'
-    },
-    headDescription: {
-      id: messageIds.pages.category.headDescription,
-      description: 'Page metadata description',
-      defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
-    }
-  });
 
   return (
     <GlobalDataProvider

@@ -12,6 +12,7 @@ export const messageIds: Messages = {
     },
     site: {
       title: 'navigation.site.title',
+      logoAlt: 'navigation.site.logoAlt',
       collapseLabel: 'navigation.site.collapseLabel',
       expandLabel: 'navigation.site.expandLabel'
     },
@@ -24,12 +25,6 @@ export const messageIds: Messages = {
     },
     searchBar: {
       placeholder: 'navigation.site.searchBar'
-    },
-    desktopLogo: {
-      imageAlt: 'navigation.desktopLogo.imageAlt'
-    },
-    mobileLogo: {
-      imageAlt: 'navigation.mobileLogo.imageAlt'
     }
   },
   pages: {

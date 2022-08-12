@@ -25,6 +25,19 @@ export interface SiteHeaderProps {
   onOpenSideNavigation?: (type: AppNavigationType) => void;
 }
 
+const messages = defineMessages({
+  searchPlaceholder: {
+    id: messageIds.navigation.searchBar.placeholder,
+    description: 'Page search bar placeholder',
+    defaultMessage: 'Search by part number...'
+  },
+  siteLogoAlt: {
+    id: messageIds.navigation.site.logoAlt,
+    description: 'Alt for the Spraying Systems logo',
+    defaultMessage: 'Spraying Systems Company logo'
+  }
+});
+
 /**
  * Header component for the Spray.com links.
  * Based on the screen size a different version will be displayed.
@@ -60,14 +73,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
-
-  const messages = defineMessages({
-    searchPlaceholder: {
-      id: messageIds.navigation.searchBar.placeholder,
-      description: 'Page search bar placeholder',
-      defaultMessage: 'Search by part number...'
-    }
-  });
 
   const styles: MobileSiteHeaderStyles = {
     root: {
@@ -112,7 +117,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           />
         </Stack>
         <Stack styles={styles.logoContainer}>
-          <SiteLogo />
+          <SiteLogo alt={formatMessage(messages.siteLogoAlt)} />
         </Stack>
         <Stack
           horizontal
@@ -166,14 +171,6 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
   const { spacing } = useTheme();
   const { locale, formatMessage } = useIntl();
 
-  const messages = defineMessages({
-    searchPlaceholder: {
-      id: messageIds.navigation.searchBar.placeholder,
-      description: 'Page search bar placeholder',
-      defaultMessage: 'Search by part number...'
-    }
-  });
-
   const styles: DesktopSiteHeaderStyles = {
     root: {
       root: {
@@ -217,7 +214,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           verticalAlign="center"
           styles={styles.logoContainer}
         >
-          <SiteLogo />
+          <SiteLogo alt={formatMessage(messages.siteLogoAlt)} />
         </Stack>
         <Stack
           grow

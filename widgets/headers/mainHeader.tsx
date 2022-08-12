@@ -34,6 +34,19 @@ interface MainCommandBarStyles {
   button: Partial<IButtonStyles>;
 }
 
+const messages = defineMessages({
+  signIn: {
+    id: messageIds.navigation.user.signIn,
+    description: 'Text for the sign in button',
+    defaultMessage: 'Sign in'
+  },
+  myProfile: {
+    id: messageIds.navigation.user.myProfile,
+    description: 'Fallback text for the My Profile button',
+    defaultMessage: 'My Profile'
+  }
+});
+
 export const MainHeader: React.FC = () => {
   const { spacing } = useTheme();
   const { instance, inProgress } = useMsal();
@@ -42,18 +55,6 @@ export const MainHeader: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
   const userFormatter = new UserFormatter(me, instance.getActiveAccount());
-  const messages = defineMessages({
-    signIn: {
-      id: messageIds.navigation.user.signIn,
-      description: 'Text for the sign in button',
-      defaultMessage: 'Sign in'
-    },
-    myProfile: {
-      id: messageIds.navigation.user.myProfile,
-      description: 'Fallback text for the My Profile button',
-      defaultMessage: 'My Profile'
-    }
-  });
 
   function signIn() {
     instance.loginRedirect(customerLoginRequest);

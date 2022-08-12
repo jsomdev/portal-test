@@ -19,6 +19,7 @@ import {
 } from '@services/portal-api/users';
 import { queryClient } from '@services/react-query/config';
 import { QUERYKEYS } from '@services/react-query/constants';
+import { rem } from '@utilities/rem';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CompleteSignUp } from '@widgets/complete-sign-up/completeSignUp';
 import {
@@ -33,7 +34,30 @@ import { ClientEnvironment } from '@widgets/environment/environment.types';
 import { getCurrentClientEnvironment } from '@widgets/environment/environmentHelpers';
 
 import { UserContext } from './userContext';
-import { rem } from '@utilities/rem';
+
+const messages = defineMessages({
+  loading: {
+    id: messageIds.loading.default,
+    description: 'Default loading text',
+    defaultMessage: 'Loading...'
+  },
+  signingIn: {
+    id: messageIds.loading.user.signingIn,
+    description: 'Loading text while signing in',
+    defaultMessage: 'Signing in...'
+  },
+  signingOut: {
+    id: messageIds.loading.user.signingOut,
+    description: 'Loading text while signing out',
+    defaultMessage: 'Signing out...'
+  },
+  redirecting: {
+    id: messageIds.loading.user.redirecting,
+    description: 'Loading text while redirecting you from somewhere else',
+    defaultMessage: 'Redirecting...'
+  }
+});
+
 /**
  * Context Provider for the current user.
  * It will provide information about the user and functionality to update its information.
@@ -60,28 +84,6 @@ export const UserProvider: React.FC = ({ children }) => {
       enabled: isAuthenticated
     }
   );
-  const messages = defineMessages({
-    loading: {
-      id: messageIds.loading.default,
-      description: 'Default loading text',
-      defaultMessage: 'Loading...'
-    },
-    signingIn: {
-      id: messageIds.loading.user.signingIn,
-      description: 'Loading text while signing in',
-      defaultMessage: 'Signing in...'
-    },
-    signingOut: {
-      id: messageIds.loading.user.signingOut,
-      description: 'Loading text while signing out',
-      defaultMessage: 'Signing out...'
-    },
-    redirecting: {
-      id: messageIds.loading.user.redirecting,
-      description: 'Loading text while redirecting you from somewhere else',
-      defaultMessage: 'Redirecting...'
-    }
-  });
 
   useEffect(() => {
     if (meStatus === 'success' && me?.roles !== undefined) {
