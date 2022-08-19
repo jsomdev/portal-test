@@ -25,6 +25,11 @@ export const messageIds: Messages = {
     },
     searchBar: {
       placeholder: 'navigation.site.searchBar'
+    },
+    menu: {
+      close: 'navigation.menu.close',
+      viewAllCategories: 'navigation.menu.viewAllCategories',
+      viewAllCategory: 'navigation.menu.viewAllCategory'
     }
   },
   pages: {

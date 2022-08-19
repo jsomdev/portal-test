@@ -1,152 +1,120 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-
 import {
-  Icon,
-  INavStyles,
+  ActionButton,
+  IButtonStyles,
   IPanelProps,
   IPanelStyles,
   IStackStyles,
-  Nav,
   Panel,
   PanelType,
   Stack,
   useTheme
 } from '@fluentui/react';
-import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-
+import { SiteMenuItem } from '@widgets/headers/mainHeader.helper';
 import { SiteHeaderButton } from '@widgets/headers/siteHeaderButton';
-import { getAppNavigationPanelLinkGroups } from './appNavigationPanel.helper';
-import { AppNavigationType } from './appNavigationPanel.types';
+import { SiteHeaderItemProps } from '@widgets/headers/siteHeaderItem';
+import { defineMessages, useIntl } from 'react-intl';
+import { AppNavigationPanelMobileMenu } from './appNavigationPanelMobileMenu';
 
 export interface AppPanelProps {
   panelProps: Partial<IPanelProps>;
-  type: AppNavigationType | null;
+  siteMenuItems: SiteHeaderItemProps[];
+  mainMenuItems: SiteMenuItem[];
 }
 
 export interface AppPanelStyles {
   panel: Partial<IPanelStyles>;
   panelHeader: IStackStyles;
-  nav: Partial<INavStyles>;
-  navGroupHeader: IStackStyles;
+  closeButton: IButtonStyles;
 }
 
-export const AppPanel: React.FC<AppPanelProps> = ({ panelProps, type }) => {
-  const { spacing, palette, semanticColors } = useTheme();
-  const { siteMenuItems, mainMenuItems } = useGlobalData();
+const messages = defineMessages({
+  closeMenu: {
+    id: messageIds.navigation.menu.close,
+    description: 'Close menu button text',
+    defaultMessage: 'Menu'
+  }
+});
+
+export const AppPanel: React.FC<AppPanelProps> = ({
+  panelProps,
+  siteMenuItems,
+  mainMenuItems
+}) => {
+  const { spacing, semanticColors, palette } = useTheme();
+  const { formatMessage } = useIntl();
+
   const styles: AppPanelStyles = {
     panel: {
-      content: {
-        padding: 0,
-        marginTop: rem(80)
-      },
       commands: {
-        padding: 0
+        display: 'none'
       },
       root: {
+        height: '100vh'
+      },
+      content: {
         padding: 0
       }
     },
     panelHeader: {
       root: {
-        position: 'absolute',
-        top: 0,
-        backgroundColor: 'white',
-        left: 0,
-        right: 0,
-
-        height: rem(80)
+        borderBottom: `1px solid ${semanticColors.variantBorder}`,
+        overflow: 'auto'
       }
     },
-    nav: {
-      link: {
-        color: palette.themeDark,
-        paddingLeft: rem(spacing.l1)
-      },
-      chevronButton: {
-        position: 'relative',
-        padding: 0
-      },
-      chevronIcon: {
-        position: 'relative'
-      },
-      compositeLink: {
-        display: 'flex',
-        flexDirection: 'row-reverse'
-      },
-      groupContent: {
-        padding: `0 ${rem(spacing.l1)}`
-      }
-    },
-    navGroupHeader: {
-      root: {
-        color: semanticColors.menuItemText,
-        borderTop: `${rem(1)} solid ${semanticColors.variantBorder}`
+    closeButton: {
+      icon: {
+        color: palette.neutralPrimary
       }
     }
   };
+
   return (
     <Panel
       hasCloseButton={false}
       styles={styles.panel}
-      type={PanelType.customNear}
+      type={PanelType.smallFluid}
       onRenderHeader={() => (
         <Stack
           horizontal
           horizontalAlign="space-between"
           verticalAlign="center"
-          tokens={{ padding: rem(spacing.s1) }}
+          tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
           styles={styles.panelHeader}
         >
           <SiteHeaderButton
             type="iconButton"
             iconProps={{
-              iconName: 'Back'
+              iconName: 'Cancel'
             }}
             onClick={() => panelProps?.onDismiss?.()}
+            text={formatMessage(messages.closeMenu)}
+            styles={styles.closeButton}
           />
         </Stack>
       )}
-      customWidth={rem(280)}
       {...panelProps}
     >
-      <Nav
-        styles={styles.nav}
-        groups={getAppNavigationPanelLinkGroups(
-          type,
-          siteMenuItems || [],
-          mainMenuItems || []
-        )}
-        onRenderGroupHeader={props => (
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            verticalAlign="center"
-            styles={styles.navGroupHeader}
-            tokens={{
-              childrenGap: spacing.s1,
-              padding: `0 ${rem(spacing.l1)}`
-            }}
-            onClick={ev => props?.onHeaderClick?.(ev, props.isExpanded)}
-          >
-            <Stack
-              horizontal
-              verticalAlign="center"
-              tokens={{ childrenGap: rem(spacing.s1) }}
-            >
-              <Icon iconName={props?.groupData?.iconName} />
-              <p>
-                <FormattedMessage id={props?.name} />
-              </p>
+      <Stack>
+        <AppNavigationPanelMobileMenu items={mainMenuItems} />
+        {siteMenuItems.map(item => {
+          return (
+            <Stack key={`site-menu-item-${item.text}`}>
+              <ActionButton
+                {...item}
+                styles={{
+                  root: {
+                    padding: `${spacing.l1} ${spacing.m}`
+                  }
+                }}
+              />
             </Stack>
-            <Icon
-              iconName={props?.isExpanded ? 'ChevronUpMed' : 'ChevronDownMed'}
-            />
-          </Stack>
-        )}
-      />
+          );
+        })}
+      </Stack>
     </Panel>
   );
 };

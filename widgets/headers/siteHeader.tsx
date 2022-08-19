@@ -17,6 +17,7 @@ import { useLarge } from '@widgets/media-queries';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { SiteHeaderButton } from './siteHeaderButton';
+import { SiteHeaderItem, SiteHeaderItemProps } from './siteHeaderItem';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
@@ -255,35 +256,5 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
         </Stack>
       </Stack>
     </Stack>
-  );
-};
-
-export interface SiteHeaderItemProps {
-  text: string;
-  href: string;
-}
-
-interface SiteHeaderItemStyles {
-  button: Partial<IButtonStyles>;
-}
-
-const SiteHeaderItem: React.FC<SiteHeaderItemProps> = ({ text, href }) => {
-  const styles: SiteHeaderItemStyles = {
-    button: {
-      label: {
-        fontSize: rem(14),
-        fontWeight: 500
-      }
-    }
-  };
-  return (
-    <li className="horizontal">
-      <SiteHeaderButton
-        type="actionButton"
-        text={text}
-        href={href}
-        styles={styles.button}
-      />
-    </li>
   );
 };

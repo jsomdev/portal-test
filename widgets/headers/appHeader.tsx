@@ -2,14 +2,19 @@ import React, { useMemo, useState } from 'react';
 
 import { useTheme } from '@fluentui/react';
 import { useLarge } from '@widgets/media-queries';
-import { AppPanel } from '@widgets/panels/appNavigationPanel';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { AppPanel } from '@widgets/panels/appNavigationPanel';
 import { useIntl } from 'react-intl';
 import { MainHeader } from './mainHeader';
-import { SiteHeader, SiteHeaderItemProps } from './siteHeader';
+import {
+  mapGlobalMenuItemsToMainMenuItems,
+  SiteMenuItem
+} from './mainHeader.helper';
+import { SiteHeader } from './siteHeader';
 import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
+import { SiteHeaderItemProps } from './siteHeaderItem';
 
 export interface AppHeaderStyles {
   root: React.CSSProperties;
@@ -20,15 +25,19 @@ export interface AppHeaderStyles {
 export const AppHeader: React.FC = () => {
   const showMainHeader = useLarge();
   const { semanticColors } = useTheme();
-  const { siteMenuItems } = useGlobalData();
+  const { siteMenuItems, mainMenuItems } = useGlobalData();
   const { locale } = useIntl();
 
   const [sideNavigationType, setSideNavigationType] =
     useState<null | AppNavigationType>(null);
 
-  const items: SiteHeaderItemProps[] = useMemo(() => {
+  const mappedSiteMenuItems: SiteHeaderItemProps[] = useMemo(() => {
     return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
   }, [locale, siteMenuItems]);
+
+  const mappedMainMenuItems: SiteMenuItem[] = useMemo(() => {
+    return mapGlobalMenuItemsToMainMenuItems(mainMenuItems || [], locale);
+  }, [mainMenuItems, locale]);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
@@ -36,7 +45,6 @@ export const AppHeader: React.FC = () => {
 
   const styles: AppHeaderStyles = {
     root: {
-      borderBottom: `1px solid ${semanticColors.variantBorder}`,
       position: 'fixed',
       zIndex: 1,
       backgroundColor: semanticColors.bodyBackground,
@@ -47,14 +55,18 @@ export const AppHeader: React.FC = () => {
   };
   return (
     <header style={styles.root}>
-      <SiteHeader items={items} onOpenSideNavigation={setSideNavigationType} />
-      {showMainHeader && <MainHeader />}
+      <SiteHeader
+        items={mappedSiteMenuItems}
+        onOpenSideNavigation={setSideNavigationType}
+      />
+      {showMainHeader && <MainHeader items={mappedMainMenuItems} />}
       <AppPanel
-        type={sideNavigationType}
         panelProps={{
           isOpen: !!sideNavigationType,
           onDismiss: onSitePanelDismiss
         }}
+        siteMenuItems={mappedSiteMenuItems}
+        mainMenuItems={mappedMainMenuItems}
       />
     </header>
   );

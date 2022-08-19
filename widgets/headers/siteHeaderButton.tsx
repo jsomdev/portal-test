@@ -4,7 +4,6 @@ import {
   FontWeights,
   IButtonProps,
   IButtonStyles,
-  IconButton,
   IProcessedStyleSet,
   mergeStyleSets
 } from '@fluentui/react';
@@ -45,7 +44,7 @@ const DesktopSiteHeaderButton: React.FC<IButtonProps> = props => {
 const MobileSiteHeaderButton: React.FC<IButtonProps> = props => {
   const styles: IButtonStyles = {
     label: {
-      fontSize: FontSizes.size18,
+      fontSize: FontSizes.size20,
       fontWeight: FontWeights.regular
     },
     icon: {
@@ -58,5 +57,5 @@ const MobileSiteHeaderButton: React.FC<IButtonProps> = props => {
     props.styles
   );
 
-  return <IconButton {...props} styles={mergedStyles} />;
+  return <ActionButton {...props} styles={mergedStyles} />;
 };

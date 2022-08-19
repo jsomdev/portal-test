@@ -58,6 +58,12 @@ type INextHeadMessages = {
   headDescription: string;
 };
 
+type IMenuMessages = {
+  close: string;
+  viewAllCategories: string;
+  viewAllCategory: string;
+};
+
 type IHomeMessages = INextHeadMessages;
 type ICategoryMessages = INextHeadMessages;
 type IModelMessages = INextHeadMessages;
@@ -73,6 +79,7 @@ export type Messages = {
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
     searchBar: ISiteSearchBarMessages;
+    menu: IMenuMessages;
   };
   loading: {
     default: string;

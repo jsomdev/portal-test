@@ -1,6 +1,7 @@
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from './../../services/portal-api/models/MenuItem';
-import { SiteHeaderItemProps } from './siteHeader';
+import { SiteHeaderItemProps } from './siteHeaderItem';
+
 export function mapMenuItemsToSiteHeaderItemProps(
   menuItems: MenuItem[],
   locale?: string

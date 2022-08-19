@@ -1,37 +1,30 @@
 import React from 'react';
 
-import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
-  CommandBar,
-  IButtonStyles,
-  ICommandBarStyles,
+  ActionButton,
   IStackItemStyles,
   IStackStyles,
   Stack,
   useTheme
 } from '@fluentui/react';
-import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
-import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
-
-import { getMainCommandBarItems } from './mainHeader.helper';
+import { SiteMenuItem } from './mainHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
 
-interface MainHeaderStyles {
-  commandBarContainer: IStackItemStyles;
-  root: IStackStyles;
+interface MainHeaderProps {
+  items: SiteMenuItem[];
 }
-interface MainCommandBarStyles {
-  commandBar: Partial<ICommandBarStyles>;
-  button: Partial<IButtonStyles>;
+interface MainHeaderStyles {
+  mainMenuContainer: IStackItemStyles;
+  root: IStackStyles;
 }
 
 const messages = defineMessages({
@@ -47,10 +40,9 @@ const messages = defineMessages({
   }
 });
 
-export const MainHeader: React.FC = () => {
-  const { spacing } = useTheme();
+export const MainHeader: React.FC<MainHeaderProps> = ({ items }) => {
+  const { spacing, palette } = useTheme();
   const { instance, inProgress } = useMsal();
-  const { mainMenuItems: items } = useGlobalData();
   const { me } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
@@ -62,11 +54,12 @@ export const MainHeader: React.FC = () => {
   const styles: MainHeaderStyles = {
     root: {
       root: {
-        height: 44,
-        transition: '0.3s all ease'
+        height: 46,
+        transition: '0.3s all ease',
+        backgroundColor: palette.neutralLighter
       }
     },
-    commandBarContainer: {
+    mainMenuContainer: {
       root: {
         flex: 1
       }
@@ -84,9 +77,28 @@ export const MainHeader: React.FC = () => {
         }}
         horizontalAlign="space-between"
       >
-        <Stack.Item styles={styles.commandBarContainer}>
-          <MainHeaderCommandBar items={items || []} />
-        </Stack.Item>
+        <Stack
+          tokens={{ childrenGap: spacing.s1 }}
+          styles={styles.mainMenuContainer}
+          horizontal
+        >
+          {items.map(item => {
+            return (
+              <ActionButton
+                key={`main-header-menu-${item.text}`}
+                styles={{
+                  root: { position: 'relative', height: rem(46) },
+                  rootHovered: {
+                    borderBottom: `1px solid ${palette.themePrimary}`,
+                    color: palette.neutralPrimary
+                  }
+                }}
+              >
+                {item.text}
+              </ActionButton>
+            );
+          })}
+        </Stack>
         <Stack
           horizontal
           verticalFill
@@ -129,78 +141,5 @@ export const MainHeader: React.FC = () => {
         </Stack>
       </Stack>
     </nav>
-  );
-};
-
-const MainHeaderCommandBar: React.FC<{ items: MenuItem[] }> = ({ items }) => {
-  const theme = useTheme();
-  const { spacing, palette } = theme;
-  const { push } = useRouter();
-  const styles: MainCommandBarStyles = {
-    commandBar: {
-      root: {
-        width: '100%',
-        background: 'transparent',
-        paddingLeft: 0
-      },
-
-      primarySet: {
-        background: 'transparent'
-      }
-    },
-    button: {
-      root: {
-        background: 'transparent',
-        margin: `0 ${rem(spacing.s1)} 0 0`,
-        paddingLeft: 0,
-        marginLeft: 0
-      },
-      label: {
-        fontSize: rem(15),
-        letterSpacing: rem(0.38),
-        color: palette.black,
-        marginLeft: 0,
-        fontWeight: 500
-      },
-      menuIcon: {
-        color: palette.black,
-        marginBottom: `-${rem(spacing.s1)}`
-      },
-      menuIconHovered: {
-        color: palette.accent
-      },
-      labelHovered: {
-        color: palette.accent
-      },
-
-      rootHovered: {
-        background: 'transparent'
-      },
-      rootPressed: {
-        background: 'transparent'
-      },
-      rootExpanded: {
-        background: 'transparent'
-      },
-      rootExpandedHovered: {
-        background: 'transparent'
-      }
-    }
-  };
-
-  return (
-    <CommandBar
-      styles={styles.commandBar}
-      items={getMainCommandBarItems(
-        items,
-        (ev, path) => {
-          ev?.preventDefault();
-          push(path);
-        },
-        theme,
-        styles.button,
-        null
-      )}
-    />
   );
 };
