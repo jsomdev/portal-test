@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import { SiteMenuItem } from '@widgets/headers/mainHeader.helper';
+import { MainMenuItem } from '@widgets/headers/mainHeader.helper';
 import { SiteHeaderButton } from '@widgets/headers/siteHeaderButton';
 import { SiteHeaderItemProps } from '@widgets/headers/siteHeaderItem';
 import { defineMessages, useIntl } from 'react-intl';
@@ -22,7 +22,7 @@ import { AppNavigationPanelMobileMenu } from './appNavigationPanelMobileMenu';
 export interface AppPanelProps {
   panelProps: Partial<IPanelProps>;
   siteMenuItems: SiteHeaderItemProps[];
-  mainMenuItems: SiteMenuItem[];
+  mainMenuItems: MainMenuItem[];
 }
 
 export interface AppPanelStyles {

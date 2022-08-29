@@ -6,16 +6,18 @@ import {
   IStackStyles,
   ITextStyles,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import { SiteMenuItem } from '@widgets/headers/mainHeader.helper';
-import React, { useState } from 'react';
+import { MainMenuItem } from '@widgets/headers/mainHeader.helper';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 interface AppNavigationPanelMobileMenuProps {
-  items: SiteMenuItem[];
+  items: MainMenuItem[];
 }
 
 interface AppNavigationPanelMobileMenuStyles {
@@ -31,11 +33,6 @@ const messages = defineMessages({
     id: messageIds.navigation.menu.viewAllCategories,
     description: 'View all categories text',
     defaultMessage: 'View all categories'
-  },
-  mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
-    description: 'View all ... ',
-    defaultMessage: 'View all '
   }
 });
 
@@ -44,9 +41,14 @@ export const AppNavigationPanelMobileMenu: React.FC<
 > = ({ items }) => {
   const { palette, semanticColors, spacing } = useTheme();
   const { formatMessage } = useIntl();
-  const [selectedItem, setSelectedItem] = useState<SiteMenuItem | undefined>(
-    undefined
-  );
+  const [selectedItem, setSelectedItem] = useState<MainMenuItem | undefined>();
+  const [breadcrumbItems, setBreadcrumbItems] = useState<MainMenuItem[]>([]);
+
+  const { push } = useRouter();
+
+  function resetMenu() {
+    setSelectedItem(undefined);
+  }
 
   const styles: AppNavigationPanelMobileMenuStyles = {
     buttonContainer: {
@@ -78,17 +80,57 @@ export const AppNavigationPanelMobileMenu: React.FC<
       root: {
         borderLeft: `1px solid ${semanticColors.variantBorder}`,
         marginLeft: spacing.l1,
-        paddingLeft: spacing.l1
+        paddingLeft: spacing.s1
       }
     },
     subItemHeader: {
       root: {
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.semibold,
+        padding: `${spacing.m} ${spacing.l1}`
       }
     }
   };
 
-  if (selectedItem) {
+  useEffect(() => {
+    console.log(selectedItem);
+  }, [selectedItem]);
+
+  const renderMenu: (
+    items: MainMenuItem[],
+    isSubMenu: boolean
+  ) => JSX.Element[] = (items: MainMenuItem[], isSubMenu: boolean) => {
+    return items.map((menuItem: MainMenuItem) => {
+      return (
+        <Stack key={menuItem.id}>
+          {!isSubMenu && (
+            <Stack
+              key={`site-menu-item-${menuItem.text}`}
+              styles={styles.buttonContainer}
+            >
+              <ActionButton
+                text={menuItem.text}
+                styles={styles.linkButton}
+                menuIconProps={{
+                  iconName: 'chevronRight'
+                }}
+                onClick={() => {
+                  if (menuItem.subItems) {
+                    setSelectedItem(menuItem);
+                  } else {
+                    push(menuItem.href);
+                  }
+                }}
+              />
+            </Stack>
+          )}
+
+          {!!menuItem.subItems && renderMenu(menuItem.subItems, true)}
+        </Stack>
+      );
+    });
+  };
+
+  const renderBreadcrumbs = () => {
     return (
       <Stack>
         <ActionButton
@@ -96,66 +138,40 @@ export const AppNavigationPanelMobileMenu: React.FC<
           styles={styles.returnButton}
           iconProps={{ iconName: 'chevronLeft' }}
           onClick={() => {
-            return setSelectedItem(undefined);
+            return resetMenu();
           }}
         />
-        <ActionButton
-          text={`${formatMessage(messages.mainMenuViewAllCategory)} ${
-            selectedItem.text
-          }`}
-          styles={styles.linkButton}
-          menuIconProps={{
-            iconName: 'chevronRight'
-          }}
-          href={selectedItem.href}
-        />
-        <Stack styles={styles.subItemContainer}>
-          {selectedItem.subItems?.map(item => {
+        {breadcrumbItems.map(item => {
+          if (item) {
             return (
-              <Stack
-                key={`site-menu-item-${item.text}`}
-                styles={styles.buttonContainer}
-              >
-                <ActionButton
-                  text={item.text}
-                  styles={styles.linkButton}
-                  menuIconProps={{
-                    iconName: 'chevronRight'
-                  }}
-                  onClick={e => {
-                    e.preventDefault();
-                    window.location.href = item.href;
-                  }}
-                />
-              </Stack>
+              <ActionButton
+                key={item.id}
+                text={item.text}
+                styles={styles.returnButton}
+                iconProps={{ iconName: 'chevronLeft' }}
+                onClick={() => {
+                  setSelectedItem(breadcrumbItems.pop());
+                  setBreadcrumbItems([...breadcrumbItems.splice(-1)]);
+                }}
+              />
             );
-          })}
+          }
+        })}
+        <Text styles={styles.subItemHeader}>{selectedItem?.text}</Text>
+      </Stack>
+    );
+  };
+
+  if (selectedItem?.subItems) {
+    return (
+      <Stack>
+        <Stack>{renderBreadcrumbs()}</Stack>
+        <Stack styles={styles.subItemContainer}>
+          {renderMenu(selectedItem.subItems, false)}
         </Stack>
       </Stack>
     );
   }
 
-  return (
-    <Stack>
-      {items.map(item => {
-        return (
-          <Stack
-            key={`site-menu-item-${item.text}`}
-            styles={styles.buttonContainer}
-          >
-            <ActionButton
-              text={item.text}
-              styles={styles.linkButton}
-              menuIconProps={{
-                iconName: 'chevronRight'
-              }}
-              onClick={() => {
-                return setSelectedItem(item);
-              }}
-            />
-          </Stack>
-        );
-      })}
-    </Stack>
-  );
+  return <Stack>{renderMenu(items, false)}</Stack>;
 };

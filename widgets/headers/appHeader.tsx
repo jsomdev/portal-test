@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { useTheme } from '@fluentui/react';
 import { useLarge } from '@widgets/media-queries';
@@ -8,10 +8,7 @@ import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { AppPanel } from '@widgets/panels/appNavigationPanel';
 import { useIntl } from 'react-intl';
 import { MainHeader } from './mainHeader';
-import {
-  mapGlobalMenuItemsToMainMenuItems,
-  SiteMenuItem
-} from './mainHeader.helper';
+import { mapGlobalMenuItemsToMainMenuItems } from './mainHeader.helper';
 import { SiteHeader } from './siteHeader';
 import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
 import { SiteHeaderItemProps } from './siteHeaderItem';
@@ -35,13 +32,22 @@ export const AppHeader: React.FC = () => {
     return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
   }, [locale, siteMenuItems]);
 
-  const mappedMainMenuItems: SiteMenuItem[] = useMemo(() => {
-    return mapGlobalMenuItemsToMainMenuItems(mainMenuItems || [], locale);
-  }, [mainMenuItems, locale]);
-
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
   }
+
+  const mappedMainMenuItems = useMemo(() => {
+    return mapGlobalMenuItemsToMainMenuItems(
+      mainMenuItems || [],
+      null,
+      undefined,
+      locale
+    );
+  }, [mainMenuItems, locale]);
+
+  useEffect(() => {
+    console.log(mappedMainMenuItems);
+  }, [mappedMainMenuItems]);
 
   const styles: AppHeaderStyles = {
     root: {
