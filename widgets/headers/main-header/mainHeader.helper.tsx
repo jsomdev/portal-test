@@ -1,37 +1,29 @@
-import { messageIds } from '@services/i18n';
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from '@services/portal-api/models/MenuItem';
-import { defineMessages } from 'react-intl';
 
-export interface MainMenuItem {
+export interface MenuItemProps {
   href: string;
   text: string;
-  id: string | undefined;
-  parentId: string | undefined;
-  subItems?: MainMenuItem[];
+  id?: string | undefined;
+  parentId?: string | undefined;
+  subItems?: MenuItemProps[];
 }
-
-const messages = defineMessages({
-  mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
-    description: 'View all ... ',
-    defaultMessage: 'View all '
-  }
-});
 
 /**
  * Getter for the Main Menu Items structure that will be displayed in the Mobile and Desktoip Main header.
  * @param menuItems Array of MenuItems to create Main Menu Items structure
  * @param parentId A parent of the menu item to filter out sub menu items
+ * @param parentItem A parent item will be prepended to the list of menu items
  * @param locale the locale to pass to the menu item formatter class to get the correct text and href
- * @returns Array of MainMenuItem
+ * @returns Array of MainMenuItems
  */
-export function mapGlobalMenuItemsToMainMenuItems(
+export function mapGlobalMainMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
+  prefixText: string | undefined,
   parentId?: string | null | undefined,
-  parentItem?: MainMenuItem,
-  locale?: string
-): MainMenuItem[] {
+  parentItem?: MenuItemProps | undefined,
+  locale?: string | undefined
+): MenuItemProps[] {
   if (!menuItems) {
     return [];
   }
@@ -43,9 +35,9 @@ export function mapGlobalMenuItemsToMainMenuItems(
 
   const returnItems = menuItems
     .filter(menuItem => menuItem.parentId === parentId)
-    .map((menuItem): MainMenuItem => {
+    .map((menuItem): MenuItemProps => {
       const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
-      const mappedMenuItem: MainMenuItem = {
+      const mappedMenuItem: MenuItemProps = {
         href: menuItemFormatter.formatHref() || '/404',
         text: menuItemFormatter.formatText(),
         id: menuItem.id,
@@ -54,8 +46,9 @@ export function mapGlobalMenuItemsToMainMenuItems(
       return {
         ...mappedMenuItem,
         subItems: hasSubItems(menuItem.id)
-          ? mapGlobalMenuItemsToMainMenuItems(
+          ? mapGlobalMainMenuItemsToMenuItemProps(
               menuItems,
+              prefixText,
               menuItem.id,
               mappedMenuItem,
               locale
@@ -65,7 +58,10 @@ export function mapGlobalMenuItemsToMainMenuItems(
     });
 
   if (parentItem) {
-    returnItems.unshift(parentItem);
+    returnItems.unshift({
+      ...parentItem,
+      text: `${prefixText} ${parentItem.text}`
+    });
   }
 
   return returnItems;

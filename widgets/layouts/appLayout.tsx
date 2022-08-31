@@ -1,5 +1,5 @@
 import { rem } from '@utilities/rem';
-import { AppHeader } from '@widgets/headers/appHeader';
+import { AppHeader } from '@widgets/headers/app-header/appHeader';
 import { useLarge } from '@widgets/media-queries';
 
 interface AppLayoutStyles {

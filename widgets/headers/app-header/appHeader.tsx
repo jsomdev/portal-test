@@ -1,21 +1,32 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { useTheme } from '@fluentui/react';
 import { useLarge } from '@widgets/media-queries';
-import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
+import { NavigationPanelType } from '@widgets/panels/navigation-panel/navigationPanel.types';
 
 import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { AppPanel } from '@widgets/panels/appNavigationPanel';
-import { useIntl } from 'react-intl';
-import { MainHeader } from './mainHeader';
-import { mapGlobalMenuItemsToMainMenuItems } from './mainHeader.helper';
-import { SiteHeader } from './siteHeader';
-import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
-import { SiteHeaderItemProps } from './siteHeaderItem';
+import { messageIds } from '@services/i18n';
+import { NavigationPanel } from '@widgets/panels/navigation-panel/navigationPanel';
+import { defineMessages, useIntl } from 'react-intl';
+import { MainHeader } from '../main-header/mainHeader';
+import {
+  mapGlobalMainMenuItemsToMenuItemProps,
+  MenuItemProps
+} from '../main-header/mainHeader.helper';
+import { SiteHeader } from '../site-header/siteHeader';
+import { mapMenuItemsToSiteHeaderItemProps as mapGlobalSiteMenuItemsToMenuItemProps } from '../site-header/siteHeader.helper';
 
 export interface AppHeaderStyles {
   root: React.CSSProperties;
 }
+
+const messages = defineMessages({
+  mainMenuViewAllCategory: {
+    id: messageIds.navigation.menu.viewAllCategory,
+    description: 'View all ... ',
+    defaultMessage: 'View all '
+  }
+});
 /**
  * Header component that is displayed at the top of each page.
  */
@@ -23,31 +34,28 @@ export const AppHeader: React.FC = () => {
   const showMainHeader = useLarge();
   const { semanticColors } = useTheme();
   const { siteMenuItems, mainMenuItems } = useGlobalData();
-  const { locale } = useIntl();
+  const { locale, formatMessage } = useIntl();
 
   const [sideNavigationType, setSideNavigationType] =
-    useState<null | AppNavigationType>(null);
+    useState<null | NavigationPanelType>(null);
 
-  const mappedSiteMenuItems: SiteHeaderItemProps[] = useMemo(() => {
-    return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
+  const mappedSiteMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapGlobalSiteMenuItemsToMenuItemProps(siteMenuItems || [], locale);
   }, [locale, siteMenuItems]);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
   }
 
-  const mappedMainMenuItems = useMemo(() => {
-    return mapGlobalMenuItemsToMainMenuItems(
+  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapGlobalMainMenuItemsToMenuItemProps(
       mainMenuItems || [],
+      formatMessage(messages.mainMenuViewAllCategory),
       null,
       undefined,
       locale
     );
-  }, [mainMenuItems, locale]);
-
-  useEffect(() => {
-    console.log(mappedMainMenuItems);
-  }, [mappedMainMenuItems]);
+  }, [mainMenuItems, formatMessage, locale]);
 
   const styles: AppHeaderStyles = {
     root: {
@@ -66,7 +74,7 @@ export const AppHeader: React.FC = () => {
         onOpenSideNavigation={setSideNavigationType}
       />
       {showMainHeader && <MainHeader items={mappedMainMenuItems} />}
-      <AppPanel
+      <NavigationPanel
         panelProps={{
           isOpen: !!sideNavigationType,
           onDismiss: onSitePanelDismiss

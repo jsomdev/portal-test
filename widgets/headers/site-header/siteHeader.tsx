@@ -14,16 +14,17 @@ import {
 import { messageIds } from '@services/i18n/ids';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
-import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
+import { NavigationPanelType } from '@widgets/panels/navigation-panel/navigationPanel.types';
+import { MenuItemProps } from '../main-header/mainHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
-import { SiteHeaderItem, SiteHeaderItemProps } from './siteHeaderItem';
+import { SiteHeaderItem } from './siteHeaderItem';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
 export interface SiteHeaderProps {
-  items: SiteHeaderItemProps[];
-  onOpenSideNavigation?: (type: AppNavigationType) => void;
+  items: MenuItemProps[];
+  onOpenSideNavigation?: (type: NavigationPanelType) => void;
 }
 
 const messages = defineMessages({
@@ -238,7 +239,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           <ul className="horizontal">
             {items.map(item => {
               return (
-                <SiteHeaderItem {...item} key={`site-menu-item-${item.text}`} />
+                <SiteHeaderItem item={item} key={`site-menu-item-${item}`} />
               );
             })}
           </ul>

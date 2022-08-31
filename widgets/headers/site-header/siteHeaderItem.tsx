@@ -1,20 +1,17 @@
 import { IButtonStyles } from '@fluentui/react';
 import { rem } from '@utilities/rem';
+import { MenuItemProps } from '../main-header/mainHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
 
-export interface SiteHeaderItemProps {
-  text: string;
-  href: string;
+export interface SiteMenuItemProps {
+  item: MenuItemProps;
 }
 
 interface SiteHeaderItemStyles {
   button: Partial<IButtonStyles>;
 }
 
-export const SiteHeaderItem: React.FC<SiteHeaderItemProps> = ({
-  text,
-  href
-}) => {
+export const SiteHeaderItem: React.FC<SiteMenuItemProps> = ({ item }) => {
   const styles: SiteHeaderItemStyles = {
     button: {
       label: {
@@ -27,8 +24,8 @@ export const SiteHeaderItem: React.FC<SiteHeaderItemProps> = ({
     <li className="horizontal">
       <SiteHeaderButton
         type="actionButton"
-        text={text}
-        href={href}
+        text={item.text}
+        href={item.href}
         styles={styles.button}
       />
     </li>

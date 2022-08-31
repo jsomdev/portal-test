@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  ActionButton,
   IButtonStyles,
   IPanelProps,
   IPanelStyles,
@@ -13,19 +12,19 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import { MainMenuItem } from '@widgets/headers/mainHeader.helper';
-import { SiteHeaderButton } from '@widgets/headers/siteHeaderButton';
-import { SiteHeaderItemProps } from '@widgets/headers/siteHeaderItem';
+import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
+import { SiteHeaderButton } from '@widgets/headers/site-header/siteHeaderButton';
 import { defineMessages, useIntl } from 'react-intl';
-import { AppNavigationPanelMobileMenu } from './appNavigationPanelMobileMenu';
+import { NavigationPanelMainMenu } from '../navigationPanelMainMenu';
+import { NavigationPanelSiteMenu } from '../navigationPanelSiteMenu';
 
-export interface AppPanelProps {
+export interface NavigationPanelProps {
   panelProps: Partial<IPanelProps>;
-  siteMenuItems: SiteHeaderItemProps[];
-  mainMenuItems: MainMenuItem[];
+  siteMenuItems: MenuItemProps[];
+  mainMenuItems: MenuItemProps[];
 }
 
-export interface AppPanelStyles {
+export interface NavigationPanelStyles {
   panel: Partial<IPanelStyles>;
   panelHeader: IStackStyles;
   closeButton: IButtonStyles;
@@ -34,12 +33,12 @@ export interface AppPanelStyles {
 const messages = defineMessages({
   closeMenu: {
     id: messageIds.navigation.menu.close,
-    description: 'Close menu button text',
+    description: 'Close panel button text',
     defaultMessage: 'Menu'
   }
 });
 
-export const AppPanel: React.FC<AppPanelProps> = ({
+export const NavigationPanel: React.FC<NavigationPanelProps> = ({
   panelProps,
   siteMenuItems,
   mainMenuItems
@@ -47,7 +46,7 @@ export const AppPanel: React.FC<AppPanelProps> = ({
   const { spacing, semanticColors, palette } = useTheme();
   const { formatMessage } = useIntl();
 
-  const styles: AppPanelStyles = {
+  const styles: NavigationPanelStyles = {
     panel: {
       commands: {
         display: 'none'
@@ -99,21 +98,8 @@ export const AppPanel: React.FC<AppPanelProps> = ({
       {...panelProps}
     >
       <Stack>
-        <AppNavigationPanelMobileMenu items={mainMenuItems} />
-        {siteMenuItems.map(item => {
-          return (
-            <Stack key={`site-menu-item-${item.text}`}>
-              <ActionButton
-                {...item}
-                styles={{
-                  root: {
-                    padding: `${spacing.l1} ${spacing.m}`
-                  }
-                }}
-              />
-            </Stack>
-          );
-        })}
+        <NavigationPanelMainMenu items={mainMenuItems} />
+        <NavigationPanelSiteMenu items={siteMenuItems} />
       </Stack>
     </Panel>
   );

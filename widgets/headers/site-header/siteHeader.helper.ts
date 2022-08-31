@@ -1,11 +1,11 @@
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
-import { MenuItem } from './../../services/portal-api/models/MenuItem';
-import { SiteHeaderItemProps } from './siteHeaderItem';
+import { MenuItem } from '../../../services/portal-api/models/MenuItem';
+import { MenuItemProps } from '../main-header/mainHeader.helper';
 
 export function mapMenuItemsToSiteHeaderItemProps(
   menuItems: MenuItem[],
   locale?: string
-): SiteHeaderItemProps[] {
+): MenuItemProps[] {
   return menuItems.map(menuItem =>
     mapMenuItemToSiteHeaderItemProps(menuItem, locale)
   );
@@ -14,11 +14,11 @@ export function mapMenuItemsToSiteHeaderItemProps(
 function mapMenuItemToSiteHeaderItemProps(
   menuItem: MenuItem,
   locale?: string
-): SiteHeaderItemProps {
+): MenuItemProps {
   const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
   return {
-    //TODO add route path isntead of hardcoded 404 @Jan
     href: menuItemFormatter.formatHref() || '/404',
-    text: menuItemFormatter.formatText()
+    text: menuItemFormatter.formatText(),
+    id: menuItem.id
   };
 }

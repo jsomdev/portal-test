@@ -16,11 +16,11 @@ import { customerLoginRequest } from '@services/authentication/authenticationCon
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
-import { SiteMenuItem } from './mainHeader.helper';
-import { SiteHeaderButton } from './siteHeaderButton';
+import { SiteHeaderButton } from '../site-header/siteHeaderButton';
+import { MenuItemProps } from './mainHeader.helper';
 
 interface MainHeaderProps {
-  items: SiteMenuItem[];
+  items: MenuItemProps[];
 }
 interface MainHeaderStyles {
   mainMenuContainer: IStackItemStyles;
