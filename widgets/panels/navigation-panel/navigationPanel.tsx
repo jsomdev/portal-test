@@ -15,8 +15,8 @@ import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import { SiteHeaderButton } from '@widgets/headers/site-header/siteHeaderButton';
 import { defineMessages, useIntl } from 'react-intl';
-import { NavigationPanelMainMenu } from '../navigationPanelMainMenu';
-import { NavigationPanelSiteMenu } from '../navigationPanelSiteMenu';
+import { NavigationPanelMainMenu } from './navigation-panel-main-menu/navigationPanelMainMenu';
+import { NavigationPanelSiteMenu } from './navigationPanelSiteMenu';
 
 export interface NavigationPanelProps {
   panelProps: Partial<IPanelProps>;
