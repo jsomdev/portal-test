@@ -8,6 +8,7 @@ import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { messageIds } from '@services/i18n';
 import { NavigationPanel } from '@widgets/panels/navigation-panel/navigationPanel';
 import { defineMessages, useIntl } from 'react-intl';
+import { HeroMenu } from '../main-header/hero-menu/heroMenu';
 import { MainHeader } from '../main-header/mainHeader';
 import {
   mapGlobalMainMenuItemsToMenuItemProps,
@@ -38,6 +39,8 @@ export const AppHeader: React.FC = () => {
 
   const [sideNavigationType, setSideNavigationType] =
     useState<null | NavigationPanelType>(null);
+
+  const [activeMenuItem, setActiveMenuItem] = useState<string | undefined>();
 
   const mappedSiteMenuItems: MenuItemProps[] = useMemo(() => {
     return mapGlobalSiteMenuItemsToMenuItemProps(siteMenuItems || [], locale);
@@ -73,7 +76,12 @@ export const AppHeader: React.FC = () => {
         items={mappedSiteMenuItems}
         onOpenSideNavigation={setSideNavigationType}
       />
-      {showMainHeader && <MainHeader items={mappedMainMenuItems} />}
+      {showMainHeader && (
+        <MainHeader
+          items={mappedMainMenuItems}
+          setActiveMenuItem={setActiveMenuItem}
+        />
+      )}
       <NavigationPanel
         panelProps={{
           isOpen: !!sideNavigationType,
@@ -81,6 +89,10 @@ export const AppHeader: React.FC = () => {
         }}
         siteMenuItems={mappedSiteMenuItems}
         mainMenuItems={mappedMainMenuItems}
+      />
+      <HeroMenu
+        menuItems={mappedMainMenuItems}
+        activeMenuItemId={activeMenuItem}
       />
     </header>
   );

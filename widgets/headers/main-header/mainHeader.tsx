@@ -6,9 +6,11 @@ import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,
+  IButtonStyles,
   IStackItemStyles,
   IStackStyles,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
@@ -21,10 +23,12 @@ import { MenuItemProps } from './mainHeader.helper';
 
 interface MainHeaderProps {
   items: MenuItemProps[];
+  setActiveMenuItem: (id: string | undefined) => void;
 }
 interface MainHeaderStyles {
   mainMenuContainer: IStackItemStyles;
   root: IStackStyles;
+  headerButton: IButtonStyles;
 }
 
 const messages = defineMessages({
@@ -40,7 +44,10 @@ const messages = defineMessages({
   }
 });
 
-export const MainHeader: React.FC<MainHeaderProps> = ({ items }) => {
+export const MainHeader: React.FC<MainHeaderProps> = ({
+  items,
+  setActiveMenuItem
+}) => {
   const { spacing, palette } = useTheme();
   const { instance, inProgress } = useMsal();
   const { me } = useMe();
@@ -63,6 +70,32 @@ export const MainHeader: React.FC<MainHeaderProps> = ({ items }) => {
       root: {
         flex: 1
       }
+    },
+    headerButton: {
+      root: {
+        position: 'relative',
+        height: rem(46),
+        fontWeight: 500,
+        padding: 0,
+        selectors: {
+          ':before': {
+            content: '',
+            position: 'absolute',
+            bottom: 0,
+            left: '50%',
+            width: 0,
+            height: '3px',
+            display: 'block',
+            backgroundColor: palette.themeSecondary,
+            transform: `translateX(-50%)`,
+            transition: 'all 0.3s ease-in'
+          },
+          ':hover::before': {
+            content: "''",
+            width: '100%'
+          }
+        }
+      }
     }
   };
 
@@ -78,23 +111,21 @@ export const MainHeader: React.FC<MainHeaderProps> = ({ items }) => {
         horizontalAlign="space-between"
       >
         <Stack
-          tokens={{ childrenGap: spacing.s1 }}
+          tokens={{ childrenGap: spacing.m }}
           styles={styles.mainMenuContainer}
           horizontal
         >
           {items.map(item => {
+            console.log(item);
             return (
               <ActionButton
                 key={`main-header-menu-${item.text}`}
-                styles={{
-                  root: { position: 'relative', height: rem(46) },
-                  rootHovered: {
-                    borderBottom: `1px solid ${palette.themePrimary}`,
-                    color: palette.neutralPrimary
-                  }
+                styles={styles.headerButton}
+                onClick={() => {
+                  setActiveMenuItem(item.id);
                 }}
               >
-                {item.text}
+                <Text>{item.text}</Text>
               </ActionButton>
             );
           })}

@@ -55,13 +55,15 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
         height: '100vh'
       },
       content: {
-        padding: 0
+        padding: 0,
+        overflow: 'auto',
+        maxHeight: `calc(100vh - ${rem(90)})`
       }
     },
     panelHeader: {
       root: {
         borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        overflow: 'auto'
+        height: rem(90)
       }
     },
     closeButton: {

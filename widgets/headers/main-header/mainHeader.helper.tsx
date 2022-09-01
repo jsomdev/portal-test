@@ -12,6 +12,7 @@ export interface MenuItemProps {
 /**
  * Getter for the Main Menu Items structure that will be displayed in the Mobile and Desktoip Main header.
  * @param menuItems Array of MenuItems to create Main Menu Items structure
+ * @param prefixText Text that will be prepended to the parent item text property which as a menu item is then prepended to it's own sub-items
  * @param parentId A parent of the menu item to filter out sub menu items
  * @param parentItem A parent item will be prepended to the list of menu items
  * @param locale the locale to pass to the menu item formatter class to get the correct text and href
@@ -24,9 +25,7 @@ export function mapGlobalMainMenuItemsToMenuItemProps(
   parentItem?: MenuItemProps | undefined,
   locale?: string | undefined
 ): MenuItemProps[] {
-  if (!menuItems) {
-    return [];
-  }
+  // This function will determine if a given menu item has sub items based on the parent ID / item ID
   const hasSubItems: (id: string | undefined) => boolean = (
     id: string | undefined
   ): boolean => {
@@ -57,10 +56,12 @@ export function mapGlobalMainMenuItemsToMenuItemProps(
       };
     });
 
+  // Add the parent item to it's own subItems list and prefix the text if present
   if (parentItem) {
     returnItems.unshift({
       ...parentItem,
-      text: `${prefixText} ${parentItem.text}`
+      text: `${prefixText} ${parentItem.text}`,
+      parentId: parentItem.id
     });
   }
 
