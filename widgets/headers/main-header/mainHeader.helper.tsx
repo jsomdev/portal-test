@@ -7,6 +7,7 @@ export interface MenuItemProps {
   id?: string | undefined;
   parentId?: string | undefined;
   subItems?: MenuItemProps[];
+  parentItem?: MenuItemProps;
 }
 
 /**
@@ -18,7 +19,7 @@ export interface MenuItemProps {
  * @param locale the locale to pass to the menu item formatter class to get the correct text and href
  * @returns Array of MainMenuItems
  */
-export function mapGlobalMainMenuItemsToMenuItemProps(
+export function mapMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
   prefixText: string | undefined,
   parentId?: string | null | undefined,
@@ -32,24 +33,28 @@ export function mapGlobalMainMenuItemsToMenuItemProps(
     return !!menuItems.filter(child => child.parentId === id).length;
   };
 
-  const returnItems = menuItems
+  function mapMenuItemToMenuItemProps(menuItem: MenuItem): MenuItemProps {
+    const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
+    return {
+      href: menuItemFormatter.formatHref() || '/404',
+      text: menuItemFormatter.formatText(),
+      id: menuItem.id,
+      parentId: menuItem.parentId || undefined
+    };
+  }
+
+  const menuItemProps: MenuItemProps[] = menuItems
     .filter(menuItem => menuItem.parentId === parentId)
     .map((menuItem): MenuItemProps => {
-      const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
-      const mappedMenuItem: MenuItemProps = {
-        href: menuItemFormatter.formatHref() || '/404',
-        text: menuItemFormatter.formatText(),
-        id: menuItem.id,
-        parentId: menuItem.parentId || undefined
-      };
+      const item = mapMenuItemToMenuItemProps(menuItem);
       return {
-        ...mappedMenuItem,
+        ...item,
         subItems: hasSubItems(menuItem.id)
-          ? mapGlobalMainMenuItemsToMenuItemProps(
+          ? mapMenuItemsToMenuItemProps(
               menuItems,
               prefixText,
               menuItem.id,
-              mappedMenuItem,
+              item,
               locale
             )
           : undefined
@@ -58,12 +63,12 @@ export function mapGlobalMainMenuItemsToMenuItemProps(
 
   // Add the parent item to it's own subItems list and prefix the text if present
   if (parentItem) {
-    returnItems.unshift({
+    menuItemProps.unshift({
       ...parentItem,
       text: `${prefixText} ${parentItem.text}`,
       parentId: parentItem.id
     });
   }
 
-  return returnItems;
+  return menuItemProps;
 }

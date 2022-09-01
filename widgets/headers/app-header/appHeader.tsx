@@ -11,7 +11,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { HeroMenu } from '../main-header/hero-menu/heroMenu';
 import { MainHeader } from '../main-header/mainHeader';
 import {
-  mapGlobalMainMenuItemsToMenuItemProps,
+  mapMenuItemsToMenuItemProps,
   MenuItemProps
 } from '../main-header/mainHeader.helper';
 import { SiteHeader } from '../site-header/siteHeader';
@@ -51,7 +51,7 @@ export const AppHeader: React.FC = () => {
   }
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapGlobalMainMenuItemsToMenuItemProps(
+    return mapMenuItemsToMenuItemProps(
       mainMenuItems || [],
       formatMessage(messages.mainMenuViewAllCategory),
       null,

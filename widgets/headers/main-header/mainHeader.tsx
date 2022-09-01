@@ -116,7 +116,6 @@ export const MainHeader: React.FC<MainHeaderProps> = ({
           horizontal
         >
           {items.map(item => {
-            console.log(item);
             return (
               <ActionButton
                 key={`main-header-menu-${item.text}`}

@@ -26,6 +26,7 @@ export const NavigationPanelMainMenu: React.FC<
     setSelectedItem(undefined);
   }
 
+  //reducer -> action: selectItem = select item, set selected item as id, write function to determine
   function onMenuItemClick(menuItem: MenuItemProps) {
     if (menuItem.subItems) {
       setSelectedItem(menuItem);

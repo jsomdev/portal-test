@@ -5,6 +5,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import React from 'react';
 
@@ -32,7 +33,7 @@ export const NavigationPanelMainMenuItems: React.FC<
 
     linkButton: {
       root: {
-        padding: `${spacing.l1} ${spacing.m}`
+        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
       },
       flexContainer: {
         justifyContent: 'space-between'
@@ -42,6 +43,7 @@ export const NavigationPanelMainMenuItems: React.FC<
       }
     }
   };
+
   return (
     <Stack>
       {items.map(menuItem => {
