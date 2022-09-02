@@ -1,7 +1,15 @@
-import { IStackItemStyles, Stack, useTheme } from '@fluentui/react';
+import {
+  FontWeights,
+  IStackItemStyles,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
+import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { NavigationPanelMainMenuBreadcrumbs } from './navigationPanelMainMenuBreadcrumbs';
 import { NavigationPanelMainMenuItems } from './navigationPanelMainMenuItems';
 
@@ -11,62 +19,72 @@ interface NavigationPanelMainMenuProps {
 
 interface NavigationPanelMainMenuStyles {
   subItemContainer: IStackItemStyles;
+  subItemHeader: ITextStyles;
 }
 
 export const NavigationPanelMainMenu: React.FC<
   NavigationPanelMainMenuProps
 > = ({ items }) => {
   const { semanticColors, spacing } = useTheme();
-  const [selectedItem, setSelectedItem] = useState<MenuItemProps | undefined>();
-  const [breadcrumbItems, setBreadcrumbItems] = useState<MenuItemProps[]>([]);
-
+  const [activeMenuItem, setActiveMenuItem] = useState<
+    MenuItemProps | undefined
+  >(undefined);
   const { push } = useRouter();
 
-  function resetMenu() {
-    setSelectedItem(undefined);
-  }
-
-  //reducer -> action: selectItem = select item, set selected item as id, write function to determine
-  function onMenuItemClick(menuItem: MenuItemProps) {
-    if (menuItem.subItems) {
-      setSelectedItem(menuItem);
-      items.find(item => {
-        if (selectedItem?.id === item.id) {
-          setBreadcrumbItems([...breadcrumbItems, item]);
-        }
-      });
-    } else {
-      push(menuItem.href);
+  const menuItems = useMemo(() => {
+    if (activeMenuItem?.subItems) {
+      return activeMenuItem.subItems;
     }
-  }
+    return items;
+  }, [activeMenuItem, items]);
 
-  function onBreadcrumbItemClick() {
-    setSelectedItem(breadcrumbItems.pop());
-    setBreadcrumbItems([...breadcrumbItems.splice(-1)]);
-  }
+  const breadcrumb: MenuItemProps | undefined = useMemo(() => {
+    return items.find(item => {
+      return item.id === activeMenuItem?.parentId;
+    });
+  }, [items, activeMenuItem]);
+
+  const onMenuItemClick = useCallback(
+    (item: MenuItemProps) => {
+      if (item.subItems) {
+        setActiveMenuItem(item);
+      } else {
+        push(item.href);
+      }
+    },
+    [push]
+  );
 
   const styles: NavigationPanelMainMenuStyles = {
     subItemContainer: {
       root: {
         borderLeft: `1px solid ${semanticColors.variantBorder}`,
-        marginLeft: spacing.l1,
-        paddingLeft: spacing.s1
+        marginLeft: rem(spacing.l1),
+        paddingLeft: rem(spacing.s1)
+      }
+    },
+    subItemHeader: {
+      root: {
+        fontWeight: FontWeights.semibold,
+        padding: `${rem(spacing.m)} ${rem(spacing.l1)}`
       }
     }
   };
 
-  if (selectedItem?.subItems) {
+  if (activeMenuItem?.subItems) {
     return (
       <Stack>
         <NavigationPanelMainMenuBreadcrumbs
-          selectedItem={selectedItem}
-          items={breadcrumbItems}
-          resetMenu={resetMenu}
-          onItemClick={onBreadcrumbItemClick}
+          breadCrumbItem={breadcrumb}
+          resetMenu={() => setActiveMenuItem(undefined)}
+          onItemClick={item => setActiveMenuItem(item)}
         />
+        <Stack>
+          <Text styles={styles.subItemHeader}>{activeMenuItem?.text}</Text>
+        </Stack>
         <Stack styles={styles.subItemContainer}>
           <NavigationPanelMainMenuItems
-            items={selectedItem.subItems}
+            items={menuItems}
             onMenuItemClick={onMenuItemClick}
           />
         </Stack>
@@ -76,7 +94,7 @@ export const NavigationPanelMainMenu: React.FC<
 
   return (
     <NavigationPanelMainMenuItems
-      items={items}
+      items={menuItems}
       onMenuItemClick={onMenuItemClick}
     />
   );

@@ -1,12 +1,4 @@
-import {
-  ActionButton,
-  FontWeights,
-  IButtonStyles,
-  ITextStyles,
-  Stack,
-  Text,
-  useTheme
-} from '@fluentui/react';
+import { ActionButton, IButtonStyles, Stack, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
@@ -14,15 +6,13 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 interface NavigationPanelMainMenuBreadcrumbsProps {
-  items: MenuItemProps[];
-  selectedItem: MenuItemProps;
+  breadCrumbItem: MenuItemProps | undefined;
   resetMenu: () => void;
-  onItemClick: () => void;
+  onItemClick: (item: MenuItemProps) => void;
 }
 
 interface NavigationPanelMainMenuBreadcrumbsStyles {
   returnButton: IButtonStyles;
-  subItemHeader: ITextStyles;
 }
 
 const messages = defineMessages({
@@ -35,24 +25,18 @@ const messages = defineMessages({
 
 export const NavigationPanelMainMenuBreadcrumbs: React.FC<
   NavigationPanelMainMenuBreadcrumbsProps
-> = ({ items, selectedItem, resetMenu, onItemClick }) => {
+> = ({ breadCrumbItem, resetMenu, onItemClick }) => {
   const { formatMessage } = useIntl();
   const { spacing, semanticColors } = useTheme();
 
   const styles: NavigationPanelMainMenuBreadcrumbsStyles = {
     returnButton: {
       root: {
-        padding: `${spacing.l1} ${spacing.m}`,
+        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`,
         borderBottom: `1px solid ${semanticColors.variantBorder}`
       },
       icon: {
         fontSize: rem(12)
-      }
-    },
-    subItemHeader: {
-      root: {
-        fontWeight: FontWeights.semibold,
-        padding: `${spacing.m} ${spacing.l1}`
       }
     }
   };
@@ -67,20 +51,15 @@ export const NavigationPanelMainMenuBreadcrumbs: React.FC<
           return resetMenu();
         }}
       />
-      {items.map(item => {
-        if (item) {
-          return (
-            <ActionButton
-              key={item.id}
-              text={item.text}
-              styles={styles.returnButton}
-              iconProps={{ iconName: 'chevronLeft' }}
-              onClick={onItemClick}
-            />
-          );
-        }
-      })}
-      <Text styles={styles.subItemHeader}>{selectedItem?.text}</Text>
+      {breadCrumbItem && (
+        <ActionButton
+          key={breadCrumbItem.id}
+          text={breadCrumbItem.text}
+          styles={styles.returnButton}
+          iconProps={{ iconName: 'chevronLeft' }}
+          onClick={() => onItemClick(breadCrumbItem)}
+        />
+      )}
     </Stack>
   );
 };

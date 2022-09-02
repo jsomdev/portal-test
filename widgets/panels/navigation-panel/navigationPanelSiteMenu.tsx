@@ -1,4 +1,5 @@
 import { ActionButton, IButtonStyles, Stack, useTheme } from '@fluentui/react';
+import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import React from 'react';
 
@@ -13,7 +14,7 @@ export const NavigationPanelSiteMenu: React.FC<
 
   const styles: IButtonStyles = {
     root: {
-      padding: `${spacing.l1} ${spacing.m}`
+      padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
     }
   };
 

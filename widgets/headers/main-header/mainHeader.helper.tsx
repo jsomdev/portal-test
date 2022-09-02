@@ -7,7 +7,6 @@ export interface MenuItemProps {
   id?: string | undefined;
   parentId?: string | undefined;
   subItems?: MenuItemProps[];
-  parentItem?: MenuItemProps;
 }
 
 /**
