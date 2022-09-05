@@ -7,50 +7,52 @@ import {
   MediaQueryPreset
 } from './mediaQuery.types';
 import { getMediaQueries } from '@widgets/media-queries/mediaQuery.helper';
-import { mergeStyles, mergeStyleSets } from '@fluentui/react';
+import { IStyle, mergeStyles } from '@fluentui/react';
 
 const createCSSMediaQuery = (
   mediaQuery: MediaQuery,
-  styles: any,
-  defaultStyles: any = {}
-): { root: any } => {
+  styles: IStyle,
+  defaultStyles: IStyle = {}
+): Record<string, unknown> => {
   const queries = getMediaQueries(mediaQuery);
   return {
-    ...defaultStyles,
-    ...queries.reduce((acc: any, current: string) => {
+    ...(defaultStyles as Record<string, unknown>),
+    ...queries.reduce((acc: Record<string, unknown>, current: string) => {
       acc[`@media ${current}`] = styles;
       return acc;
     }, {})
   };
 };
 
-export const desktopCSS = (styles: any) => {
+export const mediaDesktop = (styles: IStyle): Record<string, unknown> => {
   return createCSSMediaQuery(
     { matchType: MediaQueryMatchType.From, query: MediaQueryPreset.Large },
     styles
   );
 };
 
-export const getMediaQueryCSS = (query: MediaQuery, styles: any) => {
-  return createCSSMediaQuery(query, styles);
-};
-
 /**
  * Wrapper component that will render the children if the MediaQuery + MatchType matches.
  */
 export const Media: React.FC<
-  MediaQuery & { forceJavaScript?: boolean; as?: string }
+  MediaQuery & {
+    forceJavaScript?: boolean;
+    as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
+  }
 > = ({ forceJavaScript = false, as = 'div', matchType, query, children }) => {
   const { isMatch } = useMediaQuery({ query, matchType });
 
   if (isMatch) {
+    if (as) {
+      return React.createElement(as, {}, children);
+    }
     return <React.Fragment>{children}</React.Fragment>;
   }
 
   if (!forceJavaScript) {
     const mediaQuery: MediaQuery = { query, matchType };
     return React.createElement(
-      as,
+      as || 'div',
       {
         className: mergeStyles(
           createCSSMediaQuery(
