@@ -21,6 +21,7 @@ export interface MenuItemProps {
 export function mapMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
   prefixText: string | undefined,
+  type: 'expanded' | 'default',
   parentId?: string | null | undefined,
   parentItem?: MenuItemProps | undefined,
   locale?: string | undefined
@@ -52,6 +53,7 @@ export function mapMenuItemsToMenuItemProps(
           ? mapMenuItemsToMenuItemProps(
               menuItems,
               prefixText,
+              type,
               menuItem.id,
               item,
               locale
@@ -61,7 +63,7 @@ export function mapMenuItemsToMenuItemProps(
     });
 
   // Add the parent item to it's own subItems list and prefix the text if present
-  if (parentItem) {
+  if (parentItem && type === 'expanded') {
     menuItemProps.unshift({
       ...parentItem,
       text: `${prefixText} ${parentItem.text}`,

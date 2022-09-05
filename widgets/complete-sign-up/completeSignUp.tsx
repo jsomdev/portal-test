@@ -348,7 +348,7 @@ export const CompleteSignUp: React.FC = () => {
                         />
 
                         {createVerificationRequestStatus !== 'success' && (
-                          <>
+                          <React.Fragment>
                             <Stack.Item styles={styles.bottomContentContainer}>
                               <Text styles={styles.bottomSeperatorText}>
                                 {messages.completeLater}
@@ -367,7 +367,7 @@ export const CompleteSignUp: React.FC = () => {
                             >
                               {messages.signOut}
                             </DefaultButton>
-                          </>
+                          </React.Fragment>
                         )}
                       </Stack>
                     </Stepper>

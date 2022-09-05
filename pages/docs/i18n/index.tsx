@@ -85,7 +85,7 @@ const I18N: NextPage<I18NProps> = (props: I18NProps) => {
   const { pathname } = useRouter();
 
   return (
-    <>
+    <React.Fragment>
       <Head
         pathname={pathname}
         title={formatMessage({ id: messageIds.pages.docs.i18n.title })}
@@ -97,7 +97,7 @@ const I18N: NextPage<I18NProps> = (props: I18NProps) => {
         {props.markdown}
       </ReactMarkdown>
       <I18NExamples {...props} />
-    </>
+    </React.Fragment>
   );
 };
 

@@ -29,7 +29,6 @@ import { SiteLogo } from './siteLogo';
 //items prop has Menu Items from the api
 export interface SiteHeaderProps {
   siteMenuItems: MenuItemProps[];
-  mainMenuItems: MenuItemProps[];
 }
 
 const messages = defineMessages({
@@ -48,38 +47,18 @@ const messages = defineMessages({
 export const SiteHeader: React.FC = () => {
   const isLarge = useLarge();
 
-  const { siteMenuItems, mainMenuItems } = useGlobalData();
-  const { locale, formatMessage } = useIntl();
+  const { siteMenuItems } = useGlobalData();
+  const { locale } = useIntl();
 
   const mappedSiteMenuItems: MenuItemProps[] = useMemo(() => {
     return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
   }, [locale, siteMenuItems]);
 
-  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
-      mainMenuItems || [],
-      formatMessage(messages.mainMenuViewAllCategory),
-      null,
-      undefined,
-      locale
-    );
-  }, [mainMenuItems, formatMessage, locale]);
-
   if (isLarge) {
-    return (
-      <DesktopSiteHeader
-        mainMenuItems={mappedMainMenuItems}
-        siteMenuItems={mappedSiteMenuItems}
-      />
-    );
+    return <DesktopSiteHeader siteMenuItems={mappedSiteMenuItems} />;
   }
 
-  return (
-    <MobileSiteHeader
-      mainMenuItems={mappedMainMenuItems}
-      siteMenuItems={mappedSiteMenuItems}
-    />
-  );
+  return <MobileSiteHeader siteMenuItems={mappedSiteMenuItems} />;
 };
 
 // ### Mobile Site Header
@@ -88,14 +67,24 @@ interface MobileSiteHeaderStyles {
   root: IStackStyles;
 }
 
-const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
-  siteMenuItems,
-  mainMenuItems
-}) => {
+const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const { spacing } = useTheme();
+  const { formatMessage, locale } = useIntl();
+  const { mainMenuItems } = useGlobalData();
 
   const [sideNavigationType, setSideNavigationType] =
     useState<null | NavigationPanelType>(null);
+
+  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapMenuItemsToMenuItemProps(
+      mainMenuItems || [],
+      formatMessage(messages.mainMenuViewAllCategory),
+      'expanded',
+      null,
+      undefined,
+      locale
+    );
+  }, [mainMenuItems, formatMessage, locale]);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
@@ -163,7 +152,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           onDismiss: onSitePanelDismiss
         }}
         siteMenuItems={siteMenuItems}
-        mainMenuItems={mainMenuItems}
+        mainMenuItems={mappedMainMenuItems}
       />
     </Stack>
   );

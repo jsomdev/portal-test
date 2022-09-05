@@ -84,6 +84,7 @@ const DesktopMainHeader: React.FC = () => {
     return mapMenuItemsToMenuItemProps(
       mainMenuItems || [],
       formatMessage(messages.mainMenuViewAllCategory),
+      'default',
       null,
       undefined,
       locale

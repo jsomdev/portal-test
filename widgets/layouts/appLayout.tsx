@@ -3,6 +3,7 @@ import { rem } from '@utilities/rem';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { useLarge } from '@widgets/media-queries';
+import React from 'react';
 
 interface AppLayoutStyles {
   main: React.CSSProperties;
@@ -33,13 +34,13 @@ export const AppLayout: React.FC = ({ children }) => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <header style={styles.header}>
         <SiteHeader />
         <MainHeader />
       </header>
       <main style={styles.main}>{children}</main>
       <footer></footer>
-    </>
+    </React.Fragment>
   );
 };
