@@ -6,6 +6,7 @@ import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,
+  Callout,
   IButtonStyles,
   IStackItemStyles,
   IStackStyles,
@@ -72,7 +73,7 @@ const DesktopMainHeader: React.FC = () => {
   const { formatMessage, locale } = useIntl();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
-  const { spacing, palette } = useTheme();
+  const { spacing, palette, effects } = useTheme();
   const { me } = useMe();
 
   const isAuthenticated = useIsAuthenticated();
@@ -124,7 +125,7 @@ const DesktopMainHeader: React.FC = () => {
             transform: `translateX(-50%)`,
             transition: 'all 0.3s ease-in'
           },
-          ':hover::before': {
+          ':hover::before, &.active::before': {
             content: "''",
             width: '100%'
           }
@@ -148,14 +149,21 @@ const DesktopMainHeader: React.FC = () => {
           tokens={{ childrenGap: spacing.l2 }}
           styles={styles.mainMenuContainer}
           horizontal
+          id={'main-menu-container'}
         >
           {mappedMainMenuItems.map(item => {
             return (
               <ActionButton
                 key={`main-header-menu-${item.text}`}
                 styles={styles.headerButton}
-                onClick={() => {
-                  setActiveMenuItem(item.id);
+                className={item.id === activeMenuItem ? 'active' : ''}
+                onClick={e => {
+                  e.preventDefault();
+                  if (activeMenuItem === item.id) {
+                    setActiveMenuItem(undefined);
+                  } else {
+                    setActiveMenuItem(item.id);
+                  }
                 }}
               >
                 <Text>{item.text}</Text>
@@ -171,6 +179,16 @@ const DesktopMainHeader: React.FC = () => {
           }}
           verticalAlign="center"
         >
+          <SiteHeaderButton
+            iconProps={{
+              iconName: 'FavoriteList'
+            }}
+          />
+          <SiteHeaderButton
+            iconProps={{
+              iconName: 'ShoppingCart'
+            }}
+          />
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
               type="actionButton"
@@ -187,27 +205,32 @@ const DesktopMainHeader: React.FC = () => {
               }
             />
           )}
-          <SiteHeaderButton
-            iconProps={{
-              iconName: 'Search'
-            }}
-          />
-          <SiteHeaderButton
-            iconProps={{
-              iconName: 'ShoppingCart'
-            }}
-          />
-          <SiteHeaderButton
-            iconProps={{
-              iconName: 'FavoriteList'
-            }}
-          />
         </Stack>
       </Stack>
-      <MainHeaderMenu
-        menuItems={mappedMainMenuItems}
-        activeMenuItemId={activeMenuItem}
-      />
+      {activeMenuItem && (
+        <Callout
+          target={`#main-menu-container`}
+          onDismiss={() => {
+            setActiveMenuItem(undefined);
+          }}
+          role="navigation"
+          isBeakVisible={false}
+          directionalHintFixed={true}
+          styles={{
+            root: {
+              width: '100vw',
+              right: `0 !important`,
+              left: `0 !important`,
+              boxShadow: effects.elevation8
+            }
+          }}
+        >
+          <MainHeaderMenu
+            menuItems={mappedMainMenuItems}
+            activeMenuItemId={activeMenuItem}
+          />
+        </Callout>
+      )}
     </nav>
   );
 };
