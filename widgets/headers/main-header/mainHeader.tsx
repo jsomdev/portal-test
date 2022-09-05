@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -13,18 +13,20 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
+import { useLarge } from '@widgets/media-queries';
 import { SiteHeaderButton } from '../site-header/siteHeaderButton';
-import { MenuItemProps } from './mainHeader.helper';
+import {
+  mapMenuItemsToMenuItemProps,
+  MenuItemProps
+} from './mainHeader.helper';
+import { HeroMenu } from './mainHeaderMenu';
 
-interface MainHeaderProps {
-  items: MenuItemProps[];
-  setActiveMenuItem: (id: string | undefined) => void;
-}
 interface MainHeaderStyles {
   mainMenuContainer: IStackItemStyles;
   root: IStackStyles;
@@ -41,19 +43,49 @@ const messages = defineMessages({
     id: messageIds.navigation.user.myProfile,
     description: 'Fallback text for the My Profile button',
     defaultMessage: 'My Profile'
+  },
+  mainMenuViewAllCategory: {
+    id: messageIds.navigation.menu.viewAllCategory,
+    description: 'View all ... ',
+    defaultMessage: 'View all '
   }
 });
 
-export const MainHeader: React.FC<MainHeaderProps> = ({
-  items,
-  setActiveMenuItem
-}) => {
-  const { spacing, palette } = useTheme();
+export const MainHeader: React.FC = () => {
+  const isLarge = useLarge();
+
+  if (isLarge) {
+    return <DesktopMainHeader />;
+  }
+
+  return <MobileMainHeader />;
+};
+
+const MobileMainHeader: React.FC = () => {
+  return null;
+};
+
+const DesktopMainHeader: React.FC = () => {
+  const [activeMenuItem, setActiveMenuItem] = useState<string | undefined>();
+
+  const { formatMessage, locale } = useIntl();
   const { instance, inProgress } = useMsal();
+  const { mainMenuItems } = useGlobalData();
   const { me } = useMe();
+  const { spacing, palette } = useTheme();
+
   const isAuthenticated = useIsAuthenticated();
-  const { formatMessage } = useIntl();
   const userFormatter = new UserFormatter(me, instance.getActiveAccount());
+
+  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapMenuItemsToMenuItemProps(
+      mainMenuItems || [],
+      formatMessage(messages.mainMenuViewAllCategory),
+      null,
+      undefined,
+      locale
+    );
+  }, [mainMenuItems, formatMessage, locale]);
 
   function signIn() {
     instance.loginRedirect(customerLoginRequest);
@@ -111,11 +143,11 @@ export const MainHeader: React.FC<MainHeaderProps> = ({
         horizontalAlign="space-between"
       >
         <Stack
-          tokens={{ childrenGap: spacing.m }}
+          tokens={{ childrenGap: spacing.l2 }}
           styles={styles.mainMenuContainer}
           horizontal
         >
-          {items.map(item => {
+          {mappedMainMenuItems.map(item => {
             return (
               <ActionButton
                 key={`main-header-menu-${item.text}`}
@@ -170,6 +202,10 @@ export const MainHeader: React.FC<MainHeaderProps> = ({
           />
         </Stack>
       </Stack>
+      <HeroMenu
+        menuItems={mappedMainMenuItems}
+        activeMenuItemId={activeMenuItem}
+      />
     </nav>
   );
 };

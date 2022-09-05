@@ -5,7 +5,6 @@ import {
   IStackStyles,
   ITextFieldStyles,
   IVerticalDividerStyles,
-  List,
   Stack,
   TextField,
   useTheme,
@@ -15,16 +14,23 @@ import { messageIds } from '@services/i18n/ids';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 
-import { NavigationPanelType } from '@widgets/panels/navigation-panel/navigationPanel.types';
-import { MenuItemProps } from '../main-header/mainHeader.helper';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
+import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
+import { useMemo, useState } from 'react';
+import {
+  mapMenuItemsToMenuItemProps,
+  MenuItemProps
+} from '../main-header/mainHeader.helper';
+import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
 import { SiteHeaderItem } from './siteHeaderItem';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
 export interface SiteHeaderProps {
-  items: MenuItemProps[];
-  onOpenSideNavigation?: (type: NavigationPanelType) => void;
+  siteMenuItems: MenuItemProps[];
+  mainMenuItems: MenuItemProps[];
 }
 
 const messages = defineMessages({
@@ -37,6 +43,11 @@ const messages = defineMessages({
     id: messageIds.navigation.site.logoAlt,
     description: 'Alt for the Spraying Systems logo',
     defaultMessage: 'Spraying Systems Company logo'
+  },
+  mainMenuViewAllCategory: {
+    id: messageIds.navigation.menu.viewAllCategory,
+    description: 'View all ... ',
+    defaultMessage: 'View all '
   }
 });
 
@@ -45,20 +56,39 @@ const messages = defineMessages({
  * Based on the screen size a different version will be displayed.
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
-export const SiteHeader: React.FC<SiteHeaderProps> = ({
-  items,
-  onOpenSideNavigation
-}) => {
+export const SiteHeader: React.FC = () => {
   const isLarge = useLarge();
 
+  const { siteMenuItems, mainMenuItems } = useGlobalData();
+  const { locale, formatMessage } = useIntl();
+
+  const mappedSiteMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
+  }, [locale, siteMenuItems]);
+
+  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapMenuItemsToMenuItemProps(
+      mainMenuItems || [],
+      formatMessage(messages.mainMenuViewAllCategory),
+      null,
+      undefined,
+      locale
+    );
+  }, [mainMenuItems, formatMessage, locale]);
+
   if (isLarge) {
-    return <DesktopSiteHeader items={items || []} />;
+    return (
+      <DesktopSiteHeader
+        mainMenuItems={mappedMainMenuItems}
+        siteMenuItems={mappedSiteMenuItems}
+      />
+    );
   }
 
   return (
     <MobileSiteHeader
-      items={items}
-      onOpenSideNavigation={onOpenSideNavigation}
+      mainMenuItems={mappedMainMenuItems}
+      siteMenuItems={mappedSiteMenuItems}
     />
   );
 };
@@ -71,10 +101,18 @@ interface MobileSiteHeaderStyles {
 }
 
 const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
-  onOpenSideNavigation
+  siteMenuItems,
+  mainMenuItems
 }) => {
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
+
+  const [sideNavigationType, setSideNavigationType] =
+    useState<null | NavigationPanelType>(null);
+
+  function onSitePanelDismiss(): void {
+    setSideNavigationType(null);
+  }
 
   const styles: MobileSiteHeaderStyles = {
     root: {
@@ -111,7 +149,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
         >
           <SiteHeaderButton
             onClick={() => {
-              onOpenSideNavigation?.('site');
+              setSideNavigationType('site');
             }}
             iconProps={{
               iconName: 'GlobalNavButton'
@@ -134,7 +172,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
 
           <SiteHeaderButton
             onClick={() => {
-              onOpenSideNavigation?.('user');
+              setSideNavigationType('user');
             }}
             iconProps={{
               iconName: 'Contact'
@@ -152,6 +190,14 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           placeholder={formatMessage(messages.searchPlaceholder)}
         />
       </Stack>
+      <NavigationPanel
+        panelProps={{
+          isOpen: !!sideNavigationType,
+          onDismiss: onSitePanelDismiss
+        }}
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      />
     </Stack>
   );
 };
@@ -169,7 +215,7 @@ interface DesktopSiteHeaderStyles {
 /**
  * Large version of the Site Header
  */
-const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
+const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const { spacing } = useTheme();
   const { locale, formatMessage } = useIntl();
 
@@ -237,13 +283,12 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ items }) => {
           role="navigation"
         >
           <ul className="horizontal">
-            {items.map(item => {
+            {siteMenuItems.map(item => {
               return (
                 <SiteHeaderItem item={item} key={`site-menu-item-${item}`} />
               );
             })}
           </ul>
-          <List items={items} />
           <VerticalDivider styles={styles.divider} />
           <SiteHeaderButton
             id="random"

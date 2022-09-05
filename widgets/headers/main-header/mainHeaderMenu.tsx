@@ -1,7 +1,7 @@
 import { IStackStyles, Stack, Text, useTheme } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import React, { useMemo } from 'react';
-import { MenuItemProps } from '../mainHeader.helper';
+import { MenuItemProps } from './mainHeader.helper';
 
 type HeroMenuProps = {
   activeMenuItemId: string | undefined;
@@ -36,22 +36,16 @@ export const HeroMenu: React.FC<HeroMenuProps> = ({
     }
   };
 
-  console.log(activeMenuItem);
-
   return (
     <Stack
       styles={styles.heroContainer}
       horizontal
       wrap={false}
-      //tokens={{ childrenGap: rem(spacing.l1) }}
+      tokens={{ childrenGap: spacing.l2 }}
     >
       {activeMenuItem?.subItems?.slice(1).map(item => {
         return (
-          <Stack
-            key={item.id}
-            tokens={{ childrenGap: spacing.s1 }}
-            styles={{ root: { width: '20%' } }}
-          >
+          <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
             <Text styles={{ root: { fontWeight: 500 } }}>{item.text}</Text>
             {item.subItems && (
               <Stack tokens={{ childrenGap: spacing.s1 }}>
