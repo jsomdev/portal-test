@@ -3,16 +3,16 @@ import { rem } from '@utilities/rem';
 import React, { useMemo } from 'react';
 import { MenuItemProps } from './mainHeader.helper';
 
-type HeroMenuProps = {
+type MainHeaderMenuProps = {
   activeMenuItemId: string | undefined;
   menuItems: MenuItemProps[];
 };
 
-type HeroMenuStyles = {
+type MainHeaderMenuStyles = {
   heroContainer: IStackStyles;
 };
 
-export const HeroMenu: React.FC<HeroMenuProps> = ({
+export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
   activeMenuItemId,
   menuItems
 }) => {
@@ -24,7 +24,7 @@ export const HeroMenu: React.FC<HeroMenuProps> = ({
     });
   }, [activeMenuItemId, menuItems]);
 
-  const styles: HeroMenuStyles = {
+  const styles: MainHeaderMenuStyles = {
     heroContainer: {
       root: {
         height: 'auto',

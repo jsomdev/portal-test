@@ -3,10 +3,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import {
   IButtonStyles,
   IStackStyles,
-  ITextFieldStyles,
   IVerticalDividerStyles,
   Stack,
-  TextField,
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
@@ -22,6 +20,7 @@ import {
   mapMenuItemsToMenuItemProps,
   MenuItemProps
 } from '../main-header/mainHeader.helper';
+import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
 import { SiteHeaderItem } from './siteHeaderItem';
@@ -34,16 +33,6 @@ export interface SiteHeaderProps {
 }
 
 const messages = defineMessages({
-  searchPlaceholder: {
-    id: messageIds.navigation.searchBar.placeholder,
-    description: 'Page search bar placeholder',
-    defaultMessage: 'Search by part number...'
-  },
-  siteLogoAlt: {
-    id: messageIds.navigation.site.logoAlt,
-    description: 'Alt for the Spraying Systems logo',
-    defaultMessage: 'Spraying Systems Company logo'
-  },
   mainMenuViewAllCategory: {
     id: messageIds.navigation.menu.viewAllCategory,
     description: 'View all ... ',
@@ -97,7 +86,6 @@ export const SiteHeader: React.FC = () => {
 
 interface MobileSiteHeaderStyles {
   root: IStackStyles;
-  logoContainer: IStackStyles;
 }
 
 const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
@@ -105,7 +93,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
   mainMenuItems
 }) => {
   const { spacing } = useTheme();
-  const { formatMessage } = useIntl();
 
   const [sideNavigationType, setSideNavigationType] =
     useState<null | NavigationPanelType>(null);
@@ -119,13 +106,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
       root: {
         height: rem(80),
         position: 'relative'
-      }
-    },
-    logoContainer: {
-      root: {
-        position: 'absolute',
-        left: '50%',
-        transform: 'translateX(-50%)'
       }
     }
   };
@@ -156,9 +136,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
             }}
           />
         </Stack>
-        <Stack styles={styles.logoContainer}>
-          <SiteLogo alt={formatMessage(messages.siteLogoAlt)} />
-        </Stack>
+        <SiteLogo />
         <Stack
           horizontal
           verticalAlign="center"
@@ -169,7 +147,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
               iconName: 'ShoppingCart'
             }}
           />
-
           <SiteHeaderButton
             onClick={() => {
               setSideNavigationType('user');
@@ -179,16 +156,6 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
             }}
           />
         </Stack>
-      </Stack>
-      <Stack
-        tokens={{
-          padding: `0 ${rem(12)}`
-        }}
-      >
-        <TextField
-          iconProps={{ iconName: 'Search' }}
-          placeholder={formatMessage(messages.searchPlaceholder)}
-        />
       </Stack>
       <NavigationPanel
         panelProps={{
@@ -206,8 +173,6 @@ interface DesktopSiteHeaderStyles {
   root: IStackStyles;
   button: Partial<IButtonStyles>;
   divider: Partial<IVerticalDividerStyles>;
-  logoContainer: IStackStyles;
-  searchBarContainer: Partial<ITextFieldStyles>;
 }
 
 // ### Desktop Site Header
@@ -217,7 +182,7 @@ interface DesktopSiteHeaderStyles {
  */
 const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const { spacing } = useTheme();
-  const { locale, formatMessage } = useIntl();
+  const { locale } = useIntl();
 
   const styles: DesktopSiteHeaderStyles = {
     root: {
@@ -236,13 +201,7 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
         padding: rem(spacing.s2),
         height: rem(32)
       }
-    },
-    logoContainer: {
-      root: {
-        width: rem(280)
-      }
-    },
-    searchBarContainer: { root: { width: '100%', maxWidth: rem(450) } }
+    }
   };
   return (
     <Stack>
@@ -255,32 +214,14 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
         horizontalAlign="space-between"
         styles={styles.root}
       >
-        <Stack
-          horizontal
-          verticalFill
-          tokens={{ childrenGap: rem(spacing.s1) }}
-          verticalAlign="center"
-          styles={styles.logoContainer}
-        >
-          <SiteLogo alt={formatMessage(messages.siteLogoAlt)} />
-        </Stack>
-        <Stack
-          grow
-          horizontal
-          tokens={{ padding: `0 ${rem(spacing.l1)}` }}
-          horizontalAlign="center"
-        >
-          <TextField
-            styles={styles.searchBarContainer}
-            iconProps={{ iconName: 'Search' }}
-            placeholder={formatMessage(messages.searchPlaceholder)}
-          />
-        </Stack>
+        <SiteLogo />
+        <HeaderSearchBar />
         <Stack
           horizontal
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
           role="navigation"
+          id="far-items"
         >
           <ul className="horizontal">
             {siteMenuItems.map(item => {

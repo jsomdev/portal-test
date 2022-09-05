@@ -24,7 +24,7 @@ export const SiteHeaderButton: React.FC<IButtonProps> = props => {
 const DesktopSiteHeaderButton: React.FC<IButtonProps> = props => {
   const styles: IButtonStyles = {
     label: {
-      fontSize: FontSizes.large,
+      fontSize: FontSizes.medium,
       letterSpacing: rem(0.38),
       fontWeight: FontWeights.regular
     },

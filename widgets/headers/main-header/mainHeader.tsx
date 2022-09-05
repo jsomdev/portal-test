@@ -20,12 +20,13 @@ import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
+import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { SiteHeaderButton } from '../site-header/siteHeaderButton';
 import {
   mapMenuItemsToMenuItemProps,
   MenuItemProps
 } from './mainHeader.helper';
-import { HeroMenu } from './mainHeaderMenu';
+import { MainHeaderMenu } from './mainHeaderMenu';
 
 interface MainHeaderStyles {
   mainMenuContainer: IStackItemStyles;
@@ -62,7 +63,7 @@ export const MainHeader: React.FC = () => {
 };
 
 const MobileMainHeader: React.FC = () => {
-  return null;
+  return <HeaderSearchBar />;
 };
 
 const DesktopMainHeader: React.FC = () => {
@@ -71,10 +72,11 @@ const DesktopMainHeader: React.FC = () => {
   const { formatMessage, locale } = useIntl();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
-  const { me } = useMe();
   const { spacing, palette } = useTheme();
+  const { me } = useMe();
 
   const isAuthenticated = useIsAuthenticated();
+
   const userFormatter = new UserFormatter(me, instance.getActiveAccount());
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
@@ -202,7 +204,7 @@ const DesktopMainHeader: React.FC = () => {
           />
         </Stack>
       </Stack>
-      <HeroMenu
+      <MainHeaderMenu
         menuItems={mappedMainMenuItems}
         activeMenuItemId={activeMenuItem}
       />
