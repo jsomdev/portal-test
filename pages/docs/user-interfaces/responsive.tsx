@@ -34,7 +34,9 @@ const Responsive: NextPage = () => {
       </Stack>
       <div>
         <Mobile>Only shown on mobile</Mobile>
-        <Desktop>Only shown on desktop</Desktop>
+        <Desktop forceJavaScript={true}>
+          Only shown on desktop, when javascript is loaded
+        </Desktop>
       </div>
       <ResponsiveStack>
         <span>One</span>

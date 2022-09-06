@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface MediaQueryHook {
   isMatch: boolean;
 }
@@ -15,6 +17,12 @@ export interface MediaQuery {
   query: MediaQueryPreset;
   matchType?: MediaQueryMatchType;
 }
+
+export interface MediaQueryOptions {
+  forceJavaScript?: boolean;
+  as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
+}
+
 /**
  * Presets of Media Query Breakpoints as of 2021
  * IMPORTANT: Keep an ascending (in size) order
