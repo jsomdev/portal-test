@@ -5,38 +5,41 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { MenuItemProps } from './mainHeader.helper';
 
 type MainHeaderMenuProps = {
-  activeMenuItemId: string | undefined;
-  menuItems: MenuItemProps[];
+  activeMenuItem: MenuItemProps | undefined;
 };
 
 type MainHeaderMenuStyles = {
   heroContainer: IStackStyles;
   link: (type: 'main' | 'sub') => IButtonStyles;
+  viewAllLink: IButtonStyles;
 };
 
+const messages = defineMessages({
+  mainMenuViewAllCategory: {
+    id: messageIds.navigation.menu.viewAllCategory,
+    description: 'View all ... ',
+    defaultMessage: 'View all '
+  }
+});
+
 export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
-  activeMenuItemId,
-  menuItems
+  activeMenuItem
 }) => {
   const { palette, spacing } = useTheme();
-
-  const activeMenuItem: MenuItemProps | undefined = useMemo(() => {
-    return menuItems.find(item => {
-      return item.id === activeMenuItemId;
-    });
-  }, [activeMenuItemId, menuItems]);
+  const { formatMessage } = useIntl();
 
   const styles: MainHeaderMenuStyles = {
     heroContainer: {
       root: {
         height: 'auto',
-        minHeight: 200,
         backgroundColor: palette.white,
         padding: `${rem(40)} ${rem(spacing.l1)}`
       }
@@ -53,7 +56,12 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
         lineHeight: 'normal',
         fontWeight: type === 'main' ? 500 : 'normal'
       }
-    })
+    }),
+    viewAllLink: {
+      root: { paddingLeft: 0, marginLeft: 0 },
+      label: { marginLeft: 0, fontWeight: 500 },
+      menuIcon: { color: palette.themePrimary }
+    }
   };
 
   if (!activeMenuItem) {
@@ -61,45 +69,56 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
   }
 
   return (
-    <Stack
-      styles={styles.heroContainer}
-      horizontal
-      wrap={false}
-      tokens={{ childrenGap: spacing.l2 }}
-    >
-      {activeMenuItem?.subItems?.map(item => {
-        return (
-          <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
-            <Link
-              aria-label={item.text}
-              key={item.id}
-              href={item.href}
-              passHref
-            >
-              <ActionButton text={item.text} styles={styles.link('main')} />
-            </Link>
-            {item.subItems && (
-              <Stack tokens={{ childrenGap: spacing.s1 }}>
-                {item.subItems.map(item => {
-                  return (
-                    <Link
-                      aria-label={item.text}
-                      key={item.id}
-                      href={item.href}
-                      passHref
-                    >
-                      <ActionButton
-                        text={item.text}
-                        styles={styles.link('sub')}
-                      />
-                    </Link>
-                  );
-                })}
-              </Stack>
-            )}
-          </Stack>
-        );
-      })}
+    <Stack styles={styles.heroContainer} tokens={{ childrenGap: spacing.l1 }}>
+      <Stack horizontal wrap={false} tokens={{ childrenGap: spacing.l2 }}>
+        {activeMenuItem?.subItems?.map(item => {
+          return (
+            <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
+              <Link
+                aria-label={item.text}
+                key={item.id}
+                href={item.href}
+                passHref
+              >
+                <ActionButton text={item.text} styles={styles.link('main')} />
+              </Link>
+              {item.subItems && (
+                <Stack tokens={{ childrenGap: spacing.s1 }}>
+                  {item.subItems.map(item => {
+                    return (
+                      <Link
+                        aria-label={item.text}
+                        key={item.id}
+                        href={item.href}
+                        passHref
+                      >
+                        <ActionButton
+                          text={item.text}
+                          styles={styles.link('sub')}
+                        />
+                      </Link>
+                    );
+                  })}
+                </Stack>
+              )}
+            </Stack>
+          );
+        })}
+      </Stack>
+      <Link
+        aria-label={activeMenuItem.text}
+        key={activeMenuItem.id}
+        href={activeMenuItem.href}
+        passHref
+      >
+        <ActionButton
+          text={`${formatMessage(messages.mainMenuViewAllCategory)} ${
+            activeMenuItem.text
+          }`}
+          styles={styles.viewAllLink}
+          menuIconProps={{ iconName: 'chevronRight' }}
+        />
+      </Link>
     </Stack>
   );
 };

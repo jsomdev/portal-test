@@ -355,7 +355,7 @@ export const CompleteSignUp: React.FC = () => {
                               </Text>
                             </Stack.Item>
                             <DefaultButton
-                              onClick={async ev =>
+                              onClick={async () =>
                                 createVerificationRequestStatus !== 'loading' &&
                                 (await instance.logout(
                                   isEmployee

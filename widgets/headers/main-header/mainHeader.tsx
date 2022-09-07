@@ -68,7 +68,9 @@ const MobileMainHeader: React.FC = () => {
 };
 
 const DesktopMainHeader: React.FC = () => {
-  const [activeMenuItem, setActiveMenuItem] = useState<string | undefined>();
+  const [activeMenuItem, setActiveMenuItem] = useState<
+    MenuItemProps | undefined
+  >();
 
   const { formatMessage, locale } = useIntl();
   const { instance, inProgress } = useMsal();
@@ -114,21 +116,21 @@ const DesktopMainHeader: React.FC = () => {
         fontWeight: 500,
         padding: 0,
         selectors: {
-          ':before': {
-            content: '',
+          ':before, &.active::before': {
+            content: "''",
             position: 'absolute',
             bottom: 0,
             left: '50%',
-            width: 0,
-            height: '3px',
-            display: 'block',
-            backgroundColor: palette.themeSecondary,
+            width: '75%',
+            height: '2px',
+            backgroundColor: 'transparent',
             transform: `translateX(-50%)`,
-            transition: 'all 0.3s ease-in'
+            transition: 'width 0.15s ease-in, background-color 0.15s ease-in'
           },
           ':hover::before, &.active::before': {
             content: "''",
-            width: '100%'
+            width: '100%',
+            backgroundColor: palette.themeSecondary
           }
         }
       }
@@ -157,13 +159,12 @@ const DesktopMainHeader: React.FC = () => {
               <ActionButton
                 key={`main-header-menu-${item.text}`}
                 styles={styles.headerButton}
-                className={item.id === activeMenuItem ? 'active' : ''}
-                onClick={e => {
-                  e.preventDefault();
-                  if (activeMenuItem === item.id) {
+                className={item.id === activeMenuItem?.id ? 'active' : ''}
+                onClick={() => {
+                  if (activeMenuItem?.id === item.id) {
                     setActiveMenuItem(undefined);
                   } else {
-                    setActiveMenuItem(item.id);
+                    setActiveMenuItem(item);
                   }
                 }}
               >
@@ -226,10 +227,7 @@ const DesktopMainHeader: React.FC = () => {
             }
           }}
         >
-          <MainHeaderMenu
-            menuItems={mappedMainMenuItems}
-            activeMenuItemId={activeMenuItem}
-          />
+          <MainHeaderMenu activeMenuItem={activeMenuItem} />
         </Callout>
       )}
     </nav>
