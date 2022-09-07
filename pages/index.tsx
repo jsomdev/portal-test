@@ -15,7 +15,7 @@ import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { rem } from '@utilities/rem';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import { Large } from '@widgets/media-queries';
+import { Desktop } from '@widgets/media-queries';
 
 export interface HomeProps {
   categories: Category[];
@@ -52,7 +52,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
         title={formatMessage(messages.headTitle)}
         description={formatMessage(messages.headDescription)}
       />
-      <Large>
+      <Desktop>
         <div id="get-started">
           {/* <Image
             src={backgroundImage}
@@ -71,7 +71,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
             `}
           </style>
         </div>
-      </Large>
+      </Desktop>
       <HomeCategoriesSection categories={categories} />
     </AppLayout>
   );

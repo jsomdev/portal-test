@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
-import { Medium } from '@widgets/media-queries/mediaQuery';
+import { Desktop } from '@widgets/media-queries/mediaQuery';
 import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
@@ -109,7 +109,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          <Medium>
+          <Desktop>
             <HeaderButton
               iconProps={{
                 iconName: 'Globe'
@@ -118,7 +118,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
               text={locale.toLocaleUpperCase()}
             />
             <VerticalDivider styles={styles.divider} />
-          </Medium>
+          </Desktop>
           <HeaderButton
             iconProps={{
               iconName: 'Search'

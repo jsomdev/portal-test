@@ -250,6 +250,67 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
 };
 ```
 
+## Responsive Design
+
+- Mobile first: the default styling of a component should be the mobile css. Add overwrites for the desktop version. (`...desktopCSS()`)
+- Use `<Mobile>`and `<Desktop>` if different components are needed for each screen-size. By default, this works using a CSS media query. If for specific reasons (eg. performance) you want to prevent rendering of a non-visible component completely, use `enforceJavaScript={true}`. 
+- `ResponsiveStack` is provided for switching stack direction based on screen-size. 
+
+```tsx
+import { NextPage } from 'next';
+import { Desktop, mediaDesktop, Mobile } from '@widgets/media-queries';
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
+
+const styles = {
+  basicExample: {
+    backgroundColor: 'red',
+    padding: 20,
+    ...mediaDesktop({
+      backgroundColor: 'blue',
+      padding: 40
+    })
+  }
+};
+
+const stackStyles: IStackStyles = {
+  root: {
+    padding: 5,
+    ...mediaDesktop({
+      padding: 40
+    })
+  }
+};
+
+const Responsive: NextPage = () => {
+  return (
+    <div>
+      <div className={mergeStyles(styles.basicExample)}>Basic Responsive</div>
+      <Stack styles={stackStyles}>
+        <StackItem>One</StackItem>
+        <StackItem>Two</StackItem>
+        <StackItem>Three</StackItem>
+      </Stack>
+      <div>
+        <Mobile>Only shown on mobile</Mobile>
+        <Desktop forceJavaScript={true}>
+          Only shown on desktop, when javascript is loaded
+        </Desktop>
+      </div>
+      <ResponsiveStack>
+        <span>One</span>
+        <span>Two</span>
+        <span>Three</span>
+      </ResponsiveStack>
+    </div>
+  );
+};
+
+export default Responsive;
+
+
+```
+
 ## Testing
 
 Please checkout the _Example test suite in the testing documentation_
