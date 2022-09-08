@@ -15,10 +15,8 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
-import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
@@ -76,11 +74,8 @@ const DesktopMainHeader: React.FC = () => {
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects } = useTheme();
-  const { me } = useMe();
 
   const isAuthenticated = useIsAuthenticated();
-
-  const userFormatter = new UserFormatter(me, instance.getActiveAccount());
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
     return mapMenuItemsToMenuItemProps(
@@ -115,6 +110,7 @@ const DesktopMainHeader: React.FC = () => {
         height: rem(46),
         fontWeight: 500,
         padding: 0,
+        textAlign: 'left',
         selectors: {
           ':before, &.active::before': {
             content: "''",
@@ -198,13 +194,6 @@ const DesktopMainHeader: React.FC = () => {
                 iconName: 'Contact'
               }}
               onClick={() => (isAuthenticated ? null : signIn())}
-              text={
-                isAuthenticated
-                  ? userFormatter.formatDisplayName(
-                      formatMessage(messages.myProfile)
-                    )
-                  : formatMessage(messages.signIn)
-              }
             />
           )}
         </Stack>

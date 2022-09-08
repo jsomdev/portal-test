@@ -11,6 +11,7 @@ const stylesheet = Stylesheet.getInstance();
 
 // Now set up the document, and just reset the stylesheet.
 export default class MyDocument extends Document {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static getInitialProps({ renderPage }) {
     resetIds(1);
 
@@ -24,6 +25,7 @@ export default class MyDocument extends Document {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
     return (
       <Html>

@@ -19,6 +19,7 @@ export class MenuItemFormatter {
   }
 
   formatHref(): string | undefined {
+    // don't use urlFormatter anymore
     return this.urlFormatter?.formatHref();
   }
 }

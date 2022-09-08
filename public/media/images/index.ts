@@ -57,15 +57,6 @@ import siteIcon from './site-icon.svg';
 import siteLogo from './site-logo.svg';
 
 export const STATIC_IMAGES = {
-  footer: {
-    mainLogo,
-    mail,
-    instagram,
-    facebook,
-    linkedIn,
-    twitter,
-    youtube
-  },
   app: {
     noImageAvailable,
     smallLogo: defaultCartItem
@@ -90,6 +81,15 @@ export const STATIC_IMAGES = {
       playMovieThumbnail,
       pdfThumbnail
     }
+  },
+  footer: {
+    mainLogo,
+    mail,
+    instagram,
+    facebook,
+    linkedIn,
+    twitter,
+    youtube
   },
   checkout: {
     paymentIcons: {

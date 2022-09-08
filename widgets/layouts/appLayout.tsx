@@ -1,13 +1,15 @@
-import { useTheme } from '@fluentui/react';
+import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { useLarge } from '@widgets/media-queries';
+import { SiteFooter } from '@widgets/site-footer/siteFooter';
 import React from 'react';
 
 interface AppLayoutStyles {
   main: React.CSSProperties;
   header: React.CSSProperties;
+  content: IStackStyles;
 }
 
 /**
@@ -20,16 +22,16 @@ export const AppLayout: React.FC = ({ children }) => {
     main: {
       maxWidth: '100%',
       margin: 'auto',
-      verticalAlign: 'fill',
-      paddingTop: isLarge ? rem(124) : rem(80)
+      verticalAlign: 'fill'
     },
     header: {
-      position: 'fixed',
-      zIndex: 1,
-      backgroundColor: semanticColors.bodyBackground,
-      top: 0,
-      left: 0,
-      right: 0
+      backgroundColor: semanticColors.bodyBackground
+    },
+    content: {
+      root: {
+        overflow: 'auto',
+        height: `calc(100vh - ${isLarge ? rem(124) : rem(112)})`
+      }
     }
   };
 
@@ -39,8 +41,12 @@ export const AppLayout: React.FC = ({ children }) => {
         <SiteHeader />
         <MainHeader />
       </header>
-      <main style={styles.main}>{children}</main>
-      <footer></footer>
+      <Stack className="list-scroll" styles={styles.content}>
+        <main style={styles.main}>{children}</main>
+        <footer>
+          <SiteFooter />
+        </footer>
+      </Stack>
     </React.Fragment>
   );
 };
