@@ -13,7 +13,7 @@ jest.mock('next/head', () => {
   return {
     __esModule: true,
     default: ({ children }: { children: Array<React.ReactElement> }) => {
-      return <React.Fragment>{children}</React.Fragment>;
+      return <>{children}</>;
     }
   };
 });

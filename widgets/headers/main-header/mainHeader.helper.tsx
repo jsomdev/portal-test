@@ -15,7 +15,7 @@ const messages = {
   mainMenuViewAllCategory: {
     id: messageIds.navigation.menu.viewAllCategory,
     description: 'View all ... ',
-    defaultMessage: 'View all '
+    defaultMessage: 'View all default '
   }
 };
 
@@ -69,8 +69,6 @@ export function mapMenuItemsToMenuItemProps(
           : undefined
       };
     });
-
-  console.log(intl.locale);
 
   // Add the parent item to it's own subItems list and prefix the text if present
   if (parentItem && type === 'expanded') {

@@ -207,7 +207,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, styles }) => {
           >
             <List
               items={dummyListItems}
-              onRenderCell={(item, index, isScrolling) => {
+              onRenderCell={item => {
                 return (
                   <Stack>
                     <Link href={item?.href || '/404'} passHref>
