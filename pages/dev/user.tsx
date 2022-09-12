@@ -10,19 +10,20 @@ import JsonFormatter from 'react-json-formatter';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { getAudience } from '@services/i18n';
+import { MenuItem } from '@services/portal-api';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
-const User: NextPage<AppLayoutProps> = ({ siteMenuItems, mainMenuItems }) => {
+const User: NextPage = () => {
   const { pathname } = useRouter();
   const userContext = useMe();
   const claims = useClaims();
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
+    <AppLayout>
       <Head pathname={pathname} title={''} description={''} />
       <div className="wrapper">
         <h1>User Context</h1>
@@ -50,7 +51,9 @@ const User: NextPage<AppLayoutProps> = ({ siteMenuItems, mainMenuItems }) => {
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<{ siteMenuItems: MenuItem[]; mainMenuItems: MenuItem[] }>
+> => {
   try {
     const { locale } = context;
     const [siteMenuData, mainMenuData] = await Promise.all([

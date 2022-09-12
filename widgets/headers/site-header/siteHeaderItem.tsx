@@ -24,6 +24,7 @@ export const SiteHeaderItem: React.FC<SiteMenuItemProps> = ({ item }) => {
     <li className="horizontal">
       <SiteHeaderButton
         type="actionButton"
+        id={`site-header-item-${item.id}`}
         text={item.text}
         href={item.href}
         styles={styles.button}

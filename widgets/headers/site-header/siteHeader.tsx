@@ -215,7 +215,10 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           <ul className="horizontal">
             {siteMenuItems.map(item => {
               return (
-                <SiteHeaderItem item={item} key={`site-menu-item-${item}`} />
+                <SiteHeaderItem
+                  item={item}
+                  key={`site-main-menu-item-${item.id}`}
+                />
               );
             })}
           </ul>

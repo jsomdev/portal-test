@@ -2,12 +2,12 @@ import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
 
+import { FlaggedEnum } from './flaggedEnum';
+import { Audience } from './models/AudienceFlags';
 import { Category } from './models/Category';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { CategoriesResource } from './resources/CategoriesResource';
-import { FlaggedEnum } from './flaggedEnum';
-import { Audience } from './models/AudienceFlags';
 
 const CATEGORIES_CACHE_PATH = path.resolve('./data-cache/categories.json');
 const categoriesDataCacheManager: DataCacheManager<Category[]> =
@@ -77,7 +77,6 @@ export async function fetchAllCategories(): Promise<Category[]> {
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions
   );
-  console.log(data);
   categoriesDataCacheManager.set(data.value);
   return data.value;
 }

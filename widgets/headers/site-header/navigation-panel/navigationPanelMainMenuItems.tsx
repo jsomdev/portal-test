@@ -50,7 +50,7 @@ export const NavigationPanelMainMenuItems: React.FC<
         return (
           <Stack key={menuItem.id}>
             <Stack
-              key={`site-menu-item-${menuItem.text}`}
+              key={`site-menu-panel-item-${menuItem.text}`}
               styles={styles.buttonContainer}
             >
               <ActionButton

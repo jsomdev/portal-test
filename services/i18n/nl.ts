@@ -25,6 +25,11 @@ export const nl: Messages = {
     },
     searchBar: {
       placeholder: 'Zoek onderdeel nummer...'
+    },
+    menu: {
+      close: 'navigation.menu.close',
+      viewAllCategories: 'navigation.menu.viewAllCategories',
+      viewAllCategory: 'navigation.menu.viewAllCategory'
     }
   },
   pages: {

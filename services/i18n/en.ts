@@ -25,6 +25,11 @@ export const en: Messages = {
     },
     searchBar: {
       placeholder: 'Search by part number...'
+    },
+    menu: {
+      close: '',
+      viewAllCategories: '',
+      viewAllCategory: ''
     }
   },
   pages: {

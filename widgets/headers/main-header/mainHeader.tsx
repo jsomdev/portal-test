@@ -111,23 +111,21 @@ const DesktopMainHeader: React.FC = () => {
         fontWeight: 500,
         padding: 0,
         textAlign: 'left',
-        selectors: {
-          ':before, &.active::before': {
-            content: "''",
-            position: 'absolute',
-            bottom: 0,
-            left: '50%',
-            width: '75%',
-            height: '2px',
-            backgroundColor: 'transparent',
-            transform: `translateX(-50%)`,
-            transition: 'width 0.15s ease-in, background-color 0.15s ease-in'
-          },
-          ':hover::before, &.active::before': {
-            content: "''",
-            width: '100%',
-            backgroundColor: palette.themeSecondary
-          }
+        ':before, &.active::before': {
+          content: "''",
+          position: 'absolute',
+          bottom: 0,
+          left: '50%',
+          width: '75%',
+          height: '2px',
+          backgroundColor: 'transparent',
+          transform: `translateX(-50%)`,
+          transition: 'width 0.15s ease-in, background-color 0.15s ease-in'
+        },
+        ':hover::before, &.active::before': {
+          content: "''",
+          width: '100%',
+          backgroundColor: palette.themeSecondary
         }
       }
     }

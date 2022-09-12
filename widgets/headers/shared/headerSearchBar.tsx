@@ -174,6 +174,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, styles }) => {
       >
         <SearchBox
           placeholder={placeholder}
+          id="main-search-box"
           styles={mergedSearchBoxStyles}
           onChange={(ev, newValue) => {
             onSearchBarChange(newValue);

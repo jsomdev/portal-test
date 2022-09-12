@@ -31,5 +31,3 @@ export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {
       `${window?.location.origin}/api/odata`
   }
 };
-
-console.log(ENVIRONMENT_VARIABLES.supportedLocales);
