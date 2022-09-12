@@ -1,4 +1,4 @@
-import { defineMessages, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import {
   IButtonStyles,
@@ -8,7 +8,6 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { messageIds } from '@services/i18n/ids';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 
@@ -30,14 +29,6 @@ import { SiteLogo } from './siteLogo';
 export interface SiteHeaderProps {
   siteMenuItems: MenuItemProps[];
 }
-
-const messages = defineMessages({
-  mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
-    description: 'View all ... ',
-    defaultMessage: 'View all '
-  }
-});
 
 /**
  * Header component for the Spray.com links.
@@ -69,7 +60,7 @@ interface MobileSiteHeaderStyles {
 
 const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const { spacing } = useTheme();
-  const { formatMessage, locale } = useIntl();
+  const intl = useIntl();
   const { mainMenuItems } = useGlobalData();
 
   const [sideNavigationType, setSideNavigationType] =
@@ -78,13 +69,12 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
     return mapMenuItemsToMenuItemProps(
       mainMenuItems || [],
-      formatMessage(messages.mainMenuViewAllCategory),
       'expanded',
+      intl,
       null,
-      undefined,
-      locale
+      undefined
     );
-  }, [mainMenuItems, formatMessage, locale]);
+  }, [mainMenuItems, intl]);
 
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);

@@ -27,9 +27,9 @@ export const en: Messages = {
       placeholder: 'Search by part number...'
     },
     menu: {
-      close: '',
-      viewAllCategories: '',
-      viewAllCategory: ''
+      close: 'Menu',
+      viewAllCategories: 'View all categories',
+      viewAllCategory: 'View all'
     }
   },
   pages: {

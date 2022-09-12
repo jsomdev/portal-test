@@ -1,5 +1,7 @@
+import { messageIds } from '@services/i18n';
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from '@services/portal-api/models/MenuItem';
+import { IntlShape } from 'react-intl';
 
 export interface MenuItemProps {
   href: string;
@@ -8,6 +10,14 @@ export interface MenuItemProps {
   parentId?: string | undefined;
   subItems?: MenuItemProps[];
 }
+
+const messages = {
+  mainMenuViewAllCategory: {
+    id: messageIds.navigation.menu.viewAllCategory,
+    description: 'View all ... ',
+    defaultMessage: 'View all '
+  }
+};
 
 /**
  * Getter for the Main Menu Items structure that will be displayed in the Mobile and Desktoip Main header.
@@ -20,11 +30,10 @@ export interface MenuItemProps {
  */
 export function mapMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
-  prefixText: string | undefined,
   type: 'expanded' | 'default',
-  parentId?: string | null | undefined,
-  parentItem?: MenuItemProps | undefined,
-  locale?: string | undefined
+  intl: IntlShape,
+  parentId: string | null | undefined = null,
+  parentItem: MenuItemProps | undefined = undefined
 ): MenuItemProps[] {
   // This function will determine if a given menu item has sub items based on the parent ID / item ID
   const hasSubItems: (id: string | undefined) => boolean = (
@@ -34,7 +43,7 @@ export function mapMenuItemsToMenuItemProps(
   };
 
   function mapMenuItemToMenuItemProps(menuItem: MenuItem): MenuItemProps {
-    const menuItemFormatter = new MenuItemFormatter(menuItem, locale);
+    const menuItemFormatter = new MenuItemFormatter(menuItem, intl.locale);
     return {
       href: menuItemFormatter.formatHref() || '/404',
       text: menuItemFormatter.formatText(),
@@ -52,21 +61,24 @@ export function mapMenuItemsToMenuItemProps(
         subItems: hasSubItems(menuItem.id)
           ? mapMenuItemsToMenuItemProps(
               menuItems,
-              prefixText,
               type,
+              intl,
               menuItem.id,
-              item,
-              locale
+              item
             )
           : undefined
       };
     });
 
+  console.log(intl.locale);
+
   // Add the parent item to it's own subItems list and prefix the text if present
   if (parentItem && type === 'expanded') {
     menuItemProps.unshift({
       ...parentItem,
-      text: `${prefixText} ${parentItem.text}`,
+      text: `${intl.formatMessage(messages.mainMenuViewAllCategory)} ${
+        parentItem.text
+      }`,
       parentId: parentItem.id
     });
   }

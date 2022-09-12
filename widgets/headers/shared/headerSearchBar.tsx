@@ -24,7 +24,7 @@ const messages = defineMessages({
   searchPlaceholder: {
     id: messageIds.navigation.searchBar.placeholder,
     description: 'Page search bar placeholder',
-    defaultMessage: 'Search by part number...'
+    defaultMessage: 'Search by part number default...'
   }
 });
 

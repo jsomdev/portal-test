@@ -24,7 +24,7 @@ export const messageIds: Messages = {
       myProfile: 'navigation.user.myProfile'
     },
     searchBar: {
-      placeholder: 'navigation.site.searchBar'
+      placeholder: 'navigation.searchBar.placeholder'
     },
     menu: {
       close: 'navigation.menu.close',

@@ -27,9 +27,9 @@ export const nl: Messages = {
       placeholder: 'Zoek onderdeel nummer...'
     },
     menu: {
-      close: 'navigation.menu.close',
-      viewAllCategories: 'navigation.menu.viewAllCategories',
-      viewAllCategory: 'navigation.menu.viewAllCategory'
+      close: 'Menu',
+      viewAllCategories: 'Bekijk alle categorieën',
+      viewAllCategory: 'Bekijk alle'
     }
   },
   pages: {

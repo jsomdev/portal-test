@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-import { defineMessages, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
@@ -16,7 +16,6 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
-import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { useLarge } from '@widgets/media-queries';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
@@ -32,24 +31,6 @@ interface MainHeaderStyles {
   root: IStackStyles;
   headerButton: IButtonStyles;
 }
-
-const messages = defineMessages({
-  signIn: {
-    id: messageIds.navigation.user.signIn,
-    description: 'Text for the sign in button',
-    defaultMessage: 'Sign in'
-  },
-  myProfile: {
-    id: messageIds.navigation.user.myProfile,
-    description: 'Fallback text for the My Profile button',
-    defaultMessage: 'My Profile'
-  },
-  mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
-    description: 'View all ... ',
-    defaultMessage: 'View all '
-  }
-});
 
 export const MainHeader: React.FC = () => {
   const isLarge = useLarge();
@@ -70,7 +51,7 @@ const DesktopMainHeader: React.FC = () => {
     MenuItemProps | undefined
   >();
 
-  const { formatMessage, locale } = useIntl();
+  const intl = useIntl();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects } = useTheme();
@@ -78,15 +59,8 @@ const DesktopMainHeader: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
-      mainMenuItems || [],
-      formatMessage(messages.mainMenuViewAllCategory),
-      'default',
-      null,
-      undefined,
-      locale
-    );
-  }, [mainMenuItems, formatMessage, locale]);
+    return mapMenuItemsToMenuItemProps(mainMenuItems || [], 'default', intl);
+  }, [mainMenuItems, intl]);
 
   function signIn() {
     instance.loginRedirect(customerLoginRequest);
