@@ -1,5 +1,6 @@
-import { SystemOfMeasurement } from '@utilities/measurement';
 import { createContext } from 'react';
+
+import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 
 type SystemOfMeasurementState = {
   systemOfMeasurement: SystemOfMeasurement;
@@ -11,7 +12,7 @@ const initialContextState: SystemOfMeasurementState = {
     throw new Error('Not implemented');
   },
 
-  systemOfMeasurement: 'Metric'
+  systemOfMeasurement: 'US'
 };
 
 export const SystemOfMeasurementContext =

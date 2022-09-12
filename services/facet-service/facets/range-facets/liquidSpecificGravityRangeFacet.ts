@@ -22,7 +22,7 @@ export const liquidSpecificGravityFacet: RangeFacet = {
   key: FacetKey.LiquidSpecificGravity,
   attributeTypeCode: 'specificGravity',
   configuration: {
-    category: FacetCategory.SprayFinder,
+    category: FacetCategory.OperatingConditions,
     controlType: FacetControlType.Range,
     selectType: FacetSelectType.RangeBetween,
     displayName: 'Specific Gravity',

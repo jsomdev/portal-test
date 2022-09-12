@@ -90,7 +90,6 @@ export async function fetchMenuItemsForMainHeader(
     filterQuery: `menu eq '${Menu.MAIN}'`
   };
   const data = await menuItemsResource.getEntities(queryOptions);
-  console.log(data.value);
   mainMenuItemsDataCacheManager.set(data.value);
   return filterMenuItemsByAudience(audience, data.value);
 }

@@ -23,6 +23,60 @@ export const nl: Messages = {
       myProfile: 'Mijn Profiel'
     }
   },
+  finder: {
+    filters: {
+      clearAll: 'Wis alle filters',
+      search: 'Zoekterm: {query}'
+    },
+    categoryFacet: {
+      title: 'Categorie'
+    },
+    operatingConditions: {
+      validation: {
+        title: 'Foute ingave',
+        greaterThanZero: 'Waarde moet groter zijn dan 0',
+        requiredFlowRate: 'Liquid Flow Rate is verplicht',
+        requiredFlowRatePressure: 'Als je Liquid Pressure invult',
+        requiredFlowRateGravity: 'Als je Specific Gravity verandert'
+      },
+      actions: {
+        apply: 'Toepassen'
+      },
+      liquidType: {
+        customValue: {
+          title: 'Vul een waarde in',
+          placeholder: 'Aangepast ({minimum} tot {maximum})',
+          suffix: 'sg'
+        }
+      }
+    },
+    resultsHeader: {
+      count:
+        '{productCount, plural,=0 {Geen resultaten gevonden} one {1 product gevonden} other {{productCount} producten gevonden in {modelCount, plural,=0 {0 modellen} one {1 model} other {{modelCount} modellen}}}}',
+
+      actions: {
+        filter:
+          '{productCount, plural,=0 {Geen resultaten om te filteren} one {Filter 1 product} other {Filter {productCount} producten}}'
+      }
+    },
+    panel: {
+      mobile: {
+        title: 'Filters',
+        ariaClose: 'Sluiten',
+        showResults:
+          '{productCount, plural,=0 {Geen producten gevonden} one {Toon 1 product} other {Toon {productCount} producten}}'
+      }
+    },
+    checkboxFacet: {
+      actions: {
+        more: 'Meer',
+        less: 'Minder'
+      },
+      panel: {
+        placeholder: 'Zoeken'
+      }
+    }
+  },
   pages: {
     home: {
       headTitle: 'Experten in Sproeitechnologie | Spraying Systems Co.',
@@ -35,7 +89,9 @@ export const nl: Messages = {
     },
     category: {
       headTitle: '{name} | Spraying Systems Co.',
-      headDescription: 'pages.category.headDescription'
+      headDescription: 'pages.category.headDescription',
+      title: '{name}',
+      titleWithSearch: '{searchQuery} in {name}'
     },
     series: {
       headTitle: '{name} | Spraying Systems Co.',
@@ -74,6 +130,12 @@ export const nl: Messages = {
     actions: {
       proceed: 'Volgende stap',
       previous: 'Vorige stap'
+    }
+  },
+  data: {
+    boolean: {
+      true: 'Ja',
+      false: 'Nee'
     }
   }
 };

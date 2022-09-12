@@ -32,4 +32,3 @@ export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {
   }
 };
 
-console.log(ENVIRONMENT_VARIABLES.supportedLocales);

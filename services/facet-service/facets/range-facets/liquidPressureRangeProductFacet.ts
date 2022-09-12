@@ -23,7 +23,7 @@ export const liquidPressureRangeFacet: RangeFacet = {
   key: FacetKey.LiquidPressure,
   attributeTypeCode: ATTRIBUTETYPECODES.liquidPressureRange,
   configuration: {
-    category: FacetCategory.SprayFinder,
+    category: FacetCategory.OperatingConditions,
     controlType: FacetControlType.Range,
     selectType: FacetSelectType.RangeBetween,
     displayName: 'Liquid Pressure',

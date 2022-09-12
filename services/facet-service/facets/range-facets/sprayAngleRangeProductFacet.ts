@@ -24,7 +24,7 @@ export const sprayAngleRangeFacet: RangeFacet = {
   key: FacetKey.SprayAngle,
   attributeTypeCode: ATTRIBUTETYPECODES.sprayAngleRange,
   configuration: {
-    category: FacetCategory.SprayFinder,
+    category: FacetCategory.OperatingConditions,
     controlType: FacetControlType.Range,
     selectType: FacetSelectType.RangeBetween,
     displayName: 'Spray Angle',

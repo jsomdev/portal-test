@@ -20,6 +20,7 @@
 export type ReactQueryStatus = 'idle' | 'loading' | 'error' | 'success';
 
 export interface ReactQueryKeys {
+  [x: string]: any;
   searchVerifyProduct: string;
   orderVerifyProducts: string;
   appBookmarkedProducts: string;
@@ -64,6 +65,7 @@ export interface ReactQueryKeys {
   quoteRequests: string;
   quoteRequestDetail: string;
   quoteRequestLineProducts: string;
+  productFinderResults: string;
   productFinderGridViewItems: string;
   productFinderLiquidsWithRelativeDensity: string;
   productFinderListViewItems: string;

@@ -77,7 +77,6 @@ export async function fetchAllCategories(): Promise<Category[]> {
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions
   );
-  console.log(data);
   categoriesDataCacheManager.set(data.value);
   return data.value;
 }

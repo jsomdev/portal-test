@@ -9,60 +9,75 @@ import { defaultFacetOption } from './defaultFacetOption';
 
 export enum ModelFacetOptionKey {
   AdjustableBallFittings36275 = 'AdjustableBallFittings36275',
-  AirActuatedAirAtomizing1053612j = 'AirActuatedAirAtomizing1053612j',
-  AirActuatedAirAtomizing7210018jjau = 'AirActuatedAirAtomizing7210018jjau',
-  AirActuatedAirAtomizing731014jau = 'AirActuatedAirAtomizing731014jau',
-  AirActuatedAirAtomizing621814jau = 'AirActuatedAirAtomizing621814jau',
-  AirActuatedAirAtomizingVx82 = 'AirActuatedAirAtomizingVx82',
-  AirActuatedAirAtomizing1769018jjau = 'AirActuatedAirAtomizing1769018jjau',
-  AirActuatedAirAtomizing1053514j = 'AirActuatedAirAtomizing1053514j',
-  AirActuatedAirAtomizing1470018jjau = 'AirActuatedAirAtomizing1470018jjau',
-  AirActuatedAirAtomizing14vmau = 'AirActuatedAirAtomizing14vmau',
-  AirActuatedAirAtomizing1686018jjau = 'AirActuatedAirAtomizing1686018jjau',
-  AirActuatedAirAtomizing14jaumco = 'AirActuatedAirAtomizing14jaumco',
-  AirActuatedAirAtomizing1688318jjau = 'AirActuatedAirAtomizing1688318jjau',
-  AirActuatedAirAtomizing3849918jjau = 'AirActuatedAirAtomizing3849918jjau',
-  AirActuatedAirAtomizing1324214jau = 'AirActuatedAirAtomizing1324214jau',
-  AirActuatedAirAtomizing14jaupmco = 'AirActuatedAirAtomizing14jaupmco',
-  AirActuatedAirAtomizingVx70 = 'AirActuatedAirAtomizingVx70',
-  AirActuatedAirAtomizing14jauco = 'AirActuatedAirAtomizing14jauco',
-  AirActuatedAirAtomizing1088014jau = 'AirActuatedAirAtomizing1088014jau',
+  AirCaps = 'AirCaps',
+  FluidCaps = 'FluidCaps',
+  Su = 'Su',
+  Sue = 'Sue',
+  Suf = 'Suf',
+  Suj = 'Suj',
+  Suje = 'Suje',
+  Sujf = 'Sujf',
+  Sun = 'Sun',
+  Suqf = 'Suqf',
+  Suqr = 'Suqr',
+  Suqw = 'Suqw',
+  Suv = 'Suv',
+  Suvm = 'Suvm',
   AirActuatedAirAtomizing14jaupm = 'AirActuatedAirAtomizing14jaupm',
   AirActuatedAirAtomizingVx80 = 'AirActuatedAirAtomizingVx80',
   AirActuatedAirAtomizingVx72 = 'AirActuatedAirAtomizingVx72',
   AirActuatedAirAtomizing18vau = 'AirActuatedAirAtomizing18vau',
+  AirActuatedAirAtomizingVx70 = 'AirActuatedAirAtomizingVx70',
+  AirActuatedAirAtomizing14jauco = 'AirActuatedAirAtomizing14jauco',
+  AirActuatedAirAtomizing1088014jau = 'AirActuatedAirAtomizing1088014jau',
   AirActuatedAirAtomizing18jjau = 'AirActuatedAirAtomizing18jjau',
   AirActuatedAirAtomizing18jjaumco = 'AirActuatedAirAtomizing18jjaumco',
   AirActuatedAirAtomizing1933014jaupm = 'AirActuatedAirAtomizing1933014jaupm',
   AirActuatedAirAtomizingD55500Jau = 'AirActuatedAirAtomizingD55500Jau',
   AirActuatedAirAtomizing1467518jjau = 'AirActuatedAirAtomizing1467518jjau',
-  AirActuatedAirAtomizing14jau = 'AirActuatedAirAtomizing14jau',
+  AirActuatedAirAtomizing1688318jjau = 'AirActuatedAirAtomizing1688318jjau',
+  AirActuatedAirAtomizing3849918jjau = 'AirActuatedAirAtomizing3849918jjau',
+  AirActuatedAirAtomizing1324214jau = 'AirActuatedAirAtomizing1324214jau',
+  AirActuatedAirAtomizing14jaupmco = 'AirActuatedAirAtomizing14jaupmco',
+  AirActuatedAirAtomizing14vmau = 'AirActuatedAirAtomizing14vmau',
+  AirActuatedAirAtomizing1686018jjau = 'AirActuatedAirAtomizing1686018jjau',
+  AirActuatedAirAtomizing14jaumco = 'AirActuatedAirAtomizing14jaumco',
+  AirActuatedAirAtomizing1769018jjau = 'AirActuatedAirAtomizing1769018jjau',
+  AirActuatedAirAtomizingVx82 = 'AirActuatedAirAtomizingVx82',
+  AirActuatedAirAtomizing1470018jjau = 'AirActuatedAirAtomizing1470018jjau',
+  AirActuatedAirAtomizing1053514j = 'AirActuatedAirAtomizing1053514j',
   AirActuatedAirAtomizing4966018jjau = 'AirActuatedAirAtomizing4966018jjau',
   AirActuatedAirAtomizing608314jau = 'AirActuatedAirAtomizing608314jau',
+  AirActuatedAirAtomizing1053612j = 'AirActuatedAirAtomizing1053612j',
+  AirActuatedAirAtomizing14jau = 'AirActuatedAirAtomizing14jau',
+  AirActuatedAirAtomizing7210018jjau = 'AirActuatedAirAtomizing7210018jjau',
+  AirActuatedAirAtomizing731014jau = 'AirActuatedAirAtomizing731014jau',
+  AirActuatedAirAtomizing621814jau = 'AirActuatedAirAtomizing621814jau',
+  AirActuatedHydraulic18jjauh = 'AirActuatedHydraulic18jjauh',
+  AirActuatedHydraulic14jauh = 'AirActuatedHydraulic14jauh',
+  AirActuatedHydraulicAa22auh7676 = 'AirActuatedHydraulicAa22auh7676',
+  AirActuatedHydraulicAa22auh = 'AirActuatedHydraulicAa22auh',
+  AirActuatedHydraulicAa22auhSs11024 = 'AirActuatedHydraulicAa22auhSs11024',
+  AirActuatedHydraulicAa22auhSs14799 = 'AirActuatedHydraulicAa22auhSs14799',
   AirActuatedHydraulicAa24aua8395 = 'AirActuatedHydraulicAa24aua8395',
   AirActuatedHydraulicAa24aua20190 = 'AirActuatedHydraulicAa24aua20190',
   AirActuatedHydraulicD55500Jauh0 = 'AirActuatedHydraulicD55500Jauh0',
-  AirActuatedHydraulicD55500Jauh1 = 'AirActuatedHydraulicD55500Jauh1',
   AirActuatedHydraulicAa24aua8980 = 'AirActuatedHydraulicAa24aua8980',
   AirActuatedHydraulicAa24aua = 'AirActuatedHydraulicAa24aua',
-  AirActuatedHydraulicAa22auhSs11024 = 'AirActuatedHydraulicAa22auhSs11024',
-  AirActuatedHydraulicAa22auhSs14799 = 'AirActuatedHydraulicAa22auhSs14799',
-  AirActuatedHydraulicAa22auh = 'AirActuatedHydraulicAa22auh',
-  AirActuatedHydraulic14jauh = 'AirActuatedHydraulic14jauh',
-  AirActuatedHydraulic18jjauh = 'AirActuatedHydraulic18jjauh',
-  AirActuatedHydraulicAa22auh7676 = 'AirActuatedHydraulicAa22auh7676',
+  AirActuatedHydraulicD55500Jauh1 = 'AirActuatedHydraulicD55500Jauh1',
   SprayHollowCone8686 = 'SprayHollowCone8686',
   ThrottlingAndPressureReliefRegulatingValves8460 = 'ThrottlingAndPressureReliefRegulatingValves8460',
   LargeFreePassageFullConeRRrRf = 'LargeFreePassageFullConeRRrRf',
   ElectricallyActuatedAirAtomizingAa29jauco = 'ElectricallyActuatedAirAtomizingAa29jauco',
   ElectricallyActuatedAirAtomizingAa28jjau49815 = 'ElectricallyActuatedAirAtomizingAa28jjau49815',
-  ElectricallyActuatedAirAtomizingAa10000jjau = 'ElectricallyActuatedAirAtomizingAa10000jjau',
   ElectricallyActuatedAirAtomizingAa10000jau10 = 'ElectricallyActuatedAirAtomizingAa10000jau10',
+  ElectricallyActuatedAirAtomizingAa10000jjau = 'ElectricallyActuatedAirAtomizingAa10000jjau',
   ElectricallyActuatedHydraulicAa26auh = 'ElectricallyActuatedHydraulicAa26auh',
   ElectricallyActuatedHydraulicAa250auh = 'ElectricallyActuatedHydraulicAa250auh',
   NarrowAngleDeflectedFlatSprayP = 'NarrowAngleDeflectedFlatSprayP',
   WideAngleDeflectedFlatSprayTek = 'WideAngleDeflectedFlatSprayTek',
   WideAngleDeflectedFlatSprayK = 'WideAngleDeflectedFlatSprayK',
+  TankjetD41892 = 'TankjetD41892',
   TankjetD41800 = 'TankjetD41800',
   MultiOrificeHydraulicFineSprayFf = 'MultiOrificeHydraulicFineSprayFf',
   MultiOrificeHydraulicFineSpray7n = 'MultiOrificeHydraulicFineSpray7n',
@@ -101,9 +116,9 @@ export enum ModelFacetOptionKey {
   LowPressureGunjetSprayGunsAa43lc = 'LowPressureGunjetSprayGunsAa43lc',
   LowPressureGunjetSprayGunsAa30l = 'LowPressureGunjetSprayGunsAa30l',
   LowPressureGunjetSprayGunsCu150a = 'LowPressureGunjetSprayGunsCu150a',
+  MediumPressureGunjetSprayGunsAa43hc = 'MediumPressureGunjetSprayGunsAa43hc',
   MediumPressureGunjetSprayGunsAa23l45885 = 'MediumPressureGunjetSprayGunsAa23l45885',
   MediumPressureGunjetSprayGunsAa23l = 'MediumPressureGunjetSprayGunsAa23l',
-  MediumPressureGunjetSprayGunsAa43hc = 'MediumPressureGunjetSprayGunsAa43hc',
   MediumPressureGunjetSprayGuns3653360 = 'MediumPressureGunjetSprayGuns3653360',
   MediumPressureGunjetSprayGunsAa23h = 'MediumPressureGunjetSprayGunsAa23h',
   HighImpactSolidjetD55606 = 'HighImpactSolidjetD55606',
@@ -112,18 +127,22 @@ export enum ModelFacetOptionKey {
   SingleOrificeHydraulicFineSprayNNn = 'SingleOrificeHydraulicFineSprayNNn',
   SingleOrificeHydraulicFineSprayM = 'SingleOrificeHydraulicFineSprayM',
   SingleOrificeHydraulicFineSprayNW = 'SingleOrificeHydraulicFineSprayNW',
+  _12j = '12j',
+  _14jAnd18J = '14jAnd18J',
+  _18jj = '18jj',
+  _1j = '1j',
+  StrainersAa430ml = 'StrainersAa430ml',
+  StrainersAa430mlsc = 'StrainersAa430mlsc',
+  StrainersAa124a = 'StrainersAa124a',
   StrainersAa124sc = 'StrainersAa124sc',
   StrainersAa122 = 'StrainersAa122',
-  StrainersAa124a = 'StrainersAa124a',
-  StrainersAa430mlsc = 'StrainersAa430mlsc',
-  StrainersAa124ml = 'StrainersAa124ml',
-  StrainersAa430ml = 'StrainersAa430ml',
   StrainersTwd = 'StrainersTwd',
   StrainersAa124asc = 'StrainersAa124asc',
   StrainersAa122ml = 'StrainersAa122ml',
   StrainersAa124 = 'StrainersAa124',
-  LowPressureGunjetSprayGuns6590 = 'LowPressureGunjetSprayGuns6590',
+  StrainersAa124ml = 'StrainersAa124ml',
   LowPressureGunjetSprayGuns6466 = 'LowPressureGunjetSprayGuns6466',
+  LowPressureGunjetSprayGuns6590 = 'LowPressureGunjetSprayGuns6590',
   LowPressureGunjetSprayGuns4688 = 'LowPressureGunjetSprayGuns4688',
   LowPressureGunjetSprayGunsAa36 = 'LowPressureGunjetSprayGunsAa36',
   LowPressureGunjetSprayGuns6104 = 'LowPressureGunjetSprayGuns6104',
@@ -164,25 +183,26 @@ export enum ModelFacetOptionKey {
   QuickjetQuickConnectNozzleBodiesQjaQjja = 'QuickjetQuickConnectNozzleBodiesQjaQjja',
   QuickjetQuickConnectNozzleBodiesQjlaQjjla = 'QuickjetQuickConnectNozzleBodiesQjlaQjjla',
   QuickjetQuickConnectNozzleBodiesQjjs = 'QuickjetQuickConnectNozzleBodiesQjjs',
+  Qmj = 'Qmj',
   TankjetD27500 = 'TankjetD27500',
   LargeFreePassageFullConeHhsjx = 'LargeFreePassageFullConeHhsjx',
   LargeFreePassageFullConeHhsj = 'LargeFreePassageFullConeHhsj',
   LargeFreePassageHollowConeBsj = 'LargeFreePassageHollowConeBsj',
-  SplitEyeletConnectors7521 = 'SplitEyeletConnectors7521',
-  SplitEyeletConnectors15475 = 'SplitEyeletConnectors15475',
   SplitEyeletConnectors8370 = 'SplitEyeletConnectors8370',
+  SplitEyeletConnectors15475 = 'SplitEyeletConnectors15475',
+  SplitEyeletConnectors7521 = 'SplitEyeletConnectors7521',
   ForTanksUpTo14MAa190 = 'ForTanksUpTo14MAa190',
   TankjetCleanup = 'TankjetCleanup',
   ForTanksUpTo45FtTj78m = 'ForTanksUpTo45FtTj78m',
   ForTanksUpTo10FtTj9A = 'ForTanksUpTo10FtTj9A',
-  ForTanksUpTo20FtD41800e = 'ForTanksUpTo20FtD41800e',
   ForTanksUpTo20FtD40159 = 'ForTanksUpTo20FtD40159',
+  ForTanksUpTo20FtD41800e = 'ForTanksUpTo20FtD41800e',
   ForTanksUpTo20FtD26984 = 'ForTanksUpTo20FtD26984',
   ForTanksUpTo5Ft21400a = 'ForTanksUpTo5Ft21400a',
   ForTanksUpTo5FtD26564 = 'ForTanksUpTo5FtD26564',
   ForTanksUpTo5Ft30473 = 'ForTanksUpTo5Ft30473',
-  ForTanksUpTo10FtD41892 = 'ForTanksUpTo10FtD41892',
   ForTanksUpTo10Ft18250a = 'ForTanksUpTo10Ft18250a',
+  ForTanksUpTo10FtD41892 = 'ForTanksUpTo10FtD41892',
   ForTanksUpTo5Ft23240 = 'ForTanksUpTo5Ft23240',
   ForTanksUpTo20FtTj9BTj9C = 'ForTanksUpTo20FtTj9BTj9C',
   ForTanksUpTo20Ft2850028500R = 'ForTanksUpTo20Ft2850028500R',
@@ -191,14 +211,14 @@ export enum ModelFacetOptionKey {
   ForTanksUpTo20Ft2750027500R = 'ForTanksUpTo20Ft2750027500R',
   ForTanksUpTo10Ft2750027500R = 'ForTanksUpTo10Ft2750027500R',
   ForTanksUpTo10FtD41990 = 'ForTanksUpTo10FtD41990',
-  ForTanksUpTo20FtTj14 = 'ForTanksUpTo20FtTj14',
   ForTanksUpTo100FtTj360 = 'ForTanksUpTo100FtTj360',
+  ForTanksUpTo20FtTj14 = 'ForTanksUpTo20FtTj14',
   ForTanksUpTo20FtTj19 = 'ForTanksUpTo20FtTj19',
   ForTanksUpTo100FtTj180 = 'ForTanksUpTo100FtTj180',
+  ForTanksUpTo45FtTj75Tj75h = 'ForTanksUpTo45FtTj75Tj75h',
   ForTanksUpTo45FtTj65Tj65ht = 'ForTanksUpTo45FtTj65Tj65ht',
   ForTanksUpTo100FtTj80Tj80h = 'ForTanksUpTo100FtTj80Tj80h',
   ForTanksUpTo45FtTj78Tj78d = 'ForTanksUpTo45FtTj78Tj78d',
-  ForTanksUpTo45FtTj75Tj75h = 'ForTanksUpTo45FtTj75Tj75h',
   ForTanksUpTo45FtTj16 = 'ForTanksUpTo45FtTj16',
   ForTanksUpTo45FtYmd3 = 'ForTanksUpTo45FtYmd3',
   ForTanksUpTo100FtAa290 = 'ForTanksUpTo100FtAa290',
@@ -235,6 +255,9 @@ export enum ModelFacetOptionKey {
   UnijetNozzleBodies11430 = 'UnijetNozzleBodies11430',
   UnijetSolidStreamEg = 'UnijetSolidStreamEg',
   UnijetSolidStreamTpu = 'UnijetSolidStreamTpu',
+  Vaa = 'Vaa',
+  Vau = 'Vau',
+  Vmau = 'Vmau',
   StandardFlatSprayHVvHDt = 'StandardFlatSprayHVvHDt',
   StandardFlatSprayHVvl = 'StandardFlatSprayHVvl',
   StandardFlatSprayHUHDu = 'StandardFlatSprayHUHDu',
@@ -295,10 +318,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1053612j,
+    key: ModelFacetOptionKey.AirCaps,
     ...defaultFacetOption,
-    valueId: '1edd1a11-dfb8-4a7e-8e58-9740aa661f9b',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '80f21bcb-d732-4e00-8cb5-2188fd64420d',
+    value: 'Air Atomizing Air Caps',
     parentId: '',
     children: [],
     configuration: {
@@ -306,12 +329,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (10536-1/2J)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10536-1/2J)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10536-1/2J)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10536-1/2J)'
-          }
+          value: { en: 'Air Atomizing Air Caps (Air Caps)' }
         }
       ],
       sortIndex: 1,
@@ -319,10 +337,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing7210018jjau,
+    key: ModelFacetOptionKey.FluidCaps,
     ...defaultFacetOption,
-    valueId: '7163b537-8e0e-4f02-8e68-98a7018d903a',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '691a989c-44a0-4bb9-8139-3df2911983b7',
+    value: 'Air Atomizing Fluid Caps',
     parentId: '',
     children: [],
     configuration: {
@@ -330,12 +348,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (72100-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (72100-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (72100-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (72100-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Fluid Caps (Fluid Caps)' }
         }
       ],
       sortIndex: 2,
@@ -343,10 +356,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing731014jau,
+    key: ModelFacetOptionKey.Su,
     ...defaultFacetOption,
-    valueId: '561c0ef7-16f7-42d1-ad02-9fe1791e17df',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: 'db998061-cb30-432f-a970-9bbeebfcfe68',
+    value: 'Air Atomizing Setup - SU',
     parentId: '',
     children: [],
     configuration: {
@@ -354,12 +367,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (7310-1/4JAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (7310-1/4JAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (7310-1/4JAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (7310-1/4JAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SU (SU)' }
         }
       ],
       sortIndex: 3,
@@ -367,10 +375,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing621814jau,
+    key: ModelFacetOptionKey.Sue,
     ...defaultFacetOption,
-    valueId: '429266c2-e0b1-4156-924a-a4c571b8f378',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '6af7d372-e36a-490c-90ad-fbfd5ceb9829',
+    value: 'Air Atomizing Setup - SUE',
     parentId: '',
     children: [],
     configuration: {
@@ -378,12 +386,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (6218-1/4JAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (6218-1/4JAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (6218-1/4JAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (6218-1/4JAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUE (SUE)' }
         }
       ],
       sortIndex: 4,
@@ -391,10 +394,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizingVx82,
+    key: ModelFacetOptionKey.Suf,
     ...defaultFacetOption,
-    valueId: '547ce13b-e6af-4b8a-a99a-ab48a541ec80',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: 'e4958748-d6dd-4b4c-a030-b45b7ac99262',
+    value: 'Air Atomizing Setup - SUF',
     parentId: '',
     children: [],
     configuration: {
@@ -402,12 +405,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (VX82)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (VX82)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (VX82)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (VX82)'
-          }
+          value: { en: 'Air Atomizing Setup - SUF (SUF)' }
         }
       ],
       sortIndex: 5,
@@ -415,10 +413,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1769018jjau,
+    key: ModelFacetOptionKey.Suj,
     ...defaultFacetOption,
-    valueId: 'd11a18af-c127-489a-955d-ae68316678cc',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: 'e5ef7411-e42c-4b6d-9155-9ecd5e92cf41',
+    value: 'Air Atomizing Setup - SUJ',
     parentId: '',
     children: [],
     configuration: {
@@ -426,12 +424,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (17690-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (17690-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (17690-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (17690-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUJ (SUJ)' }
         }
       ],
       sortIndex: 6,
@@ -439,10 +432,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1053514j,
+    key: ModelFacetOptionKey.Suje,
     ...defaultFacetOption,
-    valueId: '938ed361-5a16-47cf-a60f-b69452dc3e60',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '0c6fde66-bd1c-4a56-a748-c01fffc426e5',
+    value: 'Air Atomizing Setup - SUJE',
     parentId: '',
     children: [],
     configuration: {
@@ -450,12 +443,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (10535-1/4J)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10535-1/4J)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10535-1/4J)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10535-1/4J)'
-          }
+          value: { en: 'Air Atomizing Setup - SUJE (SUJE)' }
         }
       ],
       sortIndex: 7,
@@ -463,10 +451,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1470018jjau,
+    key: ModelFacetOptionKey.Sujf,
     ...defaultFacetOption,
-    valueId: '25a3a05d-35bc-49ec-8ae1-ba0194d2c4b0',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '81f67418-cb24-4f7c-b9fb-3c86ac2fc024',
+    value: 'Air Atomizing Setup - SUJF',
     parentId: '',
     children: [],
     configuration: {
@@ -474,12 +462,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (14700-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (14700-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (14700-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (14700-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUJF (SUJF)' }
         }
       ],
       sortIndex: 8,
@@ -487,10 +470,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing14vmau,
+    key: ModelFacetOptionKey.Sun,
     ...defaultFacetOption,
-    valueId: 'd1064f32-4bcf-41a9-997b-c1fcd0f75ef7',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '9d3acd38-a9c0-4cdb-b489-0809c18d5684',
+    value: 'Air Atomizing Setup - SUN',
     parentId: '',
     children: [],
     configuration: {
@@ -498,12 +481,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (1/4VMAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4VMAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4VMAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4VMAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUN (SUN)' }
         }
       ],
       sortIndex: 9,
@@ -511,10 +489,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1686018jjau,
+    key: ModelFacetOptionKey.Suqf,
     ...defaultFacetOption,
-    valueId: 'b5b1fc79-ed1d-448d-ab76-c73ae38ca9fe',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: 'd401244d-147e-453e-ae2a-fef4f679b3a3',
+    value: 'Air Atomizing Setup - SUQF',
     parentId: '',
     children: [],
     configuration: {
@@ -522,12 +500,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (16860-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (16860-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (16860-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (16860-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUQF (SUQF)' }
         }
       ],
       sortIndex: 10,
@@ -535,10 +508,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaumco,
+    key: ModelFacetOptionKey.Suqr,
     ...defaultFacetOption,
-    valueId: '12708c45-f35e-4525-af0b-d9a9d8b79109',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '76ec0a3b-eed9-427f-a198-882dea6b1669',
+    value: 'Air Atomizing Setup - SUQR',
     parentId: '',
     children: [],
     configuration: {
@@ -546,12 +519,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUMCO)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUMCO)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUMCO)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUMCO)'
-          }
+          value: { en: 'Air Atomizing Setup - SUQR (SUQR)' }
         }
       ],
       sortIndex: 11,
@@ -559,10 +527,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1688318jjau,
+    key: ModelFacetOptionKey.Suqw,
     ...defaultFacetOption,
-    valueId: '9abace59-ed93-4719-acf0-f054b861d7a2',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '4e4682c7-904a-4430-a1eb-b1be1e5776ef',
+    value: 'Air Atomizing Setup - SUQW',
     parentId: '',
     children: [],
     configuration: {
@@ -570,12 +538,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (16883-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (16883-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (16883-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (16883-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUQW (SUQW)' }
         }
       ],
       sortIndex: 12,
@@ -583,10 +546,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing3849918jjau,
+    key: ModelFacetOptionKey.Suv,
     ...defaultFacetOption,
-    valueId: '8b1cbbce-8ed4-4d40-bf25-f3a40a4b9c3c',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '1b99bde6-9789-4f87-a102-ee3bc870b90d',
+    value: 'Air Atomizing Setup - SUV',
     parentId: '',
     children: [],
     configuration: {
@@ -594,12 +557,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (38499-1/8JJAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (38499-1/8JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (38499-1/8JJAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (38499-1/8JJAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUV (SUV)' }
         }
       ],
       sortIndex: 13,
@@ -607,10 +565,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1324214jau,
+    key: ModelFacetOptionKey.Suvm,
     ...defaultFacetOption,
-    valueId: '58df9ab4-f018-49e5-8ff2-f65c4a222959',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    valueId: '2886d91c-d9c6-490e-b54f-286055c14448',
+    value: 'Air Atomizing Setup - SUVM',
     parentId: '',
     children: [],
     configuration: {
@@ -618,111 +576,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (13242-1/4JAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (13242-1/4JAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (13242-1/4JAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (13242-1/4JAU)'
-          }
+          value: { en: 'Air Atomizing Setup - SUVM (SUVM)' }
         }
       ],
       sortIndex: 14,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaupmco,
-    ...defaultFacetOption,
-    valueId: 'cf730fce-c57e-491e-9f36-fd8b0d6dcc04',
-    value: 'Air-Actuated Air Atomizing Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUPMCO)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUPMCO)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUPMCO)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUPMCO)'
-          }
-        }
-      ],
-      sortIndex: 15,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizingVx70,
-    ...defaultFacetOption,
-    valueId: '4881179a-a072-452f-b551-1130c2a411ff',
-    value: 'Air-Actuated Air Atomizing Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (VX70)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (VX70)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (VX70)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (VX70)'
-          }
-        }
-      ],
-      sortIndex: 16,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jauco,
-    ...defaultFacetOption,
-    valueId: '660f2c89-3c3d-48c1-b8e9-12435a3dd9c9',
-    value: 'Air-Actuated Air Atomizing Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUCO)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUCO)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUCO)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUCO)'
-          }
-        }
-      ],
-      sortIndex: 17,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing1088014jau,
-    ...defaultFacetOption,
-    valueId: 'eb12208e-945a-4b9c-ba34-1d8fac2bf2bc',
-    value: 'Air-Actuated Air Atomizing Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (10880-1/4JAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10880-1/4JAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10880-1/4JAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10880-1/4JAU)'
-          }
-        }
-      ],
-      sortIndex: 18,
       seoPath: ''
     }
   },
@@ -746,7 +603,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 19,
+      sortIndex: 15,
       seoPath: ''
     }
   },
@@ -770,7 +627,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 20,
+      sortIndex: 16,
       seoPath: ''
     }
   },
@@ -794,7 +651,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 21,
+      sortIndex: 17,
       seoPath: ''
     }
   },
@@ -818,7 +675,79 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 22,
+      sortIndex: 18,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizingVx70,
+    ...defaultFacetOption,
+    valueId: '4881179a-a072-452f-b551-1130c2a411ff',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (VX70)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (VX70)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (VX70)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (VX70)'
+          }
+        }
+      ],
+      sortIndex: 19,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jauco,
+    ...defaultFacetOption,
+    valueId: '660f2c89-3c3d-48c1-b8e9-12435a3dd9c9',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUCO)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUCO)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUCO)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUCO)'
+          }
+        }
+      ],
+      sortIndex: 20,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1088014jau,
+    ...defaultFacetOption,
+    valueId: 'eb12208e-945a-4b9c-ba34-1d8fac2bf2bc',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (10880-1/4JAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10880-1/4JAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10880-1/4JAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10880-1/4JAU)'
+          }
+        }
+      ],
+      sortIndex: 21,
       seoPath: ''
     }
   },
@@ -842,7 +771,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 23,
+      sortIndex: 22,
       seoPath: ''
     }
   },
@@ -866,7 +795,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 24,
+      sortIndex: 23,
       seoPath: ''
     }
   },
@@ -890,7 +819,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 25,
+      sortIndex: 24,
       seoPath: ''
     }
   },
@@ -914,7 +843,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 26,
+      sortIndex: 25,
       seoPath: ''
     }
   },
@@ -938,14 +867,14 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 27,
+      sortIndex: 26,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jau,
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1688318jjau,
     ...defaultFacetOption,
-    valueId: 'e5ceef72-9e96-49d5-919e-8250267a3a80',
+    valueId: '9abace59-ed93-4719-acf0-f054b861d7a2',
     value: 'Air-Actuated Air Atomizing Nozzle',
     parentId: '',
     children: [],
@@ -955,14 +884,254 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAU)',
-            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAU)',
-            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAU)'
+            en: 'Air-Actuated Air Atomizing Nozzle (16883-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (16883-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (16883-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (16883-1/8JJAU)'
+          }
+        }
+      ],
+      sortIndex: 27,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing3849918jjau,
+    ...defaultFacetOption,
+    valueId: '8b1cbbce-8ed4-4d40-bf25-f3a40a4b9c3c',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (38499-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (38499-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (38499-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (38499-1/8JJAU)'
           }
         }
       ],
       sortIndex: 28,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1324214jau,
+    ...defaultFacetOption,
+    valueId: '58df9ab4-f018-49e5-8ff2-f65c4a222959',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (13242-1/4JAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (13242-1/4JAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (13242-1/4JAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (13242-1/4JAU)'
+          }
+        }
+      ],
+      sortIndex: 29,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaupmco,
+    ...defaultFacetOption,
+    valueId: 'cf730fce-c57e-491e-9f36-fd8b0d6dcc04',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUPMCO)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUPMCO)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUPMCO)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUPMCO)'
+          }
+        }
+      ],
+      sortIndex: 30,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing14vmau,
+    ...defaultFacetOption,
+    valueId: 'd1064f32-4bcf-41a9-997b-c1fcd0f75ef7',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (1/4VMAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4VMAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4VMAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4VMAU)'
+          }
+        }
+      ],
+      sortIndex: 31,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1686018jjau,
+    ...defaultFacetOption,
+    valueId: 'b5b1fc79-ed1d-448d-ab76-c73ae38ca9fe',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (16860-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (16860-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (16860-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (16860-1/8JJAU)'
+          }
+        }
+      ],
+      sortIndex: 32,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaumco,
+    ...defaultFacetOption,
+    valueId: '12708c45-f35e-4525-af0b-d9a9d8b79109',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAUMCO)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAUMCO)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAUMCO)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAUMCO)'
+          }
+        }
+      ],
+      sortIndex: 33,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1769018jjau,
+    ...defaultFacetOption,
+    valueId: 'd11a18af-c127-489a-955d-ae68316678cc',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (17690-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (17690-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (17690-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (17690-1/8JJAU)'
+          }
+        }
+      ],
+      sortIndex: 34,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizingVx82,
+    ...defaultFacetOption,
+    valueId: '547ce13b-e6af-4b8a-a99a-ab48a541ec80',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (VX82)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (VX82)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (VX82)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (VX82)'
+          }
+        }
+      ],
+      sortIndex: 35,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1470018jjau,
+    ...defaultFacetOption,
+    valueId: '25a3a05d-35bc-49ec-8ae1-ba0194d2c4b0',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (14700-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (14700-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (14700-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (14700-1/8JJAU)'
+          }
+        }
+      ],
+      sortIndex: 36,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1053514j,
+    ...defaultFacetOption,
+    valueId: '938ed361-5a16-47cf-a60f-b69452dc3e60',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (10535-1/4J)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10535-1/4J)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10535-1/4J)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10535-1/4J)'
+          }
+        }
+      ],
+      sortIndex: 37,
       seoPath: ''
     }
   },
@@ -986,7 +1155,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 29,
+      sortIndex: 38,
       seoPath: ''
     }
   },
@@ -1010,231 +1179,15 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 30,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8395,
-    ...defaultFacetOption,
-    valueId: '7825c33a-d5d7-4a0b-9238-73e5a667b45c',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-8395)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-8395)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-8395)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-8395)'
-          }
-        }
-      ],
-      sortIndex: 31,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua20190,
-    ...defaultFacetOption,
-    valueId: 'abc27656-0fa4-451c-b97c-713e8f544e9a',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-20190)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-20190)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-20190)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-20190)'
-          }
-        }
-      ],
-      sortIndex: 32,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh0,
-    ...defaultFacetOption,
-    valueId: 'a6fa54fa-5a66-4d1c-9d2b-72e0087172ce',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (D55500-JAUH0)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (D55500-JAUH0)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (D55500-JAUH0)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (D55500-JAUH0)'
-          }
-        }
-      ],
-      sortIndex: 33,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh1,
-    ...defaultFacetOption,
-    valueId: '23bf2f25-ddc3-442b-ae6f-33271a489d72',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (D55500-JAUH1)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (D55500-JAUH1)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (D55500-JAUH1)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (D55500-JAUH1)'
-          }
-        }
-      ],
-      sortIndex: 34,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8980,
-    ...defaultFacetOption,
-    valueId: '1b682906-5029-4c8f-8ae4-0d49878d30ed',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-8980)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-8980)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-8980)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-8980)'
-          }
-        }
-      ],
-      sortIndex: 35,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua,
-    ...defaultFacetOption,
-    valueId: '447b9a88-8cb6-427b-89c3-0dee2d3ced20',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA)'
-          }
-        }
-      ],
-      sortIndex: 36,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs11024,
-    ...defaultFacetOption,
-    valueId: 'aeb0f86d-3422-4d2e-92cc-fd9984ad5027',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH-SS-11024)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH-SS-11024)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH-SS-11024)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH-SS-11024)'
-          }
-        }
-      ],
-      sortIndex: 37,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs14799,
-    ...defaultFacetOption,
-    valueId: '0cf59d3c-590e-4a6e-8fea-edf309183855',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH-SS-14799)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH-SS-14799)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH-SS-14799)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH-SS-14799)'
-          }
-        }
-      ],
-      sortIndex: 38,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auh,
-    ...defaultFacetOption,
-    valueId: '8346f5af-8243-4fc7-8e0f-c835108ebf4b',
-    value: 'Air-Actuated Hydraulic Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH)'
-          }
-        }
-      ],
       sortIndex: 39,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.AirActuatedHydraulic14jauh,
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing1053612j,
     ...defaultFacetOption,
-    valueId: '61dd75b1-6066-496f-8446-b80ad03911af',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    valueId: '1edd1a11-dfb8-4a7e-8e58-9740aa661f9b',
+    value: 'Air-Actuated Air Atomizing Nozzle',
     parentId: '',
     children: [],
     configuration: {
@@ -1243,14 +1196,110 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Air-Actuated Hydraulic Nozzle (1/4JAUH)',
-            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (1/4JAUH)',
-            fr: 'Buse hydraulique actionn\u00E9e par air (1/4JAUH)',
-            nl: 'Hydraulisch mondstuk met luchtbediening (1/4JAUH)'
+            en: 'Air-Actuated Air Atomizing Nozzle (10536-1/2J)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (10536-1/2J)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (10536-1/2J)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (10536-1/2J)'
           }
         }
       ],
       sortIndex: 40,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing14jau,
+    ...defaultFacetOption,
+    valueId: 'e5ceef72-9e96-49d5-919e-8250267a3a80',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (1/4JAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (1/4JAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (1/4JAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (1/4JAU)'
+          }
+        }
+      ],
+      sortIndex: 41,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing7210018jjau,
+    ...defaultFacetOption,
+    valueId: '7163b537-8e0e-4f02-8e68-98a7018d903a',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (72100-1/8JJAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (72100-1/8JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (72100-1/8JJAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (72100-1/8JJAU)'
+          }
+        }
+      ],
+      sortIndex: 42,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing731014jau,
+    ...defaultFacetOption,
+    valueId: '561c0ef7-16f7-42d1-ad02-9fe1791e17df',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (7310-1/4JAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (7310-1/4JAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (7310-1/4JAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (7310-1/4JAU)'
+          }
+        }
+      ],
+      sortIndex: 43,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedAirAtomizing621814jau,
+    ...defaultFacetOption,
+    valueId: '429266c2-e0b1-4156-924a-a4c571b8f378',
+    value: 'Air-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Air Atomizing Nozzle (6218-1/4JAU)',
+            de: 'Luftbet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (6218-1/4JAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e par air (6218-1/4JAU)',
+            nl: 'Luchtaangedreven luchtvernevelingsmondstuk (6218-1/4JAU)'
+          }
+        }
+      ],
+      sortIndex: 44,
       seoPath: ''
     }
   },
@@ -1274,7 +1323,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 41,
+      sortIndex: 45,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulic14jauh,
+    ...defaultFacetOption,
+    valueId: '61dd75b1-6066-496f-8446-b80ad03911af',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (1/4JAUH)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (1/4JAUH)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (1/4JAUH)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (1/4JAUH)'
+          }
+        }
+      ],
+      sortIndex: 46,
       seoPath: ''
     }
   },
@@ -1298,7 +1371,223 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 42,
+      sortIndex: 47,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auh,
+    ...defaultFacetOption,
+    valueId: '8346f5af-8243-4fc7-8e0f-c835108ebf4b',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH)'
+          }
+        }
+      ],
+      sortIndex: 48,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs11024,
+    ...defaultFacetOption,
+    valueId: 'aeb0f86d-3422-4d2e-92cc-fd9984ad5027',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH-SS-11024)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH-SS-11024)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH-SS-11024)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH-SS-11024)'
+          }
+        }
+      ],
+      sortIndex: 49,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs14799,
+    ...defaultFacetOption,
+    valueId: '0cf59d3c-590e-4a6e-8fea-edf309183855',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA22AUH-SS-14799)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA22AUH-SS-14799)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA22AUH-SS-14799)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA22AUH-SS-14799)'
+          }
+        }
+      ],
+      sortIndex: 50,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8395,
+    ...defaultFacetOption,
+    valueId: '7825c33a-d5d7-4a0b-9238-73e5a667b45c',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-8395)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-8395)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-8395)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-8395)'
+          }
+        }
+      ],
+      sortIndex: 51,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua20190,
+    ...defaultFacetOption,
+    valueId: 'abc27656-0fa4-451c-b97c-713e8f544e9a',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-20190)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-20190)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-20190)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-20190)'
+          }
+        }
+      ],
+      sortIndex: 52,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh0,
+    ...defaultFacetOption,
+    valueId: 'a6fa54fa-5a66-4d1c-9d2b-72e0087172ce',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (D55500-JAUH0)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (D55500-JAUH0)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (D55500-JAUH0)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (D55500-JAUH0)'
+          }
+        }
+      ],
+      sortIndex: 53,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8980,
+    ...defaultFacetOption,
+    valueId: '1b682906-5029-4c8f-8ae4-0d49878d30ed',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA-8980)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA-8980)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA-8980)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA-8980)'
+          }
+        }
+      ],
+      sortIndex: 54,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua,
+    ...defaultFacetOption,
+    valueId: '447b9a88-8cb6-427b-89c3-0dee2d3ced20',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (AA24AUA)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (AA24AUA)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (AA24AUA)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (AA24AUA)'
+          }
+        }
+      ],
+      sortIndex: 55,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh1,
+    ...defaultFacetOption,
+    valueId: '23bf2f25-ddc3-442b-ae6f-33271a489d72',
+    value: 'Air-Actuated Hydraulic Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Air-Actuated Hydraulic Nozzle (D55500-JAUH1)',
+            de: 'Druckluftbet\u00E4tigte Hydraulikd\u00FCse (D55500-JAUH1)',
+            fr: 'Buse hydraulique actionn\u00E9e par air (D55500-JAUH1)',
+            nl: 'Hydraulisch mondstuk met luchtbediening (D55500-JAUH1)'
+          }
+        }
+      ],
+      sortIndex: 56,
       seoPath: ''
     }
   },
@@ -1322,7 +1611,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 43,
+      sortIndex: 57,
       seoPath: ''
     }
   },
@@ -1346,7 +1635,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 44,
+      sortIndex: 58,
       seoPath: ''
     }
   },
@@ -1370,7 +1659,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 45,
+      sortIndex: 59,
       seoPath: ''
     }
   },
@@ -1394,7 +1683,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 46,
+      sortIndex: 60,
       seoPath: ''
     }
   },
@@ -1418,31 +1707,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 47,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa10000jjau,
-    ...defaultFacetOption,
-    valueId: '166eec60-dcb2-486e-8661-e1feb804048b',
-    value: 'Electrically-Actuated Air Atomizing Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Air Atomizing Nozzle (AA10000JJAU)',
-            de: 'Elektrisch bet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (AA10000JJAU)',
-            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e \u00E9lectriquement (AA10000JJAU)',
-            nl: 'Elektrisch bediende luchtvernevelingsmondstuk (AA10000JJAU)'
-          }
-        }
-      ],
-      sortIndex: 48,
+      sortIndex: 61,
       seoPath: ''
     }
   },
@@ -1466,7 +1731,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 49,
+      sortIndex: 62,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa10000jjau,
+    ...defaultFacetOption,
+    valueId: '166eec60-dcb2-486e-8661-e1feb804048b',
+    value: 'Electrically-Actuated Air Atomizing Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Electrically-Actuated Air Atomizing Nozzle (AA10000JJAU)',
+            de: 'Elektrisch bet\u00E4tigte Luftzerst\u00E4ubungsd\u00FCse (AA10000JJAU)',
+            fr: 'Buse d\u2019atomisation d\u2019air actionn\u00E9e \u00E9lectriquement (AA10000JJAU)',
+            nl: 'Elektrisch bediende luchtvernevelingsmondstuk (AA10000JJAU)'
+          }
+        }
+      ],
+      sortIndex: 63,
       seoPath: ''
     }
   },
@@ -1490,7 +1779,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 50,
+      sortIndex: 64,
       seoPath: ''
     }
   },
@@ -1514,7 +1803,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 51,
+      sortIndex: 65,
       seoPath: ''
     }
   },
@@ -1539,7 +1828,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 52,
+      sortIndex: 66,
       seoPath: ''
     }
   },
@@ -1564,7 +1853,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 53,
+      sortIndex: 67,
       seoPath: ''
     }
   },
@@ -1588,7 +1877,29 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 54,
+      sortIndex: 68,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.TankjetD41892,
+    ...defaultFacetOption,
+    valueId: '3d020fed-43c1-4668-899c-aba5f4efd33e',
+    value: 'Fluid Driven Slow Rotationg TankJet Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Fluid Driven Slow Rotationg TankJet Nozzle (D41892)',
+            de: 'Langsam drehende Tankreinigung (D41892)'
+          }
+        }
+      ],
+      sortIndex: 69,
       seoPath: ''
     }
   },
@@ -1610,7 +1921,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 55,
+      sortIndex: 70,
       seoPath: ''
     }
   },
@@ -1634,7 +1945,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 56,
+      sortIndex: 71,
       seoPath: ''
     }
   },
@@ -1658,7 +1969,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 57,
+      sortIndex: 72,
       seoPath: ''
     }
   },
@@ -1682,7 +1993,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 58,
+      sortIndex: 73,
       seoPath: ''
     }
   },
@@ -1706,7 +2017,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 59,
+      sortIndex: 74,
       seoPath: ''
     }
   },
@@ -1730,7 +2041,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 60,
+      sortIndex: 75,
       seoPath: ''
     }
   },
@@ -1754,7 +2065,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 61,
+      sortIndex: 76,
       seoPath: ''
     }
   },
@@ -1778,7 +2089,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 62,
+      sortIndex: 77,
       seoPath: ''
     }
   },
@@ -1802,7 +2113,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 63,
+      sortIndex: 78,
       seoPath: ''
     }
   },
@@ -1826,7 +2137,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 64,
+      sortIndex: 79,
       seoPath: ''
     }
   },
@@ -1850,7 +2161,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 65,
+      sortIndex: 80,
       seoPath: ''
     }
   },
@@ -1874,7 +2185,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 66,
+      sortIndex: 81,
       seoPath: ''
     }
   },
@@ -1896,7 +2207,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 67,
+      sortIndex: 82,
       seoPath: ''
     }
   },
@@ -1918,7 +2229,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 68,
+      sortIndex: 83,
       seoPath: ''
     }
   },
@@ -1942,7 +2253,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 69,
+      sortIndex: 84,
       seoPath: ''
     }
   },
@@ -1966,7 +2277,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 70,
+      sortIndex: 85,
       seoPath: ''
     }
   },
@@ -1990,7 +2301,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 71,
+      sortIndex: 86,
       seoPath: ''
     }
   },
@@ -2014,7 +2325,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 72,
+      sortIndex: 87,
       seoPath: ''
     }
   },
@@ -2038,7 +2349,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 73,
+      sortIndex: 88,
       seoPath: ''
     }
   },
@@ -2062,7 +2373,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 74,
+      sortIndex: 89,
       seoPath: ''
     }
   },
@@ -2086,7 +2397,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 75,
+      sortIndex: 90,
       seoPath: ''
     }
   },
@@ -2110,7 +2421,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 76,
+      sortIndex: 91,
       seoPath: ''
     }
   },
@@ -2134,7 +2445,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 77,
+      sortIndex: 92,
       seoPath: ''
     }
   },
@@ -2158,7 +2469,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 78,
+      sortIndex: 93,
       seoPath: ''
     }
   },
@@ -2182,7 +2493,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 79,
+      sortIndex: 94,
       seoPath: ''
     }
   },
@@ -2206,7 +2517,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 80,
+      sortIndex: 95,
       seoPath: ''
     }
   },
@@ -2230,7 +2541,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 81,
+      sortIndex: 96,
       seoPath: ''
     }
   },
@@ -2254,7 +2565,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 82,
+      sortIndex: 97,
       seoPath: ''
     }
   },
@@ -2278,7 +2589,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 83,
+      sortIndex: 98,
       seoPath: ''
     }
   },
@@ -2302,7 +2613,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 84,
+      sortIndex: 99,
       seoPath: ''
     }
   },
@@ -2326,7 +2637,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 85,
+      sortIndex: 100,
       seoPath: ''
     }
   },
@@ -2350,7 +2661,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 86,
+      sortIndex: 101,
       seoPath: ''
     }
   },
@@ -2374,7 +2685,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 87,
+      sortIndex: 102,
       seoPath: ''
     }
   },
@@ -2398,7 +2709,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 88,
+      sortIndex: 103,
       seoPath: ''
     }
   },
@@ -2422,7 +2733,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 89,
+      sortIndex: 104,
       seoPath: ''
     }
   },
@@ -2446,7 +2757,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 90,
+      sortIndex: 105,
       seoPath: ''
     }
   },
@@ -2470,7 +2781,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 91,
+      sortIndex: 106,
       seoPath: ''
     }
   },
@@ -2494,55 +2805,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 92,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l45885,
-    ...defaultFacetOption,
-    valueId: '0ca083c2-d887-4cdb-9c6a-ed274961af2d',
-    value: 'GunJet® Medium Pressure Spray Gun',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun (AA23L-45885)',
-            de: 'GunJet\u00AE Mitteldruck-Spritzpistole (AA23L-45885)',
-            fr: 'Pistolet de pulv\u00E9risation \u00E0 moyenne pression GunJet\u00AE (AA23L-45885)',
-            nl: 'GunJet\u00AE spuitpistool met gemiddelde druk (AA23L-45885)'
-          }
-        }
-      ],
-      sortIndex: 93,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l,
-    ...defaultFacetOption,
-    valueId: '487be0fd-26b5-4660-8ad4-3dfb02641f78',
-    value: 'GunJet® Medium Pressure Spray Gun',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun (AA23L)',
-            de: 'GunJet\u00AE Mitteldruck-Spritzpistole (AA23L)',
-            fr: 'Pistolet de pulv\u00E9risation \u00E0 moyenne pression GunJet\u00AE (AA23L)',
-            nl: 'GunJet\u00AE spuitpistool met gemiddelde druk (AA23L)'
-          }
-        }
-      ],
-      sortIndex: 94,
+      sortIndex: 107,
       seoPath: ''
     }
   },
@@ -2566,7 +2829,55 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 95,
+      sortIndex: 108,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l45885,
+    ...defaultFacetOption,
+    valueId: '0ca083c2-d887-4cdb-9c6a-ed274961af2d',
+    value: 'GunJet® Medium Pressure Spray Gun',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'GunJet\u00AE Medium Pressure Spray Gun (AA23L-45885)',
+            de: 'GunJet\u00AE Mitteldruck-Spritzpistole (AA23L-45885)',
+            fr: 'Pistolet de pulv\u00E9risation \u00E0 moyenne pression GunJet\u00AE (AA23L-45885)',
+            nl: 'GunJet\u00AE spuitpistool met gemiddelde druk (AA23L-45885)'
+          }
+        }
+      ],
+      sortIndex: 109,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l,
+    ...defaultFacetOption,
+    valueId: '487be0fd-26b5-4660-8ad4-3dfb02641f78',
+    value: 'GunJet® Medium Pressure Spray Gun',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'GunJet\u00AE Medium Pressure Spray Gun (AA23L)',
+            de: 'GunJet\u00AE Mitteldruck-Spritzpistole (AA23L)',
+            fr: 'Pistolet de pulv\u00E9risation \u00E0 moyenne pression GunJet\u00AE (AA23L)',
+            nl: 'GunJet\u00AE spuitpistool met gemiddelde druk (AA23L)'
+          }
+        }
+      ],
+      sortIndex: 110,
       seoPath: ''
     }
   },
@@ -2590,7 +2901,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 96,
+      sortIndex: 111,
       seoPath: ''
     }
   },
@@ -2614,7 +2925,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 97,
+      sortIndex: 112,
       seoPath: ''
     }
   },
@@ -2638,7 +2949,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 98,
+      sortIndex: 113,
       seoPath: ''
     }
   },
@@ -2662,7 +2973,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 99,
+      sortIndex: 114,
       seoPath: ''
     }
   },
@@ -2686,7 +2997,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 100,
+      sortIndex: 115,
       seoPath: ''
     }
   },
@@ -2710,7 +3021,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 101,
+      sortIndex: 116,
       seoPath: ''
     }
   },
@@ -2734,7 +3045,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 102,
+      sortIndex: 117,
       seoPath: ''
     }
   },
@@ -2758,15 +3069,15 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 103,
+      sortIndex: 118,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.StrainersAa124sc,
+    key: ModelFacetOptionKey._12j,
     ...defaultFacetOption,
-    valueId: 'e8a2ff8b-5670-417f-bef2-5ceef21366b2',
-    value: 'Liquid Strainer',
+    valueId: '1b5ca376-ffd3-46a5-989a-1c12af13e9a4',
+    value: 'J and JJ Nozzle, 1/2J',
     parentId: '',
     children: [],
     configuration: {
@@ -2774,23 +3085,18 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Liquid Strainer (AA124SC)',
-            de: 'Fl\u00FCssigsieb (AA124SC)',
-            fr: 'Passoire liquide (AA124SC)',
-            nl: 'Vloeistofzeef (AA124SC)'
-          }
+          value: { en: 'J and JJ Nozzle, 1/2J (1/2J)' }
         }
       ],
-      sortIndex: 104,
+      sortIndex: 119,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.StrainersAa122,
+    key: ModelFacetOptionKey._14jAnd18J,
     ...defaultFacetOption,
-    valueId: '44f88cdb-1c99-458d-bfaa-55b2ebd84c12',
-    value: 'Liquid Strainer',
+    valueId: 'e4eb978c-fce3-4433-b08c-fed7e95c22ee',
+    value: 'J and JJ Nozzle, 1/4J and 1/8J',
     parentId: '',
     children: [],
     configuration: {
@@ -2798,23 +3104,18 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Liquid Strainer (AA122)',
-            de: 'Fl\u00FCssigsieb (AA122)',
-            fr: 'Passoire liquide (AA122)',
-            nl: 'Vloeistofzeef (AA122)'
-          }
+          value: { en: 'J and JJ Nozzle, 1/4J and 1/8J (1/4J, 1/8J)' }
         }
       ],
-      sortIndex: 105,
+      sortIndex: 120,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.StrainersAa124a,
+    key: ModelFacetOptionKey._18jj,
     ...defaultFacetOption,
-    valueId: '361eb54f-dee4-4d9c-bc92-4dc88e3bbfb8',
-    value: 'Liquid Strainer',
+    valueId: 'dbf5cad5-6c74-43a8-b91c-540461a4fd0d',
+    value: 'J and JJ Nozzle, 1/8JJ',
     parentId: '',
     children: [],
     configuration: {
@@ -2822,23 +3123,18 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Liquid Strainer (AA124A)',
-            de: 'Fl\u00FCssigsieb (AA124A)',
-            fr: 'Passoire liquide (AA124A)',
-            nl: 'Vloeistofzeef (AA124A)'
-          }
+          value: { en: 'J and JJ Nozzle, 1/8JJ (1/8JJ)' }
         }
       ],
-      sortIndex: 106,
+      sortIndex: 121,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.StrainersAa430mlsc,
+    key: ModelFacetOptionKey._1j,
     ...defaultFacetOption,
-    valueId: '5edf0932-f11a-4395-b49f-54eeacf2708a',
-    value: 'Liquid Strainer',
+    valueId: '2300f200-9785-4529-9a09-6178948907a9',
+    value: 'J and JJ Nozzle, 1J',
     parentId: '',
     children: [],
     configuration: {
@@ -2846,39 +3142,10 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Liquid Strainer (AA430MLSC)',
-            de: 'Fl\u00FCssigsieb (AA430MLSC)',
-            fr: 'Passoire liquide (AA430MLSC)',
-            nl: 'Vloeistofzeef (AA430MLSC)'
-          }
+          value: { en: 'J and JJ Nozzle, 1J (1J)' }
         }
       ],
-      sortIndex: 107,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.StrainersAa124ml,
-    ...defaultFacetOption,
-    valueId: 'eb5f68de-59ba-4d1d-aa97-8397de19bed7',
-    value: 'Liquid Strainer',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Liquid Strainer (AA124ML)',
-            de: 'Fl\u00FCssigsieb (AA124ML)',
-            fr: 'Passoire liquide (AA124ML)',
-            nl: 'Vloeistofzeef (AA124ML)'
-          }
-        }
-      ],
-      sortIndex: 108,
+      sortIndex: 122,
       seoPath: ''
     }
   },
@@ -2902,7 +3169,103 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 109,
+      sortIndex: 123,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.StrainersAa430mlsc,
+    ...defaultFacetOption,
+    valueId: '5edf0932-f11a-4395-b49f-54eeacf2708a',
+    value: 'Liquid Strainer',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Liquid Strainer (AA430MLSC)',
+            de: 'Fl\u00FCssigsieb (AA430MLSC)',
+            fr: 'Passoire liquide (AA430MLSC)',
+            nl: 'Vloeistofzeef (AA430MLSC)'
+          }
+        }
+      ],
+      sortIndex: 124,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.StrainersAa124a,
+    ...defaultFacetOption,
+    valueId: '361eb54f-dee4-4d9c-bc92-4dc88e3bbfb8',
+    value: 'Liquid Strainer',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Liquid Strainer (AA124A)',
+            de: 'Fl\u00FCssigsieb (AA124A)',
+            fr: 'Passoire liquide (AA124A)',
+            nl: 'Vloeistofzeef (AA124A)'
+          }
+        }
+      ],
+      sortIndex: 125,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.StrainersAa124sc,
+    ...defaultFacetOption,
+    valueId: 'e8a2ff8b-5670-417f-bef2-5ceef21366b2',
+    value: 'Liquid Strainer',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Liquid Strainer (AA124SC)',
+            de: 'Fl\u00FCssigsieb (AA124SC)',
+            fr: 'Passoire liquide (AA124SC)',
+            nl: 'Vloeistofzeef (AA124SC)'
+          }
+        }
+      ],
+      sortIndex: 126,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.StrainersAa122,
+    ...defaultFacetOption,
+    valueId: '44f88cdb-1c99-458d-bfaa-55b2ebd84c12',
+    value: 'Liquid Strainer',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Liquid Strainer (AA122)',
+            de: 'Fl\u00FCssigsieb (AA122)',
+            fr: 'Passoire liquide (AA122)',
+            nl: 'Vloeistofzeef (AA122)'
+          }
+        }
+      ],
+      sortIndex: 127,
       seoPath: ''
     }
   },
@@ -2926,7 +3289,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 110,
+      sortIndex: 128,
       seoPath: ''
     }
   },
@@ -2950,7 +3313,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 111,
+      sortIndex: 129,
       seoPath: ''
     }
   },
@@ -2974,7 +3337,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 112,
+      sortIndex: 130,
       seoPath: ''
     }
   },
@@ -2998,15 +3361,15 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 113,
+      sortIndex: 131,
       seoPath: ''
     }
   },
   {
-    key: ModelFacetOptionKey.LowPressureGunjetSprayGuns6590,
+    key: ModelFacetOptionKey.StrainersAa124ml,
     ...defaultFacetOption,
-    valueId: '928bda75-63eb-40cf-bbe6-e682e96208cd',
-    value: 'Low Pressure Trigger Valve',
+    valueId: 'eb5f68de-59ba-4d1d-aa97-8397de19bed7',
+    value: 'Liquid Strainer',
     parentId: '',
     children: [],
     configuration: {
@@ -3015,14 +3378,14 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Low Pressure Trigger Valve (6590)',
-            de: 'Niederdruck-Ausl\u00F6seventil (6590)',
-            fr: 'Vanne de d\u00E9clenchement basse pression (6590)',
-            nl: 'Lage druk trigger valve (6590)'
+            en: 'Liquid Strainer (AA124ML)',
+            de: 'Fl\u00FCssigsieb (AA124ML)',
+            fr: 'Passoire liquide (AA124ML)',
+            nl: 'Vloeistofzeef (AA124ML)'
           }
         }
       ],
-      sortIndex: 114,
+      sortIndex: 132,
       seoPath: ''
     }
   },
@@ -3046,7 +3409,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 115,
+      sortIndex: 133,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.LowPressureGunjetSprayGuns6590,
+    ...defaultFacetOption,
+    valueId: '928bda75-63eb-40cf-bbe6-e682e96208cd',
+    value: 'Low Pressure Trigger Valve',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Low Pressure Trigger Valve (6590)',
+            de: 'Niederdruck-Ausl\u00F6seventil (6590)',
+            fr: 'Vanne de d\u00E9clenchement basse pression (6590)',
+            nl: 'Lage druk trigger valve (6590)'
+          }
+        }
+      ],
+      sortIndex: 134,
       seoPath: ''
     }
   },
@@ -3070,7 +3457,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 116,
+      sortIndex: 135,
       seoPath: ''
     }
   },
@@ -3094,7 +3481,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 117,
+      sortIndex: 136,
       seoPath: ''
     }
   },
@@ -3118,7 +3505,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 118,
+      sortIndex: 137,
       seoPath: ''
     }
   },
@@ -3142,7 +3529,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 119,
+      sortIndex: 138,
       seoPath: ''
     }
   },
@@ -3166,7 +3553,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 120,
+      sortIndex: 139,
       seoPath: ''
     }
   },
@@ -3190,7 +3577,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 121,
+      sortIndex: 140,
       seoPath: ''
     }
   },
@@ -3214,7 +3601,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 122,
+      sortIndex: 141,
       seoPath: ''
     }
   },
@@ -3238,7 +3625,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 123,
+      sortIndex: 142,
       seoPath: ''
     }
   },
@@ -3262,7 +3649,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 124,
+      sortIndex: 143,
       seoPath: ''
     }
   },
@@ -3286,7 +3673,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 125,
+      sortIndex: 144,
       seoPath: ''
     }
   },
@@ -3310,7 +3697,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 126,
+      sortIndex: 145,
       seoPath: ''
     }
   },
@@ -3334,7 +3721,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 127,
+      sortIndex: 146,
       seoPath: ''
     }
   },
@@ -3358,7 +3745,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 128,
+      sortIndex: 147,
       seoPath: ''
     }
   },
@@ -3382,7 +3769,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 129,
+      sortIndex: 148,
       seoPath: ''
     }
   },
@@ -3406,7 +3793,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 130,
+      sortIndex: 149,
       seoPath: ''
     }
   },
@@ -3430,7 +3817,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 131,
+      sortIndex: 150,
       seoPath: ''
     }
   },
@@ -3454,7 +3841,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 132,
+      sortIndex: 151,
       seoPath: ''
     }
   },
@@ -3479,7 +3866,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 133,
+      sortIndex: 152,
       seoPath: ''
     }
   },
@@ -3503,7 +3890,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 134,
+      sortIndex: 153,
       seoPath: ''
     }
   },
@@ -3527,7 +3914,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 135,
+      sortIndex: 154,
       seoPath: ''
     }
   },
@@ -3551,7 +3938,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 136,
+      sortIndex: 155,
       seoPath: ''
     }
   },
@@ -3575,7 +3962,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 137,
+      sortIndex: 156,
       seoPath: ''
     }
   },
@@ -3599,7 +3986,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 138,
+      sortIndex: 157,
       seoPath: ''
     }
   },
@@ -3623,7 +4010,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 139,
+      sortIndex: 158,
       seoPath: ''
     }
   },
@@ -3647,7 +4034,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 140,
+      sortIndex: 159,
       seoPath: ''
     }
   },
@@ -3671,7 +4058,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 141,
+      sortIndex: 160,
       seoPath: ''
     }
   },
@@ -3695,7 +4082,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 142,
+      sortIndex: 161,
       seoPath: ''
     }
   },
@@ -3719,7 +4106,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 143,
+      sortIndex: 162,
       seoPath: ''
     }
   },
@@ -3744,7 +4131,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 144,
+      sortIndex: 163,
       seoPath: ''
     }
   },
@@ -3769,7 +4156,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 145,
+      sortIndex: 164,
       seoPath: ''
     }
   },
@@ -3794,7 +4181,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 146,
+      sortIndex: 165,
       seoPath: ''
     }
   },
@@ -3818,7 +4205,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 147,
+      sortIndex: 166,
       seoPath: ''
     }
   },
@@ -3842,7 +4229,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 148,
+      sortIndex: 167,
       seoPath: ''
     }
   },
@@ -3867,7 +4254,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 149,
+      sortIndex: 168,
       seoPath: ''
     }
   },
@@ -3892,7 +4279,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 150,
+      sortIndex: 169,
       seoPath: ''
     }
   },
@@ -3916,7 +4303,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 151,
+      sortIndex: 170,
       seoPath: ''
     }
   },
@@ -3940,7 +4327,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 152,
+      sortIndex: 171,
       seoPath: ''
     }
   },
@@ -3964,7 +4351,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 153,
+      sortIndex: 172,
       seoPath: ''
     }
   },
@@ -3988,7 +4375,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 154,
+      sortIndex: 173,
       seoPath: ''
     }
   },
@@ -4012,7 +4399,26 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 155,
+      sortIndex: 174,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.Qmj,
+    ...defaultFacetOption,
+    valueId: '5b6db21d-f370-414a-a7dc-18732c65305e',
+    value: 'QuickMist® Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'QuickMist\u00AE Nozzle (QMJ)' }
+        }
+      ],
+      sortIndex: 175,
       seoPath: ''
     }
   },
@@ -4036,7 +4442,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 156,
+      sortIndex: 176,
       seoPath: ''
     }
   },
@@ -4061,7 +4467,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 157,
+      sortIndex: 177,
       seoPath: ''
     }
   },
@@ -4085,7 +4491,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 158,
+      sortIndex: 178,
       seoPath: ''
     }
   },
@@ -4110,55 +4516,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 159,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.SplitEyeletConnectors7521,
-    ...defaultFacetOption,
-    valueId: '03aa1f8a-44d0-4202-9350-28980503eb96',
-    value: 'Split-Eyelet Connector',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Split-Eyelet Connector (7521)',
-            de: 'Split-Eyelet-Anschluss (7521)',
-            fr: 'Connecteur Split-Eyelet (7521)',
-            nl: 'Connector met gesplitst oog (7521)'
-          }
-        }
-      ],
-      sortIndex: 160,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.SplitEyeletConnectors15475,
-    ...defaultFacetOption,
-    valueId: '7f574ba5-7a4d-418d-8222-71620eac36bf',
-    value: 'Split-Eyelet Connector',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'Split-Eyelet Connector (15475)',
-            de: 'Split-Eyelet-Anschluss (15475)',
-            fr: 'Connecteur Split-Eyelet (15475)',
-            nl: 'Connector met gesplitst oog (15475)'
-          }
-        }
-      ],
-      sortIndex: 161,
+      sortIndex: 179,
       seoPath: ''
     }
   },
@@ -4182,7 +4540,55 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 162,
+      sortIndex: 180,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.SplitEyeletConnectors15475,
+    ...defaultFacetOption,
+    valueId: '7f574ba5-7a4d-418d-8222-71620eac36bf',
+    value: 'Split-Eyelet Connector',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Split-Eyelet Connector (15475)',
+            de: 'Split-Eyelet-Anschluss (15475)',
+            fr: 'Connecteur Split-Eyelet (15475)',
+            nl: 'Connector met gesplitst oog (15475)'
+          }
+        }
+      ],
+      sortIndex: 181,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.SplitEyeletConnectors7521,
+    ...defaultFacetOption,
+    valueId: '03aa1f8a-44d0-4202-9350-28980503eb96',
+    value: 'Split-Eyelet Connector',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'Split-Eyelet Connector (7521)',
+            de: 'Split-Eyelet-Anschluss (7521)',
+            fr: 'Connecteur Split-Eyelet (7521)',
+            nl: 'Connector met gesplitst oog (7521)'
+          }
+        }
+      ],
+      sortIndex: 182,
       seoPath: ''
     }
   },
@@ -4206,7 +4612,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 163,
+      sortIndex: 183,
       seoPath: ''
     }
   },
@@ -4230,7 +4636,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 164,
+      sortIndex: 184,
       seoPath: ''
     }
   },
@@ -4254,7 +4660,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 165,
+      sortIndex: 185,
       seoPath: ''
     }
   },
@@ -4278,31 +4684,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 166,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo20FtD41800e,
-    ...defaultFacetOption,
-    valueId: 'fa5d962a-43fa-4443-bcab-56114fedc8d1',
-    value: 'TankJet® Fluid-Driven Constant Speed Tank Cleaning Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Constant Speed Tank Cleaning Nozzle (D41800E)',
-            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Tankreinigungsd\u00FCse mit konstanter Drehzahl (D41800E)',
-            fr: 'Buse de nettoyage de r\u00E9servoir \u00E0 vitesse constante entra\u00EEn\u00E9e par fluide TankJet\u00AE (D41800E)',
-            nl: 'TankJet\u00AE vloeistofaangedreven tankreinigingsmondstuk met constante snelheid (D41800E)'
-          }
-        }
-      ],
-      sortIndex: 167,
+      sortIndex: 186,
       seoPath: ''
     }
   },
@@ -4326,7 +4708,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 168,
+      sortIndex: 187,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo20FtD41800e,
+    ...defaultFacetOption,
+    valueId: 'fa5d962a-43fa-4443-bcab-56114fedc8d1',
+    value: 'TankJet® Fluid-Driven Constant Speed Tank Cleaning Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Constant Speed Tank Cleaning Nozzle (D41800E)',
+            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Tankreinigungsd\u00FCse mit konstanter Drehzahl (D41800E)',
+            fr: 'Buse de nettoyage de r\u00E9servoir \u00E0 vitesse constante entra\u00EEn\u00E9e par fluide TankJet\u00AE (D41800E)',
+            nl: 'TankJet\u00AE vloeistofaangedreven tankreinigingsmondstuk met constante snelheid (D41800E)'
+          }
+        }
+      ],
+      sortIndex: 188,
       seoPath: ''
     }
   },
@@ -4350,7 +4756,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 169,
+      sortIndex: 189,
       seoPath: ''
     }
   },
@@ -4374,7 +4780,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 170,
+      sortIndex: 190,
       seoPath: ''
     }
   },
@@ -4398,7 +4804,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 171,
+      sortIndex: 191,
       seoPath: ''
     }
   },
@@ -4422,31 +4828,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 172,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo10FtD41892,
-    ...defaultFacetOption,
-    valueId: 'd6b72f4a-6b2f-4072-85ee-52ff6184f2ca',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle (D41892)',
-            de: 'TankJet\u00AE Fl\u00FCssigkeitsgetriebene Reaktionskraft-Tankreinigungsd\u00FCse (D41892)',
-            fr: 'Buse de nettoyage de r\u00E9servoir \u00E0 force r\u00E9actionnaire entra\u00EEn\u00E9e par fluide TankJet\u00AE (D41892)',
-            nl: 'TankJet\u00AE vloeistofaangedreven reactionaire tankreinigingsmondstuk (D41892)'
-          }
-        }
-      ],
-      sortIndex: 173,
+      sortIndex: 192,
       seoPath: ''
     }
   },
@@ -4470,7 +4852,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 174,
+      sortIndex: 193,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo10FtD41892,
+    ...defaultFacetOption,
+    valueId: 'd6b72f4a-6b2f-4072-85ee-52ff6184f2ca',
+    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle (D41892)',
+            de: 'TankJet\u00AE Fl\u00FCssigkeitsgetriebene Reaktionskraft-Tankreinigungsd\u00FCse (D41892)',
+            fr: 'Buse de nettoyage de r\u00E9servoir \u00E0 force r\u00E9actionnaire entra\u00EEn\u00E9e par fluide TankJet\u00AE (D41892)',
+            nl: 'TankJet\u00AE vloeistofaangedreven reactionaire tankreinigingsmondstuk (D41892)'
+          }
+        }
+      ],
+      sortIndex: 194,
       seoPath: ''
     }
   },
@@ -4494,7 +4900,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 175,
+      sortIndex: 195,
       seoPath: ''
     }
   },
@@ -4518,7 +4924,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 176,
+      sortIndex: 196,
       seoPath: ''
     }
   },
@@ -4542,7 +4948,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 177,
+      sortIndex: 197,
       seoPath: ''
     }
   },
@@ -4567,7 +4973,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 178,
+      sortIndex: 198,
       seoPath: ''
     }
   },
@@ -4592,7 +4998,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 179,
+      sortIndex: 199,
       seoPath: ''
     }
   },
@@ -4617,7 +5023,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 180,
+      sortIndex: 200,
       seoPath: ''
     }
   },
@@ -4642,7 +5048,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 181,
+      sortIndex: 201,
       seoPath: ''
     }
   },
@@ -4667,31 +5073,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 182,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo20FtTj14,
-    ...defaultFacetOption,
-    valueId: 'bca5d102-13e5-4459-bbc6-29157dfe8b36',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner (TJ14)',
-            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebener Turbinentankreiniger (TJ14)',
-            fr: 'TankJet\u00AE Nettoyeur de r\u00E9servoir de turbine \u00E0 entra\u00EEnement fluide (TJ14)',
-            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreiniger (TJ14)'
-          }
-        }
-      ],
-      sortIndex: 183,
+      sortIndex: 202,
       seoPath: ''
     }
   },
@@ -4715,7 +5097,31 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 184,
+      sortIndex: 203,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo20FtTj14,
+    ...defaultFacetOption,
+    valueId: 'bca5d102-13e5-4459-bbc6-29157dfe8b36',
+    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner (TJ14)',
+            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebener Turbinentankreiniger (TJ14)',
+            fr: 'TankJet\u00AE Nettoyeur de r\u00E9servoir de turbine \u00E0 entra\u00EEnement fluide (TJ14)',
+            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreiniger (TJ14)'
+          }
+        }
+      ],
+      sortIndex: 204,
       seoPath: ''
     }
   },
@@ -4739,7 +5145,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 185,
+      sortIndex: 205,
       seoPath: ''
     }
   },
@@ -4763,79 +5169,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 186,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo45FtTj65Tj65ht,
-    ...defaultFacetOption,
-    valueId: 'f3e5f8d6-414d-4afa-b9f8-d8ed41b3340b',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ65, TJ65HT)',
-            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ65, TJ65HT)',
-            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ65, TJ65HT)',
-            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ65, TJ65HT)'
-          }
-        }
-      ],
-      sortIndex: 187,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo100FtTj80Tj80h,
-    ...defaultFacetOption,
-    valueId: 'fe9329e4-f1fe-454b-9e5f-23826a2b9f12',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ80, TJ80H)',
-            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ80, TJ80H)',
-            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ80, TJ80H)',
-            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ80, TJ80H)'
-          }
-        }
-      ],
-      sortIndex: 188,
-      seoPath: ''
-    }
-  },
-  {
-    key: ModelFacetOptionKey.ForTanksUpTo45FtTj78Tj78d,
-    ...defaultFacetOption,
-    valueId: '50875e5d-5ae3-4311-a5c8-5808b6b48516',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ78, TJ78D)',
-            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ78, TJ78D)',
-            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ78, TJ78D)',
-            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ78, TJ78D)'
-          }
-        }
-      ],
-      sortIndex: 189,
+      sortIndex: 206,
       seoPath: ''
     }
   },
@@ -4859,7 +5193,79 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 190,
+      sortIndex: 207,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo45FtTj65Tj65ht,
+    ...defaultFacetOption,
+    valueId: 'f3e5f8d6-414d-4afa-b9f8-d8ed41b3340b',
+    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ65, TJ65HT)',
+            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ65, TJ65HT)',
+            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ65, TJ65HT)',
+            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ65, TJ65HT)'
+          }
+        }
+      ],
+      sortIndex: 208,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo100FtTj80Tj80h,
+    ...defaultFacetOption,
+    valueId: 'fe9329e4-f1fe-454b-9e5f-23826a2b9f12',
+    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ80, TJ80H)',
+            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ80, TJ80H)',
+            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ80, TJ80H)',
+            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ80, TJ80H)'
+          }
+        }
+      ],
+      sortIndex: 209,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.ForTanksUpTo45FtTj78Tj78d,
+    ...defaultFacetOption,
+    valueId: '50875e5d-5ae3-4311-a5c8-5808b6b48516',
+    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: {
+            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaners (TJ78, TJ78D)',
+            de: 'TankJet\u00AE fl\u00FCssigkeitsbetriebene Turbinentankreiniger (TJ78, TJ78D)',
+            fr: 'Nettoyeurs de r\u00E9servoir \u00E0 turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ78, TJ78D)',
+            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigers (TJ78, TJ78D)'
+          }
+        }
+      ],
+      sortIndex: 210,
       seoPath: ''
     }
   },
@@ -4883,7 +5289,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 191,
+      sortIndex: 211,
       seoPath: ''
     }
   },
@@ -4904,7 +5310,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 192,
+      sortIndex: 212,
       seoPath: ''
     }
   },
@@ -4928,7 +5334,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 193,
+      sortIndex: 213,
       seoPath: ''
     }
   },
@@ -4952,7 +5358,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 194,
+      sortIndex: 214,
       seoPath: ''
     }
   },
@@ -4976,7 +5382,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 195,
+      sortIndex: 215,
       seoPath: ''
     }
   },
@@ -5000,7 +5406,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 196,
+      sortIndex: 216,
       seoPath: ''
     }
   },
@@ -5024,7 +5430,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 197,
+      sortIndex: 217,
       seoPath: ''
     }
   },
@@ -5048,7 +5454,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 198,
+      sortIndex: 218,
       seoPath: ''
     }
   },
@@ -5072,7 +5478,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 199,
+      sortIndex: 219,
       seoPath: ''
     }
   },
@@ -5096,7 +5502,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 200,
+      sortIndex: 220,
       seoPath: ''
     }
   },
@@ -5120,7 +5526,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 201,
+      sortIndex: 221,
       seoPath: ''
     }
   },
@@ -5144,7 +5550,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 202,
+      sortIndex: 222,
       seoPath: ''
     }
   },
@@ -5168,7 +5574,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 203,
+      sortIndex: 223,
       seoPath: ''
     }
   },
@@ -5192,7 +5598,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 204,
+      sortIndex: 224,
       seoPath: ''
     }
   },
@@ -5216,7 +5622,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 205,
+      sortIndex: 225,
       seoPath: ''
     }
   },
@@ -5240,7 +5646,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 206,
+      sortIndex: 226,
       seoPath: ''
     }
   },
@@ -5264,7 +5670,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 207,
+      sortIndex: 227,
       seoPath: ''
     }
   },
@@ -5288,7 +5694,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 208,
+      sortIndex: 228,
       seoPath: ''
     }
   },
@@ -5312,7 +5718,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 209,
+      sortIndex: 229,
       seoPath: ''
     }
   },
@@ -5336,7 +5742,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 210,
+      sortIndex: 230,
       seoPath: ''
     }
   },
@@ -5360,7 +5766,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 211,
+      sortIndex: 231,
       seoPath: ''
     }
   },
@@ -5384,7 +5790,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 212,
+      sortIndex: 232,
       seoPath: ''
     }
   },
@@ -5408,7 +5814,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 213,
+      sortIndex: 233,
       seoPath: ''
     }
   },
@@ -5432,7 +5838,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 214,
+      sortIndex: 234,
       seoPath: ''
     }
   },
@@ -5456,7 +5862,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 215,
+      sortIndex: 235,
       seoPath: ''
     }
   },
@@ -5480,7 +5886,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 216,
+      sortIndex: 236,
       seoPath: ''
     }
   },
@@ -5505,7 +5911,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 217,
+      sortIndex: 237,
       seoPath: ''
     }
   },
@@ -5529,7 +5935,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 218,
+      sortIndex: 238,
       seoPath: ''
     }
   },
@@ -5553,7 +5959,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 219,
+      sortIndex: 239,
       seoPath: ''
     }
   },
@@ -5577,7 +5983,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 220,
+      sortIndex: 240,
       seoPath: ''
     }
   },
@@ -5601,7 +6007,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 221,
+      sortIndex: 241,
       seoPath: ''
     }
   },
@@ -5625,7 +6031,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 222,
+      sortIndex: 242,
       seoPath: ''
     }
   },
@@ -5649,7 +6055,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 223,
+      sortIndex: 243,
       seoPath: ''
     }
   },
@@ -5673,7 +6079,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 224,
+      sortIndex: 244,
       seoPath: ''
     }
   },
@@ -5697,7 +6103,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 225,
+      sortIndex: 245,
       seoPath: ''
     }
   },
@@ -5721,7 +6127,64 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 226,
+      sortIndex: 246,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.Vaa,
+    ...defaultFacetOption,
+    valueId: 'e61dc47f-4fda-4f58-b729-62a0a7685b5b',
+    value: 'Variable Spray Nozzle, VAA',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'Variable Spray Nozzle, VAA (VAA)' }
+        }
+      ],
+      sortIndex: 247,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.Vau,
+    ...defaultFacetOption,
+    valueId: 'bb99bc4f-8313-4194-8abd-1b7d104920ad',
+    value: 'Variable Spray Nozzle, VAU',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'Variable Spray Nozzle, VAU (VAU)' }
+        }
+      ],
+      sortIndex: 248,
+      seoPath: ''
+    }
+  },
+  {
+    key: ModelFacetOptionKey.Vmau,
+    ...defaultFacetOption,
+    valueId: 'a5ceb8fd-927c-4035-a78a-6c54aba6b23a',
+    value: 'Variable Spray Nozzle, VMAU',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'Variable Spray Nozzle, VMAU (VMAU)' }
+        }
+      ],
+      sortIndex: 249,
       seoPath: ''
     }
   },
@@ -5745,7 +6208,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 227,
+      sortIndex: 250,
       seoPath: ''
     }
   },
@@ -5769,7 +6232,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 228,
+      sortIndex: 251,
       seoPath: ''
     }
   },
@@ -5793,7 +6256,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 229,
+      sortIndex: 252,
       seoPath: ''
     }
   },
@@ -5817,7 +6280,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 230,
+      sortIndex: 253,
       seoPath: ''
     }
   },
@@ -5841,7 +6304,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 231,
+      sortIndex: 254,
       seoPath: ''
     }
   },
@@ -5865,7 +6328,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 232,
+      sortIndex: 255,
       seoPath: ''
     }
   },
@@ -5889,7 +6352,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 233,
+      sortIndex: 256,
       seoPath: ''
     }
   },
@@ -5913,7 +6376,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 234,
+      sortIndex: 257,
       seoPath: ''
     }
   },
@@ -5937,7 +6400,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 235,
+      sortIndex: 258,
       seoPath: ''
     }
   },
@@ -5961,7 +6424,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 236,
+      sortIndex: 259,
       seoPath: ''
     }
   },
@@ -5986,7 +6449,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 237,
+      sortIndex: 260,
       seoPath: ''
     }
   },
@@ -6010,7 +6473,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 238,
+      sortIndex: 261,
       seoPath: ''
     }
   },
@@ -6035,7 +6498,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 239,
+      sortIndex: 262,
       seoPath: ''
     }
   },
@@ -6060,7 +6523,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 240,
+      sortIndex: 263,
       seoPath: ''
     }
   },
@@ -6084,7 +6547,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 241,
+      sortIndex: 264,
       seoPath: ''
     }
   },
@@ -6108,7 +6571,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 242,
+      sortIndex: 265,
       seoPath: ''
     }
   },
@@ -6132,7 +6595,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 243,
+      sortIndex: 266,
       seoPath: ''
     }
   },
@@ -6156,7 +6619,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 244,
+      sortIndex: 267,
       seoPath: ''
     }
   },
@@ -6180,7 +6643,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 245,
+      sortIndex: 268,
       seoPath: ''
     }
   },
@@ -6204,7 +6667,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 246,
+      sortIndex: 269,
       seoPath: ''
     }
   },
@@ -6228,7 +6691,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 247,
+      sortIndex: 270,
       seoPath: ''
     }
   },
@@ -6252,7 +6715,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 248,
+      sortIndex: 271,
       seoPath: ''
     }
   },
@@ -6276,7 +6739,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 249,
+      sortIndex: 272,
       seoPath: ''
     }
   },
@@ -6300,7 +6763,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 250,
+      sortIndex: 273,
       seoPath: ''
     }
   },
@@ -6324,7 +6787,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 251,
+      sortIndex: 274,
       seoPath: ''
     }
   },
@@ -6348,7 +6811,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 252,
+      sortIndex: 275,
       seoPath: ''
     }
   },
@@ -6372,7 +6835,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 253,
+      sortIndex: 276,
       seoPath: ''
     }
   },
@@ -6393,7 +6856,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 254,
+      sortIndex: 277,
       seoPath: ''
     }
   },
@@ -6414,7 +6877,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 255,
+      sortIndex: 278,
       seoPath: ''
     }
   },
@@ -6433,7 +6896,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           value: { en: 'WindJet\u00AE Flat Fan Air Nozzle, Aluminum (Y727)' }
         }
       ],
-      sortIndex: 256,
+      sortIndex: 279,
       seoPath: ''
     }
   },
@@ -6454,7 +6917,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 257,
+      sortIndex: 280,
       seoPath: ''
     }
   },
@@ -6478,7 +6941,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 258,
+      sortIndex: 281,
       seoPath: ''
     }
   }

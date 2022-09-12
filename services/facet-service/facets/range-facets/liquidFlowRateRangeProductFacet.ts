@@ -23,7 +23,7 @@ export const liquidFlowRateRangeFacet: RangeFacet = {
   key: FacetKey.LiquidFlowRate,
   attributeTypeCode: ATTRIBUTETYPECODES.liquidFlowRate,
   configuration: {
-    category: FacetCategory.SprayFinder,
+    category: FacetCategory.OperatingConditions,
     controlType: FacetControlType.Range,
     selectType: FacetSelectType.RangeBetween,
     displayName: 'Liquid Flow Rate',

@@ -42,6 +42,64 @@ type IStepsMessages = {
   };
 };
 
+type IFinderMessages = {
+  filters: {
+    clearAll: string;
+    search: string;
+  };
+  operatingConditions: {
+    actions: {
+      apply: string;
+    };
+    validation: {
+      title: string;
+      greaterThanZero: string;
+      requiredFlowRate: string;
+      requiredFlowRatePressure: string;
+      requiredFlowRateGravity: string;
+    };
+    liquidType: {
+      customValue: {
+        title: string;
+        placeholder: string;
+        suffix: string;
+      };
+    };
+  };
+  resultsHeader: {
+    actions: {
+      filter: string;
+    };
+    count: string;
+  };
+  panel: {
+    mobile: {
+      title: string;
+      ariaClose: string;
+      showResults: string;
+    };
+  };
+  categoryFacet: {
+    title: string;
+  };
+  checkboxFacet: {
+    actions: {
+      more: string;
+      less: string;
+    };
+    panel: {
+      placeholder: string;
+    };
+  };
+};
+
+type IDataMessages = {
+  boolean: {
+    true: string;
+    false: string;
+  };
+};
+
 type ILoadingUserMessages = {
   signingIn: string;
   signingOut: string;
@@ -54,7 +112,10 @@ type INextHeadMessages = {
 };
 
 type IHomeMessages = INextHeadMessages;
-type ICategoryMessages = INextHeadMessages;
+type ICategoryMessages = INextHeadMessages & {
+  title: string;
+  titleWithSearch: string;
+};
 type IModelMessages = INextHeadMessages;
 type ISeriesMessages = INextHeadMessages;
 /**
@@ -63,6 +124,8 @@ type ISeriesMessages = INextHeadMessages;
  */
 export type Messages = {
   steps: IStepsMessages;
+  finder: IFinderMessages;
+  data: IDataMessages;
   navigation: {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;

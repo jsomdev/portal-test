@@ -23,6 +23,60 @@ export const messageIds: Messages = {
       myProfile: 'navigation.user.myProfile'
     }
   },
+  finder: {
+    filters: {
+      clearAll: 'finder.filters.clearAll',
+      search: 'finder.filters.search'
+    },
+    resultsHeader: {
+      count: 'finder.resultsHeader.count',
+      actions: {
+        filter: 'finder.resultsHeader.actions.filter'
+      }
+    },
+    panel: {
+      mobile: {
+        title: 'finder.panel.mobile.title',
+        ariaClose: 'finder.panel.mobile.ariaClose',
+        showResults: 'finder.panel.mobile.showResults'
+      }
+    },
+    operatingConditions: {
+      actions: {
+        apply: 'finder.operatingConditions.actions.apply'
+      },
+      validation: {
+        title: 'finder.operatingConditions.validation.title',
+        greaterThanZero:
+          'finder.operatingConditions.validation.greaterThanZero',
+        requiredFlowRate:
+          'finder.operatingConditions.validation.requiredFlowRate',
+        requiredFlowRatePressure:
+          'finder.operatingConditions.validation.requiredFlowRatePressure',
+        requiredFlowRateGravity:
+          'finder.operatingConditions.validation.requiredFlowRatePressure'
+      },
+      liquidType: {
+        customValue: {
+          title: 'finder.operatingConditions.customValue.title',
+          placeholder: 'finder.operatingConditions.customValue.placeholder',
+          suffix: 'finder.operatingConditions.customValue.suffix'
+        }
+      }
+    },
+    categoryFacet: {
+      title: 'finder.categoryFacet.title'
+    },
+    checkboxFacet: {
+      actions: {
+        more: 'finder.checkboxFacet.actions.more',
+        less: 'finder.checkboxFacet.actions.less'
+      },
+      panel: {
+        placeholder: 'finder.checkboxFacet.panel.placeholder'
+      }
+    }
+  },
   pages: {
     home: {
       headTitle: 'pages.home.headTitle',
@@ -35,7 +89,9 @@ export const messageIds: Messages = {
     },
     category: {
       headTitle: 'pages.category.headTitle',
-      headDescription: 'pages.category.headDescription'
+      headDescription: 'pages.category.headDescription',
+      title: 'pages.category.title',
+      titleWithSearch: 'pages.category.titleWithSearch'
     },
     series: {
       headTitle: 'pages.series.headTitle',
@@ -72,6 +128,12 @@ export const messageIds: Messages = {
     actions: {
       proceed: 'steps.actions.proceed',
       previous: 'steps.actions.previous'
+    }
+  },
+  data: {
+    boolean: {
+      true: 'data.boolean.true',
+      false: 'data.boolean.false'
     }
   }
 };

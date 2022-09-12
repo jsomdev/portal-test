@@ -12,8 +12,9 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
+import { FinderProvider } from '@providers/finder/finderProvider';
+import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
-import { FacetResult } from '@services/facet-service/models/facet/facetResult';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { getAudience } from '@services/i18n/helper';
 import { messageIds } from '@services/i18n/ids';
@@ -26,20 +27,16 @@ import {
 } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
-import { ExternalFilter } from '@services/portal-api/base/types';
 import { fetchAllCategories } from '@services/portal-api/categories';
-import {
-  fetchCountByModelSeries,
-  fetchFacetResults
-} from '@services/portal-api/finder';
+import { FacetedSearchOdataCollection } from '@services/portal-api/faceted-search/types';
+import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
 import { fetchAllSeries } from '@services/portal-api/series';
-import { mapModelsSeriesGroupingToSeriesGroupingResult } from '@widgets/finder/helper';
-import { SeriesGroupingResult } from '@widgets/finder/types';
+import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
@@ -49,16 +46,29 @@ export interface CategoryProps {
   models: Model[];
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
-  initialFacetResults: FacetResult[];
-  initialSeriesGroupingResults: SeriesGroupingResult[];
+  initialSearchResults: FacetedSearchOdataCollection;
 }
+
+const messages = defineMessages({
+  headTitle: {
+    id: messageIds.pages.category.headTitle,
+    description: 'Page metadata title',
+    defaultMessage: 'Welcome'
+  },
+  headDescription: {
+    id: messageIds.pages.category.headDescription,
+    description: 'Page metadata description',
+    defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
+  }
+});
 
 const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   category,
   siteMenuItems,
+  initialSearchResults,
   mainMenuItems,
-  initialFacetResults,
-  initialSeriesGroupingResults
+  attributeTypeGroups,
+  attributeTypes
 }) => {
   const router = useRouter();
   const { formatMessage, locale } = useIntl();
@@ -67,35 +77,32 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
     locale
   );
 
-  const messages = defineMessages({
-    headTitle: {
-      id: messageIds.pages.category.headTitle,
-      description: 'Page metadata title',
-      defaultMessage: 'Welcome'
-    },
-    headDescription: {
-      id: messageIds.pages.category.headDescription,
-      description: 'Page metadata description',
-      defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
-    }
-  });
-
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head
-        pathname={router.pathname}
-        title={formatMessage(messages.headTitle, {
-          name: categoryFormatter.formatName()
-        })}
-        description={formatMessage(messages.headDescription)}
-      />
-      <FacetsProvider
-        preFilters={{
-          categoryId: category?.id
-        }}
-        initialFacets={getInitialFacetsFromFiles([], router.query)}
-      ></FacetsProvider>
-    </AppLayout>
+    <GlobalDataProvider
+      category={category}
+      attributeGroups={attributeTypeGroups}
+      attributeTypes={attributeTypes}
+    >
+      <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
+        <Head
+          pathname={router.pathname}
+          title={formatMessage(messages.headTitle, {
+            name: categoryFormatter.formatName()
+          })}
+          description={formatMessage(messages.headDescription)}
+        />
+        <FacetsProvider
+          preFilters={{
+            categoryId: category?.id
+          }}
+          initialFacets={getInitialFacetsFromFiles([], router.query)}
+        >
+          <FinderProvider initialData={initialSearchResults}>
+            <ResultView category={category} />
+          </FinderProvider>
+        </FacetsProvider>
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 
@@ -164,23 +171,27 @@ export const getStaticProps: GetStaticProps = async (
         return categoryFormatter.formatSlug() === categorySlug?.[0];
       }
     );
+
     if (category === undefined || category.id === undefined) {
       return {
         notFound: true
       };
     }
-    const categoryFilter: ExternalFilter | undefined =
-      mapCategoryIdToExternalFilter(category.id);
+    const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
+      category.id
+    );
     const encodedCategoryFilter: string = encodeURIComponent(
       JSON.stringify([categoryFilter])
     );
-    const [modelsSeriesGrouping, facetResults] = await Promise.all([
-      fetchCountByModelSeries(encodedCategoryFilter),
-      fetchFacetResults(encodedCategoryFilter)
-    ]);
 
-    const seriesGroupingResult =
-      mapModelsSeriesGroupingToSeriesGroupingResult(modelsSeriesGrouping);
+    const initialSearchResults: FacetedSearchOdataCollection =
+      await fetchFacetedSearchResults(
+        encodedCategoryFilter,
+        'null',
+        undefined,
+        10,
+        0
+      );
 
     return {
       props: {
@@ -188,8 +199,7 @@ export const getStaticProps: GetStaticProps = async (
         attributeTypes: attributeTypesData,
         series: seriesData,
         models: modelsData,
-        initialSeriesGroupingResults: seriesGroupingResult,
-        initialFacetResults: facetResults,
+        initialSearchResults,
         category,
         siteMenuItems: siteMenuData,
         mainMenuItems: mainMenuData

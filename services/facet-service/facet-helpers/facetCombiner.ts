@@ -1,7 +1,5 @@
 /* eslint-disable no-case-declarations */
 import { formatCamelCase } from '../../../utilities/formatText';
-import { ExternalFilter } from '../../portal-api/base/types';
-import { Json } from '../../portal-api/models/Json';
 import {
   getRangeFacetUnit,
   RangeFacetMatchType
@@ -18,13 +16,8 @@ import {
 import { RangeFacetOptionKey } from '../models/range-facets/rangeFacetOptionKey';
 import { RangeFacet } from '../models/range-facets/rangeProductFacet';
 
-export function mapCategoryIdToExternalFilter(id: string): ExternalFilter {
-  const categoryFilter: ExternalFilter = {
-    key: formatCamelCase(FacetKey.SprayPortalDemoCategoryPage), // the api needs a camelCase key
-    operator: 'eq',
-    value: id.toUpperCase() // guid must be uppercase and string value
-  };
-  return categoryFilter;
+export function mapCategoryIdToExternalFilter(id: string): string {
+  return `categoryId/any(c: c eq '${id}')`;
 }
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
@@ -40,7 +33,7 @@ export function combineFacetsToEncodedExternalFiltersString(
   systemOfMeasurement: SystemOfMeasurement,
   sprayPortalDemoCategoryPageId?: string | undefined
 ): string {
-  const extraFilters: ExternalFilter[] = [];
+  const extraFilters: string[] = [];
 
   // If a category id was included, create an external filter that will be added to the external filters array.
   // Note: Inside the application the category filter is treated as a 'Pre-filter'. However, in the api call it needs to be part of the @filters parameter
@@ -51,7 +44,7 @@ export function combineFacetsToEncodedExternalFiltersString(
   }
 
   // Map the facets to externalfilters and concatenate with the extra filters.
-  const externalFilters: ExternalFilter[] = mapFacetsToExernalFilters(
+  const externalFilters: string[] = mapFacetsToExernalFilters(
     facets,
     systemOfMeasurement
   ).concat(extraFilters);
@@ -67,24 +60,29 @@ export function combineFacetsToEncodedExternalFiltersString(
 export function mapFacetsToExernalFilters(
   facets: Facet[],
   systemOfMeasurement: SystemOfMeasurement
-): ExternalFilter[] {
-  const externalFilters: Array<ExternalFilter | undefined> = [];
+): string[] {
+  const externalFilters: Array<string | undefined> = [];
 
   // Map through the facets that: 1) Have FacetCategory.Main as their category; 2) Have at least a single active option
   facets
     .filter(facet => facet.configuration.category === FacetCategory.Main)
     .filter(facet => !!facet.options.find(option => !!option.isActive))
     .forEach(facet => {
+      const type: 'string' | 'number' =
+        facet.key === FacetKey.InletConnectionSize ||
+        facet.key === FacetKey.StrainerScreenMeshSize
+          ? 'number'
+          : 'string';
       // Based on their selectType, the external filter must be built differently.
       switch (facet.configuration.selectType) {
         case FacetSelectType.SingleSelect:
           // Get the first active option.
           const activeOption = facet.options.find(option => option.isActive);
           // Map the facet with the active option to an ExternalFilter
-          const singleSelectFilter: ExternalFilter =
+          const singleSelectFilter: string =
             mapSingleSelectFacetToExternalFilter(
               facet.key,
-              (activeOption && activeOption.valueId) || undefined,
+              type,
               (activeOption && activeOption.value) || undefined
             );
           // Add the external filter to the array
@@ -94,22 +92,19 @@ export function mapFacetsToExernalFilters(
           // Get all active options
           const activeOptions = facet.options.filter(option => option.isActive);
           // Map the facet with all active options to an ExternalFilter
-          const multiSelectFilter: ExternalFilter =
-            mapMultiSelectFacetToExternalFilter(
-              facet.key,
-              activeOptions
-                .filter(option => !!option.valueId)
-                .map(option => option.valueId as string),
-              activeOptions
-                .filter(option => !!option.value)
-                .map(option => option.value as Json)
-            );
+          const multiSelectFilter: string = mapMultiSelectFacetToExternalFilter(
+            facet.key,
+            type,
+            activeOptions
+              .filter(option => !!option.value)
+              .map(option => option.value as string | number)
+          );
           // Add the external filter to the array
           externalFilters.push(multiSelectFilter);
           break;
         case FacetSelectType.RangeBetween:
           // Map the facet to an array of ExternalFilters (minimum and maximum)
-          const rangeBetweenFilters: ExternalFilter[] =
+          const rangeBetweenFilters: string[] =
             mapRangeBetweenFacetToExternalFilters(
               facet as unknown as RangeFacet,
               systemOfMeasurement
@@ -121,78 +116,55 @@ export function mapFacetsToExernalFilters(
     });
 
   // Return all defined external filters
-  return externalFilters.filter(
-    filter => filter !== undefined
-  ) as ExternalFilter[];
+  return externalFilters.filter(filter => filter !== undefined) as string[];
 }
 
-// Function that will map the lookupValueId to an ExternalFilter for a given facet key.
-// If the lookupValueId is undefined but value is not, it will map the value instead.
+// Function that will map the value to an ExternalFilter for a given facet key.
 function mapSingleSelectFacetToExternalFilter(
   facetKey: string,
-  lookupValueId?: string,
+  type: 'string' | 'number',
   value?: FacetOptionValueType
-): ExternalFilter {
-  facetKey = formatCamelCase(facetKey); //  api expects camelCase key
-  const externalFilter: ExternalFilter = {
-    key: facetKey,
-    operator: 'eq',
-    value: ''
-  };
+): string {
+  const typeQuotes: string = type === 'string' ? `'` : '';
 
-  if (lookupValueId) {
-    externalFilter.value = lookupValueId.toUpperCase();
-    return externalFilter;
-  }
   if (value) {
-    externalFilter.value = value.toString();
-    return externalFilter;
+    return `${formatCamelCase(
+      facetKey
+    )}/any(f: f eq ${typeQuotes}${value.toString()}${typeQuotes})`;
   }
 
   throw new Error(
-    'Option must have either a lookupValueId or set value that is a primitive type (not a multilingual string)'
+    'Option must have a set value that is a primitive type (not a multilingual string)'
   );
 }
-// Function that will map ALL lookupValueIds OR ALL values to an ExternalFilter for a given facet key.
-// e.g: if passed both an array of lookupValueIds and an array of values. Only the lookupValueIds will be mapped.
+// Function that will map ALL  values to an ExternalFilter for a given facet key.
 function mapMultiSelectFacetToExternalFilter(
   facetKey: string,
-  lookupValueIds: string[],
-  values: Json[]
-): ExternalFilter {
-  const odataType: '#Collection(Decimal)' | '#Collection(String)' =
-    facetKey === FacetKey.InletConnectionSize ||
-    facetKey === FacetKey.StrainerScreenMeshSize
-      ? '#Collection(Decimal)'
-      : '#Collection(String)';
-  facetKey = formatCamelCase(facetKey); // api requires camel case key
-  const externalFilter: ExternalFilter = {
-    key: facetKey,
-    operator: 'in',
-    'value@odata.type': odataType,
-    value: []
-  };
+  type: 'string' | 'number',
+  values: FacetOptionValueType[]
+): string {
+  let filters: string[] = [];
+  const separator: string = ', ';
+  const typeQuotes: string = type === 'string' ? `'` : '';
 
-  if (lookupValueIds.length) {
-    externalFilter.value = lookupValueIds.map(id => id.toUpperCase());
-    return externalFilter;
-  }
   if (values.length && !!values[0]) {
-    externalFilter.value = values.map(value =>
-      odataType === '#Collection(Decimal)' ? value : value.toString()
-    ) as Array<string> | Array<number>;
-    return externalFilter;
+    filters = values.map(
+      value => `${typeQuotes}${value?.toString()}${typeQuotes}`
+    );
+    return `${formatCamelCase(facetKey)}/any(f: f in (${filters.join(
+      separator
+    )}))`;
   }
 
   throw new Error(
-    'Option must have either a lookupValueId or set value that is a primitive type (not a multilingual string)'
+    'Option must have a set value that is a primitive type (not a multilingual string)'
   );
 }
 
 function mapRangeBetweenFacetToExternalFilters(
   facet: RangeFacet,
   systemOfMeasurement: SystemOfMeasurement
-): ExternalFilter[] {
+): string[] {
   const isAnyNumericOptionActive: boolean = !!facet.options
     .filter(option =>
       [
@@ -245,18 +217,9 @@ function matchRangeBetweenNearbyMatchToOdataWithKey(
   facet: RangeFacet,
   facetKey: string,
   unit: UnitOfMeasurement
-): ExternalFilter[] {
-  const rangeFilters: ExternalFilter[] = [];
-  const minimumFilter: ExternalFilter = {
-    key: `${facetKey}/minimum`,
-    operator: 'le',
-    value: 0
-  };
-  const maximumFilter: ExternalFilter = {
-    key: `${facetKey}/maximum`,
-    operator: 'ge',
-    value: 0
-  };
+): string[] {
+  const rangeFilters: string[] = [];
+
   const minimum: number | null | undefined = facet.options.find(
     option => option.key === RangeFacetOptionKey.Nearby
   )?.value as number | null | undefined;
@@ -265,11 +228,15 @@ function matchRangeBetweenNearbyMatchToOdataWithKey(
   )?.value as number | null | undefined;
 
   if (minimum !== undefined && minimum !== null) {
-    maximumFilter.value = unit.toDefault(+minimum - +minimum / 10);
+    const maximuFilterValue: number = unit.toDefault(+minimum - +minimum / 10);
+    const maximumFilter: string = `${facetKey}/maximum ge ${maximuFilterValue}`;
+
     rangeFilters.push(maximumFilter);
   }
   if (maximum !== undefined && maximum !== null) {
-    minimumFilter.value = unit.toDefault(+maximum + +maximum / 10);
+    const minimumFilterValue: number = unit.toDefault(+maximum + +maximum / 10);
+    const minimumFilter: string = `${facetKey}/minimum le ${minimumFilterValue}`;
+
     rangeFilters.push(minimumFilter);
   }
   return rangeFilters;
@@ -278,18 +245,9 @@ function matchRangeBetweenExactMatchToOdataWithKey(
   facet: RangeFacet,
   facetKey: string,
   unit: UnitOfMeasurement
-): ExternalFilter[] {
-  const rangeFilters: ExternalFilter[] = [];
-  const minimumFilter: ExternalFilter = {
-    key: `${facetKey}/minimum`,
-    operator: 'le',
-    value: 0
-  };
-  const maximumFilter: ExternalFilter = {
-    key: `${facetKey}/maximum`,
-    operator: 'ge',
-    value: 0
-  };
+): string[] {
+  const rangeFilters: string[] = [];
+
   const minimum: number | null | undefined = facet.options.find(
     option => option.key === RangeFacetOptionKey.Exact
   )?.value as number | null | undefined;
@@ -297,11 +255,13 @@ function matchRangeBetweenExactMatchToOdataWithKey(
     option => option.key === RangeFacetOptionKey.Exact
   )?.value as number | null | undefined;
   if (minimum !== undefined && minimum !== null) {
-    maximumFilter.value = unit.toDefault(minimum);
+    const maximuFilterValue: number = unit.toDefault(minimum);
+    const maximumFilter: string = `${facetKey}/maximum ge ${maximuFilterValue}`;
     rangeFilters.push(maximumFilter);
   }
   if (maximum !== undefined && maximum !== null) {
-    minimumFilter.value = unit.toDefault(maximum);
+    const minimumFilterValue: number = unit.toDefault(maximum);
+    const minimumFilter: string = `${facetKey}/minimum le ${minimumFilterValue}`;
     rangeFilters.push(minimumFilter);
   }
   return rangeFilters;
@@ -310,18 +270,8 @@ function matchRangeBetweenRangeToOdataWithKey(
   facet: RangeFacet,
   facetKey: string,
   unit: UnitOfMeasurement
-): ExternalFilter[] {
-  const rangeFilters: ExternalFilter[] = [];
-  const minimumFilter: ExternalFilter = {
-    key: `${facetKey}/minimum`,
-    operator: 'le',
-    value: 0
-  };
-  const maximumFilter: ExternalFilter = {
-    key: `${facetKey}/maximum`,
-    operator: 'ge',
-    value: 0
-  };
+): string[] {
+  const rangeFilters: string[] = [];
   const minimum: number | null | undefined = facet.options.find(
     option => option.key === RangeFacetOptionKey.Minimum
   )?.value as number | null | undefined;
@@ -329,11 +279,14 @@ function matchRangeBetweenRangeToOdataWithKey(
     option => option.key === RangeFacetOptionKey.Maximum
   )?.value as number | null | undefined;
   if (minimum !== undefined && minimum !== null) {
-    maximumFilter.value = unit.toDefault(minimum);
+    const maximuFilterValue: number = unit.toDefault(minimum);
+    const maximumFilter: string = `${facetKey}/maximum ge ${maximuFilterValue}`;
+
     rangeFilters.push(maximumFilter);
   }
   if (maximum !== undefined && maximum !== null) {
-    minimumFilter.value = unit.toDefault(maximum);
+    const minimumFilterValue: number = unit.toDefault(maximum);
+    const minimumFilter: string = `${facetKey}/minimum le ${minimumFilterValue}`;
     rangeFilters.push(minimumFilter);
   }
   return rangeFilters;

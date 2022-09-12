@@ -56,12 +56,10 @@ export function combineFacetsToEncodedOperatingConditionsParameter(
     operatingConditions.minimumFlow === null &&
     operatingConditions.specificGravity === 1;
 
-  // Return the stringified and encoded operating conditions object.
-  return (
-    encodeURIComponent(
-      JSON.stringify(isDefaultValue ? null : operatingConditions)
-    ) || ''
-  );
+  // Return the  encoded operating conditions parameter.
+  return !isDefaultValue
+    ? encodeURIComponent(JSON.stringify(operatingConditions))
+    : null || '';
 }
 
 function getOperatingConditionsSpecificGravityParameterValue(facets: Facet[]): {

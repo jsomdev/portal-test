@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from 'react';
 
-import { Stack, useTheme } from '@fluentui/react';
+import { Stack, Text, useTheme } from '@fluentui/react';
 
 interface PageHeaderProps {
   title: string | JSX.Element;
@@ -26,7 +26,9 @@ export const PagesHeader: FC<PageHeaderProps> = ({
   return (
     <Stack horizontal wrap verticalAlign="center">
       <Stack tokens={{ childrenGap: spacing.s1 }}>
-        <h2 style={styles.title}>{title}</h2>
+        <Text as="h1" variant="xxLarge" style={styles.title}>
+          {title}
+        </Text>
         {description && <p style={styles.description}>{description}</p>}
       </Stack>
       {children}

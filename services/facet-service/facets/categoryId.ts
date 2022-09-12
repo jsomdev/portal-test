@@ -13,9 +13,8 @@ export enum SprayPortalDemoCategoryPageFacetOptionKey {
   StandardFullConeNozzles = 'StandardFullConeNozzles',
   WideAngleFullConeNozzles = 'WideAngleFullConeNozzles',
   NarrowAngleFullConeNozzles = 'NarrowAngleFullConeNozzles',
-  WallMountFullConeNozzles = 'WallMountFullConeNozzles',
   LargeFreePassageFullConeNozzles = 'LargeFreePassageFullConeNozzles',
-  SquareOrOvalSprayFullConeNozzles = 'SquareOrOvalSprayFullConeNozzles',
+  SquareOvalSprayFullConeNozzles = 'SquareOvalSprayFullConeNozzles',
   UnijetFullConeNozzles = 'UnijetFullConeNozzles',
   QuickjetFullConeNozzles = 'QuickjetFullConeNozzles',
   FlatSprayNozzles = 'FlatSprayNozzles',
@@ -24,14 +23,12 @@ export enum SprayPortalDemoCategoryPageFacetOptionKey {
   HighPressureFlatSprayNozzles = 'HighPressureFlatSprayNozzles',
   UnijetFlatSprayNozzles = 'UnijetFlatSprayNozzles',
   QuickjetFlatSprayNozzles = 'QuickjetFlatSprayNozzles',
-  MiniQuickjetFlatSprayNozzles = 'MiniQuickjetFlatSprayNozzles',
   SolidStreamNozzles = 'SolidStreamNozzles',
   StandardSolidStreamNozzles = 'StandardSolidStreamNozzles',
   HighPressureSolidStreamNozzles = 'HighPressureSolidStreamNozzles',
   UltraHighPressureNozzles = 'UltraHighPressureNozzles',
   UnijetSolidStreamNozzles = 'UnijetSolidStreamNozzles',
   QuickjetSolidStreamNozzles = 'QuickjetSolidStreamNozzles',
-  MiniQuickjetSolidStreamNozzles = 'MiniQuickjetSolidStreamNozzles',
   HollowConeNozzles = 'HollowConeNozzles',
   AngleTypeHollowConeNozzles = 'AngleTypeHollowConeNozzles',
   InLineHollowConeNozzles = 'InLineHollowConeNozzles',
@@ -41,29 +38,34 @@ export enum SprayPortalDemoCategoryPageFacetOptionKey {
   SingleOrificeFineSprayNozzles = 'SingleOrificeFineSprayNozzles',
   MultiOrificeFineSprayNozzles = 'MultiOrificeFineSprayNozzles',
   TankCleaningNozzles = 'TankCleaningNozzles',
-  UpTo100FtTankCleaningNozzles = 'UpTo100FtTankCleaningNozzles',
-  UpTo45FtTankCleaningNozzles = 'UpTo45FtTankCleaningNozzles',
-  UpTo20FtTankCleaningNozzles = 'UpTo20FtTankCleaningNozzles',
-  UpTo10FtTankCleaningNozzles = 'UpTo10FtTankCleaningNozzles',
-  UpTo5FtTankCleaningNozzles = 'UpTo5FtTankCleaningNozzles',
+  UpTo100FtDiameter = 'UpTo100FtDiameter',
+  UpTo45FtDiameter = 'UpTo45FtDiameter',
+  UpTo20FtDiameter = 'UpTo20FtDiameter',
+  UpTo10FtDiameter = 'UpTo10FtDiameter',
+  UpTo5FtDiameter = 'UpTo5FtDiameter',
   AutomaticNozzles = 'AutomaticNozzles',
-  ElectricallyActuatedHydraulicAtomizingNozzles = 'ElectricallyActuatedHydraulicAtomizingNozzles',
-  ElectricallyActuatedAirAtomizingNozzles = 'ElectricallyActuatedAirAtomizingNozzles',
-  AirActuatedHydraulicAtomizingNozzles = 'AirActuatedHydraulicAtomizingNozzles',
-  AirActuatedAirAtomizingNozzles = 'AirActuatedAirAtomizingNozzles',
+  ElectricallyActuatedHydraulicAtomizing = 'ElectricallyActuatedHydraulicAtomizing',
+  ElectricallyActuatedAirAtomizing = 'ElectricallyActuatedAirAtomizing',
+  AirActuatedHydraulicAtomizing = 'AirActuatedHydraulicAtomizing',
+  AirActuatedAirAtomizing = 'AirActuatedAirAtomizing',
   SprayGuns = 'SprayGuns',
-  LowPressureSprayGuns = 'LowPressureSprayGuns',
-  MediumPressureSprayGuns = 'MediumPressureSprayGuns',
-  HighPressureSprayGuns = 'HighPressureSprayGuns',
+  LowPressure = 'LowPressure',
+  MediumPressure = 'MediumPressure',
+  HighPressure = 'HighPressure',
   AirNozzles = 'AirNozzles',
-  FlatSprayAirNozzles = 'FlatSprayAirNozzles',
-  RoundSprayAirNozzles = 'RoundSprayAirNozzles',
+  FlatSpray = 'FlatSpray',
+  RoundSpray = 'RoundSpray',
+  AirAtomizingNozzles = 'AirAtomizingNozzles',
+  StandardAirAtomizingNozzles = 'StandardAirAtomizingNozzles',
+  QuickmistQuickConnectAirAtomizingNozzles = 'QuickmistQuickConnectAirAtomizingNozzles',
+  VariableSprayNozzles = 'VariableSprayNozzles',
+  HighEfficiencyHighFlowNozzles = 'HighEfficiencyHighFlowNozzles',
   Accessories = 'Accessories',
   NozzleBodies = 'NozzleBodies',
   UnijetNozzleBodies = 'UnijetNozzleBodies',
   QuickjetNozzleBodies = 'QuickjetNozzleBodies',
   MiniQuickjetNozzleBodies = 'MiniQuickjetNozzleBodies',
-  ThrottlingAndPressureReliefOrRegulatingValves = 'ThrottlingAndPressureReliefOrRegulatingValves',
+  ThrottlingAndPressureReliefRegulatingValves = 'ThrottlingAndPressureReliefRegulatingValves',
   SplitEyeletConnectors = 'SplitEyeletConnectors',
   AdjustableBallFittings = 'AdjustableBallFittings',
   Strainers = 'Strainers',
@@ -82,7 +84,7 @@ export enum SprayPortalDemoCategoryPageFacetOptionKey {
   Whirljet = 'Whirljet'
 }
 
-export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDemoCategoryPageFacetOptionKey>[] =
+export const categoryIdFacetOptions: FacetOption<SprayPortalDemoCategoryPageFacetOptionKey>[] =
   [
     {
       key: SprayPortalDemoCategoryPageFacetOptionKey.HydraulicNozzles,
@@ -102,7 +104,12 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Hydraulic Nozzles' }
+            value: {
+              en: 'Hydraulic Nozzles',
+              de: 'Hydraulische Düsen',
+              fr: 'Buses hydrauliques',
+              nl: 'Hydraulische nozzles'
+            }
           }
         ],
         sortIndex: 0,
@@ -119,7 +126,6 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
         '2498dfc7-3295-403b-97fa-28a19f748306',
         'c67479be-9af0-434a-97c2-da8c26357b7f',
         '9856253a-0db7-4723-93d6-8a82e485c1a8',
-        '870dcf21-77dd-4d2b-9394-fa423d85f503',
         'd944e101-27ba-48b2-b8be-b864e9ebee39',
         '59e49512-3759-4eba-903d-dccd30798b38',
         '7e6211ba-add0-4e77-aa3e-820a6d6d0ade',
@@ -130,7 +136,12 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Full Cone Nozzles' }
+            value: {
+              en: 'Full Cone Nozzles',
+              de: 'Volle Kegeldüsen',
+              fr: 'Buses à cône complet',
+              nl: 'Volledige conussproeiers'
+            }
           }
         ],
         sortIndex: 1,
@@ -149,7 +160,12 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Standard Full Cone Nozzles' }
+            value: {
+              en: 'Standard Full Cone Nozzles',
+              de: 'Standard Vollkegeldüsen',
+              fr: 'Buses à cône complet standard',
+              nl: 'Standaard Full Cone Nozzles'
+            }
           }
         ],
         sortIndex: 2,
@@ -168,7 +184,12 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Wide Angle Full Cone Nozzles' }
+            value: {
+              en: 'Wide Angle Full Cone Nozzles',
+              de: 'Weitwinkel-Vollkegeldüsen',
+              fr: 'Buses à cône plein angle grand angle',
+              nl: 'Groothoek full conus nozzles'
+            }
           }
         ],
         sortIndex: 3,
@@ -187,30 +208,16 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Narrow Angle Full Cone Nozzles' }
+            value: {
+              en: 'Narrow Angle Full Cone Nozzles',
+              de: 'Schmalwinkelige Vollkegeldüsen',
+              fr: 'Buses à cône complet à angle étroit',
+              nl: 'Narrow Angle Full Cone Nozzles'
+            }
           }
         ],
         sortIndex: 4,
         seoPath: 'narrow-angle-full-cone-nozzles'
-      }
-    },
-    {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.WallMountFullConeNozzles,
-      ...defaultFacetOption,
-      valueId: '870dcf21-77dd-4d2b-9394-fa423d85f503',
-      value: 'Wall Mount Full Cone Nozzles',
-      parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
-      children: [],
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: null,
-            value: { en: 'Wall Mount Full Cone Nozzles' }
-          }
-        ],
-        sortIndex: 5,
-        seoPath: 'wall-mount-full-cone-nozzles'
       }
     },
     {
@@ -225,15 +232,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Large Free Passage Full Cone Nozzles' }
+            value: {
+              en: 'Large Free Passage Full Cone Nozzles',
+              de: 'Große freie Passage Volle Kegeldüsen',
+              fr: 'Grandes buses à cône plein passage libre',
+              nl: 'Grote vrije doorgang volledige kegel nozzles'
+            }
           }
         ],
-        sortIndex: 6,
+        sortIndex: 5,
         seoPath: 'large-free-passage-full-cone-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.SquareOrOvalSprayFullConeNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.SquareOvalSprayFullConeNozzles,
       ...defaultFacetOption,
       valueId: '59e49512-3759-4eba-903d-dccd30798b38',
       value: 'Square/Oval Spray Full Cone Nozzles',
@@ -244,10 +256,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Square/Oval Spray Full Cone Nozzles' }
+            value: {
+              en: 'Square/Oval Spray Full Cone Nozzles',
+              de: 'Quadratische/ovale Spray Full Cone Düsen',
+              fr: 'Buses carrées / ovales à cône complet',
+              nl: 'Vierkante /Ovale Spray Full Cone Nozzles'
+            }
           }
         ],
-        sortIndex: 7,
+        sortIndex: 6,
         seoPath: 'square-or-oval-spray-full-cone-nozzles'
       }
     },
@@ -263,10 +280,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet® Full Cone Nozzles' }
+            value: {
+              en: 'UniJet® Full Cone Nozzles',
+              de: 'UniJet® Vollkegeldüsen',
+              fr: 'Buses UniJet® Full Cone',
+              nl: 'UniJet® Full Cone Nozzles'
+            }
           }
         ],
-        sortIndex: 8,
+        sortIndex: 7,
         seoPath: 'unijet-full-cone-nozzles'
       }
     },
@@ -282,10 +304,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'QuickJet® Full Cone Nozzles' }
+            value: {
+              en: 'QuickJet® Full Cone Nozzles',
+              de: 'QuickJet® Full Cone Düsen',
+              fr: 'Buses à cône complet QuickJet®',
+              nl: 'QuickJet® Full Cone Nozzles'
+            }
           }
         ],
-        sortIndex: 9,
+        sortIndex: 8,
         seoPath: 'quickjet-full-cone-nozzles'
       }
     },
@@ -300,18 +327,22 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
         '8ca385c7-2dc6-49da-b4d1-2928fd2de172',
         '16a8ac8d-98d5-4985-a487-2317588ef025',
         '54c46a98-3f97-4793-b754-0a8316918394',
-        '0f4da1bc-5133-46da-a2a4-f2b41098f191',
-        'bdaa6668-34d0-4826-b49d-987604e804b4'
+        '0f4da1bc-5133-46da-a2a4-f2b41098f191'
       ],
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Flat Spray Nozzles' }
+            value: {
+              en: 'Flat Spray Nozzles',
+              de: 'Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates',
+              nl: 'Platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 10,
+        sortIndex: 9,
         seoPath: 'flat-spray-nozzles'
       }
     },
@@ -327,10 +358,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Standard Flat Spray Nozzles' }
+            value: {
+              en: 'Standard Flat Spray Nozzles',
+              de: 'Standard-Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates standard',
+              nl: 'Standaard platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 11,
+        sortIndex: 10,
         seoPath: 'standard-flat-spray-nozzles'
       }
     },
@@ -346,10 +382,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Deflected Flat Spray Nozzles' }
+            value: {
+              en: 'Deflected Flat Spray Nozzles',
+              de: 'Abgelenkte Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates déviées',
+              nl: 'Afgebogen platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 12,
+        sortIndex: 11,
         seoPath: 'deflected-flat-spray-nozzles'
       }
     },
@@ -365,10 +406,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'High Pressure Flat Spray Nozzles' }
+            value: {
+              en: 'High Pressure Flat Spray Nozzles',
+              de: 'Hochdruck-Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates haute pression',
+              nl: 'Hoge druk platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 13,
+        sortIndex: 12,
         seoPath: 'high-pressure-flat-spray-nozzles'
       }
     },
@@ -384,10 +430,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet® Flat Spray Nozzles' }
+            value: {
+              en: 'UniJet® Flat Spray Nozzles',
+              de: 'UniJet® Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates UniJet®',
+              nl: 'UniJet® platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 14,
+        sortIndex: 13,
         seoPath: 'unijet-flat-spray-nozzles'
       }
     },
@@ -403,30 +454,16 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'QuickJet® Flat Spray Nozzles' }
+            value: {
+              en: 'QuickJet® Flat Spray Nozzles',
+              de: 'QuickJet® Flachsprühdüsen',
+              fr: 'Buses de pulvérisation plates QuickJet®',
+              nl: 'QuickJet® platte sproeikoppen'
+            }
           }
         ],
-        sortIndex: 15,
+        sortIndex: 14,
         seoPath: 'quickjet-flat-spray-nozzles'
-      }
-    },
-    {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.MiniQuickjetFlatSprayNozzles,
-      ...defaultFacetOption,
-      valueId: 'bdaa6668-34d0-4826-b49d-987604e804b4',
-      value: 'Mini QuickJet® Flat Spray Nozzles',
-      parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
-      children: [],
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: null,
-            value: { en: 'Mini QuickJet® Flat Spray Nozzles' }
-          }
-        ],
-        sortIndex: 16,
-        seoPath: 'mini-quickjet-flat-spray-nozzles'
       }
     },
     {
@@ -440,18 +477,22 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
         '349cce28-562d-48c4-be92-29e79fe08385',
         '164e4414-7eb9-4404-baf0-d6e2b3e43c73',
         'fa6700aa-f174-4fd5-a0a0-7821e056f59f',
-        'eae1f2f7-f707-4a8c-974e-36c201cb5e1a',
-        '4689c62c-26c8-407d-a962-80e089a07443'
+        'eae1f2f7-f707-4a8c-974e-36c201cb5e1a'
       ],
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Solid Stream Nozzles' }
+            value: {
+              en: 'Solid Stream Nozzles',
+              de: 'Vollstromdüsen',
+              fr: 'Buses Solid Stream',
+              nl: 'Solid Stream Nozzles'
+            }
           }
         ],
-        sortIndex: 17,
+        sortIndex: 15,
         seoPath: 'solid-stream-nozzles'
       }
     },
@@ -467,10 +508,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Standard Solid Stream Nozzles' }
+            value: {
+              en: 'Standard Solid Stream Nozzles',
+              de: 'Standard-Vollstromdüsen',
+              fr: 'Buses à flux solide standard',
+              nl: 'Standaard Solid Stream Nozzles'
+            }
           }
         ],
-        sortIndex: 18,
+        sortIndex: 16,
         seoPath: 'standard-solid-stream-nozzles'
       }
     },
@@ -486,10 +532,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'High Pressure Solid Stream Nozzles' }
+            value: {
+              en: 'High Pressure Solid Stream Nozzles',
+              de: 'Hochdruck-Feststoffstromdüsen',
+              fr: 'Buses à flux solide haute pression',
+              nl: 'Hoge druk vaste stroom nozzles'
+            }
           }
         ],
-        sortIndex: 19,
+        sortIndex: 17,
         seoPath: 'high-pressure-solid-stream-nozzles'
       }
     },
@@ -505,10 +556,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Ultra High Pressure Nozzles' }
+            value: {
+              en: 'Ultra High Pressure Nozzles',
+              de: 'Ultrahochdruckdüsen',
+              fr: 'Buses ultra haute pression',
+              nl: 'Ultra hoge druk nozzles'
+            }
           }
         ],
-        sortIndex: 20,
+        sortIndex: 18,
         seoPath: 'ultra-high-pressure-nozzles'
       }
     },
@@ -524,10 +580,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet® Solid Stream Nozzles' }
+            value: {
+              en: 'UniJet® Solid Stream Nozzles',
+              de: 'UniJet® Solid Stream Düsen',
+              fr: 'Buses UniJet® Solid Stream',
+              nl: 'UniJet® Solid Stream Nozzles'
+            }
           }
         ],
-        sortIndex: 21,
+        sortIndex: 19,
         seoPath: 'unijet-solid-stream-nozzles'
       }
     },
@@ -543,30 +604,16 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'QuickJet® Solid Stream Nozzles' }
+            value: {
+              en: 'QuickJet® Solid Stream Nozzles',
+              de: 'QuickJet® Solid Stream Düsen',
+              fr: 'Buses QuickJet® Solid Stream',
+              nl: 'QuickJet® Solid Stream Nozzles'
+            }
           }
         ],
-        sortIndex: 22,
+        sortIndex: 20,
         seoPath: 'quickjet-solid-stream-nozzles'
-      }
-    },
-    {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.MiniQuickjetSolidStreamNozzles,
-      ...defaultFacetOption,
-      valueId: '4689c62c-26c8-407d-a962-80e089a07443',
-      value: 'Mini QuickJet® Solid Stream Nozzles',
-      parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
-      children: [],
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: null,
-            value: { en: 'Mini QuickJet® Solid Stream Nozzles' }
-          }
-        ],
-        sortIndex: 23,
-        seoPath: 'mini-quickjet-solid-stream-nozzles'
       }
     },
     {
@@ -586,10 +633,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Hollow Cone Nozzles' }
+            value: {
+              en: 'Hollow Cone Nozzles',
+              de: 'Hohlkegeldüsen',
+              fr: 'Buses à cône creux',
+              nl: 'Holle Kegel Nozzles'
+            }
           }
         ],
-        sortIndex: 24,
+        sortIndex: 21,
         seoPath: 'hollow-cone-nozzles'
       }
     },
@@ -605,10 +657,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Angle-Type Hollow Cone Nozzles' }
+            value: {
+              en: 'Angle-Type Hollow Cone Nozzles',
+              de: 'Winkelförmige Hohlkegeldüsen',
+              fr: 'Buses à cône creux de type angle',
+              nl: 'Angle-Type Holle Conus Nozzles'
+            }
           }
         ],
-        sortIndex: 25,
+        sortIndex: 22,
         seoPath: 'angle-type-hollow-cone-nozzles'
       }
     },
@@ -624,10 +681,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'In-Line Hollow Cone Nozzles' }
+            value: {
+              en: 'In-Line Hollow Cone Nozzles',
+              de: 'Inline-Hohlkegeldüsen',
+              fr: 'Buses à cône creux en ligne',
+              nl: 'In-Line Holle Conus Nozzles'
+            }
           }
         ],
-        sortIndex: 26,
+        sortIndex: 23,
         seoPath: 'in-line-hollow-cone-nozzles'
       }
     },
@@ -643,10 +705,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Large Free Passage Hollow Cone Nozzles' }
+            value: {
+              en: 'Large Free Passage Hollow Cone Nozzles',
+              de: 'Große Freidurchlässige Hohlkegeldüsen',
+              fr: 'Grandes buses à cône creux à passage libre',
+              nl: 'Grote holle kegelsproeiers met vrije doorgang'
+            }
           }
         ],
-        sortIndex: 27,
+        sortIndex: 24,
         seoPath: 'large-free-passage-hollow-cone-nozzles'
       }
     },
@@ -662,10 +729,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet® Hollow Cone Nozzles' }
+            value: {
+              en: 'UniJet® Hollow Cone Nozzles',
+              de: 'UniJet® Hohlkegeldüsen',
+              fr: 'Buses à cône creux UniJet®',
+              nl: 'UniJet® Holle Conus Nozzles'
+            }
           }
         ],
-        sortIndex: 28,
+        sortIndex: 25,
         seoPath: 'unijet-hollow-cone-nozzles'
       }
     },
@@ -684,10 +756,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Fine Spray Nozzles' }
+            value: {
+              en: 'Fine Spray Nozzles',
+              de: 'Feine Sprühdüsen',
+              fr: 'Buses de pulvérisation fines',
+              nl: 'Fijne sproeikoppen'
+            }
           }
         ],
-        sortIndex: 29,
+        sortIndex: 26,
         seoPath: 'fine-spray-nozzles'
       }
     },
@@ -703,10 +780,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Single-Orifice Fine Spray Nozzles' }
+            value: {
+              en: 'Single-Orifice Fine Spray Nozzles',
+              de: 'Einzelblendige Feinsprühdüsen',
+              fr: 'Buses de pulvérisation fine à orifice unique',
+              nl: 'Single-Orifice Fijne Sproeikoppen'
+            }
           }
         ],
-        sortIndex: 30,
+        sortIndex: 27,
         seoPath: 'single-orifice-fine-spray-nozzles'
       }
     },
@@ -722,10 +804,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Multi-Orifice Fine Spray Nozzles' }
+            value: {
+              en: 'Multi-Orifice Fine Spray Nozzles',
+              de: 'Multi-Blenden-Feinsprühdüsen',
+              fr: 'Buses de pulvérisation fine multi-orifices',
+              nl: 'Multi-Orifice Fijne Sproeikoppen'
+            }
           }
         ],
-        sortIndex: 31,
+        sortIndex: 28,
         seoPath: 'multi-orifice-fine-spray-nozzles'
       }
     },
@@ -747,15 +834,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Tank Cleaning Nozzles' }
+            value: {
+              en: 'Tank Cleaning Nozzles',
+              de: 'Tankreinigungsdüsen',
+              fr: 'Buses de nettoyage de réservoir',
+              nl: 'Tankreinigingssproeiers'
+            }
           }
         ],
-        sortIndex: 32,
+        sortIndex: 29,
         seoPath: 'tank-cleaning-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo100FtTankCleaningNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo100FtDiameter,
       ...defaultFacetOption,
       valueId: '1d20c410-cae8-4bff-8c4f-c820af51766e',
       value: 'Up to 100 ft. (30.5 m) diameter',
@@ -766,15 +858,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Up to 100 ft. (30.5 m) diameter' }
+            value: {
+              en: 'Up to 100 ft. (30.5 m) diameter',
+              de: 'Bis zu 30,5 m (100 ft.) Durchmesser',
+              fr: 'Jusqu’à 100 pi (30,5 m) de diamètre',
+              nl: 'Tot 100 ft. (30,5 m) diameter'
+            }
           }
         ],
-        sortIndex: 33,
+        sortIndex: 30,
         seoPath: 'up-to-100-ft-tank-cleaning-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo45FtTankCleaningNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo45FtDiameter,
       ...defaultFacetOption,
       valueId: 'e2114c73-1ded-4317-a2d5-fe7133d96035',
       value: 'Up to 45 ft. (13.7 m) diameter',
@@ -785,15 +882,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Up to 45 ft. (13.7 m) diameter' }
+            value: {
+              en: 'Up to 45 ft. (13.7 m) diameter',
+              de: 'Bis zu 45 Fuß (13,7 m) Durchmesser',
+              fr: 'Jusqu’à 45 pi (13,7 m) de diamètre',
+              nl: 'Tot 45 ft. (13,7 m) diameter'
+            }
           }
         ],
-        sortIndex: 34,
+        sortIndex: 31,
         seoPath: 'up-to-45-ft-tank-cleaning-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo20FtTankCleaningNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo20FtDiameter,
       ...defaultFacetOption,
       valueId: '144ffa16-8495-42e8-8435-64b38b266197',
       value: 'Up to 20 ft. (6 m) diameter',
@@ -804,15 +906,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Up to 20 ft. (6 m) diameter' }
+            value: {
+              en: 'Up to 20 ft. (6 m) diameter',
+              de: 'Bis zu 6 m (20 ft.) Durchmesser',
+              fr: 'Jusqu’à 20 pi (6 m) de diamètre',
+              nl: 'Tot 20 ft. (6 m) diameter'
+            }
           }
         ],
-        sortIndex: 35,
+        sortIndex: 32,
         seoPath: 'up-to-20-ft-tank-cleaning-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo10FtTankCleaningNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo10FtDiameter,
       ...defaultFacetOption,
       valueId: 'a24d14a1-71e8-4335-970a-e19e07ac6f1c',
       value: 'Up to 10 ft. (3 m) diameter',
@@ -823,15 +930,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Up to 10 ft. (3 m) diameter' }
+            value: {
+              en: 'Up to 10 ft. (3 m) diameter',
+              de: 'Bis zu 10 Fuß (3 m) Durchmesser',
+              fr: 'Jusqu’à 10 pi (3 m) de diamètre',
+              nl: 'Tot 10 ft. (3 m) diameter'
+            }
           }
         ],
-        sortIndex: 36,
+        sortIndex: 33,
         seoPath: 'up-to-10-ft-tank-cleaning-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo5FtTankCleaningNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.UpTo5FtDiameter,
       ...defaultFacetOption,
       valueId: '67a0148f-82b9-4e38-baa7-f1509d6b8b5d',
       value: 'Up to 5 ft. (1.5 m) diameter',
@@ -842,10 +954,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Up to 5 ft. (1.5 m) diameter' }
+            value: {
+              en: 'Up to 5 ft. (1.5 m) diameter',
+              de: 'Bis zu 1,5 m (5 ft) Durchmesser',
+              fr: 'Jusqu’à 5 pi (1,5 m) de diamètre',
+              nl: 'Tot 5 ft. (1,5 m) diameter'
+            }
           }
         ],
-        sortIndex: 37,
+        sortIndex: 34,
         seoPath: 'up-to-5-ft-tank-cleaning-nozzles'
       }
     },
@@ -866,15 +983,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Automatic Nozzles' }
+            value: {
+              en: 'Automatic Nozzles',
+              de: 'Automatische Düsen',
+              fr: 'Buses automatiques',
+              nl: 'Automatische nozzles'
+            }
           }
         ],
-        sortIndex: 38,
+        sortIndex: 35,
         seoPath: 'automatic-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.ElectricallyActuatedHydraulicAtomizingNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.ElectricallyActuatedHydraulicAtomizing,
       ...defaultFacetOption,
       valueId: 'cae0584c-8fbc-40bd-82ff-6e27b664513b',
       value: 'Electrically-Actuated / Hydraulic Atomizing',
@@ -885,15 +1007,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Electrically-Actuated / Hydraulic Atomizing' }
+            value: {
+              en: 'Electrically-Actuated / Hydraulic Atomizing',
+              de: 'Elektrisch betätigt / Hydraulische Zerstäubung',
+              fr: 'Atomisation électrique / hydraulique',
+              nl: 'Elektrisch bediend / hydraulisch vernevelen'
+            }
           }
         ],
-        sortIndex: 39,
+        sortIndex: 36,
         seoPath: 'electrically-actuated-hydraulic-atomizing-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.ElectricallyActuatedAirAtomizingNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.ElectricallyActuatedAirAtomizing,
       ...defaultFacetOption,
       valueId: 'aeb673dc-b0e0-419a-861d-691fd3b30989',
       value: 'Electrically-Actuated / Air Atomizing',
@@ -904,15 +1031,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Electrically-Actuated / Air Atomizing' }
+            value: {
+              en: 'Electrically-Actuated / Air Atomizing',
+              de: 'Elektrisch betätigt / Luftzerstäubend',
+              fr: 'Avitaillement électrique / Atomisation de l’air',
+              nl: 'Elektrisch bediend / luchtverneveling'
+            }
           }
         ],
-        sortIndex: 40,
+        sortIndex: 37,
         seoPath: 'electrically-actuated-air-atomizing-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.AirActuatedHydraulicAtomizingNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.AirActuatedHydraulicAtomizing,
       ...defaultFacetOption,
       valueId: 'bf851fde-6525-4fa3-9ba1-7b76b4111fbe',
       value: 'Air-Actuated / Hydraulic Atomizing',
@@ -923,15 +1055,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Air-Actuated / Hydraulic Atomizing' }
+            value: {
+              en: 'Air-Actuated / Hydraulic Atomizing',
+              de: 'Luftbetätigte / hydraulische Zerstäubung',
+              fr: 'Atomisation hydraulique / actionnée à l’air',
+              nl: 'Luchtbediend / Hydraulisch vernevelen'
+            }
           }
         ],
-        sortIndex: 41,
+        sortIndex: 38,
         seoPath: 'air-actuated-hydraulic-atomizing-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.AirActuatedAirAtomizingNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.AirActuatedAirAtomizing,
       ...defaultFacetOption,
       valueId: '1f1f0459-20fe-4d4f-a4c5-afec9af36f05',
       value: 'Air-Actuated / Air Atomizing',
@@ -942,10 +1079,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Air-Actuated / Air Atomizing' }
+            value: {
+              en: 'Air-Actuated / Air Atomizing',
+              de: 'Luftbetätigt / Luftzerstäubung',
+              fr: 'Air-Actuated / Atomizing d’air',
+              nl: 'Luchtbediend / Luchtvernevelend'
+            }
           }
         ],
-        sortIndex: 42,
+        sortIndex: 39,
         seoPath: 'air-actuated-air-atomizing-nozzles'
       }
     },
@@ -965,15 +1107,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Spray Guns' }
+            value: {
+              en: 'Spray Guns',
+              de: 'Spritzpistolen',
+              fr: 'Pistolets',
+              nl: 'Spuitpistolen'
+            }
           }
         ],
-        sortIndex: 43,
+        sortIndex: 40,
         seoPath: 'spray-guns'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.LowPressureSprayGuns,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.LowPressure,
       ...defaultFacetOption,
       valueId: 'f25e9397-c3b5-4e5d-bb01-cdc14a98ac97',
       value: 'Low Pressure',
@@ -984,15 +1131,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Low Pressure' }
+            value: {
+              en: 'Low Pressure',
+              de: 'Tiefdruck',
+              fr: 'Basse pression',
+              nl: 'Lage druk'
+            }
           }
         ],
-        sortIndex: 44,
+        sortIndex: 41,
         seoPath: 'low-pressure-spray-guns'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.MediumPressureSprayGuns,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.MediumPressure,
       ...defaultFacetOption,
       valueId: '6dd092be-3b4d-4e4a-bd2f-7f30e0da08d6',
       value: 'Medium Pressure',
@@ -1003,15 +1155,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Medium Pressure' }
+            value: {
+              en: 'Medium Pressure',
+              de: 'Mitteldruck',
+              fr: 'Moyenne pression',
+              nl: 'Gemiddelde druk'
+            }
           }
         ],
-        sortIndex: 45,
+        sortIndex: 42,
         seoPath: 'medium-pressure-spray-guns'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.HighPressureSprayGuns,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.HighPressure,
       ...defaultFacetOption,
       valueId: '4e9199f0-2b6e-42b7-a1e2-6592c9603cc1',
       value: 'High Pressure',
@@ -1022,10 +1179,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'High Pressure' }
+            value: {
+              en: 'High Pressure',
+              de: 'Hochdruck',
+              fr: 'Haute pression',
+              nl: 'Hoge druk'
+            }
           }
         ],
-        sortIndex: 46,
+        sortIndex: 43,
         seoPath: 'high-pressure-spray-guns'
       }
     },
@@ -1044,15 +1206,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Air Nozzles' }
+            value: {
+              en: 'Air Nozzles',
+              de: 'Luftdüsen',
+              fr: 'Buses d’air',
+              nl: 'Luchtsproeiers'
+            }
           }
         ],
-        sortIndex: 47,
+        sortIndex: 44,
         seoPath: 'air-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.FlatSprayAirNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.FlatSpray,
       ...defaultFacetOption,
       valueId: '723cfc0e-8812-45fc-81f3-76490bed5b02',
       value: 'Flat Spray',
@@ -1063,15 +1230,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Flat Spray' }
+            value: {
+              en: 'Flat Spray',
+              de: 'Flaches Spray',
+              fr: 'Spray plat',
+              nl: 'Platte Spray'
+            }
           }
         ],
-        sortIndex: 48,
+        sortIndex: 45,
         seoPath: 'flat-spray-air-nozzles'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.RoundSprayAirNozzles,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.RoundSpray,
       ...defaultFacetOption,
       valueId: '9728a8a0-cd1c-418a-b2f9-c2ca28e96e6a',
       value: 'Round Spray',
@@ -1082,11 +1254,116 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Round Spray' }
+            value: {
+              en: 'Round Spray',
+              de: 'Rundes Spray',
+              fr: 'Spray rond',
+              nl: 'Ronde Spray'
+            }
+          }
+        ],
+        sortIndex: 46,
+        seoPath: 'round-spray-air-nozzles'
+      }
+    },
+    {
+      key: SprayPortalDemoCategoryPageFacetOptionKey.AirAtomizingNozzles,
+      ...defaultFacetOption,
+      valueId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
+      value: 'Air Atomizing Nozzles',
+      parentId: '',
+      children: [
+        '99845edd-d1fd-44fc-99d8-7a3d716922e3',
+        '2b021a64-9287-498e-a895-185798bde18e',
+        'b55953a6-a183-4e5e-a781-9d036cad38ac',
+        '26b1c957-cf39-4aef-a757-f75fedb4f731'
+      ],
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: null,
+            value: { en: 'Air Atomizing Nozzles' }
+          }
+        ],
+        sortIndex: 47,
+        seoPath: 'air-atomizing-nozzles'
+      }
+    },
+    {
+      key: SprayPortalDemoCategoryPageFacetOptionKey.StandardAirAtomizingNozzles,
+      ...defaultFacetOption,
+      valueId: '99845edd-d1fd-44fc-99d8-7a3d716922e3',
+      value: 'Standard Air Atomizing Nozzles',
+      parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
+      children: [],
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: null,
+            value: { en: 'Standard Air Atomizing Nozzles' }
+          }
+        ],
+        sortIndex: 48,
+        seoPath: 'standard-air-atomizing-nozzles'
+      }
+    },
+    {
+      key: SprayPortalDemoCategoryPageFacetOptionKey.QuickmistQuickConnectAirAtomizingNozzles,
+      ...defaultFacetOption,
+      valueId: '2b021a64-9287-498e-a895-185798bde18e',
+      value: 'QuickMist® Quick Connect Air Atomizing Nozzles',
+      parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
+      children: [],
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: null,
+            value: { en: 'QuickMist® Quick Connect Air Atomizing Nozzles' }
           }
         ],
         sortIndex: 49,
-        seoPath: 'round-spray-air-nozzles'
+        seoPath: 'quick-mist-quick-connect-nozzles'
+      }
+    },
+    {
+      key: SprayPortalDemoCategoryPageFacetOptionKey.VariableSprayNozzles,
+      ...defaultFacetOption,
+      valueId: 'b55953a6-a183-4e5e-a781-9d036cad38ac',
+      value: 'Variable Spray Nozzles',
+      parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
+      children: [],
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: null,
+            value: { en: 'Variable Spray Nozzles' }
+          }
+        ],
+        sortIndex: 50,
+        seoPath: 'variable-spray-nozzles'
+      }
+    },
+    {
+      key: SprayPortalDemoCategoryPageFacetOptionKey.HighEfficiencyHighFlowNozzles,
+      ...defaultFacetOption,
+      valueId: '26b1c957-cf39-4aef-a757-f75fedb4f731',
+      value: 'High Efficiency, High Flow Nozzles',
+      parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
+      children: [],
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: null,
+            value: { en: 'High Efficiency, High Flow Nozzles' }
+          }
+        ],
+        sortIndex: 51,
+        seoPath: 'high-efficiency-high-flow-nozzles'
       }
     },
     {
@@ -1107,10 +1384,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Accessories' }
+            value: {
+              en: 'Accessories',
+              de: 'Zubehör',
+              fr: 'Accessoires',
+              nl: 'Accessoires'
+            }
           }
         ],
-        sortIndex: 50,
+        sortIndex: 52,
         seoPath: 'accessories'
       }
     },
@@ -1130,10 +1412,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Nozzle Bodies' }
+            value: {
+              en: 'Nozzle Bodies',
+              de: 'Düsenkörper',
+              fr: 'Corps de buse',
+              nl: 'Nozzle Behuizingen'
+            }
           }
         ],
-        sortIndex: 51,
+        sortIndex: 53,
         seoPath: 'nozzle-bodies'
       }
     },
@@ -1149,10 +1436,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet® Nozzle Bodies' }
+            value: {
+              en: 'UniJet® Nozzle Bodies',
+              de: 'UniJet® Düsengehäuse',
+              fr: 'Corps de buse UniJet®',
+              nl: 'UniJet® Nozzle Behuizingen'
+            }
           }
         ],
-        sortIndex: 52,
+        sortIndex: 54,
         seoPath: 'unijet-nozzle-bodies'
       }
     },
@@ -1168,10 +1460,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'QuickJet® Nozzle Bodies' }
+            value: {
+              en: 'QuickJet® Nozzle Bodies',
+              de: 'QuickJet® Düsenkörper',
+              fr: 'Corps de buse QuickJet®',
+              nl: 'QuickJet® Nozzle Behuizingen'
+            }
           }
         ],
-        sortIndex: 53,
+        sortIndex: 55,
         seoPath: 'quickjet-nozzle-bodies'
       }
     },
@@ -1187,15 +1484,20 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Mini QuickJet® Nozzle Bodies' }
+            value: {
+              en: 'Mini QuickJet® Nozzle Bodies',
+              de: 'Mini QuickJet® Düsenkörper',
+              fr: 'Mini corps de buse QuickJet®',
+              nl: 'Mini QuickJet® Nozzle Behuizingen'
+            }
           }
         ],
-        sortIndex: 54,
+        sortIndex: 56,
         seoPath: 'mini-quickjet-nozzle-bodies'
       }
     },
     {
-      key: SprayPortalDemoCategoryPageFacetOptionKey.ThrottlingAndPressureReliefOrRegulatingValves,
+      key: SprayPortalDemoCategoryPageFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves,
       ...defaultFacetOption,
       valueId: 'fac8fd7b-d802-4472-9348-c9fd5420a8b7',
       value: 'Throttling and Pressure Relief/Regulating Valves',
@@ -1206,10 +1508,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Throttling and Pressure Relief/Regulating Valves' }
+            value: {
+              en: 'Throttling and Pressure Relief/Regulating Valves',
+              de: 'Drosselungs- und Druckentlastungs-/Regelventile',
+              fr: 'Vannes d’étranglement et de surpression/régulation',
+              nl: 'Throttling en drukontlastings-/regelkleppen'
+            }
           }
         ],
-        sortIndex: 55,
+        sortIndex: 57,
         seoPath: 'throttling-and-pressure-relief-or-regulating-valves'
       }
     },
@@ -1225,10 +1532,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Split-Eyelet Connectors' }
+            value: {
+              en: 'Split-Eyelet Connectors',
+              de: 'Split-Eyelet-Steckverbinder',
+              fr: 'Connecteurs Split-Eyelet',
+              nl: 'Connectoren met split-eyelet'
+            }
           }
         ],
-        sortIndex: 56,
+        sortIndex: 58,
         seoPath: 'split-eyelet-connectors'
       }
     },
@@ -1244,10 +1556,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Adjustable Ball Fittings' }
+            value: {
+              en: 'Adjustable Ball Fittings',
+              de: 'Verstellbare Kugelbeschläge',
+              fr: 'Raccords à billes réglables',
+              nl: 'Verstelbare kogelfittingen'
+            }
           }
         ],
-        sortIndex: 57,
+        sortIndex: 59,
         seoPath: 'adjustable-ball-fittings'
       }
     },
@@ -1263,10 +1580,10 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Strainers' }
+            value: { en: 'Strainers', de: 'Siebe', fr: 'Crépines', nl: 'Zeven' }
           }
         ],
-        sortIndex: 58,
+        sortIndex: 60,
         seoPath: 'strainers'
       }
     },
@@ -1295,11 +1612,16 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'Spraying Systems Co. Brands' }
+            value: {
+              en: 'Spraying Systems Co. Brands',
+              de: 'Spraying Systems Co. Marken',
+              fr: 'Spraying Systems Co. Marques',
+              nl: 'Spraying Systems Co Merken'
+            }
           }
         ],
-        sortIndex: 59,
-        seoPath: 'spraying-systems-co.-brands'
+        sortIndex: 61,
+        seoPath: 'spraying-systems-co-brands'
       }
     },
     {
@@ -1314,10 +1636,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'DistriboJet®' }
+            value: {
+              en: 'DistriboJet®',
+              de: 'DistriboJet®',
+              fr: 'DistriboJet®',
+              nl: 'DistriboJet®'
+            }
           }
         ],
-        sortIndex: 60,
+        sortIndex: 62,
         seoPath: 'distribojet'
       }
     },
@@ -1333,10 +1660,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'FlatJet®' }
+            value: {
+              en: 'FlatJet®',
+              de: 'FlatJet®',
+              fr: 'FlatJet®',
+              nl: 'Flatjet®'
+            }
           }
         ],
-        sortIndex: 61,
+        sortIndex: 63,
         seoPath: 'flatjet'
       }
     },
@@ -1352,10 +1684,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'FogJet®' }
+            value: {
+              en: 'FogJet®',
+              de: 'FogJet®',
+              fr: 'FogJet®',
+              nl: 'FogJet®'
+            }
           }
         ],
-        sortIndex: 62,
+        sortIndex: 64,
         seoPath: 'fogjet'
       }
     },
@@ -1371,10 +1708,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'FloodJet®' }
+            value: {
+              en: 'FloodJet®',
+              de: 'FloodJet®',
+              fr: 'FloodJet®',
+              nl: 'Overstromingsjet®'
+            }
           }
         ],
-        sortIndex: 63,
+        sortIndex: 65,
         seoPath: 'floodjet'
       }
     },
@@ -1390,10 +1732,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'FullJet®' }
+            value: {
+              en: 'FullJet®',
+              de: 'FullJet®',
+              fr: 'FullJet®',
+              nl: 'FullJet®'
+            }
           }
         ],
-        sortIndex: 64,
+        sortIndex: 66,
         seoPath: 'fulljet'
       }
     },
@@ -1409,10 +1756,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'ProMax® QuickJet®' }
+            value: {
+              en: 'ProMax® QuickJet®',
+              de: 'ProMax® QuickJet®',
+              fr: 'ProMax® QuickJet®',
+              nl: 'ProMax® QuickJet®'
+            }
           }
         ],
-        sortIndex: 65,
+        sortIndex: 67,
         seoPath: 'promax-quickjet'
       }
     },
@@ -1428,10 +1780,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'QuickJet®' }
+            value: {
+              en: 'QuickJet®',
+              de: 'QuickJet®',
+              fr: 'QuickJet®',
+              nl: 'QuickJet®'
+            }
           }
         ],
-        sortIndex: 66,
+        sortIndex: 68,
         seoPath: 'quickjet'
       }
     },
@@ -1447,10 +1804,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'SpiralJet®' }
+            value: {
+              en: 'SpiralJet®',
+              de: 'SpiralJet®',
+              fr: 'SpiralJet®',
+              nl: 'SpiralJet®'
+            }
           }
         ],
-        sortIndex: 67,
+        sortIndex: 69,
         seoPath: 'spiraljet'
       }
     },
@@ -1466,10 +1828,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'UniJet®' }
+            value: {
+              en: 'UniJet®',
+              de: 'UniJet®',
+              fr: 'UniJet®',
+              nl: 'UniJet®'
+            }
           }
         ],
-        sortIndex: 68,
+        sortIndex: 70,
         seoPath: 'unijet'
       }
     },
@@ -1485,10 +1852,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'VeeJet®' }
+            value: {
+              en: 'VeeJet®',
+              de: 'VeeJet®',
+              fr: 'VeeJet®',
+              nl: 'VeeJet®'
+            }
           }
         ],
-        sortIndex: 69,
+        sortIndex: 71,
         seoPath: 'veejet'
       }
     },
@@ -1504,10 +1876,15 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'WashJet®' }
+            value: {
+              en: 'WashJet®',
+              de: 'WashJet®',
+              fr: 'WashJet®',
+              nl: 'WashJet®'
+            }
           }
         ],
-        sortIndex: 70,
+        sortIndex: 72,
         seoPath: 'washjet'
       }
     },
@@ -1523,29 +1900,34 @@ export const sprayPortalDemoCategoryPageFacetOptions: FacetOption<SprayPortalDem
           {
             variation: 'Invariant',
             unitSymbol: null,
-            value: { en: 'WhirlJet®' }
+            value: {
+              en: 'WhirlJet®',
+              de: 'WhirlJet®',
+              fr: 'WhirlJet®',
+              nl: 'Wervelende®'
+            }
           }
         ],
-        sortIndex: 71,
+        sortIndex: 73,
         seoPath: 'whirljet'
       }
     }
   ];
 
-export const sprayPortalDemoCategoryPageFacet: Facet<
+export const categoryIdFacet: Facet<
   SprayPortalDemoCategoryPageFacetOptionKey,
   FacetOption<SprayPortalDemoCategoryPageFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.SprayPortalDemoCategoryPage,
-  attributeTypeCode: 'SprayPortalDemoCategoryPage',
+  key: FacetKey.CategoryId,
+  attributeTypeCode: 'CategoryId',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Link,
-    selectType: FacetSelectType.Default,
+    selectType: FacetSelectType.SingleSelect,
     displayName: 'Category',
     description: 'Category',
     isFacetingEnabled: true
   },
-  options: sprayPortalDemoCategoryPageFacetOptions
+  options: categoryIdFacetOptions
 };
