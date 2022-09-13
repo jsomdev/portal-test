@@ -59,4 +59,4 @@ export const supportedRegions: Region[] = regions as unknown as Region[];
 export const supportedLocales: string[] | undefined =
   ENVIRONMENT_VARIABLES.supportedLocales;
 
-export const defaultLocale: string = 'en';
+export const defaultLanguage: string = 'en';

@@ -6,7 +6,7 @@ export enum FacetKey {
   ConnectionGender = 'ConnectionGender',
   DropSize = 'DropSize',
   SprayAngleGroup = 'SprayAngleGroup',
-  SprayPortalDemoCategoryPage = 'SprayPortalDemoCategoryPage',
+  CategoryId = 'CategoryId',
   Materials = 'Materials',
   MinimumCatalogLiquidPressure = 'MinimumCatalogLiquidPressure',
   Application = 'Application',

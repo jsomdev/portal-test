@@ -49,7 +49,7 @@ export const QUERYKEYS: ReactQueryKeys = {
   quoteRequestDetail: 'quoteRequestDetail',
   quoteRequestLineProducts: 'quoteRequestLineProducts',
   quoteRequests: 'quoteRequests',
-
+  productFinderResults: 'productFinderResults',
   productFinderGridViewItems: 'productFinderGridViewItems',
   productFinderListViewItems: 'productFinderListViewItems',
   productFinderLiquidsWithRelativeDensity:

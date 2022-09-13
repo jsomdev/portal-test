@@ -32,6 +32,59 @@ export const en: Messages = {
       viewAllCategory: 'View all'
     }
   },
+  finder: {
+    filters: {
+      clearAll: 'Clear all filters',
+      search: 'Search: {query}'
+    },
+    checkboxFacet: {
+      actions: {
+        more: 'More',
+        less: 'Minder'
+      },
+      panel: {
+        placeholder: 'Search'
+      }
+    },
+    categoryFacet: {
+      title: 'Category'
+    },
+    operatingConditions: {
+      validation: {
+        title: 'Incorrect input values',
+        greaterThanZero: 'Value must be greater than 0',
+        requiredFlowRate: 'Liquid Flow Rate is required',
+        requiredFlowRatePressure: 'When you specific Liquid Pressure',
+        requiredFlowRateGravity: 'When you change Specific Gravity'
+      },
+      actions: {
+        apply: 'Apply'
+      },
+      liquidType: {
+        customValue: {
+          title: 'Enter value',
+          placeholder: 'Custom ({minimum} to {maximum})',
+          suffix: 'sg'
+        }
+      }
+    },
+    panel: {
+      mobile: {
+        title: 'Filters',
+        ariaClose: 'Close',
+        showResults:
+          '{productCount, plural,=0 {No products to show} one {Show 1 product} other {Show {productCount} products}}'
+      }
+    },
+    resultsHeader: {
+      count:
+        '{productCount, plural,=0 {No products found} one {Found 1 product} other {Found {productCount} products accross {modelCount, plural,=0 {0 models} one {1 model} other {{modelCount} models}}}}',
+      actions: {
+        filter:
+          '{productCount, plural,=0 {No products to filter} one {Filter 1 product} other {Filter {productCount} products}}'
+      }
+    }
+  },
   pages: {
     home: {
       headTitle: 'Welcome',
@@ -44,7 +97,9 @@ export const en: Messages = {
     },
     category: {
       headTitle: 'Category',
-      headDescription: '{name} | Spraying Systems Co.'
+      headDescription: '{name} | Spraying Systems Co.',
+      title: '{name}',
+      titleWithSearch: '{searchQuery} in {name}'
     },
     series: {
       headTitle: 'Series',
@@ -83,6 +138,12 @@ export const en: Messages = {
     actions: {
       proceed: 'Proceed',
       previous: 'Previous step'
+    }
+  },
+  data: {
+    boolean: {
+      true: 'Yes',
+      false: 'No'
     }
   }
 };

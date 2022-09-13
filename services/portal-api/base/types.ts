@@ -65,17 +65,17 @@ export type OrderPaymentInfo = {
   };
 };
 
-export interface ExternalFilter {
-  // facet key (camelCased)
-  key: string;
-  operator: 'eq' | 'in' | 'le' | 'ge';
-  // should be #Collection(String) if value is of type Array
-  'value@odata.type'?:
-    | '#Collection(String)'
-    | '#Collection(Decimal)'
-    | undefined;
-  value: number | string | Array<string> | Array<number>;
-}
+// export interface ExternalFilter {
+//   // facet key (camelCased)
+//   key: string;
+//   operator: 'eq' | 'in' | 'le' | 'ge';
+//   // should be #Collection(String) if value is of type Array
+//   'value@odata.type'?:
+//     | '#Collection(String)'
+//     | '#Collection(Decimal)'
+//     | undefined;
+//   value: number | string | Array<string> | Array<number>;
+// }
 
 export interface ListIds {
   liquidSpecificGravity: string;

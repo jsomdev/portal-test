@@ -1,7 +1,9 @@
 import { ParsedUrlQuery } from 'querystring';
 
+import { FinderQueryHelper } from '@providers/finder/finderQueryHelper';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { Facet } from '@services/facet-service/models/facet/facet';
+import { FacetCategory } from '@services/facet-service/models/facet/facetCategory';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
@@ -36,11 +38,11 @@ export function getInitialFacetsFromFiles(
   return initialFacets;
 }
 
-export /**
+/**
  * Since the initial options are hardcoded inside the facet files, they
  * might need to be updated based on the url.
  */
-function getInitialOptions(
+export function getInitialOptions(
   facet: Facet,
   facetQueryParam: string | string[] | undefined
 ): FacetOption[] {
@@ -50,19 +52,35 @@ function getInitialOptions(
     return facet.options;
   }
 
-  // The options that are active will have their displayName joined by a comma seperator.
-  // Eg: X,Y --> [X, Y]
-  const activeOptionKeys: string[] = (facetQueryParam as string).split(','); // ['Disc']
+  const activeQueryValues: string[] = (facetQueryParam as string).split(','); // ['Disc']
   const currentOptions = facet.options.slice();
   let newFacetOptions: FacetOption[] = [];
-  // Map through the current options and set to active if the options displayName is included in the parameter
-  newFacetOptions = currentOptions.map(facetOption => {
-    return {
-      ...facetOption,
-      isActive: activeOptionKeys.includes(facetOption.key)
-    };
-  });
-  return newFacetOptions;
+
+  if (facet.configuration.category === FacetCategory.OperatingConditions) {
+    newFacetOptions = currentOptions.map((currentOption: FacetOption) =>
+      FinderQueryHelper.mapQueryValuesToOperatingConditionOption(
+        facet,
+        activeQueryValues,
+        currentOption
+      )
+    );
+    return newFacetOptions;
+  }
+
+  // The options that are active will have their displayName joined by a comma seperator.
+  // Eg: X,Y --> [X, Y]
+  if (facet.configuration.category === FacetCategory.Main) {
+    // Map through the current options and set to active if the options displayName is included in the parameter
+    newFacetOptions = currentOptions.map(facetOption => {
+      return {
+        ...facetOption,
+        isActive: activeQueryValues.includes(facetOption.key)
+      };
+    });
+    return newFacetOptions;
+  }
+
+  return facet.options;
 }
 
 /**

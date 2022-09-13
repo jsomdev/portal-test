@@ -1,5 +1,5 @@
 import {
-  defaultLocale,
+  defaultLanguage,
   en,
   getMessages,
   Messages,
@@ -27,7 +27,7 @@ describe('I18N Tests', () => {
       );
     }
     const actualMessages = getMessages(notSupportedLocale);
-    const expectedMessages = getMessages(defaultLocale);
+    const expectedMessages = getMessages(defaultLanguage);
     expect(actualMessages.pages.docs.i18n.title).toBe(
       actualMessages.pages.docs.i18n.title
     );

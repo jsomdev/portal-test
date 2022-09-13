@@ -3,8 +3,8 @@ export interface OdataEntity {
   ['@odata.etag']: string;
 }
 
-export interface OdataCollection<T> {
+export interface OdataCollection<TEntity> {
   ['@odata.context']: string;
   ['@odata.count']?: number;
-  value: Array<T & Pick<OdataEntity, '@odata.etag'>>;
+  value: Array<TEntity & Pick<OdataEntity, '@odata.etag'>>;
 }

@@ -13,7 +13,7 @@ export type ListItem = LinkedEntity & {
   unitSymbol?: string | null;
   conditions?: Array<Condition | null>;
   value?: any;
-  displays?: Array<Display | null>;
+  displays?: Array<Display>;
   description?: MultilingualString | null;
   sortIndex?: number;
   parent?: ListItem | null;

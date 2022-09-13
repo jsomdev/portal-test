@@ -61,7 +61,6 @@ if (accounts.length > 0) {
 }
 
 msalInstance.addEventCallback(event => {
-  console.log(event);
   if (
     event.eventType === EventType.LOGIN_SUCCESS &&
     (event.payload as AuthenticationResult | undefined)?.account

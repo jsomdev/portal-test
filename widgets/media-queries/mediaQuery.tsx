@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { IStyle, mergeStyles } from '@fluentui/react';
+import { getMediaQueries } from '@widgets/media-queries/mediaQuery.helper';
+
 import { useMediaQuery } from './mediaQuery.hook';
 import {
   MediaQuery,
@@ -7,8 +10,6 @@ import {
   MediaQueryOptions,
   MediaQueryPreset
 } from './mediaQuery.types';
-import { getMediaQueries } from '@widgets/media-queries/mediaQuery.helper';
-import { IStyle, mergeStyles } from '@fluentui/react';
 
 /**
  * Wrap styles in the specified media query

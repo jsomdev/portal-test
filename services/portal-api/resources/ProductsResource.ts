@@ -1,5 +1,6 @@
 import { BaseResource } from '../base/baseResource';
 import { ODataQueryHelper } from '../base/queryHelper';
+import { FacetedSearchOdataCollection } from '../faceted-search/types';
 import { Product } from '../models/Product';
 import { OdataCollection } from '../o-data/oData';
 import { QueryOptions } from '../o-data/queryOptions';
@@ -7,6 +8,28 @@ import { QueryOptions } from '../o-data/queryOptions';
 export class ProductsResource extends BaseResource<Product> {
   constructor() {
     super('/Products');
+  }
+
+  async facetedSearch(
+    top: number,
+    skip: number = 0,
+    urlEncodedFilters?: string | undefined,
+    urlEncodedQuery?: string | undefined,
+    urlEncodedOperatingConditions?: string | undefined
+  ): Promise<FacetedSearchOdataCollection> {
+    const queryOptions: Partial<QueryOptions> = {
+      top,
+      skip
+    };
+    const queryOptionsString: string =
+      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions)
+        .concat(urlEncodedFilters ? `&${urlEncodedFilters}` : '')
+        .concat(
+          `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
+        );
+    const resourcePath = this.getFacetedSearchResourcePath(urlEncodedQuery);
+
+    return this.fetch(resourcePath, queryOptionsString, {});
   }
   async find(
     queryOptions: Partial<QueryOptions>,
@@ -29,6 +52,16 @@ export class ProductsResource extends BaseResource<Product> {
       OdataCollection<Product>
     >;
   }
+  private getFacetedSearchResourcePath(urlEncodedQuery?: string) {
+    return `${this.getResourcePath()}/FacetedSearch${
+      urlEncodedQuery
+        ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
+            urlEncodedQuery
+          )}')`
+        : '(operatingConditions=@operatingConditions,filters=@filters,query=null)'
+    }`;
+  }
+
   private getFindResourcePath(urlEncodedQuery?: string): string {
     return `${this.getResourcePath()}/Find${
       urlEncodedQuery

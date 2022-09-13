@@ -12,7 +12,7 @@ import { sprayAngleRangeFacet } from '../facets/range-facets/sprayAngleRangeProd
 import { relativeDropSizeGroupFacet } from '../facets/relativeDropSizeGroup';
 import { sprayAngleCatalogCodeFacet } from '../facets/sprayAngleCatalogCode';
 import { sprayPatternFacet } from '../facets/sprayPattern';
-import { sprayPortalDemoCategoryPageFacet } from '../facets/sprayPortalDemoCategoryPage';
+import { categoryIdFacet } from '../facets/categoryId';
 import { strainerScreenMeshSizeFacet } from '../facets/strainerScreenMeshSize';
 import { Facet } from '../models/facet/facet';
 import { FacetKey } from '../models/facet/facetKey';
@@ -20,7 +20,7 @@ import { FacetKey } from '../models/facet/facetKey';
 export class FacetFactory {
   static getFacetsFromFiles(excludedFacetKeys: FacetKey[]): Facet[] {
     return [
-      sprayPortalDemoCategoryPageFacet as Facet,
+      categoryIdFacet as Facet,
       liquidFlowRateRangeFacet as unknown as Facet,
       liquidPressureRangeFacet as unknown as Facet,
       liquidSpecificGravityFacet as unknown as Facet,

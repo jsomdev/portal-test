@@ -1,6 +1,6 @@
-import { UnitOfMeasurement } from '../../../../utilities/measurement';
 import { MultilingualString } from '../../../portal-api';
 import { FacetOptionViewConfiguration } from './facetOptionViewConfiguration';
+import { UnitOfMeasurement } from './facetUnitOfMeasurement';
 
 export type FacetOptionValueType =
   | string

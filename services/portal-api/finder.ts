@@ -3,6 +3,7 @@ import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { FacetResult } from '../facet-service/models/facet/facetResult';
 import { BaseResource } from './base/baseResource';
 import { digitalHighWayFetch } from './base/fetch';
+import { FacetedSearchOdataCollection } from './faceted-search/types';
 import { FlaggedEnum } from './flaggedEnum';
 import { AttributeSettings } from './models/AttributeSettingsFlags';
 import { ModelSeriesGrouping } from './models/ModelSeriesGrouping';
@@ -250,4 +251,25 @@ export async function fetchCountByModelSeries(
       throw error;
     }
   }
+}
+
+export async function fetchFacetedSearchResults(
+  encodedExternalFilters: string,
+  encodedOperatingConditions: string,
+  searchQuery: string | undefined,
+  top: number,
+  skip: number
+): Promise<FacetedSearchOdataCollection> {
+  const productsResource: ProductsResource = new ProductsResource();
+
+  const data: FacetedSearchOdataCollection =
+    await productsResource.facetedSearch(
+      top,
+      skip,
+      `@filters=${encodedExternalFilters}`,
+      searchQuery,
+      encodedOperatingConditions
+    );
+
+  return data;
 }

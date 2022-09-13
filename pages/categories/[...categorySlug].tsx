@@ -12,30 +12,31 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
-import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
+import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
-import { FacetResult } from '@services/facet-service/models/facet/facetResult';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { getAudience } from '@services/i18n/helper';
 import { messageIds } from '@services/i18n/ids';
-import { Category as CategoryModel, Model, Series } from '@services/portal-api';
+import {
+  AttributeGroup,
+  AttributeType,
+  Category as CategoryModel,
+  Model,
+  Series
+} from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
-import { ExternalFilter } from '@services/portal-api/base/types';
 import { fetchAllCategories } from '@services/portal-api/categories';
-import {
-  fetchCountByModelSeries,
-  fetchFacetResults
-} from '@services/portal-api/finder';
+import { FacetedSearchOdataCollection } from '@services/portal-api/faceted-search/types';
+import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
 import { fetchAllSeries } from '@services/portal-api/series';
-import { mapModelsSeriesGroupingToSeriesGroupingResult } from '@widgets/finder/helper';
-import { SeriesGroupingResult } from '@widgets/finder/types';
+import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
@@ -43,8 +44,9 @@ export interface CategoryProps {
   category: CategoryModel;
   series: Series[];
   models: Model[];
-  initialFacetResults: FacetResult[];
-  initialSeriesGroupingResults: SeriesGroupingResult[];
+  attributeTypes: AttributeType[];
+  attributeTypeGroups: AttributeGroup[];
+  initialSearchResults: FacetedSearchOdataCollection;
 }
 
 const messages = defineMessages({
@@ -60,20 +62,11 @@ const messages = defineMessages({
   }
 });
 
-const Category: NextPage<
-  CategoryProps &
-    Partial<
-      Pick<
-        GlobalDataContextProps,
-        'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
-      >
-    >
-> = ({
+const Category: NextPage<CategoryProps> = ({
   category,
-  siteMenuItems,
-  mainMenuItems,
-  initialFacetResults,
-  initialSeriesGroupingResults
+  initialSearchResults,
+  attributeTypeGroups,
+  attributeTypes
 }) => {
   const router = useRouter();
   const { formatMessage, locale } = useIntl();
@@ -84,8 +77,9 @@ const Category: NextPage<
 
   return (
     <GlobalDataProvider
-      siteMenuItems={siteMenuItems}
-      mainMenuItems={mainMenuItems}
+      category={category}
+      attributeGroups={attributeTypeGroups}
+      attributeTypes={attributeTypes}
     >
       <AppLayout>
         <Head
@@ -100,7 +94,11 @@ const Category: NextPage<
             categoryId: category?.id
           }}
           initialFacets={getInitialFacetsFromFiles([], router.query)}
-        ></FacetsProvider>
+        >
+          <FinderProvider initialData={initialSearchResults}>
+            <ResultView category={category} />
+          </FinderProvider>
+        </FacetsProvider>
       </AppLayout>
     </GlobalDataProvider>
   );
@@ -139,20 +137,7 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<
-  GetStaticPropsResult<
-    CategoryProps &
-      Partial<
-        Pick<
-          GlobalDataContextProps,
-          | 'attributeGroups'
-          | 'attributeTypes'
-          | 'mainMenuItems'
-          | 'siteMenuItems'
-        >
-      >
-  >
-> => {
+): Promise<GetStaticPropsResult<CategoryProps>> => {
   try {
     const { locale } = context;
 
@@ -161,8 +146,6 @@ export const getStaticProps: GetStaticProps = async (
       seriesData,
       modelsData,
       categoriesData,
-      siteMenuData,
-      mainMenuData,
       attributeTypesData,
       attributeTypeGroupsData
     ] = await Promise.all([
@@ -184,35 +167,36 @@ export const getStaticProps: GetStaticProps = async (
         return categoryFormatter.formatSlug() === categorySlug?.[0];
       }
     );
+
     if (category === undefined || category.id === undefined) {
       return {
         notFound: true
       };
     }
-    const categoryFilter: ExternalFilter | undefined =
-      mapCategoryIdToExternalFilter(category.id);
+    const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
+      category.id
+    );
     const encodedCategoryFilter: string = encodeURIComponent(
       JSON.stringify([categoryFilter])
     );
-    const [modelsSeriesGrouping, facetResults] = await Promise.all([
-      fetchCountByModelSeries(encodedCategoryFilter),
-      fetchFacetResults(encodedCategoryFilter)
-    ]);
 
-    const seriesGroupingResult =
-      mapModelsSeriesGroupingToSeriesGroupingResult(modelsSeriesGrouping);
+    const initialSearchResults: FacetedSearchOdataCollection =
+      await fetchFacetedSearchResults(
+        encodedCategoryFilter,
+        'null',
+        undefined,
+        10,
+        0
+      );
 
     return {
       props: {
-        attributeGroups: attributeTypeGroupsData,
+        attributeTypeGroups: attributeTypeGroupsData,
         attributeTypes: attributeTypesData,
         series: seriesData,
         models: modelsData,
-        initialSeriesGroupingResults: seriesGroupingResult,
-        initialFacetResults: facetResults,
-        category,
-        siteMenuItems: siteMenuData,
-        mainMenuItems: mainMenuData
+        initialSearchResults,
+        category
       }
     };
   } catch (e) {

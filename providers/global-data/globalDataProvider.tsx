@@ -5,7 +5,11 @@ import { GlobalDataContext, GlobalDataContextProps } from './globalDataContext';
 export type GlobalDataProviderProps = Partial<
   Pick<
     GlobalDataContextProps,
-    'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
+    | 'attributeGroups'
+    | 'attributeTypes'
+    | 'mainMenuItems'
+    | 'siteMenuItems'
+    | 'category'
   >
 >;
 
@@ -14,6 +18,7 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   attributeTypes,
   mainMenuItems,
   siteMenuItems,
+  category,
   children
 }) => {
   function getAttributeType(code: string): AttributeType | undefined {
@@ -32,6 +37,7 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
         attributeTypes,
         siteMenuItems,
         mainMenuItems,
+        category,
         getAttributeGroup,
         getAttributeType
       }}
