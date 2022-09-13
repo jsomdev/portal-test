@@ -1,4 +1,5 @@
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
@@ -10,6 +11,11 @@ interface AppLayoutStyles {
   main: React.CSSProperties;
   header: React.CSSProperties;
   content: IStackStyles;
+}
+
+export interface AppLayoutProps {
+  siteMenuItems: MenuItem[];
+  mainMenuItems: MenuItem[];
 }
 
 /**

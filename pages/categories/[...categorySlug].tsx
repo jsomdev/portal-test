@@ -37,7 +37,7 @@ import {
 import { fetchAllModels } from '@services/portal-api/models';
 import { fetchAllSeries } from '@services/portal-api/series';
 import { ResultView } from '@widgets/finder/result-view/resultView';
-import { AppLayout } from '@widgets/layouts/appLayout';
+import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
 export interface CategoryProps {
@@ -62,9 +62,11 @@ const messages = defineMessages({
   }
 });
 
-const Category: NextPage<CategoryProps> = ({
+const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   category,
+  siteMenuItems,
   initialSearchResults,
+  mainMenuItems,
   attributeTypeGroups,
   attributeTypes
 }) => {
@@ -80,6 +82,8 @@ const Category: NextPage<CategoryProps> = ({
       category={category}
       attributeGroups={attributeTypeGroups}
       attributeTypes={attributeTypes}
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
     >
       <AppLayout>
         <Head
@@ -137,7 +141,7 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<CategoryProps>> => {
+): Promise<GetStaticPropsResult<CategoryProps & AppLayoutProps>> => {
   try {
     const { locale } = context;
 
@@ -146,6 +150,8 @@ export const getStaticProps: GetStaticProps = async (
       seriesData,
       modelsData,
       categoriesData,
+      siteMenuData,
+      mainMenuData,
       attributeTypesData,
       attributeTypeGroupsData
     ] = await Promise.all([
@@ -196,7 +202,9 @@ export const getStaticProps: GetStaticProps = async (
         series: seriesData,
         models: modelsData,
         initialSearchResults,
-        category
+        category,
+        siteMenuItems: siteMenuData,
+        mainMenuItems: mainMenuData
       }
     };
   } catch (e) {
