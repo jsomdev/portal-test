@@ -2,7 +2,7 @@ import { Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import Image from 'next/image';
 import { CSSProperties, FC } from 'react';
-import { SocialMediaLink } from '../siteFooter.types';
+import { SocialMediaLink } from './siteFooter.types';
 
 const socialMediaLinks: SocialMediaLink[] = [
   {
@@ -46,7 +46,11 @@ export const SocialMedia: FC = () => {
   };
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 18 }}>
+    <Stack
+      horizontal
+      tokens={{ childrenGap: 18 }}
+      horizontalAlign="space-around"
+    >
       {socialMediaLinks.map((link, i) => {
         return (
           <Stack key={`${link.url}_${i}`} styles={{ root: { minWidth: 24 } }}>

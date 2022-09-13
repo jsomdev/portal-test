@@ -16,7 +16,6 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
-import { rem } from '@utilities/rem';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import { Desktop } from '@widgets/media-queries';
@@ -63,7 +62,7 @@ const Home: NextPage<
         />
         <Desktop>
           <div id="get-started">
-            <style jsx>
+            {/* <style jsx>
               {`
                 #get-started {
                   width: 100%;
@@ -71,7 +70,7 @@ const Home: NextPage<
                   position: relative;
                 }
               `}
-            </style>
+            </style> */}
           </div>
         </Desktop>
         <HomeCategoriesSection categories={categories} />
