@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
+
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,

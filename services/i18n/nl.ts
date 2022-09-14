@@ -28,8 +28,8 @@ export const nl: Messages = {
     },
     menu: {
       close: 'Menu',
-      viewAllCategories: 'Bekijk alle categorieën',
-      viewAllCategory: 'Bekijk alle'
+      viewAllCategories: 'Ga naar alle categorieën',
+      viewAllCategory: 'Ga naar alle'
     }
   },
   finder: {

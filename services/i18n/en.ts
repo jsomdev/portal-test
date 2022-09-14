@@ -28,8 +28,8 @@ export const en: Messages = {
     },
     menu: {
       close: 'Menu',
-      viewAllCategories: 'View all categories',
-      viewAllCategory: 'View all'
+      viewAllCategories: 'Go to all categories',
+      viewAllCategory: 'Go to all'
     }
   },
   finder: {

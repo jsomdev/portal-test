@@ -56,17 +56,6 @@ export const SiteFooter: FC = () => {
     }
   };
 
-  // if (shouldMobileOptimize) {
-  //   return (
-  //     <Stack styles={styles.footer} horizontalAlign="center">
-  //       <Stack styles={styles.footerContainer} tokens={{ childrenGap: 40 }}>
-  //         <SocialMedia />
-  //         <Copyright />
-  //       </Stack>
-  //     </Stack>
-  //   );
-  // }
-
   return (
     <Stack styles={styles.footer} horizontalAlign="center">
       <Stack

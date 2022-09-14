@@ -71,7 +71,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
   return (
     <Stack styles={styles.heroContainer} tokens={{ childrenGap: spacing.l1 }}>
       <Stack horizontal wrap={false} tokens={{ childrenGap: spacing.l2 }}>
-        {activeMenuItem?.subItems?.map(item => {
+        {activeMenuItem?.children?.map(item => {
           return (
             <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
               <Link
@@ -82,9 +82,9 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
               >
                 <ActionButton text={item.text} styles={styles.link('main')} />
               </Link>
-              {item.subItems && (
+              {item.children && (
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
-                  {item.subItems.map(item => {
+                  {item.children.map(item => {
                     return (
                       <Link
                         aria-label={item.text}

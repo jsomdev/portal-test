@@ -8,7 +8,7 @@ export interface MenuItemProps {
   text: string;
   id?: string | undefined;
   parentId?: string | undefined;
-  subItems?: MenuItemProps[];
+  children?: MenuItemProps[];
 }
 
 const messages = {
@@ -20,13 +20,13 @@ const messages = {
 };
 
 /**
- * Getter for the Main Menu Items structure that will be displayed in the Mobile and Desktoip Main header.
- * @param menuItems Array of MenuItems to create Main Menu Items structure
- * @param prefixText Text that will be prepended to the parent item text property which as a menu item is then prepended to it's own sub-items
- * @param parentId A parent of the menu item to filter out sub menu items
- * @param parentItem A parent item will be prepended to the list of menu items
- * @param locale the locale to pass to the menu item formatter class to get the correct text and href
- * @returns Array of MainMenuItems
+ *
+ * @param menuItems an array of type MenuItem
+ * @param type 'expanded' or 'default', expanded will add the parent item to it's own child element and prepend the text prop
+ * @param intl our intl provider which contains the locale and formateMessage function used for our translations
+ * @param parentId a parent ID used in our iterations of child menu items
+ * @param parentItem the parent MenuItemProps that will be added as the first element to its own children
+ * @returns an array of type MenuItemProps in a menu item / sub menu item structure
  */
 export function mapMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
@@ -42,6 +42,7 @@ export function mapMenuItemsToMenuItemProps(
     return !!menuItems.filter(child => child.parentId === id).length;
   };
 
+  // Map a single MenuItem to single MenuItemProps (without the children)
   function mapMenuItemToMenuItemProps(menuItem: MenuItem): MenuItemProps {
     const menuItemFormatter = new MenuItemFormatter(menuItem, intl.locale);
     return {
@@ -58,7 +59,7 @@ export function mapMenuItemsToMenuItemProps(
       const item = mapMenuItemToMenuItemProps(menuItem);
       return {
         ...item,
-        subItems: hasSubItems(menuItem.id)
+        children: hasSubItems(menuItem.id)
           ? mapMenuItemsToMenuItemProps(
               menuItems,
               type,
@@ -70,7 +71,7 @@ export function mapMenuItemsToMenuItemProps(
       };
     });
 
-  // Add the parent item to it's own subItems list and prefix the text if present
+  // Add the parent item to it's own children list and prefix the text if present
   if (parentItem && type === 'expanded') {
     menuItemProps.unshift({
       ...parentItem,

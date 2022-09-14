@@ -32,8 +32,8 @@ export const NavigationPanelMainMenu: React.FC<
   const { push } = useRouter();
 
   const menuItems = useMemo(() => {
-    if (activeMenuItem?.subItems) {
-      return activeMenuItem.subItems;
+    if (activeMenuItem?.children) {
+      return activeMenuItem.children;
     }
     return items;
   }, [activeMenuItem, items]);
@@ -46,7 +46,7 @@ export const NavigationPanelMainMenu: React.FC<
 
   const onMenuItemClick = useCallback(
     (item: MenuItemProps) => {
-      if (item.subItems) {
+      if (item.children) {
         setActiveMenuItem(item);
       } else {
         push(item.href);
@@ -71,7 +71,7 @@ export const NavigationPanelMainMenu: React.FC<
     }
   };
 
-  if (activeMenuItem?.subItems) {
+  if (activeMenuItem?.children) {
     return (
       <Stack>
         <NavigationPanelMainMenuBreadcrumbs
