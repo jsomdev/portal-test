@@ -15,17 +15,15 @@ import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
+import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { getAudience } from '@services/i18n/helper';
 import { messageIds } from '@services/i18n/ids';
 import {
   AttributeGroup,
   AttributeType,
-  Category as CategoryModel,
-  Model,
-  Series
+  Category as CategoryModel
 } from '@services/portal-api';
-import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllCategories } from '@services/portal-api/categories';
 import { FacetedSearchOdataCollection } from '@services/portal-api/faceted-search/types';
@@ -34,19 +32,15 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { fetchAllModels } from '@services/portal-api/models';
-import { fetchAllSeries } from '@services/portal-api/series';
+import { formatCamelCase } from '@utilities/formatText';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
 
 export interface CategoryProps {
   category: CategoryModel;
-  series: Series[];
-  models: Model[];
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
-  initialSearchResults: FacetedSearchOdataCollection;
 }
 
 const messages = defineMessages({
@@ -65,7 +59,6 @@ const messages = defineMessages({
 const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   category,
   siteMenuItems,
-  initialSearchResults,
   mainMenuItems,
   attributeTypeGroups,
   attributeTypes
@@ -97,7 +90,7 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
           }}
           initialFacets={getInitialFacetsFromFiles([], router.query)}
         >
-          <FinderProvider initialData={initialSearchResults}>
+          <FinderProvider initialData={undefined}>
             <ResultView category={category} />
           </FinderProvider>
         </FacetsProvider>
@@ -145,21 +138,17 @@ export const getStaticProps: GetStaticProps = async (
 
     const { categorySlug } = context.params as CategoryParsedUrlQuery;
     const [
-      seriesData,
-      modelsData,
       categoriesData,
       siteMenuData,
       mainMenuData,
-      attributeTypesData,
-      attributeTypeGroupsData
+      attributeTypesData
+      // attributeTypeGroupsData
     ] = await Promise.all([
-      fetchAllSeries(),
-      fetchAllModels(),
       fetchAllCategories(),
       fetchMenuItemsForSiteHeader(getAudience(locale)),
       fetchMenuItemsForMainHeader(getAudience(locale)),
-      fetchAllAttributeTypes(),
-      fetchAllAttributeGroups()
+      fetchAllAttributeTypes()
+      // fetchAllAttributeGroups()
     ]);
 
     const category: CategoryModel | undefined = categoriesData.find(
@@ -193,17 +182,36 @@ export const getStaticProps: GetStaticProps = async (
         0
       );
 
-    return {
-      props: {
-        attributeTypeGroups: attributeTypeGroupsData,
-        attributeTypes: attributeTypesData,
-        series: seriesData,
-        models: modelsData,
-        initialSearchResults,
-        category,
-        siteMenuItems: siteMenuData,
-        mainMenuItems: mainMenuData
+    const usedAttributeTypeCodes: string[] = Object.keys(
+      initialSearchResults['@search.facets']
+    );
+    const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
+      attributeType =>
+        usedAttributeTypeCodes.includes(
+          formatCamelCase(attributeType.code || '')
+        )
+    );
+
+    const usedFacetCodes: string[] = Object.values(
+      FacetFactory.getFacetsFromFiles([])
+    ).map(facet => formatCamelCase(facet.attributeTypeCode));
+
+    Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+      if (!usedFacetCodes.includes(key)) {
+        delete initialSearchResults['@search.facets'][key];
       }
+    });
+
+    const props = {
+      attributeTypeGroups: [],
+      attributeTypes: filteredAttributeTypes,
+      category,
+      siteMenuItems: siteMenuData,
+      mainMenuItems: mainMenuData
+    };
+
+    return {
+      props
     };
   } catch (e) {
     return { notFound: true };

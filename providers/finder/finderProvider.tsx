@@ -6,7 +6,6 @@ import { useQuery, useQueryClient } from 'react-query';
 
 import { useFacets } from '@providers/facets/facetsContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
-import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
 import { productSeriesFacet } from '@services/facet-service/facets/series';
@@ -378,27 +377,27 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     }
   }
 
-  useEffect(() => {
-    // Manually set the initial data for the category without any additional filters
-    if (preFilters.categoryId) {
-      const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
-        preFilters.categoryId
-      );
-      const encodedCategoryFilter: string = encodeURIComponent(
-        JSON.stringify([categoryFilter])
-      );
+  // useEffect(() => {
+  //   // Manually set the initial data for the category without any additional filters
+  //   if (preFilters.categoryId) {
+  //     const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
+  //       preFilters.categoryId
+  //     );
+  //     const encodedCategoryFilter: string = encodeURIComponent(
+  //       JSON.stringify([categoryFilter])
+  //     );
 
-      queryClient.setQueryData(
-        [
-          QUERYKEYS.productFinderResults,
-          encodedCategoryFilter,
-          undefined,
-          'null'
-        ],
-        initialData
-      );
-    }
-  }, [initialData, preFilters.categoryId, queryClient]);
+  //     queryClient.setQueryData(
+  //       [
+  //         QUERYKEYS.productFinderResults,
+  //         encodedCategoryFilter,
+  //         undefined,
+  //         'null'
+  //       ],
+  //       initialData
+  //     );
+  //   }
+  // }, [initialData, preFilters.categoryId, queryClient]);
 
   useEffect(() => {
     // When the query changes we want to store the updated facets to the FacetsContext
