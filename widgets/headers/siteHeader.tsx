@@ -12,12 +12,11 @@ import {
 } from '@fluentui/react';
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
-import { Desktop } from '@widgets/media-queries/mediaQuery';
-import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
 import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { HeaderButton } from './headerButton';
 import { SiteLogo } from './siteLogo';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 export interface ISiteHeaderProps {
   onOpenSideNavigation?: (type: AppNavigationType) => void;
@@ -33,17 +32,18 @@ export const SiteHeader: React.FC<ISiteHeaderProps> = ({
   onOpenSideNavigation,
   items
 }) => {
-  const isLarge = useLarge();
-
-  if (isLarge) {
-    return <LargeSiteHeader items={items} />;
-  }
-
   return (
-    <DefaultSiteHeader
-      items={items}
-      onOpenSideNavigation={onOpenSideNavigation}
-    />
+    <>
+      <Mobile>
+        <DefaultSiteHeader
+          items={items}
+          onOpenSideNavigation={onOpenSideNavigation}
+        />
+      </Mobile>
+      <TabletAndDesktop>
+        <LargeSiteHeader items={items} />
+      </TabletAndDesktop>
+    </>
   );
 };
 
@@ -109,7 +109,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           verticalAlign="center"
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
-          <Desktop>
+          <TabletAndDesktop>
             <HeaderButton
               iconProps={{
                 iconName: 'Globe'
@@ -118,7 +118,7 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
               text={locale.toLocaleUpperCase()}
             />
             <VerticalDivider styles={styles.divider} />
-          </Desktop>
+          </TabletAndDesktop>
           <HeaderButton
             iconProps={{
               iconName: 'Search'
@@ -129,7 +129,6 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
               iconName: 'ShoppingCart'
             }}
           />
-
           <HeaderButton
             onClick={() => {
               onOpenSideNavigation?.('user');

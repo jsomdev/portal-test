@@ -7,7 +7,8 @@ import {
   useTheme
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
+import React from 'react';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 interface FacetContainerProps {
   facetTitle: string;
@@ -23,13 +24,16 @@ interface FacetContainerStyles {
 }
 
 export const FacetContainer: React.FC<FacetContainerProps> = props => {
-  const isLarge = useLarge();
-
-  if (isLarge) {
-    return <DesktopFacetContainer {...props} />;
-  }
-
-  return <MobileFacetContainer {...props} />;
+  return (
+    <React.Fragment>
+      <TabletAndDesktop>
+        <DesktopFacetContainer {...props} />
+      </TabletAndDesktop>
+      <Mobile>
+        <MobileFacetContainer {...props} />
+      </Mobile>
+    </React.Fragment>
+  );
 };
 export const DesktopFacetContainer: React.FC<FacetContainerProps> = ({
   facetTitle,

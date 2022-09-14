@@ -1,10 +1,12 @@
 import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { AppHeader } from '@widgets/headers/appHeader';
-import { useLarge } from '@widgets/media-queries';
+import { mediaQueryFrom } from '@widgets/media-queries';
+import React from 'react';
+import { IStyle, mergeStyles } from '@fluentui/react';
 
 interface AppLayoutStyles {
-  main: React.CSSProperties;
+  main: IStyle;
 }
 
 export interface AppLayoutProps {
@@ -19,24 +21,22 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   siteMenuItems,
   mainMenuItems
 }) => {
-  const isLarge = useLarge();
   const styles: AppLayoutStyles = {
     main: {
       maxWidth: '100%',
       margin: 'auto',
       verticalAlign: 'fill',
-      paddingTop: isLarge ? rem(124) : rem(80)
+      paddingTop: rem(80),
+      ...mediaQueryFrom('tablet', {
+        paddingTop: rem(124)
+      })
     }
   };
 
   return (
     <>
-      <AppHeader
-        siteMenuItems={siteMenuItems}
-        mainMenuItems={mainMenuItems}
-        showMainHeader={isLarge}
-      />
-      <main style={styles.main}>{children}</main>
+      <AppHeader siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems} />
+      <main className={mergeStyles(styles.main)}>{children}</main>
       <footer></footer>
     </>
   );

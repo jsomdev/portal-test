@@ -15,7 +15,8 @@ import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { rem } from '@utilities/rem';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import { Desktop } from '@widgets/media-queries';
+import { MediaContextProvider } from '@widgets/media-queries/media';
+import { TabletAndDesktop } from '@widgets/media-queries';
 
 export interface HomeProps {
   categories: Category[];
@@ -46,34 +47,36 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
     }
   });
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head
-        pathname={pathname}
-        title={formatMessage(messages.headTitle)}
-        description={formatMessage(messages.headDescription)}
-      />
-      <Desktop>
-        <div id="get-started">
-          {/* <Image
+    <MediaContextProvider>
+      <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
+        <Head
+          pathname={pathname}
+          title={formatMessage(messages.headTitle)}
+          description={formatMessage(messages.headDescription)}
+        />
+        <TabletAndDesktop>
+          <div id="get-started">
+            {/* <Image
             src={backgroundImage}
             layout="fill"
             quality={100}
             objectFit="cover"
             objectPosition={'top center'}
           /> */}
-          <style jsx>
-            {`
-              #get-started {
-                width: 100%;
-                height: ${rem(500)};
-                position: relative;
-              }
-            `}
-          </style>
-        </div>
-      </Desktop>
-      <HomeCategoriesSection categories={categories} />
-    </AppLayout>
+            <style jsx>
+              {`
+                #get-started {
+                  width: 100%;
+                  height: ${rem(500)};
+                  position: relative;
+                }
+              `}
+            </style>
+          </div>
+        </TabletAndDesktop>
+        <HomeCategoriesSection categories={categories} />
+      </AppLayout>
+    </MediaContextProvider>
   );
 };
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { IStackStyles, Stack } from '@fluentui/react';
 import siteLogo from '@public/site-logo.svg';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries/mediaQuery.hook';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
 interface ISiteLogoStyles {
   root: IStackStyles;
@@ -16,13 +16,12 @@ interface ISiteLogoStyles {
  * Responsive Spraying Systems logo.
  */
 export const SiteLogo: React.FC = () => {
-  const isLarge = useLarge();
-
   const styles: ISiteLogoStyles = {
     root: {
       root: {
-        maxWidth: isLarge ? rem(280) : rem(170),
-        transition: 'all 0.3s'
+        maxWidth: rem(170),
+        transition: 'all 0.3s',
+        ...mediaQueryFrom('tablet', { maxWidth: rem(280) })
       }
     }
   };

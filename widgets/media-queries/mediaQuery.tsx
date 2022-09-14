@@ -1,121 +1,75 @@
 import React from 'react';
-
-import { IStyle, mergeStyles } from '@fluentui/react';
-import { getMediaQueries } from '@widgets/media-queries/mediaQuery.helper';
-
-import { useMediaQuery } from './mediaQuery.hook';
+import { IStyle } from '@fluentui/react';
 import {
-  MediaQuery,
-  MediaQueryMatchType,
-  MediaQueryOptions,
-  MediaQueryPreset
-} from './mediaQuery.types';
+  Breakpoint,
+  getMediaQueryString,
+  Media,
+  MediaProps,
+  MediaQuery
+} from './media';
 
 /**
  * Wrap styles in the specified media query
  */
 const createMediaQuery = (
   mediaQuery: MediaQuery,
-  styles: IStyle,
-  defaultStyles: IStyle = {}
+  styles: IStyle
 ): Record<string, unknown> => {
-  const queries = getMediaQueries(mediaQuery);
+  const queries = getMediaQueryString(mediaQuery);
   return {
-    ...(defaultStyles as Record<string, unknown>),
-    ...queries.reduce((acc: Record<string, unknown>, current: string) => {
-      acc[`@media ${current}`] = styles;
-      return acc;
-    }, {})
+    [`@media ${queries}`]: styles
   };
 };
 
-export const mediaDesktop = (styles: IStyle): Record<string, unknown> => {
-  return createMediaQuery(
-    { matchType: MediaQueryMatchType.From, query: MediaQueryPreset.Large },
-    styles
-  );
-};
-
 /**
- * Wrapper component that will visible if the MediaQuery + MatchType matches.
- * By default, this uses CSS media queries, so it works on page load before JS is loaded.
- * If required, for performance or other specific reasons, use forceJavascript=true to only render the children if MediaQuery + MatchType matches
+ * Wrap styles in the specified media query, greater or equal than breakpoint
  */
-export const Media: React.FC<MediaQuery & MediaQueryOptions> = ({
-  forceJavaScript = false,
-  as = 'div',
-  matchType,
-  query,
-  children
-}) => {
-  const { isMatch } = useMediaQuery({ query, matchType });
-
-  if (isMatch) {
-    if (as) {
-      return React.createElement(as, {}, children);
-    }
-    return <React.Fragment>{children}</React.Fragment>;
-  }
-
-  if (!forceJavaScript) {
-    const mediaQuery: MediaQuery = { query, matchType };
-    return React.createElement(
-      as || 'div',
-      {
-        className: mergeStyles(
-          createMediaQuery(
-            mediaQuery,
-            { display: 'block' },
-            { display: 'none' }
-          )
-        )
-      },
-      children
-    );
-  }
-
-  return null;
+export const mediaQueryFrom = (
+  breakpoint: Breakpoint,
+  styles: IStyle
+): Record<string, unknown> => {
+  return createMediaQuery({ match: 'greaterThanOrEqual', breakpoint }, styles);
 };
 
 /**
  * Media Wrapper component for Media matching Mobile screen sizes.
- * Defaults to Medium and down.
+ * <Media at="sm">
  */
-export const Mobile: React.FC<
-  Partial<Pick<MediaQuery, 'matchType'>> & MediaQueryOptions
-> = ({ matchType = MediaQueryMatchType.To, forceJavaScript, as, children }) => {
+export const Mobile: React.FC<Pick<MediaProps, 'className' | 'children'>> =
+  props => {
+    const { children, ...otherProps } = props;
+    return (
+      <Media {...otherProps} at="mobile">
+        {children}
+      </Media>
+    );
+  };
+
+/**
+ * Media Wrapper component for Media matching Tablet and Desktop screen sizes.
+ * <Media greaterThan="mobile">
+ */
+export const TabletAndDesktop: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
   return (
-    <Media
-      matchType={matchType}
-      query={MediaQueryPreset.Medium}
-      forceJavaScript={forceJavaScript}
-      as={as}
-    >
+    <Media {...otherProps} greaterThan="mobile">
       {children}
     </Media>
   );
 };
 
 /**
- * Media Wrapper component for Media matching Desktop screen sizes.
- * Defaults to Large and up.
+ * Media Wrapper component for Media matching Tablet screen sizes.
+ * <Media greaterThan="mobile">
  */
-export const Desktop: React.FC<
-  Partial<Pick<MediaQuery, 'matchType'>> & MediaQueryOptions
-> = ({
-  matchType = MediaQueryMatchType.From,
-  forceJavaScript,
-  as,
-  children
-}) => {
-  return (
-    <Media
-      matchType={matchType}
-      query={MediaQueryPreset.Large}
-      forceJavaScript={forceJavaScript}
-      as={as}
-    >
-      {children}
-    </Media>
-  );
-};
+export const Tablet: React.FC<Pick<MediaProps, 'className' | 'children'>> =
+  props => {
+    const { children, ...otherProps } = props;
+    return (
+      <Media {...otherProps} at="tablet">
+        {children}
+      </Media>
+    );
+  };

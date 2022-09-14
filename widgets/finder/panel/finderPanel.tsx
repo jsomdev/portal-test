@@ -4,19 +4,24 @@ import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
+import React from 'react';
 import { CategoryLinkFacet } from '../facet-item/categoryLinkFacet';
 
 import { CheckboxFacet } from '../facet-item/checkboxFacet';
 import { OperatingConditions } from '../operating-conditions/operatingConditions';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 export const FinderPanel: React.FC = () => {
-  const isLarge = useLarge();
-  if (isLarge) {
-    return <DesktopFinderPanel />;
-  }
-
-  return <MobileFinderPanel />;
+  return (
+    <React.Fragment>
+      <TabletAndDesktop>
+        <DesktopFinderPanel />
+      </TabletAndDesktop>
+      <Mobile>
+        <MobileFinderPanel />
+      </Mobile>
+    </React.Fragment>
+  );
 };
 
 const DesktopFinderPanel: React.FC = () => {

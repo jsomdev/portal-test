@@ -32,6 +32,7 @@ const User: NextPage<AppLayoutProps> = ({ siteMenuItems, mainMenuItems }) => {
         <h1>Claims</h1>
         <JsonFormatter json={JSON.stringify(claims)} />
       </div>
+      {/* TODO */}
       <style jsx>{`
         .wrapper {
           border: 2px solid #fafafa;

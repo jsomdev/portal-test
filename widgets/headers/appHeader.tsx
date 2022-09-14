@@ -7,9 +7,9 @@ import { AppNavigationType } from '@widgets/panels/appNavigationPanel.types';
 
 import { MainHeader } from './mainHeader';
 import { SiteHeader } from './siteHeader';
+import { TabletAndDesktop } from '@widgets/media-queries';
 
 export interface IAppHeaderProps {
-  showMainHeader: boolean;
   mainMenuItems: MenuItem[];
   siteMenuItems: MenuItem[];
 }
@@ -21,7 +21,6 @@ export interface IAppHeaderStyles {
  * Header component that is displayed at the top of each page.
  */
 export const AppHeader: React.FC<IAppHeaderProps> = ({
-  showMainHeader,
   siteMenuItems,
   mainMenuItems
 }) => {
@@ -50,7 +49,9 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({
         items={siteMenuItems}
         onOpenSideNavigation={setSideNavigationType}
       />
-      {showMainHeader && <MainHeader items={mainMenuItems} />}
+      <TabletAndDesktop>
+        <MainHeader items={mainMenuItems} />
+      </TabletAndDesktop>
       <AppPanel
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}

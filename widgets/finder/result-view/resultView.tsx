@@ -26,7 +26,7 @@ import {
 } from '@services/widen/widenImageHelper';
 import { rem } from '@utilities/rem';
 import { PagesHeader } from '@widgets/headers/pageHeader';
-import { Desktop, Mobile } from '@widgets/media-queries';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import { FinderPanel } from '../panel/finderPanel';
 import { ActiveFilters } from './activeFilters';
@@ -106,7 +106,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
       horizontal
       tokens={{ padding: `${rem(spacing.l2)} 0 ${rem(spacing.l1)} 0` }}
     >
-      <Mobile forceJavaScript>
+      <Mobile>
         <Panel
           isOpen={isFiltersPanelOpen}
           onDismiss={() => setIsFiltersPanelOpen(false)}
@@ -129,11 +129,11 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
           <FinderPanel />
         </Panel>
       </Mobile>
-      <Desktop forceJavaScript>
+      <TabletAndDesktop>
         <Stack.Item styles={styles.sidePanelContainer}>
           <FinderPanel />
         </Stack.Item>
-      </Desktop>
+      </TabletAndDesktop>
       <Stack.Item styles={styles.mainContainer}>
         <Stack tokens={{ childrenGap: `${rem(spacing.m)} 0` }}>
           <PagesHeader

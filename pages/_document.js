@@ -5,6 +5,7 @@ import * as React from 'react';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 import { resetIds, Stylesheet } from '@fluentui/react';
+import { mediaStyles } from '@widgets/media-queries/media';
 
 // Fluent UI React (Fabric) 7 or earlier
 // import { Stylesheet, resetIds } from 'office-ui-fabric-react';
@@ -13,7 +14,7 @@ const stylesheet = Stylesheet.getInstance();
 
 // Now set up the document, and just reset the stylesheet.
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static getInitialProps = ({ renderPage }) => {
     resetIds(1);
 
     // eslint-disable-next-line react/display-name
@@ -24,12 +25,16 @@ export default class MyDocument extends Document {
       styleTags: stylesheet.getRules(true),
       serializedStylesheet: stylesheet.serialize()
     };
-  }
+  };
 
   render() {
     return (
       <Html>
         <Head>
+          <style
+            type="text/css"
+            dangerouslySetInnerHTML={{ __html: mediaStyles }}
+          />
           <style
             type="text/css"
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}

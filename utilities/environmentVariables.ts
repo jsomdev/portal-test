@@ -31,4 +31,3 @@ export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {
       `${window?.location.origin}/api/odata`
   }
 };
-

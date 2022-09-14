@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n/ids';
 import { rem } from '@utilities/rem';
-import { Desktop, Mobile } from '@widgets/media-queries';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 interface ResultsHeaderProps {
   productCount: number;
@@ -31,9 +31,9 @@ const messages = defineMessages({
 export const ResultsHeader: React.FC<ResultsHeaderProps> = props => {
   return (
     <>
-      <Desktop>
+      <TabletAndDesktop>
         <DesktopResultsHeader {...props} />
-      </Desktop>
+      </TabletAndDesktop>
       <Mobile>
         <MobileResultsHeader {...props} />
       </Mobile>
