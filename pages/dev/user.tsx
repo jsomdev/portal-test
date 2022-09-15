@@ -1,12 +1,3 @@
-import {
-  GetStaticProps,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-  NextPage
-} from 'next';
-import { useRouter } from 'next/dist/client/router';
-import JsonFormatter from 'react-json-formatter';
-
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { getAudience } from '@services/i18n';
@@ -17,6 +8,14 @@ import {
 } from '@services/portal-api/menuItems';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
+import { useRouter } from 'next/dist/client/router';
+import JsonFormatter from 'react-json-formatter';
 
 const User: NextPage = () => {
   const { pathname } = useRouter();
@@ -34,7 +33,7 @@ const User: NextPage = () => {
         <JsonFormatter json={JSON.stringify(claims)} />
       </div>
       {/* TODO */}
-      <style jsx>{`
+      {/* <style jsx>{`
         .wrapper {
           border: 2px solid #fafafa;
           word-break: break-all;
@@ -45,7 +44,7 @@ const User: NextPage = () => {
           margin: 24px;
           padding: 16px;
         }
-      `}</style>
+      `}</style> */}
     </AppLayout>
   );
 };

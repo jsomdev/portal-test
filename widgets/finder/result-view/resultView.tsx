@@ -1,8 +1,3 @@
-import { useState } from 'react';
-
-import Image from 'next/image';
-import { defineMessages, useIntl } from 'react-intl';
-
 import {
   IPanelStyles,
   IStackItemStyles,
@@ -25,14 +20,11 @@ import {
   WidenImagePreset
 } from '@services/widen/widenImageHelper';
 import { rem } from '@utilities/rem';
-<<<<<<< HEAD
-import { Desktop, Mobile } from '@widgets/media-queries';
-=======
-import { PagesHeader } from '@widgets/headers/pageHeader';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
->>>>>>> 0369028f08a8ceaee51eb68ecfc16a69236b0cca
-
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { FinderPanel } from '../panel/finderPanel';
 import { ActiveFilters } from './activeFilters';
 import { FilterResultsButton, ResultsHeader } from './resultsHeader';
