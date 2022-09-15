@@ -226,7 +226,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
               )
             : false
         }
-        onChange={(ev, checked) => {
+        onChange={() => {
           onSelect(option.key);
         }}
         checked={option.isActive}
@@ -242,7 +242,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
           }
         }}
         key={option.key}
-        onRenderLabel={props => renderLabel(option, predictedResults || [])}
+        onRenderLabel={() => renderLabel(option, predictedResults || [])}
       />
     );
   }
@@ -254,7 +254,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
     >
       <MarkDownDialog
         dialogProps={{
-          onDismiss: ev => setShowFacetDialog(false),
+          onDismiss: () => setShowFacetDialog(false),
           hidden: !showFacetDialog
         }}
         title={attributeTypeFormatter.formatName()}

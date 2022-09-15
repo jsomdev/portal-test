@@ -1,5 +1,3 @@
-import { useIntl } from 'react-intl';
-
 import {
   IButtonStyles,
   IStackStyles,
@@ -8,13 +6,13 @@ import {
   useTheme,
   VerticalDivider
 } from '@fluentui/react';
-import { rem } from '@utilities/rem';
-
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { rem } from '@utilities/rem';
 import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
 import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import { useMemo, useState } from 'react';
+import { useIntl } from 'react-intl';
 import {
   mapMenuItemsToMenuItemProps,
   MenuItemProps
@@ -22,7 +20,6 @@ import {
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
 import { SiteHeaderButton } from './siteHeaderButton';
-import { SiteHeaderItem } from './siteHeaderItem';
 import { SiteLogo } from './siteLogo';
 
 //items prop has Menu Items from the api
@@ -66,6 +63,8 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const intl = useIntl();
   const { mainMenuItems } = useGlobalData();
 
+  // TODO GR -> rething the functionality and state that triggers the correct menu / renders the correct section
+  // This state is currently a functionality placeholder until the user menu / quick access menu is implemented
   const [sideNavigationType, setSideNavigationType] =
     useState<null | NavigationPanelType>(null);
 
@@ -202,10 +201,15 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           <ul className="horizontal">
             {siteMenuItems.map(item => {
               return (
-                <SiteHeaderItem
-                  item={item}
-                  key={`site-main-menu-item-${item.id}`}
-                />
+                <li key={item.id} className="horizontal">
+                  <SiteHeaderButton
+                    type="actionButton"
+                    id={`site-header-item-${item.id}`}
+                    text={item.text}
+                    href={item.href}
+                    styles={styles.button}
+                  />
+                </li>
               );
             })}
           </ul>

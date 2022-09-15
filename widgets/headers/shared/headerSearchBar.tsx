@@ -20,6 +20,13 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
+/**
+ * This component is a work in progress and not yet functional.
+ * The data shown in the dropdown is placeholder data.
+ * The functions triggered by events are still basic and do not currently support any real search results
+ *
+ */
+
 const messages = defineMessages({
   searchPlaceholder: {
     id: messageIds.navigation.searchBar.placeholder,
@@ -174,7 +181,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, styles }) => {
         grow
         horizontalAlign="center"
         root={{ ref: searchBarRef }}
-        id="search-box-container"
+        id="main-search-box-container"
       >
         <SearchBox
           placeholder={placeholder}
