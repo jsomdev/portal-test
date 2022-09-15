@@ -5,7 +5,7 @@ import {
   mergeStyleSets,
   Stack
 } from '@fluentui/react';
-import { mediaDesktop } from '@widgets/media-queries';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
 type Direction = 'vertical' | 'horizontal';
 
@@ -29,7 +29,7 @@ export const ResponsiveStack: React.FC<ResponsiveStackProps> = ({
   const stackStyles: IStackStyles = {
     root: {
       flexDirection: directions[direction.mobile],
-      ...mediaDesktop({
+      ...mediaQueryFrom('tablet', {
         flexDirection: directions[direction.desktop]
       })
     }

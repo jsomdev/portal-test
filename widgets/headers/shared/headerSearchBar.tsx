@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -29,13 +29,16 @@ const messages = defineMessages({
 });
 
 export const HeaderSearchBar: React.FC = () => {
-  const isLarge = useLarge();
-
-  if (isLarge) {
-    return <DesktopSearchBar />;
-  }
-
-  return <MobileSearchBar />;
+  return (
+    <>
+      <Mobile>
+        <MobileSearchBar />
+      </Mobile>
+      <TabletAndDesktop>
+        <DesktopSearchBar />
+      </TabletAndDesktop>
+    </>
+  );
 };
 
 const DesktopSearchBar: React.FC = () => {

@@ -9,11 +9,11 @@ import {
   VerticalDivider
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
 
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
 import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import { useMemo, useState } from 'react';
 import {
   mapMenuItemsToMenuItemProps,
@@ -36,8 +36,6 @@ export interface SiteHeaderProps {
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
 export const SiteHeader: React.FC = () => {
-  const isLarge = useLarge();
-
   const { siteMenuItems } = useGlobalData();
   const { locale } = useIntl();
 
@@ -45,11 +43,16 @@ export const SiteHeader: React.FC = () => {
     return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
   }, [locale, siteMenuItems]);
 
-  if (isLarge) {
-    return <DesktopSiteHeader siteMenuItems={mappedSiteMenuItems} />;
-  }
-
-  return <MobileSiteHeader siteMenuItems={mappedSiteMenuItems} />;
+  return (
+    <>
+      <Mobile>
+        <MobileSiteHeader siteMenuItems={mappedSiteMenuItems} />
+      </Mobile>
+      <TabletAndDesktop>
+        <DesktopSiteHeader siteMenuItems={mappedSiteMenuItems} />
+      </TabletAndDesktop>
+    </>
+  );
 };
 
 // ### Mobile Site Header
@@ -67,13 +70,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
     useState<null | NavigationPanelType>(null);
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
-      mainMenuItems || [],
-      'expanded',
-      intl,
-      null,
-      undefined
-    );
+    return mapMenuItemsToMenuItemProps(mainMenuItems || [], 'expanded', intl);
   }, [mainMenuItems, intl]);
 
   function onSitePanelDismiss(): void {

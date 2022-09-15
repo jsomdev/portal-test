@@ -8,17 +8,20 @@ import {
   mergeStyleSets
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import React from 'react';
 
 export const SiteHeaderButton: React.FC<IButtonProps> = props => {
-  const isLarge = useLarge();
-
-  if (isLarge) {
-    return <DesktopSiteHeaderButton {...props} />;
-  }
-
-  return <MobileSiteHeaderButton {...props} />;
+  return (
+    <>
+      <Mobile>
+        <MobileSiteHeaderButton {...props} />
+      </Mobile>
+      <TabletAndDesktop>
+        <DesktopSiteHeaderButton {...props} />
+      </TabletAndDesktop>
+    </>
+  );
 };
 
 const DesktopSiteHeaderButton: React.FC<IButtonProps> = props => {

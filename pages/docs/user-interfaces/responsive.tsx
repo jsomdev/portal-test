@@ -1,13 +1,18 @@
 import { NextPage } from 'next';
-import { Desktop, mediaDesktop, Mobile } from '@widgets/media-queries';
-import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import {
+  mediaQueryFrom,
+  Mobile,
+  TabletAndDesktop,
+  useTabletAndDesktop
+} from '@widgets/media-queries';
 import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
 
 const styles = {
   basicExample: {
     backgroundColor: 'red',
     padding: 20,
-    ...mediaDesktop({
+    ...mediaQueryFrom('tablet', {
       backgroundColor: 'blue',
       padding: 40
     })
@@ -17,26 +22,45 @@ const styles = {
 const stackStyles: IStackStyles = {
   root: {
     padding: 5,
-    ...mediaDesktop({
+    ...mediaQueryFrom('tablet', {
       padding: 40
     })
   }
 };
 
 const Responsive: NextPage = () => {
+  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when SSR
   return (
     <div>
+      {isTabletOrDesktop && <div>Tablet or desktop</div>}
       <div className={mergeStyles(styles.basicExample)}>Basic Responsive</div>
       <Stack styles={stackStyles}>
-        <StackItem>One</StackItem>
-        <StackItem>Two</StackItem>
-        <StackItem>Three</StackItem>
+        <Mobile>
+          {(className, renderChildren) => (
+            <StackItem className={className}>
+              {renderChildren && 'Stack Item: Mobile only'}
+            </StackItem>
+          )}
+        </Mobile>
+        <TabletAndDesktop>
+          {(className, renderChildren) => (
+            <StackItem className={className}>
+              {renderChildren && 'Stack Item: Tablet/Desktop only'}
+            </StackItem>
+          )}
+        </TabletAndDesktop>
+        <StackItem>Stack Item 2</StackItem>
+        <StackItem>Stack Item 3</StackItem>
       </Stack>
       <div>
-        <Mobile>Only shown on mobile</Mobile>
-        <Desktop forceJavaScript={true}>
-          Only shown on desktop, when javascript is loaded
-        </Desktop>
+        <Mobile>
+          {(className, renderChildren) => (
+            <div className={className}>
+              {renderChildren && 'Only shown on mobile'}
+            </div>
+          )}
+        </Mobile>
+        <TabletAndDesktop>Only shown on tablet/desktop</TabletAndDesktop>
       </div>
       <ResponsiveStack>
         <span>One</span>

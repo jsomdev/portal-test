@@ -18,7 +18,7 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { rem } from '@utilities/rem';
-import { useLarge } from '@widgets/media-queries';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { SiteHeaderButton } from '../site-header/siteHeaderButton';
 import {
@@ -34,13 +34,16 @@ interface MainHeaderStyles {
 }
 
 export const MainHeader: React.FC = () => {
-  const isLarge = useLarge();
-
-  if (isLarge) {
-    return <DesktopMainHeader />;
-  }
-
-  return <MobileMainHeader />;
+  return (
+    <>
+      <Mobile>
+        <MobileMainHeader />
+      </Mobile>
+      <TabletAndDesktop>
+        <DesktopMainHeader />
+      </TabletAndDesktop>
+    </>
+  );
 };
 
 const MobileMainHeader: React.FC = () => {

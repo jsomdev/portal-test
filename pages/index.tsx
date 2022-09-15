@@ -18,7 +18,8 @@ import {
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
 import { AppLayout } from '@widgets/layouts/appLayout';
-import { Desktop } from '@widgets/media-queries';
+import { TabletAndDesktop } from '@widgets/media-queries';
+import { MediaContextProvider } from '@widgets/media-queries/media';
 
 export interface HomeProps {
   categories: Category[];
@@ -50,19 +51,20 @@ const Home: NextPage<
   const { formatMessage } = useIntl();
 
   return (
-    <GlobalDataProvider
-      siteMenuItems={siteMenuItems}
-      mainMenuItems={mainMenuItems}
-    >
-      <AppLayout>
-        <Head
-          pathname={pathname}
-          title={formatMessage(messages.headTitle)}
-          description={formatMessage(messages.headDescription)}
-        />
-        <Desktop>
-          <div id="get-started">
-            {/* <style jsx>
+    <MediaContextProvider>
+      <GlobalDataProvider
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      >
+        <AppLayout>
+          <Head
+            pathname={pathname}
+            title={formatMessage(messages.headTitle)}
+            description={formatMessage(messages.headDescription)}
+          />
+          <TabletAndDesktop>
+            <div id="get-started">
+              {/* <style jsx>
               {`
                 #get-started {
                   width: 100%;
@@ -71,11 +73,12 @@ const Home: NextPage<
                 }
               `}
             </style> */}
-          </div>
-        </Desktop>
-        <HomeCategoriesSection categories={categories} />
-      </AppLayout>
-    </GlobalDataProvider>
+            </div>
+          </TabletAndDesktop>
+          <HomeCategoriesSection categories={categories} />
+        </AppLayout>
+      </GlobalDataProvider>
+    </MediaContextProvider>
   );
 };
 

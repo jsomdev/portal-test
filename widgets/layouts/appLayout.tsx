@@ -3,7 +3,7 @@ import { MenuItem } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
-import { useLarge } from '@widgets/media-queries';
+import { mediaQueryFrom } from '@widgets/media-queries';
 import { SiteFooter } from '@widgets/site-footer/siteFooter';
 import React from 'react';
 
@@ -22,7 +22,6 @@ export interface AppLayoutProps {
  * Layout component for a page.
  */
 export const AppLayout: React.FC = ({ children }) => {
-  const isLarge = useLarge();
   const { semanticColors } = useTheme();
   const styles: AppLayoutStyles = {
     main: {
@@ -36,7 +35,10 @@ export const AppLayout: React.FC = ({ children }) => {
     content: {
       root: {
         overflow: 'auto',
-        height: `calc(100vh - ${isLarge ? rem(124) : rem(112)})`
+        height: `calc(100vh - ${rem(112)})`,
+        ...mediaQueryFrom('tablet', {
+          height: `calc(100vh - ${rem(124)})`
+        })
       }
     }
   };
