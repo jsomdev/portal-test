@@ -1,7 +1,5 @@
-import path from 'path';
-
 import { DataCacheManager } from '@services/cache/dataCache';
-
+import path from 'path';
 import { MenuItem } from './';
 import { FlaggedEnum } from './flaggedEnum';
 import { Audience } from './models/AudienceFlags';
