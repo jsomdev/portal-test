@@ -21,9 +21,7 @@ const messages = defineMessages({
 export const SiteLogo: React.FC = () => {
   return (
     <>
-      <Mobile>
-        <MobileSiteLogo />
-      </Mobile>
+      <Mobile>{className => <MobileSiteLogo className={className} />}</Mobile>
       <TabletAndDesktop>
         <DesktopSiteLogo />
       </TabletAndDesktop>
@@ -80,7 +78,7 @@ interface MobileSiteLogoStyles {
   logo: IStackStyles;
 }
 
-const MobileSiteLogo: React.FC = () => {
+const MobileSiteLogo: React.FC<{ className: string }> = ({ className }) => {
   const { formatMessage } = useIntl();
   const styles: MobileSiteLogoStyles = {
     logo: {
@@ -99,7 +97,7 @@ const MobileSiteLogo: React.FC = () => {
     }
   };
   return (
-    <Stack styles={styles.container}>
+    <Stack styles={styles.container} className={className}>
       <Stack.Item grow styles={styles.logo}>
         <Link href={'/'}>
           <a>

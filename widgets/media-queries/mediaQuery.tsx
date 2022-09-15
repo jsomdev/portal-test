@@ -1,5 +1,5 @@
-import React from 'react';
 import { IStyle } from '@fluentui/react';
+import React from 'react';
 import {
   Breakpoint,
   getMediaQueryString,
@@ -35,15 +35,16 @@ export const mediaQueryFrom = (
  * Media Wrapper component for Media matching Mobile screen sizes.
  * <Media at="sm">
  */
-export const Mobile: React.FC<Pick<MediaProps, 'className' | 'children'>> =
-  props => {
-    const { children, ...otherProps } = props;
-    return (
-      <Media {...otherProps} at="mobile">
-        {children}
-      </Media>
-    );
-  };
+export const Mobile: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
+  return (
+    <Media {...otherProps} at="mobile">
+      {children}
+    </Media>
+  );
+};
 
 /**
  * Media Wrapper component for Media matching Tablet and Desktop screen sizes.
@@ -64,12 +65,13 @@ export const TabletAndDesktop: React.FC<
  * Media Wrapper component for Media matching Tablet screen sizes.
  * <Media greaterThan="mobile">
  */
-export const Tablet: React.FC<Pick<MediaProps, 'className' | 'children'>> =
-  props => {
-    const { children, ...otherProps } = props;
-    return (
-      <Media {...otherProps} at="tablet">
-        {children}
-      </Media>
-    );
-  };
+export const Tablet: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
+  return (
+    <Media {...otherProps} at="tablet">
+      {children}
+    </Media>
+  );
+};
