@@ -1,7 +1,5 @@
-import path from 'path';
-
 import { DataCacheManager } from '@services/cache/dataCache';
-
+import path from 'path';
 import { MenuItem } from './';
 import { FlaggedEnum } from './flaggedEnum';
 import { Audience } from './models/AudienceFlags';
@@ -69,6 +67,9 @@ export async function fetchMenuItemsForSiteHeader(
   siteMenuItemsDataCacheManager.set(data.value);
   return filterMenuItemsByAudience(audience, data.value);
 }
+
+// /categories/formatCategory.formatSlug() query -> categorySlug (array)
+
 /**
  * Function that fetches the MenuItems that should be displayed on the MainCommandBar (Menu).
  * The reference between a parent and its children is parentId. This way no expands have to be used.
@@ -85,7 +86,7 @@ export async function fetchMenuItemsForMainHeader(
   }
   const menuItemsResource: MenuItemsResource = new MenuItemsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,url,parentId,audience`,
+    selectQuery: `id,url,parentId,audience,slug`,
     orderbyQuery: 'sortIndex asc',
     filterQuery: `menu eq '${Menu.MAIN}'`
   };

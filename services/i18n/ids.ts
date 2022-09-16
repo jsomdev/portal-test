@@ -12,6 +12,7 @@ export const messageIds: Messages = {
     },
     site: {
       title: 'navigation.site.title',
+      logoAlt: 'navigation.site.logoAlt',
       collapseLabel: 'navigation.site.collapseLabel',
       expandLabel: 'navigation.site.expandLabel'
     },
@@ -21,6 +22,14 @@ export const messageIds: Messages = {
       expandLabel: 'navigation.user.expandLabel',
       signIn: 'navigation.user.signIn',
       myProfile: 'navigation.user.myProfile'
+    },
+    searchBar: {
+      placeholder: 'navigation.searchBar.placeholder'
+    },
+    menu: {
+      close: 'navigation.menu.close',
+      viewAllCategories: 'navigation.menu.viewAllCategories',
+      viewAllCategory: 'navigation.menu.viewAllCategory'
     }
   },
   finder: {

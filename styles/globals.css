@@ -254,7 +254,7 @@ body {
 }
 
 body {
-  overflow: auto;
+  overflow: hidden;
   min-height: 100vh;
 }
 
@@ -286,4 +286,54 @@ p {
 }
 .reactMarkdown pre {
   display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.horizontal {
+  display: flex;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+li.horizontal {
+  display: block;
+  flex: 0 1 auto; /* Default */
+  list-style-type: none;
+}
+
+.list-scroll::-webkit-scrollbar,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar,
+.ms-Callout-main::-webkit-scrollbar,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar,
+.ms-Panel-scrollableContent::-webkit-scrollbar,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.list-scroll::-webkit-scrollbar-track,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track,
+.ms-Callout-main::-webkit-scrollbar-track,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track,
+.ms-Panel-scrollableContent::-webkit-scrollbar-track,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list-scroll::-webkit-scrollbar-thumb,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb,
+.ms-Callout-main::-webkit-scrollbar-thumb,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb,
+.ms-Panel-scrollableContent::-webkit-scrollbar-thumb,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 6px;
 }

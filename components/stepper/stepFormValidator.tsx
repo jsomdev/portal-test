@@ -10,5 +10,5 @@ export const StepFormValidator: React.FC = () => {
   useEffect(() => {
     validateForm();
   }, [currentIndex, validateForm]);
-  return <></>;
+  return null;
 };

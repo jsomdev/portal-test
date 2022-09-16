@@ -2,15 +2,23 @@ import { AttributeType } from '@services/portal-api';
 
 import { GlobalDataContext, GlobalDataContextProps } from './globalDataContext';
 
-type GlobalDataProviderProps = Pick<
-  GlobalDataContextProps,
-  'attributeGroups' | 'attributeTypes' | 'category'
+export type GlobalDataProviderProps = Partial<
+  Pick<
+    GlobalDataContextProps,
+    | 'attributeGroups'
+    | 'attributeTypes'
+    | 'mainMenuItems'
+    | 'siteMenuItems'
+    | 'category'
+  >
 >;
 
 export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   attributeGroups,
-  category,
   attributeTypes,
+  mainMenuItems,
+  siteMenuItems,
+  category,
   children
 }) => {
   function getAttributeType(code: string): AttributeType | undefined {
@@ -25,9 +33,11 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   return (
     <GlobalDataContext.Provider
       value={{
-        category,
         attributeGroups,
         attributeTypes,
+        siteMenuItems,
+        mainMenuItems,
+        category,
         getAttributeGroup,
         getAttributeType
       }}

@@ -1,3 +1,4 @@
+import { MultilingualString } from './MultilingualString';
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -15,4 +16,5 @@ export type MenuItem = TracedEntity & {
   audience?: AudienceFlags | null;
   parent?: MenuItem | null;
   children?: Array<MenuItem>;
+  slug?: MultilingualString;
 };

@@ -348,14 +348,14 @@ export const CompleteSignUp: React.FC = () => {
                         />
 
                         {createVerificationRequestStatus !== 'success' && (
-                          <>
+                          <React.Fragment>
                             <Stack.Item styles={styles.bottomContentContainer}>
                               <Text styles={styles.bottomSeperatorText}>
                                 {messages.completeLater}
                               </Text>
                             </Stack.Item>
                             <DefaultButton
-                              onClick={async ev =>
+                              onClick={async () =>
                                 createVerificationRequestStatus !== 'loading' &&
                                 (await instance.logout(
                                   isEmployee
@@ -367,7 +367,7 @@ export const CompleteSignUp: React.FC = () => {
                             >
                               {messages.signOut}
                             </DefaultButton>
-                          </>
+                          </React.Fragment>
                         )}
                       </Stack>
                     </Stepper>

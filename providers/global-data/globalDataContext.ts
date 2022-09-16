@@ -1,20 +1,28 @@
 import { createContext, useContext } from 'react';
 
-import { AttributeGroup, AttributeType, Category } from '@services/portal-api';
+import {
+  AttributeGroup,
+  AttributeType,
+  Category,
+  MenuItem
+} from '@services/portal-api';
 
 export interface GlobalDataContextProps {
-  attributeTypes: AttributeType[];
-  attributeGroups: AttributeGroup[];
+  attributeTypes: AttributeType[] | undefined;
+  attributeGroups: AttributeGroup[] | undefined;
+  siteMenuItems: MenuItem[] | undefined;
+  mainMenuItems: MenuItem[] | undefined;
   category: Category | undefined;
-
   getAttributeType: (code: string) => AttributeType | undefined;
   getAttributeGroup: (code: string) => AttributeGroup | undefined;
 }
 
 const initialContext: GlobalDataContextProps = {
-  category: undefined,
   attributeGroups: [],
   attributeTypes: [],
+  siteMenuItems: [],
+  mainMenuItems: [],
+  category: undefined,
   getAttributeGroup: () => {
     throw new Error('Not implemented');
   },

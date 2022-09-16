@@ -8,6 +8,7 @@ import {
 } from '@services/i18n';
 import { render } from '@testing-library/react';
 import { Head, IHeadProps } from '@widgets/metadata/head';
+import React from 'react';
 jest.mock('next/head', () => {
   return {
     __esModule: true,

@@ -9,14 +9,11 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 
+import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
+import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { getAudience } from '@services/i18n';
-import {
-  AttributeGroup,
-  AttributeType,
-  Model,
-  Product,
-  Series
-} from '@services/portal-api';
+import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
+import { Model, Product, Series } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
@@ -29,34 +26,40 @@ import {
   fetchProductsForStaticPaths
 } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
-import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
-import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 
 export interface ProductsProps {
   product: Product;
   series: Series | undefined;
   model: Model | undefined;
-  attributeTypes: AttributeType[];
-  attributeTypeGroups: AttributeGroup[];
 }
 
-const Products: NextPage<ProductsProps & AppLayoutProps> = ({
-  product,
-  siteMenuItems,
-  mainMenuItems
-}) => {
+const Products: NextPage<
+  ProductsProps &
+    Partial<
+      Pick<
+        GlobalDataContextProps,
+        'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
+      >
+    >
+> = ({ product, siteMenuItems, mainMenuItems }) => {
   const { pathname } = useRouter();
 
   return (
-    <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-      <Head
-        pathname={pathname}
-        title="Product"
-        description={product.name?.en || ''}
-      />
-      {product.number}
-    </AppLayout>
+    <GlobalDataProvider
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
+    >
+      <AppLayout>
+        <Head
+          pathname={pathname}
+          title="Product"
+          description={product.name?.en || ''}
+        />
+        {product.number}
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 
@@ -92,7 +95,20 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<ProductsProps & AppLayoutProps>> => {
+): Promise<
+  GetStaticPropsResult<
+    ProductsProps &
+      Partial<
+        Pick<
+          GlobalDataContextProps,
+          | 'attributeGroups'
+          | 'attributeTypes'
+          | 'mainMenuItems'
+          | 'siteMenuItems'
+        >
+      >
+  >
+> => {
   try {
     const { locale } = context;
     const { productSlug } = context.params as ProductsParsedUrlQuery;
@@ -132,7 +148,7 @@ export const getStaticProps: GetStaticProps = async (
         product: productData,
         series: series,
         model: model,
-        attributeTypeGroups: attributeTypeGroupsData,
+        attributeGroups: attributeTypeGroupsData,
         attributeTypes: attributeTypesData,
         siteMenuItems: siteMenuData || [],
         mainMenuItems: mainMenuData || []

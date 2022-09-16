@@ -75,8 +75,10 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
       category={category}
       attributeGroups={attributeTypeGroups}
       attributeTypes={attributeTypes}
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
     >
-      <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
+      <AppLayout>
         <Head
           pathname={router.pathname}
           title={formatMessage(messages.headTitle, {

@@ -19,7 +19,7 @@ import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
-  const { locale, defaultLocale = 'en' } = router;
+  const { locale, defaultLocale = 'en-US' } = router;
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
     return flatten(getMessages(locale));
   }, [locale]);

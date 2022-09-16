@@ -13,7 +13,8 @@ export const en: Messages = {
     site: {
       title: 'Organization',
       collapseLabel: 'navigation.site.collapseLabel',
-      expandLabel: 'navigation.site.expandLabel'
+      expandLabel: 'navigation.site.expandLabel',
+      logoAlt: 'Spraying Systems Company Logo'
     },
     user: {
       title: 'My Account',
@@ -21,6 +22,14 @@ export const en: Messages = {
       expandLabel: 'navigation.user.expandLabel',
       signIn: 'Sign in',
       myProfile: 'My Profile'
+    },
+    searchBar: {
+      placeholder: 'Search by part number...'
+    },
+    menu: {
+      close: 'Menu',
+      viewAllCategories: 'Go to all categories',
+      viewAllCategory: 'Go to all'
     }
   },
   finder: {

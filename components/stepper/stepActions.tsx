@@ -15,24 +15,25 @@ import { rem } from '@utilities/rem';
 
 import { useStepper } from './stepperContext';
 
+const messages = defineMessages({
+  proceed: {
+    id: messageIds.steps.actions.proceed,
+    description: 'Button text for the next step',
+    defaultMessage: 'Proceed'
+  },
+  previous: {
+    id: messageIds.steps.actions.previous,
+    description: 'Button text for the previous step',
+    defaultMessage: 'Previous step'
+  }
+});
+
 export const StepActions: React.FC<{
   onProceedClick?: () => void;
 }> = ({ onProceedClick }) => {
   const { previous, currentIndex, steps, next } = useStepper();
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
-  const messages = defineMessages({
-    proceed: {
-      id: messageIds.steps.actions.proceed,
-      description: 'Button text for the next step',
-      defaultMessage: 'Proceed'
-    },
-    previous: {
-      id: messageIds.steps.actions.previous,
-      description: 'Button text for the previous step',
-      defaultMessage: 'Previous step'
-    }
-  });
 
   const styles: IButtonStyles = {
     root: {

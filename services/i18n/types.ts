@@ -19,6 +19,7 @@ type IProjectSetupMessages = {
 
 type ISiteNavigationMessages = {
   title: string;
+  logoAlt: string;
   expandLabel: string;
   collapseLabel: string;
 };
@@ -27,6 +28,10 @@ type IMainNavigationMessages = {
   expandLabel: string;
   collapseLabel: string;
 };
+type ISiteSearchBarMessages = {
+  placeholder: string;
+};
+
 type IUserNavigationMessages = {
   title: string;
   expandLabel: string;
@@ -111,6 +116,12 @@ type INextHeadMessages = {
   headDescription: string;
 };
 
+type IMenuMessages = {
+  close: string;
+  viewAllCategories: string;
+  viewAllCategory: string;
+};
+
 type IHomeMessages = INextHeadMessages;
 type ICategoryMessages = INextHeadMessages & {
   title: string;
@@ -130,6 +141,8 @@ export type Messages = {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
+    searchBar: ISiteSearchBarMessages;
+    menu: IMenuMessages;
   };
   loading: {
     default: string;

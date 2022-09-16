@@ -1,12 +1,8 @@
-import React, { useContext, useMemo, useState } from 'react';
-
-import { defineMessages, useIntl } from 'react-intl';
-
+import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   ActionButton,
   Checkbox,
   classNamesFunction,
-  FontWeights,
   IStyle,
   Stack,
   Text,
@@ -18,13 +14,16 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { FacetSelectType } from '@services/facet-service/models/facet/facetSelectType';
 import { messageIds } from '@services/i18n';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import {
   FacetFormatter,
   FacetOptionFormatter
 } from '@services/i18n/formatters/facetFormatter';
+import { AttributeType } from '@services/portal-api';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
 import { rem } from '@utilities/rem';
-
+import React, { useContext, useMemo, useState } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   filterActiveCheckboxFacetOption,
   filterFacetOptionWithResults,
@@ -33,9 +32,6 @@ import {
 } from '../helper';
 import { CheckboxFacetPanel } from './checkboxFacetPanel';
 import { FacetContainer } from './facetContainer';
-import { MarkDownDialog } from '@components/dialogs/markDownDialog';
-import { AttributeType } from '@services/portal-api';
-import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 
 const getClassNames = classNamesFunction<
   Record<string, unknown>,
@@ -230,7 +226,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
               )
             : false
         }
-        onChange={(ev, checked) => {
+        onChange={() => {
           onSelect(option.key);
         }}
         checked={option.isActive}
@@ -246,7 +242,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
           }
         }}
         key={option.key}
-        onRenderLabel={props => renderLabel(option, predictedResults || [])}
+        onRenderLabel={() => renderLabel(option, predictedResults || [])}
       />
     );
   }
@@ -258,7 +254,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
     >
       <MarkDownDialog
         dialogProps={{
-          onDismiss: ev => setShowFacetDialog(false),
+          onDismiss: () => setShowFacetDialog(false),
           hidden: !showFacetDialog
         }}
         title={attributeTypeFormatter.formatName()}

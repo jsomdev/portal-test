@@ -23,7 +23,7 @@ export const Environment: React.FC<EnvironmentProps> = ({
     return onRender(isActive);
   }
   if (isActive) {
-    return <>{children}</>;
+    return <React.Fragment>{children}</React.Fragment>;
   }
 
   return null;
