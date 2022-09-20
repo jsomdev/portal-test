@@ -20,7 +20,7 @@
   },
   "lint-staged": {
     "*": [
-      "next lint",
+      "eslint -c .eslintrc.js",
       "npm run format",
       "git add"
     ]
