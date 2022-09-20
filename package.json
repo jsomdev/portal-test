@@ -17,15 +17,7 @@
     "prepare": "husky install",
     "format": "prettier --write"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*": "npm lint:fix prettier --write"
-    
-  },
+ 
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
     "@azure/msal-browser": "^2.18.0",
