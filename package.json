@@ -21,7 +21,7 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lintStaged": {  
+  "lint-staged": {  
       "*": "prettier --write"  
   },
 
