@@ -303,7 +303,7 @@ const stackStyles: IStackStyles = {
   }
 };
 const Responsive: NextPage = () => {
-  const isTabletOrDesktop = useTabletAndDesktop(); (); //try not to use the hooks, as they only work client-side and not when
+  const isTabletOrDesktop = useTabletAndDesktop();//try not to use the hooks, as they only work client-side and not when
   return (
     <div>
       {isTabletOrDesktop && <div>Tablet or desktop</div>}
