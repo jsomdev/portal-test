@@ -28,7 +28,12 @@ module.exports = {
   // Where the setup script can be found (run before tests)
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   // Skip paths
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/', '<rootDir>/coverage', '<rootDir>/dist'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage',
+    '<rootDir>/dist'
+  ],
   // Search node_modules
   moduleDirectories: ['<rootDir>/node_modules'],
   // Have to map the absolute paths defined in tsconfig.json to their relative path
@@ -46,7 +51,7 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.js',
     // Switch to identity-obj-proxy and configure if more advanced css transforming should be supported (e.g: modules)
-    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
   },
   // Coverage output
   coverageDirectory: 'coverage',
@@ -60,15 +65,15 @@ module.exports = {
       branches: 0,
       functions: 0,
       lines: 0,
-      statements: 0,
-    },
-  },
+      statements: 0
+    }
+  }
 };
 ```
 
 ### Test Folder
 
-Tests will be added to the _\_\_tests\_\__ folder. Jest will consider every file in this folder to be a test (testMatch option defaults to this). Tests can still be grouped under a subdirectory. In this project developers are still required to suffix their filename with _.test.ts_.
+Tests will be added to the \_\_\_tests\_\__ folder. Jest will consider every file in this folder to be a test (testMatch option defaults to this). Tests can still be grouped under a subdirectory. In this project developers are still required to suffix their filename with _.test.ts\_.
 
 ```
 📦__tests__
@@ -118,25 +123,40 @@ describe('I18N Tests', () => {
     }
     const actualMessages = getMessages(notSupportedLocale);
     const expectedMessages = getMessages(defaultLocale);
-    expect(actualMessages.pages.i18n.title).toBe(actualMessages.pages.i18n.title);
-    expect(expectedMessages.pages.i18n.description).toBe(expectedMessages.pages.i18n.description);
+    expect(actualMessages.pages.i18n.title).toBe(
+      actualMessages.pages.i18n.title
+    );
+    expect(expectedMessages.pages.i18n.description).toBe(
+      expectedMessages.pages.i18n.description
+    );
   });
 
   it('getMessages returns the messages for a supported locale correctly', () => {
-    if (!supportedLocales?.includes('nl-BE') || !supportedLocales.includes('en-US')) {
+    if (
+      !supportedLocales?.includes('nl-BE') ||
+      !supportedLocales.includes('en-US')
+    ) {
       throw new Error(
         'en-US and nl-BE need to be supported locales for this test to pass. Change tests if this should not be the case'
       );
     }
     const actualMessagesNL: Messages = getMessages('nl-BE');
     const expectedMessagesNL: Messages = nl;
-    expect(actualMessagesNL.pages.i18n.title).toBe(expectedMessagesNL.pages.i18n.title);
-    expect(actualMessagesNL.pages.i18n.description).toBe(expectedMessagesNL.pages.i18n.description);
+    expect(actualMessagesNL.pages.i18n.title).toBe(
+      expectedMessagesNL.pages.i18n.title
+    );
+    expect(actualMessagesNL.pages.i18n.description).toBe(
+      expectedMessagesNL.pages.i18n.description
+    );
 
     const actualMessagesEN: Messages = getMessages('en-US');
     const expectedMessagesEN: Messages = en;
-    expect(actualMessagesEN.pages.i18n.title).toBe(expectedMessagesEN.pages.i18n.title);
-    expect(actualMessagesEN.pages.i18n.description).toBe(expectedMessagesEN.pages.i18n.description);
+    expect(actualMessagesEN.pages.i18n.title).toBe(
+      expectedMessagesEN.pages.i18n.title
+    );
+    expect(actualMessagesEN.pages.i18n.description).toBe(
+      expectedMessagesEN.pages.i18n.description
+    );
   });
 
   it('<Head> renders alternate links correctly', async () => {
@@ -146,21 +166,31 @@ describe('I18N Tests', () => {
     const headProps: IHeadProps = {
       pathname,
       title,
-      description,
+      description
     };
     render(<Head {...headProps} />, {
-      container: document.head,
+      container: document.head
     });
 
-    const links: HTMLLinkElement[] = Array.from(document.getElementsByTagName('link'));
+    const links: HTMLLinkElement[] = Array.from(
+      document.getElementsByTagName('link')
+    );
 
-    const alternateLinks: HTMLLinkElement[] = links.filter((link) => link.rel === 'alternate');
+    const alternateLinks: HTMLLinkElement[] = links.filter(
+      link => link.rel === 'alternate'
+    );
 
     expect(alternateLinks.length).toBe(supportedLocales?.length);
 
-    supportedLocales?.forEach((locale) => {
-      expect(links.filter((link) => link.hreflang === locale).length).toEqual(1);
-      expect(links.filter((link) => link.href === `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/${pathname}`));
+    supportedLocales?.forEach(locale => {
+      expect(links.filter(link => link.hreflang === locale).length).toEqual(1);
+      expect(
+        links.filter(
+          link =>
+            link.href ===
+            `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/${pathname}`
+        )
+      );
     });
   });
 });

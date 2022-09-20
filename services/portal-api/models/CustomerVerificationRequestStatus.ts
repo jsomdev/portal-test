@@ -5,5 +5,5 @@
 export enum CustomerVerificationRequestStatus {
   PENDING = 'Pending',
   APPROVED = 'Approved',
-  DENIED = 'Denied',
+  DENIED = 'Denied'
 }

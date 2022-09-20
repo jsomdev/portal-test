@@ -10,7 +10,7 @@ import type { Series } from './Series';
 export type Model = CatalogEntry & {
   seriesId?: string | null;
   attributes?: Array<Attribute>;
-  
+
   series?: Series | null;
   products?: Array<Product>;
 };

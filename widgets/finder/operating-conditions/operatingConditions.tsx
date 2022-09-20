@@ -17,14 +17,14 @@ import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 
+import { MarkDownDialog } from '@components/dialogs/markDownDialog';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { OperatingConditionItem } from './operatingConditionItem';
 import {
   diffOperatingConditionsFacets,
   validateSprayFinderFacets
 } from './operatingConditionsHelper';
-import { MarkDownDialog } from '@components/dialogs/markDownDialog';
-import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 
 interface SprayFinderFiltersStyles {
   logo: Partial<IImageStyles>;
@@ -85,8 +85,9 @@ export const OperatingConditions: React.FC = () => {
   const [showInputError, setShowInputError] = useState<boolean>(false);
 
   // Operating Conditions that are not immediately persisted to the Finder
-  const [staleOperatingConditions, setStaleOperatingConditions] =
-    useState<{ [key: string]: Facet }>(operatingConditions);
+  const [staleOperatingConditions, setStaleOperatingConditions] = useState<{
+    [key: string]: Facet;
+  }>(operatingConditions);
 
   const isModified = useMemo(() => {
     return diffOperatingConditionsFacets(

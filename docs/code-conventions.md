@@ -9,11 +9,4 @@
 
 # Introduction
 
-
-
 # Conventions
-
-
-
-
-

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { useIntl } from 'react-intl';

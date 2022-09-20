@@ -7,9 +7,9 @@ import { rem } from '@utilities/rem';
 import React from 'react';
 import { CategoryLinkFacet } from '../facet-item/categoryLinkFacet';
 
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import { CheckboxFacet } from '../facet-item/checkboxFacet';
 import { OperatingConditions } from '../operating-conditions/operatingConditions';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 export const FinderPanel: React.FC = () => {
   return (

@@ -1,12 +1,12 @@
-import { NextPage } from 'next';
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
 import {
   mediaQueryFrom,
   Mobile,
   TabletAndDesktop,
   useTabletAndDesktop
 } from '@widgets/media-queries';
-import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
-import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { NextPage } from 'next';
 
 const styles = {
   basicExample: {

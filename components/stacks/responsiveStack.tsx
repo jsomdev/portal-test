@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   IStackProps,
   IStackStyles,
@@ -6,6 +5,7 @@ import {
   Stack
 } from '@fluentui/react';
 import { mediaQueryFrom } from '@widgets/media-queries';
+import React from 'react';
 
 type Direction = 'vertical' | 'horizontal';
 

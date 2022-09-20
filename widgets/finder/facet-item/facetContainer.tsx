@@ -7,8 +7,8 @@ import {
   useTheme
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
-import React from 'react';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+import React from 'react';
 
 interface FacetContainerProps {
   facetTitle: string;
