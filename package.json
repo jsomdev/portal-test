@@ -20,8 +20,8 @@
   },
   "lint-staged": {
     "*": [
+      "next lint",
       "npm run format",
-      "npm run lint:nowarn",
       "git add"
     ]
   },
