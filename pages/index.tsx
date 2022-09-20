@@ -29,6 +29,9 @@ import { useRouter } from 'next/dist/client/router';
 const tst = 2325342
 
 
+
+const test: 123=  123;
+
 import { defineMessages, useIntl } from 'react-intl';
 import { Head } from 'widgets/metadata/head';
 
