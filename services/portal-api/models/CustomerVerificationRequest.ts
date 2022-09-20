@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { CustomerVerificationRequestStatus } from './CustomerVerificationRequestStatus';
 import type { Identity } from './Identity';
 import type { TracedEntity } from './TracedEntity';

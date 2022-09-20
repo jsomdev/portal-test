@@ -1,14 +1,16 @@
+import React from 'react';
+
 import {
+  Messages,
   defaultLanguage,
   en,
   getMessages,
-  Messages,
   nl,
   supportedLocales
 } from '@services/i18n';
 import { render } from '@testing-library/react';
 import { Head, IHeadProps } from '@widgets/metadata/head';
-import React from 'react';
+
 jest.mock('next/head', () => {
   return {
     __esModule: true,

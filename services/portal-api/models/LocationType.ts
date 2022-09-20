@@ -7,5 +7,5 @@ export enum LocationType {
   BILLING = 'Billing',
   SHIPPING = 'Shipping',
   INVOICING = 'Invoicing',
-  OTHER = 'Other',
+  OTHER = 'Other'
 }

@@ -267,23 +267,24 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
 - Mobile first: the default styling of a component should be the mobile css. Add overwrites for the larger screens. (using `...mediaQueryFrom()`)
 - The provided breakpoints:
   - mobile: from 0px width to 1024px. This covers mobile devices, but also smaller tablet and tablets in portrait view. (eg. iPad Air in portrait is 820px wide)
-  - tablet: from 1024px to 1280px. This covers larger screens, from tablets (in landscape) to smaller laptops. 
-  - desktop: from 1280px to *. This covers everything with a lot of screen real estate.
+  - tablet: from 1024px to 1280px. This covers larger screens, from tablets (in landscape) to smaller laptops.
+  - desktop: from 1280px to \*. This covers everything with a lot of screen real estate.
 - In most cases, we'd try to stick to a small and a large layout ("mobile" vs. "tablet and above"), only added specific cases for desktop when relevant.
 - Use `<Mobile>`and `<TabletAndDesktop>` if different components are needed for small and larger screens.
 - For more specific breakpoint usage, use the `<Media>` component.
-- `ResponsiveStack` is provided for switching stack direction based on screen-size. 
+- `ResponsiveStack` is provided for switching stack direction based on screen-size.
 
 ```tsx
 import { NextPage } from 'next';
+
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
 import {
-  mediaQueryFrom,
   Mobile,
   TabletAndDesktop,
+  mediaQueryFrom,
   useTabletAndDesktop
 } from '@widgets/media-queries';
-import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
-import { ResponsiveStack } from '@components/stacks/responsiveStack';
 
 const styles = {
   basicExample: {
@@ -295,7 +296,6 @@ const styles = {
     })
   }
 };
-
 const stackStyles: IStackStyles = {
   root: {
     padding: 5,
@@ -304,9 +304,8 @@ const stackStyles: IStackStyles = {
     })
   }
 };
-
 const Responsive: NextPage = () => {
-  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when SSR
+  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when
   return (
     <div>
       {isTabletOrDesktop && <div>Tablet or desktop</div>}
@@ -347,7 +346,6 @@ const Responsive: NextPage = () => {
     </div>
   );
 };
-
 export default Responsive;
 ```
 

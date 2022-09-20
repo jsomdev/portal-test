@@ -1,7 +1,10 @@
+import { CSSProperties, FC } from 'react';
+
+import Image from 'next/image';
+
 import { Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import Image from 'next/image';
-import { CSSProperties, FC } from 'react';
+
 import { SocialMediaLink } from './siteFooter.types';
 
 const socialMediaLinks: SocialMediaLink[] = [

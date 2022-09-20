@@ -5,5 +5,5 @@
 export enum Menu {
   SITE = 'Site',
   MAIN = 'Main',
-  FOOTER = 'Footer',
+  FOOTER = 'Footer'
 }

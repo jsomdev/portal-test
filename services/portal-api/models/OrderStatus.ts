@@ -6,5 +6,5 @@ export enum OrderStatus {
   NEW = 'New',
   IN_PROCESS = 'InProcess',
   SHIPPED = 'Shipped',
-  CANCELLED = 'Cancelled',
+  CANCELLED = 'Cancelled'
 }

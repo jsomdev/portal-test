@@ -1,6 +1,7 @@
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { Category } from '@services/portal-api';
 import { formatCategoryHref } from '@utilities/formatHref';
+
 import { HomeCategoryItem } from './homeCategories';
 
 export function mapCategoriesToHomeCategoryItems(

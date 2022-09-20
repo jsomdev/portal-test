@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-no-undef */
+import { FC } from 'react';
+
+import Image from 'next/image';
+
 import { Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import Image from 'next/image';
-import { FC } from 'react';
+
 import { SiteFooterStyles } from './siteFooter.types';
 import { SocialMedia } from './socialMedia';
 

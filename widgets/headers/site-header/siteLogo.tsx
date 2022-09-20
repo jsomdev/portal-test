@@ -2,13 +2,13 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
-import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
   siteLogoAlt: {

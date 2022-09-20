@@ -1,21 +1,24 @@
+import { useMemo, useState } from 'react';
+
+import { useIntl } from 'react-intl';
+
 import {
   IButtonStyles,
   IStackStyles,
   IVerticalDividerStyles,
   Stack,
-  useTheme,
-  VerticalDivider
+  VerticalDivider,
+  useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { rem } from '@utilities/rem';
 import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
 import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
-import { useMemo, useState } from 'react';
-import { useIntl } from 'react-intl';
+
 import {
-  mapMenuItemsToMenuItemProps,
-  MenuItemProps
+  MenuItemProps,
+  mapMenuItemsToMenuItemProps
 } from '../main-header/mainHeader.helper';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';

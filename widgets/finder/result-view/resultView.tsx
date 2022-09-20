@@ -1,3 +1,8 @@
+import React, { useState } from 'react';
+
+import Image from 'next/image';
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IPanelStyles,
   IStackItemStyles,
@@ -22,9 +27,7 @@ import {
 import { rem } from '@utilities/rem';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+
 import { FinderPanel } from '../panel/finderPanel';
 import { ActiveFilters } from './activeFilters';
 import { FilterResultsButton, ResultsHeader } from './resultsHeader';

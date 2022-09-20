@@ -1,3 +1,12 @@
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
+import { useRouter } from 'next/dist/client/router';
+import JsonFormatter from 'react-json-formatter';
+
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { getAudience } from '@services/i18n';
@@ -8,14 +17,6 @@ import {
 } from '@services/portal-api/menuItems';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import { Head } from '@widgets/metadata/head';
-import {
-  GetStaticProps,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-  NextPage
-} from 'next';
-import { useRouter } from 'next/dist/client/router';
-import JsonFormatter from 'react-json-formatter';
 
 const User: NextPage = () => {
   const { pathname } = useRouter();

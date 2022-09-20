@@ -10,10 +10,10 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { rem } from '@utilities/rem';
 
 import { FormikComboBoxProps } from './formikWrappers.types';
 import { useFormikWrapperStyles } from './useFormikWrapperStyles';
-import { rem } from '@utilities/rem';
 
 export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   name,

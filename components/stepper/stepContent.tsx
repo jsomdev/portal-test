@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
-import React from 'react';
 
 import { useStepper } from './stepperContext';
 

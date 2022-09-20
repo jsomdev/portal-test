@@ -1,11 +1,13 @@
-import { IStyle } from '@fluentui/react';
 import React from 'react';
+
+import { IStyle } from '@fluentui/react';
+
 import {
   Breakpoint,
-  getMediaQueryString,
   Media,
   MediaProps,
-  MediaQuery
+  MediaQuery,
+  getMediaQueryString
 } from './media';
 
 /**

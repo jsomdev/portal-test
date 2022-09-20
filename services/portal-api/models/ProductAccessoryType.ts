@@ -5,5 +5,5 @@
 export enum ProductAccessoryType {
   GENERAL = 'General',
   SPARE_PART = 'SparePart',
-  OTHER = 'Other',
+  OTHER = 'Other'
 }

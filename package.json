@@ -10,10 +10,20 @@
     "start:proxy": "concurrently --kill-others \"local-ssl-proxy --source 3000 --target 3002\" \"npm run start\"",
     "lint": "next lint --dir pages --dir utilities --dir widgets --dir services --dir providers",
     "lint:nowarn": "next lint --dir pages --dir utilities --dir widgets --dir services --dir providers --quiet",
-    "lint:fix": "next lint --dir pages --dir utilities --dir widgets --dir services --dir providers --fix",
+    "lint:fix": "next lint --dir pages --dir utilities --dir components --dir widgets --dir services --dir providers --fix",
     "test": "cross-env  NODE_ENV='test' jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "precommit": "lint-staged",
+    "format": "prettier -write -config .prettierrc",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint -c .eslintrc.js --fix",
+      "npm run format",
+      "git add"
+    ]
   },
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
@@ -41,6 +51,7 @@
     "@testing-library/dom": "^8.6.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/flat": "^5.0.2",
     "@types/jest": "^27.0.2",
     "@types/nprogress": "^0.2.0",
@@ -59,8 +70,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.2.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.4.1",
     "typescript": "^4.4.3"
   }

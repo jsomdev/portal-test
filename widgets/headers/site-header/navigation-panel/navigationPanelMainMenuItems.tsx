@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   ActionButton,
   IButtonStyles,
@@ -7,7 +9,6 @@ import {
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
-import React from 'react';
 
 interface NavigationPanelMainMenuItemsProps {
   items: MenuItemProps[];

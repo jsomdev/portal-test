@@ -1,7 +1,8 @@
+import { IntlShape } from 'react-intl';
+
 import { messageIds } from '@services/i18n';
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from '@services/portal-api/models/MenuItem';
-import { IntlShape } from 'react-intl';
 
 export interface MenuItemProps {
   href: string;

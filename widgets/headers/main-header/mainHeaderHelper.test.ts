@@ -1,5 +1,7 @@
-import { MenuItem } from '@services/portal-api';
 import { createIntl } from 'react-intl';
+
+import { MenuItem } from '@services/portal-api';
+
 import { mapMenuItemsToMenuItemProps } from './mainHeader.helper';
 
 describe('mapMenuItemsToMenuItemProps', () => {

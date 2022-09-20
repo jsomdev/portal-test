@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IPanelStyles,
   IStackStyles,
@@ -12,9 +14,8 @@ import {
 } from '@fluentui/react';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
-import { rem } from '@utilities/rem';
-import { defineMessages, useIntl } from 'react-intl';
 import { messageIds } from '@services/i18n';
+import { rem } from '@utilities/rem';
 
 export interface CheckboxFacetPanelProps {
   isPanelOpen: boolean;

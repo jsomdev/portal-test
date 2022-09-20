@@ -1,10 +1,11 @@
-import { MultilingualString } from './MultilingualString';
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { AudienceFlags } from './AudienceFlags';
 import type { Menu } from './Menu';
+import { MultilingualString } from './MultilingualString';
 import type { TracedEntity } from './TracedEntity';
 import type { Url } from './Url';
 
