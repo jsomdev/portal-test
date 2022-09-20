@@ -15,8 +15,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
-    "format": "prettier --write"
-  }, 
+    "format": "prettier -w . --cache --config .prettierrc"
+  },
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
     "@azure/msal-browser": "^2.18.0",
