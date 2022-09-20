@@ -36,6 +36,8 @@ export interface HomeProps {
   categories: Category[];
 }
 
+const test = 123;
+
 const messages = defineMessages({
   headTitle: {
     id: messageIds.pages.home.headTitle,
