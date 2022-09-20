@@ -21,6 +21,9 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lintStaged": {  
+      "*": "prettier --write"  
+  },
 
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
