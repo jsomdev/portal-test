@@ -1,12 +1,14 @@
-import { getMarkdownByFileName } from '@docs/data';
-import { messageIds, supportedLocales } from '@services/i18n';
+import React from 'react';
+
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import React from 'react';
 import { useIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import { Head } from 'widgets/metadata/head';
+
+import { getMarkdownByFileName } from '@docs/data';
+import { messageIds, supportedLocales } from '@services/i18n';
 
 interface I18NProps {
   markdown: string;

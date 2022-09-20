@@ -1,15 +1,16 @@
+import React from 'react';
+
 import { Stack, Text, useTheme } from '@fluentui/react';
 import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { rem } from '@utilities/rem';
-import React from 'react';
-import { CategoryLinkFacet } from '../facet-item/categoryLinkFacet';
+import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
+import { CategoryLinkFacet } from '../facet-item/categoryLinkFacet';
 import { CheckboxFacet } from '../facet-item/checkboxFacet';
 import { OperatingConditions } from '../operating-conditions/operatingConditions';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 export const FinderPanel: React.FC = () => {
   return (

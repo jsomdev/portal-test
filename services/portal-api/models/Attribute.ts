@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { AttributeSettingsFlags } from './AttributeSettingsFlags';
 import type { Condition } from './Condition';
 import type { Display } from './Display';

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,33 +17,15 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@public/*": [
-        "public/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@services/*": [
-        "services/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@docs/*": [
-        "docs/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@widgets/*": [
-        "widgets/*"
-      ],
-      "@utilities/*": [
-        "utilities/*"
-      ],
-      "@providers/*": [
-        "providers/*"
-      ]
+      "@public/*": ["public/*"],
+      "@pages/*": ["pages/*"],
+      "@services/*": ["services/*"],
+      "@styles/*": ["styles/*"],
+      "@docs/*": ["docs/*"],
+      "@components/*": ["components/*"],
+      "@widgets/*": ["widgets/*"],
+      "@utilities/*": ["utilities/*"],
+      "@providers/*": ["providers/*"]
     },
     "incremental": true
   },
@@ -58,7 +36,5 @@
     "pages/_document.js",
     "pages/categories/[...categorySlug].tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -1,13 +1,14 @@
+import React from 'react';
+
 import {
   FontWeights,
   IButtonStyles,
-  IconButton,
   IStyle,
+  IconButton,
   Stack,
   useTheme
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
-import React from 'react';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 interface FacetContainerProps {

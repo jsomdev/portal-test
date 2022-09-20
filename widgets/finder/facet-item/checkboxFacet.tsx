@@ -1,11 +1,15 @@
+import React, { useContext, useMemo, useState } from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
+
 import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   ActionButton,
   Checkbox,
-  classNamesFunction,
   IStyle,
   Stack,
   Text,
+  classNamesFunction,
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
@@ -22,8 +26,7 @@ import {
 import { AttributeType } from '@services/portal-api';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
 import { rem } from '@utilities/rem';
-import React, { useContext, useMemo, useState } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+
 import {
   filterActiveCheckboxFacetOption,
   filterFacetOptionWithResults,

@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
+import { getMediaQueryString } from '@widgets/media-queries/media';
+import { MediaQuery } from '@widgets/media-queries/media';
+
 import {
   MediaQueryHook,
   MediaQueryMatchAction,
   MediaQueryMatchState
 } from './mediaQuery.types';
-import { getMediaQueryString } from '@widgets/media-queries/media';
-import { MediaQuery } from '@widgets/media-queries/media';
 
 function mediaQueryReducer(
   state: MediaQueryMatchState,

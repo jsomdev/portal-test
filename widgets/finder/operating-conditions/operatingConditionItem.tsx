@@ -3,11 +3,11 @@ import { useContext, useEffect, useState } from 'react';
 import {
   FontWeights,
   IButtonStyles,
-  IconButton,
   ISliderStyles,
   IStackStyles,
   ITextFieldStyles,
   ITextStyles,
+  IconButton,
   Slider,
   Stack,
   Text,

@@ -5,11 +5,11 @@ import { FieldArray, useFormikContext } from 'formik';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   ActionButton,
-  IconButton,
   IImageStyles,
-  Image,
   ITextFieldStyles,
   ITextStyles,
+  IconButton,
+  Image,
   Label,
   Modal,
   Stack,

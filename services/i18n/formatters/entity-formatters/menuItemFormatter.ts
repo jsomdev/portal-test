@@ -1,4 +1,5 @@
 import { UrlFormatter } from '@services/i18n/formatters/entity-formatters/urlFormatter';
+
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 import { MenuItem } from './../../../portal-api/models/MenuItem';
 

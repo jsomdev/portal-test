@@ -4,5 +4,5 @@
 
 export enum TransactionGateway {
   PAY_FABRIC = 'PayFabric',
-  AUTHORIZE_NET = 'AuthorizeNet',
+  AUTHORIZE_NET = 'AuthorizeNet'
 }

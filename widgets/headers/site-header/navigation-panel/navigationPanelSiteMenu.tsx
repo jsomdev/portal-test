@@ -1,7 +1,8 @@
+import React from 'react';
+
 import { ActionButton, IButtonStyles, Stack, useTheme } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
-import React from 'react';
 
 interface NavigationPanelSiteMenuProps {
   items: MenuItemProps[];

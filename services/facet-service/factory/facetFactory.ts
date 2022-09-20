@@ -1,5 +1,6 @@
 import { brandFacet } from '../facets/brand';
 import { capacitySizeFacet } from '../facets/capacitySize';
+import { categoryIdFacet } from '../facets/categoryId';
 import { designFeatureFacet } from '../facets/designFeature';
 import { inletConnectionSizeFacet } from '../facets/inletConnectionSize';
 import { inletConnectionTypeFacet } from '../facets/inletConnectionType';
@@ -12,7 +13,6 @@ import { sprayAngleRangeFacet } from '../facets/range-facets/sprayAngleRangeProd
 import { relativeDropSizeGroupFacet } from '../facets/relativeDropSizeGroup';
 import { sprayAngleCatalogCodeFacet } from '../facets/sprayAngleCatalogCode';
 import { sprayPatternFacet } from '../facets/sprayPattern';
-import { categoryIdFacet } from '../facets/categoryId';
 import { strainerScreenMeshSizeFacet } from '../facets/strainerScreenMeshSize';
 import { Facet } from '../models/facet/facet';
 import { FacetKey } from '../models/facet/facetKey';

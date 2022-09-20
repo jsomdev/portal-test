@@ -1,5 +1,6 @@
 import { AccountInfo } from '@azure/msal-browser';
 import { Product } from '@services/portal-api/models/Product';
+
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 
 export class ProductFormatter {

@@ -4,5 +4,5 @@
 
 export enum PaymentMethod {
   CREDIT_CARD = 'CreditCard',
-  PURCHASE_ORDER = 'PurchaseOrder',
+  PURCHASE_ORDER = 'PurchaseOrder'
 }

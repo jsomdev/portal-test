@@ -1,6 +1,3 @@
-import '@styles/globals.css';
-import '../public/nprogress.css';
-
 import { useEffect, useMemo } from 'react';
 
 import { flatten } from 'flat';
@@ -15,7 +12,10 @@ import { UserProvider } from '@providers/user/userProvider';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
+import '@styles/globals.css';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
+
+import '../public/nprogress.css';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();

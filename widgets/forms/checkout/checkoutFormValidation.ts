@@ -3,9 +3,9 @@ import * as yup from 'yup';
 
 import { formErrorMessages, formRequiredMessages } from '../formMessages';
 import {
+  PaymentMethodFieldNames,
   checkoutFormFields,
-  checkoutFormPaymentMethodFields,
-  PaymentMethodFieldNames
+  checkoutFormPaymentMethodFields
 } from './checkoutFormHelper';
 
 // TODO GR make typesafe

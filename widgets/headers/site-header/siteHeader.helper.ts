@@ -1,4 +1,5 @@
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
+
 import { MenuItem } from '../../../services/portal-api/models/MenuItem';
 import { MenuItemProps } from '../main-header/mainHeader.helper';
 

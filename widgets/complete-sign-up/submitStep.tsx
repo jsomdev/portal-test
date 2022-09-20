@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useFormikContext } from 'formik';
 
 import {
-  Icon,
   ISpinnerStyles,
   ITextStyles,
+  Icon,
   Spinner,
   SpinnerSize,
   Stack,
