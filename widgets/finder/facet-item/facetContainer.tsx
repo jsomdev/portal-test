@@ -11,6 +11,7 @@ import {
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
+console.log(123);
 interface FacetContainerProps {
   facetTitle: string;
   onShowInfo?: () => void;
