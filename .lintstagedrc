@@ -1,0 +1,7 @@
+
+{
+    "*": [
+      "npm format",
+      "npm lint:fix"
+    ]
+}
