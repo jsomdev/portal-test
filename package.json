@@ -15,13 +15,13 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
-    "format": "prettier -w . --cache --config .prettierrc",
+    "format": "prettier -write -config .prettierrc",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*": [
-      "prettier -write -config .prettierrc",
-      "npm run lint:fix",
+      "npm run format",
+      "npm run lint:nowarn",
       "git add"
     ]
   },

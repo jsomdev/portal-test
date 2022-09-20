@@ -26,6 +26,8 @@ console.log(123);
 
 const test: 123 = 1234;
 
+Hello;
+
 import { defineMessages, useIntl } from 'react-intl';
 import { Head } from 'widgets/metadata/head';
 
