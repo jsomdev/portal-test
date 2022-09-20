@@ -16,8 +16,7 @@
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
     "format": "prettier --write"
-  },
- 
+  }, 
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
     "@azure/msal-browser": "^2.18.0",
