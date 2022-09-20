@@ -20,7 +20,7 @@
   },
   "lint-staged": {
     "*": [
-      "eslint -c .eslintrc.js",
+      "eslint -c .eslintrc.js --fix",
       "npm run format",
       "git add"
     ]
