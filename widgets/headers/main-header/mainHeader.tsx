@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
-
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,
@@ -19,11 +18,12 @@ import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { SiteHeaderButton } from '../site-header/siteHeaderButton';
 import {
-  mapMenuItemsToMenuItemProps,
-  MenuItemProps
+  MenuItemProps,
+  mapMenuItemsToMenuItemProps
 } from './mainHeader.helper';
 import { MainHeaderMenu } from './mainHeaderMenu';
 

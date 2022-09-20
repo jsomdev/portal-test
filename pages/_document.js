@@ -2,7 +2,7 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import { resetIds, Stylesheet } from '@fluentui/react';
+import { Stylesheet, resetIds } from '@fluentui/react';
 import { mediaStyles } from '@widgets/media-queries/media';
 
 // Fluent UI React (Fabric) 7 or earlier

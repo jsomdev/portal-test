@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
-import { getMediaQueryString, MediaQuery } from '@widgets/media-queries/media';
+import { getMediaQueryString } from '@widgets/media-queries/media';
+import { MediaQuery } from '@widgets/media-queries/media';
+
 import {
   MediaQueryHook,
   MediaQueryMatchAction,

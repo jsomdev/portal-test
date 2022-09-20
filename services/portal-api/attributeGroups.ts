@@ -1,5 +1,7 @@
-import { DataCacheManager } from '@services/cache/dataCache';
 import path from 'path';
+
+import { DataCacheManager } from '@services/cache/dataCache';
+
 import { AttributeGroup } from './models/AttributeGroup';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';

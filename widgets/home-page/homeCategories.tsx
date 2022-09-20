@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 
 import { Stack } from '@fluentui/react';
 import { Category } from '@services/portal-api';
+
 import { mapCategoriesToHomeCategoryItems } from './homeCategoriesHelper';
 
 interface IHomeCategoriesSectionProps {

@@ -1,3 +1,8 @@
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
+import { defineMessages, useIntl } from 'react-intl';
+import { Head } from 'widgets/metadata/head';
+
 import {
   GlobalDataProvider,
   GlobalDataProviderProps
@@ -13,30 +18,12 @@ import {
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
 import { AppLayout } from '@widgets/layouts/appLayout';
-
 import { TabletAndDesktop } from '@widgets/media-queries';
 import { MediaContextProvider } from '@widgets/media-queries/media';
-import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
-
-import { useRouter } from 'next/dist/client/router';
-
-const tst = 2325342;
-
-console.log(123);
-
-const test: 123 = 1234;
-
-Hello;
-confirm();
-
-import { defineMessages, useIntl } from 'react-intl';
-import { Head } from 'widgets/metadata/head';
 
 export interface HomeProps {
   categories: Category[];
 }
-
-const test = 1234;
 
 const messages = defineMessages({
   headTitle: {

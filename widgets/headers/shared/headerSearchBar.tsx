@@ -1,3 +1,8 @@
+import React, { useEffect, useRef, useState } from 'react';
+
+import Link from 'next/link';
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   ActionButton,
   Callout,
@@ -7,18 +12,15 @@ import {
   IOverlayStyles,
   ISearchBoxStyles,
   List,
-  mergeStyleSets,
   Overlay,
   SearchBox,
   Stack,
+  mergeStyleSets,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
-import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
 
 /**
  * This component is a work in progress and not yet functional.

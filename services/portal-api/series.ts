@@ -1,5 +1,7 @@
-import { DataCacheManager } from '@services/cache/dataCache';
 import path from 'path';
+
+import { DataCacheManager } from '@services/cache/dataCache';
+
 import { Resource } from './models/Resource';
 import { Series } from './models/Series';
 import { OdataCollection } from './o-data/oData';

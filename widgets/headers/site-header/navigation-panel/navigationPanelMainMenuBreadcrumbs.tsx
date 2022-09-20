@@ -1,9 +1,11 @@
+import React from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
+
 import { ActionButton, IButtonStyles, Stack, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
-import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
 
 interface NavigationPanelMainMenuBreadcrumbsProps {
   breadCrumbItem: MenuItemProps | undefined;

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useStepper } from '@components/stepper/stepperContext';
 import {
   DefaultButton,
@@ -8,7 +10,6 @@ import {
 } from '@fluentui/react';
 import { useClaims } from '@services/authentication/claims';
 import { FormStepActions } from '@widgets/forms/formStepActions';
-import React from 'react';
 
 import { useMe } from '../../providers/user/userContext';
 import { getCompleteSignUpFieldNames } from './completeSignUpFormHelper';

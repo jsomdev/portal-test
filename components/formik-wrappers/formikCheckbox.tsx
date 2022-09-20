@@ -4,8 +4,8 @@ import { useField } from 'formik';
 
 import {
   Checkbox,
-  ICheckboxProps,
   ICheckStyles,
+  ICheckboxProps,
   MessageBar,
   MessageBarType,
   Stack,

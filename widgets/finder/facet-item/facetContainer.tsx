@@ -1,14 +1,15 @@
+import React from 'react';
+
 import {
   FontWeights,
   IButtonStyles,
-  IconButton,
   IStyle,
+  IconButton,
   Stack,
   useTheme
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
-import React from 'react';
 
 interface FacetContainerProps {
   facetTitle: string;

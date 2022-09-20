@@ -275,15 +275,16 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
 - `ResponsiveStack` is provided for switching stack direction based on screen-size.
 
 ```tsx
+import { NextPage } from 'next';
+
 import { ResponsiveStack } from '@components/stacks/responsiveStack';
-import { IStackStyles, mergeStyles, Stack, StackItem } from '@fluentui/react';
+import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
 import {
-  mediaQueryFrom,
   Mobile,
   TabletAndDesktop,
+  mediaQueryFrom,
   useTabletAndDesktop
 } from '@widgets/media-queries';
-import { NextPage } from 'next';
 
 const styles = {
   basicExample: {
@@ -295,7 +296,6 @@ const styles = {
     })
   }
 };
-
 const stackStyles: IStackStyles = {
   root: {
     padding: 5,
@@ -304,9 +304,8 @@ const stackStyles: IStackStyles = {
     })
   }
 };
-
 const Responsive: NextPage = () => {
-  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when SSR
+  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when
   return (
     <div>
       {isTabletOrDesktop && <div>Tablet or desktop</div>}
@@ -347,7 +346,6 @@ const Responsive: NextPage = () => {
     </div>
   );
 };
-
 export default Responsive;
 ```
 

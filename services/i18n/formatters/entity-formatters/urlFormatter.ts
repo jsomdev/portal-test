@@ -1,4 +1,5 @@
 import { Url } from '@services/portal-api';
+
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 
 export class UrlFormatter {

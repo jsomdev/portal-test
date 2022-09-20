@@ -1,3 +1,8 @@
+import React from 'react';
+
+import Link from 'next/link';
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   ActionButton,
   IButtonStyles,
@@ -7,9 +12,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import Link from 'next/link';
-import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+
 import { MenuItemProps } from './mainHeader.helper';
 
 type MainHeaderMenuProps = {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IButtonStyles,
   IPanelProps,
@@ -14,7 +16,7 @@ import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import { SiteHeaderButton } from '@widgets/headers/site-header/siteHeaderButton';
-import { defineMessages, useIntl } from 'react-intl';
+
 import { NavigationPanelMainMenu } from './navigationPanelMainMenu';
 import { NavigationPanelSiteMenu } from './navigationPanelSiteMenu';
 

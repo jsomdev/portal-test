@@ -1,3 +1,7 @@
+import React, { useCallback, useMemo, useState } from 'react';
+
+import { useRouter } from 'next/router';
+
 import {
   FontWeights,
   IStackItemStyles,
@@ -8,8 +12,7 @@ import {
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
-import { useRouter } from 'next/router';
-import React, { useCallback, useMemo, useState } from 'react';
+
 import { NavigationPanelMainMenuBreadcrumbs } from './navigationPanelMainMenuBreadcrumbs';
 import { NavigationPanelMainMenuItems } from './navigationPanelMainMenuItems';
 

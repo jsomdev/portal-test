@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { AccountStatus } from './AccountStatus';
 import type { AccountType } from './AccountType';
 import type { Location } from './Location';

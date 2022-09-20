@@ -1,8 +1,8 @@
 /* eslint-disable no-case-declarations */
 import { formatCamelCase } from '../../../utilities/formatText';
 import {
-  getRangeFacetUnit,
-  RangeFacetMatchType
+  RangeFacetMatchType,
+  getRangeFacetUnit
 } from '../facets/range-facets/rangeFacetHelper';
 import { Facet } from '../models/facet/facet';
 import { FacetCategory } from '../models/facet/facetCategory';
