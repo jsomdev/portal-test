@@ -18,7 +18,6 @@ import { useFormikWrapperStyles } from './useFormikWrapperStyles';
 
 export const FormikMaskedTextField: React.FC<FormikMaskedTextFieldProps> = ({
   name,
-  iconProps,
   validationProps,
   ...props
 }) => {

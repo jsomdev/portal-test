@@ -1,8 +1,19 @@
 {
+
   "cSpell.words": ["hreflang", "LOCALSTORAGEKEYS", "QUERYKEYS"],
+
   "editor.codeActionsOnSave": {
+
     "source.fixAll.eslint": true,
-    "source.formatDocument": true
+
+    "source.formatDocument": true,
+
+    "source.organizeImports": true
+
   },
+
+  "prettier.configPath": ".prettierrc",
+
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+
 }

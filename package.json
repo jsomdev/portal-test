@@ -13,7 +13,8 @@
     "lint:fix": "next lint --dir pages --dir utilities --dir widgets --dir services --dir providers --fix",
     "test": "cross-env  NODE_ENV='test' jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "format": "prettier --write ./pages/dev/user.{ts,tsx,scss,css,json}"
   },
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",

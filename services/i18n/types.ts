@@ -120,6 +120,22 @@ type IMenuMessages = {
   close: string;
   viewAllCategories: string;
   viewAllCategory: string;
+  accountPage: string;
+};
+
+type IAccountPageMessage = {
+  linkText: string;
+  title: string;
+};
+
+type IAccountPageMessages = {
+  overview: IAccountPageMessage;
+  orders: IAccountPageMessage;
+  quoteRequests: IAccountPageMessage;
+  infoAndPreferences: IAccountPageMessage;
+  signOut: {
+    buttonText: string;
+  };
 };
 
 type IHomeMessages = INextHeadMessages;
@@ -143,6 +159,7 @@ export type Messages = {
     user: IUserNavigationMessages;
     searchBar: ISiteSearchBarMessages;
     menu: IMenuMessages;
+    account: IAccountPageMessages;
   };
   loading: {
     default: string;

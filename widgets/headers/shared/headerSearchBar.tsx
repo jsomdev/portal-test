@@ -27,6 +27,8 @@ import { defineMessages, useIntl } from 'react-intl';
  *
  */
 
+//TODO GR check classname desktop props
+
 const messages = defineMessages({
   searchPlaceholder: {
     id: messageIds.navigation.searchBar.placeholder,

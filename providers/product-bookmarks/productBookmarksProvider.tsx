@@ -1,9 +1,6 @@
-import React, { useCallback, useMemo } from 'react';
-
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-
 import { useIsAuthenticated } from '@azure/msal-react';
-
+import React, { useCallback, useMemo } from 'react';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { Setting } from '../../services/portal-api/models/Setting';
 import { fetchBaseDesignsByIds } from '../../services/portal-api/products';
 import {

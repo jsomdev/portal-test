@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   IButtonStyles,
   IPanelProps,
@@ -14,6 +12,7 @@ import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 import { SiteHeaderButton } from '@widgets/headers/site-header/siteHeaderButton';
+import React, { useMemo } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { NavigationPanelMainMenu } from './navigationPanelMainMenu';
 import { NavigationPanelSiteMenu } from './navigationPanelSiteMenu';
@@ -30,11 +29,41 @@ export interface NavigationPanelStyles {
   closeButton: IButtonStyles;
 }
 
+export type NavigationPanelType = 'site' | 'user';
+
 const messages = defineMessages({
   closeMenu: {
     id: messageIds.navigation.menu.close,
     description: 'Close panel button text',
     defaultMessage: 'Menu'
+  },
+  accountPage: {
+    id: messageIds.navigation.menu.accountPage,
+    description: 'Link text for account page',
+    defaultMessage: 'My Account'
+  }
+});
+
+const accountMessages = defineMessages({
+  overview: {
+    id: messageIds.navigation.account.overview.linkText,
+    description: 'Link text for account overview',
+    defaultMessage: 'Overview'
+  },
+  orders: {
+    id: messageIds.navigation.account.orders.linkText,
+    description: 'Link text for orders',
+    defaultMessage: 'Orders'
+  },
+  quoteRequests: {
+    id: messageIds.navigation.account.quoteRequests.linkText,
+    description: 'Link text for quote requests',
+    defaultMessage: 'Quote Requests'
+  },
+  preferences: {
+    id: messageIds.navigation.account.infoAndPreferences.linkText,
+    description: 'Link text for quote info and preferences',
+    defaultMessage: 'Info & Preferences'
   }
 });
 
@@ -45,6 +74,36 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
 }) => {
   const { spacing, semanticColors, palette } = useTheme();
   const { formatMessage } = useIntl();
+
+  const customSiteMenuItems: MenuItemProps[] = useMemo(() => {
+    const accountMenuItem: MenuItemProps = {
+      // TODO replace hard coded account href
+      href: '/account',
+      text: formatMessage(messages.accountPage)
+    };
+    return [accountMenuItem, ...siteMenuItems];
+  }, [formatMessage, siteMenuItems]);
+
+  const customUserMenuItems: MenuItemProps[] = useMemo((): MenuItemProps[] => {
+    return [
+      {
+        href: '/account',
+        text: formatMessage(accountMessages.overview)
+      },
+      {
+        href: '/account/orders',
+        text: formatMessage(accountMessages.orders)
+      },
+      {
+        href: '/account/quote-requests',
+        text: formatMessage(accountMessages.quoteRequests)
+      },
+      {
+        href: '/account/info-preferences',
+        text: formatMessage(accountMessages.preferences)
+      }
+    ];
+  }, [formatMessage]);
 
   const styles: NavigationPanelStyles = {
     panel: {
@@ -101,7 +160,8 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
     >
       <Stack>
         <NavigationPanelMainMenu items={mainMenuItems} />
-        <NavigationPanelSiteMenu items={siteMenuItems} />
+        <NavigationPanelMainMenu items={customUserMenuItems} />
+        <NavigationPanelSiteMenu items={customSiteMenuItems} />
       </Stack>
     </Panel>
   );

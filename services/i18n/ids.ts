@@ -29,7 +29,29 @@ export const messageIds: Messages = {
     menu: {
       close: 'navigation.menu.close',
       viewAllCategories: 'navigation.menu.viewAllCategories',
-      viewAllCategory: 'navigation.menu.viewAllCategory'
+      viewAllCategory: 'navigation.menu.viewAllCategory',
+      accountPage: 'navigation.menu.accountPage'
+    },
+    account: {
+      overview: {
+        linkText: 'pages.account.overview.linkText',
+        title: 'pages.account.overview.title'
+      },
+      orders: {
+        linkText: 'pages.account.orders.linkText',
+        title: 'pages.account.orders.title'
+      },
+      quoteRequests: {
+        linkText: 'pages.account.quoteRequest.linkText',
+        title: 'pages.account.quoteRequest.title'
+      },
+      infoAndPreferences: {
+        linkText: 'pages.account.infoAndPreferencess.linkText',
+        title: 'pages.account.infoAndPreferencess.title'
+      },
+      signOut: {
+        buttonText: 'pages.account.signOut.buttonText'
+      }
     }
   },
   finder: {
@@ -106,6 +128,7 @@ export const messageIds: Messages = {
       headTitle: 'pages.series.headTitle',
       headDescription: 'pages.series.headDescription'
     },
+
     docs: {
       i18n: {
         title: 'pages.docs.i18n.title',
