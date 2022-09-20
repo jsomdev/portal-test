@@ -20,11 +20,11 @@ import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 
 import { useRouter } from 'next/dist/client/router';
 
-const tst = 23253424;
+const tst = 2325342;
 
 console.log(123);
 
-const test: 123 = 123;
+const test: 123 = 1234;
 
 import { defineMessages, useIntl } from 'react-intl';
 import { Head } from 'widgets/metadata/head';
