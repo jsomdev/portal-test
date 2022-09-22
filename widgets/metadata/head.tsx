@@ -29,6 +29,7 @@ export const Head: React.FC<IHeadProps> = props => {
       <meta httpEquiv="Accept-CH" content="Viewport-Width, Width, Downlink" />
       <meta name="title" content={title} />
       <meta name="description" content={description} />
+
       <link rel="icon" href={icon.href} />
       {getHeadAlternateLinks(pathname || '')}
     </NextHead>

@@ -22,11 +22,15 @@ type ISiteNavigationMessages = {
   logoAlt: string;
   expandLabel: string;
   collapseLabel: string;
+  navigationAriaLabel: string;
 };
 type IMainNavigationMessages = {
   title: string;
   expandLabel: string;
   collapseLabel: string;
+  cartAriaLabel: string;
+  accessPadAriaLabel: string;
+  userAriaLabel: string;
 };
 type ISiteSearchBarMessages = {
   placeholder: string;
@@ -122,7 +126,44 @@ type IMenuMessages = {
   viewAllCategory: string;
 };
 
-type IHomeMessages = INextHeadMessages;
+type IHomeMessages = INextHeadMessages & {
+  sections: {
+    hero: {
+      imageAlt: string;
+      title: string;
+      description: string;
+      callToAction: string;
+    };
+    catalog: {
+      title: string;
+    };
+    brands: {
+      title: string;
+    };
+    signUp: {
+      title: string;
+      callToAction: string;
+      steps: {
+        first: {
+          title: string;
+          description: string;
+        };
+        second: {
+          title: string;
+          description: string;
+        };
+        third: {
+          title: string;
+          description: string;
+        };
+      };
+    };
+    applications: {
+      title: string;
+    };
+  };
+};
+
 type ICategoryMessages = INextHeadMessages & {
   title: string;
   titleWithSearch: string;
@@ -149,9 +190,7 @@ export type Messages = {
     user: ILoadingUserMessages;
   };
   pages: {
-    home: IHomeMessages & {
-      backgroundImageAlt: string;
-    };
+    home: IHomeMessages;
     category: ICategoryMessages;
     model: IModelMessages;
     series: ISeriesMessages;

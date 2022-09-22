@@ -8,9 +8,13 @@ export const nl: Messages = {
     main: {
       title: 'Spray Finder',
       collapseLabel: 'navigation.main.collapseLabel',
-      expandLabel: 'navigation.main.expandLabel'
+      expandLabel: 'navigation.main.expandLabel',
+      cartAriaLabel: 'Winkelmandje',
+      accessPadAriaLabel: 'Snel menu',
+      userAriaLabel: 'Gebruikers Menu'
     },
     site: {
+      navigationAriaLabel: 'Navigatie menu',
       title: 'Spraying Systems Co.',
       collapseLabel: 'navigation.site.collapseLabel',
       expandLabel: 'navigation.site.expandLabel',
@@ -90,7 +94,45 @@ export const nl: Messages = {
     home: {
       headTitle: 'Experten in Sproeitechnologie | Spraying Systems Co.',
       headDescription: 'pages.home.headDescription',
-      backgroundImageAlt: ''
+      sections: {
+        signUp: {
+          title: 'Meld u aan voor de beste koopervaring',
+          callToAction: 'Creëer een account of log in',
+          steps: {
+            first: {
+              title: 'Registreren',
+              description:
+                'Maak een account aan die gelinkt is aan uw bedrijf en voltooi vervolgens uw profiel'
+            },
+            second: {
+              title: 'Start met uw aankopen',
+              description:
+                'Vergelijk producten en voeg de producten toe die u nodig heeft. Uw winkelmandje zal gelinkt zijn aan uw account'
+            },
+            third: {
+              title: 'Bestel producten',
+              description:
+                'Reken af of verzoek een offerte. Ons team staat klaar om u te helpen!'
+            }
+          }
+        },
+        hero: {
+          imageAlt: 'Hero afbeelding',
+          title: 'Kies voor Kwaliteit',
+          description:
+            'Gepaard met een uitstekende klantendienst, De digitale catalogus van Spraying Systems Co. helpt u met het vinden, vergelijken en aankopen van producten dat uw bedrijf nodig heeft.',
+          callToAction: 'Aan de slag'
+        },
+        catalog: {
+          title: 'Onze Catalogus'
+        },
+        brands: {
+          title: 'pages.home.sections.brands.title'
+        },
+        applications: {
+          title: 'pages.home.sections.applications.title'
+        }
+      }
     },
     model: {
       headTitle: '{name} | Spraying Systems Co.',

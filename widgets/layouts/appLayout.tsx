@@ -8,12 +8,6 @@ import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { SiteFooter } from '@widgets/site-footer/siteFooter';
 
-interface AppLayoutStyles {
-  main: React.CSSProperties;
-  header: React.CSSProperties;
-  content: IStackStyles;
-}
-
 export interface AppLayoutProps {
   siteMenuItems: MenuItem[];
   mainMenuItems: MenuItem[];
@@ -24,38 +18,15 @@ export interface AppLayoutProps {
  */
 export const AppLayout: React.FC = ({ children }) => {
   const { semanticColors } = useTheme();
-  const styles: AppLayoutStyles = {
-    main: {
-      maxWidth: '100%',
-      margin: 'auto',
-      verticalAlign: 'fill'
-    },
-    header: {
-      backgroundColor: semanticColors.bodyBackground
-    },
-    content: {
-      root: {
-        overflow: 'auto',
-        height: `calc(100vh - ${rem(112)})`,
-        ...mediaQueryFrom('tablet', {
-          height: `calc(100vh - ${rem(124)})`
-        })
-      }
-    }
-  };
 
   return (
     <React.Fragment>
-      <header style={styles.header}>
+      <header>
         <SiteHeader />
         <MainHeader />
       </header>
-      <Stack className="list-scroll" styles={styles.content}>
-        <main style={styles.main}>{children}</main>
-        <footer>
-          <SiteFooter />
-        </footer>
-      </Stack>
+      <main>{children}</main>
+      <footer></footer>
     </React.Fragment>
   );
 };

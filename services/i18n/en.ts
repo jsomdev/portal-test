@@ -8,9 +8,13 @@ export const en: Messages = {
     main: {
       title: 'Categories',
       collapseLabel: 'navigation.main.collapseLabel',
-      expandLabel: 'navigation.main.expandLabel'
+      expandLabel: 'navigation.main.expandLabel',
+      cartAriaLabel: 'Shopping Cart',
+      accessPadAriaLabel: 'Quick Access Pad',
+      userAriaLabel: 'User Menu'
     },
     site: {
+      navigationAriaLabel: 'Navigation Menu',
       title: 'Organization',
       collapseLabel: 'navigation.site.collapseLabel',
       expandLabel: 'navigation.site.expandLabel',
@@ -88,8 +92,45 @@ export const en: Messages = {
   pages: {
     home: {
       headTitle: 'Welcome',
-      backgroundImageAlt: '',
-      headDescription: 'Experts in Spray Technology | Spraying Systems Co.'
+      headDescription: 'Experts in Spray Technology | Spraying Systems Co.',
+      sections: {
+        hero: {
+          imageAlt: 'Hero image',
+          title: 'Choose Quality Nozzles',
+          description: `Paired with excellent customer service, Spraying Systems Co.'s digital catalog helps you find, compare and purchase the products your company needs.`,
+          callToAction: `Get started`
+        },
+        signUp: {
+          title: 'Sign up for the best shopping experience',
+          callToAction: 'Create your account now',
+          steps: {
+            first: {
+              title: 'Register',
+              description:
+                'Create an account linked to your company and complete your contact details'
+            },
+            second: {
+              title: 'Start shopping',
+              description:
+                'Compare products and add the ones you need to your cart. Your cart will be linked to your customer account'
+            },
+            third: {
+              title: 'Order products',
+              description:
+                'Checkout your cart or send us a quote request. Our team is ready to help you!'
+            }
+          }
+        },
+        catalog: {
+          title: 'Browse our Catalog'
+        },
+        brands: {
+          title: 'pages.home.sections.brands.title'
+        },
+        applications: {
+          title: 'pages.home.sections.applications.title'
+        }
+      }
     },
     model: {
       headTitle: 'Model',

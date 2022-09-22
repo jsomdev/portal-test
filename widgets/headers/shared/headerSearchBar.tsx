@@ -44,13 +44,21 @@ export const HeaderSearchBar: React.FC = () => {
         <MobileSearchBar />
       </Mobile>
       <TabletAndDesktop>
-        {className => <DesktopSearchBar className={className} />}
+        {(className, renderChildren) => (
+          <DesktopSearchBar
+            renderChildren={renderChildren}
+            className={className}
+          />
+        )}
       </TabletAndDesktop>
     </>
   );
 };
 
-const DesktopSearchBar: React.FC<{ className: string }> = ({ className }) => {
+const DesktopSearchBar: React.FC<{
+  className: string;
+  renderChildren: boolean;
+}> = ({ className, renderChildren }) => {
   const { formatMessage } = useIntl();
   const { spacing } = useTheme();
 
@@ -62,7 +70,9 @@ const DesktopSearchBar: React.FC<{ className: string }> = ({ className }) => {
       horizontalAlign="center"
       className={className}
     >
-      <SearchBar placeholder={formatMessage(messages.searchPlaceholder)} />
+      {renderChildren && (
+        <SearchBar placeholder={formatMessage(messages.searchPlaceholder)} />
+      )}
     </Stack>
   );
 };
@@ -182,6 +192,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, styles }) => {
       <Stack
         grow
         horizontalAlign="center"
+        verticalAlign="center"
         root={{ ref: searchBarRef }}
         id="main-search-box-container"
       >

@@ -30,6 +30,7 @@ import usFlag from './countries/us.svg';
 import customerNumber from './customerNumber.jpg';
 import defaultCartItem from './defaultCartItem.png';
 import defaultProduct from './defaultProduct.png';
+import hero from './hero.jpg';
 import americanExpressLogo from './icons/amex.svg';
 import maestroCardLogo from './icons/maestro.svg';
 import masterCardLogo from './icons/mastercard.svg';
@@ -100,6 +101,7 @@ export const STATIC_IMAGES = {
     }
   },
   home: {
+    hero,
     highlights: {
       bigCardImage,
       smallCardSalesImage,

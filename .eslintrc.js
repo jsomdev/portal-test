@@ -30,7 +30,7 @@ module.exports = {
 
     'plugin:prettier/recommended' // Make sure this is always the last element in the array.
   ],
-  ignorePatterns: ['*.md'],
+  ignorePatterns: ['*.md', '*.css'],
   plugins: ['formatjs'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],

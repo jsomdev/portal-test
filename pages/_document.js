@@ -39,6 +39,18 @@ export default class MyDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
           />
+          <link rel="preconnect" href="https://p.typekit.net" />
+          <link
+            rel="preload"
+            as="style"
+            href="https://p.typekit.net/p.css?s=1&k=ioc1xxh&ht=tk&f=139.140.171.172.173.174.175.176.25136.25137.28439.28441.28443.28447.28448.28449&a=14452214&app=typekit&e=css"
+          />
+          <noscript>
+            <link
+              rel="stylesheet"
+              href="https://p.typekit.net/p.css?s=1&k=ioc1xxh&ht=tk&f=139.140.171.172.173.174.175.176.25136.25137.28439.28441.28443.28447.28448.28449&a=14452214&app=typekit&e=css"
+            />
+          </noscript>
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{

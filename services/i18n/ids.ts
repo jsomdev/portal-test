@@ -8,9 +8,13 @@ export const messageIds: Messages = {
     main: {
       title: 'navigation.main.title',
       collapseLabel: 'navigation.main.collapseLabel',
-      expandLabel: 'navigation.main.expandLabel'
+      expandLabel: 'navigation.main.expandLabel',
+      cartAriaLabel: 'navigation.main.cartAriaLabel',
+      accessPadAriaLabel: 'navigation.main.accessPadAriaLabel',
+      userAriaLabel: 'navigation.main.userAriaLabel'
     },
     site: {
+      navigationAriaLabel: 'navigation.site.navigationAriaLabel',
       title: 'navigation.site.title',
       logoAlt: 'navigation.site.logoAlt',
       collapseLabel: 'navigation.site.collapseLabel',
@@ -90,7 +94,41 @@ export const messageIds: Messages = {
     home: {
       headTitle: 'pages.home.headTitle',
       headDescription: 'pages.home.headDescription',
-      backgroundImageAlt: 'pages.home.backgroundImageAlt'
+      sections: {
+        signUp: {
+          callToAction: 'pages.home.sections.signUp.callToAction',
+          title: 'pages.home.sections.signUp.title',
+          steps: {
+            first: {
+              title: 'pages.home.sections.signUp.steps.first.title',
+              description: 'pages.home.sections.signUp.steps.first.description'
+            },
+            second: {
+              title: 'pages.home.sections.signUp.steps.second.title',
+              description: 'pages.home.sections.signUp.steps.second.description'
+            },
+            third: {
+              title: 'pages.home.sections.signUp.steps.third.title',
+              description: 'pages.home.sections.signUp.steps.third.description'
+            }
+          }
+        },
+        hero: {
+          imageAlt: 'pages.home.sections.hero.imageAlt',
+          title: 'pages.home.sections.hero.title',
+          description: 'pages.home.sections.hero.description',
+          callToAction: 'pages.home.sections.hero.callToAction'
+        },
+        catalog: {
+          title: 'pages.home.sections.catalog.title'
+        },
+        brands: {
+          title: 'pages.home.sections.brands.title'
+        },
+        applications: {
+          title: 'pages.home.sections.applications.title'
+        }
+      }
     },
     model: {
       headTitle: 'pages.model.headTitle',

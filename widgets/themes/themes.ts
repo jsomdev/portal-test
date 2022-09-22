@@ -13,7 +13,7 @@ export const appTheme: PartialTheme = {
     themeDarkAlt: '#005b93',
     themeDark: '#064770',
     themeDarker: '#00385b',
-    neutralLighterAlt: '#EEF1F4',
+    neutralLighterAlt: '#FAFAFA',
     neutralLighter: '#f3f2f1',
     neutralLight: '#edebe9',
     neutralQuaternaryAlt: '#e1dfdd',
@@ -40,6 +40,7 @@ export const appTheme: PartialTheme = {
   semanticColors: {
     link: '#0065a4',
     linkHovered: '#0065a4',
+    bodyBackground: 'transparent',
     cardStandoutBackground: '#075671',
     bodyStandoutBackground: '#242F37',
     bodySubtext: '#AEBDC6',

@@ -20,10 +20,6 @@ import { messageIds } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Category } from '@services/portal-api';
-import {
-  WidenImageHelper,
-  WidenImagePreset
-} from '@services/widen/widenImageHelper';
 import { rem } from '@utilities/rem';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
@@ -192,12 +188,7 @@ export const TempListView: React.FC = () => {
                   layout="fixed"
                   height={140}
                   width={140}
-                  src={
-                    WidenImageHelper.getOptimizedSrc(
-                      product.image?.url || '',
-                      WidenImagePreset.Medium
-                    ) || ''
-                  }
+                  src={product.image?.url || ''}
                   alt={productFormatter.formatImageCaption()}
                 />
               </Stack.Item>

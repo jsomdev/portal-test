@@ -7,15 +7,20 @@ import nProgress from 'nprogress';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
 import { MsalProvider } from '@azure/msal-react';
+import { initializeIcons } from '@fluentui/react';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
+import { MediaContextProvider } from '@widgets/media-queries/media';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
 import '../public/nprogress.css';
+
+// InitializeIcons
+initializeIcons();
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
@@ -50,15 +55,17 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         defaultLocale={defaultLocale}
         messages={i18nMessages}
       >
-        <AppThemeProvider>
-          <ReactQueryClientProvider>
-            <UserProvider>
-              <SystemOfMeasurementProvider>
-                <Component {...pageProps} />
-              </SystemOfMeasurementProvider>
-            </UserProvider>
-          </ReactQueryClientProvider>
-        </AppThemeProvider>
+        <MediaContextProvider>
+          <AppThemeProvider>
+            <ReactQueryClientProvider>
+              <UserProvider>
+                <SystemOfMeasurementProvider>
+                  <Component {...pageProps} />
+                </SystemOfMeasurementProvider>
+              </UserProvider>
+            </ReactQueryClientProvider>
+          </AppThemeProvider>
+        </MediaContextProvider>
       </IntlProvider>
     </MsalProvider>
   );

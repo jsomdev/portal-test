@@ -10,6 +10,7 @@ import {
   Panel,
   PanelType,
   Stack,
+  mergeStyleSets,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
@@ -54,7 +55,8 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
         display: 'none'
       },
       root: {
-        height: '100vh'
+        height: '100vh',
+        background: palette.white
       },
       content: {
         padding: 0,
@@ -78,7 +80,6 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
   return (
     <Panel
       hasCloseButton={false}
-      styles={styles.panel}
       type={PanelType.smallFluid}
       onRenderHeader={() => (
         <Stack
@@ -100,6 +101,7 @@ export const NavigationPanel: React.FC<NavigationPanelProps> = ({
         </Stack>
       )}
       {...panelProps}
+      styles={mergeStyleSets(styles.panel, panelProps.styles)}
     >
       <Stack>
         <NavigationPanelMainMenu items={mainMenuItems} />

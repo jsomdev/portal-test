@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   Dialog,
   IImageStyles,
@@ -12,14 +13,13 @@ import {
 } from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { useFinder } from '@providers/finder/finderContext';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { messageIds } from '@services/i18n';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { rem } from '@utilities/rem';
 
-import { MarkDownDialog } from '@components/dialogs/markDownDialog';
-import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { OperatingConditionItem } from './operatingConditionItem';
 import {
   diffOperatingConditionsFacets,

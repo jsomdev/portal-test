@@ -10,16 +10,20 @@ import {
 import { getAudience, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
+import { CATEGORY_IDS } from '@services/portal-api/constants';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
-import { HomeCategoriesSection } from '@widgets/home-page/homeCategories';
-import { AppLayout } from '@widgets/layouts/appLayout';
+import { Applications } from '@widgets/home-page/sections/applications';
+import { Brands } from '@widgets/home-page/sections/brands';
+import { Catalog } from '@widgets/home-page/sections/catalog';
+import { Hero } from '@widgets/home-page/sections/hero';
+import { SignUp } from '@widgets/home-page/sections/signUp';
+import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { TabletAndDesktop } from '@widgets/media-queries';
-import { MediaContextProvider } from '@widgets/media-queries/media';
 
 export interface HomeProps {
   categories: Category[];
@@ -36,49 +40,58 @@ const messages = defineMessages({
     description: 'Page metadata description',
     defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
   },
-  backgroundImageAlt: {
-    id: 'messageIds.pages.home.backgroundImageAlt',
-    description: 'Alternative for background image',
-    defaultMessage: 'Big spray lance background image'
+  catalogTitle: {
+    id: messageIds.pages.home.sections.catalog.title,
+    description: 'Header text for the homepage catalog section'
   }
 });
-
-const Home: NextPage<
-  HomeProps &
-    Partial<Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>>
-> = ({ categories, siteMenuItems, mainMenuItems }) => {
+const Home: NextPage<HomeProps & AppLayoutProps> = ({
+  categories,
+  siteMenuItems,
+  mainMenuItems
+}) => {
   const { pathname } = useRouter();
   const { formatMessage } = useIntl();
 
   return (
-    <MediaContextProvider>
-      <GlobalDataProvider
-        siteMenuItems={siteMenuItems}
-        mainMenuItems={mainMenuItems}
-      >
-        <AppLayout>
-          <Head
-            pathname={pathname}
-            title={formatMessage(messages.headTitle)}
-            description={formatMessage(messages.headDescription)}
-          />
-          <TabletAndDesktop>
-            <div id="get-started">
-              {/* <style jsx>
-              {`
-                #get-started {
-                  width: 100%;
-                  height: ${rem(500)};
-                  position: relative;
-                }
-              `}
-            </style> */}
-            </div>
-          </TabletAndDesktop>
-          <HomeCategoriesSection categories={categories} />
-        </AppLayout>
-      </GlobalDataProvider>
-    </MediaContextProvider>
+    <GlobalDataProvider
+      siteMenuItems={siteMenuItems}
+      mainMenuItems={mainMenuItems}
+    >
+      <AppLayout>
+        <Head
+          pathname={pathname}
+          title={formatMessage(messages.headTitle)}
+          description={formatMessage(messages.headDescription)}
+        />
+        <Hero />
+        <TabletAndDesktop>
+          <SignUp />
+        </TabletAndDesktop>
+        <Catalog
+          categories={categories.filter(
+            category =>
+              ![
+                CATEGORY_IDS.applications.toLowerCase(),
+                CATEGORY_IDS.brands.toLowerCase()
+              ].includes(category.id?.toLowerCase() || '')
+          )}
+        />
+        <Applications
+          category={categories.find(
+            category =>
+              category.id?.toLowerCase() ===
+              CATEGORY_IDS.applications.toLowerCase()
+          )}
+        />
+        <Brands
+          category={categories.find(
+            category =>
+              category.id?.toLowerCase() === CATEGORY_IDS.brands.toLowerCase()
+          )}
+        />
+      </AppLayout>
+    </GlobalDataProvider>
   );
 };
 

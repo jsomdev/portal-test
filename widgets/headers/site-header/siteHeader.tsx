@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { useIntl } from 'react-intl';
+import { useRouter } from 'next/router';
+import { defineMessages, useIntl } from 'react-intl';
 
 import {
   IButtonStyles,
@@ -11,6 +12,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
 import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
@@ -29,6 +31,14 @@ import { SiteLogo } from './siteLogo';
 export interface SiteHeaderProps {
   siteMenuItems: MenuItemProps[];
 }
+
+const messages = defineMessages({
+  navigationAriaLabel: {
+    id: messageIds.navigation.site.navigationAriaLabel,
+    description: 'Aria label for the navigation menu',
+    defaultMessage: 'Navigation menu'
+  }
+});
 
 /**
  * Header component for the Spray.com links.
@@ -65,6 +75,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   const { spacing } = useTheme();
   const intl = useIntl();
   const { mainMenuItems } = useGlobalData();
+  const { asPath } = useRouter();
 
   // TODO GR -> rething the functionality and state that triggers the correct menu / renders the correct section
   // This state is currently a functionality placeholder until the user menu / quick access menu is implemented
@@ -78,6 +89,10 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
   function onSitePanelDismiss(): void {
     setSideNavigationType(null);
   }
+
+  useEffect(() => {
+    onSitePanelDismiss();
+  }, [asPath]);
 
   const styles: MobileSiteHeaderStyles = {
     root: {
@@ -106,6 +121,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           verticalAlign="center"
         >
           <SiteHeaderButton
+            title={intl.formatMessage(messages.navigationAriaLabel)}
             onClick={() => {
               setSideNavigationType('site');
             }}

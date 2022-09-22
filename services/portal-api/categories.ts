@@ -22,9 +22,9 @@ export async function fetchCategoriesForHomePage(
 ): Promise<OdataCollection<Category>> {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,settings,seoPath,audience',
+    selectQuery: 'id,name,description,settings,slug,audience',
     expandQuery:
-      'image($select=url),children($select=id,name,settings,seoPath;$expand=image($select=url);$orderby=sortIndex asc)',
+      'image($select=url,caption),children($select=id,name,settings,slug;$expand=image($select=url,caption);$orderby=sortIndex asc)',
     filterQuery: `parentId eq null and audience has SSCo.DigitalHighway.Portal.Data.Enumerations.Audience'${FlaggedEnum.toString(
       Audience,
       audience

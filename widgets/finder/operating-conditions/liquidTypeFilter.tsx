@@ -61,7 +61,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
   const { spacing } = useTheme();
   const intl = useIntl();
   const { formatMessage, formatNumber, locale } = intl;
-  const { getOperatingConditionValue, getOperatingConditionUnit } = useFinder();
+  const { getOperatingConditionValue } = useFinder();
   // const [userSpecifiedValue, setUserSpecifiedValue] = useState<
   //   string | undefined
   // >(undefined);

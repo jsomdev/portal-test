@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
-import { useIntl } from 'react-intl';
+import { useRouter } from 'next/router';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
@@ -16,6 +17,7 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -27,10 +29,28 @@ import {
 } from './mainHeader.helper';
 import { MainHeaderMenu } from './mainHeaderMenu';
 
+const messages = defineMessages({
+  cartAriaLabel: {
+    id: messageIds.navigation.main.cartAriaLabel,
+    defaultMessage: 'Shopping Cart',
+    description: 'Aria label for cart button'
+  },
+  accessPadAriaLabel: {
+    id: messageIds.navigation.main.accessPadAriaLabel,
+    defaultMessage: 'Quick Access Pad',
+    description: 'Aria label for quick access button'
+  },
+  userAriaLabel: {
+    id: messageIds.navigation.main.userAriaLabel,
+    defaultMessage: 'User Menu',
+    description: 'Aria label for user button'
+  }
+});
+
 interface MainHeaderStyles {
-  mainMenuContainer: IStackItemStyles;
+  mainMenuContainer?: IStackItemStyles;
   root: IStackStyles;
-  headerButton: IButtonStyles;
+  headerButton?: IButtonStyles;
 }
 
 export const MainHeader: React.FC = () => {
@@ -47,7 +67,22 @@ export const MainHeader: React.FC = () => {
 };
 
 const MobileMainHeader: React.FC = () => {
-  return <HeaderSearchBar />;
+  const { palette } = useTheme();
+
+  const styles: MainHeaderStyles = {
+    root: {
+      root: {
+        height: 46,
+        transition: '0.3s all ease',
+        backgroundColor: palette.neutralLighter
+      }
+    }
+  };
+  return (
+    <Stack verticalAlign="center" styles={styles.root}>
+      <HeaderSearchBar />
+    </Stack>
+  );
 };
 
 const DesktopMainHeader: React.FC = () => {
@@ -56,6 +91,7 @@ const DesktopMainHeader: React.FC = () => {
   >();
 
   const intl = useIntl();
+  const { asPath } = useRouter();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects } = useTheme();
@@ -69,6 +105,11 @@ const DesktopMainHeader: React.FC = () => {
   function signIn() {
     instance.loginRedirect(customerLoginRequest);
   }
+
+  useEffect(() => {
+    setActiveMenuItem(undefined);
+  }, [asPath]);
+
   const styles: MainHeaderStyles = {
     root: {
       root: {
@@ -154,17 +195,20 @@ const DesktopMainHeader: React.FC = () => {
           verticalAlign="center"
         >
           <SiteHeaderButton
+            title={intl.formatMessage(messages.accessPadAriaLabel)}
             iconProps={{
               iconName: 'FavoriteList'
             }}
           />
           <SiteHeaderButton
+            title={intl.formatMessage(messages.cartAriaLabel)}
             iconProps={{
               iconName: 'ShoppingCart'
             }}
           />
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
+              title={intl.formatMessage(messages.userAriaLabel)}
               type="actionButton"
               iconProps={{
                 iconName: 'Contact'
@@ -174,8 +218,10 @@ const DesktopMainHeader: React.FC = () => {
           )}
         </Stack>
       </Stack>
+
       {activeMenuItem && (
         <Callout
+          hidden={!activeMenuItem}
           target={`#main-menu-container`}
           onDismiss={() => {
             setActiveMenuItem(undefined);
@@ -185,9 +231,7 @@ const DesktopMainHeader: React.FC = () => {
           directionalHintFixed={true}
           styles={{
             root: {
-              width: '100vw',
-              right: `0 !important`,
-              left: `0 !important`,
+              width: '100%',
               boxShadow: effects.elevation8
             }
           }}

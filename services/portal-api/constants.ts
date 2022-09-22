@@ -191,3 +191,8 @@ export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   brand: 'Brand',
   sprayPattern: 'SprayPattern'
 };
+
+export const CATEGORY_IDS = {
+  applications: '99b89989-636a-4869-918a-1cc9ba755944',
+  brands: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b'
+};
