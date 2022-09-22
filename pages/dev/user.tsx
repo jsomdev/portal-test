@@ -4,7 +4,6 @@ import {
   GetStaticPropsResult,
   NextPage
 } from 'next';
-import { useRouter } from 'next/dist/client/router';
 import JsonFormatter from 'react-json-formatter';
 
 import { useMe } from '@providers/user/userContext';
@@ -16,15 +15,12 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AppLayout } from '@widgets/layouts/appLayout';
-import { Head } from '@widgets/metadata/head';
 
 const User: NextPage = () => {
-  const { pathname } = useRouter();
   const userContext = useMe();
   const claims = useClaims();
   return (
     <AppLayout>
-      <Head pathname={pathname} title={''} description={''} />
       <div className="wrapper">
         <h1>User Context</h1>
         <JsonFormatter json={JSON.stringify(userContext)} />
@@ -33,7 +29,6 @@ const User: NextPage = () => {
         <h1>Claims</h1>
         <JsonFormatter json={JSON.stringify(claims)} />
       </div>
-      {/* TODO */}
       {/* <style jsx>{`
         .wrapper {
           border: 2px solid #fafafa;
@@ -55,22 +50,18 @@ export const getStaticProps: GetStaticProps = async (
 ): Promise<
   GetStaticPropsResult<{ siteMenuItems: MenuItem[]; mainMenuItems: MenuItem[] }>
 > => {
-  try {
-    const { locale } = context;
-    const [siteMenuData, mainMenuData] = await Promise.all([
-      fetchMenuItemsForSiteHeader(getAudience(locale)),
-      fetchMenuItemsForMainHeader(getAudience(locale))
-    ]);
+  const { locale } = context;
+  const [siteMenuData, mainMenuData] = await Promise.all([
+    fetchMenuItemsForSiteHeader(getAudience(locale)),
+    fetchMenuItemsForMainHeader(getAudience(locale))
+  ]);
 
-    return {
-      props: {
-        siteMenuItems: siteMenuData || [],
-        mainMenuItems: mainMenuData || []
-      }
-    };
-  } catch (e) {
-    return { notFound: true };
-  }
+  return {
+    props: {
+      siteMenuItems: siteMenuData || [],
+      mainMenuItems: mainMenuData || []
+    }
+  };
 };
 
 export default User;

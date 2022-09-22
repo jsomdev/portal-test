@@ -27,7 +27,8 @@ import {
 } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
 import { AppLayout } from '@widgets/layouts/appLayout';
-import { Head } from '@widgets/metadata/head';
+import Page from '@widgets/page/page';
+import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 
 export interface ProductsProps {
   product: Product;
@@ -44,22 +45,21 @@ const Products: NextPage<
       >
     >
 > = ({ product, siteMenuItems, mainMenuItems }) => {
-  const { pathname } = useRouter();
-
+  const { locale } = useRouter();
+  const multilingualStringFormatter = new MultilingualStringFormatter(locale);
   return (
-    <GlobalDataProvider
-      siteMenuItems={siteMenuItems}
-      mainMenuItems={mainMenuItems}
+    <Page
+      title={multilingualStringFormatter.format(product.name)}
+      description={multilingualStringFormatter.format(product.description)}
+      localePaths={getLocalePathsFromMultilingual('products', product.slug)}
     >
-      <AppLayout>
-        <Head
-          pathname={pathname}
-          title="Product"
-          description={product.name?.en || ''}
-        />
-        {product.number}
-      </AppLayout>
-    </GlobalDataProvider>
+      <GlobalDataProvider
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      >
+        <AppLayout>{product.number}</AppLayout>
+      </GlobalDataProvider>
+    </Page>
   );
 };
 
@@ -109,54 +109,51 @@ export const getStaticProps: GetStaticProps = async (
       >
   >
 > => {
-  try {
-    const { locale } = context;
-    const { productSlug } = context.params as ProductsParsedUrlQuery;
+  const { locale } = context;
+  const { productSlug } = context.params as ProductsParsedUrlQuery;
 
-    const [
-      productData,
-      seriesData,
-      modelsData,
-      siteMenuData,
-      mainMenuData,
-      attributeTypesData,
-      attributeTypeGroupsData
-    ] = await Promise.all([
-      fetchProductForProductPage(productSlug),
-      fetchAllSeries(),
-      fetchAllModels(),
-      fetchMenuItemsForSiteHeader(getAudience(locale)),
-      fetchMenuItemsForMainHeader(getAudience(locale)),
-      fetchAllAttributeTypes(),
-      fetchAllAttributeGroups()
-    ]);
+  const [
+    productData,
+    seriesData,
+    modelsData,
+    siteMenuData,
+    mainMenuData,
+    attributeTypesData,
+    attributeTypeGroupsData
+  ] = await Promise.all([
+    fetchProductForProductPage(productSlug),
+    fetchAllSeries(),
+    fetchAllModels(),
+    fetchMenuItemsForSiteHeader(getAudience(locale)),
+    fetchMenuItemsForMainHeader(getAudience(locale)),
+    fetchAllAttributeTypes(),
+    fetchAllAttributeGroups()
+  ]);
 
-    if (!productData) {
-      return {
-        notFound: true
-      };
-    }
-    const series: Series | undefined = seriesData.find(
-      series => series.id === productData.model?.seriesId
-    );
-    const model: Model | undefined = modelsData.find(
-      model => model.id === productData.modelId
-    );
-
+  if (!productData) {
     return {
-      props: {
-        product: productData,
-        series: series,
-        model: model,
-        attributeGroups: attributeTypeGroupsData,
-        attributeTypes: attributeTypesData,
-        siteMenuItems: siteMenuData || [],
-        mainMenuItems: mainMenuData || []
-      }
+      notFound: true
     };
-  } catch (e) {
-    return { notFound: true };
   }
+
+  const series: Series | undefined = seriesData.find(
+    series => series.id === productData.model?.seriesId
+  );
+  const model: Model | undefined = modelsData.find(
+    model => model.id === productData.modelId
+  );
+
+  return {
+    props: {
+      product: productData,
+      series: series,
+      model: model,
+      attributeGroups: attributeTypeGroupsData,
+      attributeTypes: attributeTypesData,
+      siteMenuItems: siteMenuData || [],
+      mainMenuItems: mainMenuData || []
+    }
+  };
 };
 
 export default Products;

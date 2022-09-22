@@ -91,8 +91,11 @@ export const nl: Messages = {
     }
   },
   pages: {
+    default: {
+      headTitle: '{title} | Spraying Systems Co.'
+    },
     home: {
-      headTitle: 'Experten in Sproeitechnologie | Spraying Systems Co.',
+      headTitle: 'Experten in Sproeitechnologie',
       headDescription: 'pages.home.headDescription',
       sections: {
         signUp: {
@@ -135,17 +138,15 @@ export const nl: Messages = {
       }
     },
     model: {
-      headTitle: '{name} | Spraying Systems Co.',
+      headTitle: '{name}',
       headDescription: 'pages.model.headDescription'
     },
     category: {
-      headTitle: '{name} | Spraying Systems Co.',
-      headDescription: 'pages.category.headDescription',
       title: '{name}',
       titleWithSearch: '{searchQuery} in {name}'
     },
     series: {
-      headTitle: '{name} | Spraying Systems Co.',
+      headTitle: '{name}',
       headDescription: 'pages.series.headDescription'
     },
     docs: {

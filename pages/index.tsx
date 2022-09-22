@@ -1,7 +1,5 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
-import { Head } from 'widgets/metadata/head';
 
 import {
   GlobalDataProvider,
@@ -24,6 +22,8 @@ import { Hero } from '@widgets/home-page/sections/hero';
 import { SignUp } from '@widgets/home-page/sections/signUp';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import { TabletAndDesktop } from '@widgets/media-queries';
+import Page from '@widgets/page/page';
+import { getLocalePaths } from '@widgets/page/page.helper';
 
 export interface HomeProps {
   categories: Category[];
@@ -50,48 +50,48 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   siteMenuItems,
   mainMenuItems
 }) => {
-  const { pathname } = useRouter();
   const { formatMessage } = useIntl();
 
   return (
-    <GlobalDataProvider
-      siteMenuItems={siteMenuItems}
-      mainMenuItems={mainMenuItems}
+    <Page
+      localePaths={getLocalePaths('')}
+      title={formatMessage(messages.headTitle)}
+      description={formatMessage(messages.headDescription)}
     >
-      <AppLayout>
-        <Head
-          pathname={pathname}
-          title={formatMessage(messages.headTitle)}
-          description={formatMessage(messages.headDescription)}
-        />
-        <Hero />
-        <TabletAndDesktop>
-          <SignUp />
-        </TabletAndDesktop>
-        <Catalog
-          categories={categories.filter(
-            category =>
-              ![
-                CATEGORY_IDS.applications.toLowerCase(),
-                CATEGORY_IDS.brands.toLowerCase()
-              ].includes(category.id?.toLowerCase() || '')
-          )}
-        />
-        <Applications
-          category={categories.find(
-            category =>
-              category.id?.toLowerCase() ===
-              CATEGORY_IDS.applications.toLowerCase()
-          )}
-        />
-        <Brands
-          category={categories.find(
-            category =>
-              category.id?.toLowerCase() === CATEGORY_IDS.brands.toLowerCase()
-          )}
-        />
-      </AppLayout>
-    </GlobalDataProvider>
+      <GlobalDataProvider
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      >
+        <AppLayout>
+          <Hero />
+          <TabletAndDesktop>
+            <SignUp />
+          </TabletAndDesktop>
+          <Catalog
+            categories={categories.filter(
+              category =>
+                ![
+                  CATEGORY_IDS.applications.toLowerCase(),
+                  CATEGORY_IDS.brands.toLowerCase()
+                ].includes(category.id?.toLowerCase() || '')
+            )}
+          />
+          <Applications
+            category={categories.find(
+              category =>
+                category.id?.toLowerCase() ===
+                CATEGORY_IDS.applications.toLowerCase()
+            )}
+          />
+          <Brands
+            category={categories.find(
+              category =>
+                category.id?.toLowerCase() === CATEGORY_IDS.brands.toLowerCase()
+            )}
+          />
+        </AppLayout>
+      </GlobalDataProvider>
+    </Page>
   );
 };
 
@@ -104,31 +104,27 @@ export const getStaticProps: GetStaticProps = async (
   >
 > => {
   const { locale } = context;
-  try {
-    const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
-      fetchCategoriesForHomePage(getAudience(locale)),
-      fetchMenuItemsForSiteHeader(getAudience(locale)),
-      fetchMenuItemsForMainHeader(getAudience(locale))
-    ]);
+  const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
+    fetchCategoriesForHomePage(getAudience(locale)),
+    fetchMenuItemsForSiteHeader(getAudience(locale)),
+    fetchMenuItemsForMainHeader(getAudience(locale))
+  ]);
 
-    return {
-      props: {
-        categories:
-          categoriesData?.value.filter(category => {
-            const audience = FlaggedEnum.create<Audience>(
-              Audience,
-              category.audience || ''
-            );
-            const currentAudience = getAudience(locale);
-            return audience & currentAudience;
-          }) || [],
-        siteMenuItems: siteMenuData || [],
-        mainMenuItems: mainMenuData || []
-      }
-    };
-  } catch (e) {
-    return { notFound: true };
-  }
+  return {
+    props: {
+      categories:
+        categoriesData?.value.filter(category => {
+          const audience = FlaggedEnum.create<Audience>(
+            Audience,
+            category.audience || ''
+          );
+          const currentAudience = getAudience(locale);
+          return audience & currentAudience;
+        }) || [],
+      siteMenuItems: siteMenuData || [],
+      mainMenuItems: mainMenuData || []
+    }
+  };
 };
 
 export default Home;

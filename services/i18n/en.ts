@@ -90,9 +90,12 @@ export const en: Messages = {
     }
   },
   pages: {
+    default: {
+      headTitle: '{title} | Spraying Systems Co.'
+    },
     home: {
       headTitle: 'Welcome',
-      headDescription: 'Experts in Spray Technology | Spraying Systems Co.',
+      headDescription: 'Experts in Spray Technology',
       sections: {
         hero: {
           imageAlt: 'Hero image',
@@ -134,17 +137,15 @@ export const en: Messages = {
     },
     model: {
       headTitle: 'Model',
-      headDescription: '{name} | Spraying Systems Co.'
+      headDescription: '{name}'
     },
     category: {
-      headTitle: 'Category',
-      headDescription: '{name} | Spraying Systems Co.',
       title: '{name}',
       titleWithSearch: '{searchQuery} in {name}'
     },
     series: {
       headTitle: 'Series',
-      headDescription: '{name} | Spraying Systems Co.'
+      headDescription: '{name}'
     },
     docs: {
       i18n: {

@@ -8,7 +8,7 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-import { defineMessages, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
@@ -18,7 +18,6 @@ import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-hel
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { getAudience } from '@services/i18n/helper';
-import { messageIds } from '@services/i18n/ids';
 import {
   AttributeGroup,
   AttributeType,
@@ -35,28 +34,16 @@ import {
 import { formatCamelCase } from '@utilities/formatText';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import { Head } from '@widgets/metadata/head';
+import Page from '@widgets/page/page';
+import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 
-export interface CategoryProps {
+type CategoryProps = {
   category: CategoryModel;
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
-}
+} & AppLayoutProps;
 
-const messages = defineMessages({
-  headTitle: {
-    id: messageIds.pages.category.headTitle,
-    description: 'Page metadata title',
-    defaultMessage: 'Welcome'
-  },
-  headDescription: {
-    id: messageIds.pages.category.headDescription,
-    description: 'Page metadata description',
-    defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
-  }
-});
-
-const Category: NextPage<CategoryProps & AppLayoutProps> = ({
+const Category: NextPage<CategoryProps> = ({
   category,
   siteMenuItems,
   mainMenuItems,
@@ -64,40 +51,38 @@ const Category: NextPage<CategoryProps & AppLayoutProps> = ({
   attributeTypes
 }) => {
   const router = useRouter();
-  const { formatMessage, locale } = useIntl();
+  const { locale } = useIntl();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
     category,
     locale
   );
-
   return (
-    <GlobalDataProvider
-      category={category}
-      attributeGroups={attributeTypeGroups}
-      attributeTypes={attributeTypes}
-      siteMenuItems={siteMenuItems}
-      mainMenuItems={mainMenuItems}
+    <Page
+      title={categoryFormatter.formatName()}
+      description={categoryFormatter.formatDescription()}
+      localePaths={getLocalePathsFromMultilingual('categories', category.slug)}
     >
-      <AppLayout>
-        <Head
-          pathname={router.pathname}
-          title={formatMessage(messages.headTitle, {
-            name: categoryFormatter.formatName()
-          })}
-          description={formatMessage(messages.headDescription)}
-        />
-        <FacetsProvider
-          preFilters={{
-            categoryId: category?.id
-          }}
-          initialFacets={getInitialFacetsFromFiles([], router.query)}
-        >
-          <FinderProvider initialData={undefined}>
-            <ResultView category={category} />
-          </FinderProvider>
-        </FacetsProvider>
-      </AppLayout>
-    </GlobalDataProvider>
+      <GlobalDataProvider
+        category={category}
+        attributeGroups={attributeTypeGroups}
+        attributeTypes={attributeTypes}
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      >
+        <AppLayout>
+          <FacetsProvider
+            preFilters={{
+              categoryId: category?.id
+            }}
+            initialFacets={getInitialFacetsFromFiles([], router.query)}
+          >
+            <FinderProvider initialData={undefined}>
+              <ResultView category={category} />
+            </FinderProvider>
+          </FacetsProvider>
+        </AppLayout>
+      </GlobalDataProvider>
+    </Page>
   );
 };
 
@@ -134,90 +119,86 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<CategoryProps & AppLayoutProps>> => {
-  try {
-    const { locale } = context;
+): Promise<GetStaticPropsResult<CategoryProps>> => {
+  const { locale } = context;
 
-    const { categorySlug } = context.params as CategoryParsedUrlQuery;
-    const [
-      categoriesData,
-      siteMenuData,
-      mainMenuData,
-      attributeTypesData
-      // attributeTypeGroupsData
-    ] = await Promise.all([
-      fetchAllCategories(),
-      fetchMenuItemsForSiteHeader(getAudience(locale)),
-      fetchMenuItemsForMainHeader(getAudience(locale)),
-      fetchAllAttributeTypes()
-      // fetchAllAttributeGroups()
-    ]);
+  const { categorySlug } = context.params as CategoryParsedUrlQuery;
 
-    const category: CategoryModel | undefined = categoriesData.find(
-      category => {
-        const categoryFormatter: CategoryFormatter = new CategoryFormatter(
-          category,
-          locale
-        );
-        return categoryFormatter.formatSlug() === categorySlug?.[0];
-      }
-    );
+  const [
+    categoriesData,
+    siteMenuData,
+    mainMenuData,
+    attributeTypesData
+    // attributeTypeGroupsData
+  ] = await Promise.all([
+    fetchAllCategories(),
+    fetchMenuItemsForSiteHeader(getAudience(locale)),
+    fetchMenuItemsForMainHeader(getAudience(locale)),
+    fetchAllAttributeTypes()
+    // fetchAllAttributeGroups()
+  ]);
 
-    if (category === undefined || category.id === undefined) {
-      return {
-        notFound: true
-      };
-    }
-    const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
-      category.id
-    );
-    const encodedCategoryFilter: string = encodeURIComponent(
-      JSON.stringify([categoryFilter])
-    );
-
-    const initialSearchResults: FacetedSearchOdataCollection =
-      await fetchFacetedSearchResults(
-        encodedCategoryFilter,
-        'null',
-        undefined,
-        10,
-        0
-      );
-
-    const usedAttributeTypeCodes: string[] = Object.keys(
-      initialSearchResults['@search.facets']
-    );
-    const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
-      attributeType =>
-        usedAttributeTypeCodes.includes(
-          formatCamelCase(attributeType.code || '')
-        )
-    );
-
-    const usedFacetCodes: string[] = Object.values(
-      FacetFactory.getFacetsFromFiles([])
-    ).map(facet => formatCamelCase(facet.attributeTypeCode));
-
-    Object.keys(initialSearchResults['@search.facets']).forEach(key => {
-      if (!usedFacetCodes.includes(key)) {
-        delete initialSearchResults['@search.facets'][key];
-      }
-    });
-
-    const props = {
-      attributeTypeGroups: [],
-      attributeTypes: filteredAttributeTypes,
+  const category: CategoryModel | undefined = categoriesData.find(category => {
+    const categoryFormatter: CategoryFormatter = new CategoryFormatter(
       category,
-      siteMenuItems: siteMenuData,
-      mainMenuItems: mainMenuData
-    };
+      locale
+    );
+    return (
+      categoryFormatter.formatSlug().toLowerCase() ===
+      categorySlug?.[0]?.toLowerCase()
+    );
+  });
 
+  if (category === undefined || category.id === undefined) {
     return {
-      props
+      notFound: true
     };
-  } catch (e) {
-    return { notFound: true };
   }
+  const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
+    category.id
+  );
+  const encodedCategoryFilter: string = encodeURIComponent(
+    JSON.stringify([categoryFilter])
+  );
+
+  const initialSearchResults: FacetedSearchOdataCollection =
+    await fetchFacetedSearchResults(
+      encodedCategoryFilter,
+      'null',
+      undefined,
+      10,
+      0
+    );
+
+  const usedAttributeTypeCodes: string[] = Object.keys(
+    initialSearchResults['@search.facets']
+  );
+  const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
+    attributeType =>
+      usedAttributeTypeCodes.includes(formatCamelCase(attributeType.code || ''))
+  );
+
+  const usedFacetCodes: string[] = Object.values(
+    FacetFactory.getFacetsFromFiles([])
+  ).map(facet => formatCamelCase(facet.attributeTypeCode));
+
+  Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+    if (!usedFacetCodes.includes(key)) {
+      delete initialSearchResults['@search.facets'][key];
+    }
+  });
+
+  const props: CategoryProps = {
+    attributeTypeGroups: [],
+    attributeTypes: filteredAttributeTypes,
+    category,
+    siteMenuItems: siteMenuData,
+    mainMenuItems: mainMenuData
+  };
+
+  return {
+    props
+  };
 };
 
 export default Category;

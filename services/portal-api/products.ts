@@ -388,11 +388,11 @@ export async function fetchProductsForStaticPaths(): Promise<Product[]> {
 
 export async function fetchProductForProductPage(
   slug: string
-): Promise<Product> {
+): Promise<Product | null> {
   const productsResource: ProductsResource = new ProductsResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,modelId`,
+    selectQuery: `id,number,name,description,modelId,slug`,
     filterQuery: `slug/en eq '${slug}'`,
     expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,seoPath;$expand=series($select=id,name,seoPath)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail)`
   };
@@ -402,9 +402,7 @@ export async function fetchProductForProductPage(
   );
 
   if (!data.value[0]) {
-    throw new Error(
-      'Could not find a product for the slug that was passed as parameter'
-    );
+    return null;
   }
   return data.value[0];
 }

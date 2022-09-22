@@ -46,7 +46,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
   const { formatMessage, locale } = intl;
   const { palette } = useTheme();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
-  const { query, pathname, route, asPath } = useRouter();
+  const { query, pathname } = useRouter();
   const visibleOptions: FacetOption[] = useMemo(() => {
     function getFilteredNestedCategoryOptions(
       options: FacetOption[],
@@ -79,7 +79,6 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
           ? nestedChildOptions
           : childOptionsWithResults;
       }
-      return [];
     }
     return getFilteredNestedCategoryOptions(facet.options, categoryId);
   }, [categoryId, facet.options, predictedResults]);

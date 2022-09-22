@@ -31,6 +31,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/favicon192.png" />
           <style
             type="text/css"
             dangerouslySetInnerHTML={{ __html: mediaStyles }}
@@ -57,7 +59,7 @@ export default class MyDocument extends Document {
               __html: `
             window.FabricConfig = window.FabricConfig || {};
             window.FabricConfig.serializedStylesheet = ${this.props.serializedStylesheet};
-          `
+`
             }}
           />
         </Head>

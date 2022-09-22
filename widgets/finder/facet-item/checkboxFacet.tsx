@@ -169,14 +169,12 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
 
   const showExpandButton = useMemo(() => {
     const minLength = 5;
-    const showExpand = options.length > minLength + 1;
-    return showExpand;
+    return options.length > minLength + 1;
   }, [options]);
 
   const showSearchButton = useMemo(() => {
     const minLength = 20;
-    const showSearch = options.length > minLength + 1;
-    return showSearch;
+    return options.length > minLength + 1;
   }, [options]);
 
   const additionalSelectedOptions: FacetOption[] = useMemo(() => {

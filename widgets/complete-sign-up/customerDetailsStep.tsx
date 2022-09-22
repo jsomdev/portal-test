@@ -201,7 +201,7 @@ export const CustomerInformationStep: React.FC = () => {
                     <IconButton
                       size={14}
                       iconProps={{ iconName: 'Delete' }}
-                      onClick={ev => remove(index)}
+                      onClick={() => remove(index)}
                     />
                   )}
                 </Stack>
@@ -210,7 +210,7 @@ export const CustomerInformationStep: React.FC = () => {
             <ActionButton
               iconProps={{ iconName: 'Add' }}
               text={messages.addInvoiceNumber}
-              onClick={ev => push('')}
+              onClick={() => push('')}
             />
           </Stack>
         )}

@@ -56,9 +56,9 @@ const Responsive: NextPage = () => {
       <div>
         <Mobile>
           {(className, renderChildren) => (
-            <div className={className}>
+            <p className={className}>
               {renderChildren && 'Only shown on mobile'}
-            </div>
+            </p>
           )}
         </Mobile>
         <TabletAndDesktop>Only shown on tablet/desktop</TabletAndDesktop>

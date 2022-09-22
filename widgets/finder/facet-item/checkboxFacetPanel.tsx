@@ -116,7 +116,7 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
     >
       {options
         .filter((option: FacetOption) => testSearchInput(option.key))
-        .map((option, i) => {
+        .map(option => {
           return onRenderCheckbox(option);
         })}
     </Panel>

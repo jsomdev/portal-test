@@ -164,7 +164,7 @@ type IHomeMessages = INextHeadMessages & {
   };
 };
 
-type ICategoryMessages = INextHeadMessages & {
+type ICategoryMessages = {
   title: string;
   titleWithSearch: string;
 };
@@ -190,6 +190,9 @@ export type Messages = {
     user: ILoadingUserMessages;
   };
   pages: {
+    default: {
+      headTitle: string;
+    };
     home: IHomeMessages;
     category: ICategoryMessages;
     model: IModelMessages;

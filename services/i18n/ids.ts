@@ -91,6 +91,9 @@ export const messageIds: Messages = {
     }
   },
   pages: {
+    default: {
+      headTitle: 'pages.default.headTitle'
+    },
     home: {
       headTitle: 'pages.home.headTitle',
       headDescription: 'pages.home.headDescription',
@@ -135,8 +138,6 @@ export const messageIds: Messages = {
       headDescription: 'pages.model.headDescription'
     },
     category: {
-      headTitle: 'pages.category.headTitle',
-      headDescription: 'pages.category.headDescription',
       title: 'pages.category.title',
       titleWithSearch: 'pages.category.titleWithSearch'
     },

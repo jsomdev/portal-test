@@ -1,12 +1,12 @@
 ---
- description: Documentation about user interfaces and layout with fluent ui
- author: Jan Somers
- contributor(s): 
- changelog: (Date | By | Comment)
-  22/10/2021 | Jan Somers | Initial version
-  07/11/2021 | Jan Somers | Version 1
-  15/11/2021 | Jan Somers | Full rewrite to simpler version
-  17/11/2021 | Jan Somers | Definite version [1]
+ description: Documentation about user interfaces and layout with fluent ui  
+ author: Jan Somers  
+ contributor(s):   
+ changelog: (Date | By | Comment)  
+  22/10/2021 | Jan Somers | Initial version  
+  07/11/2021 | Jan Somers | Version 1  
+  15/11/2021 | Jan Somers | Full rewrite to simpler version  
+  17/11/2021 | Jan Somers | Definite version [1]  
 ---
 
 # User Interfaces, Layout and design
@@ -272,10 +272,13 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
 - In most cases, we'd try to stick to a small and a large layout ("mobile" vs. "tablet and above"), only added specific cases for desktop when relevant.
 - Use `<Mobile>`and `<TabletAndDesktop>` if different components are needed for small and larger screens.
 - For more specific breakpoint usage, use the `<Media>` component.
-- `ResponsiveStack` is provided for switching stack direction based on screen-size.
+- `ResponsiveStack` is provided for switching stack direction based on screen-size. (e.g. `vertical` on mobile, `horizontal` on desktop)
 
 ```tsx
 import { NextPage } from 'next';
+
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
 
 import { ResponsiveStack } from '@components/stacks/responsiveStack';
 import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
