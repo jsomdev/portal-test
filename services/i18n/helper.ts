@@ -3,7 +3,7 @@ import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 
 import { en, nl } from './';
-import regions from './regions.json';
+import regions from './regions';
 import { Messages, Region } from './types';
 
 export function getMessages(locale?: string, exact: boolean = false): Messages {
@@ -56,6 +56,7 @@ export function getAudience(locale: string | undefined): Audience {
 }*/
 
 export const supportedRegions: Region[] = regions as unknown as Region[];
+
 export const supportedLocales: string[] | undefined =
   ENVIRONMENT_VARIABLES.supportedLocales;
 

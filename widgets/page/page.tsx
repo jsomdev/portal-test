@@ -9,6 +9,8 @@ import { messageIds } from '@services/i18n';
 import { getAlternateLinks, getCanonicalUrl } from '@widgets/page/page.helper';
 import { PageProps } from '@widgets/page/page.types';
 
+import { PageContext } from './pageContext';
+
 const messages = defineMessages({
   headTitle: {
     id: messageIds.pages.default.headTitle
@@ -44,7 +46,11 @@ const Page: NextPage<PageProps> = ({
       : undefined;
 
   return (
-    <React.Fragment>
+    <PageContext.Provider
+      value={{
+        localePaths: localePaths || {}
+      }}
+    >
       <NextHead>
         <title>
           {formatMessage(messages.headTitle, {
@@ -65,7 +71,7 @@ const Page: NextPage<PageProps> = ({
         {noIndex && <meta name="robots" content="noindex" />}
       </NextHead>
       {children}
-    </React.Fragment>
+    </PageContext.Provider>
   );
 };
 export default Page;

@@ -34,6 +34,9 @@ export const messageIds: Messages = {
       close: 'navigation.menu.close',
       viewAllCategories: 'navigation.menu.viewAllCategories',
       viewAllCategory: 'navigation.menu.viewAllCategory'
+    },
+    locale: {
+      title: 'navigation.locale.title'
     }
   },
   finder: {

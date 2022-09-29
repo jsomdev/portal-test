@@ -34,6 +34,9 @@ export const nl: Messages = {
       close: 'Menu',
       viewAllCategories: 'Ga naar alle categorieën',
       viewAllCategory: 'Ga naar alle'
+    },
+    locale: {
+      title: 'Geselecteerd land/regio'
     }
   },
   finder: {

@@ -126,6 +126,10 @@ type IMenuMessages = {
   viewAllCategory: string;
 };
 
+type ILocaleMessages = {
+  title: string;
+};
+
 type IHomeMessages = INextHeadMessages & {
   sections: {
     hero: {
@@ -184,6 +188,7 @@ export type Messages = {
     user: IUserNavigationMessages;
     searchBar: ISiteSearchBarMessages;
     menu: IMenuMessages;
+    locale: ILocaleMessages;
   };
   loading: {
     default: string;

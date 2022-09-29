@@ -34,6 +34,9 @@ export const en: Messages = {
       close: 'Menu',
       viewAllCategories: 'Go to all categories',
       viewAllCategory: 'Go to all'
+    },
+    locale: {
+      title: 'Selected Country/Region'
     }
   },
   finder: {

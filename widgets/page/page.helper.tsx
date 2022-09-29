@@ -3,17 +3,27 @@ import { MultilingualStringFormatter } from '@services/i18n/formatters/multiling
 import { MultilingualString } from '@services/portal-api';
 import { LocalePaths } from '@widgets/page/page.types';
 
+export const getPathForLocale = (
+  locale: string,
+  defaultLocale: string,
+  localePaths: LocalePaths
+): string => {
+  if (locale === defaultLocale) {
+    return `/${localePaths[locale]}`;
+  }
+  return `/${locale}${localePaths[locale] ? '/' + localePaths[locale] : ''}`;
+};
+
 export const getCanonicalUrl = (
   currentLocale: string,
   defaultLocale: string,
-  paths: LocalePaths
+  localePaths: LocalePaths
 ): string => {
-  if (currentLocale === defaultLocale) {
-    return `${process.env.NEXT_PUBLIC_BASE_URL}/${paths[currentLocale]}`;
-  }
-  return `${process.env.NEXT_PUBLIC_BASE_URL}/${currentLocale}${
-    paths[currentLocale] ? '/' + paths[currentLocale] : ''
-  }`;
+  return `${process.env.NEXT_PUBLIC_BASE_URL}${getPathForLocale(
+    currentLocale,
+    defaultLocale,
+    localePaths
+  )}`;
 };
 
 export const getAlternateLinks = (
@@ -53,9 +63,9 @@ const getPath = (
 export const getLocalePathsFromMultilingual = (
   routePath: string,
   multilingualString?: MultilingualString
-): LocalePaths | null => {
+): LocalePaths => {
   if (!multilingualString) {
-    return null;
+    return {};
   }
   return (
     supportedLocales?.reduce<LocalePaths>((acc, locale) => {

@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import {
+  Callout,
   IButtonStyles,
+  ICalloutContentStyles,
   IStackStyles,
   IVerticalDividerStyles,
   Stack,
@@ -14,6 +16,7 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
+import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languageMenu';
 import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
 import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
@@ -167,6 +170,7 @@ interface DesktopSiteHeaderStyles {
   root: IStackStyles;
   button: Partial<IButtonStyles>;
   divider: Partial<IVerticalDividerStyles>;
+  languageMenuCallout: Partial<ICalloutContentStyles>;
 }
 
 // ### Desktop Site Header
@@ -175,9 +179,9 @@ interface DesktopSiteHeaderStyles {
  * Large version of the Site Header
  */
 const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
-  const { spacing } = useTheme();
+  const { spacing, palette } = useTheme();
   const { locale } = useIntl();
-
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const styles: DesktopSiteHeaderStyles = {
     root: {
       root: {
@@ -195,7 +199,8 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
         padding: rem(spacing.s2),
         height: rem(32)
       }
-    }
+    },
+    languageMenuCallout: { beak: { backgroundColor: palette.themeDark } }
   };
   return (
     <Stack>
@@ -234,14 +239,31 @@ const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           </ul>
           <VerticalDivider styles={styles.divider} />
           <SiteHeaderButton
-            id="random"
+            id="language-select"
             iconProps={{
               iconName: 'Globe'
             }}
             type="actionButton"
             styles={styles.button}
             text={locale.toLocaleUpperCase()}
+            onClick={() => {
+              setShowLanguageMenu(true);
+            }}
           />
+          {showLanguageMenu && (
+            <Callout
+              gapSpace={0}
+              target={`#language-select`}
+              onDismiss={() => setShowLanguageMenu(false)}
+              setInitialFocus
+              styles={styles.languageMenuCallout}
+              dismissOnTargetClick={true}
+              alignTargetEdge={true}
+              minPagePadding={15}
+            >
+              <LanguageMenu />
+            </Callout>
+          )}
         </Stack>
       </Stack>
     </Stack>
