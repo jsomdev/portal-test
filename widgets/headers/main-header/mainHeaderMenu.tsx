@@ -27,7 +27,7 @@ type MainHeaderMenuStyles = {
 
 const messages = defineMessages({
   mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
+    id: messageIds.navigation.main.viewAllCategory,
     description: 'View all ... ',
     defaultMessage: 'View all '
   }
@@ -77,18 +77,21 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
         {activeMenuItem?.children?.map(item => {
           return (
             <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
-              <Link
-                aria-label={item.text}
-                key={item.id}
-                href={item.href}
-                passHref
-              >
-                <ActionButton text={item.text} styles={styles.link('main')} />
-              </Link>
+              {item.href && (
+                <Link
+                  aria-label={item.text}
+                  key={item.id}
+                  href={item.href}
+                  passHref
+                >
+                  <ActionButton text={item.text} styles={styles.link('main')} />
+                </Link>
+              )}
+
               {item.children && (
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
                   {item.children.map(item => {
-                    return (
+                    item.href && (
                       <Link
                         aria-label={item.text}
                         key={item.id}
@@ -108,20 +111,22 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
           );
         })}
       </Stack>
-      <Link
-        aria-label={activeMenuItem.text}
-        key={activeMenuItem.id}
-        href={activeMenuItem.href}
-        passHref
-      >
-        <ActionButton
-          text={`${formatMessage(messages.mainMenuViewAllCategory)} ${
-            activeMenuItem.text
-          }`}
-          styles={styles.viewAllLink}
-          menuIconProps={{ iconName: 'chevronRight' }}
-        />
-      </Link>
+      {activeMenuItem.href && (
+        <Link
+          aria-label={activeMenuItem.text}
+          key={activeMenuItem.id}
+          href={activeMenuItem.href}
+          passHref
+        >
+          <ActionButton
+            text={`${formatMessage(messages.mainMenuViewAllCategory)} ${
+              activeMenuItem.text
+            }`}
+            styles={styles.viewAllLink}
+            menuIconProps={{ iconName: 'chevronRight' }}
+          />
+        </Link>
+      )}
     </Stack>
   );
 };

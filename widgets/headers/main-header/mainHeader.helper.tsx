@@ -1,3 +1,4 @@
+import { Guid } from 'guid-typescript';
 import { IntlShape } from 'react-intl';
 
 import { messageIds } from '@services/i18n';
@@ -5,16 +6,17 @@ import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/m
 import { MenuItem } from '@services/portal-api/models/MenuItem';
 
 export interface MenuItemProps {
-  href: string;
+  id: string;
   text: string;
-  id?: string | undefined;
-  parentId?: string | undefined;
+  href?: string;
+  parentId: string | undefined;
   children?: MenuItemProps[];
+  onClick?: () => void;
 }
 
 const messages = {
   mainMenuViewAllCategory: {
-    id: messageIds.navigation.menu.viewAllCategory,
+    id: messageIds.navigation.main.viewAllCategory,
     description: 'View all ... ',
     defaultMessage: 'View all default '
   }
@@ -23,7 +25,7 @@ const messages = {
 /**
  *
  * @param menuItems an array of type MenuItem
- * @param type 'expanded' or 'default', expanded will add the parent item to it's own child element and prepend the text prop
+ * @param viewType 'expanded' or 'default', expanded will add the parent item to its own children array as a link
  * @param intl our intl provider which contains the locale and formateMessage function used for our translations
  * @param parentId a parent ID used in our iterations of child menu items
  * @param parentItem the parent MenuItemProps that will be added as the first element to its own children
@@ -31,9 +33,9 @@ const messages = {
  */
 export function mapMenuItemsToMenuItemProps(
   menuItems: MenuItem[],
-  type: 'expanded' | 'default',
+  viewType: 'expanded' | 'default',
   intl: IntlShape,
-  parentId: string | null | undefined = null,
+  parentId: string | null | undefined = undefined,
   parentItem: MenuItemProps | undefined = undefined
 ): MenuItemProps[] {
   // This function will determine if a given menu item has sub items based on the parent ID / item ID
@@ -49,7 +51,7 @@ export function mapMenuItemsToMenuItemProps(
     return {
       href: menuItemFormatter.formatHref() || '/404',
       text: menuItemFormatter.formatText(),
-      id: menuItem.id,
+      id: menuItem.id || `${Guid.create()}`,
       parentId: menuItem.parentId || undefined
     };
   }
@@ -60,10 +62,14 @@ export function mapMenuItemsToMenuItemProps(
       const item = mapMenuItemToMenuItemProps(menuItem);
       return {
         ...item,
-        children: hasSubItems(menuItem.id)
+        href:
+          viewType === 'expanded' && hasSubItems(item.id)
+            ? undefined
+            : item.href,
+        children: hasSubItems(item.id)
           ? mapMenuItemsToMenuItemProps(
               menuItems,
-              type,
+              viewType,
               intl,
               menuItem.id,
               item
@@ -73,13 +79,12 @@ export function mapMenuItemsToMenuItemProps(
     });
 
   // Add the parent item to it's own children list and prefix the text if present
-  if (parentItem && type === 'expanded') {
+  if (parentItem && viewType === 'expanded') {
     menuItemProps.unshift({
       ...parentItem,
-      text: `${intl.formatMessage(messages.mainMenuViewAllCategory)} ${
-        parentItem.text
-      }`,
-      parentId: parentItem.id
+      text: intl.formatMessage(messages.mainMenuViewAllCategory, {
+        category: parentItem.text
+      })
     });
   }
 

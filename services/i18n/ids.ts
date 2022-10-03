@@ -11,7 +11,9 @@ export const messageIds: Messages = {
       expandLabel: 'navigation.main.expandLabel',
       cartAriaLabel: 'navigation.main.cartAriaLabel',
       accessPadAriaLabel: 'navigation.main.accessPadAriaLabel',
-      userAriaLabel: 'navigation.main.userAriaLabel'
+      userAriaLabel: 'navigation.main.userAriaLabel',
+      viewAllCategories: 'navigation.main.viewAllCategories',
+      viewAllCategory: 'navigation.main.viewAllCategory'
     },
     site: {
       navigationAriaLabel: 'navigation.site.navigationAriaLabel',
@@ -27,17 +29,12 @@ export const messageIds: Messages = {
       signIn: 'navigation.user.signIn',
       myProfile: 'navigation.user.myProfile'
     },
-    searchBar: {
-      placeholder: 'navigation.searchBar.placeholder'
-    },
-    menu: {
-      close: 'navigation.menu.close',
-      viewAllCategories: 'navigation.menu.viewAllCategories',
-      viewAllCategory: 'navigation.menu.viewAllCategory'
-    },
     locale: {
       title: 'navigation.locale.title'
     }
+  },
+  searchBar: {
+    placeholder: 'searchBar.placeholder'
   },
   finder: {
     filters: {
@@ -147,6 +144,19 @@ export const messageIds: Messages = {
     series: {
       headTitle: 'pages.series.headTitle',
       headDescription: 'pages.series.headDescription'
+    },
+    account: {
+      welcome: 'pages.account.welcome',
+      overview: 'pages.account.overview',
+      orders: 'pages.account.orders',
+      quoteRequests: 'pages.account.quoteRequests',
+      infoAndPreferences: 'pages.account.infoAndPreferences',
+      signOut: 'pages.account.signOut',
+      addressBook: 'pages.account.addressBook',
+      companyInformation: 'pages.account.companyInformation',
+      preferences: 'pages.account.preferences',
+      profileInformation: 'pages.account.profileInformation',
+      accountPage: 'pages.account.accountPage'
     },
     docs: {
       i18n: {

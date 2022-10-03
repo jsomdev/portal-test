@@ -99,7 +99,12 @@ const DesktopMainHeader: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
 
   const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(mainMenuItems || [], 'default', intl);
+    return mapMenuItemsToMenuItemProps(
+      mainMenuItems || [],
+      'default',
+      intl,
+      null
+    );
   }, [mainMenuItems, intl]);
 
   function signIn() {

@@ -6,12 +6,14 @@ import { Messages } from './types';
 export const nl: Messages = {
   navigation: {
     main: {
-      title: 'Spray Finder',
+      title: 'Menu',
       collapseLabel: 'navigation.main.collapseLabel',
       expandLabel: 'navigation.main.expandLabel',
       cartAriaLabel: 'Winkelmandje',
       accessPadAriaLabel: 'Snel menu',
-      userAriaLabel: 'Gebruikers Menu'
+      userAriaLabel: 'Gebruikers Menu',
+      viewAllCategories: 'Ga naar alle categorieën',
+      viewAllCategory: 'Ga naar alle {category}'
     },
     site: {
       navigationAriaLabel: 'Navigatie menu',
@@ -27,17 +29,12 @@ export const nl: Messages = {
       signIn: 'Inloggen',
       myProfile: 'Mijn Profiel'
     },
-    searchBar: {
-      placeholder: 'Zoek onderdeel nummer...'
-    },
-    menu: {
-      close: 'Menu',
-      viewAllCategories: 'Ga naar alle categorieën',
-      viewAllCategory: 'Ga naar alle'
-    },
     locale: {
       title: 'Geselecteerd land/regio'
     }
+  },
+  searchBar: {
+    placeholder: 'Zoek onderdeel nummer...'
   },
   finder: {
     filters: {
@@ -171,6 +168,19 @@ export const nl: Messages = {
         description:
           'Documentatie rond project setup and configuraties in het project'
       }
+    },
+    account: {
+      welcome: 'Welkom {name}',
+      infoAndPreferences: 'Info & Voorkeuren',
+      orders: 'Bestellingen',
+      overview: 'Overzicht',
+      quoteRequests: 'Prijs Offertes',
+      signOut: 'Uitloggen',
+      addressBook: 'Adresboek',
+      companyInformation: 'Bedrijf Informatie',
+      preferences: 'Voorkeuren',
+      profileInformation: 'Profiel Informatie',
+      accountPage: 'Mijn Account'
     }
   },
   loading: {

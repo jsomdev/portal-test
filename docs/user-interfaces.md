@@ -114,7 +114,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
 
   const messages = defineMessages({
     searchPlaceholder: {
-      id: messageIds.navigation.searchBar.placeholder,
+      id: messageIds.searchBar.placeholder,
       description: 'Page search bar placeholder',
       defaultMessage: 'Search by part number...'
     }

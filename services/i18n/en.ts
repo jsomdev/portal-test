@@ -6,12 +6,14 @@ import { Messages } from './types';
 export const en: Messages = {
   navigation: {
     main: {
-      title: 'Categories',
+      title: 'Menu',
       collapseLabel: 'navigation.main.collapseLabel',
       expandLabel: 'navigation.main.expandLabel',
       cartAriaLabel: 'Shopping Cart',
       accessPadAriaLabel: 'Quick Access Pad',
-      userAriaLabel: 'User Menu'
+      userAriaLabel: 'User Menu',
+      viewAllCategories: 'Go to all categories',
+      viewAllCategory: 'Go to all {category}'
     },
     site: {
       navigationAriaLabel: 'Navigation Menu',
@@ -27,17 +29,12 @@ export const en: Messages = {
       signIn: 'Sign in',
       myProfile: 'My Profile'
     },
-    searchBar: {
-      placeholder: 'Search by part number...'
-    },
-    menu: {
-      close: 'Menu',
-      viewAllCategories: 'Go to all categories',
-      viewAllCategory: 'Go to all'
-    },
     locale: {
       title: 'Selected Country/Region'
     }
+  },
+  searchBar: {
+    placeholder: 'Search by part number...'
   },
   finder: {
     filters: {
@@ -169,6 +166,19 @@ export const en: Messages = {
         description:
           'Documentation about project setup and configuration in the project'
       }
+    },
+    account: {
+      infoAndPreferences: 'Info & Preferences',
+      orders: 'Orders',
+      overview: 'Account Overview',
+      quoteRequests: 'Quote Requests',
+      signOut: 'Sign Out',
+      addressBook: 'Address Book',
+      companyInformation: 'Company Information',
+      preferences: 'Preferences',
+      profileInformation: 'Profile Information',
+      welcome: 'Welcome {name}',
+      accountPage: 'My Account'
     }
   },
   loading: {

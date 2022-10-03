@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
@@ -26,6 +26,8 @@ interface ClaimsHook {
   isAccountManager: boolean;
   forceRefreshToken: () => Promise<void>;
   isAdministrator: boolean;
+  lastName: string;
+  firstName: string;
 }
 
 interface Claims {
@@ -51,6 +53,8 @@ interface ClaimsExtensions {
   extension_UserId?: string;
   extension_AccountNumber?: string;
   extension_AccountId?: string;
+  family_name: string;
+  given_name: string;
 }
 
 export type ExtendedClaims = Claims & ClaimsExtensions;
@@ -58,6 +62,7 @@ export type ExtendedClaims = Claims & ClaimsExtensions;
 export const useClaims = (): ClaimsHook => {
   const { accounts, instance } = useMsal();
   const isAuthenticated = useIsAuthenticated();
+
   const claims = useMemo(() => {
     return accounts?.[0]?.idTokenClaims as ExtendedClaims | undefined;
   }, [accounts]);
@@ -84,15 +89,25 @@ export const useClaims = (): ClaimsHook => {
   const isAccountManager = useMemo(() => {
     return !!isRole(ExtensionRole.AccountManager);
   }, [isRole]);
+
   const isRegisteredUser = useMemo(() => {
     return !!isRole(ExtensionRole.RegisteredUser);
   }, [isRole]);
+
   const isCustomer = useMemo(() => {
     return (
       !!isRole(ExtensionRole.Customer) ||
       !!isRole(ExtensionRole.VerifiedCustomer)
     );
   }, [isRole]);
+
+  const firstName = useMemo(() => {
+    return (!!claims?.family_name && claims?.family_name) || '';
+  }, [claims]);
+
+  const lastName = useMemo(() => {
+    return (!!claims?.given_name && claims?.given_name) || '';
+  }, [claims]);
 
   const isAdmin = useMemo(() => {
     return !!isRole(ExtensionRole.Administrator);
@@ -125,6 +140,8 @@ export const useClaims = (): ClaimsHook => {
     accountNumber: claims?.extension_AccountNumber,
     isAccountManager,
     isAdministrator: isAdmin,
-    forceRefreshToken: forceRefresh
+    forceRefreshToken: forceRefresh,
+    firstName,
+    lastName
   };
 };

@@ -31,7 +31,7 @@ import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 const messages = defineMessages({
   searchPlaceholder: {
-    id: messageIds.navigation.searchBar.placeholder,
+    id: messageIds.searchBar.placeholder,
     description: 'Page search bar placeholder',
     defaultMessage: 'Search by part number default...'
   }

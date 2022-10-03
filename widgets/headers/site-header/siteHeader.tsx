@@ -3,22 +3,28 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { AccountInfo } from '@azure/msal-browser';
 import {
   Callout,
   IButtonStyles,
   ICalloutContentStyles,
+  IPanelStyles,
   IStackStyles,
   IVerticalDividerStyles,
+  Panel,
+  PanelType,
   Stack,
   VerticalDivider,
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { useMe } from '@providers/user/userContext';
+import { msalInstance } from '@services/authentication/authenticationConfiguration';
+import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
+import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
 import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languageMenu';
-import { NavigationPanel } from '@widgets/headers/site-header/navigation-panel/navigationPanel';
-import { NavigationPanelType } from '@widgets/headers/site-header/navigation-panel/navigationPanel.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import {
@@ -26,11 +32,11 @@ import {
   mapMenuItemsToMenuItemProps
 } from '../main-header/mainHeader.helper';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
-import { mapMenuItemsToSiteHeaderItemProps } from './siteHeader.helper';
+import { AppNavigationMenu } from './appNavigationMenu';
 import { SiteHeaderButton } from './siteHeaderButton';
 import { SiteLogo } from './siteLogo';
+import { UserNavigationMenu } from './userNavigationMenu';
 
-//items prop has Menu Items from the api
 export interface SiteHeaderProps {
   siteMenuItems: MenuItemProps[];
 }
@@ -40,6 +46,26 @@ const messages = defineMessages({
     id: messageIds.navigation.site.navigationAriaLabel,
     description: 'Aria label for the navigation menu',
     defaultMessage: 'Navigation menu'
+  },
+  welcome: {
+    id: messageIds.pages.account.welcome,
+    description: 'Text to welcome user',
+    defaultMessage: 'Welcome default'
+  },
+  mainMenuViewAllCategories: {
+    id: messageIds.navigation.main.viewAllCategories,
+    description: 'View all categories text',
+    defaultMessage: 'View all categories'
+  },
+  signIn: {
+    id: messageIds.navigation.user.signIn,
+    description: 'Link text for sign in button',
+    defaultMessage: 'Sign In'
+  },
+  closeMenu: {
+    id: messageIds.navigation.main.title,
+    description: 'Button text for app navigation header',
+    defaultMessage: 'Menu default'
   }
 });
 
@@ -49,20 +75,13 @@ const messages = defineMessages({
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
 export const SiteHeader: React.FC = () => {
-  const { siteMenuItems } = useGlobalData();
-  const { locale } = useIntl();
-
-  const mappedSiteMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToSiteHeaderItemProps(siteMenuItems || [], locale);
-  }, [locale, siteMenuItems]);
-
   return (
     <>
       <Mobile>
-        <MobileSiteHeader siteMenuItems={mappedSiteMenuItems} />
+        <MobileSiteHeader />
       </Mobile>
       <TabletAndDesktop>
-        <DesktopSiteHeader siteMenuItems={mappedSiteMenuItems} />
+        <DesktopSiteHeader />
       </TabletAndDesktop>
     </>
   );
@@ -72,29 +91,51 @@ export const SiteHeader: React.FC = () => {
 
 interface MobileSiteHeaderStyles {
   root: IStackStyles;
+  panel: Partial<IPanelStyles>;
+  panelHeader: IStackStyles;
+  closeButton: IButtonStyles;
 }
 
-const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
-  const { spacing } = useTheme();
+const MobileSiteHeader: React.FC = () => {
+  const { spacing, palette, semanticColors } = useTheme();
   const intl = useIntl();
-  const { mainMenuItems } = useGlobalData();
   const { asPath } = useRouter();
+  const { me } = useMe();
+  const { formatMessage } = intl;
+  const [showPanel, setShowPanel] = useState<'app' | 'user' | undefined>();
+  const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
+  const claims = useClaims();
 
-  // TODO GR -> rething the functionality and state that triggers the correct menu / renders the correct section
-  // This state is currently a functionality placeholder until the user menu / quick access menu is implemented
-  const [sideNavigationType, setSideNavigationType] =
-    useState<null | NavigationPanelType>(null);
+  const panelHeaderText: string = useMemo(() => {
+    if (showPanel === 'app') {
+      return formatMessage(messages.closeMenu);
+    }
+    if (showPanel === 'user') {
+      const nameFormatter = new UserFormatter(me, account);
+      const name = nameFormatter.formatDisplayName(claims.firstName);
+      return formatMessage(messages.welcome, {
+        name
+      });
+    }
+    return '';
+  }, [account, formatMessage, me, showPanel, claims]);
 
-  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(mainMenuItems || [], 'expanded', intl);
-  }, [mainMenuItems, intl]);
+  const panelType: PanelType = useMemo(() => {
+    if (showPanel === 'app') {
+      return PanelType.customNear;
+    }
+    if (showPanel === 'user') {
+      return PanelType.custom;
+    }
+    return PanelType.custom;
+  }, [showPanel]);
 
-  function onSitePanelDismiss(): void {
-    setSideNavigationType(null);
+  function onPanelDismiss(): void {
+    setShowPanel(undefined);
   }
 
   useEffect(() => {
-    onSitePanelDismiss();
+    onPanelDismiss();
   }, [asPath]);
 
   const styles: MobileSiteHeaderStyles = {
@@ -102,6 +143,33 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
       root: {
         height: rem(80),
         position: 'relative'
+      }
+    },
+    panel: {
+      commands: {
+        display: 'none'
+      },
+      root: {
+        height: '100vh'
+      },
+      content: {
+        padding: 0,
+        overflow: 'auto',
+        maxHeight: `calc(100vh - ${rem(90)})`
+      },
+      main: {
+        backgroundColor: palette.white
+      }
+    },
+    panelHeader: {
+      root: {
+        borderBottom: `1px solid ${semanticColors.variantBorder}`,
+        height: rem(80)
+      }
+    },
+    closeButton: {
+      icon: {
+        color: palette.neutralPrimary
       }
     }
   };
@@ -124,9 +192,9 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           verticalAlign="center"
         >
           <SiteHeaderButton
-            title={intl.formatMessage(messages.navigationAriaLabel)}
+            title={formatMessage(messages.navigationAriaLabel)}
             onClick={() => {
-              setSideNavigationType('site');
+              setShowPanel('app');
             }}
             iconProps={{
               iconName: 'GlobalNavButton'
@@ -146,7 +214,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           />
           <SiteHeaderButton
             onClick={() => {
-              setSideNavigationType('user');
+              setShowPanel('user');
             }}
             iconProps={{
               iconName: 'Contact'
@@ -154,14 +222,37 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
           />
         </Stack>
       </Stack>
-      <NavigationPanel
-        panelProps={{
-          isOpen: !!sideNavigationType,
-          onDismiss: onSitePanelDismiss
-        }}
-        siteMenuItems={siteMenuItems}
-        mainMenuItems={mappedMainMenuItems}
-      />
+      {showPanel && (
+        <Panel
+          hasCloseButton={false}
+          type={panelType}
+          onRenderHeader={() => (
+            <Stack
+              horizontal
+              horizontalAlign="space-between"
+              verticalAlign="center"
+              tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
+              styles={styles.panelHeader}
+            >
+              <SiteHeaderButton
+                type="iconButton"
+                iconProps={{
+                  iconName: 'Cancel'
+                }}
+                onClick={() => setShowPanel(undefined)}
+                text={panelHeaderText}
+                styles={styles.closeButton}
+              />
+            </Stack>
+          )}
+          isOpen={!!showPanel}
+          onDismiss={onPanelDismiss}
+          styles={styles.panel}
+        >
+          {showPanel === 'user' && <UserNavigationMenu />}
+          {showPanel === 'app' && <AppNavigationMenu />}
+        </Panel>
+      )}
     </Stack>
   );
 };
@@ -178,10 +269,21 @@ interface DesktopSiteHeaderStyles {
 /**
  * Large version of the Site Header
  */
-const DesktopSiteHeader: React.FC<SiteHeaderProps> = ({ siteMenuItems }) => {
+const DesktopSiteHeader: React.FC = () => {
   const { spacing, palette } = useTheme();
   const { locale } = useIntl();
+  const intl = useIntl();
+  const { siteMenuItems: globalSiteMenuItems } = useGlobalData();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+
+  const siteMenuItems: MenuItemProps[] = useMemo(() => {
+    return mapMenuItemsToMenuItemProps(
+      globalSiteMenuItems || [],
+      'default',
+      intl
+    );
+  }, [globalSiteMenuItems, intl]);
+
   const styles: DesktopSiteHeaderStyles = {
     root: {
       root: {

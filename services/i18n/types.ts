@@ -31,6 +31,8 @@ type IMainNavigationMessages = {
   cartAriaLabel: string;
   accessPadAriaLabel: string;
   userAriaLabel: string;
+  viewAllCategories: string;
+  viewAllCategory: string;
 };
 type ISiteSearchBarMessages = {
   placeholder: string;
@@ -120,10 +122,18 @@ type INextHeadMessages = {
   headDescription: string;
 };
 
-type IMenuMessages = {
-  close: string;
-  viewAllCategories: string;
-  viewAllCategory: string;
+type IAccountMessages = {
+  overview: string;
+  orders: string;
+  quoteRequests: string;
+  infoAndPreferences: string;
+  signOut: string;
+  profileInformation: string;
+  addressBook: string;
+  companyInformation: string;
+  preferences: string;
+  welcome: string;
+  accountPage: string;
 };
 
 type ILocaleMessages = {
@@ -186,10 +196,9 @@ export type Messages = {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
     user: IUserNavigationMessages;
-    searchBar: ISiteSearchBarMessages;
-    menu: IMenuMessages;
     locale: ILocaleMessages;
   };
+  searchBar: ISiteSearchBarMessages;
   loading: {
     default: string;
     user: ILoadingUserMessages;
@@ -208,6 +217,7 @@ export type Messages = {
       testing: ITestingMessages;
       projectSetup: IProjectSetupMessages;
     };
+    account: IAccountMessages;
   };
 };
 
