@@ -87,6 +87,8 @@ type IFinderMessages = {
     mobile: {
       title: string;
       ariaClose: string;
+      ariaCollapse: string;
+      ariaExpand: string;
       showResults: string;
     };
   };

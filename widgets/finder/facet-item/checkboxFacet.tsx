@@ -6,7 +6,12 @@ import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   ActionButton,
   Checkbox,
+  FontSizes,
+  FontWeights,
+  IButtonStyles,
+  ICheckboxStyles,
   IStyle,
+  ITextStyles,
   Stack,
   Text,
   classNamesFunction,
@@ -26,6 +31,7 @@ import {
 import { AttributeType } from '@services/portal-api';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
 import { rem } from '@utilities/rem';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
 import {
   filterActiveCheckboxFacetOption,
@@ -36,22 +42,18 @@ import {
 import { CheckboxFacetPanel } from './checkboxFacetPanel';
 import { FacetContainer } from './facetContainer';
 
-const getClassNames = classNamesFunction<
-  Record<string, unknown>,
-  CheckboxFacetStyles
->();
-
 export interface CheckboxFacetProps {
   facet: Facet;
+  isActive: boolean;
   predictedResults: FacetedSearchFacetResult[] | undefined;
   onSelect: (optionKey: string) => void;
 }
 
 export interface CheckboxFacetStyles {
-  checkbox?: IStyle;
-  checkboxTitle?: IStyle;
-  result?: IStyle;
-  showMoreButton?: IStyle;
+  checkbox?: ICheckboxStyles;
+  checkboxTitle?: ITextStyles;
+  result?: ITextStyles;
+  showMoreButton?: Partial<IButtonStyles>;
 }
 
 const messages = defineMessages({
@@ -69,6 +71,7 @@ const messages = defineMessages({
 
 export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
   facet,
+  isActive,
   predictedResults,
   onSelect
 }) => {
@@ -95,39 +98,64 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
   const { palette, fonts, effects } = theme;
   const styles: CheckboxFacetStyles = {
     result: {
-      color: palette.themeSecondary
+      root: {
+        fontSize: rem(FontSizes.large),
+        color: palette.themeSecondary
+      }
+    },
+    checkboxTitle: {
+      root: {
+        fontSize: rem(FontSizes.large),
+        fontWeight: 300
+      }
     },
     showMoreButton: {
-      ...fonts.small,
-      color: palette.accent,
-      height: rem('150%'),
-      alignSelf: 'flex-start',
-      paddingLeft: 0,
-      selectors: {
-        '& i': {
-          ...fonts.small,
-          marginLeft: 0,
-          color: palette.accent
+      root: {
+        ...fonts.mediumPlus,
+        color: palette.accent,
+        height: rem('150%'),
+        alignSelf: 'flex-start',
+        paddingLeft: 0,
+        ...mediaQueryFrom('tablet', {
+          fontSize: rem(FontSizes.medium)
+        }),
+        selectors: {
+          '& i': {
+            ...fonts.mediumPlus,
+            marginLeft: 0,
+            color: palette.accent,
+            ...mediaQueryFrom('tablet', {
+              fontSize: rem(FontSizes.medium)
+            })
+          }
         }
       }
     },
     checkbox: {
-      color: palette.neutralPrimary,
-      fontWeight: 300,
-      selectors: {
-        '& .ms-Checkbox-checkbox': {
+      root: {
+        marginTop: rem(4),
+        marginBottom: rem(4),
+        ...mediaQueryFrom('tablet', {
+          marginTop: 0,
+          marginBottom: 0
+        })
+      },
+      checkbox: {
+        height: rem(24),
+        width: rem(24),
+        ...mediaQueryFrom('tablet', {
           height: rem(16),
-          width: rem(16),
-          fontSize: rem(16),
-          borderRadius:
-            (facet.configuration.selectType === FacetSelectType.SingleSelect &&
-              rem(8)) ||
-            effects.roundedCorner2
-        }
+          width: rem(16)
+        })
+      },
+      checkmark: {
+        fontSize: rem(FontSizes.size24),
+        ...mediaQueryFrom('tablet', {
+          fontSize: rem(FontSizes.size16)
+        })
       }
     }
   };
-  const classNames = getClassNames(styles, { theme });
   const options: FacetOption[] = useMemo(() => {
     let newOptions = facet.options.slice();
     newOptions = newOptions
@@ -202,10 +230,10 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
       <Stack horizontal={true} tokens={{ childrenGap: rem(4) }}>
         {/* {renderLabelPrefix(option)} */}
         <Stack.Item>
-          <Text variant="mediumPlus">
+          <Text variant="mediumPlus" styles={styles.checkboxTitle}>
             {facetOptionFormatter.formatDisplayValue()}
           </Text>
-          <Text variant="mediumPlus" className={classNames.result}>
+          <Text variant="mediumPlus" styles={styles.result}>
             {facetOptionFormatter.formatPredictedResult()}
           </Text>
         </Stack.Item>
@@ -216,6 +244,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
   function onRenderCheckbox(option: FacetOption): JSX.Element {
     return (
       <Checkbox
+        styles={styles.checkbox}
         disabled={
           !option.isActive
             ? facet.configuration.isFacetingEnabled &&
@@ -231,17 +260,6 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
           onSelect(option.key);
         }}
         checked={option.isActive}
-        className={classNames.checkbox}
-        styles={{
-          label: {
-            alignItems: 'flex-start',
-            selectors: {
-              '& .ms-Checkbox-checkbox': {
-                marginTop: rem(2)
-              }
-            }
-          }
-        }}
         key={option.key}
         onRenderLabel={() => renderLabel(option, predictedResults || [])}
       />
@@ -261,13 +279,6 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
         title={attributeTypeFormatter.formatName()}
         markdownSource={attributeTypeFormatter.formatDescription()}
       />
-      {/* <ProductSpecificationDialog
-        dialogProps={{
-          onDismiss: ev => setShowSpecificationDialog(false),
-          hidden: !showSpecificationDialog
-        }}
-        attributeTypeCode={facet.attributeTypeCode}
-      /> */}
       <Stack tokens={{ childrenGap: rem(2) }}>
         {isPanelOpen && (
           <CheckboxFacetPanel
@@ -293,7 +304,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
         </Stack.Item>
         {showSearchButton ? (
           <ActionButton
-            className={classNames.showMoreButton}
+            styles={styles.showMoreButton}
             iconProps={{ iconName: 'Search' }}
             text={formatMessage(messages.more)}
             onClick={() => setIsPanelOpen(true)}
@@ -301,7 +312,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
         ) : (
           showExpandButton && (
             <ActionButton
-              className={classNames.showMoreButton}
+              styles={styles.showMoreButton}
               onClick={() => setIsShowingMore(!isShowingMore)}
               text={
                 (isShowingMore && formatMessage(messages.less)) ||

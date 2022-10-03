@@ -84,6 +84,7 @@ export const SETTINGKEYS: SettingKeys = {
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   relativeDropSizeRange: 'RelativeDropSizeRange',
+  liquidPressure: 'LiquidPressure',
   maximumTransverseSprayCoverageWidthHorizontalSpray:
     'MaximumTransverseSprayCoverageWidthHorizontalSpray',
   relativeDropSizeGroup: 'RelativeDropSizeGroup',
@@ -164,6 +165,7 @@ export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   current: 'Current',
   fluidSideSparePartKit: 'FluidSideSparePartKit',
   numberOfInletOpenings: 'NumberOfInletOpenings',
+  specificGravity: 'SpecificGravity',
   nozzleBodyOrTip: 'NozzleBodyOrTip',
   nozzlePrefix: 'NozzlePrefix',
   hasIntregralStrainer: 'HasIntregralStrainer',

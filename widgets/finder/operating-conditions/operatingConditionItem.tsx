@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import {
+  FontSizes,
   FontWeights,
   IButtonStyles,
   ISliderStyles,
@@ -42,6 +43,7 @@ interface OperatingConditionItemStyles {
   infoIcon: IButtonStyles;
   label: ITextStyles;
   textField: Partial<ITextFieldStyles>;
+  inputContainer: IStackStyles;
   slider: Partial<ISliderStyles>;
 }
 
@@ -95,13 +97,35 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
         return { ...option };
       }
     );
+
     const newFacet = {
       ...operatingCondition,
       options: newOptions
     };
     onChange(newFacet);
   }
+
+  function onSliderChange(range: [number, number] | undefined): void {
+    if (
+      Number(
+        (getOperatingConditionValue(operatingCondition) as Range | undefined)
+          ?.minimum
+      ) !== range?.[0]
+    ) {
+      onUpdateValue(RangeFacetOptionKey.Minimum, range && range[0].toString());
+    }
+    if (
+      Number(
+        (getOperatingConditionValue(operatingCondition) as Range | undefined)
+          ?.maximum
+      ) !== range?.[1]
+    ) {
+      onUpdateValue(RangeFacetOptionKey.Maximum, range && range[1].toString());
+    }
+  }
+
   useEffect(() => {
+    // We want to unhighlight a value after 2seconds
     if (highlightValue) {
       setTimeout(() => {
         setHighlightValue(false);
@@ -111,7 +135,6 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
 
   const styles: OperatingConditionItemStyles = {
     textField: {
-      root: {},
       prefix: {
         color: highlightValue ? palette.themePrimary : palette.neutralSecondary
       },
@@ -125,12 +148,17 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
         borderColor: palette.neutralSecondary
       },
       field: {
-        fontSize: rem('14px')
+        fontSize: rem(FontSizes.mediumPlus)
       }
     },
     root: {
       root: {
         display: hidden ? 'none' : 'initial',
+        width: '100%'
+      }
+    },
+    inputContainer: {
+      root: {
         width: '100%'
       }
     },
@@ -143,8 +171,9 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
     label: {
       root: {
         width: 112,
-        marginLeft: spacing.s2,
-        marginRight: spacing.s2,
+        display: 'inline-block',
+        paddingLeft: rem(spacing.s2),
+        paddingRight: rem(spacing.s2),
         fontWeight: FontWeights.semibold
       }
     },
@@ -171,15 +200,12 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
   };
 
   function renderInput(): JSX.Element | null {
+    // LiquidSpecificGravity is an operating condition that has a unique display.
     if (operatingCondition.key === FacetKey.LiquidSpecificGravity) {
       return (
         <Stack
           horizontal
-          styles={{
-            root: {
-              width: '100%'
-            }
-          }}
+          styles={styles.inputContainer}
           tokens={{
             childrenGap: rem(spacing.s2),
             padding: `${rem(spacing.s2)} 0 ${rem(spacing.s2)} ${rem(
@@ -218,6 +244,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
         </Stack>
       );
     }
+    // Other Operating Conditions will be displayed based on their MatchType
     switch (getOperatingConditionMatchType(operatingCondition)) {
       case RangeFacetMatchType.Exact:
         return (
@@ -271,11 +298,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
       case RangeFacetMatchType.Range:
         return (
           <Stack
-            styles={{
-              root: {
-                width: '100%'
-              }
-            }}
+            styles={styles.inputContainer}
             tokens={{
               childrenGap: rem(spacing.s2),
               padding: `${rem(spacing.s2)} 0 ${rem(spacing.s2)} ${rem(
@@ -288,35 +311,8 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
               min={0}
               styles={styles.slider}
               ranged
-              onChange={(value, range) => {
-                if (
-                  Number(
-                    (
-                      getOperatingConditionValue(operatingCondition) as
-                        | Range
-                        | undefined
-                    )?.minimum
-                  ) !== range?.[0]
-                ) {
-                  onUpdateValue(
-                    RangeFacetOptionKey.Minimum,
-                    range && range[0].toString()
-                  );
-                }
-                if (
-                  Number(
-                    (
-                      getOperatingConditionValue(operatingCondition) as
-                        | Range
-                        | undefined
-                    )?.maximum
-                  ) !== range?.[1]
-                ) {
-                  onUpdateValue(
-                    RangeFacetOptionKey.Maximum,
-                    range && range[1].toString()
-                  );
-                }
+              onChange={(_value, range) => {
+                onSliderChange(range);
               }}
               max={180}
               step={5}
@@ -357,19 +353,17 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
         wrap
         verticalAlign="center"
       >
-        <Stack.Item>
-          <IconButton
-            iconProps={{
-              iconName: 'info'
-            }}
-            styles={styles.infoIcon}
-            onClick={() => onShowInfo && onShowInfo()}
-          />
-          <Text styles={styles.label}>
-            {/* TODO: Make display name multilingual*/}
-            {operatingCondition.configuration.displayName}
-          </Text>
-        </Stack.Item>
+        <IconButton
+          iconProps={{
+            iconName: 'info'
+          }}
+          styles={styles.infoIcon}
+          onClick={() => onShowInfo && onShowInfo()}
+        />
+        <Text styles={styles.label}>
+          {/* TODO: Make display name multilingual*/}
+          {operatingCondition.configuration.displayName}
+        </Text>
       </Stack>
       <Stack.Item>{renderInput()}</Stack.Item>
     </Stack>

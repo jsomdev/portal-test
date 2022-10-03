@@ -26,7 +26,6 @@
  * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
  */
 /*{"last_published":"2018-07-26 20:28:23 UTC"}*/
-
 @import url('https://p.typekit.net/p.css?s=1&k=ioc1xxh&ht=tk&f=139.140.171.172.173.174.175.176.25136.25137.28439.28441.28443.28447.28448.28449&a=14452214&app=typekit&e=css');
 
 @font-face {
@@ -278,8 +277,14 @@ p {
 }
 
 .reactMarkdown {
-  padding: 2em;
+  padding: 0em;
+  font-family: 'proxima-nova', sans-serif;
 }
+.reactMarkdown p,
+.reactMarkdown h3 {
+  margin-bottom: 1rem;
+}
+
 .reactMarkdown a {
   color: darkcyan;
 }

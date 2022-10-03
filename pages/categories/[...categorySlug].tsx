@@ -15,6 +15,10 @@ import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
+import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
+import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
+import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
+import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { getAudience } from '@services/i18n/helper';
@@ -175,7 +179,13 @@ export const getStaticProps: GetStaticProps = async (
   );
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
     attributeType =>
-      usedAttributeTypeCodes.includes(formatCamelCase(attributeType.code || ''))
+      [
+        ...usedAttributeTypeCodes,
+        formatCamelCase(liquidFlowRateFacet.attributeTypeCode),
+        formatCamelCase(liquidPressureFacet.attributeTypeCode),
+        formatCamelCase(liquidSpecificGravityFacet.attributeTypeCode),
+        formatCamelCase(sprayAngleFacet.attributeTypeCode)
+      ].includes(formatCamelCase(attributeType.code || ''))
   );
 
   const usedFacetCodes: string[] = Object.values(

@@ -244,7 +244,7 @@ export class FinderQueryHelper {
     operatingCondition: Facet,
     queryValues: string[],
     currentOption: FacetOption
-  ) {
+  ): FacetOption {
     switch (operatingCondition.key) {
       case FacetKey.LiquidFlowRate:
         return FinderQueryHelper.mapQueryValuesToLiquidFlowRateOption(
@@ -355,6 +355,7 @@ export class FinderQueryHelper {
       const exactKey: string | null | undefined = queryValues[0];
       const exactValue: number | null = (exactKey && parseFloat(exactKey)) || 1;
       const isActive: boolean = exactValue !== null && !isNaN(exactValue);
+
       return {
         ...currentOption,
         isActive,

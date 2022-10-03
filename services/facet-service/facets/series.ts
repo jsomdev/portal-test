@@ -8,10 +8,11 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum SeriesFacetOptionKey {
+  _12j = '12j',
+  _14j18j = '14j18j',
+  _18jj = '18jj',
+  _1j = '1j',
   AdjustableBallFittings = 'AdjustableBallFittings',
-  AirAtomizingAirCaps = 'AirAtomizingAirCaps',
-  AirAtomizingFluidCaps = 'AirAtomizingFluidCaps',
-  AirAtomizingSetups = 'AirAtomizingSetups',
   AirActuatedAirAtomizing = 'AirActuatedAirAtomizing',
   AirActuatedHydraulic = 'AirActuatedHydraulic',
   ElectricallyActuatedAirAtomizing = 'ElectricallyActuatedAirAtomizing',
@@ -30,7 +31,6 @@ export enum SeriesFacetOptionKey {
   HighImpactSolidStream = 'HighImpactSolidStream',
   HighPressureGunjetSprayGuns = 'HighPressureGunjetSprayGuns',
   SprayHollowCone = 'SprayHollowCone',
-  JAndJjNozzleSeries = 'JAndJjNozzleSeries',
   LargeFreePassageFullCone = 'LargeFreePassageFullCone',
   LargeFreePassageHollowCone = 'LargeFreePassageHollowCone',
   LowPressureGunjetSprayGuns = 'LowPressureGunjetSprayGuns',
@@ -43,12 +43,12 @@ export enum SeriesFacetOptionKey {
   PromaxQuickFulljetQuickConnect = 'PromaxQuickFulljetQuickConnect',
   PromaxQuickveejetQuickConnect = 'PromaxQuickveejetQuickConnect',
   PromaxQuickjetQuickConnect = 'PromaxQuickjetQuickConnect',
+  Qmj = 'Qmj',
   QuickFloodjetQuickConnect = 'QuickFloodjetQuickConnect',
   QuickFulljetQuickConnect = 'QuickFulljetQuickConnect',
   QuickVeejetFlatSprayQuickConnect = 'QuickVeejetFlatSprayQuickConnect',
   QuickVeejetSolidStreamQuickConnect = 'QuickVeejetSolidStreamQuickConnect',
   QuickjetQuickConnectNozzleBodies = 'QuickjetQuickConnectNozzleBodies',
-  QuickmistNozzleSeries = 'QuickmistNozzleSeries',
   RoundSpray = 'RoundSpray',
   SingleOrificeHydraulicFineSpray = 'SingleOrificeHydraulicFineSpray',
   SplitEyeletConnectors = 'SplitEyeletConnectors',
@@ -67,13 +67,90 @@ export enum SeriesFacetOptionKey {
   UnijetHollowCone = 'UnijetHollowCone',
   UnijetNozzleBodies = 'UnijetNozzleBodies',
   UnijetSolidStream = 'UnijetSolidStream',
-  VariableSprayNozzleSeries = 'VariableSprayNozzleSeries',
+  VaaVau = 'VaaVau',
+  Vmau = 'Vmau',
   WideAngleDeflectedFlatSpray = 'WideAngleDeflectedFlatSpray',
   WideAngleFullCone = 'WideAngleFullCone',
   WideAngleHollowCone = 'WideAngleHollowCone'
 }
 
 export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
+  {
+    key: SeriesFacetOptionKey._12j,
+    ...defaultFacetOption,
+    valueId: 'd52f0cb2-4d5e-4779-a105-2dd161bf13f0',
+    value: '1/2J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/2J' }
+        }
+      ],
+      sortIndex: 0,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._14j18j,
+    ...defaultFacetOption,
+    valueId: '37648a83-4702-4454-a416-4c80912c8dc2',
+    value: '1/4J, 1/8J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/4J, 1/8J' }
+        }
+      ],
+      sortIndex: 1,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._18jj,
+    ...defaultFacetOption,
+    valueId: '4c2ff055-8b93-4a0d-8d9c-859c0f61baae',
+    value: '1/8JJ',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/8JJ' }
+        }
+      ],
+      sortIndex: 2,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._1j,
+    ...defaultFacetOption,
+    valueId: 'f158e215-41f7-4cde-a804-2208a9d7fe12',
+    value: '1J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1J' }
+        }
+      ],
+      sortIndex: 3,
+      seoPath: ''
+    }
+  },
   {
     key: SeriesFacetOptionKey.AdjustableBallFittings,
     ...defaultFacetOption,
@@ -94,64 +171,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 0,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.AirAtomizingAirCaps,
-    ...defaultFacetOption,
-    valueId: 'ba21a959-406f-412b-9e4c-b40457d1fc57',
-    value: 'Air Atomizing Air Caps',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'Air Atomizing Air Caps' }
-        }
-      ],
-      sortIndex: 1,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.AirAtomizingFluidCaps,
-    ...defaultFacetOption,
-    valueId: 'c5598aff-c89f-43c3-8d07-9de265181426',
-    value: 'Air Atomizing Fluid Caps',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'Air Atomizing Fluid Caps' }
-        }
-      ],
-      sortIndex: 2,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.AirAtomizingSetups,
-    ...defaultFacetOption,
-    valueId: '5fad377a-1879-49b7-a61a-76453403f845',
-    value: 'Air Atomizing Setups',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'Air Atomizing Setups' }
-        }
-      ],
-      sortIndex: 3,
+      sortIndex: 4,
       seoPath: ''
     }
   },
@@ -175,7 +195,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 4,
+      sortIndex: 5,
       seoPath: ''
     }
   },
@@ -199,7 +219,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 5,
+      sortIndex: 6,
       seoPath: ''
     }
   },
@@ -223,7 +243,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 6,
+      sortIndex: 7,
       seoPath: ''
     }
   },
@@ -247,7 +267,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 7,
+      sortIndex: 8,
       seoPath: ''
     }
   },
@@ -271,7 +291,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 8,
+      sortIndex: 9,
       seoPath: ''
     }
   },
@@ -295,7 +315,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 9,
+      sortIndex: 10,
       seoPath: ''
     }
   },
@@ -319,7 +339,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 10,
+      sortIndex: 11,
       seoPath: ''
     }
   },
@@ -343,7 +363,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 11,
+      sortIndex: 12,
       seoPath: ''
     }
   },
@@ -367,7 +387,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 12,
+      sortIndex: 13,
       seoPath: ''
     }
   },
@@ -386,7 +406,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           value: { en: 'For tanks up to 3 m' }
         }
       ],
-      sortIndex: 13,
+      sortIndex: 14,
       seoPath: ''
     }
   },
@@ -410,7 +430,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 14,
+      sortIndex: 15,
       seoPath: ''
     }
   },
@@ -434,7 +454,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 15,
+      sortIndex: 16,
       seoPath: ''
     }
   },
@@ -458,7 +478,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 16,
+      sortIndex: 17,
       seoPath: ''
     }
   },
@@ -482,7 +502,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 17,
+      sortIndex: 18,
       seoPath: ''
     }
   },
@@ -506,7 +526,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 18,
+      sortIndex: 19,
       seoPath: ''
     }
   },
@@ -530,7 +550,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 19,
+      sortIndex: 20,
       seoPath: ''
     }
   },
@@ -554,7 +574,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 20,
+      sortIndex: 21,
       seoPath: ''
     }
   },
@@ -576,25 +596,6 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
             fr: 'Buses à cône creux de pulvérisation en ligne, décalées et déviées',
             nl: 'Inline, Offset & Deflected Spray Hollow Cone Nozzles'
           }
-        }
-      ],
-      sortIndex: 21,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.JAndJjNozzleSeries,
-    ...defaultFacetOption,
-    valueId: '3f9057d6-7f87-40dd-adaf-552815a02885',
-    value: 'J and JJ Nozzle Series - Bodies & Assemblies',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'J and JJ Nozzle Series - Bodies & Assemblies' }
         }
       ],
       sortIndex: 22,
@@ -894,6 +895,25 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
     }
   },
   {
+    key: SeriesFacetOptionKey.Qmj,
+    ...defaultFacetOption,
+    valueId: '6a87aa56-4a60-451e-a241-011315411b72',
+    value: 'QMJ',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'QMJ' }
+        }
+      ],
+      sortIndex: 35,
+      seoPath: ''
+    }
+  },
+  {
     key: SeriesFacetOptionKey.QuickFloodjetQuickConnect,
     ...defaultFacetOption,
     valueId: '940e3151-be0a-440f-a256-cff6e7b86d80',
@@ -913,7 +933,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 35,
+      sortIndex: 36,
       seoPath: ''
     }
   },
@@ -937,7 +957,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 36,
+      sortIndex: 37,
       seoPath: ''
     }
   },
@@ -962,7 +982,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 37,
+      sortIndex: 38,
       seoPath: ''
     }
   },
@@ -987,7 +1007,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 38,
+      sortIndex: 39,
       seoPath: ''
     }
   },
@@ -1009,25 +1029,6 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
             fr: 'Corps de buse QuickJet® Quick-Connect',
             nl: 'QuickJet® Quick-Connect nozzlebehuizingen'
           }
-        }
-      ],
-      sortIndex: 39,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.QuickmistNozzleSeries,
-    ...defaultFacetOption,
-    valueId: '6458ece8-7d6a-4fe4-84b5-b49ee1fe4558',
-    value: 'QuickMist® Nozzle Series - Bodies & Assemblies',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'QuickMist® Nozzle Series - Bodies & Assemblies' }
         }
       ],
       sortIndex: 40,
@@ -1457,10 +1458,10 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
     }
   },
   {
-    key: SeriesFacetOptionKey.VariableSprayNozzleSeries,
+    key: SeriesFacetOptionKey.VaaVau,
     ...defaultFacetOption,
-    valueId: 'bfbd8c69-9a3d-4ce4-a547-cb84055102a4',
-    value: 'Variable Spray Nozzle Series - Bodies & Assemblies',
+    valueId: '086fe2d0-3802-4c96-9fbe-0e97cd54df68',
+    value: 'VAA, VAU',
     parentId: '',
     children: [],
     configuration: {
@@ -1468,10 +1469,29 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Variable Spray Nozzle Series - Bodies & Assemblies' }
+          value: { en: 'VAA, VAU' }
         }
       ],
       sortIndex: 59,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey.Vmau,
+    ...defaultFacetOption,
+    valueId: 'ea39602d-847c-4c84-b563-73d04c7b94be',
+    value: 'VMAU',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'VMAU' }
+        }
+      ],
+      sortIndex: 60,
       seoPath: ''
     }
   },
@@ -1495,7 +1515,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 60,
+      sortIndex: 61,
       seoPath: ''
     }
   },
@@ -1519,7 +1539,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 61,
+      sortIndex: 62,
       seoPath: ''
     }
   },
@@ -1543,7 +1563,7 @@ export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 62,
+      sortIndex: 63,
       seoPath: ''
     }
   }

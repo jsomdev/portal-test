@@ -88,7 +88,9 @@ export interface SettingKeys {
 }
 
 export interface AttributeTypeCodes {
+  specificGravity: string;
   relativeDropSizeRange: string;
+  liquidPressure: string;
   maximumTransverseSprayCoverageWidthHorizontalSpray: string;
   relativeDropSizeGroup: string;
   formula: string;

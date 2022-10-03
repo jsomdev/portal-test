@@ -51,6 +51,8 @@ export const messageIds: Messages = {
       mobile: {
         title: 'finder.panel.mobile.title',
         ariaClose: 'finder.panel.mobile.ariaClose',
+        ariaCollapse: 'finder.panel.mobile.ariaCollapse',
+        ariaExpand: 'finder.panel.mobile.ariaExpand',
         showResults: 'finder.panel.mobile.showResults'
       }
     },
@@ -67,7 +69,7 @@ export const messageIds: Messages = {
         requiredFlowRatePressure:
           'finder.operatingConditions.validation.requiredFlowRatePressure',
         requiredFlowRateGravity:
-          'finder.operatingConditions.validation.requiredFlowRatePressure'
+          'finder.operatingConditions.validation.requiredFlowRateGravity'
       },
       liquidType: {
         customValue: {

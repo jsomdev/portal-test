@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
+import { Guid } from 'guid-typescript';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
@@ -53,6 +54,10 @@ const messages = defineMessages({
     description: 'Placeholder for the custom specific gravity input'
   }
 });
+/**
+ * Filter with a list of liquid types and a manual input to change the specific gravity
+ * used in the operating conditions filter.
+ */
 export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
   operatingCondition,
   onUpdateValue
@@ -62,9 +67,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
   const intl = useIntl();
   const { formatMessage, formatNumber, locale } = intl;
   const { getOperatingConditionValue } = useFinder();
-  // const [userSpecifiedValue, setUserSpecifiedValue] = useState<
-  //   string | undefined
-  // >(undefined);
+
   const [showContextualMenu, setShowContextualMenu] = React.useState(false);
   const onShowContextualMenu = React.useCallback(
     (ev: React.MouseEvent<HTMLElement>) => {
@@ -77,6 +80,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
     () => setShowContextualMenu(false),
     []
   );
+
   const onSelectOption = React.useCallback(
     (
       ev?:
@@ -91,6 +95,26 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
     []
   );
 
+  // When the user inputs a custom value
+  const onManualInput = React.useCallback(
+    (newValue: string | undefined) => {
+      // Check if the custom value is valid and is different from the original
+      if (
+        newValue !==
+          getOperatingConditionValue(operatingCondition)?.toString() &&
+        Number(newValue) >= 0.5 &&
+        Number(newValue) <= 3
+      ) {
+        const valueWithFixedDecimals = Number(newValue).toFixed(2);
+        onUpdateValue(
+          RangeFacetOptionKey.Exact,
+          valueWithFixedDecimals.toString()
+        );
+      }
+    },
+    [getOperatingConditionValue, onUpdateValue, operatingCondition]
+  );
+
   const { data: liquids } = useQuery(
     QUERYKEYS.productFinderLiquidsWithRelativeDensity,
     fetchLiquidsWithSpecificGravity,
@@ -98,22 +122,6 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
       ...STATIC_DATA_QUERY_CACHE_OPTIONS
     }
   );
-
-  // useEffect(() => {
-  //   if (
-  //     userSpecifiedValue !==
-  //       getOperatingConditionValue(operatingCondition)?.toString() &&
-  //     Number(userSpecifiedValue) >= 0.5 &&
-  //     Number(userSpecifiedValue) <= 3
-  //   ) {
-  //     const valueWithFixedDecimals = Number(userSpecifiedValue).toFixed(2);
-  //     onUpdateValue(
-  //       RangeFacetOptionKey.Exact,
-  //       valueWithFixedDecimals.toString()
-  //     );
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [userSpecifiedValue]);
 
   const styles: LiquidTypeFilterStyles = {
     textField: {
@@ -137,7 +145,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
     }
     return [
       {
-        key: 'User Specified',
+        key: 'user-specified-specific-gravity',
         text: formatMessage(messages.customValueTitle),
         onRender: () => {
           return (
@@ -150,12 +158,10 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
             >
               <TextField
                 suffix={formatMessage(messages.customValueSuffix)}
-                value={getOperatingConditionValue(
+                defaultValue={getOperatingConditionValue(
                   operatingCondition
                 )?.toString()}
-                onChange={(ev, newValue) =>
-                  onUpdateValue(RangeFacetOptionKey.Exact, newValue || '')
-                }
+                onBlur={ev => onManualInput(ev.currentTarget.value)}
                 prefix={'='}
                 placeholder={formatMessage(messages.customValuePlaceholder, {
                   minimum: formatNumber(0.5, { minimumSignificantDigits: 2 }),
@@ -176,7 +182,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
           locale
         );
         return {
-          key: listItem.id || '',
+          key: listItem.id || Guid.create().toString(),
           text: listItemFormatter.formatDisplayValue(),
           selected:
             listItem.value === 1 &&
@@ -192,7 +198,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
     intl,
     liquids,
     locale,
-    onUpdateValue,
+    onManualInput,
     operatingCondition,
     spacing.s1,
     styles.textField,

@@ -27,15 +27,20 @@ export const FinderPanel: React.FC = () => {
 
 const DesktopFinderPanel: React.FC = () => {
   const { category } = useGlobalData();
-  const { palette } = useTheme();
+  const { palette, spacing } = useTheme();
   const {
     toggleFacetOption,
     getFacetResult,
-    visibleMainFacets: visibleFacets
+    isFacetActive,
+    visibleMainFacets
   } = useFinder();
   return (
-    <Stack>
-      <Text as="h1" styles={{ root: { marginTop: 0, marginBottom: 8 } }}>
+    <Stack tokens={{ maxWidth: 360 }}>
+      {/* TODO: Check if we can replace the current image with this text */}
+      <Text
+        as="h1"
+        styles={{ root: { marginTop: 0, marginBottom: rem(spacing.s1) } }}
+      >
         <Text variant="xxLarge">Spray</Text>
         <Text
           variant="xxLarge"
@@ -46,7 +51,7 @@ const DesktopFinderPanel: React.FC = () => {
       </Text>
       <OperatingConditions />
 
-      {visibleFacets.map(facet => {
+      {visibleMainFacets.map(facet => {
         if (facet.key === FacetKey.CategoryId) {
           return (
             <CategoryLinkFacet
@@ -61,6 +66,7 @@ const DesktopFinderPanel: React.FC = () => {
           return (
             <CheckboxFacet
               key={facet.key}
+              isActive={isFacetActive(facet.key)}
               facet={facet}
               predictedResults={getFacetResult(facet)}
               onSelect={optionKey => toggleFacetOption(facet.key, optionKey)}
@@ -72,27 +78,17 @@ const DesktopFinderPanel: React.FC = () => {
   );
 };
 const MobileFinderPanel: React.FC = () => {
-  const { spacing } = useTheme();
-  const { palette } = useTheme();
   const { category } = useGlobalData();
   const {
     toggleFacetOption,
     getFacetResult,
-    visibleMainFacets: visibleFacets
+    isFacetActive,
+    visibleMainFacets
   } = useFinder();
   return (
-    <Stack tokens={{ padding: `${rem(spacing.m)} 0` }}>
-      <Text as="h1" styles={{ root: { marginTop: 0, marginBottom: 8 } }}>
-        <Text variant="xxLarge">Spray</Text>
-        <Text
-          variant="xxLarge"
-          styles={{ root: { color: palette.themePrimary } }}
-        >
-          Finder
-        </Text>
-      </Text>
+    <Stack>
       <OperatingConditions />
-      {visibleFacets.map(facet => {
+      {visibleMainFacets.map(facet => {
         if (facet.key === FacetKey.CategoryId) {
           return (
             <CategoryLinkFacet
@@ -106,6 +102,7 @@ const MobileFinderPanel: React.FC = () => {
         if (facet.configuration.controlType === FacetControlType.Checkbox) {
           return (
             <CheckboxFacet
+              isActive={isFacetActive(facet.key)}
               key={facet.key}
               facet={facet}
               predictedResults={getFacetResult(facet)}

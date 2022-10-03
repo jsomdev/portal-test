@@ -76,6 +76,8 @@ export const nl: Messages = {
       mobile: {
         title: 'Filters',
         ariaClose: 'Sluiten',
+        ariaCollapse: 'Dichtklappen',
+        ariaExpand: 'Openvouwen',
         showResults:
           '{productCount, plural,=0 {Geen producten gevonden} one {Toon 1 product} other {Toon {productCount} producten}}'
       }

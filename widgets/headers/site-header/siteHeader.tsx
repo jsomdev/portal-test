@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { AccountInfo } from '@azure/msal-browser';
+import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
   Callout,
   IButtonStyles,
@@ -226,7 +227,7 @@ const MobileSiteHeader: React.FC = () => {
         <Panel
           hasCloseButton={false}
           type={panelType}
-          onRenderHeader={() => (
+          onRenderHeader={props => (
             <Stack
               horizontal
               horizontalAlign="space-between"
@@ -234,13 +235,12 @@ const MobileSiteHeader: React.FC = () => {
               tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
               styles={styles.panelHeader}
             >
-              <SiteHeaderButton
-                type="iconButton"
+              <ClosePanelButton
                 iconProps={{
                   iconName: 'Cancel'
                 }}
-                onClick={() => setShowPanel(undefined)}
-                text={panelHeaderText}
+                onClick={() => props?.onDismiss?.()}
+                text={formatMessage(messages.closeMenu)}
                 styles={styles.closeButton}
               />
             </Stack>

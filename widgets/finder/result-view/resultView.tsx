@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
+  IButtonStyles,
   IPanelStyles,
   IStackItemStyles,
   IStackStyles,
   Panel,
   PanelType,
   PrimaryButton,
+  Spinner,
+  SpinnerSize,
   Stack,
   Text,
   TextField,
@@ -22,6 +26,7 @@ import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/pr
 import { Category } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
+import { SiteHeaderButton } from '@widgets/headers/site-header/siteHeaderButton';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import { FinderPanel } from '../panel/finderPanel';
@@ -37,6 +42,8 @@ interface ResultViewStyles {
   sidePanelContainer?: IStackItemStyles;
   mainContainer?: IStackItemStyles;
   panel?: Partial<IPanelStyles>;
+  panelHeader: IStackStyles;
+  closeButton: IButtonStyles;
 }
 
 const messages = defineMessages({
@@ -74,7 +81,7 @@ const messages = defineMessages({
 
 export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
   const [isFiltersPanelOpen, setIsFiltersPanelOpen] = useState<boolean>(false);
-  const { spacing } = useTheme();
+  const { spacing, palette, semanticColors } = useTheme();
   const { locale } = useIntl();
   const { productCount, modelCount } = useFinder();
   const { formatMessage } = useIntl();
@@ -82,6 +89,31 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
   const categoryFormatter = new CategoryFormatter(category, locale);
 
   const styles: ResultViewStyles = {
+    panel: {
+      commands: {
+        display: 'none'
+      },
+      root: {
+        height: '100vh',
+        background: palette.white
+      },
+      content: {
+        padding: 0,
+        overflow: 'auto',
+        maxHeight: `calc(100vh - ${rem(90)})`
+      }
+    },
+    panelHeader: {
+      root: {
+        borderBottom: `1px solid ${semanticColors.variantBorder}`,
+        height: rem(90)
+      }
+    },
+    closeButton: {
+      icon: {
+        color: palette.neutralPrimary
+      }
+    },
     sidePanelContainer: {
       root: {
         flex: 2,
@@ -104,12 +136,10 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
     >
       <Mobile>
         <Panel
+          type={PanelType.smallFluid}
           isOpen={isFiltersPanelOpen}
           onDismiss={() => setIsFiltersPanelOpen(false)}
-          type={PanelType.smallFluid}
-          styles={styles.panel}
-          headerText={formatMessage(messages.panelTitle)}
-          closeButtonAriaLabel={formatMessage(messages.ariaClose)}
+          hasCloseButton={false}
           isFooterAtBottom={true}
           onRenderFooterContent={() => (
             <Stack>
@@ -121,6 +151,41 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
               />
             </Stack>
           )}
+          onRenderHeader={props => (
+            <Stack
+              horizontal
+              verticalAlign="center"
+              tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
+              styles={styles.panelHeader}
+            >
+              <ClosePanelButton
+                iconProps={{
+                  iconName: 'Cancel'
+                }}
+                onClick={() => props?.onDismiss?.()}
+                title={formatMessage(messages.ariaClose)}
+                styles={styles.closeButton}
+              />
+              <Stack.Item
+                align="center"
+                styles={{ root: { justifySelf: 'center' } }}
+              >
+                <Text
+                  as="h1"
+                  styles={{ root: { marginTop: 0, marginBottom: 8 } }}
+                >
+                  <Text variant="xxLarge">Spray</Text>
+                  <Text
+                    variant="xxLarge"
+                    styles={{ root: { color: palette.themePrimary } }}
+                  >
+                    Finder
+                  </Text>
+                </Text>
+              </Stack.Item>
+            </Stack>
+          )}
+          styles={styles.panel}
         >
           <FinderPanel />
         </Panel>
@@ -155,11 +220,46 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
 };
 
 export const TempListView: React.FC = () => {
-  const { products } = useFinder();
+  const { products, isFetching, facetedSearchStatus } = useFinder();
   const { palette } = useTheme();
   const { locale } = useIntl();
   return (
-    <Stack horizontal wrap>
+    <Stack
+      horizontal
+      wrap
+      styles={{
+        root: {
+          position: 'relative'
+        }
+      }}
+    >
+      {(isFetching || facetedSearchStatus === 'loading') && (
+        <Stack
+          styles={{
+            root: {
+              position: 'absolute',
+              zIndex: 1,
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: palette.whiteTranslucent40
+            }
+          }}
+        >
+          <Spinner
+            styles={{
+              circle: {
+                position: 'absolute',
+                top: 100,
+                width: 64,
+                height: 64,
+                borderWidth: 4
+              }
+            }}
+          />
+        </Stack>
+      )}
       {products.slice(0, 20).map(product => {
         const productFormatter = new ProductFormatter(product, locale);
         return (

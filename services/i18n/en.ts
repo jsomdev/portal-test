@@ -76,6 +76,8 @@ export const en: Messages = {
       mobile: {
         title: 'Filters',
         ariaClose: 'Close',
+        ariaCollapse: 'Collapse Filter',
+        ariaExpand: 'Expand Filter',
         showResults:
           '{productCount, plural,=0 {No products to show} one {Show 1 product} other {Show {productCount} products}}'
       }

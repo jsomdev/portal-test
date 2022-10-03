@@ -41,6 +41,7 @@ export default class MyDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: this.props.styleTags }}
           />
+
           <link rel="preconnect" href="https://p.typekit.net" />
           <link
             rel="preload"

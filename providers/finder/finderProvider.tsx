@@ -61,7 +61,8 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
   const {
     data: facetedSearchResults,
     status: facetedSearchStatus,
-    error: facetedSearchError
+    error: facetedSearchError,
+    isFetching
   } = useQuery(
     [
       QUERYKEYS.productFinderResults,
@@ -410,6 +411,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     <FinderContext.Provider
       value={{
         showFacetInPanel,
+        isFacetActive,
         visibleMainFacets,
         visibleOperatingConditionsFacets,
         applyOperatingConditions,
@@ -426,6 +428,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         getOperatingConditionValue,
         facetedSearchError: facetedSearchError as Error | undefined,
         facetedSearchStatus,
+        isFetching,
         searchQuery: preFilters.searchQuery,
         products: facetedSearchResults?.value || []
       }}

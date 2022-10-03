@@ -9,10 +9,10 @@ import { motorTypeFacet } from '../facets/motorType';
 import { pressureGroupFacet } from '../facets/pressureGroup';
 import { productModelFacet } from '../facets/productModel';
 import { productTypeFacet } from '../facets/productType';
-import { liquidFlowRateRangeFacet } from '../facets/range-facets/liquidFlowRateRangeProductFacet';
-import { liquidPressureRangeFacet } from '../facets/range-facets/liquidPressureRangeProductFacet';
-import { liquidSpecificGravityFacet } from '../facets/range-facets/liquidSpecificGravityRangeFacet';
-import { sprayAngleRangeFacet } from '../facets/range-facets/sprayAngleRangeProductFacet';
+import { liquidFlowRateFacet } from '../facets/range-facets/liquidFlowRate';
+import { liquidPressureFacet } from '../facets/range-facets/liquidPressure';
+import { liquidSpecificGravityFacet } from '../facets/range-facets/liquidSpecificGravity';
+import { sprayAngleFacet } from '../facets/range-facets/sprayAngle';
 import { relativeDropSizeGroupFacet } from '../facets/relativeDropSizeGroup';
 import { productSeriesFacet } from '../facets/series';
 import { shaftLengthFacet } from '../facets/shaftLength';
@@ -31,10 +31,10 @@ export class FacetFactory {
       categoryIdFacet as Facet,
       productSeriesFacet as Facet,
       productModelFacet as Facet,
-      liquidFlowRateRangeFacet as unknown as Facet, // Operating Conditions
-      liquidPressureRangeFacet as unknown as Facet, // Operating Conditions
+      liquidFlowRateFacet as unknown as Facet, // Operating Conditions
+      liquidPressureFacet as unknown as Facet, // Operating Conditions
       liquidSpecificGravityFacet as unknown as Facet, // Operating Conditions
-      sprayAngleRangeFacet as unknown as Facet, // Operating Conditions
+      sprayAngleFacet as unknown as Facet, // Operating Conditions
       productTypeFacet as Facet,
       materialsFacet as Facet,
       inletConnectionTypeFacet as Facet,
