@@ -166,7 +166,7 @@ export class DisplayFormatter {
     return display;
   }
 
-  private getValueType(value: unknown): DisplayValueType {
+  public getValueType(value: unknown): DisplayValueType {
     if (value === null || value === undefined) {
       return DisplayValueType.Unknown;
     }

@@ -220,6 +220,15 @@ export type Messages = {
       projectSetup: IProjectSetupMessages;
     };
     account: IAccountMessages;
+    cart: {
+      title: string; //TODO ward
+      merge: {
+        message: string;
+        answerYes: string;
+        answerNo: string;
+        viewProducts: string;
+      };
+    };
   };
 };
 

@@ -177,6 +177,15 @@ export const messageIds: Messages = {
         title: 'pages.docs.projectSetup.title',
         description: 'pages.docs.projectSetup.description'
       }
+    },
+    cart: {
+      title: 'pages.cart.title',
+      merge: {
+        message: 'pages.cart.merge.message',
+        answerYes: 'pages.cart.merge.answerYes',
+        answerNo: 'pages.cart.merge.answerNo',
+        viewProducts: 'pages.cart.merge.viewProducts'
+      }
     }
   },
   loading: {

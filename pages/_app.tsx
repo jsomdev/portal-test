@@ -8,6 +8,7 @@ import { IntlProvider, MessageFormatElement } from 'react-intl';
 
 import { MsalProvider } from '@azure/msal-react';
 import { initializeIcons } from '@fluentui/react';
+import { CartProvider } from '@providers/cart/cartProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';
@@ -58,11 +59,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <MediaContextProvider>
           <AppThemeProvider>
             <ReactQueryClientProvider>
-              <UserProvider>
-                <SystemOfMeasurementProvider>
-                  <Component {...pageProps} />
-                </SystemOfMeasurementProvider>
-              </UserProvider>
+              <CartProvider>
+                <UserProvider>
+                  <SystemOfMeasurementProvider>
+                    <Component {...pageProps} />
+                  </SystemOfMeasurementProvider>
+                </UserProvider>
+              </CartProvider>
             </ReactQueryClientProvider>
           </AppThemeProvider>
         </MediaContextProvider>
