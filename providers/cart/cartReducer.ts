@@ -9,18 +9,18 @@ export const cartReducer: CartReducer = (
       return currentState.initialized
         ? {
             ...currentState,
-            baseItems: action.items,
+            baseItems: action.items
           }
         : { ...currentState };
     case 'INITIALIZE':
       return {
         ...currentState,
         baseItems: action.items,
-        initialized: true,
+        initialized: true
       };
     default:
       return {
-        ...currentState,
+        ...currentState
       };
   }
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   GetStaticProps,
@@ -9,6 +9,7 @@ import {
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated } from '@azure/msal-react';
+import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   DefaultButton,
   IStackItemStyles,
@@ -57,6 +58,9 @@ const messages = defineMessages({
   },
   viewProducts: {
     id: messageIds.pages.cart.merge.viewProducts //TODO ward
+  },
+  loadingCart: {
+    id: messageIds.pages.cart.loading //TODO ward
   }
 });
 
@@ -76,7 +80,7 @@ const Cart: NextPage<
   const { spacing, effects, semanticColors } = useTheme();
   const { items, cookieBaseItems, itemsStatus, clearCookie, mergeCookie } =
     useCart();
-  const { hasPricing } = useMe();
+  const { meStatus, hasPricing } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
 
@@ -99,6 +103,15 @@ const Cart: NextPage<
       }
     }
   };
+
+  if (meStatus === 'loading' || itemsStatus === 'loading') {
+    return <LoadingOverlay spinnerText={formatMessage(messages.loadingCart)} />;
+  }
+
+  if (itemsStatus === 'idle') {
+    return null;
+  }
+
   return (
     <Page
       title={formatMessage(messages.title)}

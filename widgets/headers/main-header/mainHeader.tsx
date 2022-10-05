@@ -91,7 +91,7 @@ const DesktopMainHeader: React.FC = () => {
   >();
 
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { asPath, push } = useRouter();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects } = useTheme();
@@ -207,6 +207,9 @@ const DesktopMainHeader: React.FC = () => {
           />
           <SiteHeaderButton
             title={intl.formatMessage(messages.cartAriaLabel)}
+            onClick={() => {
+              push('/cart');
+            }}
             iconProps={{
               iconName: 'ShoppingCart'
             }}

@@ -183,6 +183,17 @@ export const nl: Messages = {
       preferences: 'Voorkeuren',
       profileInformation: 'Profiel Informatie',
       accountPage: 'Mijn Account'
+    },
+    cart: {
+      title: 'Winkelwagen',
+      loading: 'Winkelwagen laden...',
+      merge: {
+        message:
+          'U heeft producten aan uw winkelwagen toegevoegd terwijl u was uitgelogd. Wil je dat we ze aan je winkelwagen toevoegen?',
+        answerYes: 'Ja',
+        answerNo: 'Neen',
+        viewProducts: 'Bekijk producten'
+      }
     }
   },
   loading: {

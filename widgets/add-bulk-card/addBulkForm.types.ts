@@ -1,7 +1,7 @@
 import {
   IStackItemStyles,
   IStackStyles,
-  ITextFieldStyles,
+  ITextFieldStyles
 } from '@fluentui/react';
 
 export interface AddBulkFormStyles {

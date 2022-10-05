@@ -1,5 +1,5 @@
 import { ITextStyles } from '@fluentui/react';
-import { BaseCartItem } from '../../../providers/cart/cartModels';
+import { BaseCartItem } from '@providers/cart/cartModels';
 
 export interface AddBulkCardStyles {
   title: ITextStyles;

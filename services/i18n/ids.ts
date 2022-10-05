@@ -180,6 +180,7 @@ export const messageIds: Messages = {
     },
     cart: {
       title: 'pages.cart.title',
+      loading: 'pages.cart.loading',
       merge: {
         message: 'pages.cart.merge.message',
         answerYes: 'pages.cart.merge.answerYes',

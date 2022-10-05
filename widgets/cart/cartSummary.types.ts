@@ -2,7 +2,7 @@ import {
   IButtonStyles,
   IStackStyles,
   ITextStyles,
-  ITooltipHostStyles,
+  ITooltipHostStyles
 } from '@fluentui/react';
 
 export interface CartSummaryActionsStyles {

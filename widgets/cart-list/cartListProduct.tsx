@@ -52,7 +52,9 @@ export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
                     searchParamKeys: [URLSEARCHPARAMSKEYS.search]
                   })}*/}
                 <Link href={formatDesignHref(item, true)} style={styles}>
-                  <Text {...titleProps} />
+                  <a>
+                    <Text {...titleProps} />
+                  </a>
                 </Link>
                 <Stack.Item>
                   <Text {...descriptionProps} />

@@ -181,6 +181,17 @@ export const en: Messages = {
       profileInformation: 'Profile Information',
       welcome: 'Welcome {name}',
       accountPage: 'My Account'
+    },
+    cart: {
+      title: 'Cart',
+      loading: 'Loading cart...',
+      merge: {
+        message:
+          'You have added products to your cart while you were logged out. Do you want us to add them to your cart? ',
+        answerYes: 'Yes',
+        answerNo: 'No',
+        viewProducts: 'View products'
+      }
     }
   },
   loading: {

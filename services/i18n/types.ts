@@ -221,7 +221,8 @@ export type Messages = {
     };
     account: IAccountMessages;
     cart: {
-      title: string; //TODO ward
+      title: string; //TODO ward,
+      loading: string;
       merge: {
         message: string;
         answerYes: string;

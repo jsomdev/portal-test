@@ -33,8 +33,7 @@ const messages = {
 };
 export const CartListConfirmation: React.FC<CartListConfirmationProps> = ({
   lastAddedItems,
-  setLastAddedItems,
-  children
+  setLastAddedItems
 }) => {
   //TODO ward const { toPath } = useNavigate();
   const { getQuantity } = useCart();
@@ -114,7 +113,7 @@ export const CartListConfirmation: React.FC<CartListConfirmationProps> = ({
             <Stack
               tokens={{ padding: `${spacing.s1} 0`, childrenGap: spacing.s2 }}
             >
-              {warningMessages?.map((warningMessage, index) => (
+              {warningMessages?.map(warningMessage => (
                 <MessageBar
                   messageBarType={MessageBarType.warning}
                   key={warningMessage}
