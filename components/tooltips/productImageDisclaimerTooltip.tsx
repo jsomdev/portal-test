@@ -15,7 +15,6 @@ import {
   ProductImageDisclaimerTooltipProps
 } from './productImageDisclaimerTooltip.types';
 
-// eslint-disable-next-line max-len
 export const ProductImageDisclaimerTooltip: React.FC<
   ProductImageDisclaimerTooltipProps
 > = ({ messageText }) => {

@@ -57,7 +57,6 @@ export const ProductItem: FC<ProductItemProps> = ({
   //Any custom render method passed to onRenderKeySpecifications prop will override this default method.
   //This method accepts an array of Attribute
   const renderKeySpecifications = (attributes: Attribute[]): ReactNode => {
-    // eslint-disable-next-line max-len
     const productSpecificationItems: ProductSpecificationsItem[] =
       getProductKeySpecifications(
         attributes || [],

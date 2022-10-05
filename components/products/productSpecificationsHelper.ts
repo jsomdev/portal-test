@@ -108,7 +108,6 @@ export function mapAttributesToProductSpecificationItems(
   getAttributeType: (code: string) => AttributeType | undefined,
   systemOfMeasurement: SystemOfMeasurement
 ): ProductSpecificationsItem[] {
-  // eslint-disable-next-line max-len
   const items: ProductSpecificationsItem[] = attributes.map(attribute => {
     const settings: AttributeSettings = FlaggedEnum.create<AttributeSettings>(
       AttributeSettings,

@@ -9,7 +9,6 @@ export function getProductKeySpecifications(
   getAttributeType: (typeCode: string) => AttributeType | undefined,
   systemOfMeasurement: SystemOfMeasurement
 ): ProductSpecificationsItem[] {
-  // eslint-disable-next-line max-len
   const items: ProductSpecificationsItem[] =
     mapAttributesToProductSpecificationItems(
       keyAttributes,

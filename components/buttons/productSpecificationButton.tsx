@@ -14,7 +14,6 @@ import { ProductSpecificationButtonProps } from './productSpecificationButton.ty
 // Temporary Component that can be used as a subtle actionButton.
 // Currently intended for the characteristic of product on a productListItem
 // Future: clicking this will render a callout based on a callback?
-// eslint-disable-next-line max-len
 export const ProductKeySpecificationsButton: React.FC<
   ProductSpecificationButtonProps
 > = ({ onClick, text, tooltipValue }) => {

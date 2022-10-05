@@ -10,7 +10,6 @@ import { ProductSpecificationDialogProps } from './productSpecificationDialog.ty
 //TODO ward default language from env?
 const appDefaultLanguage = 'en';
 
-// eslint-disable-next-line max-len
 export const ProductSpecificationDialog: React.FC<
   ProductSpecificationDialogProps
 > = ({ attributeTypeCode, dialogProps }) => {
