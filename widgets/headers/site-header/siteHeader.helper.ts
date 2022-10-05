@@ -81,8 +81,7 @@ export function getAppUserMenuItems(
       {
         href: '/account',
         text: formatMessage(messages.accountPage),
-        id: 'main-menu-account',
-        parentId: undefined
+        id: 'main-menu-account'
       }
     ];
   }
@@ -92,8 +91,7 @@ export function getAppUserMenuItems(
       onClick: () => {
         instance.loginRedirect(customerLoginRequest);
       },
-      id: 'main-menu-sign-in',
-      parentId: undefined
+      id: 'main-menu-sign-in'
     }
   ];
 }
@@ -110,49 +108,41 @@ export function getUserMenuItems(
       {
         href: '/account',
         text: formatMessage(messages.overview),
-        id: 'account',
-        parentId: undefined
+        id: 'account'
       },
       {
         href: '/account/orders',
         text: formatMessage(messages.orders),
-        id: 'account-orders',
-        parentId: undefined
+        id: 'account-orders'
       },
       {
         href: '/account/quote-requests',
         text: formatMessage(messages.quoteRequests),
-        id: 'account-quote-requests',
-        parentId: undefined
+        id: 'account-quote-requests'
       },
       {
         text: formatMessage(messages.infoAndPreferences),
         id: 'account-info-and-preferences',
-        parentId: undefined,
         children: [
           {
             href: '/account/profile-information',
             text: formatMessage(messages.profileInformation),
-            id: 'account-profile-information',
-            parentId: 'account-info-and-preferences'
+            id: 'account-profile-information'
           },
           {
             href: '/account/address-book',
             text: formatMessage(messages.addressBook),
-            id: 'account-address-book',
-            parentId: 'account-info-and-preferences'
+            id: 'account-address-book'
           },
           {
             href: '/account/company-information',
             text: formatMessage(messages.companyInformation),
-            id: 'account-company-information',
-            parentId: 'account-info-and-preferences'
+            id: 'account-company-information'
           },
           {
             href: '/account/preferences',
             text: formatMessage(messages.preferences),
-            id: 'account-preferences',
-            parentId: 'account-info-and-preferences'
+            id: 'account-preferences'
           }
         ]
       },
@@ -161,8 +151,7 @@ export function getUserMenuItems(
         onClick: () => {
           instance.logoutRedirect(customerLoginRequest);
         },
-        id: 'account-sign-out',
-        parentId: undefined
+        id: 'account-sign-out'
       }
     ];
   }
@@ -172,8 +161,7 @@ export function getUserMenuItems(
       onClick: () => {
         instance.loginRedirect(customerLoginRequest);
       },
-      id: 'account-sign-in',
-      parentId: undefined
+      id: 'account-sign-in'
     }
   ];
 }

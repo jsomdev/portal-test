@@ -1,10 +1,7 @@
 import { createIntl } from 'react-intl';
 
-import { messageIds } from '@services/i18n';
-import { MenuItem, UrlType } from '@services/portal-api';
-
-import { mapMenuItemsToMenuItemProps } from '../widgets/headers/main-header/mainHeader.helper';
-import { en } from './../services/i18n/en';
+import { MenuItem } from '@services/portal-api';
+import { mapMenuItemsToMenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
 
 const menuItems: MenuItem[] = [
   {

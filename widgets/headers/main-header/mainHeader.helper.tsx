@@ -9,7 +9,8 @@ export interface MenuItemProps {
   id: string;
   text: string;
   href?: string;
-  parentId: string | undefined;
+  locale?: string;
+  image?: string;
   children?: MenuItemProps[];
   onClick?: () => void;
 }
@@ -51,8 +52,7 @@ export function mapMenuItemsToMenuItemProps(
     return {
       href: menuItemFormatter.formatHref() || '/404',
       text: menuItemFormatter.formatText(),
-      id: menuItem.id || `${Guid.create()}`,
-      parentId: menuItem.parentId || undefined
+      id: menuItem.id || `${Guid.create()}`
     };
   }
 

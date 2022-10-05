@@ -20,7 +20,11 @@ const messages = defineMessages({
   }
 });
 
-export const LanguageMenu: React.FC = () => {
+type LanguageMenuProps = {
+  onDismiss: () => void;
+};
+
+export const LanguageMenu: React.FC<LanguageMenuProps> = ({ onDismiss }) => {
   const { palette, spacing } = useTheme();
   const { locale, defaultLocale } = useRouter();
   const audience = getAudience(locale);
@@ -149,7 +153,7 @@ export const LanguageMenu: React.FC = () => {
         >
           <Stack.Item>
             <Text styles={styles.headerText} variant="large">
-              {formatMessage(messages.headerText)}
+              {formatMessage(messages.headerText)}:
             </Text>
           </Stack.Item>
           <Stack.Item>
@@ -196,7 +200,10 @@ export const LanguageMenu: React.FC = () => {
                     key={`${country.name}`}
                     styles={styles.regionContainer}
                   >
-                    <LanguageMenuItem country={country} />
+                    <LanguageMenuItem
+                      onLocaleSelected={onDismiss}
+                      country={country}
+                    />
                   </Stack.Item>
                 );
               })}

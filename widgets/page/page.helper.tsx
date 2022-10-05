@@ -3,7 +3,7 @@ import { MultilingualStringFormatter } from '@services/i18n/formatters/multiling
 import { MultilingualString } from '@services/portal-api';
 import { LocalePaths } from '@widgets/page/page.types';
 
-export const getPathForLocale = (
+export const getPathWithLocale = (
   locale: string,
   defaultLocale: string,
   localePaths: LocalePaths
@@ -19,7 +19,7 @@ export const getCanonicalUrl = (
   defaultLocale: string,
   localePaths: LocalePaths
 ): string => {
-  return `${process.env.NEXT_PUBLIC_BASE_URL}${getPathForLocale(
+  return `${process.env.NEXT_PUBLIC_BASE_URL}${getPathWithLocale(
     currentLocale,
     defaultLocale,
     localePaths

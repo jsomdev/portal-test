@@ -1,36 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useMsal } from '@azure/msal-react';
-import {
-  ActionButton,
-  FontWeights,
-  IButtonStyles,
-  IStackItemStyles,
-  ITextStyles,
-  Stack,
-  Text,
-  useTheme
-} from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
-import { rem } from '@utilities/rem';
-
+import { mapRegionsToMenuItems } from '@widgets/headers/site-header/appNavigationMenu.helper';
 import {
-  MenuItemProps,
-  mapMenuItemsToMenuItemProps
-} from '../main-header/mainHeader.helper';
-import { NavigationMenuItem } from './navigationMenuItem';
-import { getAppUserMenuItems } from './siteHeader.helper';
+  getCountryImage,
+  getSupportedRegionsWithPaths
+} from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
+import MultiMenu from '@widgets/headers/site-header/multi-menu/multiMenu';
+import { MultiMenuConfiguration } from '@widgets/headers/site-header/multi-menu/multiMenu.types';
+import { usePageContext } from '@widgets/page/pageContext';
 
-interface AppNavigationMenuStyles {
-  subItemContainer: IStackItemStyles;
-  subItemHeader: ITextStyles;
-  returnButton: IButtonStyles;
-  siteMenuItem: IButtonStyles;
-}
+import { mapMenuItemsToMenuItemProps } from '../main-header/mainHeader.helper';
+import { getAppUserMenuItems } from './siteHeader.helper';
 
 const messages = defineMessages({
   mainMenuViewAllCategories: {
@@ -42,11 +29,21 @@ const messages = defineMessages({
     id: messageIds.navigation.user.signIn,
     description: 'Link text for sign in button',
     defaultMessage: 'Sign In'
+  },
+  currentLanguageTitle: {
+    id: messageIds.navigation.locale.title,
+    description: 'Selected Country/Region',
+    defaultMessage: 'Selected Country/Region'
   }
 });
 
-export const AppNavigationMenu: React.FC = () => {
-  const { semanticColors, spacing } = useTheme();
+type AppNavigationMenuProps = {
+  onDismiss: () => void;
+};
+
+export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
+  onDismiss
+}) => {
   const {
     mainMenuItems: globalMainMenuItems,
     siteMenuItems: globalSiteMenuItems
@@ -55,143 +52,61 @@ export const AppNavigationMenu: React.FC = () => {
   const { formatMessage } = intl;
   const { instance } = useMsal();
   const { me } = useMe();
+  const { localePaths } = usePageContext();
+  const { defaultLocale, locale } = useRouter();
 
-  const [activeMenuItem, setActiveMenuItem] = useState<
-    MenuItemProps | undefined
-  >(undefined);
+  const regions = defaultLocale
+    ? getSupportedRegionsWithPaths(localePaths, defaultLocale)
+    : null;
 
-  const allMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
-      globalMainMenuItems || [],
-      'expanded',
-      intl,
-      null
-    );
-  }, [globalMainMenuItems, intl]);
+  const currentCountry = locale?.substr(locale?.indexOf('-') + 1);
 
-  const renderedMainMenuItems = useMemo(() => {
-    if (activeMenuItem?.children) {
-      return activeMenuItem.children;
-    }
-    return allMainMenuItems;
-  }, [activeMenuItem, allMainMenuItems]);
+  const currentCountryFlag = currentCountry
+    ? getCountryImage(currentCountry)
+    : undefined;
 
-  const siteMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
-      globalSiteMenuItems || [],
-      'default',
-      intl
-    );
-  }, [globalSiteMenuItems, intl]);
-
-  const userMenuItems: MenuItemProps[] = useMemo(() => {
-    return getAppUserMenuItems(intl, me, instance);
-  }, [instance, intl, me]);
-
-  // The breadcrumbs will only render 3 levels deep
-  // The 4th level is not yet needed or supported.
-  // A recursive function and an array of breadcrumbs will be needed to render more breadcrumb items for deeper nested menus
-  const breadcrumbItem: MenuItemProps | undefined = useMemo(() => {
-    return allMainMenuItems?.find(item => {
-      return item.id === activeMenuItem?.parentId;
-    });
-  }, [allMainMenuItems, activeMenuItem]);
-
-  const styles: AppNavigationMenuStyles = {
-    subItemContainer: {
-      root: {
-        borderLeft: `1px solid ${semanticColors.variantBorder}`,
-        marginLeft: rem(spacing.l1),
-        paddingLeft: rem(spacing.s1)
-      }
+  const configuration: MultiMenuConfiguration = {
+    mainMenu: {
+      backButtonText: formatMessage(messages.mainMenuViewAllCategories),
+      hideOtherMenusWhenActive: false,
+      style: 'default',
+      items: mapMenuItemsToMenuItemProps(
+        globalMainMenuItems || [],
+        'expanded',
+        intl,
+        null
+      )
     },
-    subItemHeader: {
-      root: {
-        fontWeight: FontWeights.semibold,
-        padding: `${rem(spacing.m)} ${rem(spacing.l1)}`
-      }
+    languageMenu: {
+      backButtonText: formatMessage(messages.mainMenuViewAllCategories),
+      hideOtherMenusWhenActive: true,
+      style: 'plain',
+      items: [
+        {
+          id: 'language-menu',
+          text: `${formatMessage(messages.currentLanguageTitle)}: ${locale}`,
+          image: currentCountryFlag,
+          href: undefined,
+          children: regions ? mapRegionsToMenuItems(regions, onDismiss) : []
+        }
+      ]
     },
-    returnButton: {
-      root: {
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`,
-        borderBottom: `1px solid ${semanticColors.variantBorder}`
-      },
-      icon: {
-        fontSize: rem(12)
-      }
+    siteMenu: {
+      backButtonText: formatMessage(messages.mainMenuViewAllCategories),
+      hideOtherMenusWhenActive: true,
+      style: 'plain',
+      items: mapMenuItemsToMenuItemProps(
+        globalSiteMenuItems || [],
+        'default',
+        intl
+      )
     },
-    siteMenuItem: {
-      root: {
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
-      }
+    userMenu: {
+      backButtonText: formatMessage(messages.mainMenuViewAllCategories),
+      hideOtherMenusWhenActive: true,
+      style: 'plain',
+      items: getAppUserMenuItems(intl, me, instance)
     }
   };
-
-  return (
-    <Stack>
-      {activeMenuItem?.children?.length && (
-        <Stack>
-          <Stack>
-            <ActionButton
-              text={formatMessage(messages.mainMenuViewAllCategories)}
-              styles={styles.returnButton}
-              iconProps={{ iconName: 'chevronLeft' }}
-              onClick={() => {
-                return setActiveMenuItem(undefined);
-              }}
-            />
-            {breadcrumbItem && (
-              <ActionButton
-                key={breadcrumbItem.id}
-                text={breadcrumbItem.text}
-                styles={styles.returnButton}
-                iconProps={{ iconName: 'chevronLeft' }}
-                onClick={() => setActiveMenuItem(breadcrumbItem)}
-              />
-            )}
-          </Stack>
-          <Stack>
-            <Text styles={styles.subItemHeader}>{activeMenuItem?.text}</Text>
-          </Stack>
-        </Stack>
-      )}
-      {renderedMainMenuItems.length && (
-        <Stack styles={activeMenuItem?.children && styles.subItemContainer}>
-          {renderedMainMenuItems.map(menuItem => {
-            return (
-              <NavigationMenuItem
-                item={menuItem}
-                onClick={() => {
-                  setActiveMenuItem(menuItem);
-                }}
-                key={menuItem.id}
-              />
-            );
-          })}
-        </Stack>
-      )}
-      {userMenuItems.length && (
-        <Stack>
-          {userMenuItems.map(item => {
-            return (
-              <Stack key={item.id}>
-                <ActionButton {...item} styles={styles.siteMenuItem} />
-              </Stack>
-            );
-          })}
-        </Stack>
-      )}
-      {siteMenuItems.length && (
-        <Stack>
-          {siteMenuItems?.map(item => {
-            return (
-              <Stack key={item.id}>
-                <ActionButton {...item} styles={styles.siteMenuItem} />
-              </Stack>
-            );
-          })}
-        </Stack>
-      )}
-    </Stack>
-  );
+  return <MultiMenu configuration={configuration} onDismiss={onDismiss} />;
 };

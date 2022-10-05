@@ -52,7 +52,7 @@ describe('languageMenu', () => {
                 name: 'Dutch',
                 code: 'nl',
                 locale: 'nl-BE',
-                path: '/nl-BE/nl-be-path'
+                path: '/nl-be-path'
               }
             ]
           },
@@ -64,7 +64,7 @@ describe('languageMenu', () => {
                 code: 'de',
                 name: 'German',
                 locale: 'de-DE',
-                path: '/de-DE'
+                path: '/'
               }
             ]
           }

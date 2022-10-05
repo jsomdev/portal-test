@@ -5,10 +5,9 @@ import {
   LanguageWithPath,
   RegionWithPaths
 } from '@widgets/headers/site-header/language-menu/languageMenu.types';
-import { getPathForLocale } from '@widgets/page/page.helper';
 import { LocalePaths } from '@widgets/page/page.types';
 
-export function getCountryImage(code: string): any | undefined {
+export function getCountryImage(code: string): string | undefined {
   const key = `${code.toLowerCase()}Flag` as keyof typeof STATIC_IMAGES.flags;
   const image = STATIC_IMAGES.flags[key];
   return image;
@@ -41,9 +40,8 @@ const mapToCountryWithPaths = (
         locale &&
         localePaths &&
         defaultLocale &&
-        localePaths[locale] !== undefined
-          ? getPathForLocale(locale, defaultLocale, localePaths)
-          : '/' + locale;
+        `/${localePaths[locale] ? localePaths[locale] : ''}`;
+
       return {
         name: language.name,
         code: language.code,

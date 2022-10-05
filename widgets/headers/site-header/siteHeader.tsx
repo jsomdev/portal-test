@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
@@ -249,8 +249,12 @@ const MobileSiteHeader: React.FC = () => {
           onDismiss={onPanelDismiss}
           styles={styles.panel}
         >
-          {showPanel === 'user' && <UserNavigationMenu />}
-          {showPanel === 'app' && <AppNavigationMenu />}
+          {showPanel === 'user' && (
+            <UserNavigationMenu onDismiss={onPanelDismiss} />
+          )}
+          {showPanel === 'app' && (
+            <AppNavigationMenu onDismiss={onPanelDismiss} />
+          )}
         </Panel>
       )}
     </Stack>
@@ -274,7 +278,6 @@ const DesktopSiteHeader: React.FC = () => {
   const { locale } = useIntl();
   const intl = useIntl();
   const { siteMenuItems: globalSiteMenuItems } = useGlobalData();
-  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
 
   const siteMenuItems: MenuItemProps[] = useMemo(() => {
     return mapMenuItemsToMenuItemProps(
@@ -283,6 +286,14 @@ const DesktopSiteHeader: React.FC = () => {
       intl
     );
   }, [globalSiteMenuItems, intl]);
+
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+
+  const onDismiss = useCallback(() => setShowLanguageMenu(false), []);
+
+  useEffect(() => {
+    onDismiss();
+  }, [locale, onDismiss]);
 
   const styles: DesktopSiteHeaderStyles = {
     root: {
@@ -353,18 +364,20 @@ const DesktopSiteHeader: React.FC = () => {
             }}
           />
           {showLanguageMenu && (
-            <Callout
-              gapSpace={0}
-              target={`#language-select`}
-              onDismiss={() => setShowLanguageMenu(false)}
-              setInitialFocus
-              styles={styles.languageMenuCallout}
-              dismissOnTargetClick={true}
-              alignTargetEdge={true}
-              minPagePadding={15}
-            >
-              <LanguageMenu />
-            </Callout>
+            <div style={{ margin: 0 }}>
+              <Callout
+                gapSpace={0}
+                target={`#language-select`}
+                onDismiss={onDismiss}
+                setInitialFocus
+                styles={styles.languageMenuCallout}
+                dismissOnTargetClick={true}
+                alignTargetEdge={true}
+                minPagePadding={15}
+              >
+                <LanguageMenu onDismiss={onDismiss} />
+              </Callout>
+            </div>
           )}
         </Stack>
       </Stack>
