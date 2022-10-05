@@ -4,11 +4,9 @@ import ReactMarkdown from 'react-markdown';
 
 import { Dialog } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { defaultLanguage } from '@services/i18n';
 
 import { ProductSpecificationDialogProps } from './productSpecificationDialog.types';
-
-//TODO ward default language from env?
-const appDefaultLanguage = 'en';
 
 export const ProductSpecificationDialog: React.FC<
   ProductSpecificationDialogProps
@@ -23,13 +21,12 @@ export const ProductSpecificationDialog: React.FC<
       dialogContentProps={{
         showCloseButton: true
       }}
-      title={getAttributeType(attributeTypeCode)?.name?.[appDefaultLanguage]}
+      title={getAttributeType(attributeTypeCode)?.name?.[defaultLanguage]}
       {...dialogProps}
     >
       <ReactMarkdown>
-        {getAttributeType(attributeTypeCode)?.description?.[
-          appDefaultLanguage
-        ] || ''}
+        {getAttributeType(attributeTypeCode)?.description?.[defaultLanguage] ||
+          ''}
       </ReactMarkdown>
     </Dialog>
   );

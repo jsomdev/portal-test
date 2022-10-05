@@ -1,5 +1,6 @@
 import { Range } from '@services/facet-service/models/facet/facetResult';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
+import { defaultLanguage } from '@services/i18n';
 import { DisplayValueType } from '@services/i18n/formatters/entity-formatters/displayFormatter';
 import {
   Attribute,
@@ -12,9 +13,6 @@ import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { Variation } from '@services/portal-api/models/VariationFlags';
 import { formatUnitSymbolSuffix } from '@utilities/formatText';
 import { getSystemOfMeasurementVariation } from '@utilities/variations';
-
-// TODO ward
-const appDefaultLanguage = 'en';
 
 export function filterResourcesBySystemOfMeasurement(
   resources: Resource[],
@@ -119,7 +117,7 @@ export function getDisplayValueType(value: unknown): DisplayValueType {
   }
 
   const isMultilingual: boolean = !!(value as MultilingualString)[
-    appDefaultLanguage
+    defaultLanguage
   ];
 
   if (isMultilingual) {
@@ -201,8 +199,8 @@ export function findAndReplaceFormattedNumbers(
   if (typeof value === 'string') {
     textValue = value;
   }
-  if ((value as MultilingualString)?.[appDefaultLanguage]) {
-    textValue = (value as MultilingualString)?.[appDefaultLanguage];
+  if ((value as MultilingualString)?.[defaultLanguage]) {
+    textValue = (value as MultilingualString)?.[defaultLanguage];
   }
   const regexp: RegExp = new RegExp('{([^}]+)}', 'g');
   const matches = textValue.match(regexp);

@@ -1,3 +1,4 @@
+import { defaultLanguage } from '@services/i18n/helper';
 import { MultilingualString } from '@services/portal-api';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 
@@ -7,7 +8,7 @@ import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
  */
 export class MultilingualStringFormatter {
   protected language: string;
-  private defaultLanguage: 'en' = 'en';
+  private defaultLanguage: string = defaultLanguage;
   constructor(locale?: string) {
     this.language = this.getLanguage(locale);
   }

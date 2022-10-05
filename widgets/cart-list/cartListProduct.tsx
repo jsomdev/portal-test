@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ProductItem } from '@components/product-items/product-item/productItem';
 import { Stack, Text } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
+import { defaultLanguage } from '@services/i18n';
 import { formatDesignHref } from '@utilities/formatHref';
 import { formatCartItemDisplayValue } from '@utilities/formatText';
 
@@ -14,8 +15,7 @@ export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
   item
 }) => {
   //TODO ward const { getLocationDescriptor } = useNavigate();
-  //TODO ward default language from env?
-  const name: string = item?.productName?.['en'] || '';
+  const name: string = item?.productName?.[defaultLanguage] || '';
 
   const styles: React.CSSProperties = {
     pointerEvents: item.productId ? 'auto' : 'none'

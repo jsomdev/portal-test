@@ -1,4 +1,5 @@
 import { BaseCartItem } from '@providers/cart/cartModels';
+import { defaultLanguage } from '@services/i18n';
 import { OrderLine, Product } from '@services/portal-api';
 
 export function formatCamelCase(text: string): string {
@@ -28,8 +29,7 @@ export const formatText = (
 export const formatCartItemDisplayValue = (
   item: BaseCartItem | OrderLine | undefined
 ): string => {
-  //TODO ward default language from env?
-  return item?.productName?.['en'] || item?.productNumber || '';
+  return item?.productName?.[defaultLanguage] || item?.productNumber || '';
 };
 
 /**

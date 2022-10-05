@@ -18,13 +18,15 @@ import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetU
 import { Attribute, AttributeGroup, AttributeType } from '@services/portal-api';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { AttributeSettings } from '@services/portal-api/models/AttributeSettingsFlags';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { groupArrayByKey } from '@utilities/groupBy';
 import {
   sortProductSpecificationGroups,
   sortProductSpecificationItems
 } from '@utilities/sortBy';
 
-const appDefaultLanguage = 'en'; //TODO ward default language from env?
+const appDefaultLanguage = ENVIRONMENT_VARIABLES.defaultLanguage;
+
 export function mapProductAttributesToProductSpecificationGroups(
   attributes: Attribute[],
   getAttributeType: (code: string) => AttributeType | undefined,
