@@ -1,12 +1,14 @@
 //TODO remove this and create specific CartItem Component: 14866 https://dev.azure.com/itssco/SSCo/_workitems/edit/14866
 import React, { FC } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ProductImageDisclaimerTooltip } from '@components/tooltips/productImageDisclaimerTooltip';
 import { Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
+import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 
 import {
   ProductItemBaseProps,
@@ -15,6 +17,7 @@ import {
 
 export const ProductItemBase: FC<ProductItemBaseProps> = ({
   productId,
+  slug,
   width = 152,
   height = 152,
   imageUrl,
@@ -23,6 +26,9 @@ export const ProductItemBase: FC<ProductItemBaseProps> = ({
   onRenderBottomLeft = null,
   onRenderTopLeft = null
 }) => {
+  const { locale } = useRouter();
+  const product = { id: productId, slug };
+  const productFormatter = new ProductFormatter(product, locale);
   const styles: ProductItemBaseStyles = {
     root: {
       root: {
@@ -50,7 +56,11 @@ export const ProductItemBase: FC<ProductItemBaseProps> = ({
   return (
     <Stack horizontal horizontalAlign="center" styles={styles.root}>
       <Stack horizontalAlign="center" styles={styles.imageContainer}>
-        <Link href={'/TODO'}>
+        <Link
+          href={
+            productFormatter.formatUrl() || '#' /* TODO ward when refactoring */
+          }
+        >
           <a>
             <Image
               layout={'fill'}

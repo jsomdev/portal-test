@@ -195,7 +195,7 @@ export const ProductItem: FC<ProductItemProps> = ({
         styles={mergedRootStyles}
       >
         <ProductItemBase
-          path={productUrl}
+          slug={product.slug}
           productId={productId}
           imageUrl={imageUrl}
           imageAlt={formatProductDisplayValue(product)}

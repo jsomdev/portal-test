@@ -3,10 +3,11 @@ import { CSSProperties } from 'react';
 import { StaticImageData } from 'next/image';
 
 import { IImageStyles, IStackItemStyles, IStackStyles } from '@fluentui/react';
+import { MultilingualString } from '@services/portal-api';
 
 export type ProductItemBaseProps = {
   productId: string;
-  path: string | null;
+  slug?: MultilingualString;
   imageUrl: StaticImageData | string | null | undefined;
   imageAlt: string;
   height?: number;
