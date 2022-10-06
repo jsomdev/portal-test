@@ -30,7 +30,7 @@ const messages = defineMessages({
     description: 'Continue to checkout text on cart summary'
   },
   request: {
-    id: messageIds.pages.cart.summary.actions.continue,
+    id: messageIds.pages.cart.summary.actions.request,
     defaultMessage: 'Request for quotation',
     description: 'Request for quotation text on cart summary'
   },
