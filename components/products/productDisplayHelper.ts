@@ -1,3 +1,4 @@
+/* TODO refactor https://dev.azure.com/itssco/SSCo/_workitems/edit/14868   */
 import { Range } from '@services/facet-service/models/facet/facetResult';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { defaultLanguage } from '@services/i18n';
@@ -68,14 +69,14 @@ export function getDisplayTextForRangeType(
   display: Display | undefined
 ): string {
   if (!!display?.value?.minimum && !!display?.value?.maximum) {
-    /*TODO ward  return `${intl.formatNumber(display.value.minimum)} - ${intl.formatNumber(
+    /*TODO  return `${intl.formatNumber(display.value.minimum)} - ${intl.formatNumber(
       display.value.maximum
     )}${formatUnitSymbolSuffix(display.unitSymbol)}`; */
     return `${display.value.minimum} - ${
       display.value.maximum
     }${formatUnitSymbolSuffix(display.unitSymbol)}`;
   } else {
-    /*TODO ward return `${intl.formatNumber(display?.value?.minimum)} - ${intl.formatNumber(
+    /*TODO return `${intl.formatNumber(display?.value?.minimum)} - ${intl.formatNumber(
        display?.value?.maximum
      )}${formatUnitSymbolSuffix(display?.unitSymbol)}`; */
     return `${display?.value?.minimum} - ${
@@ -90,7 +91,7 @@ export function getDisplayTextForNumberType(
   return `${
     isNaN(display?.value)
       ? display?.value
-      : /*TODO ward intl.formatNumber(display?.value) */ display?.value
+      : /*TODO intl.formatNumber(display?.value) */ display?.value
   }${formatUnitSymbolSuffix(display?.unitSymbol)}`;
 }
 
@@ -100,7 +101,7 @@ export function getDisplayTextForNumberType(
  * @param value value of the attribute
  */
 export function getDisplayValueType(value: unknown): DisplayValueType {
-  // TODO ward remove duplicate code by creating a product formatter using DisplayFormatter
+  // TODO remove duplicate code by creating a product formatter using DisplayFormatter
   if (value === null || value === undefined) {
     return DisplayValueType.Unknown;
   }
@@ -165,7 +166,7 @@ export function getDisplayText(
           display?.unitSymbol
         )}`;
       } else {
-        /*TODO ward return `${intl.formatNumber(
+        /*TODO return `${intl.formatNumber(
           Number(formattedTextValue)
         )}${formatUnitSymbolSuffix(display?.unitSymbol)}`; */
         return `${Number(formattedTextValue)}${formatUnitSymbolSuffix(
@@ -210,7 +211,7 @@ export function findAndReplaceFormattedNumbers(
   const formattedMatches: string[] = matches.map(match => {
     const value: string = match.substring(1, match.length - 1);
     const formattedNumber: string =
-      value; /*TODO ward intl.formatNumber(Number(value))*/
+      value; /*TODO intl.formatNumber(Number(value))*/
     return formattedNumber;
   });
   let formattedValue: string = textValue;

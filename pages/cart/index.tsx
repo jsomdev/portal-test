@@ -21,7 +21,6 @@ import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 //TODO ward cart not working when logged in
-//TODO ward cart container layout
 const messages = defineMessages({
   title: {
     id: messageIds.pages.cart.title,
