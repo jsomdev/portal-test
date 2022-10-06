@@ -27,7 +27,6 @@ interface CatalogProps {
 
 interface CatalogStyles {
   root: IStackStyles;
-  title: ITextStyles;
   itemTitle: ITextStyles;
   itemDescription: ITextStyles;
   subItemsContainer: IStackStyles;
@@ -52,31 +51,21 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   const styles: CatalogStyles = {
     root: {
       root: {
-        background: palette.neutralLighterAlt,
-        padding: `${spacing.l1} ${spacing.l2}`,
+        padding: `${spacing.l1} 0`,
         ...mediaQueryFrom('tablet', {
-          padding: `${spacing.l2} ${rem(120)}`
-        })
-      }
-    },
-    title: {
-      root: {
-        ...mediaQueryFrom('tablet', {
-          marginLeft: rem(spacing.l1)
+          padding: `${spacing.l2} 0`
         })
       }
     },
     itemTitle: {
       root: {
         marginBottom: rem(spacing.s2),
-        color: palette.themePrimary,
-        ...mediaQueryFrom('tablet', { marginLeft: rem(spacing.l1) })
+        color: palette.themePrimary
       }
     },
     itemDescription: {
       root: {
-        display: 'inline-block',
-        ...mediaQueryFrom('tablet', { marginLeft: rem(spacing.l1) })
+        display: 'inline-block'
       }
     },
     subItemsContainer: {
@@ -116,7 +105,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   };
   return (
     <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
-      <Text as="h2" variant="xxLargePlus" styles={styles.title}>
+      <Text as="h2" variant="xxLargePlus">
         <FormattedMessage {...messages.catalogTitle} />
       </Text>
       {categoryItems.map(categoryItem => {
@@ -143,7 +132,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
             <Stack
               horizontal
               tokens={{
-                padding: rem(spacing.l1),
+                padding: `${rem(spacing.l1)} 0`,
                 childrenGap: rem(spacing.s1)
               }}
               styles={styles.subItemsContainer}

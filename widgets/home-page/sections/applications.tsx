@@ -7,7 +7,6 @@ import {
   FontSizes,
   IButtonStyles,
   IStackStyles,
-  ITextStyles,
   Stack,
   Text,
   useTheme
@@ -24,7 +23,6 @@ interface ApplicationsProps {
 
 interface ApplicationsStyles {
   root: IStackStyles;
-  title: ITextStyles;
   itemsContainer: IStackStyles;
   itemContainer: IStackStyles;
   linkContainer: IStackStyles;
@@ -38,13 +36,6 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
     ? mapCategoryToHomeCategoryItem(category, locale)
     : undefined;
   const styles: ApplicationsStyles = {
-    title: {
-      root: {
-        ...mediaQueryFrom('tablet', {
-          marginLeft: rem(20)
-        })
-      }
-    },
     itemContainer: {
       root: {
         width: 216,
@@ -85,10 +76,9 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
     },
     root: {
       root: {
-        background: palette.neutralLight,
-        padding: `${spacing.l1} ${spacing.l2}`,
+        padding: `${spacing.l1} 0`,
         ...mediaQueryFrom('tablet', {
-          padding: `${spacing.l2} ${rem(120)}`
+          padding: `${spacing.l2} 0`
         })
       }
     }
@@ -99,13 +89,16 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   }
   return (
     <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
-      <Text as="h2" variant="xxLargePlus" styles={styles.title}>
+      <Text as="h2" variant="xxLargePlus">
         {categoryItem.name}
       </Text>
       <Stack
         horizontal
         wrap
-        tokens={{ padding: rem(spacing.m), childrenGap: rem(spacing.s1) }}
+        tokens={{
+          padding: `${rem(spacing.m)} 0`,
+          childrenGap: rem(spacing.s1)
+        }}
         styles={styles.itemsContainer}
       >
         {categoryItem.children?.map(categoryItem => (
