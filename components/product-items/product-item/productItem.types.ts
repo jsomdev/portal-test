@@ -16,8 +16,6 @@ export type ProductItemProps = {
   product: Product;
   productAttributes: Attribute[];
   horizontal?: boolean;
-  enableCompare?: boolean;
-  enableBookmark?: boolean;
   label?: string;
   styles?: ProductItemStyles;
   imageUrl?: StaticImageData | string | null;

@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { Badge } from '@components/badge/badge';
 import { BadgeType } from '@components/badge/badge.types';
 import { ProductBookmarkButton } from '@components/buttons/product-bookmark-button/productBookmarkButton';
-import { ProductCompareButton } from '@components/buttons/product-compare-button/productCompareButton';
 import { ProductKeySpecificationsButton } from '@components/buttons/productSpecificationButton';
 import { ProductSpecificationDialog } from '@components/dialogs/productSpecificationDialog';
 import { ProductSpecificationsItem } from '@components/product-items/productSpecifications.types';
@@ -39,8 +38,6 @@ export const ProductItem: FC<ProductItemProps> = ({
   imageWidth = 152,
   imageHeight = 152,
   productAttributes = [],
-  enableBookmark = false,
-  enableCompare = false,
   label,
   horizontal = false,
   styles: customStyles,
@@ -205,15 +202,6 @@ export const ProductItem: FC<ProductItemProps> = ({
           imageAlt={formatProductDisplayValue(product)}
           width={imageWidth}
           height={imageHeight}
-          onRenderTopLeft={() => {
-            return enableBookmark ? (
-              <Stack styles={styles.leftBookmarkWrapper}>
-                {enableBookmark && <ProductBookmarkButton product={product} />}
-              </Stack>
-            ) : (
-              <></>
-            );
-          }}
           onRenderBottomLeft={() => {
             return label ? (
               <Stack.Item styles={mergedLeftLabelWrapper}>
@@ -265,12 +253,6 @@ export const ProductItem: FC<ProductItemProps> = ({
               <Stack.Item>
                 {renderKeySpecifications(productAttributes)}
               </Stack.Item>
-
-              {enableCompare && (
-                <Stack.Item styles={{ root: { marginTop: 'auto !important' } }}>
-                  <ProductCompareButton product={product} />
-                </Stack.Item>
-              )}
             </>
           )}
         </Stack>

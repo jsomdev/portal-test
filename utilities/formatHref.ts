@@ -38,7 +38,7 @@ export function formatCategoryHref(
  * Function that will format the href for a Product.
  * @param design Product which the href is for
  */
-//TODO Ward prio move to productFormatter
+//TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14868
 export function formatDesignHref(design: Partial<Product>): string {
   const structureParameter: string = '/products';
   const productIdParameter: string = `/${design.id}`;

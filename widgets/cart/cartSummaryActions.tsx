@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
+
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,
@@ -15,6 +17,7 @@ import {
 import { useCart } from '@providers/cart/cartContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
+import pagePaths from '@utilities/pagePaths';
 
 import { CartSummaryActionsStyles } from './cartSummary.types';
 
@@ -36,7 +39,7 @@ export const CartSummaryActions: React.FC = () => {
   const { instance } = useMsal();
   const isAuthenticated = useIsAuthenticated();
   const { isCheckoutEnabled, isRequestForQuoteEnabled } = useMe();
-  //TODO ward const { toPath } = useNavigate();
+  const { push } = useRouter();
 
   const styles: CartSummaryActionsStyles = {
     request: {
@@ -121,11 +124,12 @@ export const CartSummaryActions: React.FC = () => {
     return (
       <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
         <Stack.Item>
+          abc
           <PrimaryButton
             text={messages.proceed}
             onClick={event => {
               event.preventDefault();
-              //TODO ward toPath(formatLocationHref(pageRoutePaths.checkout, false), event);
+              push(pagePaths.checkout);
             }}
             styles={styles.primaryButton}
             disabled={checkoutItems.length < 1 || !isCheckoutEnabled}
@@ -149,10 +153,7 @@ export const CartSummaryActions: React.FC = () => {
               text={messages.request}
               onClick={event => {
                 event.preventDefault();
-                /*TODO ward toPath(
-                  formatLocationHref(pageRoutePaths.quoteRequest, false),
-                  event
-                ); */
+                push(pagePaths.quoteRequest);
               }}
               disabled={!quoteItems.length || !isRequestForQuoteEnabled}
               styles={styles.primaryButton}
@@ -185,11 +186,7 @@ export const CartSummaryActions: React.FC = () => {
                 text={messages.proceed}
                 onClick={event => {
                   event.preventDefault();
-                  /* TODO ward
-                  toPath(
-                    formatLocationHref(pageRoutePaths.checkout, false),
-                    event
-                  );*/
+                  push(pagePaths.checkout);
                 }}
                 styles={styles.primaryButton}
                 disabled={checkoutItems.length < 1 || !isCheckoutEnabled}
@@ -200,11 +197,7 @@ export const CartSummaryActions: React.FC = () => {
                 text={messages.request}
                 onClick={event => {
                   event.preventDefault();
-                  /* TODO ward
-                  toPath(
-                    formatLocationHref(pageRoutePaths.quoteRequest, false),
-                    event
-                  );*/
+                  push(pagePaths.quoteRequest);
                 }}
                 styles={styles.defaultButton}
                 disabled={quoteItems.length < 1 || !isRequestForQuoteEnabled}

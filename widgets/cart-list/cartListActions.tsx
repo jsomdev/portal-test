@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router';
 
 import { DefaultButton, FontSizes, Stack, useTheme } from '@fluentui/react';
 import { CartContext, useCart } from '@providers/cart/cartContext';
+import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 
 import { CartListActionStyles } from './cartList.types';
@@ -39,7 +40,7 @@ export const CartListActions: React.FC = () => {
           text={messages.continueButton}
           onClick={event => {
             event.preventDefault();
-            push('/');
+            push(pagePaths.home);
           }}
         />
       </Stack.Item>

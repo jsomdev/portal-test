@@ -184,6 +184,18 @@ type ICategoryMessages = {
   title: string;
   titleWithSearch: string;
 };
+
+type ICartMessages = {
+  title: string;
+  loading: string;
+  merge: {
+    message: string;
+    answerYes: string;
+    answerNo: string;
+    viewProducts: string;
+  };
+};
+
 type IModelMessages = INextHeadMessages;
 type ISeriesMessages = INextHeadMessages;
 /**
@@ -220,16 +232,7 @@ export type Messages = {
       projectSetup: IProjectSetupMessages;
     };
     account: IAccountMessages;
-    cart: {
-      title: string; //TODO ward,
-      loading: string;
-      merge: {
-        message: string;
-        answerYes: string;
-        answerNo: string;
-        viewProducts: string;
-      };
-    };
+    cart: ICartMessages;
   };
 };
 

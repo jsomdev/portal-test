@@ -26,7 +26,7 @@ export const formatText = (
  * Function that will map a CartItem to its displayValue
  * @param item CartItem that needs to be formatted
  */
-// TODO Ward remove all these format function that just use the defaultLanguage
+//TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14868
 export const formatCartItemDisplayValue = (
   item: BaseCartItem | OrderLine | undefined
 ): string => {
@@ -37,10 +37,10 @@ export const formatCartItemDisplayValue = (
  * Function that will map a product to its displayValue
  * @param product Product that needs to be formatted
  */
+// TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14868
 export const formatProductDisplayValue = (
   product: Partial<Product> | undefined
 ): string => {
-  //TODO ward default language from env?
   return product?.number || product?.name?.['en'] || '';
 };
 

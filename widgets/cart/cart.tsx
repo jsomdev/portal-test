@@ -29,19 +29,30 @@ import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 
 const messages = defineMessages({
   mergeMessage: {
-    id: messageIds.pages.cart.merge.message
+    id: messageIds.pages.cart.merge.message,
+    defaultMessage:
+      'You have added products to your cart while you were logged out. Do you want us to add them to your cart?',
+    description: 'Message displayed when the user has a cart to merge'
   },
   mergeYes: {
-    id: messageIds.pages.cart.merge.answerYes //TODO ward
+    id: messageIds.pages.cart.merge.answerYes,
+    defaultMessage: 'Yes',
+    description: 'Answer to merge the cart with Yes'
   },
   mergeNo: {
-    id: messageIds.pages.cart.merge.answerNo //TODO ward
+    id: messageIds.pages.cart.merge.answerNo,
+    defaultMessage: 'No',
+    description: 'Answer to merge the cart with No'
   },
   viewProducts: {
-    id: messageIds.pages.cart.merge.viewProducts //TODO ward
+    id: messageIds.pages.cart.merge.viewProducts,
+    defaultMessage: 'View products',
+    description: 'View products in cart to merge'
   },
   loadingCart: {
-    id: messageIds.pages.cart.loading //TODO ward
+    id: messageIds.pages.cart.loading,
+    defaultMessage: 'Loading cart...',
+    description: 'Loading cart message'
   }
 });
 

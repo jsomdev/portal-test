@@ -18,6 +18,7 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -208,7 +209,7 @@ const DesktopMainHeader: React.FC = () => {
           <SiteHeaderButton
             title={intl.formatMessage(messages.cartAriaLabel)}
             onClick={() => {
-              push('/cart');
+              push(pagePaths.cart);
             }}
             iconProps={{
               iconName: 'ShoppingCart'
