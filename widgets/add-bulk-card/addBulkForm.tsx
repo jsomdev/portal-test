@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { FieldArray, Form, useFormikContext } from 'formik';
+import { defineMessages, useIntl } from 'react-intl';
 import { useMutation } from 'react-query';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
@@ -14,7 +15,7 @@ import {
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
 import { BaseCartItem } from '@providers/cart/cartModels';
-import { ReactQueryStatus } from '@services/react-query/types';
+import { messageIds } from '@services/i18n';
 
 import { AddBulkFormStyles } from './addBulkForm.types';
 import {
@@ -22,28 +23,67 @@ import {
   validateProductNumbers
 } from './addBulkFormHelpers';
 
-const messages = {
-  quantityPrefix: 'Qty',
-  entryButton: 'Entry',
-  resetButton: 'Reset',
-  addToCartButton: (status: ReactQueryStatus) =>
-    (status === 'loading' && 'Adding...') || 'Add to cart',
-  productNumberPlaceholder: `Product Number`,
-  bulkAllCompleteMessage: () => `All products have been added to the cart.`,
-  bulkPartialCompleteMessage: (productNumbers: string[]) =>
-    `Some products were added to the cart: ${productNumbers.join(', ')}.`,
-  bulkFailMessage: (productNumbers: string[]) =>
-    `Following products could not be added to the cart: ${productNumbers.join(
-      ', '
-    )}.`,
-  warningDialogTitle: 'Some items have not been added',
-  warningDialogSubText: (productNumbers: string[]) =>
-    `Sorry, following product numbers were not found in the catalog: ${productNumbers.join(
-      ', '
-    )}.`
-};
+const messages = defineMessages({
+  quantityPrefix: {
+    id: messageIds.pages.cart.addBulkCard.quantityPrefix,
+    description: 'Prefix for quantity field on cart bulk insert card',
+    defaultMessage: 'Qty'
+  },
+  entryButton: {
+    id: messageIds.pages.cart.addBulkCard.entryButton,
+    description: 'Button to add another entry on cart bulk insert card',
+    defaultMessage: 'Entry'
+  },
+  resetButton: {
+    id: messageIds.pages.cart.addBulkCard.resetButton,
+    description: 'Button to reset form on cart bulk insert card',
+    defaultMessage: 'Reset'
+  },
+  addToCartButton: {
+    id: messageIds.pages.cart.addBulkCard.addToCartButton,
+    description: 'Button to add to cart on cart bulk insert card',
+    defaultMessage: 'Add to cart'
+  },
+  addToCartButtonInProgress: {
+    id: messageIds.pages.cart.addBulkCard.addToCartButtonInProgress,
+    description:
+      'Button to add to cart on cart bulk insert card when in progress',
+    defaultMessage: 'Adding...'
+  },
+  productNumberPlaceholder: {
+    id: messageIds.pages.cart.addBulkCard.productNumberPlaceholder,
+    description:
+      'Placeholder for product number field on cart bulk insert card',
+    defaultMessage: 'Product Number'
+  },
+  bulkAllCompleteMessage: {
+    id: messageIds.pages.cart.addBulkCard.bulkAllCompleteMessage,
+    description:
+      'Message to show when all products have been added on cart bulk insert card',
+    defaultMessage: 'All products have been added to the cart.'
+  },
+  bulkPartialCompleteMessage: {
+    id: messageIds.pages.cart.addBulkCard.bulkPartialCompleteMessage,
+    description:
+      'Message to show when some products have been added on cart bulk insert card',
+    defaultMessage: 'Some products were added to the cart: {productNumbers}.'
+  },
+  bulkFailMessage: {
+    id: messageIds.pages.cart.addBulkCard.bulkFailMessage,
+    description:
+      'Message to show when products have failed to add on cart bulk insert card',
+    defaultMessage:
+      'Following products could not be added to the cart: {productNumbers}'
+  },
+  warningDialogTitle: {
+    id: messageIds.pages.cart.addBulkCard.warningDialogTitle,
+    description: 'Title for warning dialog on cart bulk insert card',
+    defaultMessage: 'Some items have not been added'
+  }
+});
 
 export const AddBulkToCartForm: React.FC = () => {
+  const { formatMessage } = useIntl();
   const [validProductNumbers, setValidProductNumbers] = useState<string[]>([]);
   const [invalidProductNumbers, setInvalidProductNumbers] = useState<string[]>(
     []
@@ -140,14 +180,16 @@ export const AddBulkToCartForm: React.FC = () => {
                       <FormikTextField
                         autoComplete="off"
                         name={`items.${index}.productNumber`}
-                        placeholder={messages.productNumberPlaceholder}
+                        placeholder={formatMessage(
+                          messages.productNumberPlaceholder
+                        )}
                         validationProps={{ disabled: true }}
                       />
                     </Stack.Item>
                     <FormikTextField
                       autoComplete="off"
                       name={`items.${index}.quantity`}
-                      prefix={messages.quantityPrefix}
+                      prefix={formatMessage(messages.quantityPrefix)}
                       styles={styles.quantityField}
                       type="tel"
                       validationProps={{ disabled: true }}
@@ -168,7 +210,11 @@ export const AddBulkToCartForm: React.FC = () => {
                 verticalAlign="center"
               >
                 <DefaultButton
-                  text={messages.addToCartButton(validateBulk.status)}
+                  text={
+                    validateBulk.status === 'loading'
+                      ? formatMessage(messages.addToCartButtonInProgress)
+                      : formatMessage(messages.addToCartButton)
+                  }
                   type="submit"
                   disabled={!isSubmitEnabled}
                   onClick={() => {
@@ -177,7 +223,7 @@ export const AddBulkToCartForm: React.FC = () => {
                 />
                 <ActionButton
                   iconProps={{ iconName: 'Add' }}
-                  text={messages.entryButton}
+                  text={formatMessage(messages.entryButton)}
                   onClick={() => push({ id: '', quantity: 1 })}
                 />
               </Stack>
@@ -187,7 +233,7 @@ export const AddBulkToCartForm: React.FC = () => {
               invalidProductNumbers.length === 0 && (
                 <Stack.Item>
                   <MessageBar messageBarType={MessageBarType.success}>
-                    {messages.bulkAllCompleteMessage()}
+                    {formatMessage(messages.bulkAllCompleteMessage)}
                   </MessageBar>
                 </Stack.Item>
               )}
@@ -196,14 +242,18 @@ export const AddBulkToCartForm: React.FC = () => {
               invalidProductNumbers.length > 0 && (
                 <Stack.Item>
                   <MessageBar messageBarType={MessageBarType.success}>
-                    {messages.bulkPartialCompleteMessage(validProductNumbers)}
+                    {formatMessage(messages.bulkPartialCompleteMessage, {
+                      productNumbers: validProductNumbers.join(', ')
+                    })}
                   </MessageBar>
                 </Stack.Item>
               )}
             {validateBulk.status === 'success' && invalidProductNumbers.length && (
               <Stack.Item>
                 <MessageBar messageBarType={MessageBarType.error}>
-                  {messages.bulkFailMessage(invalidProductNumbers)}
+                  {formatMessage(messages.bulkFailMessage, {
+                    productNumbers: invalidProductNumbers.join(', ')
+                  })}
                 </MessageBar>
               </Stack.Item>
             )}

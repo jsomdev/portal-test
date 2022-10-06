@@ -183,9 +183,28 @@ export const messageIds: Messages = {
       loading: 'pages.cart.loading',
       merge: {
         message: 'pages.cart.merge.message',
-        answerYes: 'pages.cart.merge.answerYes',
-        answerNo: 'pages.cart.merge.answerNo',
         viewProducts: 'pages.cart.merge.viewProducts'
+      },
+      addBulkCard: {
+        title: 'pages.cart.addBulkCard.title',
+        description: 'pages.cart.addBulkCard.description',
+        quantityPrefix: 'pages.cart.addBulkCard.quantityPrefix',
+        entryButton: 'pages.cart.addBulkCard.entryButton',
+        resetButton: 'pages.cart.addBulkCard.resetButton',
+        addToCartButton: 'pages.cart.addBulkCard.addToCartButton',
+        addToCartButtonInProgress:
+          'pages.cart.addBulkCard.addToCartButtonInProgress',
+        productNumberPlaceholder:
+          'pages.cart.addBulkCard.productNumberPlaceholder',
+        bulkAllCompleteMessage: 'pages.cart.addBulkCard.bulkAllCompleteMessage',
+        bulkPartialCompleteMessage:
+          'pages.cart.addBulkCard.bulkPartialCompleteMessage',
+        bulkFailMessage: 'pages.cart.addBulkCard.bulkFailMessage',
+        warningDialogTitle: 'pages.cart.addBulkCard.warningDialogTitle'
+      },
+      productsAddedWhileLoggedOutDialog: {
+        title: 'pages.cart.productsAddedWhileLoggedOutDialog.title',
+        loading: 'pages.cart.productsAddedWhileLoggedOutDialog.loading'
       }
     }
   },
@@ -208,5 +227,11 @@ export const messageIds: Messages = {
       true: 'data.boolean.true',
       false: 'data.boolean.false'
     }
+  },
+  summary: {
+    details: 'summary.details'
+  },
+  product: {
+    imageDisclaimer: 'product.imageDisclaimer'
   }
 };

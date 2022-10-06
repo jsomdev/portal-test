@@ -1,5 +1,7 @@
 import React, { FC, useContext, useMemo } from 'react';
 
+import { defineMessages } from 'react-intl';
+
 import { useIsAuthenticated } from '@azure/msal-react';
 import {
   DefaultButton,
@@ -15,9 +17,14 @@ import {
   ProductBookmarkButtonProps
 } from './productBookmarkButton.types';
 
-const messages = {
-  button: 'Bookmark'
-};
+const messages = defineMessages({
+  button: {
+    id: 'productBookmarkButton.button',
+    description: 'Button text for product bookmark button',
+    defaultMessage: 'Bookmark'
+  }
+});
+
 export const ProductBookmarkButton: FC<ProductBookmarkButtonProps> = ({
   product,
   displayAsDefaultButton

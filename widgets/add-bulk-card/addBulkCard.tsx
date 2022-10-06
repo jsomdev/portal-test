@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Formik } from 'formik';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { BaseCartItem } from '@providers/cart/cartModels';
@@ -10,16 +11,23 @@ import { AddBulkToCartForm } from './addBulkForm';
 import { initialAddBulkFormValues } from './addBulkFormHelpers';
 import { addBulkFormValidation } from './addBulkValidation';
 
-//TODO ward i18n
-const messages = {
-  title: 'Add multiple products at once',
-  description:
-    'Enter the number and the quantity of the products you wish to add to your cart. '
-};
+const messages = defineMessages({
+  title: {
+    id: 'pages.cart.addBulkCard.title',
+    description: 'Title for add bulk card',
+    defaultMessage: 'Add multiple products at once'
+  },
+  description: {
+    id: 'pages.cart.addBulkCard.description',
+    description: 'Description for add bulk card',
+    defaultMessage:
+      'Enter the number and the quantity of the products you wish to add to your cart.'
+  }
+});
 
 export const AddBulkCard: React.FC = () => {
   const { spacing, palette } = useTheme();
-
+  const { formatMessage } = useIntl();
   const styles: AddBulkCardStyles = {
     title: {
       root: {
@@ -42,9 +50,11 @@ export const AddBulkCard: React.FC = () => {
     >
       <Stack>
         <Text variant="mediumPlus" styles={styles.title}>
-          {messages.title}
+          {formatMessage(messages.title)}
         </Text>
-        <Text styles={styles.description}>{messages.description}</Text>
+        <Text styles={styles.description}>
+          {formatMessage(messages.description)}
+        </Text>
         <Stack.Item tokens={{ padding: `${spacing.s1} 0 0 0` }}>
           <AddBulkToCartForm />
         </Stack.Item>

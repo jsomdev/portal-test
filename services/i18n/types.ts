@@ -1,4 +1,5 @@
 import { Audience } from '@services/portal-api/models/AudienceFlags';
+import { ReactQueryStatus } from '@services/react-query/types';
 
 type I18NMessages = {
   title: string;
@@ -190,10 +191,30 @@ type ICartMessages = {
   loading: string;
   merge: {
     message: string;
-    answerYes: string;
-    answerNo: string;
     viewProducts: string;
   };
+  addBulkCard: {
+    title: string;
+    description: string;
+    quantityPrefix: string;
+    entryButton: string;
+    resetButton: string;
+    addToCartButton: string;
+    addToCartButtonInProgress: string;
+    productNumberPlaceholder: string;
+    bulkAllCompleteMessage: string;
+    bulkPartialCompleteMessage: string;
+    bulkFailMessage: string;
+    warningDialogTitle: string;
+  };
+  productsAddedWhileLoggedOutDialog: {
+    title: string;
+    loading: string;
+  };
+};
+
+type IProductMessages = {
+  imageDisclaimer: string;
 };
 
 type IModelMessages = INextHeadMessages;
@@ -234,6 +255,10 @@ export type Messages = {
     account: IAccountMessages;
     cart: ICartMessages;
   };
+  summary: {
+    details: string;
+  };
+  product: IProductMessages;
 };
 
 export interface Language {

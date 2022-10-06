@@ -35,12 +35,12 @@ const messages = defineMessages({
     description: 'Message displayed when the user has a cart to merge'
   },
   mergeYes: {
-    id: messageIds.pages.cart.merge.answerYes,
+    id: messageIds.data.boolean.true,
     defaultMessage: 'Yes',
     description: 'Answer to merge the cart with Yes'
   },
   mergeNo: {
-    id: messageIds.pages.cart.merge.answerNo,
+    id: messageIds.data.boolean.false,
     defaultMessage: 'No',
     description: 'Answer to merge the cart with No'
   },

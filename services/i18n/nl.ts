@@ -190,9 +190,29 @@ export const nl: Messages = {
       merge: {
         message:
           'U heeft producten aan uw winkelwagen toegevoegd terwijl u was uitgelogd. Wil je dat we ze aan je winkelwagen toevoegen?',
-        answerYes: 'Ja',
-        answerNo: 'Neen',
         viewProducts: 'Bekijk producten'
+      },
+      addBulkCard: {
+        title: 'Voeg meerdere producten tegelijk toe',
+        description:
+          'Voer de product code en het aantal producten in dat u aan uw winkelwagentje wilt toevoegen',
+        quantityPrefix: 'Aantal',
+        entryButton: 'Item toevoegen',
+        resetButton: 'Reset',
+        addToCartButton: 'Toevoegen aan winkelwagen',
+        addToCartButtonInProgress: 'Toevoegen...',
+        productNumberPlaceholder: 'Product code',
+        bulkAllCompleteMessage:
+          'Alle producten zijn toegevoegd aan de winkelwagen',
+        bulkPartialCompleteMessage:
+          'Sommige producten zijn aan de winkelwagen toegevoegd: {productNumbers}.',
+        bulkFailMessage:
+          'De volgende producten konden niet aan de winkelwagen worden toegevoegd: {productNumbers}',
+        warningDialogTitle: 'Sommige items zijn niet toegevoegd'
+      },
+      productsAddedWhileLoggedOutDialog: {
+        title: 'Producten die werden toegevoegd terwijl je was uitgelogd',
+        loading: 'Producten laden...'
       }
     }
   },
@@ -215,5 +235,12 @@ export const nl: Messages = {
       true: 'Ja',
       false: 'Nee'
     }
+  },
+  summary: {
+    details: 'Details'
+  },
+  product: {
+    imageDisclaimer:
+      'Afbeeldingen zijn representatief. Producten kunnen verschillen in materiaal of configuratie.'
   }
 };

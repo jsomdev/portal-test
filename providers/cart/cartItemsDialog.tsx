@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import {
@@ -20,10 +21,18 @@ import { CartItem } from './cartContext';
 import { combineCartItemsInformation } from './cartHelper';
 import { BaseCartItem } from './cartModels';
 
-const messages = {
-  label: 'Loading products...',
-  title: 'Products added while you were logged out'
-};
+const messages = defineMessages({
+  loading: {
+    id: 'pages.cart.productsAddedWhileLoggedOutDialog.loading',
+    defaultMessage: 'Products loading...',
+    description: 'Loading message for products added while logged out dialog'
+  },
+  title: {
+    id: 'pages.cart.productsAddedWhileLoggedOutDialog.title',
+    defaultMessage: 'Products added while logged out',
+    description: 'Title for products added while logged out dialog'
+  }
+});
 
 interface CartItemsDialogStyles {
   spinner: ISpinnerStyles;
@@ -41,7 +50,7 @@ export const CartItemsDialog: React.FC<CartItemsDialogProps> = ({
   onDismiss
 }) => {
   const { spacing, fonts, palette } = useTheme();
-
+  const { formatMessage } = useIntl();
   const productIds: string[] = useMemo(() => {
     const productIds = items.map(item => {
       if (item.productId) {
@@ -82,7 +91,7 @@ export const CartItemsDialog: React.FC<CartItemsDialogProps> = ({
       maxWidth={'90vw'}
       minWidth={'35vw'}
       dialogContentProps={{
-        title: messages.title,
+        title: formatMessage(messages.title),
         showCloseButton: true
       }}
     >
@@ -92,7 +101,7 @@ export const CartItemsDialog: React.FC<CartItemsDialogProps> = ({
             <Spinner
               styles={styles.spinner}
               size={SpinnerSize.large}
-              label={messages.label}
+              label={formatMessage(messages.loading)}
             />
           </Stack>
         ) : (

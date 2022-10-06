@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   DirectionalHint,
   FontWeights,
@@ -15,16 +17,20 @@ import {
   ProductImageDisclaimerTooltipProps
 } from './productImageDisclaimerTooltip.types';
 
+const messages = defineMessages({
+  tooltipText: {
+    id: 'product.imageDisclaimer',
+    defaultMessage:
+      'Images are representative. Products may differ in material or configuration.',
+    description: 'Tooltip text for product image disclaimer'
+  }
+});
+
 export const ProductImageDisclaimerTooltip: React.FC<
   ProductImageDisclaimerTooltipProps
 > = ({ messageText }) => {
-  const messages = {
-    tooltipText:
-      'Images are representative. Products may differ in material or configuration.'
-  };
-
   const { spacing } = useTheme();
-
+  const { formatMessage } = useIntl();
   const styles: ProductImageDisclaimerStyles = {
     disclaimerText: {
       root: {
@@ -46,7 +52,7 @@ export const ProductImageDisclaimerTooltip: React.FC<
           styles={styles.tooltipHost}
           calloutProps={{ gapSpace: 8 }}
           directionalHint={DirectionalHint.topLeftEdge}
-          content={<Text>{messages.tooltipText}</Text>}
+          content={<Text>{formatMessage(messages.tooltipText)}</Text>}
         >
           <Icon iconName="Info" />
         </TooltipHost>

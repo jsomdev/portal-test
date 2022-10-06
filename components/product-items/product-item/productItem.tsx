@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import { Badge } from '@components/badge/badge';
 import { BadgeType } from '@components/badge/badge.types';
-import { ProductBookmarkButton } from '@components/buttons/product-bookmark-button/productBookmarkButton';
 import { ProductKeySpecificationsButton } from '@components/buttons/productSpecificationButton';
 import { ProductSpecificationDialog } from '@components/dialogs/productSpecificationDialog';
 import { ProductSpecificationsItem } from '@components/product-items/productSpecifications.types';
