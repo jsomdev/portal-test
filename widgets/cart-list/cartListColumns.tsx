@@ -27,6 +27,7 @@ const defaultColumn: Partial<IColumn> & Pick<IColumn, 'minWidth' | 'maxWidth'> =
     }
   };
 
+//TODO i18n
 export function getCartListColumns(
   readOnly: boolean,
   showPricingColumns: boolean
