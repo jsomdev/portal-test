@@ -1,5 +1,4 @@
 import { Audience } from '@services/portal-api/models/AudienceFlags';
-import { ReactQueryStatus } from '@services/react-query/types';
 
 type I18NMessages = {
   title: string;
@@ -229,6 +228,11 @@ type ICartMessages = {
       completeProfile: string;
       quotedPriceWarningTooltip: string;
     };
+  };
+  list: {
+    emptyCart: string;
+    loading: string;
+    cartError: string;
   };
 };
 

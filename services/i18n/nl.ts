@@ -234,6 +234,11 @@ export const nl: Messages = {
           quotedPriceWarningTooltip:
             'Artikelen met een prijs op aanvraag worden uitgesloten van het afrekenproces wanneer u doorgaat met het plaatsen van uw bestelling. Ze blijven in uw winkelwagen voor toekomstig gebruik totdat u ze opstuurt voor een offerte.'
         }
+      },
+      list: {
+        emptyCart: 'Uw winkelwagen is leeg',
+        loading: 'Productinformatie laden...',
+        cartError: 'Er is een fout opgetreden bij het laden van uw winkelwagen'
       }
     }
   },

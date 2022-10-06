@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';

@@ -73,7 +73,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const { spacing, effects, semanticColors } = useTheme();
   const { items, cookieBaseItems, itemsStatus, clearCookie, mergeCookie } =
     useCart();
-  const { me, meStatus, hasPricing } = useMe();
+  const { meStatus, hasPricing } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
 

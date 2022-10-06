@@ -225,6 +225,11 @@ export const messageIds: Messages = {
           quotedPriceWarningTooltip:
             'pages.cart.summary.actions.quotedPriceWarningTooltip'
         }
+      },
+      list: {
+        emptyCart: 'pages.cart.list.emptyCart',
+        loading: 'pages.cart.list.loading',
+        cartError: 'pages.cart.list.cartError'
       }
     }
   },

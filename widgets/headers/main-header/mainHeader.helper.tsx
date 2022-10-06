@@ -1,5 +1,5 @@
 import { Guid } from 'guid-typescript';
-import { IntlShape } from 'react-intl';
+import { IntlShape, defineMessages } from 'react-intl';
 
 import { messageIds } from '@services/i18n';
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
@@ -15,13 +15,13 @@ export interface MenuItemProps {
   onClick?: () => void;
 }
 
-const messages = {
+const messages = defineMessages({
   mainMenuViewAllCategory: {
     id: messageIds.navigation.main.viewAllCategory,
     description: 'View all ... ',
     defaultMessage: 'View all default '
   }
-};
+});
 
 /**
  *

@@ -230,6 +230,11 @@ export const en: Messages = {
           quotedPriceWarningTooltip:
             'Items that have a quoted price will be excluded from the checkout process when you proceed to place your order. They will remain in your shopping cart for future use until you send them in for quotation.'
         }
+      },
+      list: {
+        emptyCart: 'Your cart is empty.',
+        loading: 'Loading product information...',
+        cartError: 'There was an error loading your cart.'
       }
     }
   },

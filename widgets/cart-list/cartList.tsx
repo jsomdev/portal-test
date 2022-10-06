@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   CheckboxVisibility,
   DetailsList,
@@ -13,16 +15,30 @@ import {
   useTheme
 } from '@fluentui/react';
 import { CartItem } from '@providers/cart/cartContext';
+import { messageIds } from '@services/i18n';
 import { sortCartItemsByProductNumber } from '@utilities/sortBy';
 
 import { CartListProps, CartListStyles } from './cartList.types';
 import { getCartListColumns } from './cartListColumns';
 
-const messages = {
-  emptyCart: 'Your cart is empty.',
-  loading: 'Loading product information...',
-  cartError: 'There was an error fetching your products.'
-};
+const messages = defineMessages({
+  emptyCart: {
+    id: messageIds.pages.cart.list.emptyCart,
+    description: 'Message to display when cart is empty',
+    defaultMessage: 'Your cart is empty.'
+  },
+  loading: {
+    id: messageIds.pages.cart.list.loading,
+    description: 'Message to display when cart is loading',
+    defaultMessage: 'Loading product information...'
+  },
+  cartError: {
+    id: messageIds.pages.cart.list.cartError,
+    description: 'Message to display when cart has an error',
+    defaultMessage: 'There was an error loading your cart.'
+  }
+});
+
 /**
  * A component that will render a DetailsList of all cart items passed to it.
  * It will display the products in rows with a ProductItem, Quantity, TotalPrice, UnitPrice and a RemoveButton columns.
@@ -37,7 +53,7 @@ export const CartList: React.FC<CartListProps> = ({
   showPricingColumns
 }) => {
   const { spacing, semanticColors, fonts, palette } = useTheme();
-
+  const { formatMessage } = useIntl();
   const styles: CartListStyles = {
     messageBar: {
       root: {
@@ -94,7 +110,7 @@ export const CartList: React.FC<CartListProps> = ({
         <Spinner
           styles={styles.spinner}
           size={SpinnerSize.large}
-          label={messages.loading}
+          label={formatMessage(messages.loading)}
         />
       </Stack>
     );
@@ -102,7 +118,9 @@ export const CartList: React.FC<CartListProps> = ({
 
   if (items?.length === 0) {
     return (
-      <MessageBar styles={styles.messageBar}>{messages.emptyCart}</MessageBar>
+      <MessageBar styles={styles.messageBar}>
+        {formatMessage(messages.emptyCart)}
+      </MessageBar>
     );
   }
 
@@ -112,7 +130,7 @@ export const CartList: React.FC<CartListProps> = ({
         styles={styles.messageBar}
         messageBarType={MessageBarType.error}
       >
-        {messages.cartError}
+        {formatMessage(messages.cartError)}
       </MessageBar>
     );
   }

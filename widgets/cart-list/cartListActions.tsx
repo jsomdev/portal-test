@@ -29,7 +29,6 @@ export const CartListActions: React.FC = () => {
   const { baseItems } = useCart();
   const { push } = useRouter();
   const { clear } = React.useContext(CartContext);
-  //TODO ward const { toPath } = useNavigate();
 
   const styles: CartListActionStyles = {
     icon: { root: { fontSize: FontSizes.small } }
