@@ -213,6 +213,27 @@ export const nl: Messages = {
       productsAddedWhileLoggedOutDialog: {
         title: 'Producten die werden toegevoegd terwijl je was uitgelogd',
         loading: 'Producten laden...'
+      },
+      actions: {
+        continue: 'Doorgaan met winkelen',
+        clear: 'Winkelwagen leegmaken'
+      },
+      summary: {
+        header: 'Samenvatting',
+        numberOfProducts: 'Aantal producten',
+        numberOfItems: 'Aantal stuks',
+        subtotal: 'Subtotaal',
+        actions: {
+          continue: 'Doorgaan',
+          request: 'Offerte aanvragen',
+          proceed: 'Naar de kassa',
+          signIn: 'Log in om door te gaan',
+          quotedPriceWarning:
+            'Uw winkelwagen bevat artikelen met prijzen op aanvraag.',
+          completeProfile: 'Voltooi je profiel voor prijsdetails.',
+          quotedPriceWarningTooltip:
+            'Artikelen met een prijs op aanvraag worden uitgesloten van het afrekenproces wanneer u doorgaat met het plaatsen van uw bestelling. Ze blijven in uw winkelwagen voor toekomstig gebruik totdat u ze opstuurt voor een offerte.'
+        }
       }
     }
   },

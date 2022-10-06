@@ -210,6 +210,26 @@ export const en: Messages = {
       productsAddedWhileLoggedOutDialog: {
         title: 'Products added while logged out',
         loading: 'Loading products...'
+      },
+      actions: {
+        continue: 'Continue shopping',
+        clear: 'Clear cart'
+      },
+      summary: {
+        header: 'Summary',
+        numberOfProducts: 'Number of Products',
+        numberOfItems: 'Number of Items',
+        subtotal: 'Sub Total',
+        actions: {
+          continue: 'Continue',
+          request: 'Request for quotation',
+          proceed: 'Proceed to checkout',
+          signIn: 'Sign in to continue',
+          quotedPriceWarning: 'Your cart contains items with quoted prices.',
+          completeProfile: 'Complete your profile for pricing details.',
+          quotedPriceWarningTooltip:
+            'Items that have a quoted price will be excluded from the checkout process when you proceed to place your order. They will remain in your shopping cart for future use until you send them in for quotation.'
+        }
       }
     }
   },

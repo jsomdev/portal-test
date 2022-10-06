@@ -205,6 +205,26 @@ export const messageIds: Messages = {
       productsAddedWhileLoggedOutDialog: {
         title: 'pages.cart.productsAddedWhileLoggedOutDialog.title',
         loading: 'pages.cart.productsAddedWhileLoggedOutDialog.loading'
+      },
+      actions: {
+        continue: 'pages.cart.actions.continue',
+        clear: 'pages.cart.actions.clear'
+      },
+      summary: {
+        header: 'pages.cart.summary.header',
+        numberOfProducts: 'pages.cart.summary.numberOfProducts',
+        numberOfItems: 'pages.cart.summary.numberOfItems',
+        subtotal: 'pages.cart.summary.subtotal',
+        actions: {
+          continue: 'pages.cart.summary.actions.continue',
+          request: 'pages.cart.summary.actions.request',
+          proceed: 'pages.cart.summary.actions.proceed',
+          signIn: 'pages.cart.summary.actions.signIn',
+          quotedPriceWarning: 'pages.cart.summary.actions.quotedPriceWarning',
+          completeProfile: 'pages.cart.summary.actions.completeProfile',
+          quotedPriceWarningTooltip:
+            'pages.cart.summary.actions.quotedPriceWarningTooltip'
+        }
       }
     }
   },

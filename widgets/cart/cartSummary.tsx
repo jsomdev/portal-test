@@ -1,22 +1,40 @@
 import React from 'react';
 
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { Summary } from '@components/summary/summary';
 import { FontSizes, FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
+import { messageIds } from '@services/i18n';
 
 import { CartSummaryDetailStyles } from './cartSummary.types';
 import { CartSummaryActions } from './cartSummaryActions';
 
-const messages = {
-  header: 'SUMMARY',
-  numberOfProducts: 'Number of Products',
-  numberOfItems: 'Number of Items',
-  total: 'Sub Total'
-};
+const messages = defineMessages({
+  header: {
+    id: messageIds.pages.cart.summary.header,
+    description: 'Title for cart summary on cart page',
+    defaultMessage: 'Summary'
+  },
+  numberOfProducts: {
+    id: messageIds.pages.cart.summary.numberOfProducts,
+    description: 'Number of products in cart',
+    defaultMessage: 'Number of Products'
+  },
+  numberOfItems: {
+    id: messageIds.pages.cart.summary.numberOfItems,
+    description: 'Number of items in cart',
+    defaultMessage: 'Number of Items'
+  },
+  subtotal: {
+    id: messageIds.pages.cart.summary.subtotal,
+    description: 'Sub total price of cart',
+    defaultMessage: 'Sub Total'
+  }
+});
 
 export const CartSummary: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { spacing, palette, semanticColors } = useTheme();
   const { formatNumber } = useIntl();
   const { items, checkoutItems, totalItems, totalPrice } = useCart();
@@ -52,12 +70,12 @@ export const CartSummary: React.FC = () => {
   return (
     <Stack>
       <Summary
-        headerText={messages.header}
+        headerText={formatMessage(messages.header)}
         onRenderDetails={() => (
           <Stack.Item>
             <Stack horizontalAlign="space-between" horizontal>
               <Stack.Item>
-                <Text>{messages.numberOfProducts}</Text>
+                <Text>{formatMessage(messages.numberOfProducts)}</Text>
               </Stack.Item>
               <Stack.Item>
                 <Text>{items?.length}</Text>
@@ -69,7 +87,7 @@ export const CartSummary: React.FC = () => {
               horizontal
             >
               <Stack.Item>
-                <Text>{messages.numberOfItems}</Text>
+                <Text>{formatMessage(messages.numberOfItems)}</Text>
               </Stack.Item>
               <Stack.Item>
                 <Text>{totalItems}</Text>
@@ -82,7 +100,9 @@ export const CartSummary: React.FC = () => {
               horizontal
             >
               <Stack.Item>
-                <Text styles={styles.totalText}>{messages.total}</Text>
+                <Text styles={styles.totalText}>
+                  {formatMessage(messages.subtotal)}
+                </Text>
               </Stack.Item>
               <Stack.Item>
                 <Text styles={styles.totalText}>{subTotalCost}</Text>

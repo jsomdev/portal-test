@@ -77,7 +77,6 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
 
-  console.log('me cart component', me);
   const styles: CartStyles = {
     listContainer: { root: { maxWidth: '95%' } },
     bulkContainer: {

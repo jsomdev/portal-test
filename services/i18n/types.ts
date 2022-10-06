@@ -211,6 +211,25 @@ type ICartMessages = {
     title: string;
     loading: string;
   };
+  actions: {
+    continue: string;
+    clear: string;
+  };
+  summary: {
+    header: string;
+    numberOfProducts: string;
+    numberOfItems: string;
+    subtotal: string;
+    actions: {
+      continue: string;
+      request: string;
+      proceed: string;
+      signIn: string;
+      quotedPriceWarning: string;
+      completeProfile: string;
+      quotedPriceWarningTooltip: string;
+    };
+  };
 };
 
 type IProductMessages = {

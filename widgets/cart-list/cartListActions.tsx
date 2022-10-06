@@ -1,20 +1,30 @@
 import React from 'react';
 
 import { useRouter } from 'next/dist/client/router';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { DefaultButton, FontSizes, Stack, useTheme } from '@fluentui/react';
 import { CartContext, useCart } from '@providers/cart/cartContext';
+import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 
 import { CartListActionStyles } from './cartList.types';
 
-//TODO ward translations
-const messages = {
-  continueButton: 'Continue shopping',
-  clearButton: 'Clear cart'
-};
+const messages = defineMessages({
+  continueButton: {
+    id: messageIds.pages.cart.actions.continue,
+    description: 'Button to continue shopping on cart page',
+    defaultMessage: 'Continue shopping'
+  },
+  clearButton: {
+    id: messageIds.pages.cart.actions.clear,
+    description: 'Button to clear cart on cart page',
+    defaultMessage: 'Clear cart'
+  }
+});
 export const CartListActions: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { spacing } = useTheme();
   const { baseItems } = useCart();
   const { push } = useRouter();
@@ -37,7 +47,7 @@ export const CartListActions: React.FC = () => {
             iconName: 'ChevronLeft',
             styles: styles.icon
           }}
-          text={messages.continueButton}
+          text={formatMessage(messages.continueButton)}
           onClick={event => {
             event.preventDefault();
             push(pagePaths.home);
@@ -47,7 +57,7 @@ export const CartListActions: React.FC = () => {
       <Stack.Item>
         <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
           <DefaultButton
-            text={messages.clearButton}
+            text={formatMessage(messages.clearButton)}
             disabled={baseItems.length === 0}
             onClick={() => {
               if (baseItems.length > 0) {

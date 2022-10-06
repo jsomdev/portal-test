@@ -114,7 +114,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       ),
     500
   );
-  console.log('me cartprovider', me);
+
   // Initialisation Effect
   useEffect(() => {
     const isReady: boolean =

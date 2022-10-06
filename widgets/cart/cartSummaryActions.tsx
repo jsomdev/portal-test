@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useRouter } from 'next/dist/client/router';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
@@ -17,20 +18,52 @@ import {
 import { useCart } from '@providers/cart/cartContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
+import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 
 import { CartSummaryActionsStyles } from './cartSummary.types';
 
-const messages = {
-  continue: 'Continue',
-  request: 'Request for quotation',
-  proceed: 'Proceed to checkout',
-  signIn: 'Sign in to continue',
-  quotedPriceWarning: 'Your cart contains items with quoted prices.',
-  completeProfile: 'Complete your profile for pricing details.',
-  quotedPriceWarningTooltip:
-    'Items that have a quoted price will be excluded from the checkout process when you proceed to place your order. They will remain in your shopping cart for future use until you send them in for quotation.'
-};
+const messages = defineMessages({
+  continue: {
+    id: messageIds.pages.cart.summary.actions.continue,
+    defaultMessage: 'Continue',
+    description: 'Continue to checkout text on cart summary'
+  },
+  request: {
+    id: messageIds.pages.cart.summary.actions.continue,
+    defaultMessage: 'Request for quotation',
+    description: 'Request for quotation text on cart summary'
+  },
+  proceed: {
+    id: messageIds.pages.cart.summary.actions.proceed,
+    defaultMessage: 'Proceed to checkout',
+    description: 'Proceed to checkout text on cart summary'
+  },
+  signIn: {
+    id: messageIds.pages.cart.summary.actions.signIn,
+    defaultMessage: 'Sign in to continue',
+    description: 'Sign in to continue on the cart summary'
+  },
+  quotedPriceWarning: {
+    id: messageIds.pages.cart.summary.actions.quotedPriceWarning,
+    defaultMessage: 'Your cart contains items with quoted prices.',
+    description:
+      'Cart containers items with quoted prices warning on the cart summary'
+  },
+  completeProfile: {
+    id: messageIds.pages.cart.summary.actions.completeProfile,
+    defaultMessage: 'Complete your profile for pricing details.',
+    description:
+      'Text on button asking to complete your profile to get pricing details'
+  },
+  quotedPriceWarningTooltip: {
+    id: messageIds.pages.cart.summary.actions.quotedPriceWarningTooltip,
+    defaultMessage:
+      'Items that have a quoted price will be excluded from the checkout process when you proceed to place your order. They will remain in your shopping cart for future use until you send them in for quotation.',
+    description:
+      'Tooltip explaining items with a quoted price will be excluded from checkout'
+  }
+});
 export const CartSummaryActions: React.FC = () => {
   const { itemsStatus, checkoutItems, quoteItems } = useCart();
   const calloutAnchor = React.useRef<HTMLDivElement>(null);
@@ -40,6 +73,7 @@ export const CartSummaryActions: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { isCheckoutEnabled, isRequestForQuoteEnabled } = useMe();
   const { push } = useRouter();
+  const { formatMessage } = useIntl();
 
   const styles: CartSummaryActionsStyles = {
     request: {
@@ -82,7 +116,7 @@ export const CartSummaryActions: React.FC = () => {
           <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
             <Stack.Item>
               <PrimaryButton
-                text={messages.continue}
+                text={formatMessage(messages.continue)}
                 styles={styles.primaryButton}
                 disabled={true}
               />
@@ -105,7 +139,7 @@ export const CartSummaryActions: React.FC = () => {
           <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
             <Stack.Item>
               <PrimaryButton
-                text={messages.continue}
+                text={formatMessage(messages.continue)}
                 styles={styles.primaryButton}
                 disabled={true}
               />
@@ -126,7 +160,7 @@ export const CartSummaryActions: React.FC = () => {
         <Stack.Item>
           abc
           <PrimaryButton
-            text={messages.proceed}
+            text={formatMessage(messages.proceed)}
             onClick={event => {
               event.preventDefault();
               push(pagePaths.checkout);
@@ -150,7 +184,7 @@ export const CartSummaryActions: React.FC = () => {
         {isAuthenticated && (
           <Stack.Item>
             <PrimaryButton
-              text={messages.request}
+              text={formatMessage(messages.request)}
               onClick={event => {
                 event.preventDefault();
                 push(pagePaths.quoteRequest);
@@ -162,7 +196,7 @@ export const CartSummaryActions: React.FC = () => {
         )}
         {!isAuthenticated && (
           <PrimaryButton
-            text={messages.signIn}
+            text={formatMessage(messages.signIn)}
             onClick={() => instance.loginRedirect(customerLoginRequest)}
             disabled={!quoteItems.length}
             styles={styles.primaryButton}
@@ -183,7 +217,7 @@ export const CartSummaryActions: React.FC = () => {
           <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
             <Stack.Item>
               <PrimaryButton
-                text={messages.proceed}
+                text={formatMessage(messages.proceed)}
                 onClick={event => {
                   event.preventDefault();
                   push(pagePaths.checkout);
@@ -194,7 +228,7 @@ export const CartSummaryActions: React.FC = () => {
             </Stack.Item>
             <Stack.Item>
               <DefaultButton
-                text={messages.request}
+                text={formatMessage(messages.request)}
                 onClick={event => {
                   event.preventDefault();
                   push(pagePaths.quoteRequest);
@@ -217,7 +251,7 @@ export const CartSummaryActions: React.FC = () => {
                     allowDisabledFocus
                     onClick={() => setShowCallout(!showCallout)}
                   >
-                    {messages.quotedPriceWarning}
+                    {formatMessage(messages.quotedPriceWarning)}
                   </ActionButton>
                 </Stack>
                 {showCallout && (
@@ -233,7 +267,9 @@ export const CartSummaryActions: React.FC = () => {
                       styles={styles.callout}
                     >
                       <Stack.Item>
-                        <Text>{messages.quotedPriceWarningTooltip}</Text>
+                        <Text>
+                          {formatMessage(messages.quotedPriceWarningTooltip)}
+                        </Text>
                       </Stack.Item>
                     </Stack>
                   </Callout>
@@ -251,7 +287,7 @@ export const CartSummaryActions: React.FC = () => {
         <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
           <Stack.Item>
             <PrimaryButton
-              text={messages.continue}
+              text={formatMessage(messages.continue)}
               styles={styles.primaryButton}
               disabled={true}
             />
