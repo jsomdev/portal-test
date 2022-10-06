@@ -26,6 +26,7 @@ export const formatText = (
  * Function that will map a CartItem to its displayValue
  * @param item CartItem that needs to be formatted
  */
+// TODO Ward remove all these format function that just use the defaultLanguage
 export const formatCartItemDisplayValue = (
   item: BaseCartItem | OrderLine | undefined
 ): string => {

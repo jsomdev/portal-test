@@ -111,7 +111,7 @@ export const fetchBaseDesignsByIds = async (
   }
   const productsResource: ProductsResource = new ProductsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,number',
+    selectQuery: 'id,name,description,number,slug',
     expandQuery: `image`,
     filterQuery:
       filteredIds.length > 0

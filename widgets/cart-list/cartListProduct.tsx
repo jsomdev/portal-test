@@ -1,12 +1,14 @@
+//TODO remove this and create specific CartItem Component: 14866 https://dev.azure.com/itssco/SSCo/_workitems/edit/14866
 import React from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 import { ProductItem } from '@components/product-items/product-item/productItem';
 import { Stack, Text } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { defaultLanguage } from '@services/i18n';
-import { formatDesignHref } from '@utilities/formatHref';
+import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { formatCartItemDisplayValue } from '@utilities/formatText';
 
 import { CartListColumnProps } from './cartList.types';
@@ -14,7 +16,9 @@ import { CartListColumnProps } from './cartList.types';
 export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
   item
 }) => {
-  //TODO ward const { getLocationDescriptor } = useNavigate();
+  const { locale } = useRouter();
+  const productFormatter = new ProductFormatter(item, locale);
+  const productUrl = productFormatter.formatUrl();
   const name: string = item?.productName?.[defaultLanguage] || '';
 
   const styles: React.CSSProperties = {
@@ -30,12 +34,6 @@ export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
         productId={item.productId || ''}
         title={formatCartItemDisplayValue(item)}
         horizontal={true}
-        path={
-          '' /* TODO ward getLocationDescriptor(formatDesignHref(item, false), {
-          persistSearchParams: 'some',
-          searchParamKeys: [URLSEARCHPARAMSKEYS.search]
-        })*/
-        }
         imageUrl={
           item.productId ? item.image?.url : STATIC_IMAGES.cart.defaultItem
         }
@@ -46,16 +44,15 @@ export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
                 verticalAlign="center"
                 styles={{ root: { height: '100%', width: '100%' } }}
               >
-                {/* TODO ward
-                      *   to={getLocationDescriptor(formatDesignHref(item, false), {
-                    persistSearchParams: 'some',
-                    searchParamKeys: [URLSEARCHPARAMSKEYS.search]
-                  })}*/}
-                <Link href={formatDesignHref(item, true)} style={styles}>
-                  <a>
-                    <Text {...titleProps} />
-                  </a>
-                </Link>
+                {productUrl ? (
+                  <Link href={productUrl} style={styles}>
+                    <a>
+                      <Text {...titleProps} />
+                    </a>
+                  </Link>
+                ) : (
+                  <Text {...titleProps} />
+                )}
                 <Stack.Item>
                   <Text {...descriptionProps} />
                 </Stack.Item>

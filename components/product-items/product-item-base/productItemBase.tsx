@@ -1,3 +1,4 @@
+//TODO remove this and create specific CartItem Component: 14866 https://dev.azure.com/itssco/SSCo/_workitems/edit/14866
 import React, { FC } from 'react';
 
 import Image from 'next/image';
@@ -13,7 +14,6 @@ import {
 } from './productItemBase.types';
 
 export const ProductItemBase: FC<ProductItemBaseProps> = ({
-  path,
   productId,
   width = 152,
   height = 152,
@@ -47,25 +47,16 @@ export const ProductItemBase: FC<ProductItemBaseProps> = ({
     },
     disclaimerWrapper: { root: { position: 'absolute', bottom: 8, left: 8 } }
   };
-
   return (
     <Stack horizontal horizontalAlign="center" styles={styles.root}>
       <Stack horizontalAlign="center" styles={styles.imageContainer}>
-        {/* TODO ward style={styles.link} to={path} */}
-        <Link href={path /*TODO ward formatLocationHref(path) */}>
+        <Link href={'/TODO'}>
           <a>
-            {/* TODO ward imageFit={ImageFit.centerContain}     maximizeFrame={true}  shouldFadeIn={shouldFadeIn}   errorSrc={fallbackImageUrl}  styles={styles.image} */}
             <Image
-              layout={'fill' /*TODO ward */}
+              layout={'fill'}
+              objectFit={'contain'}
               alt={imageAlt}
-              src={
-                imageUrl || fallbackImageUrl
-                /* TODO ward WidenImageHelper.getOptimizedSrc(
-                imageUrl || '',
-                WidenImagePreset.Small
-              ) || fallbackImageUrl
-             */
-              }
+              src={imageUrl || fallbackImageUrl}
             />
           </a>
         </Link>

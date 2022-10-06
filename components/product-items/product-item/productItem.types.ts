@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-//TODO ward import { LocationDescriptorObject } from 'history';
 import { StaticImageData } from 'next/image';
 
 import { ProductSpecificationsItem } from '@components/product-items/productSpecifications.types';
@@ -27,7 +26,6 @@ export type ProductItemProps = {
   shouldImageFadeIn?: boolean;
   title: string;
   description: string;
-  path: string; //TODO ward | LocationDescriptorObject;
   onRenderKeySpecifications?: (
     productSpecificationItems: ProductSpecificationsItem[],
     onSpecificationItemClick: (

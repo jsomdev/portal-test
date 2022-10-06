@@ -1,5 +1,7 @@
+//TODO remove this and create specific CartItem Component: 14866 https://dev.azure.com/itssco/SSCo/_workitems/edit/14866
 import React, { FC, ReactNode, useState } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 import { Badge } from '@components/badge/badge';
@@ -19,6 +21,7 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
+import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Attribute } from '@services/portal-api';
 import { formatProductDisplayValue, formatText } from '@utilities/formatText';
 
@@ -33,9 +36,7 @@ export const ProductItem: FC<ProductItemProps> = ({
   children,
   title,
   imageUrl,
-  path,
   imageWidth = 152,
-  shouldImageFadeIn = true, //TODO ward: remove this prop
   imageHeight = 152,
   productAttributes = [],
   enableBookmark = false,
@@ -47,6 +48,8 @@ export const ProductItem: FC<ProductItemProps> = ({
   onRenderProductPricing,
   onRenderBody
 }) => {
+  const { locale } = useRouter();
+  const productFormatter = new ProductFormatter(product, locale);
   const { spacing, palette, fonts, semanticColors, effects } = useTheme();
   const [selectedSpecification, setSelectedSpecification] = useState<
     ProductSpecificationsItem | undefined
@@ -69,6 +72,7 @@ export const ProductItem: FC<ProductItemProps> = ({
         setSelectedSpecification
       );
     }
+
     return (
       <Stack horizontal wrap>
         {productSpecificationItems.map((specification, index) => {
@@ -178,6 +182,7 @@ export const ProductItem: FC<ProductItemProps> = ({
     customStyles?.leftLabelWrapper
   );
 
+  const productUrl = productFormatter.formatUrl();
   return (
     <React.Fragment>
       <ProductSpecificationDialog
@@ -194,7 +199,7 @@ export const ProductItem: FC<ProductItemProps> = ({
         styles={mergedRootStyles}
       >
         <ProductItemBase
-          path={path}
+          path={productUrl}
           productId={productId}
           imageUrl={imageUrl}
           imageAlt={formatProductDisplayValue(product)}
@@ -239,21 +244,24 @@ export const ProductItem: FC<ProductItemProps> = ({
             )
           ) : (
             <>
-              <Link
-                href={path /* TODO ward formatLocationHref(path)*/}
-                passHref
-              >
-                <Stack>
-                  <Stack.Item>
-                    <Text variant="large" styles={mergedTitleStyles}>
-                      {title}
-                    </Text>
-                  </Stack.Item>
-                  <Stack.Item>
-                    <Text styles={mergedDescriptionStyles}>{description}</Text>
-                  </Stack.Item>
-                </Stack>
-              </Link>
+              {productUrl && (
+                <Link href={productUrl}>
+                  <a>
+                    <Stack>
+                      <Stack.Item>
+                        <Text variant="large" styles={mergedTitleStyles}>
+                          {title}
+                        </Text>
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Text styles={mergedDescriptionStyles}>
+                          {description}
+                        </Text>
+                      </Stack.Item>
+                    </Stack>
+                  </a>
+                </Link>
+              )}
               <Stack.Item>
                 {renderKeySpecifications(productAttributes)}
               </Stack.Item>
