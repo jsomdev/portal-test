@@ -59,13 +59,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <MediaContextProvider>
           <AppThemeProvider>
             <ReactQueryClientProvider>
-              <CartProvider>
-                <UserProvider>
+              <UserProvider>
+                <CartProvider>
                   <SystemOfMeasurementProvider>
                     <Component {...pageProps} />
                   </SystemOfMeasurementProvider>
-                </UserProvider>
-              </CartProvider>
+                </CartProvider>
+              </UserProvider>
             </ReactQueryClientProvider>
           </AppThemeProvider>
         </MediaContextProvider>

@@ -62,6 +62,7 @@ const DesktopSiteLogo: React.FC = () => {
         <Link href={'/'}>
           <a>
             <Image
+              priority
               src={STATIC_IMAGES.branding.siteLogo}
               layout="responsive"
               alt={formatMessage(messages.siteLogoAlt)}

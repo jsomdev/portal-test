@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { COOKIESKEYS } from '@services/cookies/constants';
 import {
@@ -15,7 +16,6 @@ import { updateCart } from '@services/portal-api/users';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { useDebouncedCallback } from '@utilities/useDebouncedCallback';
 
-import { useMe } from '../user/userContext';
 import { MAX_CART_QUANTITY, MIN_CART_QUANTITY } from './cartConstants';
 import { CartContext, CartItem } from './cartContext';
 import { getCombinedCartItemsProductInformation } from './cartHelper';
@@ -32,6 +32,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const { inProgress } = useMsal();
   const { me, meStatus } = useMe();
   const { isVerifiedCustomer: isVerified, isEmployee } = useClaims();
+
   // Base Cart Items cart functionality
   const [cartState, cartDispatch] = React.useReducer(cartReducer, {
     initialized: false,
@@ -88,7 +89,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     );
   }, [items]);
 
-  // Cart Items that are avaialble for checkout
+  // Cart Items that are available for checkout
   const checkoutItems: CartItem[] = React.useMemo(() => {
     return (
       items?.filter(cartItem => {
@@ -113,7 +114,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       ),
     500
   );
-
+  console.log('me cartprovider', me);
   // Initialisation Effect
   useEffect(() => {
     const isReady: boolean =

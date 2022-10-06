@@ -62,10 +62,11 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const { spacing, effects, semanticColors } = useTheme();
   const { items, cookieBaseItems, itemsStatus, clearCookie, mergeCookie } =
     useCart();
-  const { meStatus, hasPricing } = useMe();
+  const { me, meStatus, hasPricing } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
 
+  console.log('me cart component', me);
   const styles: CartStyles = {
     listContainer: { root: { maxWidth: '95%' } },
     bulkContainer: {
@@ -116,17 +117,17 @@ const Cart: React.FC<CartProps> = ({ title }) => {
                     actions={
                       <Stack horizontal wrap>
                         <DefaultButton onClick={clearCookie}>
-                          {messages.mergeNo}
+                          {formatMessage(messages.mergeNo)}
                         </DefaultButton>
                         <PrimaryButton onClick={mergeCookie}>
-                          {messages.mergeYes}
+                          {formatMessage(messages.mergeYes)}
                         </PrimaryButton>
                       </Stack>
                     }
                     messageBarType={MessageBarType.warning}
                   >
                     <Text>
-                      {messages.mergeMessage}
+                      {formatMessage(messages.mergeMessage)}
                       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                       <Link
                         onClick={() => {

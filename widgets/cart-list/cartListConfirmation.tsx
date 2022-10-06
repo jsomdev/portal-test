@@ -23,6 +23,7 @@ import {
   CartListConfirmationStyles
 } from './cartList.types';
 
+//TODO ward translations + checkout other messages that need translations related to cart
 const messages = {
   productAdded: 'Added to cart',
   limitReached: (productNumber: string, quantityAdded: number) =>

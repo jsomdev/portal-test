@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { useRouter } from 'next/dist/client/router';
+
 import { DefaultButton, FontSizes, Stack, useTheme } from '@fluentui/react';
 import { CartContext, useCart } from '@providers/cart/cartContext';
 import { scrollToTop } from '@utilities/scrollToTop';
 
 import { CartListActionStyles } from './cartList.types';
 
+//TODO ward translations
 const messages = {
   continueButton: 'Continue shopping',
   clearButton: 'Clear cart'
@@ -13,6 +16,7 @@ const messages = {
 export const CartListActions: React.FC = () => {
   const { spacing } = useTheme();
   const { baseItems } = useCart();
+  const { push } = useRouter();
   const { clear } = React.useContext(CartContext);
   //TODO ward const { toPath } = useNavigate();
 
@@ -35,7 +39,7 @@ export const CartListActions: React.FC = () => {
           text={messages.continueButton}
           onClick={event => {
             event.preventDefault();
-            //TODO ward toPath(formatLocationHref(pageRoutePaths.home[0], false), event);
+            push('/');
           }}
         />
       </Stack.Item>
