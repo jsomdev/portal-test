@@ -1,5 +1,6 @@
-import { IStackItemStyles, IStackStyles, ITextStyles } from '@fluentui/react';
 import { ReactNode } from 'react';
+
+import { IStackItemStyles, IStackStyles, ITextStyles } from '@fluentui/react';
 
 export interface SummaryProps {
   headerText: string;
