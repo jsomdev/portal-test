@@ -15,17 +15,15 @@ import {
   getDisplayValueType
 } from '@components/products/productDisplayHelper';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
+import { defaultLanguage } from '@services/i18n';
 import { Attribute, AttributeGroup, AttributeType } from '@services/portal-api';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { AttributeSettings } from '@services/portal-api/models/AttributeSettingsFlags';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { groupArrayByKey } from '@utilities/groupBy';
 import {
   sortProductSpecificationGroups,
   sortProductSpecificationItems
 } from '@utilities/sortBy';
-
-const appDefaultLanguage = ENVIRONMENT_VARIABLES.defaultLanguage;
 
 export function mapProductAttributesToProductSpecificationGroups(
   attributes: Attribute[],
@@ -45,9 +43,8 @@ export function mapProductAttributesToProductSpecificationGroups(
       ...attribute,
 
       attributeTypeGroupName:
-        getAttributeGroup(attribute.groupCode || '')?.name?.[
-          appDefaultLanguage
-        ] || 'General'
+        getAttributeGroup(attribute.groupCode || '')?.name?.[defaultLanguage] ||
+        'General'
     })
   );
 
@@ -122,15 +119,14 @@ export function mapAttributesToProductSpecificationItems(
       isPublic,
       description:
         getAttributeType(attribute.typeCode || '')?.description?.[
-          appDefaultLanguage
+          defaultLanguage
         ] || '',
       key: attribute.id || '',
       sortIndex: attribute.sortIndex || 0,
       value: attribute.value,
       name:
-        getAttributeType(attribute.typeCode || '')?.name?.[
-          appDefaultLanguage
-        ] || '',
+        getAttributeType(attribute.typeCode || '')?.name?.[defaultLanguage] ||
+        '',
       alternativeText: getAttributeTextWithConditions(
         attribute,
         systemOfMeasurement === 'Metric' ? 'US' : 'Metric'
