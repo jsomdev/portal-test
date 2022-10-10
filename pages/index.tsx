@@ -96,7 +96,9 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
               <SignUp />
             </ContentContainerStack>
           </TabletAndDesktop>
-          <ContentContainerStack styles={styles.catalogContainer}>
+          <ContentContainerStack
+            outerStackProps={{ styles: styles.catalogContainer.outerContainer }}
+          >
             <Catalog
               categories={categories.filter(
                 category =>
@@ -107,7 +109,11 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
               )}
             />
           </ContentContainerStack>
-          <ContentContainerStack styles={styles.applicationContainer}>
+          <ContentContainerStack
+            outerStackProps={{
+              styles: styles.applicationContainer.outerContainer
+            }}
+          >
             <Applications
               category={categories.find(
                 category =>
