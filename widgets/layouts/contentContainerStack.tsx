@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { merge } from 'lodash';
-
-import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import {
+  IStackProps,
+  IStackStyles,
+  Stack,
+  mergeStyleSets,
+  useTheme
+} from '@fluentui/react';
 
 export type ContentContainerStyles = {
   outerContainer: IStackStyles;
@@ -10,31 +14,38 @@ export type ContentContainerStyles = {
 };
 
 type ContentContainerProps = {
-  styles?: Partial<ContentContainerStyles>;
+  outerStackProps?: IStackProps;
+  innerStackProps?: Partial<IStackProps>;
 };
 
 const ContentContainerStack: React.FC<ContentContainerProps> = ({
   children,
-  styles = {}
+  outerStackProps,
+  innerStackProps
 }) => {
   const { spacing } = useTheme();
-  const mergedStyles: ContentContainerStyles = merge(
-    {
-      outerContainer: {},
-      innerContainer: {
-        root: {
-          maxWidth: '1600px',
-          width: '100%',
-          margin: '0 auto',
-          padding: `0 ${spacing.l2}`
-        }
+  const styles: ContentContainerStyles = {
+    outerContainer: {},
+    innerContainer: {
+      root: {
+        maxWidth: '1600px',
+        width: '100%',
+        margin: '0 auto',
+        padding: `0 ${spacing.l2}`
       }
-    },
-    styles
-  );
+    }
+  };
   return (
-    <Stack styles={mergedStyles.outerContainer}>
-      <Stack styles={mergedStyles.innerContainer}>{children}</Stack>
+    <Stack
+      {...outerStackProps}
+      styles={mergeStyleSets(styles.outerContainer, outerStackProps?.styles)}
+    >
+      <Stack
+        {...innerStackProps}
+        styles={mergeStyleSets(styles.innerContainer, innerStackProps?.styles)}
+      >
+        {children}
+      </Stack>
     </Stack>
   );
 };
