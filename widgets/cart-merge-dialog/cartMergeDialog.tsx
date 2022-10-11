@@ -11,16 +11,15 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { CartItem } from '@providers/cart/cartContext';
+import { combineCartItemsInformation } from '@providers/cart/cartHelper';
+import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
 import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchBaseDesignsByIds } from '@services/portal-api/products';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { CartList } from '@widgets/cart-list/cartList';
-
-import { CartItem } from './cartContext';
-import { combineCartItemsInformation } from './cartHelper';
-import { BaseCartItem } from './cartModels';
 
 const messages = defineMessages({
   loading: {
@@ -45,7 +44,7 @@ interface CartItemsDialogProps {
   onDismiss: () => void;
 }
 
-export const CartItemsDialog: React.FC<CartItemsDialogProps> = ({
+export const CartMergeDialog: React.FC<CartItemsDialogProps> = ({
   items,
   hidden,
   onDismiss
