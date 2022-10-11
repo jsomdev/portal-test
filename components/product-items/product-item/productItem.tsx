@@ -18,6 +18,7 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import { Attribute } from '@services/portal-api';
 import { formatProductDisplayValue } from '@utilities/formatText';
 
@@ -50,6 +51,8 @@ export const ProductItem: FC<ProductItemProps> = ({
   >(undefined);
   const { getAttributeType } = useGlobalData();
   const { systemOfMeasurement } = React.useContext(SystemOfMeasurementContext);
+  const textFormatter = new TextFormatter();
+
   //renderKeySpecifications is a render method for the key specifications in a list, grid or table item.
   //Any custom render method passed to onRenderKeySpecifications prop will override this default method.
   //This method accepts an array of Attribute
@@ -82,7 +85,7 @@ export const ProductItem: FC<ProductItemProps> = ({
                 text={
                   horizontal
                     ? specification.text
-                    : formatText(specification.text, 16, '...')
+                    : textFormatter.formatText(specification.text, 16, '...')
                 }
                 tooltipValue={specification.alternativeText}
               />
