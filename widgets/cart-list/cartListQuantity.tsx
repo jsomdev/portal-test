@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import { ISpinButtonStyles, SpinButton, Stack, Text } from '@fluentui/react';
+import {
+  MAX_CART_QUANTITY,
+  MIN_CART_QUANTITY
+} from '@providers/cart/cartConstants';
 import { useCart } from '@providers/cart/cartContext';
 
 import { CartListColumnProps } from './cartList.types';
-
-const MAX_QUANTITY = 999;
-const MIN_QUANTITY = 1;
 
 export const CartListQuantity: React.FC<CartListColumnProps> = ({
   item,
@@ -20,8 +21,8 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
   }, [item.quantity]);
 
   function handleIncrement() {
-    if (quantity + 1 > MAX_QUANTITY) {
-      setQuantity(MAX_QUANTITY);
+    if (quantity + 1 > MAX_CART_QUANTITY) {
+      setQuantity(MAX_CART_QUANTITY);
     } else {
       setQuantity(Number(quantity + 1));
       add(item.productId || null, item.productNumber || '', 1);
@@ -29,8 +30,8 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
   }
 
   function handleDecrement() {
-    if (quantity - 1 < MIN_QUANTITY) {
-      setQuantity(MIN_QUANTITY);
+    if (quantity - 1 < MIN_CART_QUANTITY) {
+      setQuantity(MIN_CART_QUANTITY);
     } else {
       setQuantity(Number(quantity - 1));
       remove(item.productNumber || '', 1);
@@ -40,8 +41,8 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
   function handleValidate(value: string) {
     if (
       isNaN(Number(value)) ||
-      Number(value) < MIN_QUANTITY ||
-      Number(value) > MAX_QUANTITY
+      Number(value) < MIN_CART_QUANTITY ||
+      Number(value) > MAX_CART_QUANTITY
     ) {
       updateItem(item.productNumber || '', Number(quantity));
     } else {
