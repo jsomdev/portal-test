@@ -17,12 +17,12 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
-import { CartItemsDialog } from '@providers/cart/cartItemsDialog';
 import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
 import { AddBulkCard } from '@widgets/add-bulk-card/addBulkCard';
 import { CartList } from '@widgets/cart-list/cartList';
 import { CartListActions } from '@widgets/cart-list/cartListActions';
+import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
@@ -181,7 +181,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
           <RecentlyViewedSection />
         </Stack.Item>
         */}
-      <CartItemsDialog
+      <CartMergeDialog
         items={cookieBaseItems}
         hidden={!showDialog}
         onDismiss={() => {

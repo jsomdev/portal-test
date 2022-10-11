@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -206,15 +207,17 @@ const DesktopMainHeader: React.FC = () => {
               iconName: 'FavoriteList'
             }}
           />
-          <SiteHeaderButton
-            title={intl.formatMessage(messages.cartAriaLabel)}
-            onClick={() => {
-              push(pagePaths.cart);
-            }}
-            iconProps={{
-              iconName: 'ShoppingCart'
-            }}
-          />
+          <Link href={pagePaths.cart}>
+            <a>
+              <SiteHeaderButton
+                title={intl.formatMessage(messages.cartAriaLabel)}
+                iconProps={{
+                  iconName: 'ShoppingCart'
+                }}
+              />
+            </a>
+          </Link>
+
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
               title={intl.formatMessage(messages.userAriaLabel)}
