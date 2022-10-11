@@ -4,8 +4,6 @@ import React, { FC, ReactNode, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
-import { Badge } from '@components/badge/badge';
-import { BadgeType } from '@components/badge/badge.types';
 import { ProductKeySpecificationsButton } from '@components/buttons/productSpecificationButton';
 import { ProductSpecificationDialog } from '@components/dialogs/productSpecificationDialog';
 import { ProductSpecificationsItem } from '@components/product-items/productSpecifications.types';
@@ -201,15 +199,6 @@ export const ProductItem: FC<ProductItemProps> = ({
           imageAlt={formatProductDisplayValue(product)}
           width={imageWidth}
           height={imageHeight}
-          onRenderBottomLeft={() => {
-            return label ? (
-              <Stack.Item styles={mergedLeftLabelWrapper}>
-                <Badge badgeType={BadgeType.SUCCESS} text={label} />
-              </Stack.Item>
-            ) : (
-              <></>
-            );
-          }}
         />
 
         <Stack
