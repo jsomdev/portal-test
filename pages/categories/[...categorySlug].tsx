@@ -21,6 +21,7 @@ import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range
 import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import { getAudience } from '@services/i18n/helper';
 import {
   AttributeGroup,
@@ -35,7 +36,6 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { formatCamelCase } from '@utilities/formatText';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
@@ -177,20 +177,23 @@ export const getStaticProps: GetStaticProps = async (
   const usedAttributeTypeCodes: string[] = Object.keys(
     initialSearchResults['@search.facets']
   );
+  const textFormatter = new TextFormatter();
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
     attributeType =>
       [
         ...usedAttributeTypeCodes,
-        formatCamelCase(liquidFlowRateFacet.attributeTypeCode),
-        formatCamelCase(liquidPressureFacet.attributeTypeCode),
-        formatCamelCase(liquidSpecificGravityFacet.attributeTypeCode),
-        formatCamelCase(sprayAngleFacet.attributeTypeCode)
-      ].includes(formatCamelCase(attributeType.code || ''))
+        textFormatter.formatCamelCase(liquidFlowRateFacet.attributeTypeCode),
+        textFormatter.formatCamelCase(liquidPressureFacet.attributeTypeCode),
+        textFormatter.formatCamelCase(
+          liquidSpecificGravityFacet.attributeTypeCode
+        ),
+        textFormatter.formatCamelCase(sprayAngleFacet.attributeTypeCode)
+      ].includes(textFormatter.formatCamelCase(attributeType.code || ''))
   );
 
   const usedFacetCodes: string[] = Object.values(
     FacetFactory.getFacetsFromFiles([])
-  ).map(facet => formatCamelCase(facet.attributeTypeCode));
+  ).map(facet => textFormatter.formatCamelCase(facet.attributeTypeCode));
 
   Object.keys(initialSearchResults['@search.facets']).forEach(key => {
     if (!usedFacetCodes.includes(key)) {

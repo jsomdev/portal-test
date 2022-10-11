@@ -19,7 +19,7 @@ import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Attribute } from '@services/portal-api';
-import { formatProductDisplayValue, formatText } from '@utilities/formatText';
+import { formatProductDisplayValue } from '@utilities/formatText';
 
 import { ProductItemBase } from '../product-item-base/productItemBase';
 import { ProductItemProps, ProductItemStyles } from './productItem.types';

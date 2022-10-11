@@ -19,13 +19,13 @@ import {
   UnitOfMeasurement
 } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { RangeFacetOptionKey } from '@services/facet-service/models/range-facets/rangeFacetOptionKey';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
   FacetedSearchFacetResult,
   FacetedSearchOdataCollection
 } from '@services/portal-api/faceted-search/types';
 import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { formatCamelCase } from '@utilities/formatText';
 
 import { FinderContext } from './finderContext';
 import { FinderQueryHelper } from './finderQueryHelper';
@@ -44,6 +44,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
   initialData
 }) => {
   const { query, pathname, push } = useRouter();
+  const textFormatter = new TextFormatter();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
   const queryClient = useQueryClient();
   const {
@@ -90,7 +91,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     (facet: Facet) => {
       const results: FacetedSearchFacetResult[] | undefined =
         facetedSearchResults?.['@search.facets']?.[
-          formatCamelCase(facet.attributeTypeCode)
+          textFormatter.formatCamelCase(facet.attributeTypeCode)
         ];
       return results;
     },

@@ -20,8 +20,11 @@ import { MAX_CART_QUANTITY, MIN_CART_QUANTITY } from './cartConstants';
 import { CartContext, CartItem } from './cartContext';
 import { getCombinedCartItemsProductInformation } from './cartHelper';
 import { BaseCartItem } from './cartModels';
-import { CartProviderProps } from './cartProvider.types';
 import { cartReducer } from './cartReducer';
+
+export interface CartProviderProps {
+  initialCartItems?: BaseCartItem[] | null;
+}
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // Cart Cookie that will be used to initialize (if not authenticated) or merge (if authenticated) your cart.
