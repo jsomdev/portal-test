@@ -35,7 +35,6 @@
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
     "guid-typescript": "^1.0.9",
-    "lodash": "^4.17.21",
     "next": "^12.2.4",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
