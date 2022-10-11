@@ -11,6 +11,7 @@ import {
   TooltipHost,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 import {
   ProductImageDisclaimerStyles,
@@ -19,7 +20,7 @@ import {
 
 const messages = defineMessages({
   tooltipText: {
-    id: 'product.imageDisclaimer',
+    id: messageIds.product.imageDisclaimer,
     defaultMessage:
       'Images are representative. Products may differ in material or configuration.',
     description: 'Tooltip text for product image disclaimer'

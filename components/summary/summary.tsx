@@ -3,12 +3,13 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack, Text, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 import { SummaryProps, SummaryStyles } from './summary.types';
 
 const messages = defineMessages({
   details: {
-    id: 'summary.details',
+    id: messageIds.summary.details,
     defaultMessage: 'Details',
     description: 'Title for summary component'
   }

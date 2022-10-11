@@ -5,6 +5,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { BaseCartItem } from '@providers/cart/cartModels';
+import { messageIds } from '@services/i18n';
 
 import { AddBulkCardStyles } from './addBulkCard.types';
 import { AddBulkToCartForm } from './addBulkForm';
@@ -13,12 +14,12 @@ import { addBulkFormValidation } from './addBulkValidation';
 
 const messages = defineMessages({
   title: {
-    id: 'pages.cart.addBulkCard.title',
+    id: messageIds.pages.cart.addBulkCard.title,
     description: 'Title for add bulk card',
     defaultMessage: 'Add multiple products at once'
   },
   description: {
-    id: 'pages.cart.addBulkCard.description',
+    id: messageIds.pages.cart.addBulkCard.description,
     description: 'Description for add bulk card',
     defaultMessage:
       'Enter the number and the quantity of the products you wish to add to your cart.'

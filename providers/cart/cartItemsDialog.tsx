@@ -11,6 +11,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
 import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchBaseDesignsByIds } from '@services/portal-api/products';
@@ -23,12 +24,12 @@ import { BaseCartItem } from './cartModels';
 
 const messages = defineMessages({
   loading: {
-    id: 'pages.cart.productsAddedWhileLoggedOutDialog.loading',
+    id: messageIds.pages.cart.productsAddedWhileLoggedOutDialog.loading,
     defaultMessage: 'Products loading...',
     description: 'Loading message for products added while logged out dialog'
   },
   title: {
-    id: 'pages.cart.productsAddedWhileLoggedOutDialog.title',
+    id: messageIds.pages.cart.productsAddedWhileLoggedOutDialog.title,
     defaultMessage: 'Products added while logged out',
     description: 'Title for products added while logged out dialog'
   }
