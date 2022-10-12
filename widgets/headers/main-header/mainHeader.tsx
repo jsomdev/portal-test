@@ -21,6 +21,7 @@ import { customerLoginRequest } from '@services/authentication/authenticationCon
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
+import CartCountButtonIcon from '@widgets/cart/cartCountButtonIcon';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import { HeaderSearchBar } from '../shared/headerSearchBar';
@@ -214,10 +215,10 @@ const DesktopMainHeader: React.FC = () => {
                 iconProps={{
                   iconName: 'ShoppingCart'
                 }}
+                onRenderMenuIcon={() => <CartCountButtonIcon />}
               />
             </a>
           </Link>
-
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
               title={intl.formatMessage(messages.userAriaLabel)}

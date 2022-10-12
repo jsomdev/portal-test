@@ -26,6 +26,7 @@ import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
+import CartCountButtonIcon from '@widgets/cart/cartCountButtonIcon';
 import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languageMenu';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -210,6 +211,7 @@ const MobileSiteHeader: React.FC = () => {
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
           <SiteHeaderButton
+            onRenderMenuIcon={() => <CartCountButtonIcon />}
             onClick={() => {
               push(pagePaths.cart);
             }}
