@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -18,6 +19,7 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -91,7 +93,7 @@ const DesktopMainHeader: React.FC = () => {
   >();
 
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { asPath, push } = useRouter();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects } = useTheme();
@@ -205,12 +207,17 @@ const DesktopMainHeader: React.FC = () => {
               iconName: 'FavoriteList'
             }}
           />
-          <SiteHeaderButton
-            title={intl.formatMessage(messages.cartAriaLabel)}
-            iconProps={{
-              iconName: 'ShoppingCart'
-            }}
-          />
+          <Link href={pagePaths.cart}>
+            <a>
+              <SiteHeaderButton
+                title={intl.formatMessage(messages.cartAriaLabel)}
+                iconProps={{
+                  iconName: 'ShoppingCart'
+                }}
+              />
+            </a>
+          </Link>
+
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
               title={intl.formatMessage(messages.userAriaLabel)}

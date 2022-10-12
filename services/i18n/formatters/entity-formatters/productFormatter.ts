@@ -18,4 +18,12 @@ export class ProductFormatter {
   public formatName(): string {
     return this.multilingualStringFormatter.format(this.product?.name);
   }
+
+  public formatUrl(): string | null {
+    const slug = this.multilingualStringFormatter.format(this.product?.slug);
+    if (!slug) {
+      return null;
+    }
+    return `/products/${slug}`;
+  }
 }

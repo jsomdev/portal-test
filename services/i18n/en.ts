@@ -181,6 +181,61 @@ export const en: Messages = {
       profileInformation: 'Profile Information',
       welcome: 'Welcome {name}',
       accountPage: 'My Account'
+    },
+    cart: {
+      title: 'Cart',
+      loading: 'Loading cart...',
+      merge: {
+        message:
+          'You have added products to your cart while you were logged out. Do you want us to add them to your cart? ',
+        viewProducts: 'View products'
+      },
+      addBulkCard: {
+        title: 'Add multiple products at once',
+        description:
+          'Enter the number and the quantity of the products you wish to add to your cart.',
+        quantityPrefix: 'Qty',
+        entryButton: 'Entry',
+        resetButton: 'Reset',
+        addToCartButton: 'Add to cart',
+        addToCartButtonInProgress: 'Adding...',
+        productNumberPlaceholder: 'Product Number',
+        bulkAllCompleteMessage: 'All products have been added to the cart.',
+        bulkPartialCompleteMessage:
+          'Some products were added to the cart: {productNumbers}.',
+        bulkFailMessage:
+          'Following products could not be added to the cart: {productNumbers}',
+        warningDialogTitle: 'Some items have not been added'
+      },
+      productsAddedWhileLoggedOutDialog: {
+        title: 'Products added while logged out',
+        loading: 'Loading products...'
+      },
+      actions: {
+        continue: 'Continue shopping',
+        clear: 'Clear cart'
+      },
+      summary: {
+        header: 'Summary',
+        numberOfProducts: 'Number of Products',
+        numberOfItems: 'Number of Items',
+        subtotal: 'Sub Total',
+        actions: {
+          continue: 'Continue',
+          request: 'Request for quotation',
+          proceed: 'Proceed to checkout',
+          signIn: 'Sign in to continue',
+          quotedPriceWarning: 'Your cart contains items with quoted prices.',
+          completeProfile: 'Complete your profile for pricing details.',
+          quotedPriceWarningTooltip:
+            'Items that have a quoted price will be excluded from the checkout process when you proceed to place your order. They will remain in your shopping cart for future use until you send them in for quotation.'
+        }
+      },
+      list: {
+        emptyCart: 'Your cart is empty.',
+        loading: 'Loading product information...',
+        cartError: 'There was an error loading your cart.'
+      }
     }
   },
   loading: {
@@ -202,5 +257,12 @@ export const en: Messages = {
       true: 'Yes',
       false: 'No'
     }
+  },
+  summary: {
+    details: 'Details'
+  },
+  product: {
+    imageDisclaimer:
+      'Images are representative. Products may differ in material or configuration.'
   }
 };

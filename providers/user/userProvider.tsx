@@ -233,7 +233,6 @@ export const UserProvider: React.FC = ({ children }) => {
       </Stack>
     );
   }
-
   return (
     <UserContext.Provider
       value={{

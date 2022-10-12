@@ -111,7 +111,7 @@ export const fetchBaseDesignsByIds = async (
   }
   const productsResource: ProductsResource = new ProductsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,number',
+    selectQuery: 'id,name,description,number,slug',
     expandQuery: `image`,
     filterQuery:
       filteredIds.length > 0
@@ -354,7 +354,6 @@ export async function getDesignsForDetailedCompare(
       expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`
     };
 
-    // eslint-disable-next-line max-len
     const products: OdataCollection<Product> =
       await productsResource.getEntities(queryOptions);
     return products;

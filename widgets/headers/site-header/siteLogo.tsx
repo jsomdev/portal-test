@@ -7,6 +7,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -59,9 +60,10 @@ const DesktopSiteLogo: React.FC = () => {
       styles={styles.container}
     >
       <Stack.Item grow styles={styles.logo}>
-        <Link href={'/'}>
+        <Link href={pagePaths.home}>
           <a>
             <Image
+              priority
               src={STATIC_IMAGES.branding.siteLogo}
               layout="responsive"
               alt={formatMessage(messages.siteLogoAlt)}

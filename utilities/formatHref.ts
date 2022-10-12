@@ -36,24 +36,13 @@ export function formatCategoryHref(
 
 /**
  * Function that will format the href for a Product.
- * Example usaged:
- *  - (Origin included) to set as href of a <Link> / <a> href that links to a Product. This is used for browser based functionality (right click -> open in new tab)
- *  - (Origin excluded) to as 'pathname' in the toPath() function of useNavigate, or to so as the 'to' prop on a Link (react-router-dom). This is used for client-side navigation without additional state / location behaviour
  * @param design Product which the href is for
- * @param includeOrigin Whether or not to include window.location.origin (DO NOT INCLUDE for client-side-routing)
  */
-
-export function formatDesignHref(
-  design: Partial<Product>,
-  includeOrigin = true
-): string {
-  const origin: string =
-    includeOrigin && typeof window !== 'undefined'
-      ? window.location.origin
-      : '';
+//TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14868
+export function formatDesignHref(design: Partial<Product>): string {
   const structureParameter: string = '/products';
   const productIdParameter: string = `/${design.id}`;
-  return `${origin}${structureParameter}${productIdParameter}`;
+  return `${structureParameter}${productIdParameter}`;
 }
 
 /**

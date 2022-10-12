@@ -183,6 +183,63 @@ export const nl: Messages = {
       preferences: 'Voorkeuren',
       profileInformation: 'Profiel Informatie',
       accountPage: 'Mijn Account'
+    },
+    cart: {
+      title: 'Winkelwagen',
+      loading: 'Winkelwagen laden...',
+      merge: {
+        message:
+          'U heeft producten aan uw winkelwagen toegevoegd terwijl u was uitgelogd. Wil je dat we ze aan je winkelwagen toevoegen?',
+        viewProducts: 'Bekijk producten'
+      },
+      addBulkCard: {
+        title: 'Voeg meerdere producten tegelijk toe',
+        description:
+          'Voer de product code en het aantal producten in dat u aan uw winkelwagentje wilt toevoegen',
+        quantityPrefix: 'Aantal',
+        entryButton: 'Item toevoegen',
+        resetButton: 'Reset',
+        addToCartButton: 'Toevoegen aan winkelwagen',
+        addToCartButtonInProgress: 'Toevoegen...',
+        productNumberPlaceholder: 'Product code',
+        bulkAllCompleteMessage:
+          'Alle producten zijn toegevoegd aan de winkelwagen',
+        bulkPartialCompleteMessage:
+          'Sommige producten zijn aan de winkelwagen toegevoegd: {productNumbers}.',
+        bulkFailMessage:
+          'De volgende producten konden niet aan de winkelwagen worden toegevoegd: {productNumbers}',
+        warningDialogTitle: 'Sommige items zijn niet toegevoegd'
+      },
+      productsAddedWhileLoggedOutDialog: {
+        title: 'Producten die werden toegevoegd terwijl je was uitgelogd',
+        loading: 'Producten laden...'
+      },
+      actions: {
+        continue: 'Doorgaan met winkelen',
+        clear: 'Winkelwagen leegmaken'
+      },
+      summary: {
+        header: 'Samenvatting',
+        numberOfProducts: 'Aantal producten',
+        numberOfItems: 'Aantal stuks',
+        subtotal: 'Subtotaal',
+        actions: {
+          continue: 'Doorgaan',
+          request: 'Offerte aanvragen',
+          proceed: 'Naar de kassa',
+          signIn: 'Log in om door te gaan',
+          quotedPriceWarning:
+            'Uw winkelwagen bevat artikelen met prijzen op aanvraag.',
+          completeProfile: 'Voltooi je profiel voor prijsdetails.',
+          quotedPriceWarningTooltip:
+            'Artikelen met een prijs op aanvraag worden uitgesloten van het afrekenproces wanneer u doorgaat met het plaatsen van uw bestelling. Ze blijven in uw winkelwagen voor toekomstig gebruik totdat u ze opstuurt voor een offerte.'
+        }
+      },
+      list: {
+        emptyCart: 'Uw winkelwagen is leeg',
+        loading: 'Productinformatie laden...',
+        cartError: 'Er is een fout opgetreden bij het laden van uw winkelwagen'
+      }
     }
   },
   loading: {
@@ -204,5 +261,12 @@ export const nl: Messages = {
       true: 'Ja',
       false: 'Nee'
     }
+  },
+  summary: {
+    details: 'Details'
+  },
+  product: {
+    imageDisclaimer:
+      'Afbeeldingen zijn representatief. Producten kunnen verschillen in materiaal of configuratie.'
   }
 };

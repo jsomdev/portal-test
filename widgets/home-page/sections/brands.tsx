@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
@@ -6,7 +8,6 @@ import {
   FontSizes,
   IButtonStyles,
   IStackStyles,
-  ITextStyles,
   Stack,
   Text,
   useTheme
@@ -23,7 +24,6 @@ interface BrandsProps {
 
 interface BrandsStyles {
   root: IStackStyles;
-  title: ITextStyles;
   item: IButtonStyles;
 }
 
@@ -37,17 +37,9 @@ export const Brands: React.FC<BrandsProps> = ({ category }) => {
   const styles: BrandsStyles = {
     root: {
       root: {
-        background: palette.white,
-        padding: `${spacing.l1} ${spacing.l2}`,
+        padding: `${spacing.l1} 0`,
         ...mediaQueryFrom('tablet', {
-          padding: `${spacing.l2} ${rem(120)}`
-        })
-      }
-    },
-    title: {
-      root: {
-        ...mediaQueryFrom('tablet', {
-          marginLeft: rem(spacing.l1)
+          padding: `${spacing.l2} 0`
         })
       }
     },
@@ -68,13 +60,13 @@ export const Brands: React.FC<BrandsProps> = ({ category }) => {
   }
   return (
     <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
-      <Text as="h2" variant="xxLargePlus" styles={styles.title}>
+      <Text as="h2" variant="xxLargePlus">
         {categoryItem.name}
       </Text>
       <Stack
         horizontal
         wrap
-        tokens={{ padding: rem(spacing.m), childrenGap: rem(spacing.m) }}
+        tokens={{ padding: `${rem(spacing.m)} 0`, childrenGap: rem(spacing.m) }}
       >
         {categoryItem.children?.map(item => {
           return (

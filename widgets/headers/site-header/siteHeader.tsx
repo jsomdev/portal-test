@@ -24,6 +24,7 @@ import { msalInstance } from '@services/authentication/authenticationConfigurati
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languageMenu';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
@@ -100,7 +101,7 @@ interface MobileSiteHeaderStyles {
 const MobileSiteHeader: React.FC = () => {
   const { spacing, palette, semanticColors } = useTheme();
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { asPath, push } = useRouter();
   const { me } = useMe();
   const { formatMessage } = intl;
   const [showPanel, setShowPanel] = useState<'app' | 'user' | undefined>();
@@ -209,6 +210,9 @@ const MobileSiteHeader: React.FC = () => {
           tokens={{ childrenGap: rem(spacing.s2) }}
         >
           <SiteHeaderButton
+            onClick={() => {
+              push(pagePaths.cart);
+            }}
             iconProps={{
               iconName: 'ShoppingCart'
             }}

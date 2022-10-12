@@ -15,6 +15,7 @@ import {
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n/ids';
 import { rem } from '@utilities/rem';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 interface HeroStyles {
@@ -75,10 +76,9 @@ export const Hero: React.FC = () => {
     },
     contentContainer: {
       root: {
-        margin: rem(spacing.l1),
+        margin: `${rem(spacing.l1)} 0`,
         ...mediaQueryFrom('tablet', {
-          maxWidth: 400,
-          marginLeft: rem(140)
+          maxWidth: 400
         })
       }
     },
@@ -110,23 +110,24 @@ export const Hero: React.FC = () => {
           alt={formatMessage(messages.heroImageAlt)}
         />
       </Stack.Item>
-      <Stack.Item styles={styles.contentContainer}>
-        <Stack styles={styles.content}>
-          <Text as="h1" variant="xxLargePlus" styles={styles.header}>
-            <FormattedMessage {...messages.heroTitle} />
-          </Text>
-          <Text as="p" variant="large">
-            <FormattedMessage {...messages.heroDescription} />
-          </Text>
-
-          <Stack.Item tokens={{ padding: `${rem(spacing.m)} 0 0` }}>
-            <PrimaryButton
-              text={formatMessage(messages.heroCallToAction)}
-              styles={styles.callToAction}
-            />
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
+      <ContentContainerStack>
+        <Stack.Item styles={styles.contentContainer}>
+          <Stack styles={styles.content}>
+            <Text as="h1" variant="xxLargePlus" styles={styles.header}>
+              <FormattedMessage {...messages.heroTitle} />
+            </Text>
+            <Text as="p" variant="large">
+              <FormattedMessage {...messages.heroDescription} />
+            </Text>
+            <Stack.Item tokens={{ padding: `${rem(spacing.m)} 0 0` }}>
+              <PrimaryButton
+                text={formatMessage(messages.heroCallToAction)}
+                styles={styles.callToAction}
+              />
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+      </ContentContainerStack>
     </Stack>
   );
 };

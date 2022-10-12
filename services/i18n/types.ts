@@ -184,6 +184,62 @@ type ICategoryMessages = {
   title: string;
   titleWithSearch: string;
 };
+
+type ICartMessages = {
+  title: string;
+  loading: string;
+  merge: {
+    message: string;
+    viewProducts: string;
+  };
+  addBulkCard: {
+    title: string;
+    description: string;
+    quantityPrefix: string;
+    entryButton: string;
+    resetButton: string;
+    addToCartButton: string;
+    addToCartButtonInProgress: string;
+    productNumberPlaceholder: string;
+    bulkAllCompleteMessage: string;
+    bulkPartialCompleteMessage: string;
+    bulkFailMessage: string;
+    warningDialogTitle: string;
+  };
+  productsAddedWhileLoggedOutDialog: {
+    title: string;
+    loading: string;
+  };
+  actions: {
+    continue: string;
+    clear: string;
+  };
+  summary: {
+    header: string;
+    numberOfProducts: string;
+    numberOfItems: string;
+    subtotal: string;
+    actions: {
+      continue: string;
+      request: string;
+      proceed: string;
+      signIn: string;
+      quotedPriceWarning: string;
+      completeProfile: string;
+      quotedPriceWarningTooltip: string;
+    };
+  };
+  list: {
+    emptyCart: string;
+    loading: string;
+    cartError: string;
+  };
+};
+
+type IProductMessages = {
+  imageDisclaimer: string;
+};
+
 type IModelMessages = INextHeadMessages;
 type ISeriesMessages = INextHeadMessages;
 /**
@@ -220,7 +276,12 @@ export type Messages = {
       projectSetup: IProjectSetupMessages;
     };
     account: IAccountMessages;
+    cart: ICartMessages;
   };
+  summary: {
+    details: string;
+  };
+  product: IProductMessages;
 };
 
 export interface Language {
