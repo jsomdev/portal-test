@@ -1,3 +1,4 @@
+import { defaultLanguage } from '@services/i18n/helper';
 import { MultilingualString } from '@services/portal-api';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 

@@ -260,6 +260,13 @@ export const nl: Messages = {
     boolean: {
       true: 'Ja',
       false: 'Nee'
+    },
+    systemOfMeasurement: {
+      metric: 'Metrische',
+      us: 'US',
+      controls: {
+        units: '{system} eenheden'
+      }
     }
   },
   summary: {

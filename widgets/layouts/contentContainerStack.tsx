@@ -50,4 +50,18 @@ const ContentContainerStack: React.FC<ContentContainerProps> = ({
   );
 };
 
+type OptionalContentContainerStackProps = {
+  wrapWithContainer: boolean;
+};
+
+export const OptionalContentContainerStack: React.FC<
+  OptionalContentContainerStackProps
+> = ({ wrapWithContainer, children }) => {
+  if (wrapWithContainer) {
+    return <ContentContainerStack>{children}</ContentContainerStack>;
+  } else {
+    return <React.Fragment>{children}</React.Fragment>;
+  }
+};
+
 export default ContentContainerStack;

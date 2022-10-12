@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 
@@ -17,3 +17,6 @@ const initialContextState: SystemOfMeasurementState = {
 
 export const SystemOfMeasurementContext =
   createContext<SystemOfMeasurementState>(initialContextState);
+
+export const useSystemOfMeasurement = (): SystemOfMeasurementState =>
+  useContext(SystemOfMeasurementContext);

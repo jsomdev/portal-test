@@ -18,6 +18,7 @@ export const AppLayout: React.FC = ({ children }) => {
       <header>
         <SiteHeader />
         <MainHeader />
+        <div id="breadcrumb-portal"></div>
       </header>
       <main>{children}</main>
       <footer></footer>

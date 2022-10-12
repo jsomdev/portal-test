@@ -256,6 +256,13 @@ export const en: Messages = {
     boolean: {
       true: 'Yes',
       false: 'No'
+    },
+    systemOfMeasurement: {
+      metric: 'Metric',
+      us: 'US',
+      controls: {
+        units: '{system} units'
+      }
     }
   },
   summary: {

@@ -251,6 +251,13 @@ export const messageIds: Messages = {
     boolean: {
       true: 'data.boolean.true',
       false: 'data.boolean.false'
+    },
+    systemOfMeasurement: {
+      metric: 'data.systemOfMeasurement.metric',
+      us: 'data.systemOfMeasurement.us',
+      controls: {
+        units: 'data.systemOfMeasurement.controls.units'
+      }
     }
   },
   summary: {

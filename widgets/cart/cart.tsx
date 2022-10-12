@@ -23,9 +23,11 @@ import { AddBulkCard } from '@widgets/add-bulk-card/addBulkCard';
 import { CartList } from '@widgets/cart-list/cartList';
 import { CartListActions } from '@widgets/cart-list/cartListActions';
 import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
+import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 const messages = defineMessages({
   mergeMessage: {
@@ -105,90 +107,93 @@ const Cart: React.FC<CartProps> = ({ title }) => {
     return null;
   }
   return (
-    <ContentContainerStack>
-      <Stack.Item>{/* TODO ward <CartBreadcrumb />*/}</Stack.Item>
+    <React.Fragment>
+      <BreadcrumbPortal>
+        <CartBreadcrumb />
+      </BreadcrumbPortal>
+      <ContentContainerStack>
+        <Stack.Item>
+          <PagesHeader title={title} />
+        </Stack.Item>
 
-      <Stack.Item>
-        <PagesHeader title={title} />
-      </Stack.Item>
+        <Stack.Item>
+          <Stack
+            horizontal
+            wrap
+            tokens={{ padding: `${spacing.m} 0`, childrenGap: spacing.m }}
+          >
+            <Stack.Item styles={styles.itemsContainer}>
+              <Stack styles={styles.listContainer}>
+                {isAuthenticated && !!cookieBaseItems.length && (
+                  <Stack styles={styles.mergeCartContainer}>
+                    <MessageBar
+                      isMultiline={true}
+                      actions={
+                        <Stack horizontal wrap>
+                          <DefaultButton onClick={clearCookie}>
+                            {formatMessage(messages.mergeNo)}
+                          </DefaultButton>
+                          <PrimaryButton onClick={mergeCookie}>
+                            {formatMessage(messages.mergeYes)}
+                          </PrimaryButton>
+                        </Stack>
+                      }
+                      messageBarType={MessageBarType.warning}
+                    >
+                      <Text>
+                        {formatMessage(messages.mergeMessage)}
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <Link
+                          onClick={() => {
+                            setShowDialog(true);
+                          }}
+                        >
+                          {formatMessage(messages.viewProducts)}
+                        </Link>
+                      </Text>
+                    </MessageBar>
+                  </Stack>
+                )}
 
-      <Stack.Item>
-        <Stack
-          horizontal
-          wrap
-          tokens={{ padding: `${spacing.m} 0`, childrenGap: spacing.m }}
-        >
-          <Stack.Item styles={styles.itemsContainer}>
-            <Stack styles={styles.listContainer}>
-              {isAuthenticated && !!cookieBaseItems.length && (
-                <Stack styles={styles.mergeCartContainer}>
-                  <MessageBar
-                    isMultiline={true}
-                    actions={
-                      <Stack horizontal wrap>
-                        <DefaultButton onClick={clearCookie}>
-                          {formatMessage(messages.mergeNo)}
-                        </DefaultButton>
-                        <PrimaryButton onClick={mergeCookie}>
-                          {formatMessage(messages.mergeYes)}
-                        </PrimaryButton>
-                      </Stack>
+                <Stack.Item>
+                  <CartList
+                    items={items}
+                    readOnly={false}
+                    status={itemsStatus}
+                    showPricingColumns={
+                      hasPricing === 'Customer' || hasPricing === 'Standard'
                     }
-                    messageBarType={MessageBarType.warning}
-                  >
-                    <Text>
-                      {formatMessage(messages.mergeMessage)}
-                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                      <Link
-                        onClick={() => {
-                          setShowDialog(true);
-                        }}
-                      >
-                        {formatMessage(messages.viewProducts)}
-                      </Link>
-                    </Text>
-                  </MessageBar>
-                </Stack>
-              )}
-
-              <Stack.Item>
-                <CartList
-                  items={items}
-                  readOnly={false}
-                  status={itemsStatus}
-                  showPricingColumns={
-                    hasPricing === 'Customer' || hasPricing === 'Standard'
-                  }
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <CartListActions />
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item styles={styles.summaryContainer}>
-            <Stack tokens={{ childrenGap: spacing.s1 }}>
-              <CartSummary />
-              <Stack.Item styles={styles.bulkContainer}>
-                <AddBulkCard />
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
-      {/* TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14867
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <CartListActions />
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item styles={styles.summaryContainer}>
+              <Stack tokens={{ childrenGap: spacing.s1 }}>
+                <CartSummary />
+                <Stack.Item styles={styles.bulkContainer}>
+                  <AddBulkCard />
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+          </Stack>
+        </Stack.Item>
+        {/* TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14867
        <Stack.Item>
           <RecentlyViewedSection />
         </Stack.Item>
         */}
-      <CartMergeDialog
-        items={cookieBaseItems}
-        hidden={!showDialog}
-        onDismiss={() => {
-          setShowDialog(false);
-        }}
-      />
-    </ContentContainerStack>
+        <CartMergeDialog
+          items={cookieBaseItems}
+          hidden={!showDialog}
+          onDismiss={() => {
+            setShowDialog(false);
+          }}
+        />
+      </ContentContainerStack>
+    </React.Fragment>
   );
 };
 

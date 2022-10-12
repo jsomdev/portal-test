@@ -111,6 +111,13 @@ type IDataMessages = {
     true: string;
     false: string;
   };
+  systemOfMeasurement: {
+    metric: string;
+    us: string;
+    controls: {
+      units: string;
+    };
+  };
 };
 
 type ILoadingUserMessages = {
