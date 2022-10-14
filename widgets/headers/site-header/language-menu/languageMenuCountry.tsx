@@ -7,12 +7,12 @@ import { mergeCss } from '@fluentui/merge-styles';
 import { Stack, Text, useTheme } from '@fluentui/react';
 
 import {
-  LanguageMenuItemProps,
-  LanguageMenuItemStyles
+  LanguageMenuItemStyles,
+  LanguageMenuItemViewModel
 } from './languageMenu.types';
 import { getCountryImage } from './languageMenuCountry.helper';
 
-export const LanguageMenuItem: React.FC<LanguageMenuItemProps> = ({
+export const LanguageMenuItem: React.FC<LanguageMenuItemViewModel> = ({
   country,
   onLocaleSelected
 }) => {

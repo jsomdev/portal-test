@@ -30,7 +30,7 @@ export interface RegionWithPaths extends Region {
   countries: CountryWithPaths[];
 }
 
-export interface LanguageMenuItemProps {
+export interface LanguageMenuItemViewModel {
   country: CountryWithPaths;
   onLocaleSelected: () => void;
 }

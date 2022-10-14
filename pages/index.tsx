@@ -20,7 +20,7 @@ import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
 import { Catalog } from '@widgets/home-page/sections/catalog';
 import { Hero } from '@widgets/home-page/sections/hero';
-import { SignUp } from '@widgets/home-page/sections/signUp';
+import { SignIn } from '@widgets/home-page/sections/signIn';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack, {
   ContentContainerStyles
@@ -93,7 +93,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           <Hero />
           <TabletAndDesktop>
             <ContentContainerStack>
-              <SignUp />
+              <SignIn />
             </ContentContainerStack>
           </TabletAndDesktop>
           <ContentContainerStack

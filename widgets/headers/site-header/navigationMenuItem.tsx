@@ -12,12 +12,12 @@ import {
 } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 
-import { MenuItemProps } from '../main-header/mainHeader.helper';
+import { MenuItemViewModel } from '../main-header/mainHeader.helper';
 
 export type NavigationMenuStyle = 'default' | 'plain';
 
-interface NavigationMenuItemProps {
-  item: MenuItemProps;
+interface NavigationMenuItemViewModel {
+  item: MenuItemViewModel;
   style: NavigationMenuStyle;
   onClick?: () => void;
   onDismiss?: () => void;
@@ -30,7 +30,7 @@ interface NavigationMenuItemStyles {
 
 type NavigationMenuItemType = 'link' | 'default';
 
-export const NavigationMenuItem: React.FC<NavigationMenuItemProps> = ({
+export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
   item,
   style,
   onClick,

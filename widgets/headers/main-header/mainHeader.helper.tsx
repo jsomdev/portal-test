@@ -5,13 +5,13 @@ import { messageIds } from '@services/i18n';
 import { MenuItemFormatter } from '@services/i18n/formatters/entity-formatters/menuItemFormatter';
 import { MenuItem } from '@services/portal-api/models/MenuItem';
 
-export interface MenuItemProps {
+export interface MenuItemViewModel {
   id: string;
   text: string;
   href?: string;
   locale?: string;
   image?: string;
-  children?: MenuItemProps[];
+  children?: MenuItemViewModel[];
   onClick?: () => void;
 }
 
@@ -29,16 +29,16 @@ const messages = defineMessages({
  * @param viewType 'expanded' or 'default', expanded will add the parent item to its own children array as a link
  * @param intl our intl provider which contains the locale and formateMessage function used for our translations
  * @param parentId a parent ID used in our iterations of child menu items
- * @param parentItem the parent MenuItemProps that will be added as the first element to its own children
- * @returns an array of type MenuItemProps in a menu item / sub menu item structure
+ * @param parentViewModel the parent MenuItemViewModel that will be added as the first element to its own children
+ * @returns an array of type MenuItemViewModel in a menu item / sub menu item structure
  */
-export function mapMenuItemsToMenuItemProps(
+export function mapMenuItemsToMenuItemViewModel(
   menuItems: MenuItem[],
   viewType: 'expanded' | 'default',
   intl: IntlShape,
   parentId: string | null | undefined = undefined,
-  parentItem: MenuItemProps | undefined = undefined
-): MenuItemProps[] {
+  parentViewModel: MenuItemViewModel | undefined = undefined
+): MenuItemViewModel[] {
   // This function will determine if a given menu item has sub items based on the parent ID / item ID
   const hasSubItems: (id: string | undefined) => boolean = (
     id: string | undefined
@@ -46,8 +46,10 @@ export function mapMenuItemsToMenuItemProps(
     return !!menuItems.filter(child => child.parentId === id).length;
   };
 
-  // Map a single MenuItem to single MenuItemProps (without the children)
-  function mapMenuItemToMenuItemProps(menuItem: MenuItem): MenuItemProps {
+  // Map a single MenuItem to single MenuItemViewModel (without the children)
+  function mapMenuItemToMenuItemViewModel(
+    menuItem: MenuItem
+  ): MenuItemViewModel {
     const menuItemFormatter = new MenuItemFormatter(menuItem, intl.locale);
     return {
       href: menuItemFormatter.formatHref() || '/404',
@@ -56,10 +58,10 @@ export function mapMenuItemsToMenuItemProps(
     };
   }
 
-  const menuItemProps: MenuItemProps[] = menuItems
+  const menuItemViewModels: MenuItemViewModel[] = menuItems
     .filter(menuItem => menuItem.parentId === parentId)
-    .map((menuItem): MenuItemProps => {
-      const item = mapMenuItemToMenuItemProps(menuItem);
+    .map((menuItem): MenuItemViewModel => {
+      const item = mapMenuItemToMenuItemViewModel(menuItem);
       return {
         ...item,
         href:
@@ -67,7 +69,7 @@ export function mapMenuItemsToMenuItemProps(
             ? undefined
             : item.href,
         children: hasSubItems(item.id)
-          ? mapMenuItemsToMenuItemProps(
+          ? mapMenuItemsToMenuItemViewModel(
               menuItems,
               viewType,
               intl,
@@ -79,14 +81,14 @@ export function mapMenuItemsToMenuItemProps(
     });
 
   // Add the parent item to it's own children list and prefix the text if present
-  if (parentItem && viewType === 'expanded') {
-    menuItemProps.unshift({
-      ...parentItem,
+  if (parentViewModel && viewType === 'expanded') {
+    menuItemViewModels.unshift({
+      ...parentViewModel,
       text: intl.formatMessage(messages.mainMenuViewAllCategory, {
-        category: parentItem.text
+        category: parentViewModel.text
       })
     });
   }
 
-  return menuItemProps;
+  return menuItemViewModels;
 }

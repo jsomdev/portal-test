@@ -57,14 +57,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         color: palette.neutralLight
       }
     },
-    itemsContainer: {
-      inner: {
-        justifyContent: 'space-around',
-        ...mediaQueryFrom('tablet', {
-          justifyContent: 'flex-start'
-        })
-      }
-    },
+    itemsContainer: {},
     linkContainer: {
       root: {
         height: 65,

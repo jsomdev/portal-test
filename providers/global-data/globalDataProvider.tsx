@@ -21,8 +21,16 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   category,
   children
 }) => {
-  function getAttributeType(code: string): AttributeType | undefined {
-    return attributeTypes?.find(attributeType => attributeType.code === code);
+  function getAttributeType(
+    code: string,
+    caseSensitive: boolean = false
+  ): AttributeType | undefined {
+    return attributeTypes?.find(attributeType => {
+      if (caseSensitive) {
+        return attributeType.code === code;
+      }
+      return attributeType.code?.toLowerCase() === code.toLowerCase();
+    });
   }
   function getAttributeGroup(code: string): AttributeType | undefined {
     return attributeGroups?.find(

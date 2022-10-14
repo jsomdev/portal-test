@@ -332,14 +332,14 @@ export const fetchBookmarks = async (
 
 /**
  * Function that retrieves all necessary information about Product that are being displayed on the compare page.
- * @param ids guids of Products that are being compared
+ * @param numbers numbers of Products that are being compared
  * @returns Collection of Products
  */
 export async function getDesignsForDetailedCompare(
-  ids: string[]
+  numbers: string[]
 ): Promise<OdataCollection<Product>> {
   try {
-    if (ids.length === 0) {
+    if (numbers.length === 0) {
       return {
         '@odata.context': 'Products with attributes',
         value: []
@@ -349,7 +349,7 @@ export async function getDesignsForDetailedCompare(
     const productsResource: ProductsResource = new ProductsResource();
 
     const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `id in (${ids.join(', ')})`,
+      filterQuery: `number in (${numbers.join(', ')})`,
       selectQuery: 'id,name,description,number',
       expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`
     };

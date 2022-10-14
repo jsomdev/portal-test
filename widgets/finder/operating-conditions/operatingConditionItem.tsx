@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { useIntl } from 'react-intl';
+
 import {
   FontSizes,
   FontWeights,
@@ -16,6 +18,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useFinder } from '@providers/finder/finderContext';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
 import { Facet } from '@services/facet-service/models/facet/facet';
@@ -23,6 +26,7 @@ import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { Range } from '@services/facet-service/models/facet/facetResult';
 import { RangeFacetOptionKey } from '@services/facet-service/models/range-facets/rangeFacetOptionKey';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { rem } from '@utilities/rem';
 
 import { LiquidTypeFilter } from './liquidTypeFilter';
@@ -57,12 +61,18 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
 }) => {
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
   const { spacing, palette, effects } = useTheme();
+  const { locale } = useIntl();
   const {
     getOperatingConditionMatchType,
     getOperatingConditionUnit,
     getOperatingConditionValue
   } = useFinder();
   const [highlightValue, setHighlightValue] = useState<boolean>(false);
+  const { getAttributeType } = useGlobalData();
+  const attributeTypeFormatter = new AttributeTypeFormatter(
+    getAttributeType(operatingCondition.attributeTypeCode),
+    locale
+  );
 
   function onUpdateValue(
     optionKey: RangeFacetOptionKey,
@@ -360,10 +370,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
           styles={styles.infoIcon}
           onClick={() => onShowInfo && onShowInfo()}
         />
-        <Text styles={styles.label}>
-          {/* TODO: Make display name multilingual*/}
-          {operatingCondition.configuration.displayName}
-        </Text>
+        <Text styles={styles.label}>{attributeTypeFormatter.formatName()}</Text>
       </Stack>
       <Stack.Item>{renderInput()}</Stack.Item>
     </Stack>

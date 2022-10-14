@@ -13,7 +13,10 @@ export interface GlobalDataContextProps {
   siteMenuItems: MenuItem[] | undefined;
   mainMenuItems: MenuItem[] | undefined;
   category: Category | undefined;
-  getAttributeType: (code: string) => AttributeType | undefined;
+  getAttributeType: (
+    code: string,
+    caseSensitive?: boolean
+  ) => AttributeType | undefined;
   getAttributeGroup: (code: string) => AttributeGroup | undefined;
 }
 

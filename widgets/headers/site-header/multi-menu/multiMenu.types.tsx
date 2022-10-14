@@ -1,13 +1,13 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
+import { MenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
 import { NavigationMenuStyle } from '@widgets/headers/site-header/navigationMenuItem';
 
 export type MenuConfiguration = {
   backButtonText?: string;
   hideOtherMenusWhenActive: boolean;
   style: NavigationMenuStyle;
-  items: MenuItemProps[] | undefined;
+  items: MenuItemViewModel[] | undefined;
 };
 
 export interface MultiMenuConfiguration {
@@ -17,8 +17,8 @@ export interface MultiMenuConfiguration {
 export type MultiMenuResult<T extends MultiMenuConfiguration> = {
   activeMenuId: Extract<keyof T, string> | undefined;
   activeMenu: MenuConfiguration | undefined;
-  activeMenuItem: MenuItemProps | undefined;
-  breadcrumbs: MenuItemProps[];
+  activeMenuItem: MenuItemViewModel | undefined;
+  breadcrumbs: MenuItemViewModel[];
   activeMenuItemId: string | undefined;
   setActiveMenuItemId: Dispatch<SetStateAction<string | undefined>>;
   menus: T;
@@ -28,7 +28,7 @@ export type FindMenuItemFunction = <T extends MultiMenuConfiguration>(
   menuItems: T,
   itemId: string | undefined
 ) => {
-  menuItem: MenuItemProps | undefined;
+  menuItem: MenuItemViewModel | undefined;
   menuId: Extract<keyof T, string> | undefined;
-  breadcrumbs: MenuItemProps[];
+  breadcrumbs: MenuItemViewModel[];
 };

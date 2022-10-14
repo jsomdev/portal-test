@@ -13,10 +13,10 @@ import {
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 
-import { MenuItemProps } from './mainHeader.helper';
+import { MenuItemViewModel } from './mainHeader.helper';
 
 type MainHeaderMenuProps = {
-  activeMenuItem: MenuItemProps | undefined;
+  activeMenuItem: MenuItemViewModel | undefined;
 };
 
 type MainHeaderMenuStyles = {
@@ -119,9 +119,9 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
           passHref
         >
           <ActionButton
-            text={`${formatMessage(messages.mainMenuViewAllCategory)} ${
-              activeMenuItem.text
-            }`}
+            text={formatMessage(messages.mainMenuViewAllCategory, {
+              category: activeMenuItem.text
+            })}
             styles={styles.viewAllLink}
             menuIconProps={{ iconName: 'chevronRight' }}
           />

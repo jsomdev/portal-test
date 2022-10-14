@@ -36,7 +36,31 @@ export const nl: Messages = {
   searchBar: {
     placeholder: 'Zoek onderdeel nummer...'
   },
+  pricing: {
+    error: 'Fout bij het ophalen van prijsinformatie',
+    signInForDetails: 'Meld u aan voor prijsinformatie',
+    quantityLabel: 'Aantal',
+    priceLabel: 'Prijs',
+    tooltips: {
+      notAuthenticated:
+        'Meld u aan of contacteer de sales verantwoordelijke om prijzen te weten.',
+      quotedPrice:
+        'U kan dit product toevoegen aan uw winkelwagen en een offerte aanvragen.'
+    },
+    stockInfo: {
+      stockNotAvailable: 'Stock informatie is niet beschikbaar'
+    },
+    discounts: {
+      bulkAvailable: 'Bulkkorting mogelijk',
+      bulkApplied: 'Bulkkorting toegepast'
+    },
+    quotedPrice: 'Prijs op aanvraag',
+    unitPriceSuffix: '/ per stuk',
+    addToCart: 'Toevoegen'
+  },
   finder: {
+    compare: 'Vergelijk',
+    seeComparison: 'Toon verschillen',
     filters: {
       clearAll: 'Wis alle filters',
       search: 'Zoekterm: {query}'
@@ -82,6 +106,10 @@ export const nl: Messages = {
           '{productCount, plural,=0 {Geen producten gevonden} one {Toon 1 product} other {Toon {productCount} producten}}'
       }
     },
+    pagination: {
+      next: 'Volgende',
+      previous: 'Vorige'
+    },
     checkboxFacet: {
       actions: {
         more: 'Meer',
@@ -102,10 +130,10 @@ export const nl: Messages = {
       sections: {
         signUp: {
           title: 'Meld u aan voor de beste koopervaring',
-          callToAction: 'Creëer een account of log in',
+          callToAction: 'Aanmelden',
           steps: {
             first: {
-              title: 'Registreren',
+              title: 'Nieuwe gebruiker?',
               description:
                 'Maak een account aan die gelinkt is aan uw bedrijf en voltooi vervolgens uw profiel'
             },

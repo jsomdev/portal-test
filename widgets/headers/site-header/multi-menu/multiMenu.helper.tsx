@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
+import { MenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
 import {
   FindMenuItemFunction,
   MultiMenuConfiguration,
@@ -8,12 +8,12 @@ import {
 } from '@widgets/headers/site-header/multi-menu/multiMenu.types';
 
 const recursiveFindMenuItem = (
-  items: MenuItemProps[] | undefined,
+  items: MenuItemViewModel[] | undefined,
   menuItemId: string
 ):
   | {
-      menuItem: MenuItemProps | undefined;
-      breadcrumbs: MenuItemProps[];
+      menuItem: MenuItemViewModel | undefined;
+      breadcrumbs: MenuItemViewModel[];
     }
   | undefined => {
   if (!items) {
@@ -58,7 +58,7 @@ const findMenuItem: FindMenuItemFunction = <T extends MultiMenuConfiguration>(
 const getMenusWithActiveItems = <T extends MultiMenuConfiguration>(
   menus: T,
   activeMenuId: string | undefined,
-  activeMenuItem: MenuItemProps | undefined
+  activeMenuItem: MenuItemViewModel | undefined
 ) => {
   const activeMenus: T = { ...menus };
   Object.keys(menus).forEach((key: keyof T) => {

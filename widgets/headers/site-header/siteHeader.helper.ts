@@ -5,7 +5,7 @@ import { customerLoginRequest } from '@services/authentication/authenticationCon
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
 
-import { MenuItemProps } from '../main-header/mainHeader.helper';
+import { MenuItemViewModel } from '../main-header/mainHeader.helper';
 
 const messages = defineMessages({
   overview: {
@@ -74,7 +74,7 @@ export function getAppUserMenuItems(
   intl: IntlShape,
   me: User | undefined,
   instance: IPublicClientApplication
-): MenuItemProps[] {
+): MenuItemViewModel[] {
   const { formatMessage } = intl;
   if (me) {
     return [
@@ -100,7 +100,7 @@ export function getUserMenuItems(
   intl: IntlShape,
   me: User | undefined,
   instance: IPublicClientApplication
-): MenuItemProps[] {
+): MenuItemViewModel[] {
   const { formatMessage } = intl;
 
   if (me) {

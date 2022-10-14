@@ -15,6 +15,7 @@ import { msalInstance } from '@services/authentication/authenticationConfigurati
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
+import { ProductCompareProvider } from '@widgets/compare/productCompareProvider';
 import { MediaContextProvider } from '@widgets/media-queries/media';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
@@ -62,7 +63,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
               <UserProvider>
                 <CartProvider>
                   <SystemOfMeasurementProvider>
-                    <Component {...pageProps} />
+                    <ProductCompareProvider>
+                      <Component {...pageProps} />
+                    </ProductCompareProvider>
                   </SystemOfMeasurementProvider>
                 </CartProvider>
               </UserProvider>

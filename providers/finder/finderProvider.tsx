@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
@@ -26,6 +26,7 @@ import {
 } from '@services/portal-api/faceted-search/types';
 import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import { QUERYKEYS } from '@services/react-query/constants';
+import { getTotalPages } from '@widgets/finder/result-view/product-result-view-pagination/resultViewPaginationHelper';
 
 import { FinderContext } from './finderContext';
 import { FinderQueryHelper } from './finderQueryHelper';
@@ -39,14 +40,21 @@ interface FinderProviderProps {
  * Results: Products
  * @param initialData to cache inside the queryClient
  */
+
+export const FINDER_PAGE_SIZE = 10;
 export const FinderProvider: React.FC<FinderProviderProps> = ({
   children,
+  // TODO: initialData may be used. Don't want to remove just yet
   initialData
 }) => {
   const { query, pathname, push } = useRouter();
   const textFormatter = new TextFormatter();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
+  // TODO: initialData may be used. Don't want to remove just yet
   const queryClient = useQueryClient();
+  const [productCount, setProductCount] = useState<number | undefined>(
+    undefined
+  );
   const {
     storeFacets,
     mainFacets,
@@ -55,6 +63,14 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     combinedOperatingConditionsApiParameter,
     preFilters
   } = useFacets();
+
+  const page = useMemo(() => {
+    const pageValue: number = Number(query.page || '1');
+    const isValidPage: boolean =
+      pageValue > 0 &&
+      pageValue <= getTotalPages(productCount || 0, FINDER_PAGE_SIZE);
+    return isValidPage ? pageValue : 1;
+  }, [productCount, query.page]);
 
   // QueryResult for the FacetedSearch api call
   // Dependencies are the @filters and @operatingConditions parameter calculated in the FacetsContext,
@@ -69,23 +85,25 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
       QUERYKEYS.productFinderResults,
       combinedFiltersApiParameter,
       preFilters.searchQuery,
-      combinedOperatingConditionsApiParameter
+      combinedOperatingConditionsApiParameter,
+      page
     ],
     () =>
       fetchFacetedSearchResults(
         combinedFiltersApiParameter,
         combinedOperatingConditionsApiParameter,
         preFilters.searchQuery,
-        10,
-        0
+        FINDER_PAGE_SIZE,
+        FINDER_PAGE_SIZE * (page - 1)
       ),
     {
+      onSuccess: data => setProductCount(data['@odata.count']),
       keepPreviousData: true
     }
   );
 
   /**
-   * Funciton that returns all FacetedSearchFacetResults for the facet
+   * Function that returns all FacetedSearchFacetResults for the facet
    */
   const getFacetResult = useCallback(
     (facet: Facet) => {
@@ -378,7 +396,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         return null;
     }
   }
-
+  // TODO: May be implemented later on
   // useEffect(() => {
   //   // Manually set the initial data for the category without any additional filters
   //   if (preFilters.categoryId) {

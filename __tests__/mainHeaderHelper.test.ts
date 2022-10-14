@@ -1,7 +1,7 @@
 import { createIntl } from 'react-intl';
 
 import { MenuItem } from '@services/portal-api';
-import { mapMenuItemsToMenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
+import { mapMenuItemsToMenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
 
 const menuItems: MenuItem[] = [
   {
@@ -56,14 +56,14 @@ const intl = createIntl({
   messages: {}
 });
 
-describe('mapMenuItemsToMenuItemProps', () => {
-  const defaultMenuItems = mapMenuItemsToMenuItemProps(
+describe('mapMenuItemsToMenuItemViewModel', () => {
+  const defaultMenuItems = mapMenuItemsToMenuItemViewModel(
     menuItems,
     'default',
     intl,
     null
   );
-  const expandedMenuItems = mapMenuItemsToMenuItemProps(
+  const expandedMenuItems = mapMenuItemsToMenuItemViewModel(
     menuItems,
     'expanded',
     intl,

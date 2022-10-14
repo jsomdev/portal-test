@@ -7,7 +7,6 @@ import {
   IButtonStyles,
   IStackStyles,
   IStyle,
-  Icon,
   IconButton,
   Stack,
   Text,
@@ -61,7 +60,7 @@ export const DesktopFacetContainer: React.FC<FacetContainerProps> = ({
   onRenderActions,
   onShowInfo
 }) => {
-  const { spacing, semanticColors } = useTheme();
+  const { spacing } = useTheme();
   const styles: FacetContainerStyles = {
     info: {
       rootHovered: {

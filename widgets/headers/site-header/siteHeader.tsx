@@ -31,8 +31,8 @@ import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languag
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import {
-  MenuItemProps,
-  mapMenuItemsToMenuItemProps
+  MenuItemViewModel,
+  mapMenuItemsToMenuItemViewModel
 } from '../main-header/mainHeader.helper';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { AppNavigationMenu } from './appNavigationMenu';
@@ -41,7 +41,7 @@ import { SiteLogo } from './siteLogo';
 import { UserNavigationMenu } from './userNavigationMenu';
 
 export interface SiteHeaderProps {
-  siteMenuItems: MenuItemProps[];
+  siteMenuItems: MenuItemViewModel[];
 }
 
 const messages = defineMessages({
@@ -153,12 +153,12 @@ const MobileSiteHeader: React.FC = () => {
         display: 'none'
       },
       root: {
-        height: '100vh'
+        height: '100%'
       },
       content: {
         padding: 0,
         overflow: 'auto',
-        maxHeight: `calc(100vh - ${rem(90)})`
+        maxHeight: `calc(100% - ${rem(90)})`
       },
       main: {
         backgroundColor: palette.white
@@ -285,8 +285,8 @@ const DesktopSiteHeader: React.FC = () => {
   const intl = useIntl();
   const { siteMenuItems: globalSiteMenuItems } = useGlobalData();
 
-  const siteMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
+  const siteMenuItems: MenuItemViewModel[] = useMemo(() => {
+    return mapMenuItemsToMenuItemViewModel(
       globalSiteMenuItems || [],
       'default',
       intl

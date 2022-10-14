@@ -65,15 +65,12 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     },
     itemDescription: {
       root: {
-        display: 'inline-block'
+        display: 'inline-block',
+        maxWidth: rem(1268)
       }
     },
     subItemsContainer: {
-      root: { width: '100%' },
-      inner: {
-        justifyContent: 'space-around',
-        ...mediaQueryFrom('tablet', { justifyContent: 'flex-start' })
-      }
+      root: { width: '100%' }
     },
     subItemContainer: {
       root: {

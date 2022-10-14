@@ -1,11 +1,17 @@
 import { brandFacet } from '../facets/brand';
+import { bushingAndORingMaterialFacet } from '../facets/bushingAndORingMaterial';
 import { capacitySizeFacet } from '../facets/capacitySize';
 import { categoryIdFacet } from '../facets/categoryId';
 import { designFeatureFacet } from '../facets/designFeature';
+import { flangeOptionsFacet } from '../facets/flangeOptions';
 import { inletConnectionSizeFacet } from '../facets/inletConnectionSize';
+import { inletConnectionThreadTypeFacet } from '../facets/inletConnectionThreadType';
 import { inletConnectionTypeFacet } from '../facets/inletConnectionType';
 import { materialsFacet } from '../facets/materials';
 import { motorTypeFacet } from '../facets/motorType';
+import { motorVersionFacet } from '../facets/motorVersion';
+import { nozzleCountFacet } from '../facets/nozzleCount';
+import { nozzleHubFacet } from '../facets/nozzleHub';
 import { pressureGroupFacet } from '../facets/pressureGroup';
 import { productModelFacet } from '../facets/productModel';
 import { productTypeFacet } from '../facets/productType';
@@ -23,9 +29,15 @@ import { sprayPatternFacet } from '../facets/sprayPattern';
 import { strainerScreenMeshSizeFacet } from '../facets/strainerScreenMeshSize';
 import { tankMountingOptionsFacet } from '../facets/tankMountingOptions';
 import { Facet } from '../models/facet/facet';
+import { FacetCategory } from '../models/facet/facetCategory';
 import { FacetKey } from '../models/facet/facetKey';
 
 export class FacetFactory {
+  static getFacetCodes(): string[] {
+    return FacetFactory.getFacetsFromFiles([])
+      .filter(facet => facet.configuration.category === FacetCategory.Main)
+      .map(facet => facet.attributeTypeCode);
+  }
   static getFacetsFromFiles(excludedFacetKeys: FacetKey[]): Facet[] {
     return [
       categoryIdFacet as Facet,
@@ -51,7 +63,13 @@ export class FacetFactory {
       shaftLengthFacet as Facet,
       sprayCoverageFacet as Facet,
       sprayCoverageDiameterFacet as Facet,
-      tankMountingOptionsFacet as Facet
+      tankMountingOptionsFacet as Facet,
+      nozzleCountFacet as Facet,
+      nozzleHubFacet as Facet,
+      motorVersionFacet as Facet,
+      flangeOptionsFacet as Facet,
+      bushingAndORingMaterialFacet as Facet,
+      inletConnectionThreadTypeFacet as Facet
     ].filter(facet => !excludedFacetKeys?.includes(facet.key));
   }
 }

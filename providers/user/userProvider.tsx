@@ -78,7 +78,7 @@ export const UserProvider: React.FC = ({ children }) => {
 
   const { data: me, status: meStatus } = useQuery(
     [QUERYKEYS.appMe, isAuthenticated],
-    () => fetchMe(isAuthenticated),
+    () => fetchMe(),
     {
       keepPreviousData: true,
       enabled: isAuthenticated

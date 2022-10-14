@@ -20,6 +20,7 @@
 export type ReactQueryStatus = 'idle' | 'loading' | 'error' | 'success';
 
 export interface ReactQueryKeys {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
   searchVerifyProduct: string;
   orderVerifyProducts: string;

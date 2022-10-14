@@ -16,7 +16,7 @@ import MultiMenu from '@widgets/headers/site-header/multi-menu/multiMenu';
 import { MultiMenuConfiguration } from '@widgets/headers/site-header/multi-menu/multiMenu.types';
 import { usePageContext } from '@widgets/page/pageContext';
 
-import { mapMenuItemsToMenuItemProps } from '../main-header/mainHeader.helper';
+import { mapMenuItemsToMenuItemViewModel } from '../main-header/mainHeader.helper';
 import { getAppUserMenuItems } from './siteHeader.helper';
 
 const messages = defineMessages({
@@ -70,7 +70,7 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: false,
       style: 'default',
-      items: mapMenuItemsToMenuItemProps(
+      items: mapMenuItemsToMenuItemViewModel(
         globalMainMenuItems || [],
         'expanded',
         intl,
@@ -95,7 +95,7 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: true,
       style: 'plain',
-      items: mapMenuItemsToMenuItemProps(
+      items: mapMenuItemsToMenuItemViewModel(
         globalSiteMenuItems || [],
         'default',
         intl

@@ -1,16 +1,8 @@
 import { defineMessages, useIntl } from 'react-intl';
 
-import {
-  FontSizes,
-  FontWeights,
-  IButtonProps,
-  IButtonStyles,
-  PrimaryButton,
-  Stack,
-  useTheme
-} from '@fluentui/react';
+import { DefaultButton, IButtonStyles, Stack, useTheme } from '@fluentui/react';
+import { useFinder } from '@providers/finder/finderContext';
 import { messageIds } from '@services/i18n/ids';
-import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 interface ResultsHeaderProps {
@@ -29,6 +21,11 @@ const messages = defineMessages({
 });
 
 export const ResultsHeader: React.FC<ResultsHeaderProps> = props => {
+  const { facetedSearchStatus } = useFinder();
+
+  if (facetedSearchStatus !== 'success') {
+    return null;
+  }
   return (
     <>
       <TabletAndDesktop>
@@ -57,39 +54,21 @@ const MobileResultsHeader: React.FC<ResultsHeaderProps> = ({
   onClickFilter,
   filterButtonText
 }) => {
-  return (
-    <Stack>
-      <FilterResultsButton text={filterButtonText} onClick={onClickFilter} />
-    </Stack>
-  );
-};
-
-type FilterResultsButtonProps = Pick<IButtonProps, 'onClick' | 'text'>;
-
-export const FilterResultsButton: React.FC<FilterResultsButtonProps> = ({
-  text,
-  onClick
-}) => {
-  const { spacing } = useTheme();
-
-  const styles: IButtonStyles = {
+  const { palette } = useTheme();
+  const styles: Partial<IButtonStyles> = {
     root: {
-      padding: rem(spacing.l1)
-    },
-    label: {
-      fontSize: rem(FontSizes.large),
-      fontWeight: FontWeights.regular
-    },
-    icon: {
-      fontSize: rem(FontSizes.large)
+      borderColor: palette.accent,
+      color: palette.accent
     }
   };
   return (
-    <PrimaryButton
-      styles={styles}
-      onClick={onClick}
-      iconProps={{ iconName: 'Filter' }}
-      text={text}
-    />
+    <Stack.Item>
+      <DefaultButton
+        styles={styles}
+        iconProps={{ iconName: 'Filter' }}
+        text={filterButtonText}
+        onClick={onClickFilter}
+      />
+    </Stack.Item>
   );
 };

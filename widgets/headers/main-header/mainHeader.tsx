@@ -27,8 +27,8 @@ import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { SiteHeaderButton } from '../site-header/siteHeaderButton';
 import {
-  MenuItemProps,
-  mapMenuItemsToMenuItemProps
+  MenuItemViewModel,
+  mapMenuItemsToMenuItemViewModel
 } from './mainHeader.helper';
 import { MainHeaderMenu } from './mainHeaderMenu';
 
@@ -90,7 +90,7 @@ const MobileMainHeader: React.FC = () => {
 
 const DesktopMainHeader: React.FC = () => {
   const [activeMenuItem, setActiveMenuItem] = useState<
-    MenuItemProps | undefined
+    MenuItemViewModel | undefined
   >();
 
   const intl = useIntl();
@@ -101,8 +101,8 @@ const DesktopMainHeader: React.FC = () => {
 
   const isAuthenticated = useIsAuthenticated();
 
-  const mappedMainMenuItems: MenuItemProps[] = useMemo(() => {
-    return mapMenuItemsToMenuItemProps(
+  const menuItems: MenuItemViewModel[] = useMemo(() => {
+    return mapMenuItemsToMenuItemViewModel(
       mainMenuItems || [],
       'default',
       intl,
@@ -175,7 +175,7 @@ const DesktopMainHeader: React.FC = () => {
           horizontal
           id={'main-menu-container'}
         >
-          {mappedMainMenuItems.map(item => {
+          {menuItems.map(item => {
             return (
               <ActionButton
                 key={`main-header-menu-${item.text}`}

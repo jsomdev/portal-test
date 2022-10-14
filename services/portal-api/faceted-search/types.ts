@@ -17,7 +17,7 @@ export type FacetedSearchProduct = {
 } & Pick<
   Product,
   'id' | 'audience' | 'image' | 'slug' | 'name' | 'description' | 'number'
->;
+> & { [facetKey: string]: string[] | undefined | null };
 
 // Type with - for each facet (defined by the attributeTypeCode key)- an array of facet results
 type FacetedSearchFacetResults = {

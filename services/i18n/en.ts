@@ -36,7 +36,31 @@ export const en: Messages = {
   searchBar: {
     placeholder: 'Search by part number...'
   },
+  pricing: {
+    quantityLabel: 'Quantity',
+    priceLabel: 'Price',
+    error: 'Error loading pricing',
+    signInForDetails: 'Sign in for pricing details',
+    tooltips: {
+      notAuthenticated:
+        'Please sign in into your account or contact your sales account manager to know your pricing.',
+      quotedPrice:
+        'Please add this product to your cart and request a quotation to get your price.'
+    },
+    stockInfo: {
+      stockNotAvailable: 'Stock information is not available'
+    },
+    discounts: {
+      bulkAvailable: 'Quantity discount available',
+      bulkApplied: 'Quantity discount applied'
+    },
+    quotedPrice: 'Quoted Price',
+    addToCart: 'Add to cart',
+    unitPriceSuffix: '/ each'
+  },
   finder: {
+    compare: 'Compare',
+    seeComparison: 'See Comparison',
     filters: {
       clearAll: 'Clear all filters',
       search: 'Search: {query}'
@@ -52,6 +76,10 @@ export const en: Messages = {
     },
     categoryFacet: {
       title: 'Category'
+    },
+    pagination: {
+      next: 'Next',
+      previous: 'Previous'
     },
     operatingConditions: {
       validation: {
@@ -84,7 +112,7 @@ export const en: Messages = {
     },
     resultsHeader: {
       count:
-        '{productCount, plural,=0 {No products found} one {Found 1 product} other {Found {productCount} products accross {modelCount, plural,=0 {0 models} one {1 model} other {{modelCount} models}}}}',
+        '{productCount, plural,=0 {No products found} one {Found 1 product} other {Found {productCount} products across {modelCount, plural,=0 {0 models} one {1 model} other {{modelCount} models}}}}',
       actions: {
         filter:
           '{productCount, plural,=0 {No products to filter} one {Filter 1 product} other {Filter {productCount} products}}'
@@ -106,18 +134,18 @@ export const en: Messages = {
           callToAction: `Get started`
         },
         signUp: {
-          title: 'Sign up for the best shopping experience',
-          callToAction: 'Create your account now',
+          title: 'Sign in for the best experience',
+          callToAction: 'Sign in',
           steps: {
             first: {
-              title: 'Register',
+              title: 'New user?',
               description:
-                'Create an account linked to your company and complete your contact details'
+                'You can create an account linked to your company and complete your contact details'
             },
             second: {
               title: 'Start shopping',
               description:
-                'Compare products and add the ones you need to your cart. Your cart will be linked to your customer account'
+                'Browse our products and add the ones you need to your cart. Your cart will be linked to your customer account'
             },
             third: {
               title: 'Order products',

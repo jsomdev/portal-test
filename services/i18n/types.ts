@@ -58,6 +58,10 @@ type IFinderMessages = {
     clearAll: string;
     search: string;
   };
+  // TODO move to better place
+  compare: string;
+  // TODO move to better place
+  seeComparison: string;
   operatingConditions: {
     actions: {
       apply: string;
@@ -82,6 +86,10 @@ type IFinderMessages = {
       filter: string;
     };
     count: string;
+  };
+  pagination: {
+    next: string;
+    previous: string;
   };
   panel: {
     mobile: {
@@ -118,6 +126,28 @@ type IDataMessages = {
       units: string;
     };
   };
+};
+
+type IPricingMessages = {
+  quantityLabel: string;
+  priceLabel: string;
+  error: string;
+  signInForDetails: string;
+  tooltips: {
+    notAuthenticated: string;
+    quotedPrice: string;
+  };
+  stockInfo: {
+    stockNotAvailable: string;
+  };
+  discounts: {
+    bulkAvailable: string;
+    bulkApplied: string;
+  };
+  quotedPrice: string;
+  unitPriceSuffix: string;
+  // TODO: move to cart;
+  addToCart: string;
 };
 
 type ILoadingUserMessages = {
@@ -268,6 +298,7 @@ export type Messages = {
     default: string;
     user: ILoadingUserMessages;
   };
+  pricing: IPricingMessages;
   pages: {
     default: {
       headTitle: string;

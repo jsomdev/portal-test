@@ -1,11 +1,11 @@
-import { MenuItemProps } from '@widgets/headers/main-header/mainHeader.helper';
+import { MenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
 import { RegionWithPaths } from '@widgets/headers/site-header/language-menu/languageMenu.types';
 import { getCountryImage } from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
 
 export const mapRegionsToMenuItems = (
   regions: RegionWithPaths[],
   onDismiss: () => void
-): MenuItemProps[] => {
+): MenuItemViewModel[] => {
   return regions.map((region: RegionWithPaths) => ({
     href: undefined,
     text: region.name,

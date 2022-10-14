@@ -36,7 +36,30 @@ export const messageIds: Messages = {
   searchBar: {
     placeholder: 'searchBar.placeholder'
   },
+  pricing: {
+    quantityLabel: 'pricing.quantityLabel',
+    priceLabel: 'pricing.priceLabel',
+    error: 'pricing.error',
+    signInForDetails: 'pricing.signInForDetails',
+    tooltips: {
+      notAuthenticated: 'pricing.tooltips.notAuthenticated',
+      quotedPrice: 'pricing.tooltips.quotedPrice'
+    },
+    stockInfo: {
+      stockNotAvailable: 'pricing.stockInfo.stockNotAvailable'
+    },
+    discounts: {
+      bulkAvailable: 'pricing.discounts.bulkAvailable',
+      bulkApplied: 'pricing.discounts.bulkApplied'
+    },
+    quotedPrice: 'pricing.quotedPrice',
+    addToCart: 'pricing.addToCart',
+    unitPriceSuffix: 'pricing.unitPriceSuffix'
+  },
+
   finder: {
+    compare: 'finder.compare',
+    seeComparison: 'finder.seeComparison',
     filters: {
       clearAll: 'finder.filters.clearAll',
       search: 'finder.filters.search'
@@ -55,6 +78,10 @@ export const messageIds: Messages = {
         ariaExpand: 'finder.panel.mobile.ariaExpand',
         showResults: 'finder.panel.mobile.showResults'
       }
+    },
+    pagination: {
+      next: 'finder.pagination.next',
+      previous: 'finder.pagination.previous'
     },
     operatingConditions: {
       actions: {

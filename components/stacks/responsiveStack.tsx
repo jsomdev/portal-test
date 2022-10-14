@@ -35,5 +35,5 @@ export const ResponsiveStack: React.FC<ResponsiveStackProps> = ({
       })
     }
   };
-  return <Stack styles={mergeStyleSets(stackStyles, styles)} {...stackProps} />;
+  return <Stack {...stackProps} styles={mergeStyleSets(stackStyles, styles)} />;
 };

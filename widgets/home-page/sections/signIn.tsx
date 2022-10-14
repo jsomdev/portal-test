@@ -7,6 +7,7 @@ import {
   useIntl
 } from 'react-intl';
 
+import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   FontSizes,
   IButtonStyles,
@@ -17,6 +18,7 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 
@@ -80,10 +82,12 @@ const signUpSteps: {
   }
 ];
 
-export const SignUp: React.FC = () => {
+export const SignIn: React.FC = () => {
   const { palette, spacing } = useTheme();
+  const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
-  const STEP_WIDTH = 248;
+  const { instance } = useMsal();
+  const STEP_WIDTH = 280;
   const STEP_INDEX_WIDTH = 48;
   const STEP_PADDING = 16;
 
@@ -137,6 +141,10 @@ export const SignUp: React.FC = () => {
       top: STEP_INDEX_WIDTH / 2 + STEP_PADDING
     })
   };
+
+  if (isAuthenticated) {
+    return null;
+  }
   return (
     <Stack horizontalAlign="center" tokens={{ padding: rem(spacing.l2) }}>
       <Text as="h2" variant="xxLargePlus">
@@ -172,7 +180,10 @@ export const SignUp: React.FC = () => {
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        <PrimaryButton styles={styles.callToAction}>
+        <PrimaryButton
+          styles={styles.callToAction}
+          onClick={() => instance.loginRedirect(customerLoginRequest)}
+        >
           {formatMessage(messages.signUpCallToAction)}
         </PrimaryButton>
       </Stack.Item>

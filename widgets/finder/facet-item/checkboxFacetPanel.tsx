@@ -8,7 +8,6 @@ import {
   ISearchBoxStyles,
   IStackStyles,
   Panel,
-  PanelType,
   SearchBox,
   Stack,
   Text,

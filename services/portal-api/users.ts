@@ -10,9 +10,7 @@ import { OdataCollection } from './o-data';
  * Function that retrieves the data of the Authenticated User
  * @returns The Authenticated User
  */
-export const fetchMe = async (
-  isAuthenticated: boolean
-): Promise<User | undefined> => {
+export const fetchMe = async (): Promise<User | undefined> => {
   const baseResource: BaseResource<User> = new BaseResource<User>('/Me');
   const me: User = await baseResource.fetch<User>(
     '/Me',

@@ -7,21 +7,17 @@ import {
   ActionButton,
   Checkbox,
   FontSizes,
-  FontWeights,
   IButtonStyles,
   ICheckboxStyles,
-  IStyle,
   ITextStyles,
   Stack,
   Text,
-  classNamesFunction,
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
-import { FacetSelectType } from '@services/facet-service/models/facet/facetSelectType';
 import { messageIds } from '@services/i18n';
 import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import {

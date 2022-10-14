@@ -38,6 +38,7 @@ import {
 } from '@services/portal-api/menuItems';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 
@@ -81,7 +82,9 @@ const Category: NextPage<CategoryProps> = ({
             initialFacets={getInitialFacetsFromFiles([], router.query)}
           >
             <FinderProvider initialData={undefined}>
-              <ResultView category={category} />
+              <ContentContainerStack>
+                <ResultView category={category} />
+              </ContentContainerStack>
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>
