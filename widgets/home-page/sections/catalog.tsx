@@ -6,7 +6,6 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import {
   ActionButton,
-  FontSizes,
   IButtonStyles,
   IStackStyles,
   ITextStyles,
@@ -44,7 +43,7 @@ const messages = defineMessages({
 
 export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   const { locale } = useIntl();
-  const { palette, spacing } = useTheme();
+  const { palette, spacing, fonts } = useTheme();
   const categoryItems: HomeCategoryItem[] = useMemo(() => {
     return mapCategoriesToHomeCategoryItems(categories, locale);
   }, [categories, locale]);
@@ -59,7 +58,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     },
     itemTitle: {
       root: {
-        marginBottom: rem(spacing.s2),
+        marginBottom: spacing.s2,
         color: palette.themePrimary
       }
     },
@@ -92,7 +91,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     },
     subItemButton: {
       root: {
-        fontSize: FontSizes.mediumPlus,
+        fontSize: fonts.mediumPlus.fontSize,
         color: palette.accent
       },
       labelHovered: {
@@ -101,7 +100,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     }
   };
   return (
-    <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
+    <Stack tokens={{ childrenGap: spacing.m }} styles={styles.root}>
       <Text as="h2" variant="xxLargePlus">
         <FormattedMessage {...messages.catalogTitle} />
       </Text>
@@ -129,8 +128,8 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
             <Stack
               horizontal
               tokens={{
-                padding: `${rem(spacing.l1)} 0`,
-                childrenGap: rem(spacing.s1)
+                padding: `${spacing.l1} 0`,
+                childrenGap: spacing.s1
               }}
               styles={styles.subItemsContainer}
               wrap

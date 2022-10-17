@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 
 import {
   FormattedMessage,
@@ -9,7 +9,6 @@ import {
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
-  FontSizes,
   IButtonStyles,
   IStackItemStyles,
   ITextStyles,
@@ -20,7 +19,6 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
-import { rem } from '@utilities/rem';
 
 interface SignUpStyles {
   stepsContainer: IStackItemStyles;
@@ -83,7 +81,7 @@ const signUpSteps: {
 ];
 
 export const SignIn: React.FC = () => {
-  const { palette, spacing } = useTheme();
+  const { palette, spacing, fonts } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
   const { instance } = useMsal();
@@ -127,7 +125,7 @@ export const SignIn: React.FC = () => {
     callToAction: {
       root: { height: 40 },
       label: {
-        fontSize: rem(FontSizes.mediumPlus)
+        fontSize: fonts.mediumPlus.fontSize
       }
     },
     dottedLine: (index: number) => ({
@@ -146,7 +144,7 @@ export const SignIn: React.FC = () => {
     return null;
   }
   return (
-    <Stack horizontalAlign="center" tokens={{ padding: rem(spacing.l2) }}>
+    <Stack horizontalAlign="center" tokens={{ padding: spacing.l2 }}>
       <Text as="h2" variant="xxLargePlus">
         <FormattedMessage {...messages.signUpTitle} />
       </Text>
@@ -161,7 +159,7 @@ export const SignIn: React.FC = () => {
               <div style={styles.dottedLine(index)} />
               <Stack
                 horizontalAlign="center"
-                tokens={{ childrenGap: rem(spacing.m) }}
+                tokens={{ childrenGap: spacing.m }}
               >
                 <Stack.Item styles={styles.step}>
                   <Text variant="xLargePlus" styles={styles.stepIndex}>

@@ -1,8 +1,9 @@
+import React from 'react';
+
 import Image from 'next/image';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import {
-  FontSizes,
   IButtonStyles,
   IStackItemStyles,
   IStackStyles,
@@ -14,7 +15,6 @@ import {
 } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n/ids';
-import { rem } from '@utilities/rem';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
@@ -52,7 +52,7 @@ const messages = defineMessages({
 
 export const Hero: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
   const styles: HeroStyles = {
     root: {
       root: {
@@ -62,13 +62,13 @@ export const Hero: React.FC = () => {
     },
     header: {
       root: {
-        marginBottom: rem(spacing.s1)
+        marginBottom: spacing.s1
       }
     },
     content: {
       root: {
         backgroundColor: 'rgba(255,255,255,0.7)',
-        padding: rem(spacing.l1),
+        padding: spacing.l1,
         ...mediaQueryFrom('tablet', {
           maxWidth: 400
         })
@@ -76,7 +76,7 @@ export const Hero: React.FC = () => {
     },
     contentContainer: {
       root: {
-        margin: `${rem(spacing.l1)} 0`,
+        margin: `${spacing.l1} 0`,
         ...mediaQueryFrom('tablet', {
           maxWidth: 400
         })
@@ -88,7 +88,7 @@ export const Hero: React.FC = () => {
         height: 40
       },
       label: {
-        fontSize: FontSizes.mediumPlus
+        fontSize: fonts.mediumPlus.fontSize
       }
     },
     imageContainer: {
@@ -119,7 +119,7 @@ export const Hero: React.FC = () => {
             <Text as="p" variant="large">
               <FormattedMessage {...messages.heroDescription} />
             </Text>
-            <Stack.Item tokens={{ padding: `${rem(spacing.m)} 0 0` }}>
+            <Stack.Item tokens={{ padding: `${spacing.m} 0 0` }}>
               <PrimaryButton
                 text={formatMessage(messages.heroCallToAction)}
                 styles={styles.callToAction}

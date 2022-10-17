@@ -6,7 +6,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import {
   Checkbox,
   DefaultButton,
-  FontSizes,
   IButtonStyles,
   ICheckboxStyles,
   ITextStyles,
@@ -47,7 +46,7 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
   product,
   displayAsDefaultButton
 }) => {
-  const { palette, spacing } = useTheme();
+  const { palette, spacing, fonts } = useTheme();
   const { formatMessage } = useIntl();
 
   const { addProduct, removeProduct, getUrl, products } = useContext(
@@ -80,7 +79,7 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
         width: 14
       },
       checkmark: {
-        fontSize: rem(FontSizes.size14)
+        fontSize: fonts.medium.fontSize
       }
     }
   };
@@ -114,7 +113,7 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
     <Stack
       horizontal
       verticalAlign="center"
-      tokens={{ childrenGap: rem(spacing.s1) }}
+      tokens={{ childrenGap: spacing.s1 }}
     >
       <Checkbox
         label={formatMessage(messages.compare)}

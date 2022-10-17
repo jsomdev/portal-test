@@ -44,7 +44,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
       root: {
         height: 'auto',
         backgroundColor: palette.white,
-        padding: `${rem(40)} ${rem(spacing.l1)}`
+        padding: `${rem(40)} ${spacing.l1}`
       }
     },
     link: (type: 'main' | 'sub') => ({

@@ -55,7 +55,7 @@ const DesktopSiteLogo: React.FC = () => {
     <Stack
       horizontal
       verticalFill
-      tokens={{ childrenGap: rem(spacing.s1) }}
+      tokens={{ childrenGap: spacing.s1 }}
       verticalAlign="center"
       styles={styles.container}
     >

@@ -182,7 +182,7 @@ const MobileSiteHeader: React.FC = () => {
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.s1)}`
+          padding: `0 ${spacing.s1}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
@@ -191,7 +191,7 @@ const MobileSiteHeader: React.FC = () => {
           horizontal
           grow
           verticalFill
-          tokens={{ childrenGap: rem(spacing.s1) }}
+          tokens={{ childrenGap: spacing.s1 }}
           verticalAlign="center"
         >
           <SiteHeaderButton
@@ -208,7 +208,7 @@ const MobileSiteHeader: React.FC = () => {
         <Stack
           horizontal
           verticalAlign="center"
-          tokens={{ childrenGap: rem(spacing.s2) }}
+          tokens={{ childrenGap: spacing.s2 }}
         >
           <SiteHeaderButton
             onRenderMenuIcon={() => <CartCountButtonIcon />}
@@ -238,7 +238,7 @@ const MobileSiteHeader: React.FC = () => {
               horizontal
               horizontalAlign="space-between"
               verticalAlign="center"
-              tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
+              tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
               styles={styles.panelHeader}
             >
               <ClosePanelButton
@@ -315,7 +315,7 @@ const DesktopSiteHeader: React.FC = () => {
     },
     divider: {
       wrapper: {
-        padding: rem(spacing.s2),
+        padding: spacing.s2,
         height: rem(32)
       }
     },
@@ -327,7 +327,7 @@ const DesktopSiteHeader: React.FC = () => {
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.l1)}`
+          padding: `0 ${spacing.l1}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
@@ -337,7 +337,7 @@ const DesktopSiteHeader: React.FC = () => {
         <Stack
           horizontal
           verticalAlign="center"
-          tokens={{ childrenGap: rem(spacing.s2) }}
+          tokens={{ childrenGap: spacing.s2 }}
           role="navigation"
           id="far-items"
         >

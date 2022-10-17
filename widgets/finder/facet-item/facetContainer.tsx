@@ -72,13 +72,13 @@ export const DesktopFacetContainer: React.FC<FacetContainerProps> = ({
     },
     title: {
       fontWeight: FontWeights.semibold,
-      margin: `${rem(spacing.s2)} 0`
+      margin: `${spacing.s2} 0`
     }
   };
   return (
     <Stack
       tokens={{
-        padding: `0 ${rem(spacing.l1)} ${rem(spacing.l1)} 0`
+        padding: `0 ${spacing.l1} ${spacing.l1} 0`
       }}
     >
       <Stack.Item>
@@ -113,7 +113,7 @@ export const MobileFacetContainer: React.FC<FacetContainerProps> = ({
     root: {
       root: {
         borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
+        padding: `${spacing.l1} ${spacing.m}`
       }
     },
     info: {
@@ -126,15 +126,15 @@ export const MobileFacetContainer: React.FC<FacetContainerProps> = ({
     },
     title: {
       fontWeight: FontWeights.semibold,
-      margin: `${rem(spacing.s2)} 0`
+      margin: `${spacing.s2} 0`
     }
   };
   return (
     <Stack
       styles={styles.root}
       tokens={{
-        padding: `0 ${rem(spacing.l1)} ${rem(spacing.l1)} 0`,
-        childrenGap: rem(spacing.s1)
+        padding: `0 ${spacing.l1} ${spacing.l1} 0`,
+        childrenGap: spacing.s1
       }}
     >
       <Stack.Item>

@@ -20,6 +20,7 @@ import {
 import { useCart } from '@providers/cart/cartContext';
 import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
+import { rem } from '@utilities/rem';
 import { AddBulkCard } from '@widgets/add-bulk-card/addBulkCard';
 import { CartList } from '@widgets/cart-list/cartList';
 import { sortCartItemsByProductNumber } from '@widgets/cart-list/cartList.helper';
@@ -102,9 +103,9 @@ const Cart: React.FC<CartProps> = ({ title }) => {
       }
     },
     summaryContainer: {
-      root: { flex: '2', paddingTop: 16, minWidth: '280px' }
+      root: { flex: '2', paddingTop: spacing.m, minWidth: rem('280px') }
     },
-    itemsContainer: { root: { flex: '5', minWidth: '280px' } },
+    itemsContainer: { root: { flex: '5', minWidth: rem('280px') } },
     mergeCartContainer: {
       root: {
         marginTop: 14
@@ -134,7 +135,10 @@ const Cart: React.FC<CartProps> = ({ title }) => {
           <Stack
             horizontal
             wrap
-            tokens={{ padding: `${spacing.m} 0`, childrenGap: spacing.m }}
+            tokens={{
+              padding: `${spacing.m} 0`,
+              childrenGap: spacing.m
+            }}
           >
             <Stack.Item styles={styles.itemsContainer}>
               <Stack styles={styles.listContainer}>

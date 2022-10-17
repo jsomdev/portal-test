@@ -7,7 +7,6 @@ import {
   ActionButton,
   Callout,
   DirectionalHint,
-  FontSizes,
   IButtonStyles,
   ISpinButtonStyles,
   IStackStyles,
@@ -24,7 +23,6 @@ import { CartContext } from '@providers/cart/cartContext';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
-import { rem } from '@utilities/rem';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { PriceBreakList } from '@widgets/pricing/pricebreak-list/priceBreakList';
@@ -104,7 +102,7 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
   const [lastItemAdded, setLastItemAdded] = useState<BaseCartItem | undefined>(
     undefined
   );
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
   const calloutAnchor = React.useRef<HTMLDivElement>(null);
   const {
     status: priceBreaksStatus,
@@ -216,7 +214,7 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
     callout: {
       root: {
         maxWidth: 300,
-        padding: rem(spacing.l1)
+        padding: spacing.l1
       }
     },
     spinButton: {
@@ -228,7 +226,7 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       input: {
         minWidth: 47,
         flexGrow: 0,
-        fontSize: rem(FontSizes.mediumPlus)
+        fontSize: fonts.mediumPlus.fontSize
       },
       spinButtonWrapper: {
         width: 70,

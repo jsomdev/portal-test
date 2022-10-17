@@ -5,7 +5,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import {
   DefaultButton,
-  FontSizes,
   IIconStyles,
   Stack,
   useTheme
@@ -33,13 +32,13 @@ const messages = defineMessages({
 });
 export const CartListActions: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
   const { baseItems } = useCart();
   const { push } = useRouter();
   const { clear } = React.useContext(CartContext);
 
   const styles: CartListActionStyles = {
-    icon: { root: { fontSize: FontSizes.small } }
+    icon: { root: { fontSize: fonts.small.fontSize } }
   };
 
   return (

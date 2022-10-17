@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import {
-  FontSizes,
   FontWeights,
   IButtonStyles,
   ISliderStyles,
@@ -27,7 +26,6 @@ import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { Range } from '@services/facet-service/models/facet/facetResult';
 import { RangeFacetOptionKey } from '@services/facet-service/models/range-facets/rangeFacetOptionKey';
 import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
-import { rem } from '@utilities/rem';
 
 import { LiquidTypeFilter } from './liquidTypeFilter';
 
@@ -60,7 +58,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
   onEnterPressed
 }) => {
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
-  const { spacing, palette, effects } = useTheme();
+  const { spacing, palette, effects, fonts } = useTheme();
   const { locale } = useIntl();
   const {
     getOperatingConditionMatchType,
@@ -158,7 +156,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
         borderColor: palette.neutralSecondary
       },
       field: {
-        fontSize: rem(FontSizes.mediumPlus)
+        fontSize: fonts.mediumPlus.fontSize
       }
     },
     root: {
@@ -182,8 +180,8 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
       root: {
         width: 112,
         display: 'inline-block',
-        paddingLeft: rem(spacing.s2),
-        paddingRight: rem(spacing.s2),
+        paddingLeft: spacing.s2,
+        paddingRight: spacing.s2,
         fontWeight: FontWeights.semibold
       }
     },
@@ -217,10 +215,8 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
           horizontal
           styles={styles.inputContainer}
           tokens={{
-            childrenGap: rem(spacing.s2),
-            padding: `${rem(spacing.s2)} 0 ${rem(spacing.s2)} ${rem(
-              spacing.s1
-            )}`
+            childrenGap: spacing.s2,
+            padding: `${spacing.s2} 0 ${spacing.s2} ${spacing.s1}`
           }}
         >
           {operatingCondition.key === FacetKey.LiquidSpecificGravity && (
@@ -310,10 +306,8 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
           <Stack
             styles={styles.inputContainer}
             tokens={{
-              childrenGap: rem(spacing.s2),
-              padding: `${rem(spacing.s2)} 0 ${rem(spacing.s2)} ${rem(
-                spacing.s1
-              )}`
+              childrenGap: spacing.s2,
+              padding: `${spacing.s2} 0 ${spacing.s2} ${spacing.s1}`
             }}
           >
             <Slider

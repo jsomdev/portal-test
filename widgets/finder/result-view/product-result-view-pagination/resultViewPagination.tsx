@@ -104,8 +104,8 @@ export const ResultViewPagination: React.FC<
       horizontal
       wrap
       tokens={{
-        padding: `${rem(theme.spacing.m)} 0`,
-        childrenGap: rem(theme.spacing.s1)
+        padding: `${theme.spacing.m} 0`,
+        childrenGap: theme.spacing.s1
       }}
       verticalAlign="center"
     >
@@ -116,7 +116,7 @@ export const ResultViewPagination: React.FC<
         >
           <Stack
             horizontal
-            tokens={{ childrenGap: `0 ${rem(theme.spacing.s1)}` }}
+            tokens={{ childrenGap: `0 ${theme.spacing.s1}` }}
             verticalAlign="center"
           >
             <Icon iconName="ChevronLeftSmall" />

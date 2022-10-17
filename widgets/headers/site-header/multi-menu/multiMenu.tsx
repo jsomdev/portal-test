@@ -24,14 +24,14 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
   const styles = {
     siteMenuItem: {
       root: {
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
+        padding: `${spacing.l1} ${spacing.m}`
       }
     },
     subItemContainer: {
       root: {
         borderLeft: `1px solid ${semanticColors.variantBorder}`,
-        marginLeft: rem(spacing.l1),
-        paddingLeft: rem(spacing.s1)
+        marginLeft: spacing.l1,
+        paddingLeft: spacing.s1
       }
     }
   };

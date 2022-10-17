@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 
 import {
   ActionButton,
-  FontSizes,
   IButtonStyles,
   IStackStyles,
   Stack,
@@ -31,7 +30,7 @@ interface ApplicationsStyles {
 
 export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const { locale } = useIntl();
-  const { palette, spacing } = useTheme();
+  const { palette, spacing, fonts } = useTheme();
   const categoryItem: HomeCategoryItem | undefined = category
     ? mapCategoryToHomeCategoryItem(category, locale)
     : undefined;
@@ -50,7 +49,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
     },
     button: {
       root: {
-        fontSize: rem(FontSizes.mediumPlus),
+        fontSize: fonts.mediumPlus.fontSize,
         color: palette.white
       },
       labelHovered: {
@@ -81,7 +80,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
     return null;
   }
   return (
-    <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
+    <Stack tokens={{ childrenGap: spacing.m }} styles={styles.root}>
       <Text as="h2" variant="xxLargePlus">
         {categoryItem.name}
       </Text>
@@ -89,8 +88,8 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         horizontal
         wrap
         tokens={{
-          padding: `${rem(spacing.m)} 0`,
-          childrenGap: rem(spacing.s1)
+          padding: `${spacing.m} 0`,
+          childrenGap: spacing.s1
         }}
         styles={styles.itemsContainer}
       >

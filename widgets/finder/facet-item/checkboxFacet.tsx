@@ -6,7 +6,6 @@ import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   ActionButton,
   Checkbox,
-  FontSizes,
   IButtonStyles,
   ICheckboxStyles,
   ITextStyles,
@@ -90,18 +89,17 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
 
   const intl = useIntl();
 
-  const theme = useTheme();
-  const { palette, fonts, effects } = theme;
+  const { fonts, spacing, palette } = useTheme();
   const styles: CheckboxFacetStyles = {
     result: {
       root: {
-        fontSize: rem(FontSizes.large),
+        fontSize: fonts.large.fontSize,
         color: palette.themeSecondary
       }
     },
     checkboxTitle: {
       root: {
-        fontSize: rem(FontSizes.large),
+        fontSize: fonts.large.fontSize,
         fontWeight: 300
       }
     },
@@ -113,7 +111,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
         alignSelf: 'flex-start',
         paddingLeft: 0,
         ...mediaQueryFrom('tablet', {
-          fontSize: rem(FontSizes.medium)
+          fontSize: fonts.medium.fontSize
         }),
         selectors: {
           '& i': {
@@ -121,7 +119,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
             marginLeft: 0,
             color: palette.accent,
             ...mediaQueryFrom('tablet', {
-              fontSize: rem(FontSizes.medium)
+              fontSize: fonts.medium.fontSize
             })
           }
         }
@@ -145,9 +143,9 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
         })
       },
       checkmark: {
-        fontSize: rem(FontSizes.size24),
+        fontSize: fonts.xLargePlus.fontSize,
         ...mediaQueryFrom('tablet', {
-          fontSize: rem(FontSizes.size16)
+          fontSize: fonts.mediumPlus.fontSize
         })
       }
     }
@@ -223,7 +221,7 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
       locale
     );
     return (
-      <Stack horizontal={true} tokens={{ childrenGap: rem(4) }}>
+      <Stack horizontal={true} tokens={{ childrenGap: spacing.s2 }}>
         {/* {renderLabelPrefix(option)} */}
         <Stack.Item>
           <Text variant="mediumPlus" styles={styles.checkboxTitle}>

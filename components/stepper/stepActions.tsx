@@ -11,7 +11,6 @@ import {
 } from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
-import { rem } from '@utilities/rem';
 
 import { useStepper } from './stepperContext';
 
@@ -37,7 +36,7 @@ export const StepActions: React.FC<{
 
   const styles: IButtonStyles = {
     root: {
-      padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
+      padding: `${spacing.l1} ${spacing.m}`
     }
   };
 

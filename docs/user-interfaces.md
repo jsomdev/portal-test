@@ -141,7 +141,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.s1)}`
+          padding: `0 ${spacing.s1}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
@@ -150,7 +150,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
           horizontal
           grow
           verticalFill
-          tokens={{ childrenGap: rem(spacing.s1) }}
+          tokens={{ childrenGap: spacing.s1 }}
           verticalAlign="center"
         >
           <SiteHeaderButton
@@ -168,7 +168,7 @@ const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
         <Stack
           horizontal
           verticalAlign="center"
-          tokens={{ childrenGap: rem(spacing.s2) }}
+          tokens={{ childrenGap: spacing.s2 }}
         >
           <SiteHeaderButton
             iconProps={{

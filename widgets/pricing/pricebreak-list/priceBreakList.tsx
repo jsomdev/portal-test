@@ -96,7 +96,7 @@ export const PriceBreakList: React.FC<PriceBreakListProps> = ({
     },
     row: {
       root: {
-        padding: rem(spacing.s1),
+        padding: spacing.s1,
         position: 'relative',
         boxSizing: 'border-box',
         width: 150,

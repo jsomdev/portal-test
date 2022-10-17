@@ -9,7 +9,6 @@ import {
   Callout,
   DefaultButton,
   DirectionalHint,
-  FontSizes,
   IButtonStyles,
   IStackStyles,
   ITooltipHostStyles,
@@ -78,7 +77,7 @@ export const CartSummaryActions: React.FC = () => {
   const { itemsStatus, checkoutItems, quoteItems } = useCart();
   const calloutAnchor = React.useRef<HTMLDivElement>(null);
   const [showCallout, setShowCallout] = useState(false);
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
   const { instance } = useMsal();
   const isAuthenticated = useIsAuthenticated();
   const { isCheckoutEnabled, isRequestForQuoteEnabled } = useMe();
@@ -113,7 +112,8 @@ export const CartSummaryActions: React.FC = () => {
       root: { padding: 0, height: 'auto' },
       textContainer: {},
       label: {
-        lineHeight: FontSizes.size20,
+        ...fonts.xLarge,
+        lineHeight: fonts.xLarge.fontSize,
         textAlign: 'left'
       }
     }

@@ -62,7 +62,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
   const styles: ProductListItemComponentStyles = {
     root: {
       root: {
-        marginBottom: rem(spacing.s1),
+        marginBottom: spacing.s1,
         border: `1px solid ${semanticColors.variantBorder}`,
         borderRadius: 7
       }
@@ -80,7 +80,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
       }
     },
     productInfoContainer: { root: { flex: 1, minWidth: 220 } },
-    productPricingContainer: { root: { padding: `${rem(spacing.s1)} 0` } },
+    productPricingContainer: { root: { padding: `${spacing.s1} 0` } },
     title: {
       root: {
         fontWeight: FontWeights.semibold,
@@ -104,7 +104,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
       horizontal
       wrap
       verticalAlign="stretch"
-      tokens={{ padding: rem(spacing.s1) }}
+      tokens={{ padding: spacing.s1 }}
       styles={styles.root}
     >
       <Stack>
@@ -154,15 +154,15 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
             horizontal
             wrap
             tokens={{
-              childrenGap: rem(spacing.s2),
-              padding: `${rem(spacing.s1)} 0`
+              childrenGap: spacing.s2,
+              padding: `${spacing.s1} 0`
             }}
           >
             {chips.slice().map((chip, index) => (
               <React.Fragment key={chip.code}>
                 <FacetChip key={chip.code} {...chip} />
                 {chips.length > 1 && index < chips.length - 1 && (
-                  <Stack tokens={{ padding: `0 ${rem(spacing.s1)}` }}>
+                  <Stack tokens={{ padding: `0 ${spacing.s1}` }}>
                     <VerticalDivider />
                   </Stack>
                 )}
@@ -171,7 +171,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
           </Stack>
         </Stack>
         <TabletAndDesktop>
-          <Stack.Item tokens={{ padding: `${rem(spacing.s1)} 0` }}>
+          <Stack.Item tokens={{ padding: `${spacing.s1} 0` }}>
             <ProductCompareButton product={data} />
           </Stack.Item>
         </TabletAndDesktop>

@@ -1,5 +1,4 @@
 import {
-  FontSizes,
   FontWeights,
   IButtonProps,
   IButtonStyles,
@@ -14,18 +13,18 @@ export const FilterResultsButton: React.FC<FilterResultsButtonProps> = ({
   text,
   onClick
 }) => {
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
 
   const styles: IButtonStyles = {
     root: {
-      padding: rem(spacing.l1)
+      padding: spacing.l1
     },
     label: {
-      fontSize: rem(FontSizes.large),
+      fontSize: fonts.large.fontSize,
       fontWeight: FontWeights.regular
     },
     icon: {
-      fontSize: rem(FontSizes.large)
+      fontSize: fonts.large.fontSize
     }
   };
   return (

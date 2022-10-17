@@ -5,7 +5,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import {
   ActionButton,
   Breadcrumb,
-  FontSizes,
   FontWeights,
   IconButton,
   Stack,
@@ -38,7 +37,7 @@ const messages = defineMessages({
   }
 });
 export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
-  const theme = useTheme();
+  const { spacing, fonts, palette } = useTheme();
   const { formatMessage } = useIntl();
   const { systemOfMeasurement, changeSystemOfMeasurement } = React.useContext(
     SystemOfMeasurementContext
@@ -53,8 +52,8 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
     breadcrumb: {
       root: {
         width: '100%',
-        marginTop: theme.spacing.s1,
-        marginBottom: theme.spacing.s1
+        marginTop: spacing.s1,
+        marginBottom: spacing.s1
       },
       list: {
         padding: 0
@@ -77,14 +76,14 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
         paddingRight: 8
       },
       itemLink: {
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         color: '#3F6074',
         borderBottom: 'none',
         paddingLeft: 0,
         selectors: {
           '&:hover': {
             textDecoration: 'underline',
-            color: theme.palette.themeDarker,
+            color: palette.themeDarker,
             backgroundColor: 'transparant'
           },
           '&:active:hover': {

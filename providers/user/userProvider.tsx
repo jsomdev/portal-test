@@ -225,8 +225,8 @@ export const UserProvider: React.FC = ({ children }) => {
         verticalAlign="center"
         horizontalAlign="center"
         tokens={{
-          childrenGap: rem(spacing.l1),
-          padding: `${rem(spacing.l1)} 0 `
+          childrenGap: spacing.l1,
+          padding: `${spacing.l1} 0 `
         }}
       >
         <LoadingOverlay spinnerText={getInteractionStatusText(inProgress)} />

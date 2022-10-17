@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import {
-  FontSizes,
   IPanelStyles,
   ISearchBoxStyles,
   IStackStyles,
@@ -53,7 +52,7 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
 }) => {
   const [panelSearchValue, setPanelSearchValue] = useState<string>('');
   const { formatMessage } = useIntl();
-  const { spacing, palette } = useTheme();
+  const { spacing, palette, fonts } = useTheme();
 
   const styles: CheckboxFacetPanelStyles = {
     searchBox: {
@@ -61,7 +60,7 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
         width: '100%'
       },
       field: {
-        fontSize: rem(FontSizes.size16)
+        fontSize: fonts.mediumPlus.fontSize
       }
     },
     panel: {
@@ -70,25 +69,25 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
         zIndex: 1
       },
       scrollableContent: {
-        marginRight: rem(spacing.s1),
-        padding: `0 ${rem(spacing.l1)}`
+        marginRight: spacing.s1,
+        padding: `0 ${spacing.l1}`
       },
       content: {
         padding: 0
       },
       main: {
         background: palette.white,
-        paddingBottom: rem(spacing.l1),
+        paddingBottom: spacing.l1,
         maxWidth: rem('425px')
       }
     },
 
     panelHeader: {
       root: {
-        paddingBottom: rem(spacing.l1),
+        paddingBottom: spacing.l1,
         background: palette.white,
         width: '100%',
-        paddingLeft: rem(spacing.l1)
+        paddingLeft: spacing.l1
       }
     }
   };
@@ -103,10 +102,7 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
 
   const onRenderPanelHeader = (): JSX.Element => {
     return (
-      <Stack
-        tokens={{ childrenGap: rem(spacing.m) }}
-        styles={styles.panelHeader}
-      >
+      <Stack tokens={{ childrenGap: spacing.m }} styles={styles.panelHeader}>
         <Text variant="large">{facet.configuration.displayName}</Text>
         <SearchBox
           styles={styles.searchBox}

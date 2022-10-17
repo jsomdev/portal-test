@@ -160,7 +160,7 @@ export const OperatingConditions: React.FC = () => {
       <Stack
         tokens={{
           maxWidth: 340,
-          childrenGap: rem(spacing.s1),
+          childrenGap: spacing.s1,
           padding: `${spacing.s1} ${spacing.m} 0 0`
         }}
       >
@@ -188,8 +188,8 @@ export const OperatingConditions: React.FC = () => {
           horizontal
           wrap
           tokens={{
-            childrenGap: rem(spacing.s1),
-            padding: `0 0 ${rem(spacing.s1)} 0`
+            childrenGap: spacing.s1,
+            padding: `0 0 ${spacing.s1} 0`
           }}
           verticalAlign="center"
         >

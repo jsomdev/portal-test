@@ -39,7 +39,7 @@ const DesktopFinderPanel: React.FC = () => {
       {/* TODO: Check if we can replace the current image with this text */}
       <Text
         as="h1"
-        styles={{ root: { marginTop: 0, marginBottom: rem(spacing.s1) } }}
+        styles={{ root: { marginTop: 0, marginBottom: spacing.s1 } }}
       >
         <Text variant="xxLarge">Spray</Text>
         <Text

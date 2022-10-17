@@ -6,7 +6,6 @@ import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ActionButton,
   DirectionalHint,
-  FontSizes,
   IButtonStyles,
   ILabelStyles,
   ITooltipHostStyles,
@@ -83,7 +82,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
 }) => {
   const { hasPricing } = useMe();
   const { formatMessage } = useIntl();
-  const { spacing } = useTheme();
+  const { spacing, fonts } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { instance } = useMsal();
   function getSuffixSize(size: PriceLabelSize | undefined) {
@@ -137,7 +136,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
     signInLink: {
       root: { padding: 0, height: 'auto' },
       label: {
-        lineHeight: FontSizes.size20,
+        lineHeight: fonts.large.fontSize,
         textAlign: 'left'
       }
     }

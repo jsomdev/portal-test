@@ -57,12 +57,12 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
     link: {
       flexContainer: {
         justifyContent: 'space-between',
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`
+        padding: `${spacing.l1} ${spacing.m}`
       },
       textContainer: {
         flexGrow: 1,
         textAlign: 'left',
-        paddingLeft: item.image ? rem(spacing.s1) : undefined
+        paddingLeft: item.image ? spacing.s1 : undefined
       },
       label: {
         margin: 0

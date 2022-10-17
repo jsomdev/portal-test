@@ -1,4 +1,6 @@
+import { DefaultSpacing, FontSizes } from '@fluentui/react';
 import { PartialTheme } from '@fluentui/theme';
+import { rem } from '@utilities/rem';
 
 export const appTheme: PartialTheme = {
   defaultFontStyle: { fontFamily: 'proxima-nova', fontWeight: 'regular' },
@@ -33,9 +35,50 @@ export const appTheme: PartialTheme = {
   },
   effects: {},
   fonts: {
+    xSmall: {
+      fontSize: rem(FontSizes.xSmall)
+    },
+    small: {
+      fontSize: rem(FontSizes.small)
+    },
+    smallPlus: {
+      fontSize: rem(FontSizes.smallPlus)
+    },
     medium: {
+      fontSize: rem(FontSizes.medium),
       color: '#222'
+    },
+    mediumPlus: {
+      fontSize: rem(FontSizes.mediumPlus)
+    },
+    large: {
+      fontSize: rem(FontSizes.large)
+    },
+    superLarge: {
+      fontSize: rem(FontSizes.superLarge)
+    },
+    xLarge: {
+      fontSize: rem(FontSizes.xLarge)
+    },
+    xLargePlus: {
+      fontSize: rem(FontSizes.xLargePlus)
+    },
+    xxLarge: {
+      fontSize: rem(FontSizes.xxLarge)
+    },
+    xxLargePlus: {
+      fontSize: rem(FontSizes.xxLargePlus)
+    },
+    mega: {
+      fontSize: rem(FontSizes.mega)
     }
+  },
+  spacing: {
+    s1: rem(DefaultSpacing.s1),
+    s2: rem(DefaultSpacing.s2),
+    l1: rem(DefaultSpacing.l1),
+    l2: rem(DefaultSpacing.l2),
+    m: rem(DefaultSpacing.m)
   },
   semanticColors: {
     link: '#0065a4',

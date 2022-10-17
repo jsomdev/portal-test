@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 
 import {
   ActionButton,
-  FontSizes,
+  FontWeights,
   IButtonStyles,
   IStackStyles,
   Stack,
@@ -29,7 +29,7 @@ interface BrandsStyles {
 
 export const Brands: React.FC<BrandsProps> = ({ category }) => {
   const { locale } = useIntl();
-  const { palette, spacing } = useTheme();
+  const { palette, spacing, fonts } = useTheme();
   const categoryItem: HomeCategoryItem | undefined = category
     ? mapCategoryToHomeCategoryItem(category, locale)
     : undefined;
@@ -46,12 +46,12 @@ export const Brands: React.FC<BrandsProps> = ({ category }) => {
     item: {
       root: {
         border: `1px solid ${palette.neutralTertiary}`,
-        borderRadius: rem(spacing.s1),
+        borderRadius: spacing.s1,
         background: palette.white
       },
       label: {
-        fontSize: rem(FontSizes.mediumPlus),
-        fontWeight: 500
+        fontSize: fonts.mediumPlus.fontSize,
+        fontWeight: FontWeights.semibold
       }
     }
   };
@@ -59,14 +59,14 @@ export const Brands: React.FC<BrandsProps> = ({ category }) => {
     return null;
   }
   return (
-    <Stack tokens={{ childrenGap: rem(spacing.m) }} styles={styles.root}>
+    <Stack tokens={{ childrenGap: spacing.m }} styles={styles.root}>
       <Text as="h2" variant="xxLargePlus">
         {categoryItem.name}
       </Text>
       <Stack
         horizontal
         wrap
-        tokens={{ padding: `${rem(spacing.m)} 0`, childrenGap: rem(spacing.m) }}
+        tokens={{ padding: `${spacing.m} 0`, childrenGap: spacing.m }}
       >
         {categoryItem.children?.map(item => {
           return (

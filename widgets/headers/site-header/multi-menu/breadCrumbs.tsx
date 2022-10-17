@@ -34,7 +34,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ multiMenu }) => {
   const styles: BreadCrumbsStyles = {
     returnButton: {
       root: {
-        padding: `${rem(spacing.l1)} ${rem(spacing.m)}`,
+        padding: `${spacing.l1} ${spacing.m}`,
         borderBottom: `1px solid ${semanticColors.variantBorder}`
       },
       icon: {
@@ -44,7 +44,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ multiMenu }) => {
     subItemHeader: {
       root: {
         fontWeight: FontWeights.semibold,
-        padding: `${rem(spacing.m)} ${rem(spacing.l1)}`
+        padding: `${spacing.m} ${spacing.l1}`
       }
     }
   };

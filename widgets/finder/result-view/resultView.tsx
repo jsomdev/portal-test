@@ -131,14 +131,14 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
     sidePanelContainer: {
       root: {
         flex: 2,
-        paddingLeft: rem(spacing.l1),
-        paddingRight: rem(spacing.m)
+        paddingLeft: spacing.l1,
+        paddingRight: spacing.m
       }
     },
     mainContainer: {
       root: {
-        paddingLeft: rem(spacing.m),
-        paddingRight: rem(spacing.m),
+        paddingLeft: spacing.m,
+        paddingRight: spacing.m,
         flex: 6
       }
     },
@@ -154,10 +154,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
     }
   };
   return (
-    <Stack
-      horizontal
-      tokens={{ padding: `${rem(spacing.l2)} 0 ${rem(spacing.l1)} 0` }}
-    >
+    <Stack horizontal tokens={{ padding: `${spacing.l2} 0 ${spacing.l1} 0` }}>
       <Mobile>
         <Panel
           type={PanelType.smallFluid}
@@ -179,7 +176,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
             <Stack
               horizontal
               verticalAlign="center"
-              tokens={{ padding: `${rem(25)} ${rem(spacing.s1)}` }}
+              tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
               styles={styles.panelHeader}
             >
               <ClosePanelButton
@@ -222,7 +219,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
         </Stack.Item>
       </TabletAndDesktop>
       <Stack.Item styles={styles.mainContainer}>
-        <Stack tokens={{ childrenGap: `${rem(spacing.m)} 0` }}>
+        <Stack tokens={{ childrenGap: `${spacing.m} 0` }}>
           <PagesHeader
             title={formatMessage(messages.title, {
               name: categoryFormatter.formatName()
@@ -250,7 +247,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
           />
           <Mobile>
             <Stack
-              tokens={{ padding: `${rem(spacing.m)} ${rem(25)}` }}
+              tokens={{ padding: `${spacing.m} ${rem(25)}` }}
               styles={styles.stickyContainer}
             >
               <FilterResultsButton

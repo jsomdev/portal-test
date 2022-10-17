@@ -4,7 +4,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { Summary } from '@components/summary/summary';
 import {
-  FontSizes,
   FontWeights,
   IStackStyles,
   ITextStyles,
@@ -47,7 +46,7 @@ const messages = defineMessages({
 
 export const CartSummary: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { spacing, palette, semanticColors } = useTheme();
+  const { spacing, palette, semanticColors, fonts } = useTheme();
   const { formatNumber } = useIntl();
   const { items, checkoutItems, totalItems, totalPrice } = useCart();
 
@@ -72,9 +71,9 @@ export const CartSummary: React.FC = () => {
     },
     totalText: {
       root: {
+        ...fonts.mediumPlus,
         color: palette.themePrimary,
-        fontWeight: FontWeights.semibold,
-        fontSize: FontSizes.mediumPlus
+        fontWeight: FontWeights.semibold
       }
     }
   };

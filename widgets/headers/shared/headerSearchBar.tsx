@@ -66,7 +66,7 @@ const DesktopSearchBar: React.FC<{
     <Stack
       grow
       horizontal
-      tokens={{ padding: `0 ${rem(spacing.l1)}` }}
+      tokens={{ padding: `0 ${spacing.l1}` }}
       horizontalAlign="center"
       className={className}
     >

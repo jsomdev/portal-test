@@ -153,7 +153,7 @@ export const LiquidTypeFilter: React.FC<LiquidTypeFilterProps> = ({
               horizontal
               wrap
               tokens={{
-                padding: rem(spacing.s1)
+                padding: spacing.s1
               }}
             >
               <TextField

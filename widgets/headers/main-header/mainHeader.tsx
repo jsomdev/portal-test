@@ -165,7 +165,7 @@ const DesktopMainHeader: React.FC = () => {
         verticalAlign="center"
         styles={styles.root}
         tokens={{
-          padding: `0 ${rem(spacing.l1)}`
+          padding: `0 ${spacing.l1}`
         }}
         horizontalAlign="space-between"
       >
@@ -198,7 +198,7 @@ const DesktopMainHeader: React.FC = () => {
           horizontal
           verticalFill
           tokens={{
-            childrenGap: rem(spacing.s2)
+            childrenGap: spacing.s2
           }}
           verticalAlign="center"
         >
