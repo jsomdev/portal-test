@@ -1,73 +1,80 @@
-//TODO remove this and create specific CartItem Component: 14866 https://dev.azure.com/itssco/SSCo/_workitems/edit/14866
 import React from 'react';
 
-import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
+import { OptionalLink } from '@components/link/optionalLink';
+import {
+  FontWeights,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
+import { CartItemProductViewModel } from '@widgets/cart-list/cartList.types';
+import ProductImage from '@widgets/cart-list/productImage';
 
-import { ProductItem } from '@components/product-items/product-item/productItem';
-import { Stack, Text } from '@fluentui/react';
-import { STATIC_IMAGES } from '@public/media/images';
-import { defaultLanguage } from '@services/i18n';
-import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
-import { formatCartItemDisplayValue } from '@utilities/formatText';
+type ProductItemStyles = {
+  title?: ITextStyles;
+  description?: ITextStyles;
+};
 
-import { CartListColumnProps } from './cartList.types';
+type CartItemProductProps = {
+  product: CartItemProductViewModel;
+};
 
-export const CartItemsListProduct: React.FC<CartListColumnProps> = ({
-  item
+export const CartItemProduct: React.FC<CartItemProductProps> = ({
+  product
 }) => {
-  const { locale } = useRouter();
-  const productFormatter = new ProductFormatter(item, locale);
-  const productUrl = productFormatter.formatUrl();
-  const name: string = item?.productName?.[defaultLanguage] || '';
+  const { palette, spacing } = useTheme();
 
-  const styles: React.CSSProperties = {
-    pointerEvents: item.productId ? 'auto' : 'none'
-  };
-
-  return (
-    <Stack>
-      <ProductItem
-        description={name}
-        product={item}
-        productAttributes={item.attributes || []}
-        productId={item.productId || ''}
-        title={formatCartItemDisplayValue(item)}
-        horizontal={true}
-        imageUrl={
-          item.productId ? item.image?.url : STATIC_IMAGES.cart.defaultItem
+  const styles: ProductItemStyles = {
+    title: {
+      root: {
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary,
+        wordBreak: 'break-word',
+        '&:hover': {
+          color: product.id ? palette.themePrimary : undefined
         }
-        onRenderBody={(titleProps, descriptionProps) => {
-          return (
-            <Stack.Item styles={{ root: { height: '100%', width: '100%' } }}>
-              <Stack
-                verticalAlign="center"
-                styles={{ root: { height: '100%', width: '100%' } }}
-              >
-                {productUrl ? (
-                  <Link href={productUrl} style={styles}>
-                    <a>
-                      <Text {...titleProps} />
-                    </a>
-                  </Link>
-                ) : (
-                  <Text {...titleProps} />
-                )}
-                <Stack.Item>
-                  <Text {...descriptionProps} />
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-          );
-        }}
-        styles={{
-          root: {
-            root: {
-              border: 'none'
-            }
-          }
-        }}
-      />
+      }
+    },
+    description: {
+      root: {
+        '&:hover': {
+          color: (!product.id && palette.neutralPrimary) || undefined
+        }
+      }
+    }
+  };
+  return (
+    <Stack wrap horizontal verticalAlign="center">
+      <Stack.Item>
+        <ProductImage
+          productUrl={product.url}
+          imageUrl={product.image?.url}
+          imageAlt={product.title}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <OptionalLink href={product.url}>
+          <a>
+            <Stack
+              tokens={{
+                padding: `${spacing.s2} ${spacing.s1}`,
+                childrenGap: `${spacing.s2} 0`
+              }}
+              grow
+            >
+              <Stack.Item>
+                <Text variant="large" styles={styles.title}>
+                  {product.title}
+                </Text>
+              </Stack.Item>
+              <Stack.Item>
+                <Text styles={styles.description}>{product.description}</Text>
+              </Stack.Item>
+            </Stack>
+          </a>
+        </OptionalLink>
+      </Stack.Item>
     </Stack>
   );
 };

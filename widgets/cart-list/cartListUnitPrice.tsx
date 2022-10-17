@@ -1,9 +1,5 @@
 import React, { useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
-
-import { PricePrimaryText } from '@components/price-label/pricePrimaryText';
-import { PriceSecondaryText } from '@components/price-label/priceSecondaryText';
 import {
   IStackStyles,
   Shimmer,
@@ -12,19 +8,18 @@ import {
   Stack
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
-import { useProductPricing } from '@utilities/useProductPrice';
+import { CartListItemProps } from '@widgets/cart-list/cartList.types';
+import CartPrice from '@widgets/cart-list/cartPrice';
+import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
-import { CartListColumnProps } from './cartList.types';
-
-export const CartListUnitPrice: React.FC<CartListColumnProps> = ({ item }) => {
+export const CartListUnitPrice: React.FC<CartListItemProps> = ({ item }) => {
   const { getUnitPrice, getBasePrice, currencyCode, status } =
-    useProductPricing(item.productNumber || '', item.priceBreaks);
+    useProductPricing(item.product.number || '', item.priceBreaks);
   const { getQuantity } = useCart();
-  const { formatNumber } = useIntl();
 
   const unitPrice = useMemo(() => {
-    return getUnitPrice(getQuantity(item.productNumber || undefined));
-  }, [getQuantity, getUnitPrice, item.productNumber]);
+    return getUnitPrice(getQuantity(item.product.number || undefined));
+  }, [getQuantity, getUnitPrice, item.product.number]);
 
   const basePrice = useMemo(() => {
     return getBasePrice();
@@ -37,7 +32,7 @@ export const CartListUnitPrice: React.FC<CartListColumnProps> = ({ item }) => {
   };
 
   // This is to avoid the flashing to Quoted Price as you remove the item
-  if (getQuantity(item.productNumber || '') === 0) {
+  if (getQuantity(item.product.number || '') === 0) {
     return null;
   }
 
@@ -53,30 +48,14 @@ export const CartListUnitPrice: React.FC<CartListColumnProps> = ({ item }) => {
         width={'100%'}
         isDataLoaded={status !== 'loading'}
       >
-        <Stack.Item styles={{ root: { flex: 1 } }}>
-          <PricePrimaryText
-            text={`${
-              (unitPrice &&
-                formatNumber(unitPrice, {
-                  currency: currencyCode,
-                  currencyDisplay: 'narrowSymbol',
-                  style: 'currency'
-                })) ||
-              'Quoted Price'
-            }`}
+        <Stack.Item>
+          <CartPrice
+            price={unitPrice}
+            basePrice={basePrice}
+            currencyCode={currencyCode}
+            status={status}
           />
         </Stack.Item>
-        {basePrice && unitPrice !== basePrice && (
-          <Stack.Item>
-            <PriceSecondaryText
-              text={`${formatNumber(basePrice, {
-                currency: currencyCode,
-                currencyDisplay: 'narrowSymbol',
-                style: 'currency'
-              })}`}
-            />
-          </Stack.Item>
-        )}
       </Shimmer>
     </Stack>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import ReactDOM from 'react-dom';
 
+//TODO don't use a portal for breadcrumbs
 const BreadcrumbPortal: React.FC = ({ children }) => {
   const [mounted, setMounted] = useState(false);
 

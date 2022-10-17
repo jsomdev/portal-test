@@ -1,44 +1,23 @@
-import {
-  IButtonStyles,
-  IDetailsListStyles,
-  IIconStyles,
-  IMessageBarStyles,
-  IModalStyles,
-  ISpinnerStyles,
-  IStackItemStyles
-} from '@fluentui/react';
-import { CartItem } from '@providers/cart/cartContext';
-import { ReactQueryStatus } from '@services/react-query/types';
+import { PriceBreak } from '@services/portal-api/base/types';
 
-export interface CartListProps {
+export type CartItemProductViewModel = {
+  id?: string;
+  number: string;
+  url?: string;
+  title: string;
+  description: string;
+  image: {
+    url?: string;
+  };
+};
+
+export type CartItemViewModel = {
+  quantity: number;
+  priceBreaks?: PriceBreak[];
+  product: CartItemProductViewModel;
+};
+
+export type CartListItemProps = {
+  item: CartItemViewModel;
   readOnly: boolean;
-  items: CartItem[] | undefined;
-  status?: ReactQueryStatus;
-  showPricingColumns: boolean;
-}
-export interface CartListStyles {
-  messageBar: IMessageBarStyles;
-  detailsList: Partial<IDetailsListStyles>;
-  spinner: ISpinnerStyles;
-}
-
-export interface CartListConfirmationProps {
-  lastAddedItems: CartItem[] | undefined;
-  setLastAddedItems: (value: undefined) => void;
-}
-
-export interface CartListConfirmationStyles {
-  modalContent: Partial<IModalStyles>;
-  modalContinueButton: IButtonStyles;
-  modalCartButton: IButtonStyles;
-  listWrapperStyles: IStackItemStyles;
-}
-
-export interface CartListColumnProps {
-  item: CartItem;
-  readOnly: boolean;
-}
-
-export interface CartListActionStyles {
-  icon: IIconStyles;
-}
+};

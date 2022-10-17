@@ -7,6 +7,7 @@ import {
   mergeStyleSets,
   useTheme
 } from '@fluentui/react';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
 export type ContentContainerStyles = {
   outerContainer: IStackStyles;
@@ -31,7 +32,10 @@ const ContentContainerStack: React.FC<ContentContainerProps> = ({
         maxWidth: '1600px',
         width: '100%',
         margin: '0 auto',
-        padding: `0 ${spacing.l2}`
+        padding: `0 ${spacing.l1}`,
+        ...mediaQueryFrom('tablet', {
+          padding: `0 ${spacing.l2}`
+        })
       }
     }
   };

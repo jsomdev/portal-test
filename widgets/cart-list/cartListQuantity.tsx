@@ -6,16 +6,15 @@ import {
   MIN_CART_QUANTITY
 } from '@providers/cart/cartConstants';
 import { useCart } from '@providers/cart/cartContext';
+import { CartListItemProps } from '@widgets/cart-list/cartList.types';
 
-import { CartListColumnProps } from './cartList.types';
-
-export const CartListQuantity: React.FC<CartListColumnProps> = ({
+export const CartListQuantity: React.FC<CartListItemProps> = ({
   item,
   readOnly
 }) => {
   const [quantity, setQuantity] = useState(item.quantity);
   const { add, remove, updateItem } = useCart();
-
+  const { product } = item;
   useEffect(() => {
     setQuantity(item.quantity);
   }, [item.quantity]);
@@ -25,7 +24,7 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
       setQuantity(MAX_CART_QUANTITY);
     } else {
       setQuantity(Number(quantity + 1));
-      add(item.productId || null, item.productNumber || '', 1);
+      add(product.id || null, product.number || '', 1);
     }
   }
 
@@ -34,7 +33,7 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
       setQuantity(MIN_CART_QUANTITY);
     } else {
       setQuantity(Number(quantity - 1));
-      remove(item.productNumber || '', 1);
+      remove(product.number || '', 1);
     }
   }
 
@@ -44,10 +43,10 @@ export const CartListQuantity: React.FC<CartListColumnProps> = ({
       Number(value) < MIN_CART_QUANTITY ||
       Number(value) > MAX_CART_QUANTITY
     ) {
-      updateItem(item.productNumber || '', Number(quantity));
+      updateItem(product.number || '', Number(quantity));
     } else {
       setQuantity(Number(value));
-      updateItem(item.productNumber || '', Number(value));
+      updateItem(product.number || '', Number(value));
     }
   }
 

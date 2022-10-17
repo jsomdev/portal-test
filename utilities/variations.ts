@@ -1,6 +1,5 @@
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
-
-import { Variation } from '../services/portal-api/models/VariationFlags';
+import { Variation } from '@services/portal-api/models/VariationFlags';
 
 export function getSystemOfMeasurementVariation(
   systemOfMeasurement: SystemOfMeasurement | undefined

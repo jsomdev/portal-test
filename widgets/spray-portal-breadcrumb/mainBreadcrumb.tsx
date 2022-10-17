@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { messageIds } from '@services/i18n';
-import { OptionalContentContainerStack } from '@widgets/layouts/contentContainerStack';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 
 import {
   MainBreadcrumbProps,
@@ -37,10 +37,7 @@ const messages = defineMessages({
     description: 'Display {system} of Units'
   }
 });
-export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({
-  items,
-  wrapInContainer = true
-}) => {
+export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
   const theme = useTheme();
   const { formatMessage } = useIntl();
   const { systemOfMeasurement, changeSystemOfMeasurement } = React.useContext(
@@ -107,7 +104,7 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({
       : messages.systemOfMeasurementUS
   );
   return (
-    <OptionalContentContainerStack wrapWithContainer={wrapInContainer}>
+    <ContentContainerStack>
       <Stack horizontal verticalAlign="center" styles={styles.root}>
         <Stack.Item grow>
           <Breadcrumb
@@ -153,6 +150,6 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({
           }}
         />
       </Stack>
-    </OptionalContentContainerStack>
+    </ContentContainerStack>
   );
 };

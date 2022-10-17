@@ -26,7 +26,6 @@ import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { ReactQueryStatus } from '@services/react-query/types';
-import { rem } from '@utilities/rem';
 
 import { PricePrimaryText } from './pricePrimaryText';
 import { PriceSecondaryText } from './priceSecondaryText';
@@ -40,6 +39,7 @@ interface PriceLabelProps {
   tooltipText?: string | undefined;
   // defaults to "medium"
   size?: PriceLabelSize;
+  direction?: 'horizontal' | 'vertical';
 }
 
 interface PriceLabelStyles {
@@ -68,7 +68,9 @@ const messages = defineMessages({
  * @param status The status of the pricing data from React Query
  * @param secondaryText (optional) This is the base price of the item, displayed as crossed out text
  * @param suffix (optional) This is used for unit text ( / each)
+ * @param size (optional) This is the size of the label. Defaults to "medium"
  * @param tooltipText (optional) The text that is displayed in the tooltip at the end of the label
+ * @param direction (optional) This is the direction of the label. Defaults to "horizontal"
  */
 export const PriceLabel: React.FC<PriceLabelProps> = ({
   primaryText,
@@ -76,7 +78,8 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
   status,
   suffix,
   size,
-  tooltipText
+  tooltipText,
+  direction = 'horizontal'
 }) => {
   const { hasPricing } = useMe();
   const { formatMessage } = useIntl();
@@ -113,7 +116,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
         return 'large';
     }
   }
-  function getSecundaryTextSize(size: PriceLabelSize | undefined) {
+  function getSecondaryTextSize(size: PriceLabelSize | undefined) {
     switch (size) {
       case 'small':
         return 'smallPlus';
@@ -157,7 +160,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
       <Stack
         horizontal
         verticalAlign="center"
-        tokens={{ childrenGap: rem(spacing.s2) }}
+        tokens={{ childrenGap: spacing.s2 }}
       >
         <ActionButton
           onClick={() => instance.loginRedirect(customerLoginRequest)}
@@ -186,8 +189,8 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
           isDataLoaded={status !== 'loading'}
         >
           <Stack
-            horizontal
-            tokens={{ childrenGap: rem(spacing.s2) }}
+            horizontal={direction === 'horizontal'}
+            tokens={{ childrenGap: spacing.s2 }}
             verticalAlign="center"
           >
             <PricePrimaryText
@@ -196,7 +199,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
             />
             {secondaryText && (
               <PriceSecondaryText
-                variant={getSecundaryTextSize(size)}
+                variant={getSecondaryTextSize(size)}
                 text={secondaryText}
               />
             )}

@@ -3,12 +3,24 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { Summary } from '@components/summary/summary';
-import { FontSizes, FontWeights, Stack, Text, useTheme } from '@fluentui/react';
+import {
+  FontSizes,
+  FontWeights,
+  IStackStyles,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
 
-import { CartSummaryDetailStyles } from './cartSummary.types';
 import { CartSummaryActions } from './cartSummaryActions';
+
+interface CartSummaryDetailStyles {
+  totalText: ITextStyles;
+  total: IStackStyles;
+}
 
 const messages = defineMessages({
   header: {

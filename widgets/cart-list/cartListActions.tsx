@@ -3,13 +3,21 @@ import React from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { DefaultButton, FontSizes, Stack, useTheme } from '@fluentui/react';
+import {
+  DefaultButton,
+  FontSizes,
+  IIconStyles,
+  Stack,
+  useTheme
+} from '@fluentui/react';
 import { CartContext, useCart } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 
-import { CartListActionStyles } from './cartList.types';
+export interface CartListActionStyles {
+  icon: IIconStyles;
+}
 
 const messages = defineMessages({
   continueButton: {

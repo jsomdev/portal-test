@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -6,6 +6,9 @@ import {
   CheckboxVisibility,
   DetailsList,
   DetailsListLayoutMode,
+  IDetailsListStyles,
+  IMessageBarStyles,
+  ISpinnerStyles,
   MessageBar,
   MessageBarType,
   SelectionMode,
@@ -16,10 +19,10 @@ import {
 } from '@fluentui/react';
 import { CartItem } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
-import { sortCartItemsByProductNumber } from '@utilities/sortBy';
-
-import { CartListProps, CartListStyles } from './cartList.types';
-import { getCartListColumns } from './cartListColumns';
+import { ReactQueryStatus } from '@services/react-query/types';
+import { getCartListColumns } from '@widgets/cart-list/cartList.helper';
+import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
+import { useTabletAndDesktop } from '@widgets/media-queries';
 
 const messages = defineMessages({
   emptyCart: {
@@ -39,12 +42,24 @@ const messages = defineMessages({
   }
 });
 
+interface CartListStyles {
+  messageBar: IMessageBarStyles;
+  detailsList: Partial<IDetailsListStyles>;
+  spinner: ISpinnerStyles;
+}
+interface CartListProps {
+  readOnly: boolean;
+  items: CartItemViewModel[] | undefined;
+  status?: ReactQueryStatus;
+  showPricingColumns: boolean;
+}
 /**
  * A component that will render a DetailsList of all cart items passed to it.
  * It will display the products in rows with a ProductItem, Quantity, TotalPrice, UnitPrice and a RemoveButton columns.
  * @param items The items that will be used to render a DetailsList of all cart items
  * @param readOnly If true, the user will NOT be able to adjust the quantity of the item or remove the item from their cart within the DetailsList row
- * @param status The React Query status of the products that will rendered
+ * @param status The React Query status of the products that will render
+ * @param showPricingColumns If true, the UnitPrice and TotalPrice columns will be displayed
  */
 export const CartList: React.FC<CartListProps> = ({
   items,
@@ -54,6 +69,13 @@ export const CartList: React.FC<CartListProps> = ({
 }) => {
   const { spacing, semanticColors, fonts, palette } = useTheme();
   const { formatMessage } = useIntl();
+  const isTabletAndDesktop = useTabletAndDesktop();
+
+  const columns = useMemo(
+    () => getCartListColumns(readOnly, showPricingColumns),
+    [readOnly, showPricingColumns]
+  );
+
   const styles: CartListStyles = {
     messageBar: {
       root: {
@@ -64,6 +86,8 @@ export const CartList: React.FC<CartListProps> = ({
       contentWrapper: {
         selectors: {
           '.ms-DetailsRow': {
+            paddingTop: spacing.s1,
+            paddingBottom: spacing.s1,
             borderBottom: `1px solid ${semanticColors.variantBorder}`
           },
           '.ms-DetailsRow:hover': {
@@ -137,14 +161,15 @@ export const CartList: React.FC<CartListProps> = ({
 
   return (
     <DetailsList
+      isHeaderVisible={isTabletAndDesktop}
       onShouldVirtualize={() => false}
       getKey={(item: CartItem) => `${item.productNumber}`}
       checkboxVisibility={CheckboxVisibility.hidden}
       layoutMode={DetailsListLayoutMode.justified}
       compact={true}
       styles={styles.detailsList}
-      items={items.sort(sortCartItemsByProductNumber)}
-      columns={getCartListColumns(readOnly, showPricingColumns)}
+      items={items}
+      columns={columns}
       selectionMode={SelectionMode.none}
     />
   );

@@ -1,9 +1,5 @@
 import React, { useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
-
-import { PricePrimaryText } from '@components/price-label/pricePrimaryText';
-import { PriceSecondaryText } from '@components/price-label/priceSecondaryText';
 import {
   IStackStyles,
   Shimmer,
@@ -12,23 +8,23 @@ import {
   Stack
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
-import { useProductPricing } from '@utilities/useProductPrice';
+import { CartListItemProps } from '@widgets/cart-list/cartList.types';
+import CartPrice from '@widgets/cart-list/cartPrice';
+import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
-import { CartListColumnProps } from './cartList.types';
-
-export const CartListTotalPrice: React.FC<CartListColumnProps> = ({ item }) => {
+export const CartListTotalPrice: React.FC<CartListItemProps> = ({ item }) => {
+  const { product } = item;
   const { getUnitPrice, getBasePrice, currencyCode, status } =
-    useProductPricing(item.productNumber || '', item.priceBreaks);
+    useProductPricing(product.number || '', item.priceBreaks);
   const { getQuantity } = useCart();
-  const { formatNumber } = useIntl();
 
-  const unitPrice = useMemo(() => {
-    const price = getUnitPrice(getQuantity(item.productNumber || ''));
+  const totalPrice = useMemo(() => {
+    const price = getUnitPrice(getQuantity(product.number || ''));
     if (!price) {
       return undefined;
     }
     return price * item.quantity;
-  }, [getQuantity, getUnitPrice, item]);
+  }, [getQuantity, getUnitPrice, item.quantity, product.number]);
 
   const basePrice = useMemo(() => {
     const price = getBasePrice();
@@ -45,7 +41,7 @@ export const CartListTotalPrice: React.FC<CartListColumnProps> = ({ item }) => {
   };
 
   // This is to avoid the flashing to Quoted Price as you remove the item
-  if (getQuantity(item.productNumber || '') === 0) {
+  if (getQuantity(product.number || '') === 0) {
     return null;
   }
   return (
@@ -61,29 +57,13 @@ export const CartListTotalPrice: React.FC<CartListColumnProps> = ({ item }) => {
         isDataLoaded={status !== 'loading'}
       >
         <Stack.Item>
-          <PricePrimaryText
-            text={`${
-              (unitPrice &&
-                formatNumber(unitPrice, {
-                  currency: currencyCode,
-                  currencyDisplay: 'narrowSymbol',
-                  style: 'currency'
-                })) ||
-              'Quoted Price'
-            }`}
+          <CartPrice
+            price={totalPrice}
+            basePrice={basePrice}
+            currencyCode={currencyCode}
+            status={status}
           />
         </Stack.Item>
-        {basePrice && unitPrice !== basePrice && (
-          <Stack.Item>
-            <PriceSecondaryText
-              text={`${formatNumber(basePrice, {
-                currency: currencyCode,
-                currencyDisplay: 'narrowSymbol',
-                style: 'currency'
-              })}`}
-            />
-          </Stack.Item>
-        )}
       </Shimmer>
     </Stack>
   );

@@ -10,6 +10,9 @@ import {
   DefaultButton,
   DirectionalHint,
   FontSizes,
+  IButtonStyles,
+  IStackStyles,
+  ITooltipHostStyles,
   PrimaryButton,
   Stack,
   Text,
@@ -21,7 +24,14 @@ import { customerLoginRequest } from '@services/authentication/authenticationCon
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 
-import { CartSummaryActionsStyles } from './cartSummary.types';
+interface CartSummaryActionsStyles {
+  request: IStackStyles;
+  primaryButton: IButtonStyles;
+  defaultButton: IButtonStyles;
+  tooltipHost: ITooltipHostStyles;
+  calloutAnchor: IButtonStyles;
+  callout: IStackStyles;
+}
 
 const messages = defineMessages({
   continue: {

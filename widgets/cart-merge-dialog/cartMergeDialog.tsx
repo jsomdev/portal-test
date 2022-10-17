@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
@@ -11,7 +12,6 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import { CartItem } from '@providers/cart/cartContext';
 import { combineCartItemsInformation } from '@providers/cart/cartHelper';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
@@ -20,6 +20,8 @@ import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchBaseDesignsByIds } from '@services/portal-api/products';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { CartList } from '@widgets/cart-list/cartList';
+import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
+import { mapCartItemsToCartItemViewModels } from '@widgets/cart/cart.helper';
 
 const messages = defineMessages({
   loading: {
@@ -51,6 +53,7 @@ export const CartMergeDialog: React.FC<CartItemsDialogProps> = ({
 }) => {
   const { spacing, fonts, palette } = useTheme();
   const { formatMessage } = useIntl();
+  const { locale } = useRouter();
   const productIds: string[] = useMemo(() => {
     const productIds = items.map(item => {
       if (item.productId) {
@@ -67,10 +70,14 @@ export const CartMergeDialog: React.FC<CartItemsDialogProps> = ({
       fetchBaseDesignsByIds(productIds || [])
   );
 
-  const cartItems: CartItem[] = useMemo((): CartItem[] => {
-    const cartItems = combineCartItemsInformation(items, products?.value, []);
-    return cartItems;
-  }, [products, items]);
+  const cartItems: CartItemViewModel[] = useMemo(() => {
+    const combinedItems = combineCartItemsInformation(
+      items,
+      products?.value,
+      []
+    );
+    return mapCartItemsToCartItemViewModels(combinedItems, locale);
+  }, [items, products?.value, locale]);
 
   const styles: CartItemsDialogStyles = {
     spinner: {

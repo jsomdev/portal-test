@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
+import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated } from '@azure/msal-react';
@@ -21,8 +22,10 @@ import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
 import { AddBulkCard } from '@widgets/add-bulk-card/addBulkCard';
 import { CartList } from '@widgets/cart-list/cartList';
+import { sortCartItemsByProductNumber } from '@widgets/cart-list/cartList.helper';
 import { CartListActions } from '@widgets/cart-list/cartListActions';
 import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
+import { mapCartItemsToCartItemViewModels } from '@widgets/cart/cart.helper';
 import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
@@ -78,6 +81,16 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const { meStatus, hasPricing } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
+  const { locale } = useRouter();
+
+  const cartItems = useMemo(
+    () =>
+      mapCartItemsToCartItemViewModels(
+        items.sort(sortCartItemsByProductNumber),
+        locale
+      ),
+    [items, locale]
+  );
 
   const styles: CartStyles = {
     listContainer: { root: { maxWidth: '95%' } },
@@ -106,6 +119,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   if (itemsStatus === 'idle') {
     return null;
   }
+
   return (
     <React.Fragment>
       <BreadcrumbPortal>
@@ -141,7 +155,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
                       messageBarType={MessageBarType.warning}
                     >
                       <Text>
-                        {formatMessage(messages.mergeMessage)}
+                        {formatMessage(messages.mergeMessage)}&nbsp;
                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <Link
                           onClick={() => {
@@ -154,10 +168,9 @@ const Cart: React.FC<CartProps> = ({ title }) => {
                     </MessageBar>
                   </Stack>
                 )}
-
                 <Stack.Item>
                   <CartList
-                    items={items}
+                    items={cartItems}
                     readOnly={false}
                     status={itemsStatus}
                     showPricingColumns={

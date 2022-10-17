@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ITextProps, ITextStyles, Text } from '@fluentui/react';
+import { FontWeights, ITextProps, ITextStyles, Text } from '@fluentui/react';
 
 export const PriceSecondaryText: React.FC<ITextProps & { text: string }> = ({
   text,
@@ -8,7 +8,7 @@ export const PriceSecondaryText: React.FC<ITextProps & { text: string }> = ({
 }) => {
   const styles: ITextStyles = {
     root: {
-      fontWeight: 400,
+      fontWeight: FontWeights.regular,
       textDecoration: 'line-through'
     }
   };

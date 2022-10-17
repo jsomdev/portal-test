@@ -1,16 +1,18 @@
-import React from 'react';
-
 import { IColumn } from '@fluentui/react';
-import { CartItem } from '@providers/cart/cartContext';
+import { BaseCartItem } from '@providers/cart/cartModels';
+import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
+import { CartItemProduct } from '@widgets/cart-list/cartListProduct';
+import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
+import { CartListTotalPrice } from '@widgets/cart-list/cartListTotalPrice';
+import { CartListUnitPrice } from '@widgets/cart-list/cartListUnitPrice';
+import { CartRemoveButton } from '@widgets/cart-list/cartRemoveButton';
 
-import { CartItemsListProduct } from './cartListProduct';
-import { CartListQuantity } from './cartListQuantity';
-import { CartListTotalPrice } from './cartListTotalPrice';
-import { CartListUnitPrice } from './cartListUnitPrice';
-import { CartRemoveButton } from './cartRemoveButton';
-
-const defaultColumn: Partial<IColumn> & Pick<IColumn, 'minWidth' | 'maxWidth'> =
-  {
+export function getCartListColumns(
+  readOnly: boolean,
+  showPricingColumns: boolean
+): IColumn[] {
+  const defaultColumn: Partial<IColumn> &
+    Pick<IColumn, 'minWidth' | 'maxWidth'> = {
     isResizable: false,
     minWidth: 100,
     isPadded: false,
@@ -26,22 +28,16 @@ const defaultColumn: Partial<IColumn> & Pick<IColumn, 'minWidth' | 'maxWidth'> =
       }
     }
   };
-
-//TODO i18n
-export function getCartListColumns(
-  readOnly: boolean,
-  showPricingColumns: boolean
-): IColumn[] {
   const columns = [
     {
       ...defaultColumn,
-      isCollapsable: false,
       fieldName: 'product',
-      minWidth: 240,
       key: 'product',
       name: 'Product',
-      onRender: (item: CartItem) => {
-        return <CartItemsListProduct item={item} readOnly={readOnly} />;
+      minWidth: 240,
+      isCollapsable: false,
+      onRender: (item: CartItemViewModel) => {
+        return <CartItemProduct product={item.product} />;
       }
     },
     {
@@ -51,7 +47,7 @@ export function getCartListColumns(
       name: 'Quantity',
       maxWidth: 100,
       isCollapsable: false,
-      onRender: (item: CartItem) => {
+      onRender: (item: CartItemViewModel) => {
         return <CartListQuantity item={item} readOnly={readOnly} />;
       }
     }
@@ -67,7 +63,7 @@ export function getCartListColumns(
         minWidth: 120,
         maxWidth: 220,
         isCollapsable: false,
-        onRender: (item: CartItem) => {
+        onRender: (item: CartItemViewModel) => {
           return <CartListUnitPrice item={item} readOnly={readOnly} />;
         }
       },
@@ -79,7 +75,7 @@ export function getCartListColumns(
         minWidth: 140,
         maxWidth: 220,
         isCollapsable: false,
-        onRender: (item: CartItem) => {
+        onRender: (item: CartItemViewModel) => {
           return <CartListTotalPrice item={item} readOnly={readOnly} />;
         }
       }
@@ -97,11 +93,25 @@ export function getCartListColumns(
       iconClassName: 'delete',
       isCollapsable: false,
       iconName: 'delete',
-      onRender: (item: CartItem) => {
-        return <CartRemoveButton item={item} readOnly={readOnly} />;
+      onRender: (item: CartItemViewModel) => {
+        return item.product.number ? (
+          <CartRemoveButton productNumber={item.product.number} />
+        ) : (
+          <div />
+        );
       }
     });
   }
-
   return columns;
+}
+
+export function sortCartItemsByProductNumber(
+  a: BaseCartItem,
+  b: BaseCartItem
+): number {
+  return (
+    a.productNumber
+      ?.toLowerCase()
+      .localeCompare(b.productNumber?.toLowerCase() || '') || -1
+  );
 }
