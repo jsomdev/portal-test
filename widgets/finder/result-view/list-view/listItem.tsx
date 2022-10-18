@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ImageLoader } from 'next/dist/client/image';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,6 +15,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
+import productImageLoader from '@utilities/image-loaders/productImageLoader';
 import { rem } from '@utilities/rem';
 import { ProductCompareButton } from '@widgets/compare/product-compare-button/productCompareButton';
 import {
@@ -114,9 +116,12 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
               <Image
                 src={imageSrc}
                 alt={imageAlt}
-                layout="fill"
+                width={160}
+                height={160}
+                layout="intrinsic"
                 objectFit="contain"
                 objectPosition="center"
+                loader={productImageLoader}
               />
             </a>
           </Link>
