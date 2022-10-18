@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-import Image from 'next/image';
+import FadeInImage from '@components/image/FadeInImage';
 
 import { OptionalLink } from '@components/link/optionalLink';
 import { ProductImageDisclaimerTooltip } from '@components/tooltips/productImageDisclaimerTooltip';
@@ -60,7 +60,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
       <Stack horizontalAlign="center" styles={styles.imageContainer}>
         <OptionalLink href={productUrl}>
           <a>
-            <Image
+            <FadeInImage
               layout={'fill'}
               objectFit={'contain'}
               alt={imageAlt}

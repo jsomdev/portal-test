@@ -104,6 +104,7 @@ const MobileSiteLogo: React.FC<{ className: string }> = ({ className }) => {
         <Link href={'/'}>
           <a>
             <Image
+              priority
               src={STATIC_IMAGES.branding.siteIcon}
               layout="responsive"
               alt={formatMessage(messages.siteLogoAlt)}
