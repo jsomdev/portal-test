@@ -38,7 +38,7 @@ interface PriceLabelProps {
   tooltipText?: string | undefined;
   // defaults to "medium"
   size?: PriceLabelSize;
-  direction?: 'horizontal' | 'vertical';
+  order?: 'primaryFirst' | 'secondaryFirst';
 }
 
 interface PriceLabelStyles {
@@ -69,7 +69,7 @@ const messages = defineMessages({
  * @param suffix (optional) This is used for unit text ( / each)
  * @param size (optional) This is the size of the label. Defaults to "medium"
  * @param tooltipText (optional) The text that is displayed in the tooltip at the end of the label
- * @param direction (optional) This is the direction of the label. Defaults to "horizontal"
+ * @param order (optional) This is the order of the primary and secondary text. Defaults to "secondaryFirst"
  */
 export const PriceLabel: React.FC<PriceLabelProps> = ({
   primaryText,
@@ -78,7 +78,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
   suffix,
   size,
   tooltipText,
-  direction = 'horizontal'
+  order = 'secondaryFirst'
 }) => {
   const { hasPricing } = useMe();
   const { formatMessage } = useIntl();
@@ -174,6 +174,20 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
     return null;
   }
 
+  const priceComponents = [
+    <PricePrimaryText
+      key="primary-price"
+      variant={getPrimaryTextSize(size)}
+      text={primaryText}
+    />,
+    secondaryText && (
+      <PriceSecondaryText
+        key="secondary-price"
+        variant={getSecondaryTextSize(size)}
+        text={secondaryText}
+      />
+    )
+  ];
   return (
     <Stack>
       <Stack.Item>
@@ -188,20 +202,13 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
           isDataLoaded={status !== 'loading'}
         >
           <Stack
-            horizontal={direction === 'horizontal'}
+            horizontal
             tokens={{ childrenGap: spacing.s2 }}
             verticalAlign="center"
           >
-            <PricePrimaryText
-              variant={getPrimaryTextSize(size)}
-              text={primaryText}
-            />
-            {secondaryText && (
-              <PriceSecondaryText
-                variant={getSecondaryTextSize(size)}
-                text={secondaryText}
-              />
-            )}
+            {order === 'primaryFirst'
+              ? priceComponents
+              : priceComponents.reverse()}
             {suffix && <Label styles={styles.suffix}>{suffix}</Label>}
             {tooltipText && (
               <TooltipHost

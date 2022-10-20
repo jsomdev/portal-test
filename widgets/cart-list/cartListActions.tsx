@@ -3,12 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import {
-  DefaultButton,
-  IIconStyles,
-  Stack,
-  useTheme
-} from '@fluentui/react';
+import { DefaultButton, IIconStyles, Stack, useTheme } from '@fluentui/react';
 import { CartContext, useCart } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';

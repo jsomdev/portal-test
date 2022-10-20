@@ -1,23 +1,9 @@
 import { PriceBreak } from '@services/portal-api/base/types';
-
-export type CartItemProductViewModel = {
-  id?: string;
-  number: string;
-  url?: string;
-  title: string;
-  description: string;
-  image: {
-    url?: string;
-  };
-};
+import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
 export type CartItemViewModel = {
+  id: string;
   quantity: number;
   priceBreaks?: PriceBreak[];
-  product: CartItemProductViewModel;
-};
-
-export type CartListItemProps = {
-  item: CartItemViewModel;
-  readOnly: boolean;
+  product: ProductCardViewModel;
 };

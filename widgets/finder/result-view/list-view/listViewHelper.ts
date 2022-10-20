@@ -11,15 +11,14 @@ import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textF
 import { FacetOptionFormatter } from '@services/i18n/formatters/facetFormatter';
 import { AttributeType } from '@services/portal-api';
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
-
-import { ProductListItemViewModel } from './listItem';
+import { FacetedSearchProductViewModel } from '@widgets/finder/result-view/list-view/productListItem';
 
 export function mapFacetedSearchProductsToProductListItems(
   products: FacetedSearchProduct[],
   systemOfMeasurement: SystemOfMeasurement,
   intl: IntlShape,
   getAttributeType: (code: string) => AttributeType | undefined
-): ProductListItemViewModel[] {
+): FacetedSearchProductViewModel[] {
   const textFormatter = new TextFormatter();
   const facetPropertyKeys: string[] = FacetFactory.getFacetCodes().map(code =>
     textFormatter.formatCamelCase(code)
@@ -104,13 +103,13 @@ export function mapFacetedSearchProductsToProductListItems(
       intl.locale
     );
     return {
-      id: product.id || Guid.create().toString(),
-      description: productFormatter.formatDescription(),
-      imageAlt: productFormatter.formatImageCaption(),
-      imageSrc: productFormatter.formatImageSrc(),
-      number: product.number || '',
-      name: productFormatter.formatName(),
-      href: productFormatter.formatHref(),
+      product: {
+        id: product.id || Guid.create().toString(),
+        number: product.number || '',
+        name: productFormatter.formatName(),
+        url: productFormatter.formatHref() || undefined,
+        imageUrl: productFormatter.formatImageSrc()
+      },
       chips: getChips(product, getAttributeType),
       data: product
     };

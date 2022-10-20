@@ -8,11 +8,17 @@ import {
   Stack
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
-import { CartListItemProps } from '@widgets/cart-list/cartList.types';
+import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import CartPrice from '@widgets/cart-list/cartPrice';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
-export const CartListUnitPrice: React.FC<CartListItemProps> = ({ item }) => {
+type CartListUnitPriceProps = {
+  item: CartItemViewModel;
+};
+
+export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
+  item
+}) => {
   const { getUnitPrice, getBasePrice, currencyCode, status } =
     useProductPricing(item.product.number || '', item.priceBreaks);
   const { getQuantity } = useCart();

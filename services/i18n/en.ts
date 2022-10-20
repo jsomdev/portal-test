@@ -325,7 +325,11 @@ export const en: Messages = {
         emptyCart: 'Your cart is empty.',
         loading: 'Loading product information...',
         cartError: 'There was an error loading your cart.'
-      }
+      },
+      addedToCart: 'Added to cart',
+      limitReached: `Your cart has reached its limit for Product ''{productNumber}''. {quantityAdded} {quantityAdded, plural, one {item} other {items}} have been added to your cart`,
+      goToCart: 'Go to cart',
+      continueShopping: 'Continue shopping'
     }
   },
   loading: {

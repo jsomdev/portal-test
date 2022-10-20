@@ -79,7 +79,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const { spacing, effects, semanticColors } = useTheme();
   const { items, cookieBaseItems, itemsStatus, clearCookie, mergeCookie } =
     useCart();
-  const { meStatus, hasPricing } = useMe();
+  const { meStatus } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const [showDialog, setShowDialog] = useState(false);
   const { locale } = useRouter();
@@ -175,11 +175,8 @@ const Cart: React.FC<CartProps> = ({ title }) => {
                 <Stack.Item>
                   <CartList
                     items={cartItems}
-                    readOnly={false}
                     status={itemsStatus}
-                    showPricingColumns={
-                      hasPricing === 'Customer' || hasPricing === 'Standard'
-                    }
+                    readOnly={false}
                   />
                 </Stack.Item>
                 <Stack.Item>

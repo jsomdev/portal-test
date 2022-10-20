@@ -326,7 +326,11 @@ export const messageIds: Messages = {
         emptyCart: 'pages.cart.list.emptyCart',
         loading: 'pages.cart.list.loading',
         cartError: 'pages.cart.list.cartError'
-      }
+      },
+      addedToCart: 'pages.cart.addedToCart',
+      limitReached: 'pages.cart.limitReached',
+      goToCart: 'pages.cart.goToCart',
+      continueShopping: 'pages.cart.continueShopping'
     }
   },
   loading: {

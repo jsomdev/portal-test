@@ -21,7 +21,6 @@ const CartPrice: React.FC<CartPriceProps> = ({
   const { formatNumber } = useIntl();
   return (
     <PriceLabel
-      direction={'vertical'}
       primaryText={
         (price &&
           formatNumber(price, {

@@ -15,8 +15,8 @@ import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 
-import { ProductListItem, ProductListItemViewModel } from './listItem';
 import { mapFacetedSearchProductsToProductListItems } from './listViewHelper';
+import { ProductListItem, ProductListItemProps } from './productListItem';
 
 interface ProductListViewStyles {
   root: IStackItemStyles;
@@ -30,7 +30,7 @@ export const ProductListView: React.FC = () => {
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
   const intl = useIntl();
 
-  const listItems: ProductListItemViewModel[] =
+  const listItems: ProductListItemProps[] =
     mapFacetedSearchProductsToProductListItems(
       products,
       systemOfMeasurement,
@@ -61,6 +61,7 @@ export const ProductListView: React.FC = () => {
       }
     }
   };
+
   return (
     <Stack.Item styles={styles.root}>
       {(isFetching || facetedSearchStatus === 'loading') && (

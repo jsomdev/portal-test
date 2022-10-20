@@ -13,17 +13,15 @@ export const mapCartItemsToCartItemViewModels = (
       throw new Error('Product in cart must have a product number.');
     }
     const viewModel: CartItemViewModel = {
+      id: cartItem.id as string,
       quantity: cartItem.quantity,
       priceBreaks: cartItem.priceBreaks,
       product: {
-        id: cartItem.id,
+        id: cartItem.productId || undefined,
         number: productNumber,
+        name: productFormatter.formatName(),
         url: productFormatter.formatUrl() || undefined,
-        title: cartItem.productNumber || '-',
-        description: productFormatter.formatName(),
-        image: {
-          url: cartItem.image?.url || undefined
-        }
+        imageUrl: cartItem.image?.url || undefined
       }
     };
     return viewModel;

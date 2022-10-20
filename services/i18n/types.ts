@@ -341,6 +341,10 @@ type ICartMessages = {
     loading: string;
     cartError: string;
   };
+  addedToCart: string;
+  limitReached: string;
+  goToCart: string;
+  continueShopping: string;
 };
 
 type IProductMessages = {

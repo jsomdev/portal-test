@@ -20,9 +20,11 @@ import {
   MIN_CART_QUANTITY
 } from '@providers/cart/cartConstants';
 import { CartContext } from '@providers/cart/cartContext';
+import { combineCartItemsInformation } from '@providers/cart/cartHelper';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
+import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { PriceBreakList } from '@widgets/pricing/pricebreak-list/priceBreakList';
@@ -368,22 +370,21 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
           </Stack>
         </Stack.Item>
       </Stack>
-      {/* {product && lastItemAdded && (
-          // TODO: Add product once updated
-          <CartListConfirmation
-            lastAddedItems={combineCartItemsInformation(
-              [lastItemAdded],
-              [product],
-              [
-                {
-                  product.number: product.number || '',
-                  priceBreaks: priceBreaks || []
-                }
-              ]
-            )}
-            setLastAddedItems={setLastItemAdded}
-          />
-        )} */}
+      {product && lastItemAdded && (
+        <CartItemAddedDialog
+          lastAddedItems={combineCartItemsInformation(
+            [lastItemAdded],
+            [product],
+            [
+              {
+                productNumber: product.number || '',
+                priceBreaks: priceBreaks || []
+              }
+            ]
+          )}
+          setLastAddedItems={setLastItemAdded}
+        />
+      )}
     </>
   );
 };

@@ -112,11 +112,7 @@ export const CartMergeDialog: React.FC<CartItemsDialogProps> = ({
             />
           </Stack>
         ) : (
-          <CartList
-            items={cartItems}
-            readOnly={true}
-            showPricingColumns={false}
-          />
+          <CartList items={cartItems} readOnly />
         )}
       </Stack>
     </Dialog>

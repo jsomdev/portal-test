@@ -1,28 +1,24 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
 import {
-  CheckboxVisibility,
-  DetailsList,
-  DetailsListLayoutMode,
   IDetailsListStyles,
   IMessageBarStyles,
   ISpinnerStyles,
+  List,
   MessageBar,
   MessageBarType,
-  SelectionMode,
   Spinner,
   SpinnerSize,
   Stack,
   useTheme
 } from '@fluentui/react';
-import { CartItem } from '@providers/cart/cartContext';
+import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
 import { ReactQueryStatus } from '@services/react-query/types';
-import { getCartListColumns } from '@widgets/cart-list/cartList.helper';
+import { CartItemCard } from '@widgets/cart-list/cartItemCard';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
-import { useTabletAndDesktop } from '@widgets/media-queries';
 
 const messages = defineMessages({
   emptyCart: {
@@ -47,11 +43,11 @@ interface CartListStyles {
   detailsList: Partial<IDetailsListStyles>;
   spinner: ISpinnerStyles;
 }
+
 interface CartListProps {
   readOnly: boolean;
   items: CartItemViewModel[] | undefined;
   status?: ReactQueryStatus;
-  showPricingColumns: boolean;
 }
 /**
  * A component that will render a DetailsList of all cart items passed to it.
@@ -59,22 +55,15 @@ interface CartListProps {
  * @param items The items that will be used to render a DetailsList of all cart items
  * @param readOnly If true, the user will NOT be able to adjust the quantity of the item or remove the item from their cart within the DetailsList row
  * @param status The React Query status of the products that will render
- * @param showPricingColumns If true, the UnitPrice and TotalPrice columns will be displayed
  */
 export const CartList: React.FC<CartListProps> = ({
   items,
-  readOnly,
-  status,
-  showPricingColumns
+  readOnly = false,
+  status
 }) => {
   const { spacing, semanticColors, fonts, palette } = useTheme();
   const { formatMessage } = useIntl();
-  const isTabletAndDesktop = useTabletAndDesktop();
-
-  const columns = useMemo(
-    () => getCartListColumns(readOnly, showPricingColumns),
-    [readOnly, showPricingColumns]
-  );
+  const { hasPricing } = useMe();
 
   const styles: CartListStyles = {
     messageBar: {
@@ -159,18 +148,21 @@ export const CartList: React.FC<CartListProps> = ({
     );
   }
 
+  const showPricing = hasPricing === 'Customer' || hasPricing === 'Standard';
+
   return (
-    <DetailsList
-      isHeaderVisible={isTabletAndDesktop}
-      onShouldVirtualize={() => false}
-      getKey={(item: CartItem) => `${item.productNumber}`}
-      checkboxVisibility={CheckboxVisibility.hidden}
-      layoutMode={DetailsListLayoutMode.justified}
-      compact={true}
-      styles={styles.detailsList}
+    <List
       items={items}
-      columns={columns}
-      selectionMode={SelectionMode.none}
+      getKey={item => item.id}
+      onRenderCell={item =>
+        item && (
+          <CartItemCard
+            item={item}
+            readOnly={readOnly}
+            showPricing={showPricing}
+          />
+        )
+      }
     />
   );
 };

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-import { ISpinButtonStyles, SpinButton, Stack, Text } from '@fluentui/react';
+import { ISpinButtonStyles, SpinButton, Stack } from '@fluentui/react';
 import {
   MAX_CART_QUANTITY,
   MIN_CART_QUANTITY
 } from '@providers/cart/cartConstants';
 import { useCart } from '@providers/cart/cartContext';
-import { CartListItemProps } from '@widgets/cart-list/cartList.types';
+import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 
-export const CartListQuantity: React.FC<CartListItemProps> = ({
-  item,
-  readOnly
-}) => {
+type CartListQuantityProps = {
+  item: CartItemViewModel;
+};
+
+export const CartListQuantity: React.FC<CartListQuantityProps> = ({ item }) => {
   const [quantity, setQuantity] = useState(item.quantity);
   const { add, remove, updateItem } = useCart();
   const { product } = item;
@@ -65,13 +66,6 @@ export const CartListQuantity: React.FC<CartListItemProps> = ({
     }
   };
 
-  if (readOnly) {
-    return (
-      <Stack>
-        <Text variant="large">{quantity}</Text>
-      </Stack>
-    );
-  }
   return (
     <Stack>
       <Stack>
