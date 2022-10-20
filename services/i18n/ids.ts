@@ -175,17 +175,86 @@ export const messageIds: Messages = {
       headDescription: 'pages.series.headDescription'
     },
     account: {
-      welcome: 'pages.account.welcome',
-      overview: 'pages.account.overview',
-      orders: 'pages.account.orders',
-      quoteRequests: 'pages.account.quoteRequests',
-      infoAndPreferences: 'pages.account.infoAndPreferences',
       signOut: 'pages.account.signOut',
-      addressBook: 'pages.account.addressBook',
-      companyInformation: 'pages.account.companyInformation',
-      preferences: 'pages.account.preferences',
-      profileInformation: 'pages.account.profileInformation',
-      accountPage: 'pages.account.accountPage'
+      signInPrompt: 'pages.account.signInPrompt',
+      overview: {
+        title: 'pages.account.overview.title',
+        subTitle: 'pages.account.overview.subTitle',
+        link: 'pages.account.overview.link',
+        welcome: 'pages.account.overview.welcome',
+        orders: {
+          title: 'pages.account.overview.orders.title',
+          viewAllText: 'pages.account.overview.orders.viewAllText'
+        },
+        profileInformation: {
+          title: 'pages.account.overview.profileInformation.title',
+          nameHeader: 'pages.account.overview.profileInformation.nameHeader',
+          jobHeader: 'pages.account.overview.profileInformation.jobHeader',
+          phoneHeader: 'pages.account.overview.profileInformation.phoneHeader',
+          emailHeader: 'pages.account.overview.profileInformation.emailHeader'
+        },
+        companyInformation: {
+          companyHeader:
+            'pages.account.overview.companyInformation.companyHeader',
+          customerHeader:
+            'pages.account.overview.companyInformation.customerHeader',
+          paymentHeader:
+            'pages.account.overview.companyInformation.paymentHeader'
+        },
+        user: {
+          status: {
+            manager: 'pages.account.overview.user.status.manager',
+            admin: 'pages.account.overview.user.status.admin',
+            employee: 'pages.account.overview.user.status.employee',
+            customer: 'pages.account.overview.user.status.customer',
+            verified: 'pages.account.overview.user.status.verified'
+          }
+        }
+      },
+      orders: {
+        statusHeader: 'pages.account.orders.statusHeader',
+        orderDateHeader: 'pages.account.orders.orderDateHeader',
+        totalHeader: 'pages.account.orders.totalHeader',
+        viewOrder: 'pages.account.orders.viewOrder',
+        numberHeader: 'pages.account.orders.numberHeader'
+      },
+      sections: {
+        orders: {
+          title: 'pages.account.sections.orders.title'
+        },
+        quoteRequests: {
+          title: 'pages.account.sections.quoteRequests.title'
+        },
+        infoAndPreferences: {
+          title: 'pages.account.sections.infoAndPreferences.title',
+          sections: {
+            profileInformation: {
+              title:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.title',
+              description:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.description'
+            },
+            addressBook: {
+              title:
+                'pages.account.sections.infoAndPreferences.sections.addressBook.title',
+              description:
+                'pages.account.sections.infoAndPreferences.sections.addressBook.description'
+            },
+            companyInformation: {
+              title:
+                'pages.account.sections.infoAndPreferences.sections.companyInformation.title',
+              description:
+                'pages.account.sections.infoAndPreferences.sections.companyInformation.description'
+            },
+            preferences: {
+              title:
+                'pages.account.sections.infoAndPreferences.sections.preferences.title',
+              description:
+                'pages.account.sections.infoAndPreferences.sections.preferences.description'
+            }
+          }
+        }
+      }
     },
     docs: {
       i18n: {
@@ -285,6 +354,18 @@ export const messageIds: Messages = {
       controls: {
         units: 'data.systemOfMeasurement.controls.units'
       }
+    },
+    orders: {
+      status: {
+        canceled: 'data.orders.status.canceled',
+        inProcess: 'data.orders.status.inProcess',
+        new: 'data.orders.status.new',
+        shipped: 'data.orders.status.shipped'
+      }
+    },
+    payments: {
+      creditCard: 'data.payments.creditCard',
+      purchaseOrder: 'data.payments.purchaseOrder'
     }
   },
   summary: {

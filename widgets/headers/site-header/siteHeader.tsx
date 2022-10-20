@@ -51,7 +51,7 @@ const messages = defineMessages({
     defaultMessage: 'Navigation menu'
   },
   welcome: {
-    id: messageIds.pages.account.welcome,
+    id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
     defaultMessage: 'Welcome default'
   },
@@ -114,8 +114,8 @@ const MobileSiteHeader: React.FC = () => {
       return formatMessage(messages.closeMenu);
     }
     if (showPanel === 'user') {
-      const nameFormatter = new UserFormatter(me, account);
-      const name = nameFormatter.formatDisplayName(claims.firstName);
+      const userFormatter = new UserFormatter(me, account);
+      const name = userFormatter.formatDisplayName(claims.firstName);
       return formatMessage(messages.welcome, {
         name
       });
@@ -246,7 +246,7 @@ const MobileSiteHeader: React.FC = () => {
                   iconName: 'Cancel'
                 }}
                 onClick={() => props?.onDismiss?.()}
-                text={formatMessage(messages.closeMenu)}
+                text={panelHeaderText}
                 styles={styles.closeButton}
               />
             </Stack>

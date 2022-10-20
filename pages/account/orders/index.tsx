@@ -13,18 +13,18 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AccountPage } from '@widgets/account-page/accountPage';
-import { Overview } from '@widgets/account-page/overview/overview';
+import { OrdersOverview } from '@widgets/account-page/orders/ordersOverview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
   title: {
-    id: messageIds.navigation.user.title,
-    description: 'My acount page title',
-    defaultMessage: 'My Account'
+    id: messageIds.pages.account.sections.orders.title,
+    description: 'Orders page title',
+    defaultMessage: 'Orders'
   }
 });
 
-const Account: NextPage<
+const Orders: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -34,9 +34,9 @@ const Account: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       title={formatMessage(messages.title)}
-      localePaths={getLocalePaths('account')}
+      localePaths={getLocalePaths('account/orders')}
     >
-      <Overview />
+      <OrdersOverview />
     </AccountPage>
   );
 };
@@ -62,4 +62,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Account;
+export default Orders;

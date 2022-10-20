@@ -91,18 +91,20 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
               {item.children && (
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
                   {item.children.map(item => {
-                    item.href && (
-                      <Link
-                        aria-label={item.text}
-                        key={item.id}
-                        href={item.href}
-                        passHref
-                      >
-                        <ActionButton
-                          text={item.text}
-                          styles={styles.link('sub')}
-                        />
-                      </Link>
+                    return (
+                      item.href && (
+                        <Link
+                          aria-label={item.text}
+                          key={item.id}
+                          href={item.href}
+                          passHref
+                        >
+                          <ActionButton
+                            text={item.text}
+                            styles={styles.link('sub')}
+                          />
+                        </Link>
+                      )
                     );
                   })}
                 </Stack>

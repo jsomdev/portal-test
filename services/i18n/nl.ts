@@ -200,17 +200,81 @@ export const nl: Messages = {
       }
     },
     account: {
-      welcome: 'Welkom {name}',
-      infoAndPreferences: 'Info & Voorkeuren',
-      orders: 'Bestellingen',
-      overview: 'Overzicht',
-      quoteRequests: 'Prijs Offertes',
-      signOut: 'Uitloggen',
-      addressBook: 'Adresboek',
-      companyInformation: 'Bedrijf Informatie',
-      preferences: 'Voorkeuren',
-      profileInformation: 'Profiel Informatie',
-      accountPage: 'Mijn Account'
+      signOut: 'Afmelden',
+      signInPrompt: 'Log in om uw accountpagina te bekijken',
+      overview: {
+        title: 'Account Overzicht',
+        subTitle:
+          'Hier vindt u alle informatie die relevant is voor uw account',
+        link: 'Mijn Account',
+        welcome: 'Welkom {name}',
+        orders: {
+          title: 'Recente Bestellingen',
+          viewAllText: 'Bekijk alle eerdere bestellingen'
+        },
+        profileInformation: {
+          title: 'Profiel Informatie',
+          nameHeader: 'Dit ben jij:',
+          jobHeader: 'Job titel:',
+          phoneHeader: 'Telefoonnummer:',
+          emailHeader: 'Email adres:'
+        },
+        companyInformation: {
+          companyHeader: 'Dit is u bedrijf:',
+          customerHeader: 'Klantnummer:',
+          paymentHeader: 'Betaal methode:'
+        },
+        user: {
+          status: {
+            manager: 'Manager',
+            admin: 'Beheerder',
+            employee: 'Medewerker',
+            customer: 'Klant',
+            verified: 'Geverifieerd'
+          }
+        }
+      },
+
+      orders: {
+        statusHeader: 'Status:',
+        orderDateHeader: 'Besteld op:',
+        totalHeader: 'Totaal prijs:',
+        viewOrder: 'Bekijk bestelling',
+        numberHeader: 'Bestelling nummer:'
+      },
+      sections: {
+        orders: {
+          title: 'Bestellingen'
+        },
+        quoteRequests: {
+          title: 'Offerte Aanvragen'
+        },
+        infoAndPreferences: {
+          title: 'Info & Voorkeuren',
+          sections: {
+            profileInformation: {
+              title: 'Profiel Informatie',
+              description:
+                'Wijzig uw inloggegevens of persoonlijke gegevens, zoals uw telefoonnummer.'
+            },
+            addressBook: {
+              title: 'Adresboek',
+              description:
+                'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.'
+            },
+            companyInformation: {
+              title: 'Bedrijf Informatie',
+              description:
+                'Wijzig uw bedrijfsgegevens, factuuradres en verifieer uw account.'
+            },
+            preferences: {
+              title: 'Voorkeuren',
+              description:
+                'Zoek en beheer uw voorkeuren. Kies uw applicatie-instellingen en privacy-instellingen.'
+            }
+          }
+        }
+      }
     },
     cart: {
       title: 'Winkelwagen',
@@ -295,6 +359,18 @@ export const nl: Messages = {
       controls: {
         units: '{system} eenheden'
       }
+    },
+    orders: {
+      status: {
+        canceled: 'Geannuleerd',
+        inProcess: 'Wordt verwerkt',
+        new: 'Nieuw',
+        shipped: 'Verzonden'
+      }
+    },
+    payments: {
+      creditCard: 'Kredietkaart',
+      purchaseOrder: 'Bestelling'
     }
   },
   summary: {

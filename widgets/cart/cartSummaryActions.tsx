@@ -168,7 +168,6 @@ export const CartSummaryActions: React.FC = () => {
     return (
       <Stack styles={styles.request} tokens={{ childrenGap: spacing.s1 }}>
         <Stack.Item>
-          abc
           <PrimaryButton
             text={formatMessage(messages.proceed)}
             onClick={event => {

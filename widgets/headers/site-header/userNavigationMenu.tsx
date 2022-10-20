@@ -12,7 +12,7 @@ import { getUserMenuItems } from './siteHeader.helper';
 
 const messages = defineMessages({
   menuReset: {
-    id: messageIds.pages.account.overview,
+    id: messageIds.pages.account.overview.title,
     description: 'Back to user menu overview',
     defaultMessage: 'Go to overview default'
   }
@@ -21,6 +21,7 @@ const messages = defineMessages({
 type UserNavigationMenuProps = {
   onDismiss: () => void;
 };
+
 export const UserNavigationMenu: React.FC<UserNavigationMenuProps> = ({
   onDismiss
 }) => {

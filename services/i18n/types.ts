@@ -126,6 +126,18 @@ type IDataMessages = {
       units: string;
     };
   };
+  orders: {
+    status: {
+      new: string;
+      inProcess: string;
+      shipped: string;
+      canceled: string;
+    };
+  };
+  payments: {
+    creditCard: string;
+    purchaseOrder: string;
+  };
 };
 
 type IPricingMessages = {
@@ -162,17 +174,75 @@ type INextHeadMessages = {
 };
 
 type IAccountMessages = {
-  overview: string;
-  orders: string;
-  quoteRequests: string;
-  infoAndPreferences: string;
   signOut: string;
-  profileInformation: string;
-  addressBook: string;
-  companyInformation: string;
-  preferences: string;
-  welcome: string;
-  accountPage: string;
+  signInPrompt: string;
+  overview: {
+    title: string;
+    subTitle: string;
+    welcome: string;
+    link: string;
+    orders: {
+      title: string;
+      viewAllText: string;
+    };
+    user: {
+      status: {
+        manager: string;
+        admin: string;
+        employee: string;
+        customer: string;
+        verified: string;
+      };
+    };
+    profileInformation: {
+      title: string;
+      nameHeader: string;
+      jobHeader: string;
+      phoneHeader: string;
+      emailHeader: string;
+    };
+    companyInformation: {
+      companyHeader: string;
+      customerHeader: string;
+      paymentHeader: string;
+    };
+  };
+  orders: {
+    statusHeader: string;
+    orderDateHeader: string;
+    totalHeader: string;
+    numberHeader: string;
+    viewOrder: string;
+  };
+  sections: {
+    orders: {
+      title: string;
+    };
+    quoteRequests: {
+      title: string;
+    };
+    infoAndPreferences: {
+      title: string;
+      sections: {
+        profileInformation: {
+          title: string;
+          description: string;
+        };
+        addressBook: {
+          title: string;
+          description: string;
+        };
+        companyInformation: {
+          title: string;
+          description: string;
+        };
+        preferences: {
+          title: string;
+          description: string;
+        };
+      };
+    };
+  };
 };
 
 type ILocaleMessages = {

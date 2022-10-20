@@ -9,22 +9,22 @@ import { MenuItemViewModel } from '../main-header/mainHeader.helper';
 
 const messages = defineMessages({
   overview: {
-    id: messageIds.pages.account.overview,
+    id: messageIds.pages.account.overview.title,
     description: 'Link text for account overview',
     defaultMessage: 'Account Overview default'
   },
   orders: {
-    id: messageIds.pages.account.orders,
+    id: messageIds.pages.account.sections.orders.title,
     description: 'Link text for orders',
     defaultMessage: 'Orders default'
   },
   quoteRequests: {
-    id: messageIds.pages.account.quoteRequests,
+    id: messageIds.pages.account.sections.quoteRequests.title,
     description: 'Link text for quote requests',
     defaultMessage: 'Quote Requests default'
   },
   infoAndPreferences: {
-    id: messageIds.pages.account.infoAndPreferences,
+    id: messageIds.pages.account.sections.infoAndPreferences.title,
     description: 'Link text for quote info and preferences',
     defaultMessage: 'Info & Preferences default'
   },
@@ -34,27 +34,31 @@ const messages = defineMessages({
     defaultMessage: 'Sign out default'
   },
   welcome: {
-    id: messageIds.pages.account.welcome,
+    id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
     defaultMessage: 'Welcome default'
   },
   profileInformation: {
-    id: messageIds.pages.account.profileInformation,
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.title,
     description: 'Link text for account profile information',
     defaultMessage: 'Profile Information Default'
   },
   addressBook: {
-    id: messageIds.pages.account.addressBook,
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .addressBook.title,
     description: 'Link text for account address book',
     defaultMessage: 'Address book Default'
   },
   companyInformation: {
-    id: messageIds.pages.account.companyInformation,
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .companyInformation.title,
     description: 'Link text for account company information',
     defaultMessage: 'Comapny Information Default'
   },
   preferences: {
-    id: messageIds.pages.account.preferences,
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .preferences.title,
     description: 'Link text for account preferences',
     defaultMessage: 'Preferences Default'
   },
@@ -64,9 +68,9 @@ const messages = defineMessages({
     defaultMessage: 'Sign In'
   },
   accountPage: {
-    id: messageIds.pages.account.accountPage,
+    id: messageIds.pages.account.overview.link,
     description: 'Link text for account page',
-    defaultMessage: 'My Account'
+    defaultMessage: 'My Account default'
   }
 });
 
@@ -123,33 +127,12 @@ export function getUserMenuItems(
       {
         text: formatMessage(messages.infoAndPreferences),
         id: 'account-info-and-preferences',
-        children: [
-          {
-            href: '/account/profile-information',
-            text: formatMessage(messages.profileInformation),
-            id: 'account-profile-information'
-          },
-          {
-            href: '/account/address-book',
-            text: formatMessage(messages.addressBook),
-            id: 'account-address-book'
-          },
-          {
-            href: '/account/company-information',
-            text: formatMessage(messages.companyInformation),
-            id: 'account-company-information'
-          },
-          {
-            href: '/account/preferences',
-            text: formatMessage(messages.preferences),
-            id: 'account-preferences'
-          }
-        ]
+        href: '/account/info-and-preferences'
       },
       {
         text: formatMessage(messages.signOut),
         onClick: () => {
-          instance.logoutRedirect(customerLoginRequest);
+          return instance.logoutRedirect(customerLoginRequest);
         },
         id: 'account-sign-out'
       }

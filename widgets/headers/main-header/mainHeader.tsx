@@ -226,7 +226,7 @@ const DesktopMainHeader: React.FC = () => {
               iconProps={{
                 iconName: 'Contact'
               }}
-              onClick={() => (isAuthenticated ? null : signIn())}
+              onClick={() => (isAuthenticated ? push('/account') : signIn())}
             />
           )}
         </Stack>

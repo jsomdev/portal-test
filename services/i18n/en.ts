@@ -198,17 +198,79 @@ export const en: Messages = {
       }
     },
     account: {
-      infoAndPreferences: 'Info & Preferences',
-      orders: 'Orders',
-      overview: 'Account Overview',
-      quoteRequests: 'Quote Requests',
-      signOut: 'Sign Out',
-      addressBook: 'Address Book',
-      companyInformation: 'Company Information',
-      preferences: 'Preferences',
-      profileInformation: 'Profile Information',
-      welcome: 'Welcome {name}',
-      accountPage: 'My Account'
+      signOut: 'Sign out',
+      signInPrompt: 'Please sign in to view your account page',
+      overview: {
+        title: 'Account Overview',
+        subTitle: 'Here you will find all information relevant to your account',
+        link: 'My Account',
+        welcome: 'Welcome {name}',
+        orders: {
+          title: 'Your Recent Orders',
+          viewAllText: 'View all previous orders'
+        },
+        profileInformation: {
+          title: 'Profile Information',
+          nameHeader: 'This is you:',
+          jobHeader: 'Job title:',
+          phoneHeader: 'Phone number:',
+          emailHeader: 'Email address:'
+        },
+        companyInformation: {
+          companyHeader: 'This is your company:',
+          customerHeader: 'Customer number:',
+          paymentHeader: 'Payment method:'
+        },
+        user: {
+          status: {
+            manager: 'Manager',
+            admin: 'Admin',
+            employee: 'Employee',
+            customer: 'Customer',
+            verified: 'Verified'
+          }
+        }
+      },
+      orders: {
+        statusHeader: 'Status:',
+        orderDateHeader: 'Ordered on:',
+        totalHeader: 'Total price:',
+        viewOrder: 'View order',
+        numberHeader: 'Order number:'
+      },
+      sections: {
+        orders: {
+          title: 'Orders'
+        },
+        quoteRequests: {
+          title: 'Quote Requests'
+        },
+        infoAndPreferences: {
+          title: 'Info & Preferences',
+          sections: {
+            profileInformation: {
+              title: 'Profile Information',
+              description:
+                'Change your login details or personal information, such as your phone number.'
+            },
+            addressBook: {
+              title: 'Address Book',
+              description:
+                'You can add and change addresses on this page. When ordering you can quickly select the right address.'
+            },
+            companyInformation: {
+              title: 'Company Information',
+              description:
+                'Change your company information, invoice address and verify your account.'
+            },
+            preferences: {
+              title: 'Preferences',
+              description:
+                'Find and manage your preferences. Choose your application settings and privacy settings'
+            }
+          }
+        }
+      }
     },
     cart: {
       title: 'Cart',
@@ -290,6 +352,18 @@ export const en: Messages = {
       us: 'US',
       controls: {
         units: '{system} units'
+      }
+    },
+    payments: {
+      creditCard: 'Credit card',
+      purchaseOrder: 'Purchase order'
+    },
+    orders: {
+      status: {
+        canceled: 'Canceled',
+        inProcess: 'In Process',
+        new: 'New',
+        shipped: 'Shipped'
       }
     }
   },

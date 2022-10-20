@@ -13,14 +13,13 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AccountPage } from '@widgets/account-page/accountPage';
-import { Overview } from '@widgets/account-page/overview/overview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
   title: {
-    id: messageIds.navigation.user.title,
-    description: 'My acount page title',
-    defaultMessage: 'My Account'
+    id: messageIds.pages.account.sections.infoAndPreferences.title,
+    description: 'Info and preferences page title',
+    defaultMessage: 'Info and preferences'
   }
 });
 
@@ -34,9 +33,9 @@ const Account: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       title={formatMessage(messages.title)}
-      localePaths={getLocalePaths('account')}
+      localePaths={getLocalePaths('account/info-and-preferences')}
     >
-      <Overview />
+      Info and preferences overview page
     </AccountPage>
   );
 };

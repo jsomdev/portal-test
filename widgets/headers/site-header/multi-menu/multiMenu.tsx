@@ -73,7 +73,8 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
                   style={menu.style}
                   onDismiss={onDismiss}
                   onClick={() => {
-                    multiMenu.setActiveMenuItemId(menuItem.id);
+                    menuItem.onClick ||
+                      multiMenu.setActiveMenuItemId(menuItem.id);
                   }}
                 />
               );
