@@ -29,7 +29,7 @@ const ContentContainerStack: React.FC<ContentContainerProps> = ({
     outerContainer: {},
     innerContainer: {
       root: {
-        maxWidth: '1600px',
+        maxWidth: '1440px',
         width: '100%',
         margin: '0 auto',
         padding: `0 ${spacing.l1}`,

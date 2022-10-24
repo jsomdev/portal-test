@@ -9,6 +9,7 @@ import {
   IButtonStyles,
   IStackStyles,
   ITextStyles,
+  LinkBase,
   Stack,
   Text,
   useTheme
@@ -26,6 +27,7 @@ interface CatalogProps {
 
 interface CatalogStyles {
   root: IStackStyles;
+  title: ITextStyles;
   itemTitle: ITextStyles;
   itemDescription: ITextStyles;
   subItemsContainer: IStackStyles;
@@ -37,7 +39,13 @@ interface CatalogStyles {
 const messages = defineMessages({
   catalogTitle: {
     id: messageIds.pages.home.sections.catalog.title,
-    description: 'Header text for the homepage catalog section'
+    description: 'Header text for the homepage catalog section',
+    defaultMessage: 'Browse our catalog'
+  },
+  viewAll: {
+    id: messageIds.pages.home.sections.catalog.items.viewAll,
+    description: 'Button text to view all ',
+    defaultMessage: 'Browse all'
   }
 });
 
@@ -50,22 +58,32 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   const styles: CatalogStyles = {
     root: {
       root: {
+        width: '100%',
         padding: `${spacing.l1} 0`,
         ...mediaQueryFrom('tablet', {
           padding: `${spacing.l2} 0`
         })
       }
     },
+    title: {
+      root: {
+        display: 'block',
+        marginBottom: spacing.l1
+      }
+    },
     itemTitle: {
       root: {
-        marginBottom: spacing.s2,
-        color: palette.themePrimary
+        display: 'block',
+        marginBottom: spacing.m,
+        color: palette.themeDarker
       }
     },
     itemDescription: {
       root: {
         display: 'inline-block',
-        maxWidth: rem(1268)
+
+        marginBottom: spacing.s1,
+        maxWidth: rem(980)
       }
     },
     subItemsContainer: {
@@ -73,10 +91,9 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     },
     subItemContainer: {
       root: {
-        width: 216,
+        width: 268,
         background: palette.white,
         borderRadius: 7,
-        border: `1px solid ${palette.neutralLight}`,
         img: {
           borderTopLeftRadius: 7,
           borderTopRightRadius: 7
@@ -86,7 +103,8 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     subItemLinkContainer: {
       root: {
         height: 65,
-        border: `1px solid ${palette.neutralLight}`
+        width: '100%',
+        borderTop: `1px solid ${palette.neutralLight}`
       }
     },
     subItemButton: {
@@ -101,7 +119,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   };
   return (
     <Stack tokens={{ childrenGap: spacing.m }} styles={styles.root}>
-      <Text as="h2" variant="xxLargePlus">
+      <Text as="h2" variant="xxLargePlus" styles={styles.title}>
         <FormattedMessage {...messages.catalogTitle} />
       </Text>
       {categoryItems.map(categoryItem => {
@@ -109,7 +127,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
           <Stack key={categoryItem.id}>
             <Link passHref href={categoryItem.href}>
               <a>
-                <Text as="h3" variant="xxLarge" styles={styles.itemTitle}>
+                <Text as="h3" variant="xLargePlus" styles={styles.itemTitle}>
                   {categoryItem.name}
                 </Text>
               </a>
@@ -121,10 +139,15 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
                   variant="mediumPlus"
                   styles={styles.itemDescription}
                 >
-                  {categoryItem.description}
+                  {categoryItem.description
+                    .replace('Co.', '##')
+                    .split('.')[0]
+                    .concat('.')
+                    .replace('##', 'Co.')}
                 </Text>
               </a>
             </Link>
+
             <Stack
               horizontal
               tokens={{
@@ -141,8 +164,8 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
                       <Stack styles={styles.subItemContainer}>
                         <Image
                           layout="fixed"
-                          width={214}
-                          height={150}
+                          width={268}
+                          height={204}
                           alt={childCategoryItem.imageCaption}
                           src={childCategoryItem.imageSrc}
                           objectFit="cover"

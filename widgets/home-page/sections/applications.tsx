@@ -36,7 +36,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const styles: ApplicationsStyles = {
     itemContainer: {
       root: {
-        width: 216,
+        width: 268,
         background: palette.white,
         borderRadius: 7,
         border: `1px solid ${palette.neutralLight}`,
@@ -62,6 +62,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         background: palette.themeDark,
         borderBottomLeftRadius: 7,
         borderBottomRightRadius: 7,
+        width: 268,
         borderTop: `1px solid ${palette.neutralLight}`
       }
     },
@@ -99,8 +100,8 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
                 <Stack styles={styles.itemContainer}>
                   <Image
                     layout="fixed"
-                    width={214}
-                    height={150}
+                    width={268}
+                    height={204}
                     alt={categoryItem.imageCaption}
                     src={categoryItem.imageSrc}
                     objectFit="cover"

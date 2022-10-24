@@ -175,7 +175,10 @@ export const en: Messages = {
           }
         },
         catalog: {
-          title: 'Browse our Catalog'
+          title: 'Browse our Catalog',
+          items: {
+            viewAll: 'Browse all'
+          }
         },
         brands: {
           title: 'pages.home.sections.brands.title'

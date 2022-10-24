@@ -172,7 +172,10 @@ export const messageIds: Messages = {
           callToAction: 'pages.home.sections.hero.callToAction'
         },
         catalog: {
-          title: 'pages.home.sections.catalog.title'
+          title: 'pages.home.sections.catalog.title',
+          items: {
+            viewAll: 'pages.home.sections.catalog.items.viewAll'
+          }
         },
         brands: {
           title: 'pages.home.sections.brands.title'

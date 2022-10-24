@@ -258,6 +258,9 @@ type IHomeMessages = INextHeadMessages & {
       callToAction: string;
     };
     catalog: {
+      items: {
+        viewAll: string;
+      };
       title: string;
     };
     brands: {

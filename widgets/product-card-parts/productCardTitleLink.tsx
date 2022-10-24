@@ -40,7 +40,7 @@ const ProductCardTitleLink: React.FC<ProductCardTextProps> = ({
   };
 
   return (
-    <OptionalLink href={url}>
+    <OptionalLink href={url} prefetch>
       <a className={mergeCss(styles.link)}>
         <Text variant="xLarge" styles={styles.title}>
           {number}

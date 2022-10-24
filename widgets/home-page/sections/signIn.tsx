@@ -85,8 +85,8 @@ export const SignIn: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
   const { instance } = useMsal();
-  const STEP_WIDTH = 280;
-  const STEP_INDEX_WIDTH = 48;
+  const STEP_WIDTH = 320;
+  const STEP_INDEX_WIDTH = 64;
   const STEP_PADDING = 16;
 
   const styles: SignUpStyles = {
@@ -129,7 +129,7 @@ export const SignIn: React.FC = () => {
       }
     },
     dottedLine: (index: number) => ({
-      borderTop: '3px dashed #EEE',
+      borderTop: '3px dashed #DDD',
       position: 'absolute',
       width:
         index < signUpSteps.length - 1
@@ -166,10 +166,14 @@ export const SignIn: React.FC = () => {
                     {index + 1}
                   </Text>
                 </Stack.Item>
-                <Text as="h3" variant="xLarge" styles={styles.stepTitle}>
+                <Text as="h3" variant="xLargePlus" styles={styles.stepTitle}>
                   <FormattedMessage {...item.title} />
                 </Text>
-                <Text as="p" styles={styles.stepDescription}>
+                <Text
+                  as="p"
+                  variant="mediumPlus"
+                  styles={styles.stepDescription}
+                >
                   <FormattedMessage {...item.description} />
                 </Text>
               </Stack>

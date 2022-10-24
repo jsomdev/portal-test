@@ -177,7 +177,10 @@ export const nl: Messages = {
           callToAction: 'Aan de slag'
         },
         catalog: {
-          title: 'Onze Catalogus'
+          title: 'Onze Catalogus',
+          items: {
+            viewAll: 'Alle bekijken'
+          }
         },
         brands: {
           title: 'pages.home.sections.brands.title'

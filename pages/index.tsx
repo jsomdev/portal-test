@@ -1,7 +1,7 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { useTheme } from '@fluentui/react';
+import { IStackStyles, mergeStyleSets, useTheme } from '@fluentui/react';
 import {
   GlobalDataProvider,
   GlobalDataProviderProps
@@ -16,6 +16,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
+import { rem } from '@utilities/rem';
 import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
 import { Catalog } from '@widgets/home-page/sections/catalog';
@@ -53,6 +54,7 @@ const messages = defineMessages({
 type HomeStyles = {
   catalogContainer: Partial<ContentContainerStyles>;
   applicationContainer: Partial<ContentContainerStyles>;
+  sectionContainer: Partial<IStackStyles>;
 };
 
 const Home: NextPage<HomeProps & AppLayoutProps> = ({
@@ -61,9 +63,15 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   mainMenuItems
 }) => {
   const { formatMessage } = useIntl();
-  const { palette } = useTheme();
+  const { palette, spacing } = useTheme();
 
   const styles: HomeStyles = {
+    sectionContainer: {
+      root: {
+        paddingTop: rem(60),
+        paddingBottom: rem(60)
+      }
+    },
     catalogContainer: {
       outerContainer: {
         root: {
@@ -97,12 +105,19 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
         <AppLayout>
           <Hero />
           <TabletAndDesktop>
-            <ContentContainerStack>
+            <ContentContainerStack
+              outerStackProps={{ styles: styles.sectionContainer }}
+            >
               <SignIn />
             </ContentContainerStack>
           </TabletAndDesktop>
           <ContentContainerStack
-            outerStackProps={{ styles: styles.catalogContainer.outerContainer }}
+            outerStackProps={{
+              styles: mergeStyleSets(
+                styles.catalogContainer.outerContainer,
+                styles.sectionContainer
+              )
+            }}
           >
             <Catalog
               categories={categories.filter(
@@ -116,7 +131,10 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           </ContentContainerStack>
           <ContentContainerStack
             outerStackProps={{
-              styles: styles.applicationContainer.outerContainer
+              styles: mergeStyleSets(
+                styles.applicationContainer.outerContainer,
+                styles.sectionContainer
+              )
             }}
           >
             <Applications
@@ -127,7 +145,9 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
               )}
             />
           </ContentContainerStack>
-          <ContentContainerStack>
+          <ContentContainerStack
+            outerStackProps={{ styles: styles.sectionContainer }}
+          >
             <Brands
               category={categories.find(
                 category =>

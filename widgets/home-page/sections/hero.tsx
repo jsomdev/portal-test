@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import {
+  FontWeights,
   IButtonStyles,
   IStackItemStyles,
   IStackStyles,
@@ -15,6 +16,7 @@ import {
 } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n/ids';
+import { rem } from '@utilities/rem';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
@@ -24,6 +26,7 @@ interface HeroStyles {
   contentContainer: IStackItemStyles;
   content: IStackStyles;
   header: ITextStyles;
+  description: ITextStyles;
   callToAction: IButtonStyles;
 }
 
@@ -52,43 +55,52 @@ const messages = defineMessages({
 
 export const Hero: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { spacing, fonts } = useTheme();
+  const { spacing, fonts, palette } = useTheme();
   const styles: HeroStyles = {
     root: {
       root: {
-        height: 328,
+        height: 480,
         position: 'relative'
       }
     },
     header: {
       root: {
-        marginBottom: spacing.s1
+        marginBottom: spacing.s1,
+        fontSize: rem(56),
+        fontWeight: FontWeights.bold,
+        color: palette.white
+      }
+    },
+    description: {
+      root: {
+        color: palette.neutralLighter
       }
     },
     content: {
       root: {
-        backgroundColor: 'rgba(255,255,255,0.7)',
-        padding: spacing.l1,
         ...mediaQueryFrom('tablet', {
-          maxWidth: 400
+          maxWidth: rem(480)
         })
       }
     },
     contentContainer: {
       root: {
         margin: `${spacing.l1} 0`,
+        background: 'rgba(0,0,0,0.4)',
+        padding: spacing.m,
         ...mediaQueryFrom('tablet', {
-          maxWidth: 400
+          maxWidth: rem(480),
+          padding: 0,
+          background: 'transparent'
         })
       }
     },
     callToAction: {
       root: {
-        width: '100%',
-        height: 40
+        height: 48
       },
       label: {
-        fontSize: fonts.mediumPlus.fontSize
+        fontSize: fonts.large.fontSize
       }
     },
     imageContainer: {
@@ -116,7 +128,7 @@ export const Hero: React.FC = () => {
             <Text as="h1" variant="xxLargePlus" styles={styles.header}>
               <FormattedMessage {...messages.heroTitle} />
             </Text>
-            <Text as="p" variant="large">
+            <Text as="p" variant="large" styles={styles.description}>
               <FormattedMessage {...messages.heroDescription} />
             </Text>
             <Stack.Item tokens={{ padding: `${spacing.m} 0 0` }}>
