@@ -123,6 +123,26 @@ export const messageIds: Messages = {
     default: {
       headTitle: 'pages.default.headTitle'
     },
+    product: {
+      imageDisclaimer: 'pages.product.imageDisclaimer',
+      sections: {
+        accessories: {
+          title: 'pages.product.sections.accessories.title'
+        },
+        downloadsSection: {
+          title: 'pages.product.sections.downloadsSection.title'
+        },
+        performance: {
+          title: 'pages.product.sections.performance.title'
+        },
+        generalInformation: {
+          title: 'pages.product.sections.generalInformation.title'
+        },
+        specifications: {
+          title: 'pages.product.sections.specifications.title'
+        }
+      }
+    },
     home: {
       headTitle: 'pages.home.headTitle',
       headDescription: 'pages.home.headDescription',
@@ -374,8 +394,5 @@ export const messageIds: Messages = {
   },
   summary: {
     details: 'summary.details'
-  },
-  product: {
-    imageDisclaimer: 'product.imageDisclaimer'
   }
 };

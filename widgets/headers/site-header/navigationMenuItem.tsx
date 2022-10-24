@@ -10,7 +10,6 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import { rem } from '@utilities/rem';
 
 import { MenuItemViewModel } from '../main-header/mainHeader.helper';
 

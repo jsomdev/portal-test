@@ -15,7 +15,6 @@ import {
 } from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
-import { rem } from '@utilities/rem';
 import { TabletAndDesktop } from '@widgets/media-queries';
 
 import {

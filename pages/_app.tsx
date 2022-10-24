@@ -9,6 +9,7 @@ import { IntlProvider, MessageFormatElement } from 'react-intl';
 import { MsalProvider } from '@azure/msal-react';
 import { initializeIcons } from '@fluentui/react';
 import { CartProvider } from '@providers/cart/cartProvider';
+import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewedProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';

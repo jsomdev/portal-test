@@ -6,19 +6,25 @@ import { ResourceFormatter } from './resourceFormatter';
 
 export class ProductFormatter {
   private product: Partial<Product> | undefined;
+  private resourceFormatter: ResourceFormatter;
   private multilingualStringFormatter: MultilingualStringFormatter;
   constructor(product: Partial<Product> | undefined, locale?: string) {
     this.product = product;
+    this.resourceFormatter = new ResourceFormatter(product?.image || undefined);
     this.multilingualStringFormatter = new MultilingualStringFormatter(locale);
   }
 
   public formatImageCaption(): string {
-    return this.multilingualStringFormatter.format(
-      this.product?.image?.caption
-    );
+    return this.resourceFormatter.formatCaption();
+  }
+  public formatImageHref(): string {
+    return this.resourceFormatter.formatSrc();
   }
   public formatName(): string {
     return this.multilingualStringFormatter.format(this.product?.name);
+  }
+  public formatDescription(): string {
+    return this.multilingualStringFormatter.format(this.product?.description);
   }
 
   public formatUrl(): string | null {
@@ -27,6 +33,16 @@ export class ProductFormatter {
       return null;
     }
     return `/products/${slug}`;
+  }
+
+  public formatTitle(): string {
+    const name: string | undefined = this.formatName();
+
+    if (!name) {
+      return this.product?.number || '';
+    }
+
+    return `${name}, ${this.product?.number}`;
   }
 }
 

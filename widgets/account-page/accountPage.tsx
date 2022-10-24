@@ -80,7 +80,16 @@ export const AccountPage: React.FC<AccountPageProps> = ({
   };
 
   return (
-    <Page title={title} description="" noIndex={true} localePaths={localePaths}>
+    <Page
+      metaProps={{
+        title: title,
+        description: '',
+        noIndex: true
+      }}
+      i18nProps={{
+        localePaths
+      }}
+    >
       <GlobalDataProvider
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}

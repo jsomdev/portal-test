@@ -195,7 +195,9 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       if (quantity > maxQuantityToAdd) {
         quantityToAdd = maxQuantityToAdd;
       }
-      setLastItemAdded(add(null, product.number || '', quantity, product.name));
+      setLastItemAdded(
+        add(null, product.number || '', quantityToAdd, product.name)
+      );
       setQuantity(MIN_CART_QUANTITY);
     } else {
       console.warn(

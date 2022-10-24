@@ -384,16 +384,21 @@ export async function fetchProductsForStaticPaths(): Promise<Product[]> {
     await productsResource.getEntities(queryOptions);
   return data.value;
 }
-
+/**
+ * Async function that retrieves the product with the necessary data to display on the page of a product.
+ * @param slug Product slug (url identifier)
+ * @returns Promise of a Product or null (if product not found)
+ */
 export async function fetchProductForProductPage(
   slug: string
 ): Promise<Product | null> {
   const productsResource: ProductsResource = new ProductsResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,modelId,slug`,
+    selectQuery: `id,number,name,description,modelId,slug,audience`,
+    // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
     filterQuery: `slug/en eq '${slug}'`,
-    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,seoPath;$expand=series($select=id,name,seoPath)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail)`
+    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,slug;$expand=series($select=id,name,slug)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
   };
 
   const data: OdataCollection<Product> = await productsResource.getEntities(

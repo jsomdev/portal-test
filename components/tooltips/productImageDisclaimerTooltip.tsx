@@ -20,7 +20,7 @@ import {
 
 const messages = defineMessages({
   tooltipText: {
-    id: messageIds.product.imageDisclaimer,
+    id: messageIds.pages.product.imageDisclaimer,
     defaultMessage:
       'Images are representative. Products may differ in material or configuration.',
     description: 'Tooltip text for product image disclaimer'

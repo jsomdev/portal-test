@@ -13,7 +13,6 @@ import {
   useTheme
 } from '@fluentui/react';
 import { Category } from '@services/portal-api';
-import { rem } from '@utilities/rem';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 import { HomeCategoryItem, mapCategoryToHomeCategoryItem } from '../helper';

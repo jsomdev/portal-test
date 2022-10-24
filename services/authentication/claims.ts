@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {

@@ -63,9 +63,16 @@ const Category: NextPage<CategoryProps> = ({
   );
   return (
     <Page
-      title={categoryFormatter.formatName()}
-      description={categoryFormatter.formatDescription()}
-      localePaths={getLocalePathsFromMultilingual('categories', category.slug)}
+      metaProps={{
+        title: categoryFormatter.formatName(),
+        description: categoryFormatter.formatDescription(),
+        noIndex: false,
+        image: categoryFormatter.formatImageSrc(),
+        imageAlt: categoryFormatter.formatImageCaption()
+      }}
+      i18nProps={{
+        localePaths: getLocalePathsFromMultilingual('categories', category.slug)
+      }}
     >
       <GlobalDataProvider
         category={category}

@@ -123,6 +123,26 @@ export const en: Messages = {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },
+    product: {
+      imageDisclaimer: 'pages.product.imageDisclaimer',
+      sections: {
+        accessories: {
+          title: 'Accessories'
+        },
+        downloadsSection: {
+          title: 'Product Downloads'
+        },
+        performance: {
+          title: 'Product Performance'
+        },
+        generalInformation: {
+          title: 'General Information'
+        },
+        specifications: {
+          title: 'Product Specifications'
+        }
+      }
+    },
     home: {
       headTitle: 'Welcome',
       headDescription: 'Experts in Spray Technology',
@@ -373,9 +393,5 @@ export const en: Messages = {
   },
   summary: {
     details: 'Details'
-  },
-  product: {
-    imageDisclaimer:
-      'Images are representative. Products may differ in material or configuration.'
   }
 };

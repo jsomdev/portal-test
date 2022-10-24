@@ -349,6 +349,23 @@ type ICartMessages = {
 
 type IProductMessages = {
   imageDisclaimer: string;
+  sections: {
+    generalInformation: {
+      title: string;
+    };
+    performance: {
+      title: string;
+    };
+    specifications: {
+      title: string;
+    };
+    accessories: {
+      title: string;
+    };
+    downloadsSection: {
+      title: string;
+    };
+  };
 };
 
 type IModelMessages = INextHeadMessages;
@@ -374,6 +391,7 @@ export type Messages = {
   };
   pricing: IPricingMessages;
   pages: {
+    product: IProductMessages;
     default: {
       headTitle: string;
     };
@@ -393,7 +411,6 @@ export type Messages = {
   summary: {
     details: string;
   };
-  product: IProductMessages;
 };
 
 export interface Language {

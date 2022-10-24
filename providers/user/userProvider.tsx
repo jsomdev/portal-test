@@ -19,7 +19,6 @@ import {
 } from '@services/portal-api/users';
 import { queryClient } from '@services/react-query/config';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { rem } from '@utilities/rem';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CompleteSignUp } from '@widgets/complete-sign-up/completeSignUp';
 import {

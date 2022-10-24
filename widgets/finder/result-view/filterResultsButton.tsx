@@ -5,7 +5,6 @@ import {
   PrimaryButton,
   useTheme
 } from '@fluentui/react';
-import { rem } from '@utilities/rem';
 
 type FilterResultsButtonProps = Pick<IButtonProps, 'onClick' | 'text'>;
 

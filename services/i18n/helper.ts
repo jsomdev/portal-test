@@ -18,7 +18,7 @@ export function getMessages(locale?: string, exact: boolean = false): Messages {
 
   return en;
 }
-
+// TODO: Handle fallback for different environments
 export function getAudience(locale: string | undefined): Audience {
   const countryCode: string | undefined = locale?.split('-')[1];
   if (!countryCode) {

@@ -81,9 +81,14 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   };
   return (
     <Page
-      localePaths={getLocalePaths('')}
-      title={formatMessage(messages.headTitle)}
-      description={formatMessage(messages.headDescription)}
+      metaProps={{
+        title: formatMessage(messages.headTitle),
+        description: formatMessage(messages.headDescription),
+        noIndex: false
+      }}
+      i18nProps={{
+        localePaths: getLocalePaths('')
+      }}
     >
       <GlobalDataProvider
         siteMenuItems={siteMenuItems}

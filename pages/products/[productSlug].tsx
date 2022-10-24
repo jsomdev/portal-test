@@ -8,10 +8,17 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
+import { Navigation } from 'swiper';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Stack, useTheme } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { getAudience } from '@services/i18n';
+import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { Model, Product, Series } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
@@ -26,9 +33,14 @@ import {
   fetchProductsForStaticPaths
 } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
+import { generateProductStructuredData } from '@utilities/structuredData';
+import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
+import { ProductSections } from '@widgets/product-page/product-sections/productSections';
+import { ProductPageProvider } from '@widgets/product-page/productPageProvider';
 
 export interface ProductsProps {
   product: Product;
@@ -44,20 +56,52 @@ const Products: NextPage<
         'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
       >
     >
-> = ({ product, siteMenuItems, mainMenuItems }) => {
+> = ({
+  product,
+  attributeGroups,
+  attributeTypes,
+  siteMenuItems,
+  mainMenuItems
+}) => {
   const { locale } = useRouter();
-  const multilingualStringFormatter = new MultilingualStringFormatter(locale);
+  const { spacing } = useTheme();
+  const productFormatter = new ProductFormatter(product, locale);
+
   return (
     <Page
-      title={multilingualStringFormatter.format(product.name)}
-      description={multilingualStringFormatter.format(product.description)}
-      localePaths={getLocalePathsFromMultilingual('products', product.slug)}
+      metaProps={{
+        title: productFormatter.formatTitle(),
+        description: productFormatter.formatDescription()
+      }}
+      i18nProps={{
+        localePaths: getLocalePathsFromMultilingual('products', product.slug),
+        structuredData: generateProductStructuredData(product, locale)
+      }}
     >
       <GlobalDataProvider
+        attributeGroups={attributeGroups}
+        attributeTypes={attributeTypes}
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}
       >
-        <AppLayout>{product.number}</AppLayout>
+        <AppLayout>
+          <ProductPageProvider product={product}>
+            <ContentContainerStack>
+              <Stack
+                tokens={{
+                  padding: `${spacing.l2} 0 ${spacing.l1} 0`
+                }}
+              >
+                <PagesHeader title={productFormatter.formatTitle()} />
+                {/* TODO Top Section */}
+                <ProductSections
+                  // TODO Section Content
+                  onRenderSectionContent={section => <p>{section.title}</p>}
+                />
+              </Stack>
+            </ContentContainerStack>
+          </ProductPageProvider>
+        </AppLayout>
       </GlobalDataProvider>
     </Page>
   );

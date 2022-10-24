@@ -66,7 +66,6 @@ const messages = defineMessages({
 
 export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
   facet,
-  isActive,
   predictedResults,
   onSelect
 }) => {

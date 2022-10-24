@@ -13,7 +13,6 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { PriceBreak } from '@services/portal-api/base/types';
-import { rem } from '@utilities/rem';
 
 interface PriceBreakListProps {
   priceBreaks: PriceBreak[];

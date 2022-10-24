@@ -124,6 +124,26 @@ export const nl: Messages = {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },
+    product: {
+      imageDisclaimer: 'pages.product.imageDisclaimer',
+      sections: {
+        accessories: {
+          title: 'Accessoires'
+        },
+        downloadsSection: {
+          title: 'Downloads'
+        },
+        performance: {
+          title: 'Performantie'
+        },
+        generalInformation: {
+          title: 'Algemene informatie'
+        },
+        specifications: {
+          title: 'Product specificaties'
+        }
+      }
+    },
     home: {
       headTitle: 'Experten in Sproeitechnologie',
       headDescription: 'pages.home.headDescription',
@@ -379,9 +399,5 @@ export const nl: Messages = {
   },
   summary: {
     details: 'Details'
-  },
-  product: {
-    imageDisclaimer:
-      'Afbeeldingen zijn representatief. Producten kunnen verschillen in materiaal of configuratie.'
   }
 };

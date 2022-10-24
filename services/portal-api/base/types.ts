@@ -88,6 +88,7 @@ export interface SettingKeys {
 }
 
 export interface AttributeTypeCodes {
+  airFlowRate: string;
   specificGravity: string;
   relativeDropSizeRange: string;
   liquidPressure: string;

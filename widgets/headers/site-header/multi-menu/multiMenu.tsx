@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Stack, useTheme } from '@fluentui/react';
-import { rem } from '@utilities/rem';
 import BreadCrumbs from '@widgets/headers/site-header/multi-menu/breadCrumbs';
 import { useMultiMenu } from '@widgets/headers/site-header/multi-menu/multiMenu.helper';
 import {

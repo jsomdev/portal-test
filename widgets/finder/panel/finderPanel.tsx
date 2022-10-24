@@ -5,7 +5,6 @@ import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
-import { rem } from '@utilities/rem';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
 import { CategoryLinkFacet } from '../facet-item/categoryLinkFacet';

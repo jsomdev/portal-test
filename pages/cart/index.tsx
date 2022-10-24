@@ -36,10 +36,14 @@ const CartPage: NextPage<
   const title = formatMessage(messages.title);
   return (
     <Page
-      title={title}
-      description=""
-      noIndex={true}
-      localePaths={getLocalePaths('cart')}
+      metaProps={{
+        title: title,
+        description: '',
+        noIndex: true
+      }}
+      i18nProps={{
+        localePaths: getLocalePaths('cart')
+      }}
     >
       <GlobalDataProvider
         siteMenuItems={siteMenuItems}

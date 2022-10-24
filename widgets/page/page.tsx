@@ -7,7 +7,12 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { messageIds } from '@services/i18n';
 import { getAlternateLinks, getCanonicalUrl } from '@widgets/page/page.helper';
-import { PageProps } from '@widgets/page/page.types';
+import {
+  DefaultMetaTags,
+  OpenGraphMetaTags,
+  PageProps,
+  TwitterMetaTags
+} from '@widgets/page/page.types';
 
 import { PageContext } from './pageContext';
 
@@ -22,42 +27,58 @@ const messages = defineMessages({
   }
 });
 
-const Page: NextPage<PageProps> = ({
-  title,
-  description,
-  localePaths,
-  noIndex = false,
-  children
-}) => {
+const Page: NextPage<PageProps> = ({ metaProps, i18nProps, children }) => {
   const router = useRouter();
   const { formatMessage } = useIntl();
 
   const { defaultLocale } = router;
-  title = title || formatMessage(messages.pageLoading);
+  const { description, keywords, image, imageAlt, noIndex } = metaProps;
+  const title = metaProps.title
+    ? formatMessage(messages.headTitle, {
+        title: metaProps.title
+      })
+    : formatMessage(messages.pageLoading);
 
   const alternateLinks =
-    localePaths && defaultLocale
-      ? getAlternateLinks(localePaths, defaultLocale)
+    i18nProps.localePaths && defaultLocale
+      ? getAlternateLinks(i18nProps.localePaths, defaultLocale)
       : undefined;
 
   const canonicalUrl =
-    localePaths && defaultLocale && router.locale
-      ? getCanonicalUrl(router.locale, defaultLocale, localePaths)
+    i18nProps.localePaths && defaultLocale && router.locale
+      ? getCanonicalUrl(router.locale, defaultLocale, i18nProps.localePaths)
       : undefined;
 
   return (
     <PageContext.Provider
       value={{
-        localePaths: localePaths || {}
+        localePaths: i18nProps.localePaths || {}
       }}
     >
       <NextHead>
-        <title>
-          {formatMessage(messages.headTitle, {
-            title: title
-          })}
-        </title>
-        <meta name="description" content={description} />
+        <title>{title}</title>
+        <meta name={TwitterMetaTags.Title} content={title} />
+        <meta property={OpenGraphMetaTags.Title} content={title} />
+        {description && (
+          <meta name={DefaultMetaTags.Description} content={description} />
+        )}
+        {description && (
+          <meta
+            property={OpenGraphMetaTags.Description}
+            content={description}
+          />
+        )}
+        {description && (
+          <meta name={TwitterMetaTags.Description} content={description} />
+        )}
+        {keywords && (
+          <meta name={DefaultMetaTags.Keywords} content={keywords} />
+        )}
+        {image && <meta property={OpenGraphMetaTags.Image} content={image} />}
+        {imageAlt && (
+          <meta property={OpenGraphMetaTags.ImageAlt} content={imageAlt} />
+        )}
+        {image && <meta name={TwitterMetaTags.Image} content={image} />}
         {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
         {alternateLinks &&
           alternateLinks.map(link => (

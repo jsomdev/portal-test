@@ -15,7 +15,6 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
-import { rem } from '@utilities/rem';
 import { TabletAndDesktop } from '@widgets/media-queries';
 
 import { ProductCompareContext } from '../productCompareContext';
