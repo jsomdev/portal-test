@@ -44,10 +44,9 @@ export const CreditCardPaymentFormGroup: React.FC<{
       paddingLeft: '26px'
     }
   };
-  //TODO ward: check why I have to do this...
-  if (props === undefined || !('checked' in props)) {
-    return <div>This should not happen</div>;
-  }
+
+  const isChecked =
+    props === undefined || !('checked' in props) ? false : props.checked;
 
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
@@ -59,7 +58,7 @@ export const CreditCardPaymentFormGroup: React.FC<{
           </Stack.Item>
         </Stack>
       </Stack.Item>
-      {props?.checked && (
+      {isChecked && (
         <Stack.Item>
           <Stack
             tokens={{ childrenGap: spacing.m, padding: `0 0 ${spacing.l1}` }}

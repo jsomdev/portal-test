@@ -47,15 +47,13 @@ export const PurchaseOrderFormGroup: React.FC<{
     }
   };
 
-  //TODO ward: check why I have to do this...
-  if (props === undefined || !('checked' in props)) {
-    return <div>This should not happen</div>;
-  }
+  const isChecked =
+    props === undefined || !('checked' in props) ? false : props.checked;
 
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
       <Stack.Item>{render && render(props)}</Stack.Item>
-      {props?.checked && (
+      {isChecked && (
         <Stack
           tokens={{ childrenGap: spacing.m, padding: `0 0 ${spacing.l1}` }}
           verticalAlign="center"

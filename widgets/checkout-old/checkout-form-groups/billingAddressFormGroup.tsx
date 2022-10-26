@@ -44,17 +44,15 @@ export const BillingAddressFormGroup: React.FC<{
     }
   };
 
-  //TODO ward: check why I have to do this...
-  if (props === undefined || !('checked' in props)) {
-    return <div>This should not happen</div>;
-  }
+  const isChecked =
+    props === undefined || !('checked' in props) ? false : props.checked;
 
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
       <Stack horizontal wrap={false} horizontalAlign="space-between">
         <Stack.Item>{render && render(props)}</Stack.Item>
       </Stack>
-      {props?.checked && (
+      {isChecked && (
         <Stack
           styles={styles}
           tokens={{ childrenGap: spacing.s1, padding: `0 0 ${spacing.l1}` }}

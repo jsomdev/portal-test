@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IChoiceGroupOption, IChoiceGroupOptionProps } from '@fluentui/react';
+import { IChoiceGroupOption } from '@fluentui/react';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 
 import { ChoiceGroupOptionContainer } from '../shared/choiceGroupOptionWrapper';
