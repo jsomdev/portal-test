@@ -112,8 +112,7 @@ export const CartSummaryActions: React.FC = () => {
       root: { padding: 0, height: 'auto' },
       textContainer: {},
       label: {
-        ...fonts.xLarge,
-        lineHeight: fonts.xLarge.fontSize,
+        ...fonts.medium,
         textAlign: 'left'
       }
     }
@@ -260,7 +259,8 @@ export const CartSummaryActions: React.FC = () => {
                     allowDisabledFocus
                     onClick={() => setShowCallout(!showCallout)}
                   >
-                    {formatMessage(messages.quotedPriceWarning)}
+                    {formatMessage(messages.quotedPriceWarning)} qsdf qsdfqs
+                    dfqsd fq
                   </ActionButton>
                 </Stack>
                 {showCallout && (
