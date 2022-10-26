@@ -12,14 +12,12 @@ export const ChoiceGroupOptionContainer: React.FC<{
   props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
 }> = ({ props, children }) => {
   const { spacing, palette, semanticColors, effects } = useTheme();
-  //TODO ward: check why I have to do this...
-  if (props === undefined || !('checked' in props)) {
-    return <div>This should not happen</div>;
-  }
+  const isChecked =
+    props === undefined || !('checked' in props) ? false : props.checked;
   const styles: IStackStyles = {
     root: {
       border: `1px solid ${
-        props?.checked ? palette.themeTertiary : semanticColors.variantBorder
+        isChecked ? palette.themeTertiary : semanticColors.variantBorder
       }`,
       padding: `${spacing.m}`,
       borderRadius: effects.roundedCorner2
