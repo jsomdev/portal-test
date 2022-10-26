@@ -31,7 +31,7 @@ import { PriceBreakList } from '@widgets/pricing/pricebreak-list/priceBreakList'
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
 interface ProductListItemPricingProps {
-  product: Pick<Product, 'number' | 'name'>;
+  product: Pick<Product, 'id' | 'number' | 'name'>;
   enablePriceBreakInfo?: boolean;
 }
 interface ProductListItemPricingStyles {
@@ -195,9 +195,11 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       if (quantity > maxQuantityToAdd) {
         quantityToAdd = maxQuantityToAdd;
       }
+
       setLastItemAdded(
-        add(null, product.number || '', quantityToAdd, product.name)
+        add(product.id || null, product.number, quantityToAdd, product.name)
       );
+
       setQuantity(MIN_CART_QUANTITY);
     } else {
       console.warn(
