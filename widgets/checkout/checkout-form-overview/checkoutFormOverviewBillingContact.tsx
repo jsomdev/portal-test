@@ -4,7 +4,7 @@ import { FormikContextType, useFormikContext } from 'formik';
 
 import { Stack } from '@fluentui/react';
 import { ContactInfo } from '@services/portal-api';
-import { OrderSummaryContact } from '@widgets/checkout-old/temp/orderSummaryContact';
+import { OrderSummaryContact } from '@widgets/checkout/temp/orderSummaryContact';
 
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
 import { CheckoutFormOverviewGroupContainer } from '../shared/checkoutFormOverviewGroupContainer';

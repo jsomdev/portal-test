@@ -4,7 +4,7 @@ import {
   IStackStyles,
   ITextStyles
 } from '@fluentui/react';
-import { CreateOrderError } from '@widgets/checkout-old/create-order/CreateOrderError';
+import { CreateOrderError } from '@widgets/checkout/create-order/CreateOrderError';
 
 export interface CheckoutErrorBoxStyles {
   title: ITextStyles;

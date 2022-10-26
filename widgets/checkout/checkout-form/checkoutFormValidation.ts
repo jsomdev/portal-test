@@ -1,3 +1,4 @@
+//TODO ward i18n
 import valid from 'card-validator';
 import * as yup from 'yup';
 

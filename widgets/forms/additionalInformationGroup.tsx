@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, useTheme } from '@fluentui/react';
-import { CheckoutFormGroupTitle } from '@widgets/checkout-old/shared/checkoutFormGroupTitle';
+import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 export const AdditionalInformationFormGroup: React.FC = () => {
   const messages = {

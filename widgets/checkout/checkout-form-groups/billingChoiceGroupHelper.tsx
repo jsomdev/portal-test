@@ -6,6 +6,8 @@ import { ChoiceGroupOptionContainer } from '../shared/choiceGroupOptionWrapper';
 import { BillingAddressFormGroup } from './billingAddressFormGroup';
 import { BillingContactFormGroup } from './billingContactFormGroup';
 
+//TODO ward i18n
+
 export const billingAddressOptions: IChoiceGroupOption[] = [
   {
     key: 'yes',

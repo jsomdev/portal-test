@@ -3,7 +3,7 @@ import React from 'react';
 
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { ContactInfo } from '@services/portal-api';
-import { OrderSummaryAddressStyles } from '@widgets/checkout-old/temp/orderDetail.types';
+import { OrderSummaryAddressStyles } from '@widgets/checkout/temp/orderDetail.types';
 
 export const OrderSummaryContact: React.FC<{
   title: string;

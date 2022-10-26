@@ -11,7 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
-import { CheckoutFormValues } from '@widgets/checkout-old/checkout-form/checkoutForm.types';
+import { CheckoutFormValues } from '@widgets/checkout/checkout-form/checkoutForm.types';
 
 const messages = {
   nextButtonText: 'Proceed',

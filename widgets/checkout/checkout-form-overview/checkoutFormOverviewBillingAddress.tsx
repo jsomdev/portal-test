@@ -4,7 +4,7 @@ import { FormikContextType, useFormikContext } from 'formik';
 
 import { Stack, useTheme } from '@fluentui/react';
 import { PostalAddress } from '@services/portal-api';
-import { OrderSummaryAddress } from '@widgets/checkout-old/temp/orderSummaryAddress';
+import { OrderSummaryAddress } from '@widgets/checkout/temp/orderSummaryAddress';
 
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
 import { CheckoutFormOverviewGroupContainer } from '../shared/checkoutFormOverviewGroupContainer';

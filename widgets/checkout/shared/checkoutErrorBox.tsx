@@ -12,7 +12,7 @@ import {
 import {
   CreateOrderError,
   CreateOrderErrorName
-} from '@widgets/checkout-old/create-order/CreateOrderError';
+} from '@widgets/checkout/create-order/CreateOrderError';
 
 import {
   CheckoutErrorBoxProps,

@@ -3,39 +3,38 @@ import React, { useMemo } from 'react';
 import { FormikContextType, useFormikContext } from 'formik';
 
 import { Stack } from '@fluentui/react';
-import { ContactInfo } from '@services/portal-api';
-import { OrderSummaryContact } from '@widgets/checkout-old/temp/orderSummaryContact';
+import { PostalAddress } from '@services/portal-api';
+import { OrderSummaryAddress } from '@widgets/checkout/temp/orderSummaryAddress';
 
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
 import { CheckoutFormOverviewGroupContainer } from '../shared/checkoutFormOverviewGroupContainer';
 
 const messages = {
-  shippingContact: 'Shipping Contact'
+  shippingAddress: 'Shipping Address'
 };
 
-export const CheckoutFormOverviewShippingContact: React.FC = () => {
+export const CheckoutFormOverviewShippingAddress: React.FC = () => {
   const { values }: FormikContextType<CheckoutFormValues> = useFormikContext();
 
-  const shippingContactInfo: ContactInfo = useMemo(() => {
+  const shippingAddress: PostalAddress = useMemo(() => {
     return {
-      company: values.company,
-      emailAddresses: [],
-      firstName: values.firstName,
-      lastName: values.lastName,
-      phoneNumber: values.phone,
-      urls: []
+      city: values.city,
+      country: values.country,
+      postalCode: values.zipCode,
+      region: values.state,
+      lines: [values.address]
     };
   }, [values]);
 
   return (
     <Stack>
       <CheckoutFormOverviewGroupContainer
-        text={messages.shippingContact}
+        text={messages.shippingAddress}
         stepIndex={0}
       >
-        <OrderSummaryContact
-          contactInfo={shippingContactInfo}
-          title={messages.shippingContact}
+        <OrderSummaryAddress
+          address={shippingAddress}
+          title={messages.shippingAddress}
           displayTitle={false}
         />
       </CheckoutFormOverviewGroupContainer>
