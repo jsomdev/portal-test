@@ -60,6 +60,9 @@ export const billingContactOptions: IChoiceGroupOption[] = [
     text: 'Use a different billing contact',
     value: 'no',
     onRenderField: (props, render) => {
+      if (!render) {
+        return null;
+      }
       return (
         <Stack>
           <ChoiceGroupOptionContainer props={props}>

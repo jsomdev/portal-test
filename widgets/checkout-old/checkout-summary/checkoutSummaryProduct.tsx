@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
 import { FontWeights, ImageFit, Stack, Text, useTheme } from '@fluentui/react';
+import { CartItem } from '@providers/cart/cartContext';
+import { BaseCartItem } from '@providers/cart/cartModels';
 import { STATIC_IMAGES } from '@public/media/images';
-import {
-  TextFormatter,
-  formatCartItemDisplayValue,
-  formatCartItemName
-} from '@services/i18n/formatters/entity-formatters/textFormatter';
+import { defaultLanguage } from '@services/i18n';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
+import { OrderLine } from '@services/portal-api';
 import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
@@ -21,6 +21,30 @@ import {
 const messages = {
   quantity: 'Quantity',
   quotedPrice: 'Quoted Price'
+};
+
+//TODO ward: move to formatter or mapper
+export const formatCartItemName = (cartItem: CartItem): string => {
+  if (cartItem.name?.[defaultLanguage]) {
+    //TODO ward i18n
+    return cartItem.name[defaultLanguage]; //TODO ward i18n
+  }
+  if (cartItem.productName?.[defaultLanguage]) {
+    //TODO ward i18n
+    return cartItem.productName[defaultLanguage]; //TODO ward i18n
+  }
+  return '';
+};
+
+/**
+ * Function that will map a CartItem to its displayValue
+ * @param item CartItem that needs to be formatted
+ */
+//TODO ward: move to formatter or mapper
+export const formatCartItemDisplayValue = (
+  item: BaseCartItem | OrderLine | undefined
+): string => {
+  return item?.productNumber || item?.productName?.[defaultLanguage] || ''; //TODO ward i18n
 };
 
 export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
