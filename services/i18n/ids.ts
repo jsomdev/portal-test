@@ -354,6 +354,9 @@ export const messageIds: Messages = {
       limitReached: 'pages.cart.limitReached',
       goToCart: 'pages.cart.goToCart',
       continueShopping: 'pages.cart.continueShopping'
+    },
+    checkout: {
+      title: 'pages.checkout.title'
     }
   },
   loading: {

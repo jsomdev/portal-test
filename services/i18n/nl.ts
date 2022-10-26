@@ -359,6 +359,9 @@ export const nl: Messages = {
       limitReached: `Uw winkelwagen heeft de limiet voor Product ''{productNumber}'' bereikt. Er {quantityAdded, plural, one {is 1 artikel} other {zijn {quantityAdded} artikels}} aan uw winkelwagen toegevoegd.`,
       goToCart: 'Ga naar winkelwagen',
       continueShopping: 'Doorgaan met winkelen'
+    },
+    checkout: {
+      title: 'Bestellen'
     }
   },
   loading: {

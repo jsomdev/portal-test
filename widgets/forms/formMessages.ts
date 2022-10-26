@@ -7,7 +7,7 @@ export const formRequiredMessages = {
   address: 'Address is required',
   country: 'Country is required',
   city: 'City is required',
-  state: 'State / Province is required',
+  state: 'State / Region is required',
   zipCode: 'Zip Code / Postal Code is required',
   phone: 'Phone number is required',
   creditCardName: 'Name is required',
@@ -15,7 +15,9 @@ export const formRequiredMessages = {
   creditCardExpiration: 'Expiration date is required',
   creditCardCVV: 'CVV is required',
   acceptedTerms: 'You must accept all terms and conditions',
-  referenceNumber: 'A reference number is required'
+  referenceNumber: 'A reference number is required',
+  stateUs: 'Please select a state',
+  providenceCa: 'Please select a providence'
 };
 
 // TODO: i18N
@@ -24,5 +26,9 @@ export const formErrorMessages = {
   email: 'Please enter a valid email address',
   phone: 'Please enter a valid phone number',
   creditCardCVV: 'Please enter a valid CVV',
-  creditCardNumber: 'Your credit card number is invalid'
+  creditCardNumber: 'Your credit card number is invalid',
+  firstName: 'First name can not be longer than 40 characters',
+  lastName: 'Name can not be longer than 40 characters',
+  country: 'Your country code does not match',
+  expirationDate: 'Please enter a valid expiration date'
 };

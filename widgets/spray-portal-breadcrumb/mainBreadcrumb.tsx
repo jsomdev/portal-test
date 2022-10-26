@@ -60,6 +60,7 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
       },
       listItem: {
         selectors: {
+          //TODO ward: fix styling last child, this no longer works?
           '.ms-Breadcrumb-itemLink:last-child': {
             fontWeight: FontWeights.regular,
             textDecoration: 'none',

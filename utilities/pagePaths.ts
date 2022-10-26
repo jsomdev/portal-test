@@ -3,7 +3,7 @@ const pagePaths = {
   compare: '/compare',
   quoteRequest: '/cart/create-quote-request',
   cart: '/cart',
-  checkout: '/cart/checkout'
+  checkout: '/checkout'
 };
 
 export default pagePaths;
