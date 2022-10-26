@@ -11,7 +11,6 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
-import { formatCreditCardNumber } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
@@ -22,6 +21,14 @@ import { CheckoutFormOverviewPaymentInfoStyles } from './checkoutFormOverview.ty
 //TODO ward: move to formatter
 export const formatCreditCardIssuer = (issuer: string): string => {
   return issuer.replace(/^\w/, c => c.toUpperCase());
+};
+
+//TODO ward: move to formatter
+export const formatCreditCardNumber = (cardNumber: string): string => {
+  return `${cardNumber
+    .substring(0, cardNumber.length - 4)
+    .replace(/[0-9]/g, '●')
+    .replace(/X/g, '●')}${cardNumber.substring(cardNumber.length - 4)}`;
 };
 
 const messages = {
