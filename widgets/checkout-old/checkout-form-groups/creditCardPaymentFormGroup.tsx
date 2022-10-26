@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
+import valid from 'card-validator';
 import { FormikContextType, useFormikContext } from 'formik';
 
 import { FormikMaskedTextField } from '@components/formik-wrappers/formikMaskedTextField';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
-//TODO ward import Cards, { CallbackArgument } from 'react-credit-cards';
 import {
   IChoiceGroupOptionProps,
   IRenderFunction,
@@ -19,9 +19,6 @@ import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
 import { checkoutFormFields } from '../checkout-form/checkoutFormHelper';
 import { CheckoutFormContext } from '../shared/checkoutFormContext';
 
-//TODO ward: handle this...
-//import './creditCard.scss';
-
 export const CreditCardPaymentFormGroup: React.FC<{
   props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
   render: IRenderFunction<
@@ -30,12 +27,17 @@ export const CreditCardPaymentFormGroup: React.FC<{
 }> = ({ props, render }) => {
   const { spacing } = useTheme();
   const { values }: FormikContextType<CheckoutFormValues> = useFormikContext();
-  const [activeField, setActiveField] = useState<string>('');
+
   const { setCreditCardIssuer } = useContext(CheckoutFormContext);
 
-  function handleFocus(field: string) {
-    setActiveField(field);
-  }
+  useEffect(() => {
+    const result = valid.number(values.creditCardNumber);
+    if (result.isValid && result.card?.type) {
+      setCreditCardIssuer(result.card?.type);
+    } else {
+      setCreditCardIssuer('');
+    }
+  }, [values.creditCardNumber]);
 
   const styles: IStackStyles = {
     root: {
@@ -65,30 +67,11 @@ export const CreditCardPaymentFormGroup: React.FC<{
             verticalAlign="center"
             styles={styles}
           >
-            <Stack>
-              {/* TODO ward <Cards
-                cvc={values.creditCardCVV}
-                expiry={values.creditCardExpiration}
-                focused={
-                  activeField === checkoutFormFields.creditCardCVV.name
-                    ? 'cvc'
-                    : 'name'
-                }
-                name={values.creditCardName}
-                number={values.creditCardNumber}
-                callback={(type: CallbackArgument) => {
-                  setCreditCardIssuer(type.issuer);
-                }}
-              />*/}
-            </Stack>
             <Stack tokens={{ childrenGap: spacing.s1 }}>
               <FormikTextField
                 {...checkoutFormFields.creditCardNumber}
                 required={true}
                 iconProps={{ iconName: 'lock' }}
-                onFocus={e => {
-                  handleFocus(e.target.name);
-                }}
                 maxLength={23}
                 type="tel"
                 inputMode="numeric"
@@ -96,9 +79,6 @@ export const CreditCardPaymentFormGroup: React.FC<{
               <FormikTextField
                 {...checkoutFormFields.creditCardName}
                 required={true}
-                onFocus={e => {
-                  handleFocus(e.target.name);
-                }}
               />
               <Stack.Item>
                 <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
@@ -108,9 +88,6 @@ export const CreditCardPaymentFormGroup: React.FC<{
                     required={true}
                     maskChar=""
                     maxLength={5}
-                    onFocus={e => {
-                      handleFocus(e.target.name);
-                    }}
                   />
                   <FormikTextField
                     {...checkoutFormFields.creditCardCVV}
@@ -118,9 +95,6 @@ export const CreditCardPaymentFormGroup: React.FC<{
                     required={true}
                     inputMode="numeric"
                     maxLength={4}
-                    onFocus={e => {
-                      handleFocus(e.target.name);
-                    }}
                   />
                 </Stack>
               </Stack.Item>
