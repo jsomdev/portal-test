@@ -69,7 +69,8 @@ export const CheckoutForm: React.FC<{
 
   const onFormSubmit = useCallback(
     (formValues: CheckoutFormValues): void => {
-      scrollToTop();
+      scrollToTop('body');
+
       if (me?.accountId) {
         const order: OrderPost = mapFormFieldsToOrderPost(
           formValues,
@@ -250,11 +251,11 @@ export const CheckoutForm: React.FC<{
                     <CheckoutFormFooterStepActions
                       onProceedClick={() => {
                         onProceed();
-                        scrollToTop();
+                        scrollToTop('body');
                       }}
                       onPreviousClick={() => {
                         onPrevious();
-                        scrollToTop();
+                        scrollToTop('body');
                       }}
                       disableSubmit={orderTaxAmountStatus === 'loading'}
                     />

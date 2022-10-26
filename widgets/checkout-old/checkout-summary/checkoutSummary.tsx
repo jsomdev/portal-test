@@ -35,11 +35,11 @@ export const CheckoutSummary: React.FC = () => {
                     <CheckoutFormSummaryStepActions
                       onProceedClick={() => {
                         onProceed();
-                        scrollToTop();
+                        scrollToTop('body');
                       }}
                       onPreviousClick={() => {
                         onPrevious();
-                        scrollToTop();
+                        scrollToTop('body');
                       }}
                       disableSubmit={orderTaxAmountStatus === 'loading'}
                     />
