@@ -8,8 +8,6 @@ import { useIsAuthenticated } from '@azure/msal-react';
 import {
   ActionButton,
   IStackStyles,
-  Spinner,
-  SpinnerSize,
   Stack,
   Text,
   useTheme
@@ -21,8 +19,8 @@ import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { OrderOverviewCard } from '@widgets/account-page/orders/orderOverviewCard';
-import { OverviewTag } from '@widgets/account-page/overview/overviewTag';
+import { OrderOverviewCard } from '@widgets/account/orders/orderOverviewCard';
+import { OverviewTag } from '@widgets/account/overview/overviewTag';
 
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
@@ -44,27 +42,27 @@ const messages = defineMessages({
     defaultMessage: 'Subtitle default text'
   },
   accountManager: {
-    id: messageIds.pages.account.overview.user.status.manager,
+    id: messageIds.pages.account.overview.account.status.manager,
     description: 'manager tag',
     defaultMessage: 'manager default'
   },
   accountEmployee: {
-    id: messageIds.pages.account.overview.user.status.employee,
+    id: messageIds.pages.account.overview.account.status.employee,
     description: 'employee tag',
     defaultMessage: 'employee default'
   },
   accountAdmin: {
-    id: messageIds.pages.account.overview.user.status.admin,
+    id: messageIds.pages.account.overview.account.status.admin,
     description: 'admin tag',
     defaultMessage: 'admin default'
   },
   accountVerified: {
-    id: messageIds.pages.account.overview.user.status.verified,
+    id: messageIds.pages.account.overview.account.status.verified,
     description: 'verified tag',
     defaultMessage: 'verified default'
   },
   accountCustomer: {
-    id: messageIds.pages.account.overview.user.status.customer,
+    id: messageIds.pages.account.overview.account.status.customer,
     description: 'customer tag',
     defaultMessage: 'customer default'
   },
@@ -170,8 +168,6 @@ export const Overview: React.FC = () => {
           </Stack>
         </Stack.Item>
       </Stack>
-
-      {ordersStatus === 'loading' && <Spinner size={SpinnerSize.large} />}
       {ordersStatus === 'success' && orders?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
@@ -182,7 +178,13 @@ export const Overview: React.FC = () => {
           <Stack.Item>
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
               {orders.value.map(order => {
-                return <OrderOverviewCard key={order.id} order={order} />;
+                return (
+                  <OrderOverviewCard
+                    visibleOrderLines={1}
+                    key={order.id}
+                    order={order}
+                  />
+                );
               })}
             </Stack>
           </Stack.Item>

@@ -22,12 +22,12 @@ export const messageIds: Messages = {
       collapseLabel: 'navigation.site.collapseLabel',
       expandLabel: 'navigation.site.expandLabel'
     },
-    user: {
-      title: 'navigation.user.title',
-      collapseLabel: 'navigation.user.collapseLabel',
-      expandLabel: 'navigation.user.expandLabel',
-      signIn: 'navigation.user.signIn',
-      myProfile: 'navigation.user.myProfile'
+    account: {
+      title: 'navigation.account.title',
+      collapseLabel: 'navigation.account.collapseLabel',
+      expandLabel: 'navigation.account.expandLabel',
+      signIn: 'navigation.account.signIn',
+      myProfile: 'navigation.account.myProfile'
     },
     locale: {
       title: 'navigation.locale.title'
@@ -224,13 +224,13 @@ export const messageIds: Messages = {
           paymentHeader:
             'pages.account.overview.companyInformation.paymentHeader'
         },
-        user: {
+        account: {
           status: {
-            manager: 'pages.account.overview.user.status.manager',
-            admin: 'pages.account.overview.user.status.admin',
-            employee: 'pages.account.overview.user.status.employee',
-            customer: 'pages.account.overview.user.status.customer',
-            verified: 'pages.account.overview.user.status.verified'
+            manager: 'pages.account.overview.account.status.manager',
+            admin: 'pages.account.overview.account.status.admin',
+            employee: 'pages.account.overview.account.status.employee',
+            customer: 'pages.account.overview.account.status.customer',
+            verified: 'pages.account.overview.account.status.verified'
           }
         }
       },

@@ -16,6 +16,7 @@ export const OrdersOverview: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
   const { isOrderHistoryEnabled } = useMe();
+  //TODO change keys
   const { data: orders, status: ordersStatus } = useQuery(
     [QUERYKEYS.orders, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
@@ -34,7 +35,13 @@ export const OrdersOverview: React.FC = () => {
           <Stack.Item>
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
               {orders.value.map(order => {
-                return <OrderOverviewCard key={order.id} order={order} />;
+                return (
+                  <OrderOverviewCard
+                    visibleOrderLines={3}
+                    key={order.id}
+                    order={order}
+                  />
+                );
               })}
             </Stack>
           </Stack.Item>

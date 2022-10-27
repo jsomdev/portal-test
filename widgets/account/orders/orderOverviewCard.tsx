@@ -25,7 +25,7 @@ import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Order, OrderLine, OrderStatus } from '@services/portal-api';
-import { useMobile, useTablet } from '@widgets/media-queries';
+import { mediaQueryFrom, useMobile, useTablet } from '@widgets/media-queries';
 
 /**
  * MESSAGES FOR ORDER CARD
@@ -91,9 +91,13 @@ interface OrderCardStyles {
 
 interface OrderCardProps {
   order: Order;
+  visibleOrderLines: number;
 }
 
-export const OrderOverviewCard: React.FC<OrderCardProps> = ({ order }) => {
+export const OrderOverviewCard: React.FC<OrderCardProps> = ({
+  order,
+  visibleOrderLines
+}) => {
   const { effects, semanticColors, spacing } = useTheme();
   const { formatMessage } = useIntl();
 
@@ -103,7 +107,13 @@ export const OrderOverviewCard: React.FC<OrderCardProps> = ({ order }) => {
         border: `1px solid ${semanticColors.variantBorder}`,
         borderRadius: effects.roundedCorner4,
         height: '100%',
-        flex: '1 1 0'
+        ...mediaQueryFrom('mobile', {
+          flex: '1 1 100%'
+        }),
+        ...mediaQueryFrom('tablet', {
+          flex:
+            visibleOrderLines > 2 ? '1 1 100%' : `0 1 calc(50% - ${spacing.m})`
+        })
       }
     },
     actionsContainer: {
@@ -126,7 +136,12 @@ export const OrderOverviewCard: React.FC<OrderCardProps> = ({ order }) => {
   return (
     <Stack styles={styles.container} grow tokens={{ childrenGap: spacing.m }}>
       <OrderCardTopSection order={order} />
-      {order.lines?.length && <OrderCardLines lines={order.lines} />}
+      {order.lines?.length && (
+        <OrderCardLines
+          visibleOrderLines={visibleOrderLines}
+          lines={order.lines}
+        />
+      )}
       <Stack
         horizontal
         horizontalAlign="end"
@@ -151,6 +166,11 @@ export const OrderOverviewCard: React.FC<OrderCardProps> = ({ order }) => {
  * ORDER OVERVIEW CARD LINES
  */
 
+interface OrderCardLinesProps {
+  lines: OrderLine[];
+  visibleOrderLines: number;
+}
+
 interface OrderCardLinesStyles {
   container: IStackStyles;
   viewMoreButton: IButtonStyles;
@@ -158,7 +178,10 @@ interface OrderCardLinesStyles {
   viewMoreContainer: IStackStyles;
 }
 
-const OrderCardLines: React.FC<{ lines: OrderLine[] }> = ({ lines }) => {
+const OrderCardLines: React.FC<OrderCardLinesProps> = ({
+  lines,
+  visibleOrderLines
+}) => {
   const { spacing, semanticColors, palette, effects } = useTheme();
   const isMobile = useMobile();
   const isTablet = useTablet();
@@ -170,8 +193,8 @@ const OrderCardLines: React.FC<{ lines: OrderLine[] }> = ({ lines }) => {
     if (isTablet) {
       return 1;
     }
-    return 1;
-  }, [isMobile, isTablet]);
+    return visibleOrderLines || 1;
+  }, [isMobile, isTablet, visibleOrderLines]);
 
   const viewMoreText: string = useMemo(() => {
     if (lines?.length) {
@@ -337,7 +360,7 @@ interface OrderCardTopSectionStyles {
   statusText: ITextStyles;
 }
 
-const OrderCardTopSection: React.FC<OrderCardProps> = ({ order }) => {
+const OrderCardTopSection: React.FC<{ order: Order }> = ({ order }) => {
   const { spacing, palette } = useTheme();
   const { formatMessage } = useIntl();
 

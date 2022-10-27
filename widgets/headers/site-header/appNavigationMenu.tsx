@@ -7,6 +7,7 @@ import { useMsal } from '@azure/msal-react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
+import { getAppNavigationAccountMenuItems } from '@widgets/account/accountNavigationMenu.helper';
 import { mapRegionsToMenuItems } from '@widgets/headers/site-header/appNavigationMenu.helper';
 import {
   getCountryImage,
@@ -17,7 +18,6 @@ import { MultiMenuConfiguration } from '@widgets/headers/site-header/multi-menu/
 import { usePageContext } from '@widgets/page/pageContext';
 
 import { mapMenuItemsToMenuItemViewModel } from '../main-header/mainHeader.helper';
-import { getAppUserMenuItems } from './siteHeader.helper';
 
 const messages = defineMessages({
   mainMenuViewAllCategories: {
@@ -26,7 +26,7 @@ const messages = defineMessages({
     defaultMessage: 'View all categories'
   },
   signIn: {
-    id: messageIds.navigation.user.signIn,
+    id: messageIds.navigation.account.signIn,
     description: 'Link text for sign in button',
     defaultMessage: 'Sign In'
   },
@@ -105,7 +105,7 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: true,
       style: 'plain',
-      items: getAppUserMenuItems(intl, me, instance)
+      items: getAppNavigationAccountMenuItems(intl, me, instance)
     }
   };
   return <MultiMenu configuration={configuration} onDismiss={onDismiss} />;

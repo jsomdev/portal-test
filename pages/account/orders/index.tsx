@@ -12,8 +12,8 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { AccountPage } from '@widgets/account-page/accountPage';
-import { OrdersOverview } from '@widgets/account-page/orders/ordersOverview';
+import { AccountPage } from '@widgets/account/accountPage';
+import { OrdersOverview } from '@widgets/account/orders/ordersOverview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({

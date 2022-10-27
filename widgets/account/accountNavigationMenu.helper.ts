@@ -1,11 +1,12 @@
 import { IntlShape, defineMessages } from 'react-intl';
 
 import { IPublicClientApplication } from '@azure/msal-browser';
+import { INavLinkGroup } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
-
-import { MenuItemViewModel } from '../main-header/mainHeader.helper';
+import pagePaths from '@utilities/pagePaths';
+import { MenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
 
 const messages = defineMessages({
   overview: {
@@ -63,7 +64,7 @@ const messages = defineMessages({
     defaultMessage: 'Preferences Default'
   },
   signIn: {
-    id: messageIds.navigation.user.signIn,
+    id: messageIds.navigation.account.signIn,
     description: 'Link text for sign in button',
     defaultMessage: 'Sign In'
   },
@@ -74,7 +75,14 @@ const messages = defineMessages({
   }
 });
 
-export function getAppUserMenuItems(
+/**
+ * @returns MenuItemViewModel[]
+ * @param intl intl shape used to format the message
+ * @param me Used to determine if a sign in button or account link will be returned
+ * @param instance the msal instance used for the login redirect
+ * @returns MenuItemViewModel[]
+ */
+export function getAppNavigationAccountMenuItems(
   intl: IntlShape,
   me: User | undefined,
   instance: IPublicClientApplication
@@ -83,7 +91,7 @@ export function getAppUserMenuItems(
   if (me) {
     return [
       {
-        href: '/account',
+        href: pagePaths.overview,
         text: formatMessage(messages.accountPage),
         id: 'main-menu-account'
       }
@@ -100,7 +108,14 @@ export function getAppUserMenuItems(
   ];
 }
 
-export function getUserMenuItems(
+/**
+ * This function will return menu items used on the account menu accessed through the site-header on mobile
+ * @param intl intl shape used to format the message
+ * @param me Used to determine if a sign in button or sign out will be returned
+ * @param instance the msal instance used for the login / logout redirect
+ * @returns MenuItemViewModel[]
+ */
+export function getAccountNavigationMenuItems(
   intl: IntlShape,
   me: User | undefined,
   instance: IPublicClientApplication
@@ -110,24 +125,24 @@ export function getUserMenuItems(
   if (me) {
     return [
       {
-        href: '/account',
+        href: pagePaths.overview,
         text: formatMessage(messages.overview),
         id: 'account'
       },
       {
-        href: '/account/orders',
+        href: pagePaths.orders,
         text: formatMessage(messages.orders),
         id: 'account-orders'
       },
       {
-        href: '/account/quote-requests',
+        href: pagePaths.quoteRequests,
         text: formatMessage(messages.quoteRequests),
         id: 'account-quote-requests'
       },
       {
+        href: pagePaths.infoAndPreferences,
         text: formatMessage(messages.infoAndPreferences),
-        id: 'account-info-and-preferences',
-        href: '/account/info-and-preferences'
+        id: 'account-info-and-preferences'
       },
       {
         text: formatMessage(messages.signOut),
@@ -145,6 +160,56 @@ export function getUserMenuItems(
         instance.loginRedirect(customerLoginRequest);
       },
       id: 'account-sign-in'
+    }
+  ];
+}
+
+/**
+ * This function will return menu items used on the account menu on the desktop verion of the account pages
+ * @param intl intl shape used to format the message
+ * @param isAuthenticated Used to determine if a sign in button or sign out will be returned
+ * @param instance the msal instance used for the login / logout redirect
+ * @returns INavLinkGroup[]
+ */
+export function getAccountSideNavigationLinkGroupItems(
+  intl: IntlShape,
+  isAuthenticated: boolean
+): INavLinkGroup[] {
+  const { formatMessage } = intl;
+  if (isAuthenticated) {
+    return [
+      {
+        links: [
+          {
+            name: formatMessage(messages.overview),
+            url: pagePaths.overview,
+            key: ''
+          },
+          {
+            name: formatMessage(messages.orders),
+            url: pagePaths.orders
+          },
+          {
+            name: formatMessage(messages.quoteRequests),
+            url: pagePaths.quoteRequests
+          },
+          {
+            name: formatMessage(messages.infoAndPreferences),
+            url: pagePaths.infoAndPreferences
+          }
+        ]
+      }
+    ];
+  }
+
+  return [
+    {
+      links: [
+        {
+          name: formatMessage(messages.overview),
+          url: pagePaths.overview
+        }
+      ]
     }
   ];
 }

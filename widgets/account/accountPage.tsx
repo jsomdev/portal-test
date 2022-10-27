@@ -23,7 +23,7 @@ import { TabletAndDesktop } from '@widgets/media-queries';
 import Page from '@widgets/page/page';
 import { LocalePaths } from '@widgets/page/page.types';
 
-import { AccountNavigation } from './accountNavigation';
+import { AccountSideNavigation } from './accountSideNavigation';
 
 interface AccountPageProps {
   title: string;
@@ -103,18 +103,16 @@ export const AccountPage: React.FC<AccountPageProps> = ({
               >
                 <TabletAndDesktop>
                   {className => (
-                    <Stack.Item
+                    <Stack
                       styles={styles.accountNavigationContainer}
                       className={className}
                     >
-                      <AccountNavigation />
-                    </Stack.Item>
+                      <AccountSideNavigation />
+                    </Stack>
                   )}
                 </TabletAndDesktop>
                 {isAuthenticated && (
-                  <Stack.Item styles={styles.mainContainer}>
-                    {children}
-                  </Stack.Item>
+                  <Stack styles={styles.mainContainer}>{children}</Stack>
                 )}
                 {!isAuthenticated && (
                   <MessageBar

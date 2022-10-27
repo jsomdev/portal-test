@@ -38,7 +38,7 @@ type ISiteSearchBarMessages = {
   placeholder: string;
 };
 
-type IUserNavigationMessages = {
+type IAccountNavigationMessages = {
   title: string;
   expandLabel: string;
   collapseLabel: string;
@@ -185,7 +185,7 @@ type IAccountMessages = {
       title: string;
       viewAllText: string;
     };
-    user: {
+    account: {
       status: {
         manager: string;
         admin: string;
@@ -384,7 +384,7 @@ export type Messages = {
   navigation: {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
-    user: IUserNavigationMessages;
+    account: IAccountNavigationMessages;
     locale: ILocaleMessages;
   };
   searchBar: ISiteSearchBarMessages;

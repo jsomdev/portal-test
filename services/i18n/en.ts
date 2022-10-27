@@ -22,10 +22,10 @@ export const en: Messages = {
       expandLabel: 'navigation.site.expandLabel',
       logoAlt: 'Spraying Systems Company Logo'
     },
-    user: {
+    account: {
       title: 'My Account',
-      collapseLabel: 'navigation.user.collapseLabel',
-      expandLabel: 'navigation.user.expandLabel',
+      collapseLabel: 'navigation.account.collapseLabel',
+      expandLabel: 'navigation.account.expandLabel',
       signIn: 'Sign in',
       myProfile: 'My Profile'
     },
@@ -244,7 +244,7 @@ export const en: Messages = {
           customerHeader: 'Customer number:',
           paymentHeader: 'Payment method:'
         },
-        user: {
+        account: {
           status: {
             manager: 'Manager',
             admin: 'Admin',

@@ -15,6 +15,7 @@ import {
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
+import { rem } from '@utilities/rem';
 
 const messages = defineMessages({
   nameHeader: {
@@ -63,7 +64,8 @@ export const OverviewProfileInfo: React.FC<OverviewProfileInfoProps> = ({
         border: `1px solid ${semanticColors.variantBorder}`,
         padding: spacing.m,
         borderRadius: effects.roundedCorner4,
-        flex: '1 1 0'
+        flex: '1 1 0',
+        minWidth: rem(300)
       }
     },
     headerText: {

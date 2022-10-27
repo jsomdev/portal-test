@@ -12,7 +12,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { AccountPage } from '@widgets/account-page/accountPage';
+import { AccountPage } from '@widgets/account/accountPage';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
