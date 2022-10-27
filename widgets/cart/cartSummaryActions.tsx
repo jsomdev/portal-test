@@ -259,7 +259,7 @@ export const CartSummaryActions: React.FC = () => {
                     allowDisabledFocus
                     onClick={() => setShowCallout(!showCallout)}
                   >
-                    {formatMessage(messages.quotedPriceWarning)} qsdf qsdfqs
+                    {formatMessage(messages.quotedPriceWarning)}
                     dfqsd fq
                   </ActionButton>
                 </Stack>
