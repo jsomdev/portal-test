@@ -31,11 +31,6 @@ const messages = defineMessages({
     description: 'Text to welcome user',
     defaultMessage: 'Welcome default'
   },
-  title: {
-    id: messageIds.pages.account.overview.title,
-    description: 'Account page title',
-    defaultMessage: 'Account Overview default'
-  },
   subTitle: {
     id: messageIds.pages.account.overview.subTitle,
     description: 'Account page sub title',
@@ -98,7 +93,7 @@ export const Overview: React.FC = () => {
   const { isAccountManager, isAdministrator, isEmployee } = claims;
 
   const { data: orders, status: ordersStatus } = useQuery(
-    [QUERYKEYS.orders, isAuthenticated, accountId, isOrderHistoryEnabled],
+    [QUERYKEYS.recentOrders, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
       fetchMyOrders(2, 0, isAuthenticated, isOrderHistoryEnabled, accountId),
     {
@@ -129,44 +124,35 @@ export const Overview: React.FC = () => {
 
   return (
     <Stack tokens={{ childrenGap: spacing.l2 }}>
-      <Stack tokens={{ childrenGap: spacing.l1 }}>
-        <Stack.Item>
-          <Text variant="xLarge" as={'h1'}>
-            {formatMessage(messages.title)}
-          </Text>
-        </Stack.Item>
-        <Stack.Item>
-          <Stack
-            styles={styles.welcomeSection}
-            tokens={{ childrenGap: spacing.s1 }}
-          >
-            <Stack>
-              <Stack.Item>
-                <Text variant="large">
-                  {formatMessage(messages.welcome, {
-                    name
-                  })}
-                </Text>
-              </Stack.Item>
-            </Stack>
-            <Stack tokens={{ childrenGap: spacing.l1 }}>
-              <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
-                {isAccountManager && (
-                  <OverviewTag text={formatMessage(messages.accountManager)} />
-                )}
-                {isAdministrator && (
-                  <OverviewTag text={formatMessage(messages.accountAdmin)} />
-                )}
-                {isEmployee && (
-                  <OverviewTag text={formatMessage(messages.accountEmployee)} />
-                )}
-              </Stack>
-              <Stack.Item>
-                <Text variant="medium">{formatMessage(messages.subTitle)}</Text>
-              </Stack.Item>
-            </Stack>
+      <Stack
+        styles={styles.welcomeSection}
+        tokens={{ childrenGap: spacing.s1 }}
+      >
+        <Stack>
+          <Stack.Item>
+            <Text variant="large">
+              {formatMessage(messages.welcome, {
+                name
+              })}
+            </Text>
+          </Stack.Item>
+        </Stack>
+        <Stack tokens={{ childrenGap: spacing.l1 }}>
+          <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
+            {isAccountManager && (
+              <OverviewTag text={formatMessage(messages.accountManager)} />
+            )}
+            {isAdministrator && (
+              <OverviewTag text={formatMessage(messages.accountAdmin)} />
+            )}
+            {isEmployee && (
+              <OverviewTag text={formatMessage(messages.accountEmployee)} />
+            )}
           </Stack>
-        </Stack.Item>
+          <Stack.Item>
+            <Text variant="medium">{formatMessage(messages.subTitle)}</Text>
+          </Stack.Item>
+        </Stack>
       </Stack>
       {ordersStatus === 'success' && orders?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>

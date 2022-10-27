@@ -33,7 +33,8 @@ const Orders: NextPage<
     <AccountPage
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
-      title={formatMessage(messages.title)}
+      metaTitle={formatMessage(messages.title)}
+      pageTitle={formatMessage(messages.title)}
       localePaths={getLocalePaths('account/orders')}
     >
       <OrdersOverview />

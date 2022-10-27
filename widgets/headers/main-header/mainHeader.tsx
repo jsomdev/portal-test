@@ -228,7 +228,7 @@ const DesktopMainHeader: React.FC = () => {
               }}
               // TODO temporary functionality until the desktop 'user menu' is implemented
               onClick={() =>
-                isAuthenticated ? push(pagePaths.overview) : signIn()
+                isAuthenticated ? push(pagePaths.accountOverview) : signIn()
               }
             />
           )}

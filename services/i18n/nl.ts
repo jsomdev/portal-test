@@ -278,12 +278,15 @@ export const nl: Messages = {
             profileInformation: {
               title: 'Profiel Informatie',
               description:
-                'Wijzig uw inloggegevens of persoonlijke gegevens, zoals uw telefoonnummer.'
+                'Wijzig uw inloggegevens of persoonlijke gegevens, zoals uw telefoonnummer.',
+              viewInfoLink: 'Persoonlijke info bekijken',
+              changePasswordLink: 'Verander wachtwoord'
             },
             addressBook: {
               title: 'Adresboek',
               description:
-                'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.'
+                'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.',
+              viewAddressBookLink: 'Adresboek bekijken'
             },
             companyInformation: {
               title: 'Bedrijf Informatie',
@@ -293,7 +296,9 @@ export const nl: Messages = {
             preferences: {
               title: 'Voorkeuren',
               description:
-                'Zoek en beheer uw voorkeuren. Kies uw applicatie-instellingen en privacy-instellingen.'
+                'Zoek en beheer uw voorkeuren. Kies uw applicatie-instellingen en privacy-instellingen.',
+              privacySettingsLink: 'Privacy instellingen',
+              settingsLink: 'Meetinstellingen'
             }
           }
         }

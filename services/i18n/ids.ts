@@ -255,13 +255,19 @@ export const messageIds: Messages = {
               title:
                 'pages.account.sections.infoAndPreferences.sections.profileInformation.title',
               description:
-                'pages.account.sections.infoAndPreferences.sections.profileInformation.description'
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.description',
+              changePasswordLink:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.changePasswordLink',
+              viewInfoLink:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.viewInfoLink'
             },
             addressBook: {
               title:
                 'pages.account.sections.infoAndPreferences.sections.addressBook.title',
               description:
-                'pages.account.sections.infoAndPreferences.sections.addressBook.description'
+                'pages.account.sections.infoAndPreferences.sections.addressBook.description',
+              viewAddressBookLink:
+                'pages.account.sections.infoAndPreferences.sections.addressBook.viewAddressBookLink'
             },
             companyInformation: {
               title:
@@ -273,7 +279,11 @@ export const messageIds: Messages = {
               title:
                 'pages.account.sections.infoAndPreferences.sections.preferences.title',
               description:
-                'pages.account.sections.infoAndPreferences.sections.preferences.description'
+                'pages.account.sections.infoAndPreferences.sections.preferences.description',
+              privacySettingsLink:
+                'pages.account.sections.infoAndPreferences.sections.preferences.privacySettingsLink',
+              settingsLink:
+                'pages.account.sections.infoAndPreferences.sections.preferences.settingsLink'
             }
           }
         }

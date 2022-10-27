@@ -91,7 +91,7 @@ export function getAppNavigationAccountMenuItems(
   if (me) {
     return [
       {
-        href: pagePaths.overview,
+        href: pagePaths.accountOverview,
         text: formatMessage(messages.accountPage),
         id: 'main-menu-account'
       }
@@ -125,7 +125,7 @@ export function getAccountNavigationMenuItems(
   if (me) {
     return [
       {
-        href: pagePaths.overview,
+        href: pagePaths.accountOverview,
         text: formatMessage(messages.overview),
         id: 'account'
       },
@@ -182,8 +182,7 @@ export function getAccountSideNavigationLinkGroupItems(
         links: [
           {
             name: formatMessage(messages.overview),
-            url: pagePaths.overview,
-            key: ''
+            url: pagePaths.accountOverview
           },
           {
             name: formatMessage(messages.orders),
@@ -207,7 +206,7 @@ export function getAccountSideNavigationLinkGroupItems(
       links: [
         {
           name: formatMessage(messages.overview),
-          url: pagePaths.overview
+          url: pagePaths.accountOverview
         }
       ]
     }

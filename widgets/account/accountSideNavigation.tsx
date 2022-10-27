@@ -19,6 +19,7 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 
 import { getAccountSideNavigationLinkGroupItems } from './accountNavigationMenu.helper';
@@ -55,6 +56,13 @@ export const AccountSideNavigation: React.FC = () => {
 
   function getActiveClassName(path: string): string {
     if (router.pathname === path) {
+      return 'active-link';
+    }
+    // set active state for info and preferences link
+    if (
+      path.includes(pagePaths.infoAndPreferences) &&
+      router.pathname.includes(pagePaths.infoAndPreferences)
+    ) {
       return 'active-link';
     }
     return '';

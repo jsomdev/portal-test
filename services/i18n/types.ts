@@ -227,10 +227,13 @@ type IAccountMessages = {
         profileInformation: {
           title: string;
           description: string;
+          viewInfoLink: string;
+          changePasswordLink: string;
         };
         addressBook: {
           title: string;
           description: string;
+          viewAddressBookLink: string;
         };
         companyInformation: {
           title: string;
@@ -239,6 +242,8 @@ type IAccountMessages = {
         preferences: {
           title: string;
           description: string;
+          privacySettingsLink: string;
+          settingsLink: string;
         };
       };
     };

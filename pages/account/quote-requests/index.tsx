@@ -32,11 +32,10 @@ const Account: NextPage<
     <AccountPage
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
-      title={formatMessage(messages.title)}
+      metaTitle={formatMessage(messages.title)}
+      pageTitle={formatMessage(messages.title)}
       localePaths={getLocalePaths('account/quote-requests')}
-    >
-      Quote Requests page
-    </AccountPage>
+    ></AccountPage>
   );
 };
 

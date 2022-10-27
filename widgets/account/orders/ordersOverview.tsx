@@ -16,7 +16,7 @@ export const OrdersOverview: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
   const { isOrderHistoryEnabled } = useMe();
-  //TODO change keys
+
   const { data: orders, status: ordersStatus } = useQuery(
     [QUERYKEYS.orders, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
@@ -28,6 +28,7 @@ export const OrdersOverview: React.FC = () => {
       refetchOnWindowFocus: true
     }
   );
+
   return (
     <Stack>
       {ordersStatus === 'success' && orders?.value.length && (

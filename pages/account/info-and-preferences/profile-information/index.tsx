@@ -13,23 +13,18 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AccountPage } from '@widgets/account/accountPage';
-import { Overview } from '@widgets/account/overview/overview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
   title: {
-    id: messageIds.navigation.account.title,
-    description: 'My acount page title',
-    defaultMessage: 'My Account'
-  },
-  pageTitle: {
-    id: messageIds.pages.account.overview.title,
-    description: 'Account page title',
-    defaultMessage: 'Account Overview default'
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.title,
+    description: 'Profile information page title',
+    defaultMessage: 'Profile information'
   }
 });
 
-const Account: NextPage<
+const ProfileInformation: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -39,11 +34,11 @@ const Account: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       metaTitle={formatMessage(messages.title)}
-      pageTitle={formatMessage(messages.pageTitle)}
-      localePaths={getLocalePaths('account')}
-    >
-      <Overview />
-    </AccountPage>
+      pageTitle={formatMessage(messages.title)}
+      localePaths={getLocalePaths(
+        'account/info-and-preferences/profile-information'
+      )}
+    ></AccountPage>
   );
 };
 
@@ -68,4 +63,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Account;
+export default ProfileInformation;
