@@ -3,9 +3,9 @@ import {
   IShimmerStyles,
   IStackItemStyles,
   IStackStyles,
-  ITextStyles,
+  ITextStyles
 } from '@fluentui/react';
-import { CartItem } from '../../../providers/cart/cartContext';
+import { CartItem } from '@providers/cart/cartContext';
 
 export interface CheckoutSummaryStyles {
   submitButton: IButtonStyles;

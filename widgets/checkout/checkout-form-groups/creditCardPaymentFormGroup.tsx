@@ -37,7 +37,7 @@ export const CreditCardPaymentFormGroup: React.FC<{
     } else {
       setCreditCardIssuer('');
     }
-  }, [values.creditCardNumber]);
+  }, [setCreditCardIssuer, values.creditCardNumber]);
 
   const styles: IStackStyles = {
     root: {

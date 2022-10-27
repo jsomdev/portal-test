@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useIntl } from 'react-intl';
 
-import { FontWeights, ImageFit, Stack, Text, useTheme } from '@fluentui/react';
+import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { CartItem } from '@providers/cart/cartContext';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { STATIC_IMAGES } from '@public/media/images';

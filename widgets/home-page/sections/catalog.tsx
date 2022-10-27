@@ -9,7 +9,6 @@ import {
   IButtonStyles,
   IStackStyles,
   ITextStyles,
-  LinkBase,
   Stack,
   Text,
   useTheme

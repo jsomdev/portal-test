@@ -1,11 +1,14 @@
-import { Stack, Text } from '@fluentui/react';
-import { FormikContextType, useFormikContext } from 'formik';
 import React from 'react';
+
+import { FormikContextType, useFormikContext } from 'formik';
+
+import { Stack, Text } from '@fluentui/react';
+
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';
 import { CheckoutFormOverviewGroupContainer } from '../shared/checkoutFormOverviewGroupContainer';
 
 const messages = {
-  email: 'Email',
+  email: 'Email'
 };
 
 export const CheckoutFormOverviewEmail: React.FC = () => {

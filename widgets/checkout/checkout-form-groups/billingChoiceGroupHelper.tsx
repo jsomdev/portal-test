@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IChoiceGroupOption, Stack } from '@fluentui/react';
+import { IChoiceGroupOptionProps } from '@fluentui/react/src/components/ChoiceGroup/ChoiceGroupOption/ChoiceGroupOption.types';
 
 import { ChoiceGroupOptionContainer } from '../shared/choiceGroupOptionWrapper';
 import { BillingAddressFormGroup } from './billingAddressFormGroup';
@@ -13,7 +14,7 @@ export const billingAddressOptions: IChoiceGroupOption[] = [
     key: 'yes',
     text: 'Same as shipping address',
     value: 'yes',
-    onRenderField: (props, render) => {
+    onRenderField: (props, render): JSX.Element => {
       return (
         <Stack>
           <ChoiceGroupOptionContainer props={props}>

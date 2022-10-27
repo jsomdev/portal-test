@@ -1,11 +1,13 @@
-import { FontSizes, Icon, Stack, Text, useTheme } from '@fluentui/react';
 import React from 'react';
+
+import { FontSizes, Icon, Stack, Text, useTheme } from '@fluentui/react';
+
 import { ServiceBadgesStyles } from './serviceUsps.types';
 
 const messages = {
   qualityServices: 'Quality Services',
   secureTransactions: 'Secure Transactions',
-  expertSupport: 'Expert Support',
+  expertSupport: 'Expert Support'
 };
 
 export const ServiceBadges: React.FC = () => {
@@ -13,21 +15,21 @@ export const ServiceBadges: React.FC = () => {
   const styles: ServiceBadgesStyles = {
     iconWrapper: {
       root: {
-        textAlign: 'center',
-      },
+        textAlign: 'center'
+      }
     },
     iconStyles: {
       root: {
         fontSize: '30px',
-        color: palette.neutralSecondary,
-      },
+        color: palette.neutralSecondary
+      }
     },
     iconText: {
       root: {
         color: palette.neutralSecondary,
-        fontSize: FontSizes.size12,
-      },
-    },
+        fontSize: FontSizes.size12
+      }
+    }
   };
   return (
     <Stack horizontal horizontalAlign="space-evenly">
