@@ -2,8 +2,7 @@ import React from 'react';
 
 import { FormatNumberOptions } from 'react-intl';
 
-import { IComboBoxOption, Stack } from '@fluentui/react';
-import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup/ChoiceGroup.types';
+import { IChoiceGroupOption, IComboBoxOption, Stack } from '@fluentui/react';
 import { ShippingMethod } from '@services/portal-api';
 import { ShippingCostAmount } from '@services/portal-api/base/types';
 import { sortShippingOptionsByCostAscending } from '@utilities/sortBy';

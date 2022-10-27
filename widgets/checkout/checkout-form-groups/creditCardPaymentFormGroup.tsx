@@ -6,13 +6,13 @@ import { FormikContextType, useFormikContext } from 'formik';
 import { FormikMaskedTextField } from '@components/formik-wrappers/formikMaskedTextField';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
+  IChoiceGroupOption,
   IChoiceGroupOptionProps,
   IRenderFunction,
   IStackStyles,
   Stack,
   useTheme
 } from '@fluentui/react';
-import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup/ChoiceGroup.types';
 import { PaymentIcons } from '@widgets/payment-icons/paymentIcons';
 
 import { CheckoutFormValues } from '../checkout-form/checkoutForm.types';

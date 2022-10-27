@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { IChoiceGroupOption, Stack } from '@fluentui/react';
-import { IChoiceGroupOptionProps } from '@fluentui/react/src/components/ChoiceGroup/ChoiceGroupOption/ChoiceGroupOption.types';
 
 import { ChoiceGroupOptionContainer } from '../shared/choiceGroupOptionWrapper';
 import { BillingAddressFormGroup } from './billingAddressFormGroup';

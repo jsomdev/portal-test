@@ -2,6 +2,7 @@ import React from 'react';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
+  IChoiceGroupOption,
   IChoiceGroupOptionProps,
   IRenderFunction,
   IStackStyles,
@@ -11,7 +12,6 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import { IChoiceGroupOption } from '@fluentui/react/lib/components/ChoiceGroup/ChoiceGroup.types';
 
 import { checkoutFormFields } from '../checkout-form/checkoutFormHelper';
 
