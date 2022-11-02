@@ -65,13 +65,17 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         selectedKey={getKey?.(input.value, props.options)}
         errorMessage={meta.touched && meta.error ? meta.error : undefined}
         onChange={(e, option) => {
-          setFieldValue(name, option?.key, true);
+          if (props.onChange) {
+            props.onChange(e, option);
+          }
+          if (option) {
+            setFieldValue(name, option?.key, true);
+          }
         }}
         styles={mergedStyles}
         onBlur={() => {
           setFieldTouched(name, true, false);
         }}
-        //autofill={{ name: input.name } as any}
       />
     </Stack>
   );
