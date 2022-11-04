@@ -35,7 +35,7 @@ export const ShippingAddressFormGroup: React.FC<{
     'country' | 'address' | 'city' | 'state' | 'zipCode'
   >;
 }> = ({ title, fields }) => {
-  const { values, setFieldValue }: FormikContextType<Step1> =
+  const { values, setFieldValue, setFieldTouched }: FormikContextType<Step1> =
     useFormikContext();
 
   const { spacing } = useTheme();
@@ -64,18 +64,31 @@ export const ShippingAddressFormGroup: React.FC<{
     value: string,
     options: IDropdownOption[]
   ): string | undefined {
-    return options.find(option => option.key === value)?.key.toString();
+    const selectedKey = options
+      .find(option => option.key === value)
+      ?.key.toString();
+    return selectedKey;
   }
 
   const onCountryChange = useCallback(
-    (event: React.FormEvent<IComboBox>, option?: IComboBoxOption) => {
+    async (event: React.FormEvent<IComboBox>, option?: IComboBoxOption) => {
       if (!option || option.key !== values.country) {
-        setFieldValue(fields.state.name, '');
+        const setFieldsPromise = Promise.all([
+          setFieldValue('address', '', true),
+          setFieldValue('city', '', true),
+          setFieldValue('zipCode', '', true),
+          setFieldValue('state', '', true)
+        ]);
+        setFieldsPromise.then(result => {
+          result.forEach((field: any) => {
+            setFieldTouched(Object.keys(field)[0], false);
+          });
+        });
       }
     },
     [fields.state.name, setFieldValue, values.country]
   );
-
+  //TODO when switching US and Canada, clear selected state
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
       <Stack.Item>

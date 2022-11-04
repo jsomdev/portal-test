@@ -69,7 +69,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
             props.onChange(e, option);
           }
           if (option) {
-            setFieldValue(name, option?.key, true);
+            setFieldValue(name, option?.key || '', true);
           }
         }}
         styles={mergedStyles}

@@ -37,14 +37,14 @@ export const FormikTextField: React.FC<FormikTextFieldProps> = ({
     iconName: 'checkmark',
     styles: { root: { color: palette.green } }
   };
-
+  const error = meta.touched && meta.error ? meta.error : undefined;
   return (
     <TextField
       {...input}
       {...props}
       name={name}
       value={input.value}
-      errorMessage={meta.touched && meta.error ? meta.error : undefined}
+      errorMessage={error}
       styles={mergedStyles}
       iconProps={
         meta.touched && !meta.error && !validationProps?.disabled

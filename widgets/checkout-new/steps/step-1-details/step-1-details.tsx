@@ -152,37 +152,35 @@ export const Step1Details: React.FC<{ values: Step1 }> = ({ values }) => {
   const { shippingAddress } = useContext(AddressBookContext);
   const { me } = useMe();
 
-  const prefilledValues = useMemo(() => {
+  const defaultAndPrefilledValues = useMemo(() => {
     const address: PostalAddress =
       getValidPostalAddressFromUserAddress(shippingAddress);
 
     const step1: Partial<Step1> = {
       address: (address.lines?.[0] || '').trim(),
       city: (address.city || '').trim(),
-      country: address.country || '',
-      state: address.region || '',
-      zipCode: address.postalCode || '',
+      country: (address.country || '').trim(),
+      state: (address.region || '').trim(),
+      zipCode: (address.postalCode || '').trim(),
       firstName: (me?.contactInfo?.firstName || '').trim(),
       name: (me?.contactInfo?.lastName || '').trim(),
-      phone: me?.contactInfo?.phoneNumber || '',
-      email: me?.contactInfo?.emailAddresses?.[0] || '',
+      phone: (me?.contactInfo?.phoneNumber || '').trim(),
+      email: (me?.contactInfo?.emailAddresses?.[0] || '').trim(),
       company: (me?.account?.name || '').trim()
     };
-    return step1;
+    return { ...values, ...step1 };
   }, [me, shippingAddress]);
 
-  const initialValues = { ...values, ...prefilledValues };
-
   const initialTouched: FormikTouched<Step1> = useMemo(() => {
-    return getTouchedFields(initialValues);
-  }, [initialValues]);
+    return getTouchedFields(defaultAndPrefilledValues);
+  }, [defaultAndPrefilledValues]);
 
   return (
     <Formik<Step1>
-      initialValues={initialValues}
+      initialValues={defaultAndPrefilledValues}
       initialTouched={initialTouched}
+      validationSchema={validation}
       enableReinitialize={true}
-      validationSchema={checkoutFormValidation}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(false);
         //onFormSubmit(values);
@@ -191,7 +189,7 @@ export const Step1Details: React.FC<{ values: Step1 }> = ({ values }) => {
       <Form>
         <Stack tokens={{ childrenGap: spacing.l1 }}>
           <Stack.Item>
-            <OrderContactFormGroup email={fields.email} />
+            <OrderContactFormGroup fields={fields} />
           </Stack.Item>
           <Stack.Item>
             <ShippingContactFormGroup fields={fields} />

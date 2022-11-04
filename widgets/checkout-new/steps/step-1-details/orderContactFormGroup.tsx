@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
-import { FormikTextFieldProps } from '@components/formik-wrappers/formikWrappers.types';
 import { Stack, useTheme } from '@fluentui/react';
+import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { Step1 } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
@@ -11,8 +12,8 @@ const messages = {
 };
 
 export const OrderContactFormGroup: React.FC<{
-  email: FormikTextFieldProps;
-}> = ({ email }) => {
+  fields: Pick<StepFields<Step1>, 'email'>;
+}> = ({ fields }) => {
   const { spacing } = useTheme();
 
   return (
@@ -23,7 +24,7 @@ export const OrderContactFormGroup: React.FC<{
       <Stack.Item>
         <Stack>
           <CheckoutFormRowContainer>
-            <FormikTextField {...email} required={true} />
+            <FormikTextField {...fields.email} required={true} />
           </CheckoutFormRowContainer>
         </Stack>
       </Stack.Item>
