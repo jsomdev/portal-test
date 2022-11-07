@@ -1,10 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormikContextType, useFormikContext } from 'formik';
 
 import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
-import { IDropdownOption, Stack, useTheme } from '@fluentui/react';
+import {
+  IComboBox,
+  IComboBoxOption,
+  IDropdownOption,
+  Stack,
+  useTheme
+} from '@fluentui/react';
 import {
   allCountryOptions,
   supportedProvinceOptions,
@@ -26,7 +32,11 @@ const messages = {
 export const ShippingAddressFormGroup: React.FC<{
   title?: string;
 }> = ({ title }) => {
-  const { values }: FormikContextType<CheckoutFormValues> = useFormikContext();
+  const {
+    values,
+    setFieldValue,
+    setFieldTouched
+  }: FormikContextType<CheckoutFormValues> = useFormikContext();
 
   const { spacing } = useTheme();
 
@@ -57,6 +67,25 @@ export const ShippingAddressFormGroup: React.FC<{
     return options.find(option => option.key === value)?.key.toString();
   }
 
+  const onCountryChange = useCallback(
+    async (event: React.FormEvent<IComboBox>, option?: IComboBoxOption) => {
+      if (!option || option.key !== values.country) {
+        const setFieldsPromise = Promise.all([
+          setFieldValue('address', '', true),
+          setFieldValue('city', '', true),
+          setFieldValue('zipCode', '', true),
+          setFieldValue('state', '', true)
+        ]);
+        setFieldsPromise.then(result => {
+          result.forEach((field: any) => {
+            setFieldTouched(Object.keys(field)[0], false);
+          });
+        });
+      }
+    },
+    [setFieldTouched, setFieldValue, values.country]
+  );
+
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
       <Stack.Item>
@@ -72,6 +101,7 @@ export const ShippingAddressFormGroup: React.FC<{
               required={true}
               defaultSelectedKey={undefined}
               useComboBoxAsMenuWidth
+              onChange={onCountryChange}
             />
           </CheckoutFormRowContainer>
           <CheckoutFormRowContainer>

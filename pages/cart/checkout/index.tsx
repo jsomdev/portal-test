@@ -16,6 +16,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import CheckoutNew from '@widgets/checkout-new/checkout';
+import Checkout from '@widgets/checkout/checkout';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
@@ -49,7 +50,7 @@ const CheckoutPage: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
-          <CheckoutNew />
+          <Checkout />
         </AppLayout>
       </GlobalDataProvider>
     </Page>
