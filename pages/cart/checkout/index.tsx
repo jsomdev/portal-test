@@ -50,7 +50,7 @@ const CheckoutPage: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
-          <Checkout />
+          <CheckoutNew />
         </AppLayout>
       </GlobalDataProvider>
     </Page>

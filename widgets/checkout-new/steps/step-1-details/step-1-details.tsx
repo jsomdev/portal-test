@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { Form, Formik, FormikTouched } from 'formik';
+import { Form, Formik, FormikProps, FormikTouched } from 'formik';
 import * as yup from 'yup';
 import { InferType } from 'yup';
 
@@ -22,7 +22,6 @@ import {
   checkoutFormFields,
   regionValidationTest
 } from '@widgets/checkout/checkout-form/checkoutFormHelper';
-import { checkoutFormValidation } from '@widgets/checkout/checkout-form/checkoutFormValidation';
 import {
   formErrorMessages,
   formRequiredMessages
@@ -85,11 +84,11 @@ const validation = yup.object({
     .required(formRequiredMessages.phone)
 });
 
-export type Step1 = InferType<typeof validation>;
+export type Step1FormData = InferType<typeof validation>;
 
-const defaultValues: Step1 = {
-  name: 'Werbrouck',
-  firstName: 'Ward',
+const defaultValues: Step1FormData = {
+  name: '',
+  firstName: '',
   company: '',
   country: 'US',
   address: '',
@@ -101,9 +100,13 @@ const defaultValues: Step1 = {
   email: ''
 };
 
-export const Step1Details: React.FC<{ values: Step1 }> = ({ values }) => {
+export const Step1Details: React.FC<{
+  values: Step1FormData;
+  //bindSubmitForm: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
+  formRef: React.RefObject<FormikProps<Step1FormData>> | undefined;
+}> = ({ values, formRef }) => {
   const { spacing } = useTheme();
-  const fields: StepFields<Step1> = {
+  const fields: StepFields<Step1FormData> = {
     email: {
       label: 'Email',
       placeholder: 'example@domain.com',
@@ -156,27 +159,30 @@ export const Step1Details: React.FC<{ values: Step1 }> = ({ values }) => {
     const address: PostalAddress =
       getValidPostalAddressFromUserAddress(shippingAddress);
 
-    const step1: Partial<Step1> = {
-      address: (address.lines?.[0] || '').trim(),
-      city: (address.city || '').trim(),
-      country: (address.country || '').trim(),
-      state: (address.region || '').trim(),
-      zipCode: (address.postalCode || '').trim(),
-      firstName: (me?.contactInfo?.firstName || '').trim(),
-      name: (me?.contactInfo?.lastName || '').trim(),
-      phone: (me?.contactInfo?.phoneNumber || '').trim(),
-      email: (me?.contactInfo?.emailAddresses?.[0] || '').trim(),
-      company: (me?.account?.name || '').trim()
+    //fill in the form with the user's address if it exists, but don't overwrite any existing form values
+    const step1: Partial<Step1FormData> = {
+      address: values.address || (address.lines?.[0] || '').trim(),
+      city: values.city || (address.city || '').trim(),
+      country: values.country || (address.country || '').trim(),
+      state: values.state || (address.region || '').trim(),
+      zipCode: values.zipCode || (address.postalCode || '').trim(),
+      firstName: values.firstName || (me?.contactInfo?.firstName || '').trim(),
+      name: values.name || (me?.contactInfo?.lastName || '').trim(),
+      phone: values.phone || (me?.contactInfo?.phoneNumber || '').trim(),
+      email:
+        values.email || (me?.contactInfo?.emailAddresses?.[0] || '').trim(),
+      company: values.company || (me?.account?.name || '').trim()
     };
     return { ...values, ...step1 };
-  }, [me, shippingAddress]);
+  }, [me, shippingAddress, values]);
 
-  const initialTouched: FormikTouched<Step1> = useMemo(() => {
+  const initialTouched: FormikTouched<Step1FormData> = useMemo(() => {
     return getTouchedFields(defaultAndPrefilledValues);
   }, [defaultAndPrefilledValues]);
 
   return (
-    <Formik<Step1>
+    <Formik<Step1FormData>
+      innerRef={formRef}
       initialValues={defaultAndPrefilledValues}
       initialTouched={initialTouched}
       validationSchema={validation}

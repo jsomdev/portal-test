@@ -17,7 +17,7 @@ import {
   supportedStateOptions
 } from '@utilities/places';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
-import { Step1 } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
+import { Step1FormData } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
@@ -31,12 +31,15 @@ const messages = {
 export const ShippingAddressFormGroup: React.FC<{
   title?: string;
   fields: Pick<
-    StepFields<Step1>,
+    StepFields<Step1FormData>,
     'country' | 'address' | 'city' | 'state' | 'zipCode'
   >;
 }> = ({ title, fields }) => {
-  const { values, setFieldValue, setFieldTouched }: FormikContextType<Step1> =
-    useFormikContext();
+  const {
+    values,
+    setFieldValue,
+    setFieldTouched
+  }: FormikContextType<Step1FormData> = useFormikContext();
 
   const { spacing } = useTheme();
 

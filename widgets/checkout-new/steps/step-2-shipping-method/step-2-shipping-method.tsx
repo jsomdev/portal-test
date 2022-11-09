@@ -19,13 +19,13 @@ const validation = yup.object({
   shippingMethod: yup.mixed<ShippingMethod>().required()
 });
 
-export type Step2 = Partial<InferType<typeof validation>>;
+export type Step2FormData = Partial<InferType<typeof validation>>;
 
-const defaultValues: Step2 = {
+const defaultValues: Step2FormData = {
   shippingMethod: undefined
 };
 
-const step2ShippingMethodFields: StepFields<Step2> = {
+const step2ShippingMethodFields: StepFields<Step2FormData> = {
   shippingMethod: {
     name: 'shippingMethod',
     label: 'Shipping method',
@@ -33,7 +33,7 @@ const step2ShippingMethodFields: StepFields<Step2> = {
   }
 };
 
-export const Step2ShippingMethod: React.FC<{ values: Step2 }> = () => {
+export const Step2ShippingMethod: React.FC<{ values: Step2FormData }> = () => {
   return <div>Step 2 Content</div>;
 };
 

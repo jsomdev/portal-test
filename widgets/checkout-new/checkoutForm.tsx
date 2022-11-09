@@ -1,47 +1,21 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 
+import { FormikProps } from 'formik';
 import { useRouter } from 'next/router';
 
-import { Stepper } from '@components/stepper/stepper';
-import { Step, useStepper } from '@components/stepper/stepperContext';
-import { Steps } from '@components/stepper/steps';
-import { AddressBookContext } from '@providers/address-book/addressBookContext';
-import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
-import { useMe } from '@providers/user/userContext';
-import { PostalAddress } from '@services/portal-api';
+import { Stack, getTheme } from '@fluentui/react';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
-import step1, {
-  Step1
-} from '@widgets/checkout-new/steps/step-1-details/step-1-details';
-import step2, {
-  Step2
-} from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
-import { CheckoutDetailsFormValues } from '@widgets/checkout/checkout-form/checkoutForm.types';
+import { CheckoutActions } from '@widgets/checkout-new/checkoutActions';
+import { Steps } from '@widgets/checkout-new/stepper/steps';
+import useStepper, {
+  StepModel
+} from '@widgets/checkout-new/stepper/useStepper';
+import step1 from '@widgets/checkout-new/steps/step-1-details/step-1-details';
+import step2 from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
-import { CheckoutFormFooterStepActions } from '@widgets/forms/checkoutFormFooterStepActions';
-
-export const StepContent: React.FC<{
-  children: (currentIndex: number) => React.ReactNode;
-}> = ({ children }) => {
-  const { currentIndex } = useStepper();
-  return <React.Fragment>{children(currentIndex)}</React.Fragment>;
-};
-
-export const FormActions: React.FC<{
-  children: (onProceed: () => void, onPrevious: () => void) => React.ReactNode;
-}> = ({ children }) => {
-  const { next, previous } = useStepper();
-  const onProceed = () => {
-    next();
-  };
-  const onPrevious = () => {
-    previous();
-  };
-  return <React.Fragment>{children(onProceed, onPrevious)}</React.Fragment>;
-};
 
 const steps = {
   [step1.key]: {
@@ -61,69 +35,91 @@ const defaultValues = {
 
 type CheckoutFormValues = typeof defaultValues;
 
+const getCurrentStep = (currentIndex: number) => {
+  const stepValues = Object.values(steps);
+  return stepValues.find(step => {
+    return step.index == currentIndex;
+  });
+};
+
 const CheckoutFormNew: React.FC = () => {
+  const formRef = useRef<FormikProps<any>>(null);
+  const { spacing } = getTheme();
+
   const { push } = useRouter();
 
   const { orderTaxAmountStatus } = useContext(CheckoutFormContext);
 
-  const [formValues] = useState<CheckoutFormValues>(defaultValues);
+  const [formValues, setFormValues] =
+    useState<CheckoutFormValues>(defaultValues);
 
-  const stepperSteps: Step[] = [
+  const stepperSteps: StepModel[] = [
     {
       label: 'Details',
-      iconProps: { iconName: 'ContactInfo' },
-      isValid: steps[step1.key].validation.isValidSync(formValues.step1)
+      iconProps: { iconName: 'ContactInfo' }
+      //isValid: steps[step1.key].validation.isValidSync(formValues.step1)
     },
     {
       label: 'Shipping Method',
-      iconProps: { iconName: 'Product' },
-      isValid: steps[step2.key].validation.isValidSync(formValues.step2)
+      iconProps: { iconName: 'Product' }
+      //isValid: steps[step2.key].validation.isValidSync(formValues.step2)
     }
   ];
+
+  const stepper = useStepper({
+    steps: stepperSteps,
+    initialIndex: 0,
+    onExit: () => push(pagePaths.cart)
+  });
+
+  const currentStep = getCurrentStep(stepper.currentIndex);
+
   return (
-    <div>
-      <Stepper
-        onUnload={() => push(pagePaths.cart)}
+    <Stack tokens={{ childrenGap: spacing.l1 }}>
+      <Steps
+        currentIndex={stepper.currentIndex}
         steps={stepperSteps}
-        initialIndex={0}
-      >
-        <Steps />
-        <StepContent>
-          {currentIndex => {
-            //TODO refactor and memoize
-            const stepValues = Object.values(steps);
-            const step = stepValues.find(step => {
-              return step.index == currentIndex;
-            });
-            if (!step) {
-              return (
-                <Environment target={ClientEnvironment.Develop}>
-                  Step is missing Component in default export
-                </Environment>
-              );
+        navigateToStep={stepper.navigateToStep}
+      />
+      {!currentStep ? (
+        <Environment target={ClientEnvironment.Develop}>
+          Step is missing Component in default export
+        </Environment>
+      ) : (
+        <currentStep.Component
+          key={currentStep.key}
+          formRef={formRef}
+          values={formValues[currentStep.key] as any}
+        />
+      )}
+
+      <CheckoutActions
+        isLastStep={stepper.currentIndex === stepperSteps.length - 1}
+        onProceedClick={async () => {
+          console.log('currentStep', currentStep);
+          if (formRef.current && currentStep) {
+            await formRef.current.validateForm();
+            const isValid = formRef.current.isValid;
+
+            if (isValid) {
+              setFormValues({
+                ...formValues,
+                [currentStep.key]: formRef.current.values
+              });
+              stepper.next();
+              scrollToTop('body');
+            } else {
+              formRef.current.submitForm();
             }
-            const Component = step.Component;
-            const values = formValues[step.key] as any;
-            return <Component values={values} />;
-          }}
-        </StepContent>
-        <FormActions>
-          {(onProceed, onPrevious) => (
-            <CheckoutFormFooterStepActions
-              onProceedClick={() => {
-                onProceed();
-                scrollToTop('body');
-              }}
-              onPreviousClick={() => {
-                onPrevious();
-                scrollToTop('body');
-              }}
-              disableSubmit={orderTaxAmountStatus === 'loading'}
-            />
-          )}
-        </FormActions>
-      </Stepper>
-    </div>
+          }
+        }}
+        onPreviousClick={() => {
+          stepper.previous();
+          scrollToTop('body');
+        }}
+        disableSubmit={orderTaxAmountStatus === 'loading'}
+      />
+    </Stack>
   );
 };
 
