@@ -58,14 +58,12 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
       list: {
         padding: 0
       },
-      listItem: {
+      item: {
         selectors: {
-          '.ms-Breadcrumb-itemLink:last-child': {
+          ':last-child.ms-Breadcrumb-item': {
+            fontSize: fonts.medium.fontSize,
             fontWeight: FontWeights.regular,
-            textDecoration: 'none',
-            // Instead of adding complicated logic to remove the onClick
-            // from the last breadcrumb I decided to remove the pointer events.
-            pointerEvents: 'none'
+            padding: 0
           }
         }
       },
@@ -75,6 +73,7 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
         // since it's not meant to be changed
         paddingRight: 8
       },
+
       itemLink: {
         fontSize: fonts.medium.fontSize,
         color: '#3F6074',

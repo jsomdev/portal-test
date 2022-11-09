@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { STATIC_IMAGES } from '@public/media/images';
 import CartItemPrices from '@widgets/cart-list/cartItemPrices';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
@@ -35,7 +36,10 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   return (
     <ProductCard>
       <Stack.Item>
-        <ProductCardImage {...item.product} />
+        <ProductCardImage
+          {...item.product}
+          fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
+        />
       </Stack.Item>
       <Stack verticalAlign="space-between" styles={styles.leftContainer}>
         <Stack tokens={{ childrenGap: spacing.m }}>

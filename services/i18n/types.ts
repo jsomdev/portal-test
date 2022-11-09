@@ -355,6 +355,10 @@ type ICartMessages = {
   continueShopping: string;
 };
 
+type ICheckoutMessages = {
+  title: string;
+};
+
 type IProductMessages = {
   imageDisclaimer: string;
   sections: {
@@ -415,6 +419,7 @@ export type Messages = {
     };
     account: IAccountMessages;
     cart: ICartMessages;
+    checkout: ICheckoutMessages;
   };
   summary: {
     details: string;

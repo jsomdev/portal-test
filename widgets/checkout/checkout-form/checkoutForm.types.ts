@@ -1,9 +1,8 @@
 import { IStackItemStyles } from '@fluentui/react';
 import { ShippingMethod } from '@services/portal-api';
+import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 
-import { PaymentMethodFieldNames } from './checkoutFormHelper';
-
-export interface CheckoutFormValues {
+export interface CheckoutDetailsFormValues {
   email: string;
   firstName: string;
   lastName: string;
@@ -15,6 +14,13 @@ export interface CheckoutFormValues {
   state: string;
   zipCode: string;
   phone: string;
+}
+
+export interface CheckoutShippingMethodFormValues {
+  shippingMethod: ShippingMethod | undefined;
+}
+
+export interface CheckoutPaymentMethodFormValues {
   billingFirstName: string;
   billingLastName: string;
   billingCompany: string;
@@ -25,21 +31,28 @@ export interface CheckoutFormValues {
   billingState: string;
   billingZipCode: string;
   billingPhone: string;
-  shippingMethod: ShippingMethod | undefined;
   shippingAddressAsBillingAddress: 'yes' | 'no';
   shippingContactAsBillingContact: 'yes' | 'no';
   paymentMethod:
-    | PaymentMethodFieldNames.CREDIT_CARD
-    | PaymentMethodFieldNames.PURCHASE_ORDER
+    | PaymentMethod.CREDIT_CARD
+    | PaymentMethod.PURCHASE_ORDER
     | undefined;
   referenceNumber: string;
-  additionalInformation: string;
   creditCardNumber: string;
   creditCardName: string;
   creditCardCVV: string;
   creditCardExpiration: string;
-  acceptedTerms: boolean;
 }
+
+export interface CheckoutOverviewFormValues {
+  acceptedTerms: boolean;
+  additionalInformation: string;
+}
+
+export type CheckoutFormValues = CheckoutDetailsFormValues &
+  CheckoutShippingMethodFormValues &
+  CheckoutPaymentMethodFormValues &
+  CheckoutOverviewFormValues;
 
 export interface CheckoutFormField {
   label: string;

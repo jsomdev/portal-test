@@ -1,4 +1,6 @@
 import { Step } from '@components/stepper/stepperContext';
+import { IDropdownOption } from '@fluentui/react';
+import { ShippingMethod } from '@services/portal-api';
 
 import { CheckoutFormFields, CheckoutFormValues } from './checkoutForm.types';
 
@@ -38,7 +40,17 @@ export function getCheckoutFieldNames(
   return fieldNames;
 }
 
-// TODO: i18n
+export function regionValidationTest(
+  value: string | undefined,
+  options: IDropdownOption[]
+): boolean {
+  const valueIsValid = options.find(region => region.key === value);
+  if (valueIsValid) {
+    return true;
+  }
+  return false;
+}
+
 export const checkoutFormStepLabels: Step[] = [
   {
     label: 'Details',
@@ -67,7 +79,7 @@ export const checkoutFormValues: CheckoutFormValues = {
   firstName: '',
   lastName: '',
   company: '',
-  country: 'US',
+  country: '',
   address: '',
   addressLineTwo: '',
   city: '',
@@ -77,14 +89,14 @@ export const checkoutFormValues: CheckoutFormValues = {
   billingFirstName: '',
   billingLastName: '',
   billingCompany: '',
-  billingCountry: 'US',
+  billingCountry: '',
   billingAddress: '',
   billingAddressLineTwo: '',
   billingCity: '',
   billingState: '',
   billingZipCode: '',
   billingPhone: '',
-  shippingMethod: undefined,
+  shippingMethod: ShippingMethod.UPS_GROUND || undefined,
   shippingAddressAsBillingAddress: 'yes',
   shippingContactAsBillingContact: 'yes',
   paymentMethod: undefined,
@@ -96,15 +108,6 @@ export const checkoutFormValues: CheckoutFormValues = {
   creditCardExpiration: '',
   acceptedTerms: false
 };
-
-export enum PaymentMethodFieldNames {
-  PURCHASE_ORDER = 'purchaseOrder',
-  CREDIT_CARD = 'creditCard'
-}
-
-// TODO GR make checkoutFormDetailsFields dependent on CheckoutFormValues with type safety
-
-// TODO: i18N
 export const checkoutFormDetailsFields: CheckoutFormFields = {
   email: { label: 'Email', placeholder: 'example@domain.com', name: 'email' },
   firstName: {
@@ -155,7 +158,6 @@ export const checkoutFormShippingOptionsFields = {
   }
 };
 
-// TODO: i18n
 export const checkoutFormPaymentMethodFields = {
   billingFirstName: {
     label: 'First Name',
@@ -245,7 +247,6 @@ export const checkoutFormPaymentMethodFields = {
   }
 };
 
-// TODO: i18n
 export const checkoutFormOverviewFields: CheckoutFormFields = {
   additionalInformation: {
     label: 'Additional Information',

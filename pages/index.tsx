@@ -63,7 +63,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   mainMenuItems
 }) => {
   const { formatMessage } = useIntl();
-  const { palette, spacing } = useTheme();
+  const { palette } = useTheme();
 
   const styles: HomeStyles = {
     sectionContainer: {

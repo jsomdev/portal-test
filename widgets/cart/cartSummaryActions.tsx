@@ -112,8 +112,7 @@ export const CartSummaryActions: React.FC = () => {
       root: { padding: 0, height: 'auto' },
       textContainer: {},
       label: {
-        ...fonts.xLarge,
-        lineHeight: fonts.xLarge.fontSize,
+        ...fonts.medium,
         textAlign: 'left'
       }
     }
@@ -261,6 +260,7 @@ export const CartSummaryActions: React.FC = () => {
                     onClick={() => setShowCallout(!showCallout)}
                   >
                     {formatMessage(messages.quotedPriceWarning)}
+                    dfqsd fq
                   </ActionButton>
                 </Stack>
                 {showCallout && (

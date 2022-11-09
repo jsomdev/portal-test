@@ -358,6 +358,9 @@ export const en: Messages = {
       limitReached: `Your cart has reached its limit for Product ''{productNumber}''. {quantityAdded} {quantityAdded, plural, one {item} other {items}} have been added to your cart`,
       goToCart: 'Go to cart',
       continueShopping: 'Continue shopping'
+    },
+    checkout: {
+      title: 'Checkout'
     }
   },
   loading: {

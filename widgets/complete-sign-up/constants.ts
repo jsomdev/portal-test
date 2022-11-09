@@ -11,7 +11,7 @@ import {
   phoneValidation,
   stateValidation,
   zipCodeValidation
-} from '@widgets/forms/checkout/checkoutFormValidation';
+} from '@widgets/checkout/checkout-form/checkoutFormValidation';
 import { formRequiredMessages } from '@widgets/forms/formMessages';
 
 import {

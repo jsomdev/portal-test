@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ImageProps } from 'next/dist/client/image';
 import Image from 'next/image';
 
 import { OptionalLink } from '@components/link/optionalLink';
@@ -9,7 +10,9 @@ import productImageLoader from '@utilities/image-loaders/productImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
-type ProductCardImageProps = Pick<ProductCardViewModel, 'url' | 'imageUrl'>;
+type ProductCardImageProps = Pick<ProductCardViewModel, 'url' | 'imageUrl'> & {
+  fallbackImageUrl?: ImageProps['src'];
+};
 
 type ProductCardImageStyles = {
   root: IStackStyles;
@@ -17,7 +20,8 @@ type ProductCardImageStyles = {
 
 const ProductCardImage: React.FC<ProductCardImageProps> = ({
   url,
-  imageUrl
+  imageUrl,
+  fallbackImageUrl
 }) => {
   const styles: ProductCardImageStyles = {
     root: {
@@ -37,7 +41,9 @@ const ProductCardImage: React.FC<ProductCardImageProps> = ({
       <OptionalLink href={url}>
         <a>
           <Image
-            src={imageUrl || STATIC_IMAGES.app.noImageAvailable}
+            src={
+              imageUrl || fallbackImageUrl || STATIC_IMAGES.app.noImageAvailable
+            }
             alt={''}
             width={160}
             height={160}

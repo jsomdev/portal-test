@@ -85,6 +85,7 @@ export interface SettingKeys {
   productBookmarks: string;
   recentlySearchedQueries: string;
   recentlyViewedProducts: string;
+  addressBook: string;
 }
 
 export interface AttributeTypeCodes {
@@ -196,3 +197,8 @@ export interface AttributeTypeCodes {
   brand: string;
   sprayPattern: string;
 }
+
+export type UserAddress = PostalAddress & {
+  name: string;
+  id: string;
+};

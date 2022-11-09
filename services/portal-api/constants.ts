@@ -79,7 +79,8 @@ export const SPRAYPORTALAPPLICATIONID = 'e2def0bf-0225-4b77-b363-08d800aaae12';
 export const SETTINGKEYS: SettingKeys = {
   productBookmarks: 'ProductBookmarks',
   recentlyViewedProducts: 'RecentlyViewedProducts',
-  recentlySearchedQueries: 'RecentlySearchedQueries'
+  recentlySearchedQueries: 'RecentlySearchedQueries',
+  addressBook: 'AddressBook'
 };
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
