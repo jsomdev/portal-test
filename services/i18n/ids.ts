@@ -356,7 +356,23 @@ export const messageIds: Messages = {
       continueShopping: 'pages.cart.continueShopping'
     },
     checkout: {
-      title: 'pages.checkout.title'
+      title: 'pages.checkout.title',
+      details: {
+        generalTitle: 'pages.checkout.details.generalTitle',
+        fields: {
+          email: 'pages.checkout.details.fields.email',
+          firstName: 'pages.checkout.details.fields.firstName',
+          name: 'pages.checkout.details.fields.name',
+          company: 'pages.checkout.details.fields.company',
+          country: 'pages.checkout.details.fields.country',
+          address: 'pages.checkout.details.fields.address',
+          addressLineTwo: 'pages.checkout.details.fields.addressLineTwo',
+          city: 'pages.checkout.details.fields.city',
+          state: 'pages.checkout.details.fields.state',
+          postalCode: 'pages.checkout.details.fields.postalCode',
+          phone: 'pages.checkout.details.fields.phone'
+        }
+      }
     }
   },
   loading: {
@@ -400,5 +416,16 @@ export const messageIds: Messages = {
   },
   summary: {
     details: 'summary.details'
+  },
+  validation: {
+    mixed: {
+      required: 'validation.mixed.required'
+    },
+    string: {
+      email: 'validation.string.email',
+      matches: 'validation.string.matches',
+      min: 'validation.string.min',
+      max: 'validation.string.max'
+    }
   }
 };

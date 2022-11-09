@@ -361,7 +361,23 @@ export const nl: Messages = {
       continueShopping: 'Doorgaan met winkelen'
     },
     checkout: {
-      title: 'Bestellen'
+      title: 'Bestellen',
+      details: {
+        generalTitle: 'Algemene informatie',
+        fields: {
+          email: 'E-mail',
+          firstName: 'Voornaam',
+          name: 'Familienaam',
+          company: 'Bedrijf',
+          country: 'Land',
+          address: 'Adres',
+          addressLineTwo: 'Adrijsregel 2',
+          city: 'Stad',
+          state: 'Provincie',
+          postalCode: 'Postcode',
+          phone: 'Telefoonnummer'
+        }
+      }
     }
   },
   loading: {
@@ -405,5 +421,16 @@ export const nl: Messages = {
   },
   summary: {
     details: 'Details'
+  },
+  validation: {
+    mixed: {
+      required: '{label} is verplicht'
+    },
+    string: {
+      email: 'Gelieve een geldig e-mail adres in te vullen',
+      matches: '{label} is niet in een geldig formaat',
+      min: '{label} moet minstens {min} tekens bevatten',
+      max: '{label} mag maximaal {max} tekens bevatten'
+    }
   }
 };

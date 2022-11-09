@@ -1,25 +1,32 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
 import { Step1FormData } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
-const messages = {
-  contact: 'General'
-};
+const messages = defineMessages({
+  generalTitle: {
+    id: messageIds.pages.checkout.details.generalTitle,
+    defaultMessage: 'General',
+    description: 'Checkout step 1: title for general information'
+  }
+});
 
 export const OrderContactFormGroup: React.FC<{
   fields: Pick<StepFields<Step1FormData>, 'email'>;
 }> = ({ fields }) => {
   const { spacing } = useTheme();
-
+  const { formatMessage } = useIntl();
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
       <Stack.Item>
-        <CheckoutFormGroupTitle title={messages.contact} />
+        <CheckoutFormGroupTitle title={formatMessage(messages.generalTitle)} />
       </Stack.Item>
       <Stack.Item>
         <Stack>

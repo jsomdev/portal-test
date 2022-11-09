@@ -352,6 +352,22 @@ type ICartMessages = {
 
 type ICheckoutMessages = {
   title: string;
+  details: {
+    generalTitle: string;
+    fields: {
+      email: string;
+      firstName: string;
+      name: string;
+      company: string;
+      country: string;
+      address: string;
+      addressLineTwo: string;
+      city: string;
+      state: string;
+      postalCode: string;
+      phone: string;
+    };
+  };
 };
 
 type IProductMessages = {
@@ -419,6 +435,7 @@ export type Messages = {
   summary: {
     details: string;
   };
+  validation: ValidationMessages;
 };
 
 export interface Language {
@@ -436,6 +453,18 @@ export interface Region {
   audience: Audience;
   name: string;
   countries: Country[];
+}
+
+export interface ValidationMessages {
+  mixed: {
+    required: string;
+  };
+  string: {
+    email: string;
+    matches: string;
+    min: string;
+    max: string;
+  };
 }
 
 export type LanguageCode =

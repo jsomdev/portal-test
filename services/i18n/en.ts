@@ -355,7 +355,23 @@ export const en: Messages = {
       continueShopping: 'Continue shopping'
     },
     checkout: {
-      title: 'Checkout'
+      title: 'Checkout',
+      details: {
+        generalTitle: 'General',
+        fields: {
+          email: 'Email',
+          firstName: 'First Name',
+          name: 'Last Name',
+          company: 'Company Name',
+          country: 'Country',
+          address: 'Address',
+          addressLineTwo: 'Address Line 2',
+          city: 'City',
+          state: 'State / Province',
+          postalCode: 'Postal Code',
+          phone: 'Phone Number'
+        }
+      }
     }
   },
   loading: {
@@ -399,5 +415,16 @@ export const en: Messages = {
   },
   summary: {
     details: 'Details'
+  },
+  validation: {
+    mixed: {
+      required: '{label} is required'
+    },
+    string: {
+      email: 'Please enter a valid email address',
+      matches: '{label} is not valid',
+      min: '{label} must be at least {min} characters',
+      max: '{label} must be at most {max} characters'
+    }
   }
 };

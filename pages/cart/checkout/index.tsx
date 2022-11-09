@@ -15,6 +15,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import pagePaths from '@utilities/pagePaths';
 import CheckoutNew from '@widgets/checkout-new/checkout';
 import Checkout from '@widgets/checkout/checkout';
 import { AppLayout } from '@widgets/layouts/appLayout';
@@ -42,7 +43,7 @@ const CheckoutPage: NextPage<
         noIndex: true
       }}
       i18nProps={{
-        localePaths: getLocalePaths('checkout')
+        localePaths: getLocalePaths(pagePaths.checkout)
       }}
     >
       <GlobalDataProvider

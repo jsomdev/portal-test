@@ -1,3 +1,5 @@
+import { MessageDescriptor } from 'react-intl';
+
 import { IIconProps } from '@fluentui/react';
 
 export type StepFields<T> = {

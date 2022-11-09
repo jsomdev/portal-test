@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useField, useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
 
+import formatError from '@components/formik-wrappers/formatError';
 import {
   ComboBox,
   DirectionalHint,
@@ -21,6 +23,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   getSelectedKey: getKey,
   ...props
 }) => {
+  const { formatMessage } = useIntl();
   const [input, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const { palette } = useTheme();
@@ -63,7 +66,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         }}
         onClick={onOpenClick}
         selectedKey={getKey?.(input.value, props.options)}
-        errorMessage={meta.touched && meta.error ? meta.error : undefined}
+        errorMessage={formatError(formatMessage, meta)}
         onChange={(e, option) => {
           if (props.onChange) {
             props.onChange(e, option);

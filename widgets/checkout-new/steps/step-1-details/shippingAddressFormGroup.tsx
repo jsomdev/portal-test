@@ -32,7 +32,7 @@ export const ShippingAddressFormGroup: React.FC<{
   title?: string;
   fields: Pick<
     StepFields<Step1FormData>,
-    'country' | 'address' | 'city' | 'state' | 'zipCode'
+    'country' | 'address' | 'city' | 'state' | 'postalCode'
   >;
 }> = ({ title, fields }) => {
   const {
@@ -79,7 +79,7 @@ export const ShippingAddressFormGroup: React.FC<{
         const setFieldsPromise = Promise.all([
           setFieldValue('address', '', true),
           setFieldValue('city', '', true),
-          setFieldValue('zipCode', '', true),
+          setFieldValue('postalCode', '', true),
           setFieldValue('state', '', true)
         ]);
         setFieldsPromise.then(result => {
@@ -131,7 +131,7 @@ export const ShippingAddressFormGroup: React.FC<{
                 placeholder={regionPlaceholder}
               />
             )}
-            <FormikTextField {...fields.zipCode} required={true} />
+            <FormikTextField {...fields.postalCode} required={true} />
           </CheckoutFormRowContainer>
         </Stack>
       </Stack.Item>

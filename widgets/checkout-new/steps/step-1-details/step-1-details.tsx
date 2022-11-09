@@ -1,88 +1,21 @@
 import React, { useContext, useMemo } from 'react';
 
 import { Form, Formik, FormikProps, FormikTouched } from 'formik';
-import * as yup from 'yup';
+import { defineMessages, useIntl } from 'react-intl';
 import { InferType } from 'yup';
 
 import { Stack, useTheme } from '@fluentui/react';
 import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
 import { useMe } from '@providers/user/userContext';
+import { messageIds } from '@services/i18n';
 import { PostalAddress } from '@services/portal-api';
-import {
-  supportedProvinceOptions,
-  supportedStateOptions
-} from '@utilities/places';
 import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
 import { OrderContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/orderContactFormGroup';
 import { ShippingAddressFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingAddressFormGroup';
 import { ShippingContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingContactFormGroup';
-import {
-  checkoutFormFields,
-  regionValidationTest
-} from '@widgets/checkout/checkout-form/checkoutFormHelper';
-import {
-  formErrorMessages,
-  formRequiredMessages
-} from '@widgets/forms/formMessages';
-
-const validation = yup.object({
-  email: yup
-    .string()
-    .email(formErrorMessages.email)
-    .required(formRequiredMessages.email),
-  name: yup
-    .string()
-    .max(40, formErrorMessages.lastName)
-    .required(formRequiredMessages.lastName),
-  firstName: yup
-    .string()
-    .matches(/^[A-Za-z ]*$/, formErrorMessages.name)
-    .max(40, formErrorMessages.firstName)
-    .required(formRequiredMessages.firstName),
-  company: yup.string().required(formRequiredMessages.company),
-  country: yup
-    .string()
-    .length(2, formErrorMessages.country)
-    .required(formRequiredMessages.country),
-  address: yup.string().trim().required(formRequiredMessages.address),
-  addressLineTwo: yup.string().trim().optional(),
-  city: yup.string().required(formRequiredMessages.city),
-  state: yup
-    .string()
-    .required(formRequiredMessages.state)
-    .when('country', {
-      is: 'US',
-      then: yup
-        .string()
-        .required(formRequiredMessages.state)
-        .test(
-          checkoutFormFields.state.name,
-          formRequiredMessages.stateUs,
-          value => regionValidationTest(value, supportedStateOptions)
-        )
-    })
-    .when('country', {
-      is: 'CA',
-      then: yup
-        .string()
-        .required(formRequiredMessages.state)
-        .test(
-          checkoutFormFields.state.name,
-          formRequiredMessages.providenceCa,
-          value => regionValidationTest(value, supportedProvinceOptions)
-        )
-    }),
-  zipCode: yup.string().required(formRequiredMessages.zipCode),
-  phone: yup
-    .string()
-    .matches(
-      /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s./0-9]*$/g,
-      formErrorMessages.phone
-    )
-    .required(formRequiredMessages.phone)
-});
+import validation from '@widgets/checkout-new/steps/step-1-details/step-1-details.validation';
 
 export type Step1FormData = InferType<typeof validation>;
 
@@ -95,61 +28,122 @@ const defaultValues: Step1FormData = {
   addressLineTwo: '',
   city: '',
   state: '',
-  zipCode: '',
+  postalCode: '',
   phone: '',
   email: ''
 };
 
+const fieldMessageIds = messageIds.pages.checkout.details.fields;
+
+const messages = defineMessages({
+  email: {
+    id: fieldMessageIds.email,
+    defaultMessage: 'Email'
+  },
+  firstName: {
+    id: fieldMessageIds.firstName,
+    defaultMessage: 'First Name'
+  },
+  name: {
+    id: fieldMessageIds.name,
+    defaultMessage: 'Name'
+  },
+  company: {
+    id: fieldMessageIds.company,
+    defaultMessage: 'Company'
+  },
+  country: {
+    id: fieldMessageIds.country,
+    defaultMessage: 'Country'
+  },
+  address: {
+    id: fieldMessageIds.address,
+    defaultMessage: 'Address'
+  },
+  addressLineTwo: {
+    id: fieldMessageIds.addressLineTwo,
+    defaultMessage: 'Address Line 2'
+  },
+  city: {
+    id: fieldMessageIds.city,
+    defaultMessage: 'City'
+  },
+  state: {
+    id: fieldMessageIds.state,
+    defaultMessage: 'State'
+  },
+  postalCode: {
+    id: fieldMessageIds.postalCode,
+    defaultMessage: 'Postal Code'
+  },
+  phone: {
+    id: fieldMessageIds.phone,
+    defaultMessage: 'Phone'
+  }
+});
+
 export const Step1Details: React.FC<{
   values: Step1FormData;
-  //bindSubmitForm: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
   formRef: React.RefObject<FormikProps<Step1FormData>> | undefined;
 }> = ({ values, formRef }) => {
   const { spacing } = useTheme();
+  const { formatMessage } = useIntl();
   const fields: StepFields<Step1FormData> = {
     email: {
-      label: 'Email',
+      label: formatMessage(messages.email),
       placeholder: 'example@domain.com',
       name: 'email'
     },
     firstName: {
-      label: 'First Name',
+      label: formatMessage(messages.firstName),
       placeholder: '',
       name: 'firstName'
     },
-    name: { label: 'Last Name', placeholder: '', name: 'name' },
+    name: {
+      label: formatMessage(messages.name),
+      placeholder: '',
+      name: 'name'
+    },
     company: {
-      label: 'Company Name',
+      label: formatMessage(messages.company),
       placeholder: 'Name of organization',
       name: 'company'
     },
     country: {
-      label: 'Country',
+      label: formatMessage(messages.country),
       placeholder: 'Select an option',
       name: 'country'
     },
     address: {
-      label: 'Address',
+      label: formatMessage(messages.address),
       placeholder: '',
       name: 'address'
     },
     addressLineTwo: {
-      label: 'Address Line 2',
+      label: formatMessage(messages.addressLineTwo),
       placeholder: 'Address Line 2',
       name: 'addressLineTwo'
     },
-    city: { label: 'City', placeholder: '', name: 'city' },
+    city: {
+      label: formatMessage(messages.city),
+      placeholder: '',
+      name: 'city'
+    },
     state: {
-      label: 'State / Province',
+      label: formatMessage(messages.state),
       placeholder: 'Select an option',
       name: 'state'
     },
-    zipCode: {
-      label: 'Postal Code',
+    postalCode: {
+      label: formatMessage(messages.postalCode),
       placeholder: '',
-      name: 'zipCode'
+      name: 'postalCode'
     },
-    phone: { label: 'Phone Number', placeholder: '', name: 'phone' }
+    phone: {
+      label: formatMessage(messages.phone),
+      placeholder: '',
+      name: 'phone'
+    }
   };
 
   const { shippingAddress } = useContext(AddressBookContext);
@@ -165,7 +159,7 @@ export const Step1Details: React.FC<{
       city: values.city || (address.city || '').trim(),
       country: values.country || (address.country || '').trim(),
       state: values.state || (address.region || '').trim(),
-      zipCode: values.zipCode || (address.postalCode || '').trim(),
+      postalCode: values.postalCode || (address.postalCode || '').trim(),
       firstName: values.firstName || (me?.contactInfo?.firstName || '').trim(),
       name: values.name || (me?.contactInfo?.lastName || '').trim(),
       phone: values.phone || (me?.contactInfo?.phoneNumber || '').trim(),

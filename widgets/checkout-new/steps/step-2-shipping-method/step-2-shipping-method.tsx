@@ -28,7 +28,7 @@ const defaultValues: Step2FormData = {
 const step2ShippingMethodFields: StepFields<Step2FormData> = {
   shippingMethod: {
     name: 'shippingMethod',
-    label: 'Shipping method',
+    labelId: 'Shipping method',
     placeholder: 'Shipping method'
   }
 };

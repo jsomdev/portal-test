@@ -1,3 +1,5 @@
+import { MessageDescriptor } from 'react-intl';
+
 import {
   IComboBoxProps,
   IComboBoxStyles,
