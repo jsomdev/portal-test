@@ -5,38 +5,13 @@ import {
   supportedProvinceOptions,
   supportedStateOptions
 } from '@utilities/places';
+import setYupLocalisation from '@utilities/yup/setYupLocalisation';
 import {
   checkoutFormFields,
   regionValidationTest
 } from '@widgets/checkout/checkout-form/checkoutFormHelper';
 
-//TODO how do we move this up?
-yup.setLocale({
-  mixed: {
-    required: ({ label }) => ({
-      messageId: messageIds.validation.mixed.required,
-      values: { label }
-    })
-  },
-  string: {
-    email: ({ label }) => ({
-      messageId: messageIds.validation.string.email,
-      values: { label }
-    }),
-    matches: ({ label }) => ({
-      messageId: messageIds.validation.string.matches,
-      values: { label }
-    }),
-    min: ({ label, min }) => ({
-      messageId: messageIds.validation.string.min,
-      values: { label, min }
-    }),
-    max: ({ label, max }) => ({
-      messageId: messageIds.validation.string.max,
-      values: { label, max }
-    })
-  }
-});
+setYupLocalisation();
 
 const validation = yup.object({
   email: yup
@@ -69,11 +44,6 @@ const validation = yup.object({
     .label(messageIds.pages.checkout.details.fields.address)
     .trim()
     .required(),
-  addressLineTwo: yup
-    .string()
-    .label(messageIds.pages.checkout.details.fields.addressLineTwo)
-    .trim()
-    .optional(),
   city: yup
     .string()
     .label(messageIds.pages.checkout.details.fields.city)

@@ -352,18 +352,38 @@ type ICartMessages = {
 
 type ICheckoutMessages = {
   title: string;
+  orderSuccess: string;
+  creatingOrder: string;
+  loadingCart: string;
+  loadingCartFailed: string;
+  loadingProductInfo: string;
+  loadingProductInfoFailed: string;
+  noItems: string;
+  noItemsLink: string;
+  needsSignIn: string;
+  signInText: string;
+  unauthorized: string;
+  actions: {
+    nextButton: string;
+    backButton: string;
+    submitButton: string;
+  };
   details: {
     generalTitle: string;
     fields: {
       email: string;
+      emailPlaceholder: string;
       firstName: string;
       name: string;
       company: string;
+      companyPlaceholder: string;
       country: string;
+      countryPlaceholder: string;
       address: string;
-      addressLineTwo: string;
+      addressPlaceholder: string;
       city: string;
       state: string;
+      statePlaceholder: string;
       postalCode: string;
       phone: string;
     };

@@ -12,11 +12,15 @@ const formatError = (
   ) => string,
   metaProps: FieldMetaProps<unknown>
 ) => {
+  // errors type defined by Formik is incorrect, when using localisation for yup validation,
+  // the errors can be objects
   const error = (
     metaProps.touched && metaProps.error ? metaProps.error : undefined
-  ) as string | undefined | { messageId: string; values: any };
+  ) as
+    | string
+    | undefined
+    | { messageId: string; values: Record<string, string> };
 
-  console.log('error', JSON.stringify(error));
   if (error && typeof error !== 'string' && error.messageId) {
     const translatedValues = Object.keys(error.values).reduce(
       (acc, key) => ({

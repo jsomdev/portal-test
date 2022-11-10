@@ -357,18 +357,41 @@ export const messageIds: Messages = {
     },
     checkout: {
       title: 'pages.checkout.title',
+      orderSuccess: 'pages.checkout.orderSuccess',
+      creatingOrder: 'pages.checkout.creatingOrder',
+      loadingCart: 'pages.checkout.loadingCart',
+      loadingCartFailed: 'pages.checkout.loadingCartFailed',
+      loadingProductInfo: 'pages.checkout.loadingProductInfo',
+      loadingProductInfoFailed: 'pages.checkout.loadingProductInfoFailed',
+      noItems: 'pages.checkout.noItems',
+      noItemsLink: 'pages.checkout.noItemsLink',
+      needsSignIn: 'pages.checkout.needsSignIn',
+      signInText: 'pages.checkout.signInText',
+      unauthorized: 'pages.checkout.unauthorized',
+      actions: {
+        nextButton: 'pages.checkout.actions.nextButton',
+        backButton: 'pages.checkout.actions.backButton',
+        submitButton: 'pages.checkout.actions.submitButton'
+      },
       details: {
         generalTitle: 'pages.checkout.details.generalTitle',
         fields: {
           email: 'pages.checkout.details.fields.email',
+          emailPlaceholder: 'pages.checkout.details.fields.emailPlaceholder',
           firstName: 'pages.checkout.details.fields.firstName',
           name: 'pages.checkout.details.fields.name',
           company: 'pages.checkout.details.fields.company',
+          companyPlaceholder:
+            'pages.checkout.details.fields.companyPlaceholder',
           country: 'pages.checkout.details.fields.country',
+          countryPlaceholder:
+            'pages.checkout.details.fields.countryPlaceholder',
           address: 'pages.checkout.details.fields.address',
-          addressLineTwo: 'pages.checkout.details.fields.addressLineTwo',
+          addressPlaceholder:
+            'pages.checkout.details.fields.addressPlaceholder',
           city: 'pages.checkout.details.fields.city',
           state: 'pages.checkout.details.fields.state',
+          statePlaceholder: 'pages.checkout.details.fields.statePlaceholder',
           postalCode: 'pages.checkout.details.fields.postalCode',
           phone: 'pages.checkout.details.fields.phone'
         }

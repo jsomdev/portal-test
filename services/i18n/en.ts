@@ -356,18 +356,39 @@ export const en: Messages = {
     },
     checkout: {
       title: 'Checkout',
+      orderSuccess: 'Your order has been created. Redirecting...',
+      creatingOrder: 'Creating your order...',
+      loadingCart: 'Loading cart...',
+      loadingCartFailed: 'Loading cart failed!',
+      loadingProductInfo: 'Loading product information...',
+      loadingProductInfoFailed: 'Loading product information failed!',
+      noItems: 'There were no items found in your cart with available pricing.',
+      noItemsLink: 'Please return to the cart page and request a quote.',
+      needsSignIn:
+        'You need to be signed in to checkout your cart. Please {signInText}',
+      signInText: 'sign in here.',
+      unauthorized: 'You are not authorized to view this page.',
+      actions: {
+        nextButton: 'Next',
+        backButton: 'Back',
+        submitButton: 'Submit'
+      },
       details: {
         generalTitle: 'General',
         fields: {
           email: 'Email',
+          emailPlaceholder: 'example@domain.com',
           firstName: 'First Name',
           name: 'Last Name',
           company: 'Company Name',
+          companyPlaceholder: 'Name of organization',
           country: 'Country',
+          countryPlaceholder: 'Select an option',
           address: 'Address',
-          addressLineTwo: 'Address Line 2',
+          addressPlaceholder: 'Street and number',
           city: 'City',
           state: 'State / Province',
+          statePlaceholder: 'Select an option',
           postalCode: 'Postal Code',
           phone: 'Phone Number'
         }

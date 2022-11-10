@@ -362,18 +362,41 @@ export const nl: Messages = {
     },
     checkout: {
       title: 'Bestellen',
+      orderSuccess: 'Je bestelling is aangemaakt. Omleiden...',
+      creatingOrder: 'Uw bestelling maken......',
+      loadingCart: 'Laden van winkelwagen...',
+      loadingCartFailed: 'Het laden van je winkelwagen is mislukt!',
+      loadingProductInfo: 'Laden van productinformatie...',
+      loadingProductInfoFailed: 'Laden van productinformatie mislukt!',
+      noItems:
+        'Er zijn geen artikelen gevonden in uw winkelwagen met beschikbare prijzen.',
+      noItemsLink:
+        'Ga terug naar de winkelwagenpagina en vraag een offerte aan.',
+      needsSignIn:
+        'U moet ingelogd zijn om uw winkelwagen af te rekenen. Gelieve {signInText}',
+      signInText: 'hier inloggen.',
+      unauthorized: 'U bent niet bevoegd om deze pagina te bekijken.',
+      actions: {
+        nextButton: 'Doorgaan',
+        backButton: 'Terug',
+        submitButton: 'Bevestigen'
+      },
       details: {
         generalTitle: 'Algemene informatie',
         fields: {
           email: 'E-mail',
+          emailPlaceholder: 'example@domain.com',
           firstName: 'Voornaam',
           name: 'Familienaam',
           company: 'Bedrijf',
+          companyPlaceholder: 'Bedrijfsnaam',
           country: 'Land',
+          countryPlaceholder: 'Selecteer een land',
           address: 'Adres',
-          addressLineTwo: 'Adrijsregel 2',
+          addressPlaceholder: 'Straatnaam en huisnummer',
           city: 'Stad',
           state: 'Provincie',
+          statePlaceholder: 'Maak een selectie',
           postalCode: 'Postcode',
           phone: 'Telefoonnummer'
         }

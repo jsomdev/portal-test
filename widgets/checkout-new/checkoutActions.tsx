@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { useStepper } from '@components/stepper/stepperContext';
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   DefaultButton,
   IButtonStyles,
@@ -9,6 +10,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 interface SecondaryFormStepActionsStyles {
   buttons: IButtonStyles;
@@ -16,11 +18,20 @@ interface SecondaryFormStepActionsStyles {
   backIcon: IIconStyles;
 }
 
-const messages = {
-  nextButtonText: 'Next',
-  backButtonText: 'Back',
-  submitForm: 'Submit'
-};
+const messages = defineMessages({
+  nextButtonText: {
+    id: messageIds.pages.checkout.actions.nextButton,
+    defaultMessage: 'Next'
+  },
+  backButtonText: {
+    id: messageIds.pages.checkout.actions.backButton,
+    defaultMessage: 'Back'
+  },
+  submitForm: {
+    id: messageIds.pages.checkout.actions.submitButton,
+    defaultMessage: 'Submit'
+  }
+});
 
 export const CheckoutActions: React.FC<{
   onProceedClick: () => void;
@@ -29,7 +40,7 @@ export const CheckoutActions: React.FC<{
   isLastStep?: boolean;
 }> = ({ onProceedClick, onPreviousClick, disableSubmit, isLastStep }) => {
   const { spacing } = useTheme();
-
+  const { formatMessage } = useIntl();
   const styles: SecondaryFormStepActionsStyles = {
     buttons: {
       flexContainer: {
@@ -57,7 +68,7 @@ export const CheckoutActions: React.FC<{
     >
       <DefaultButton onClick={onPreviousClick} styles={styles.buttons}>
         <Icon iconName="chevronLeft" styles={styles.backIcon} />
-        {messages.backButtonText}
+        {formatMessage(messages.backButtonText)}
       </DefaultButton>
       {isLastStep ? (
         <DefaultButton
@@ -66,12 +77,12 @@ export const CheckoutActions: React.FC<{
           styles={styles.buttons}
           type="submit"
         >
-          {messages.submitForm}
+          {formatMessage(messages.submitForm)}
           <Icon iconName="chevronRight" styles={styles.nextIcon} />
         </DefaultButton>
       ) : (
         <DefaultButton styles={styles.buttons} onClick={onProceedClick}>
-          {messages.nextButtonText}
+          {formatMessage(messages.nextButtonText)}
           <Icon iconName="chevronRight" styles={styles.nextIcon} />
         </DefaultButton>
       )}

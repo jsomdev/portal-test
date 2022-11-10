@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormikProps } from 'formik';
 import * as yup from 'yup';
 import { InferType } from 'yup';
 
@@ -25,20 +26,23 @@ const defaultValues: Step2FormData = {
   shippingMethod: undefined
 };
 
-const step2ShippingMethodFields: StepFields<Step2FormData> = {
-  shippingMethod: {
-    name: 'shippingMethod',
-    labelId: 'Shipping method',
-    placeholder: 'Shipping method'
-  }
+export type Step2ShippingMethodProps = {
+  values: Step2FormData;
+  formRef: React.RefObject<FormikProps<Step2FormData>> | undefined;
 };
 
-export const Step2ShippingMethod: React.FC<{ values: Step2FormData }> = () => {
+export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = () => {
+  const step2ShippingMethodFields: StepFields<Step2FormData> = {
+    shippingMethod: {
+      name: 'shippingMethod',
+      label: 'Shipping Method',
+      placeholder: 'Shipping method'
+    }
+  };
   return <div>Step 2 Content</div>;
 };
 
 export default {
-  key: 'step-2',
   Component: Step2ShippingMethod,
   defaultValues,
   validation

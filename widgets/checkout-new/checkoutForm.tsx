@@ -2,49 +2,32 @@ import React, { useContext, useRef, useState } from 'react';
 
 import { FormikProps } from 'formik';
 import { useRouter } from 'next/router';
-import * as yup from 'yup';
 
 import { Stack, getTheme } from '@fluentui/react';
-import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CheckoutActions } from '@widgets/checkout-new/checkoutActions';
+import { getCurrentStep } from '@widgets/checkout-new/checkoutForm.helper';
+import {
+  CheckoutFormValues,
+  CheckoutSteps
+} from '@widgets/checkout-new/checkoutForm.types';
 import { Steps } from '@widgets/checkout-new/stepper/steps';
-import useStepper, {
-  StepModel
-} from '@widgets/checkout-new/stepper/useStepper';
-import step1 from '@widgets/checkout-new/steps/step-1-details/step-1-details';
-import step2 from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
+import useStepper from '@widgets/checkout-new/stepper/useStepper';
+import step1Details from '@widgets/checkout-new/steps/step-1-details/step-1-details';
+import step2ShippingMethod from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
 
-const steps = {
-  [step1.key]: {
-    index: 0,
-    ...step1
-  },
-  [step2.key]: {
-    index: 1,
-    ...step2
-  }
-};
-
-const defaultValues = {
-  [step1.key]: step1.defaultValues,
-  [step2.key]: step2.defaultValues
-};
-
-type CheckoutFormValues = typeof defaultValues;
-
-const getCurrentStep = (currentIndex: number) => {
-  const stepValues = Object.values(steps);
-  return stepValues.find(step => {
-    return step.index == currentIndex;
-  });
+const defaultValues: CheckoutFormValues = {
+  details: step1Details.defaultValues,
+  shippingMethod: step2ShippingMethod.defaultValues
 };
 
 const CheckoutFormNew: React.FC = () => {
+  //allows us the access the Formik methods of the form of the current step
+  //not possible to use a specific type here, because the type of the form depends on the current step
   const formRef = useRef<FormikProps<any>>(null);
   const { spacing } = getTheme();
 
@@ -55,26 +38,36 @@ const CheckoutFormNew: React.FC = () => {
   const [formValues, setFormValues] =
     useState<CheckoutFormValues>(defaultValues);
 
-  const stepperSteps: StepModel[] = [
-    {
+  const steps: CheckoutSteps = {
+    details: {
+      index: 0,
       label: 'Details',
-      iconProps: { iconName: 'ContactInfo' }
-      //isValid: steps[step1.key].validation.isValidSync(formValues.step1)
+      iconProps: { iconName: 'ContactInfo' },
+      defaultValues: step1Details.defaultValues,
+      Component: step1Details.Component,
+      validation: step1Details.validation
     },
-    {
+    shippingMethod: {
+      index: 1,
       label: 'Shipping Method',
-      iconProps: { iconName: 'Product' }
-      //isValid: steps[step2.key].validation.isValidSync(formValues.step2)
+      iconProps: { iconName: 'Product' },
+      defaultValues: step2ShippingMethod.defaultValues,
+      Component: step2ShippingMethod.Component,
+      validation: step2ShippingMethod.validation
     }
-  ];
+  };
 
+  const stepperSteps = Object.values(steps);
   const stepper = useStepper({
     steps: stepperSteps,
     initialIndex: 0,
     onExit: () => push(pagePaths.cart)
   });
 
-  const currentStep = getCurrentStep(stepper.currentIndex);
+  const { currentStep, currentStepKey } = getCurrentStep(
+    steps,
+    stepper.currentIndex
+  );
 
   return (
     <Stack tokens={{ childrenGap: spacing.l1 }}>
@@ -89,16 +82,14 @@ const CheckoutFormNew: React.FC = () => {
         </Environment>
       ) : (
         <currentStep.Component
-          key={currentStep.key}
+          key={currentStep.index}
           formRef={formRef}
-          values={formValues[currentStep.key] as any}
+          values={formValues[currentStepKey] as any}
         />
       )}
-
       <CheckoutActions
         isLastStep={stepper.currentIndex === stepperSteps.length - 1}
         onProceedClick={async () => {
-          console.log('currentStep', currentStep);
           if (formRef.current && currentStep) {
             await formRef.current.validateForm();
             const isValid = formRef.current.isValid;
@@ -106,7 +97,7 @@ const CheckoutFormNew: React.FC = () => {
             if (isValid) {
               setFormValues({
                 ...formValues,
-                [currentStep.key]: formRef.current.values
+                [currentStepKey]: formRef.current.values
               });
               stepper.next();
               scrollToTop('body');
