@@ -54,6 +54,7 @@ export const AccountSideNavigation: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
 
+  // NOTE: Will be shortened / obsolete once quote, order and qrs detail pages are implemented
   function getActiveClassName(path: string): string {
     if (router.pathname === path) {
       return 'active-link';
@@ -62,6 +63,27 @@ export const AccountSideNavigation: React.FC = () => {
     if (
       path.includes(pagePaths.infoAndPreferences) &&
       router.pathname.includes(pagePaths.infoAndPreferences)
+    ) {
+      return 'active-link';
+    }
+    // set active state for orders
+    if (
+      path.includes(pagePaths.orders) &&
+      router.pathname.includes(pagePaths.orders)
+    ) {
+      return 'active-link';
+    }
+    // set active state for quote requests
+    if (
+      path.includes(pagePaths.quoteRequests) &&
+      router.pathname.includes(pagePaths.quoteRequests)
+    ) {
+      return 'active-link';
+    }
+    // set active state for quotes
+    if (
+      path.includes(pagePaths.quotes) &&
+      router.pathname.includes(pagePaths.quotes)
     ) {
       return 'active-link';
     }
@@ -111,7 +133,7 @@ export const AccountSideNavigation: React.FC = () => {
         {accountNavigationGroups.map(group => {
           return group.links?.map(link => {
             return (
-              <Link key={link.name} href={link.url} shallow passHref>
+              <Link key={link.name} href={link.url} passHref>
                 <a>
                   <Stack
                     styles={styles.linkTextContainer}

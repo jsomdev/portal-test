@@ -56,6 +56,8 @@ export const QUERYKEYS: ReactQueryKeys = {
     'productFinderTableViewDesignsForModel',
   productFinderTableViewProductListItem:
     'productFinderTableViewProductListItem',
+  quote: 'quote',
+  quoteDetail: 'quoteDetail',
   quoteRequestDetail: 'quoteRequestDetail',
   quoteRequestLineProducts: 'quoteRequestLineProducts',
   quoteRequests: 'quoteRequests',

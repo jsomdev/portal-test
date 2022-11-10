@@ -241,9 +241,22 @@ export const messageIds: Messages = {
         viewOrder: 'pages.account.orders.viewOrder',
         numberHeader: 'pages.account.orders.numberHeader'
       },
+      quoteRequests: {
+        requestDateHeader: 'pages.account.quoteRequests.requestDateHeader',
+        viewQuoteRequest: 'pages.account.quoteRequests.viewQuoteRequest'
+      },
+      quotes: {
+        numberHeader: 'pages.account.quotes.numberHeader',
+        quoteDateHeader: 'pages.account.quotes.quoteDateHeader',
+        totalHeader: 'pages.account.quotes.totalHeader',
+        viewQuote: 'pages.account.quotes.viewQuote'
+      },
       sections: {
         orders: {
           title: 'pages.account.sections.orders.title'
+        },
+        quotes: {
+          title: 'pages.account.sections.quotes.title'
         },
         quoteRequests: {
           title: 'pages.account.sections.quoteRequests.title'

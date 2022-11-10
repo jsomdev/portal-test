@@ -13,18 +13,18 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { AccountPage } from '@widgets/account/accountPage';
-import { QuoteRequestsOverview } from '@widgets/account/quote-requests/quoteRequestsOverview';
+import { QuotesOverview } from '@widgets/account/quotes/quotesOverview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
   title: {
-    id: messageIds.pages.account.sections.quoteRequests.title,
-    description: 'Quote requests page title',
-    defaultMessage: 'Quote Requests'
+    id: messageIds.pages.account.sections.quotes.title,
+    description: 'Quotes page title',
+    defaultMessage: 'Quotes default'
   }
 });
 
-const Account: NextPage<
+const Quotes: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -35,9 +35,9 @@ const Account: NextPage<
       siteMenuItems={siteMenuItems}
       metaTitle={formatMessage(messages.title)}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths('account/quote-requests')}
+      localePaths={getLocalePaths('account/quotes')}
     >
-      <QuoteRequestsOverview />
+      <QuotesOverview />
     </AccountPage>
   );
 };
@@ -63,4 +63,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Account;
+export default Quotes;

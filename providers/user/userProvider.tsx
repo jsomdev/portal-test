@@ -130,6 +130,7 @@ export const UserProvider: React.FC = ({ children }) => {
     }
     return false;
   }, [isRegisteredUser]);
+
   const isCheckoutEnabled: boolean = useMemo(() => {
     if (isCustomer) {
       return true;
@@ -144,18 +145,27 @@ export const UserProvider: React.FC = ({ children }) => {
     return false;
   }, [isRegisteredUser]);
 
+  const isQuoteHistoryEnabled: boolean = useMemo(() => {
+    if (isVerifiedCustomer) {
+      return true;
+    }
+    return false;
+  }, [isVerifiedCustomer]);
+
   const isOrderHistoryEnabled: boolean = useMemo(() => {
     if (isVerifiedCustomer) {
       return true;
     }
     return false;
   }, [isVerifiedCustomer]);
+
   const showCustomerDetails: boolean = useMemo(() => {
     if (isCustomer) {
       return true;
     }
     return false;
   }, [isCustomer]);
+
   const isInternalViewEnabled: boolean = useMemo(() => {
     if (isEmployee) {
       return true;
@@ -241,6 +251,7 @@ export const UserProvider: React.FC = ({ children }) => {
         isCheckoutEnabled,
         isOrderHistoryEnabled,
         isQuoteRequestHistoryEnabled,
+        isQuoteHistoryEnabled,
         isRequestForQuoteEnabled,
         isInternalViewEnabled,
         showCustomerDetails,

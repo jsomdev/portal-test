@@ -214,8 +214,21 @@ type IAccountMessages = {
     numberHeader: string;
     viewOrder: string;
   };
+  quoteRequests: {
+    requestDateHeader: string;
+    viewQuoteRequest: string;
+  };
+  quotes: {
+    quoteDateHeader: string;
+    viewQuote: string;
+    totalHeader: string;
+    numberHeader: string;
+  };
   sections: {
     orders: {
+      title: string;
+    };
+    quotes: {
       title: string;
     };
     quoteRequests: {

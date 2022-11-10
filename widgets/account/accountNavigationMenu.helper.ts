@@ -19,6 +19,11 @@ const messages = defineMessages({
     description: 'Link text for orders',
     defaultMessage: 'Orders default'
   },
+  quotes: {
+    id: messageIds.pages.account.sections.quotes.title,
+    description: 'Link text for quotes',
+    defaultMessage: 'Quotes default'
+  },
   quoteRequests: {
     id: messageIds.pages.account.sections.quoteRequests.title,
     description: 'Link text for quote requests',
@@ -135,6 +140,11 @@ export function getAccountNavigationMenuItems(
         id: 'account-orders'
       },
       {
+        href: pagePaths.quotes,
+        text: formatMessage(messages.quotes),
+        id: 'account-quotes'
+      },
+      {
         href: pagePaths.quoteRequests,
         text: formatMessage(messages.quoteRequests),
         id: 'account-quote-requests'
@@ -187,6 +197,10 @@ export function getAccountSideNavigationLinkGroupItems(
           {
             name: formatMessage(messages.orders),
             url: pagePaths.orders
+          },
+          {
+            name: formatMessage(messages.quotes),
+            url: pagePaths.quotes
           },
           {
             name: formatMessage(messages.quoteRequests),

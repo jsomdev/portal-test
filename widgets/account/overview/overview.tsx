@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
@@ -19,9 +20,10 @@ import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { OrderOverviewCard } from '@widgets/account/orders/orderOverviewCard';
+import pagePaths from '@utilities/pagePaths';
 import { OverviewTag } from '@widgets/account/overview/overviewTag';
 
+import { OrderCard } from '../orders/orderCard';
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
 
@@ -165,20 +167,20 @@ export const Overview: React.FC = () => {
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
               {orders.value.map(order => {
                 return (
-                  <OrderOverviewCard
-                    visibleOrderLines={1}
-                    key={order.id}
-                    order={order}
-                  />
+                  <OrderCard compactView={true} key={order.id} order={order} />
                 );
               })}
             </Stack>
           </Stack.Item>
           <Stack>
-            <ActionButton
-              iconProps={{ iconName: 'ChevronRight' }}
-              text={formatMessage(messages.viewAllRecentOrders)}
-            />
+            <Link href={pagePaths.orders} passHref>
+              <a>
+                <ActionButton
+                  iconProps={{ iconName: 'ChevronRight' }}
+                  text={formatMessage(messages.viewAllRecentOrders)}
+                />
+              </a>
+            </Link>
           </Stack>
         </Stack>
       )}

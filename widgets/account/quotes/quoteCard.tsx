@@ -13,7 +13,6 @@ import {
   ActionButton,
   FontWeights,
   IButtonStyles,
-  IPalette,
   IStackStyles,
   ITextStyles,
   IconButton,
@@ -24,96 +23,63 @@ import {
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
-import { Order, OrderLine, OrderStatus } from '@services/portal-api';
+import { Quote } from '@services/portal-api/models/Quote';
+import { QuoteLine } from '@services/portal-api/models/QuoteLine';
 import { mediaQueryFrom, useMobile, useTablet } from '@widgets/media-queries';
 
 /**
- * MESSAGES FOR ORDER CARD
+ * MESSAGES FOR QUOTE CARD
  */
 
 const messages = defineMessages({
   dateHeader: {
-    id: messageIds.pages.account.orders.orderDateHeader,
+    id: messageIds.pages.account.quotes.quoteDateHeader,
     description: 'order card date header',
-    defaultMessage: 'Ordered on default'
-  },
-  statusHeader: {
-    id: messageIds.pages.account.orders.statusHeader,
-    description: 'order card status header',
-    defaultMessage: 'Status default'
+    defaultMessage: 'Quoteed on default'
   },
   priceHeader: {
-    id: messageIds.pages.account.orders.totalHeader,
+    id: messageIds.pages.account.quotes.totalHeader,
     defaultMessage: 'Price default',
     description: 'order card price header'
   },
-  viewOrder: {
-    id: messageIds.pages.account.orders.viewOrder,
+  viewQuote: {
+    id: messageIds.pages.account.quotes.viewQuote,
     description: 'View order link text',
-    defaultMessage: 'View order default'
+    defaultMessage: 'View quote default'
   },
   numberHeader: {
-    id: messageIds.pages.account.orders.numberHeader,
-    description: 'order number header',
-    defaultMessage: 'Order number default'
-  },
-  orderStatusNew: {
-    id: messageIds.data.orders.status.new,
-    description: 'new order status',
-    defaultMessage: 'New default'
-  },
-  orderStatusCanceled: {
-    id: messageIds.data.orders.status.canceled,
-    description: 'canceled order status',
-    defaultMessage: 'Canceled default'
-  },
-  orderStatusInProcess: {
-    id: messageIds.data.orders.status.inProcess,
-    description: 'in process order status',
-    defaultMessage: 'In process default'
-  },
-  orderStatusShipped: {
-    id: messageIds.data.orders.status.shipped,
-    description: 'shipped order status',
-    defaultMessage: 'Shipped default'
+    id: messageIds.pages.account.quotes.numberHeader,
+    description: 'Quote number header',
+    defaultMessage: 'Quote number default'
   }
 });
 
 /**
- * ORDER OVERVIEW CARD
+ * QUOTE OVERVIEW CARD
  */
 
-interface OrderCardStyles {
-  container: IStackStyles;
+interface QuoteCardStyles {
+  contentContainer: IStackStyles;
   actionsContainer: IStackStyles;
   button: IButtonStyles;
+  container: IStackStyles;
 }
 
-interface OrderCardProps {
-  order: Order;
-  visibleOrderLines: number;
+interface QuoteCardProps {
+  quote: Quote;
+  compactView: boolean;
 }
 
-export const OrderOverviewCard: React.FC<OrderCardProps> = ({
-  order,
-  visibleOrderLines
-}) => {
+export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
   const { effects, semanticColors, spacing } = useTheme();
   const { formatMessage } = useIntl();
 
-  const styles: OrderCardStyles = {
-    container: {
+  const styles: QuoteCardStyles = {
+    contentContainer: {
       root: {
         border: `1px solid ${semanticColors.variantBorder}`,
         borderRadius: effects.roundedCorner4,
-        height: '100%',
-        ...mediaQueryFrom('mobile', {
-          flex: '1 1 100%'
-        }),
-        ...mediaQueryFrom('tablet', {
-          flex:
-            visibleOrderLines > 2 ? '1 1 100%' : `0 1 calc(50% - ${spacing.m})`
-        })
+        height: '100%'
       }
     },
     actionsContainer: {
@@ -130,71 +96,101 @@ export const OrderOverviewCard: React.FC<OrderCardProps> = ({
       menuIcon: {
         marginRight: 0
       }
+    },
+    container: {
+      root: {
+        flex: '1 1 100%',
+        ...mediaQueryFrom('tablet', {
+          flex: !compactView ? '1 1 100%' : `0 1 calc(50% - ${spacing.m})`
+        })
+      }
     }
   };
 
   return (
-    <Stack styles={styles.container} grow tokens={{ childrenGap: spacing.m }}>
-      <OrderCardTopSection order={order} />
-      {order.lines?.length && (
-        <OrderCardLines
-          visibleOrderLines={visibleOrderLines}
-          lines={order.lines}
-        />
+    <Stack styles={styles.container} tokens={{ childrenGap: spacing.m }}>
+      {quote.submittedOn && (
+        <Stack
+          tokens={{ childrenGap: spacing.s2 }}
+          horizontal
+          verticalAlign="center"
+        >
+          <Stack.Item>
+            <Text variant="smallPlus">
+              {formatMessage(messages.dateHeader)}
+            </Text>
+          </Stack.Item>
+          <Stack.Item>
+            <FormattedDate
+              dateStyle="medium"
+              value={new Date(quote.submittedOn)}
+            />
+          </Stack.Item>
+        </Stack>
       )}
       <Stack
-        horizontal
-        horizontalAlign="end"
-        tokens={{ childrenGap: spacing.l2 }}
-        styles={styles.actionsContainer}
+        styles={styles.contentContainer}
+        grow
+        tokens={{ childrenGap: spacing.m }}
       >
-        <Link href={`/account/orders/${order.id}`} passHref>
-          <a>
-            <ActionButton
-              text={formatMessage(messages.viewOrder)}
-              menuIconProps={{ iconName: 'chevronRight' }}
-              styles={styles.button}
-            />
-          </a>
-        </Link>
+        <QuoteCardTopSection quote={quote} />
+        {quote.lines?.length && (
+          <QuoteCardLines compactView={compactView} lines={quote.lines} />
+        )}
+        <Stack
+          horizontal
+          horizontalAlign="end"
+          tokens={{ childrenGap: spacing.l2 }}
+          styles={styles.actionsContainer}
+        >
+          <Link href={`/account/quotes/${quote.id}`} passHref>
+            <a>
+              <ActionButton
+                text={formatMessage(messages.viewQuote)}
+                menuIconProps={{ iconName: 'chevronRight' }}
+                styles={styles.button}
+              />
+            </a>
+          </Link>
+        </Stack>
       </Stack>
     </Stack>
   );
 };
 
 /**
- * ORDER OVERVIEW CARD LINES
+ * QUOTE OVERVIEW CARD LINES
  */
 
-interface OrderCardLinesProps {
-  lines: OrderLine[];
-  visibleOrderLines: number;
+interface QuoteCardLinesProps {
+  lines: QuoteLine[];
+  compactView: boolean;
 }
 
-interface OrderCardLinesStyles {
+interface QuoteCardLinesStyles {
   container: IStackStyles;
   viewMoreButton: IButtonStyles;
   moreButtonText: ITextStyles;
   viewMoreContainer: IStackStyles;
 }
 
-const OrderCardLines: React.FC<OrderCardLinesProps> = ({
+const QuoteCardLines: React.FC<QuoteCardLinesProps> = ({
   lines,
-  visibleOrderLines
+  compactView
 }) => {
   const { spacing, semanticColors, palette, effects } = useTheme();
   const isMobile = useMobile();
   const isTablet = useTablet();
 
   const visibleItems: number = React.useMemo(() => {
-    if (isMobile) {
+    if (isMobile || compactView) {
       return 1;
     }
     if (isTablet) {
       return 1;
     }
-    return visibleOrderLines || 1;
-  }, [isMobile, isTablet, visibleOrderLines]);
+    return 3;
+  }, [isMobile, isTablet, compactView]);
 
   const viewMoreText: string = useMemo(() => {
     if (lines?.length) {
@@ -203,7 +199,7 @@ const OrderCardLines: React.FC<OrderCardLinesProps> = ({
     return '';
   }, [lines, visibleItems]);
 
-  const styles: OrderCardLinesStyles = {
+  const styles: QuoteCardLinesStyles = {
     container: {
       root: {
         borderTop: `1px solid ${semanticColors.variantBorder}`,
@@ -272,8 +268,8 @@ const OrderCardLines: React.FC<OrderCardLinesProps> = ({
       horizontal
       styles={styles.container}
     >
-      {lines?.slice(0, visibleItems).map((orderLine: OrderLine) => {
-        return <OrderCardLine key={orderLine.id} orderLine={orderLine} />;
+      {lines?.slice(0, visibleItems).map((orderLine: QuoteLine) => {
+        return <QuoteCardLine key={orderLine.id} orderLine={orderLine} />;
       })}
       {lines?.length && !!(lines.length - visibleItems > 0) && (
         <Stack styles={styles.viewMoreContainer}>
@@ -288,18 +284,18 @@ const OrderCardLines: React.FC<OrderCardLinesProps> = ({
   );
 };
 
-interface OrderCardLineStyles {
+interface QuoteCardLineStyles {
   orderLineContainer: IStackStyles;
   orderLineImageContainer: IStackStyles;
 }
 
-const OrderCardLine: React.FC<{ orderLine: OrderLine }> = ({ orderLine }) => {
+const QuoteCardLine: React.FC<{ orderLine: QuoteLine }> = ({ orderLine }) => {
   const { spacing, effects } = useTheme();
   const productFormatter = new ProductFormatter(
     orderLine?.product || undefined
   );
 
-  const styles: OrderCardLineStyles = {
+  const styles: QuoteCardLineStyles = {
     orderLineContainer: {
       root: {
         width: 250,
@@ -352,57 +348,21 @@ const OrderCardLine: React.FC<{ orderLine: OrderLine }> = ({ orderLine }) => {
 };
 
 /**
- * ORDER OVERVIEW CARD TOP SECTION / HEADER
+ * QUOTE OVERVIEW CARD TOP SECTION / HEADER
  */
 
-interface OrderCardTopSectionStyles {
+interface QuoteCardTopSectionStyles {
   alignRight: IStackStyles;
-  statusText: ITextStyles;
 }
 
-const OrderCardTopSection: React.FC<{ order: Order }> = ({ order }) => {
-  const { spacing, palette } = useTheme();
+const QuoteCardTopSection: React.FC<{ quote: Quote }> = ({ quote }) => {
+  const { spacing } = useTheme();
   const { formatMessage } = useIntl();
 
-  function getOrderStatusColor(status: OrderStatus, palette: IPalette): string {
-    switch (status) {
-      case OrderStatus.NEW:
-        return palette.themePrimary;
-      case OrderStatus.IN_PROCESS:
-        return palette.neutralDark;
-      case OrderStatus.SHIPPED:
-        return palette.green;
-      case OrderStatus.CANCELLED:
-        return palette.red;
-      default:
-        return palette.neutralDark;
-    }
-  }
-
-  function getOrderStatusText(status: OrderStatus): string {
-    switch (status) {
-      case OrderStatus.NEW:
-        return formatMessage(messages.orderStatusNew);
-      case OrderStatus.IN_PROCESS:
-        return formatMessage(messages.orderStatusInProcess);
-      case OrderStatus.SHIPPED:
-        return formatMessage(messages.orderStatusShipped);
-      case OrderStatus.CANCELLED:
-        return formatMessage(messages.orderStatusCanceled);
-      default:
-        return '';
-    }
-  }
-
-  const styles: OrderCardTopSectionStyles = {
+  const styles: QuoteCardTopSectionStyles = {
     alignRight: {
       root: {
         textAlign: 'right'
-      }
-    },
-    statusText: {
-      root: {
-        color: getOrderStatusColor(order.status || OrderStatus.NEW, palette)
       }
     }
   };
@@ -424,45 +384,20 @@ const OrderCardTopSection: React.FC<{ order: Order }> = ({ order }) => {
         <Stack tokens={{ childrenGap: spacing.s2 }}>
           <Stack.Item>
             <Text variant="smallPlus">
-              {formatMessage(messages.statusHeader)}
-            </Text>
-          </Stack.Item>
-          <Stack.Item>
-            <Text styles={styles.statusText}>
-              {order.status && getOrderStatusText(order.status)}
-            </Text>
-          </Stack.Item>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s2 }}>
-          <Stack.Item>
-            <Text variant="smallPlus">
-              {formatMessage(messages.dateHeader)}
-            </Text>
-          </Stack.Item>
-          <Stack.Item>
-            <FormattedDate
-              dateStyle="medium"
-              value={new Date(order.submittedOn || '')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s2 }}>
-          <Stack.Item>
-            <Text variant="smallPlus">
               {formatMessage(messages.priceHeader)}
             </Text>
           </Stack.Item>
           <Stack.Item>
             <FormattedNumber
-              currency={order.currencyCode || 'USD'}
+              currency={quote.currencyCode || 'USD'}
               currencyDisplay="narrowSymbol"
               style={'currency'}
-              value={order.totalAmount || 0}
+              value={quote.totalAmount || 0}
             />
           </Stack.Item>
         </Stack>
       </Stack>
-      {order.number && (
+      {quote.number && (
         <Stack>
           <Stack
             tokens={{ childrenGap: spacing.s2 }}
@@ -474,7 +409,7 @@ const OrderCardTopSection: React.FC<{ order: Order }> = ({ order }) => {
               </Text>
             </Stack.Item>
             <Stack.Item>
-              <Text>{order.number}</Text>
+              <Text>{quote.number}</Text>
             </Stack.Item>
           </Stack>
         </Stack>

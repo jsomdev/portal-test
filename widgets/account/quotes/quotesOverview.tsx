@@ -12,24 +12,22 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
-import { useClaims } from '@services/authentication/claims';
-import { fetchMyOrders } from '@services/portal-api/orders';
+import { fetchMyQuotes } from '@services/portal-api/quotes';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { ResultViewPagination } from '@widgets/finder/result-view/product-result-view-pagination/resultViewPagination';
 
-import { OrderCard } from './orderCard';
+import { QuoteCard } from './quoteCard';
 
-interface OrdersOverviewStyles {
+interface QuotesOverviewStyles {
   spinner: ISpinnerStyles;
 }
 
-export const OrdersOverview: React.FC = () => {
+export const QuotesOverview: React.FC = () => {
   const PAGE_SIZE = 10;
   const { spacing, fonts, palette } = useTheme();
   const isAuthenticated = useIsAuthenticated();
-  const { accountId } = useClaims();
-  const { isOrderHistoryEnabled } = useMe();
+  const { isQuoteHistoryEnabled } = useMe();
   const router = useRouter();
 
   const page: number | undefined = useMemo(() => {
@@ -40,34 +38,33 @@ export const OrdersOverview: React.FC = () => {
     return Number(pageParam);
   }, [router.query.page]);
 
-  const { data: orders, status: ordersStatus } = useQuery(
-    [QUERYKEYS.orders, page, isAuthenticated, accountId, isOrderHistoryEnabled],
+  const { data: quotes, status: quotesStatus } = useQuery(
+    [QUERYKEYS.quotes, page, isAuthenticated],
     () =>
-      fetchMyOrders(
+      fetchMyQuotes(
         PAGE_SIZE,
         (page - 1) * PAGE_SIZE,
         isAuthenticated,
-        isOrderHistoryEnabled,
-        accountId
+        isQuoteHistoryEnabled
       ),
     {
       keepPreviousData: true,
-      enabled: !!isAuthenticated && isOrderHistoryEnabled && !!accountId,
+      enabled: !!isAuthenticated,
       refetchOnMount: true,
       refetchOnWindowFocus: true
     }
   );
 
-  const orderCount: number = useMemo(() => {
-    return orders?.['@odata.count'] || 0;
-  }, [orders]);
+  const quotesCount: number = useMemo(() => {
+    return quotes?.['@odata.count'] || 0;
+  }, [quotes]);
 
   function updatePage(newPage: number): void {
     router.query.page = newPage >= 1 ? newPage.toString() : '1';
     router.push(router, undefined, { shallow: true });
   }
 
-  const styles: OrdersOverviewStyles = {
+  const styles: QuotesOverviewStyles = {
     spinner: {
       label: {
         ...fonts.mediumPlus,
@@ -76,7 +73,7 @@ export const OrdersOverview: React.FC = () => {
     }
   };
 
-  if (ordersStatus === 'loading') {
+  if (quotesStatus === 'loading') {
     return (
       <Stack
         verticalAlign="center"
@@ -90,19 +87,19 @@ export const OrdersOverview: React.FC = () => {
 
   return (
     <Stack>
-      {ordersStatus === 'success' && orders?.value.length && (
+      {quotesStatus === 'success' && quotes?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
-              {orders.value.map(order => {
+              {quotes.value.map(quote => {
                 return (
-                  <OrderCard compactView={false} key={order.id} order={order} />
+                  <QuoteCard compactView={false} key={quote.id} quote={quote} />
                 );
               })}
             </Stack>
           </Stack.Item>
           <ResultViewPagination
-            totalItems={orderCount}
+            totalItems={quotesCount}
             currentPage={page}
             pageSize={PAGE_SIZE}
             onPageChange={newPage => {

@@ -13,23 +13,23 @@ import {
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
-import { fetchMyOrders } from '@services/portal-api/orders';
+import { fetchMyQuoteRequests } from '@services/portal-api/quoteRequests';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { ResultViewPagination } from '@widgets/finder/result-view/product-result-view-pagination/resultViewPagination';
 
-import { OrderCard } from './orderCard';
+import { QuoteRequestOverviewCard } from './quoteRequestCard';
 
-interface OrdersOverviewStyles {
+interface QuoteRequestsOverviewStyles {
   spinner: ISpinnerStyles;
 }
 
-export const OrdersOverview: React.FC = () => {
+export const QuoteRequestsOverview: React.FC = () => {
   const PAGE_SIZE = 10;
   const { spacing, fonts, palette } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
-  const { isOrderHistoryEnabled } = useMe();
+  const { isQuoteRequestHistoryEnabled } = useMe();
   const router = useRouter();
 
   const page: number | undefined = useMemo(() => {
@@ -40,34 +40,34 @@ export const OrdersOverview: React.FC = () => {
     return Number(pageParam);
   }, [router.query.page]);
 
-  const { data: orders, status: ordersStatus } = useQuery(
-    [QUERYKEYS.orders, page, isAuthenticated, accountId, isOrderHistoryEnabled],
+  const { data: quoteRequests, status: quoteRequestsStatus } = useQuery(
+    [
+      QUERYKEYS.quoteRequests,
+      page,
+      isAuthenticated,
+      accountId,
+      isQuoteRequestHistoryEnabled
+    ],
     () =>
-      fetchMyOrders(
-        PAGE_SIZE,
-        (page - 1) * PAGE_SIZE,
-        isAuthenticated,
-        isOrderHistoryEnabled,
-        accountId
-      ),
+      fetchMyQuoteRequests(PAGE_SIZE, (page - 1) * PAGE_SIZE, isAuthenticated),
     {
       keepPreviousData: true,
-      enabled: !!isAuthenticated && isOrderHistoryEnabled && !!accountId,
+      enabled: !!isAuthenticated && isQuoteRequestHistoryEnabled && !!accountId,
       refetchOnMount: true,
       refetchOnWindowFocus: true
     }
   );
 
-  const orderCount: number = useMemo(() => {
-    return orders?.['@odata.count'] || 0;
-  }, [orders]);
+  const quoteRequestsCount: number = useMemo(() => {
+    return quoteRequests?.['@odata.count'] || 0;
+  }, [quoteRequests]);
 
   function updatePage(newPage: number): void {
     router.query.page = newPage >= 1 ? newPage.toString() : '1';
     router.push(router, undefined, { shallow: true });
   }
 
-  const styles: OrdersOverviewStyles = {
+  const styles: QuoteRequestsOverviewStyles = {
     spinner: {
       label: {
         ...fonts.mediumPlus,
@@ -76,7 +76,7 @@ export const OrdersOverview: React.FC = () => {
     }
   };
 
-  if (ordersStatus === 'loading') {
+  if (quoteRequestsStatus === 'loading') {
     return (
       <Stack
         verticalAlign="center"
@@ -90,19 +90,23 @@ export const OrdersOverview: React.FC = () => {
 
   return (
     <Stack>
-      {ordersStatus === 'success' && orders?.value.length && (
+      {quoteRequestsStatus === 'success' && quoteRequests?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
-              {orders.value.map(order => {
+              {quoteRequests.value.map(quote => {
                 return (
-                  <OrderCard compactView={false} key={order.id} order={order} />
+                  <QuoteRequestOverviewCard
+                    compactView={false}
+                    key={quote.id}
+                    quoteRequest={quote}
+                  />
                 );
               })}
             </Stack>
           </Stack.Item>
           <ResultViewPagination
-            totalItems={orderCount}
+            totalItems={quoteRequestsCount}
             currentPage={page}
             pageSize={PAGE_SIZE}
             onPageChange={newPage => {

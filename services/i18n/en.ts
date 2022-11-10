@@ -261,9 +261,22 @@ export const en: Messages = {
         viewOrder: 'View order',
         numberHeader: 'Order number:'
       },
+      quoteRequests: {
+        requestDateHeader: 'Requested on:',
+        viewQuoteRequest: 'View quote request'
+      },
+      quotes: {
+        numberHeader: 'Quote number:',
+        quoteDateHeader: 'Quote created on:',
+        totalHeader: 'Total price:',
+        viewQuote: 'View quote'
+      },
       sections: {
         orders: {
           title: 'Orders'
+        },
+        quotes: {
+          title: 'Quotes'
         },
         quoteRequests: {
           title: 'Quote Requests'

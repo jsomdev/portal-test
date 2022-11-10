@@ -70,6 +70,8 @@ export interface ReactQueryKeys {
   productFinderTableHierarchy: string;
   productFinderTableViewDesignsForModel: string;
   productFinderTableViewProductListItem: string;
+  quote: string;
+  quoteDetail: string;
   quoteRequestDetail: string;
   quoteRequestLineProducts: string;
   quoteRequests: string;

@@ -8,6 +8,7 @@ const pagePaths = {
   orders: '/account/orders',
   accountOverview: '/account',
   quoteRequests: '/account/quote-requests',
+  quotes: '/account/quotes',
   addressBook: '/account/info-and-preferences/address-book',
   profileInfo: '/account/info-and-preferences/profile-information',
   preferences: '/account/info-and-preferences/preferences'

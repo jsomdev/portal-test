@@ -257,7 +257,12 @@ export const nl: Messages = {
           }
         }
       },
-
+      quotes: {
+        numberHeader: 'Offerte number:',
+        quoteDateHeader: 'Offerte aangemaakt op:',
+        totalHeader: 'Totaal prijs:',
+        viewQuote: 'Bekijk offerte'
+      },
       orders: {
         statusHeader: 'Status:',
         orderDateHeader: 'Besteld op:',
@@ -265,9 +270,16 @@ export const nl: Messages = {
         viewOrder: 'Bekijk bestelling',
         numberHeader: 'Bestelling nummer:'
       },
+      quoteRequests: {
+        requestDateHeader: 'Aangevraagd op:',
+        viewQuoteRequest: 'Bekijk offerte aanvraag'
+      },
       sections: {
         orders: {
           title: 'Bestellingen'
+        },
+        quotes: {
+          title: 'Offertes'
         },
         quoteRequests: {
           title: 'Offerte Aanvragen'

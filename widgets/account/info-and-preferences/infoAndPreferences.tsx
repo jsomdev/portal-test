@@ -9,6 +9,7 @@ import {
   IButtonStyles,
   IIconStyles,
   IStackStyles,
+  ITextStyles,
   Icon,
   Stack,
   Text,
@@ -114,6 +115,7 @@ interface InfoAndPreferencesStyles {
   iconContainer: IStackStyles;
   iconStyles: IIconStyles;
   linkStyles: IButtonStyles;
+  sectionTitle: ITextStyles;
 }
 
 function getInfoAndPreferencesAccountSection(
@@ -183,9 +185,7 @@ export const InfoAndPreferences: React.FC = () => {
       root: {
         border: `1px solid ${semanticColors.variantBorder}`,
         borderRadius: effects.roundedCorner4,
-        ...mediaQueryFrom('mobile', {
-          padding: spacing.l1
-        }),
+        padding: spacing.l1,
         ...mediaQueryFrom('tablet', {
           padding: `${spacing.l1} ${spacing.l2}`
         })
@@ -193,9 +193,7 @@ export const InfoAndPreferences: React.FC = () => {
     },
     iconContainer: {
       root: {
-        ...mediaQueryFrom('mobile', {
-          paddingRight: spacing.l1
-        }),
+        paddingRight: spacing.l1,
         ...mediaQueryFrom('tablet', {
           paddingRight: spacing.l2
         })
@@ -203,9 +201,7 @@ export const InfoAndPreferences: React.FC = () => {
     },
     iconStyles: {
       root: {
-        ...mediaQueryFrom('mobile', {
-          fontSize: FontSizes.size24
-        }),
+        fontSize: FontSizes.size24,
         ...mediaQueryFrom('tablet', {
           fontSize: FontSizes.size32
         })
@@ -223,6 +219,11 @@ export const InfoAndPreferences: React.FC = () => {
       textContainer: {
         color: palette.themePrimary
       }
+    },
+    sectionTitle: {
+      root: {
+        fontSize: FontSizes.size16
+      }
     }
   };
 
@@ -236,7 +237,9 @@ export const InfoAndPreferences: React.FC = () => {
             </Stack>
             <Stack tokens={{ childrenGap: spacing.m }}>
               <Stack>
-                <Text as="h3">{section.title}</Text>
+                <Text styles={styles.sectionTitle} as="h3">
+                  {section.title}
+                </Text>
               </Stack>
               <Stack>
                 <Text>{section.description}</Text>
