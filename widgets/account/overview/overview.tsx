@@ -8,8 +8,6 @@ import { useIsAuthenticated } from '@azure/msal-react';
 import {
   ActionButton,
   IStackStyles,
-  Spinner,
-  SpinnerSize,
   Stack,
   Text,
   useTheme
@@ -21,8 +19,8 @@ import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { OrderOverviewCard } from '@widgets/account-page/orders/orderOverviewCard';
-import { OverviewTag } from '@widgets/account-page/overview/overviewTag';
+import { OrderOverviewCard } from '@widgets/account/orders/orderOverviewCard';
+import { OverviewTag } from '@widgets/account/overview/overviewTag';
 
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
@@ -33,38 +31,33 @@ const messages = defineMessages({
     description: 'Text to welcome user',
     defaultMessage: 'Welcome default'
   },
-  title: {
-    id: messageIds.pages.account.overview.title,
-    description: 'Account page title',
-    defaultMessage: 'Account Overview default'
-  },
   subTitle: {
     id: messageIds.pages.account.overview.subTitle,
     description: 'Account page sub title',
     defaultMessage: 'Subtitle default text'
   },
   accountManager: {
-    id: messageIds.pages.account.overview.user.status.manager,
+    id: messageIds.pages.account.overview.account.status.manager,
     description: 'manager tag',
     defaultMessage: 'manager default'
   },
   accountEmployee: {
-    id: messageIds.pages.account.overview.user.status.employee,
+    id: messageIds.pages.account.overview.account.status.employee,
     description: 'employee tag',
     defaultMessage: 'employee default'
   },
   accountAdmin: {
-    id: messageIds.pages.account.overview.user.status.admin,
+    id: messageIds.pages.account.overview.account.status.admin,
     description: 'admin tag',
     defaultMessage: 'admin default'
   },
   accountVerified: {
-    id: messageIds.pages.account.overview.user.status.verified,
+    id: messageIds.pages.account.overview.account.status.verified,
     description: 'verified tag',
     defaultMessage: 'verified default'
   },
   accountCustomer: {
-    id: messageIds.pages.account.overview.user.status.customer,
+    id: messageIds.pages.account.overview.account.status.customer,
     description: 'customer tag',
     defaultMessage: 'customer default'
   },
@@ -100,7 +93,7 @@ export const Overview: React.FC = () => {
   const { isAccountManager, isAdministrator, isEmployee } = claims;
 
   const { data: orders, status: ordersStatus } = useQuery(
-    [QUERYKEYS.orders, isAuthenticated, accountId, isOrderHistoryEnabled],
+    [QUERYKEYS.recentOrders, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
       fetchMyOrders(2, 0, isAuthenticated, isOrderHistoryEnabled, accountId),
     {
@@ -131,47 +124,36 @@ export const Overview: React.FC = () => {
 
   return (
     <Stack tokens={{ childrenGap: spacing.l2 }}>
-      <Stack tokens={{ childrenGap: spacing.l1 }}>
-        <Stack.Item>
-          <Text variant="xLarge" as={'h1'}>
-            {formatMessage(messages.title)}
-          </Text>
-        </Stack.Item>
-        <Stack.Item>
-          <Stack
-            styles={styles.welcomeSection}
-            tokens={{ childrenGap: spacing.s1 }}
-          >
-            <Stack>
-              <Stack.Item>
-                <Text variant="large">
-                  {formatMessage(messages.welcome, {
-                    name
-                  })}
-                </Text>
-              </Stack.Item>
-            </Stack>
-            <Stack tokens={{ childrenGap: spacing.l1 }}>
-              <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
-                {isAccountManager && (
-                  <OverviewTag text={formatMessage(messages.accountManager)} />
-                )}
-                {isAdministrator && (
-                  <OverviewTag text={formatMessage(messages.accountAdmin)} />
-                )}
-                {isEmployee && (
-                  <OverviewTag text={formatMessage(messages.accountEmployee)} />
-                )}
-              </Stack>
-              <Stack.Item>
-                <Text variant="medium">{formatMessage(messages.subTitle)}</Text>
-              </Stack.Item>
-            </Stack>
+      <Stack
+        styles={styles.welcomeSection}
+        tokens={{ childrenGap: spacing.s1 }}
+      >
+        <Stack>
+          <Stack.Item>
+            <Text variant="large">
+              {formatMessage(messages.welcome, {
+                name
+              })}
+            </Text>
+          </Stack.Item>
+        </Stack>
+        <Stack tokens={{ childrenGap: spacing.l1 }}>
+          <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
+            {isAccountManager && (
+              <OverviewTag text={formatMessage(messages.accountManager)} />
+            )}
+            {isAdministrator && (
+              <OverviewTag text={formatMessage(messages.accountAdmin)} />
+            )}
+            {isEmployee && (
+              <OverviewTag text={formatMessage(messages.accountEmployee)} />
+            )}
           </Stack>
-        </Stack.Item>
+          <Stack.Item>
+            <Text variant="medium">{formatMessage(messages.subTitle)}</Text>
+          </Stack.Item>
+        </Stack>
       </Stack>
-
-      {ordersStatus === 'loading' && <Spinner size={SpinnerSize.large} />}
       {ordersStatus === 'success' && orders?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
@@ -182,7 +164,13 @@ export const Overview: React.FC = () => {
           <Stack.Item>
             <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
               {orders.value.map(order => {
-                return <OrderOverviewCard key={order.id} order={order} />;
+                return (
+                  <OrderOverviewCard
+                    visibleOrderLines={1}
+                    key={order.id}
+                    order={order}
+                  />
+                );
               })}
             </Stack>
           </Stack.Item>

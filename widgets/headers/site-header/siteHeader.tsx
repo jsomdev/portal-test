@@ -30,6 +30,7 @@ import CartCountButtonIcon from '@widgets/cart/cartCountButtonIcon';
 import { LanguageMenu } from '@widgets/headers/site-header/language-menu/languageMenu';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
+import { AccountNavigationMenu } from '../../account/accountNavigationMenu';
 import {
   MenuItemViewModel,
   mapMenuItemsToMenuItemViewModel
@@ -38,7 +39,6 @@ import { HeaderSearchBar } from '../shared/headerSearchBar';
 import { AppNavigationMenu } from './appNavigationMenu';
 import { SiteHeaderButton } from './siteHeaderButton';
 import { SiteLogo } from './siteLogo';
-import { UserNavigationMenu } from './userNavigationMenu';
 
 export interface SiteHeaderProps {
   siteMenuItems: MenuItemViewModel[];
@@ -61,7 +61,7 @@ const messages = defineMessages({
     defaultMessage: 'View all categories'
   },
   signIn: {
-    id: messageIds.navigation.user.signIn,
+    id: messageIds.navigation.account.signIn,
     description: 'Link text for sign in button',
     defaultMessage: 'Sign In'
   },
@@ -256,7 +256,7 @@ const MobileSiteHeader: React.FC = () => {
           styles={styles.panel}
         >
           {showPanel === 'user' && (
-            <UserNavigationMenu onDismiss={onPanelDismiss} />
+            <AccountNavigationMenu onDismiss={onPanelDismiss} />
           )}
           {showPanel === 'app' && (
             <AppNavigationMenu onDismiss={onPanelDismiss} />

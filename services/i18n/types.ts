@@ -38,7 +38,7 @@ type ISiteSearchBarMessages = {
   placeholder: string;
 };
 
-type IUserNavigationMessages = {
+type IAccountNavigationMessages = {
   title: string;
   expandLabel: string;
   collapseLabel: string;
@@ -185,7 +185,7 @@ type IAccountMessages = {
       title: string;
       viewAllText: string;
     };
-    user: {
+    account: {
       status: {
         manager: string;
         admin: string;
@@ -227,10 +227,13 @@ type IAccountMessages = {
         profileInformation: {
           title: string;
           description: string;
+          viewInfoLink: string;
+          changePasswordLink: string;
         };
         addressBook: {
           title: string;
           description: string;
+          viewAddressBookLink: string;
         };
         companyInformation: {
           title: string;
@@ -239,6 +242,8 @@ type IAccountMessages = {
         preferences: {
           title: string;
           description: string;
+          privacySettingsLink: string;
+          settingsLink: string;
         };
       };
     };
@@ -424,7 +429,7 @@ export type Messages = {
   navigation: {
     site: ISiteNavigationMessages;
     main: IMainNavigationMessages;
-    user: IUserNavigationMessages;
+    account: IAccountNavigationMessages;
     locale: ILocaleMessages;
   };
   searchBar: ISiteSearchBarMessages;

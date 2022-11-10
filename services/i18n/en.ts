@@ -22,10 +22,10 @@ export const en: Messages = {
       expandLabel: 'navigation.site.expandLabel',
       logoAlt: 'Spraying Systems Company Logo'
     },
-    user: {
+    account: {
       title: 'My Account',
-      collapseLabel: 'navigation.user.collapseLabel',
-      expandLabel: 'navigation.user.expandLabel',
+      collapseLabel: 'navigation.account.collapseLabel',
+      expandLabel: 'navigation.account.expandLabel',
       signIn: 'Sign in',
       myProfile: 'My Profile'
     },
@@ -244,7 +244,7 @@ export const en: Messages = {
           customerHeader: 'Customer number:',
           paymentHeader: 'Payment method:'
         },
-        user: {
+        account: {
           status: {
             manager: 'Manager',
             admin: 'Admin',
@@ -274,12 +274,15 @@ export const en: Messages = {
             profileInformation: {
               title: 'Profile Information',
               description:
-                'Change your login details or personal information, such as your phone number.'
+                'Change your login details or personal information, such as your phone number.',
+              changePasswordLink: 'Change password',
+              viewInfoLink: 'View personal information'
             },
             addressBook: {
               title: 'Address Book',
               description:
-                'You can add and change addresses on this page. When ordering you can quickly select the right address.'
+                'You can add and change addresses on this page. When ordering you can quickly select the right address.',
+              viewAddressBookLink: 'View address book'
             },
             companyInformation: {
               title: 'Company Information',
@@ -289,7 +292,9 @@ export const en: Messages = {
             preferences: {
               title: 'Preferences',
               description:
-                'Find and manage your preferences. Choose your application settings and privacy settings'
+                'Find and manage your preferences. Choose your application settings and privacy settings',
+              privacySettingsLink: 'Privacy settings',
+              settingsLink: 'Measurement settings'
             }
           }
         }

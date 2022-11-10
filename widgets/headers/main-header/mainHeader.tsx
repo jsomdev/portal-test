@@ -226,7 +226,10 @@ const DesktopMainHeader: React.FC = () => {
               iconProps={{
                 iconName: 'Contact'
               }}
-              onClick={() => (isAuthenticated ? push('/account') : signIn())}
+              // TODO temporary functionality until the desktop 'user menu' is implemented
+              onClick={() =>
+                isAuthenticated ? push(pagePaths.accountOverview) : signIn()
+              }
             />
           )}
         </Stack>

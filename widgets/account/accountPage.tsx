@@ -23,10 +23,11 @@ import { TabletAndDesktop } from '@widgets/media-queries';
 import Page from '@widgets/page/page';
 import { LocalePaths } from '@widgets/page/page.types';
 
-import { AccountNavigation } from './accountNavigation';
+import { AccountSideNavigation } from './accountSideNavigation';
 
 interface AccountPageProps {
-  title: string;
+  metaTitle: string;
+  pageTitle: string;
   siteMenuItems: MenuItem[] | undefined;
   mainMenuItems: MenuItem[] | undefined;
   localePaths: LocalePaths | undefined;
@@ -47,7 +48,8 @@ const messages = defineMessages({
 });
 
 export const AccountPage: React.FC<AccountPageProps> = ({
-  title,
+  metaTitle,
+  pageTitle,
   mainMenuItems,
   siteMenuItems,
   localePaths,
@@ -82,7 +84,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
   return (
     <Page
       metaProps={{
-        title: title,
+        title: metaTitle,
         description: '',
         noIndex: true
       }}
@@ -103,18 +105,26 @@ export const AccountPage: React.FC<AccountPageProps> = ({
               >
                 <TabletAndDesktop>
                   {className => (
-                    <Stack.Item
+                    <Stack
                       styles={styles.accountNavigationContainer}
                       className={className}
                     >
-                      <AccountNavigation />
-                    </Stack.Item>
+                      <AccountSideNavigation />
+                    </Stack>
                   )}
                 </TabletAndDesktop>
                 {isAuthenticated && (
-                  <Stack.Item styles={styles.mainContainer}>
+                  <Stack
+                    styles={styles.mainContainer}
+                    tokens={{ childrenGap: spacing.l1 }}
+                  >
+                    <Stack.Item>
+                      <Text variant="xLarge" as={'h1'}>
+                        {pageTitle}
+                      </Text>
+                    </Stack.Item>
                     {children}
-                  </Stack.Item>
+                  </Stack>
                 )}
                 {!isAuthenticated && (
                   <MessageBar

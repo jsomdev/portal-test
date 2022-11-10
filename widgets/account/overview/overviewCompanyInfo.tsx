@@ -7,7 +7,6 @@ import {
   IButtonStyles,
   IStackStyles,
   ITextStyles,
-  IconButton,
   Stack,
   Text,
   useTheme
@@ -16,6 +15,7 @@ import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
+import { rem } from '@utilities/rem';
 
 const messages = defineMessages({
   companyHeader: {
@@ -67,7 +67,8 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
         border: `1px solid ${semanticColors.variantBorder}`,
         padding: spacing.m,
         borderRadius: effects.roundedCorner4,
-        flex: '1 1 0'
+        flex: '1 1 0',
+        minWidth: rem(300)
       }
     },
     headerText: {

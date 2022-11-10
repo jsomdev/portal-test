@@ -108,7 +108,9 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
           }}
           text={item.text}
           styles={styles.link}
-          onClick={item.onClick}
+          onClick={() => {
+            onClick && onClick();
+          }}
           menuIconProps={
             item.children?.length ? { iconName: 'chevronRight' } : undefined
           }
