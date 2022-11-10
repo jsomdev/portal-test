@@ -17,7 +17,6 @@ import {
 } from '@services/portal-api/menuItems';
 import pagePaths from '@utilities/pagePaths';
 import CheckoutNew from '@widgets/checkout-new/checkout';
-import Checkout from '@widgets/checkout/checkout';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
