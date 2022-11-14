@@ -368,13 +368,23 @@ type ICheckoutMessages = {
   needsSignIn: string;
   signInText: string;
   unauthorized: string;
+  steps: {
+    details: string;
+    shippingMethod: string;
+    paymentDetails: string;
+    overview: string;
+  };
   actions: {
     nextButton: string;
     backButton: string;
     submitButton: string;
+    completePayment: string;
+    completePurchaseOrder: string;
   };
   details: {
     generalTitle: string;
+    shippingContactTitle: string;
+    shippingAddressTitle: string;
     fields: {
       email: string;
       emailPlaceholder: string;
@@ -388,10 +398,31 @@ type ICheckoutMessages = {
       addressPlaceholder: string;
       city: string;
       state: string;
-      statePlaceholder: string;
+      statePlaceholder: {
+        default: string;
+        BE: string;
+        US: string;
+        CA: string;
+      };
       postalCode: string;
       phone: string;
     };
+  };
+  summary: {
+    details: string;
+    subTotal: string;
+    shippingCost: string;
+    tax: string;
+    total: string;
+  };
+  discounts: {
+    apply: string;
+    discountCode: string;
+  };
+  usps: {
+    qualityServices: string;
+    secureTransactions: string;
+    expertSupport: string;
   };
 };
 

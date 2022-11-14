@@ -1,3 +1,5 @@
+//TODO move out of checkout folder for re-use when working on quote checkout
+// and/or when old checkout can be removed, as this is actually a different stepper from the old one
 import { useState } from 'react';
 
 import { IIconProps } from '@fluentui/react';

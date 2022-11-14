@@ -69,7 +69,7 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
     return { ...values, ...step1 };
   }, [me, shippingAddress, values]);
 
-  const initialTouched: FormikTouched<Step1FormData> = useMemo(() => {
+  const initialTouched = useMemo(() => {
     return getTouchedFields(defaultAndPrefilledValues);
   }, [defaultAndPrefilledValues]);
 

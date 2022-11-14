@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormikContextType, useFormikContext } from 'formik';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
@@ -11,6 +12,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import {
   allCountryOptions,
   supportedProvinceOptions,
@@ -21,12 +23,24 @@ import { Step1FormData } from '@widgets/checkout-new/steps/step-1-details/step-1
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
-const messages = {
-  shippingAddress: 'Shipping Address',
-  usPlaceholder: 'Please select a state',
-  caPlaceholder: 'Please select a province',
-  defaultPlaceholder: 'State / Region'
-};
+const messages = defineMessages({
+  shippingAddressTitle: {
+    id: messageIds.pages.checkout.details.shippingAddressTitle,
+    defaultMessage: 'Shipping Address'
+  },
+  stateFieldPlaceholderUS: {
+    id: messageIds.pages.checkout.details.fields.statePlaceholder.US,
+    defaultMessage: 'Please select a state'
+  },
+  stateFieldPlaceholderCA: {
+    id: messageIds.pages.checkout.details.fields.statePlaceholder.CA,
+    defaultMessage: 'Please select a province'
+  },
+  stateFieldPlaceholderDefault: {
+    id: messageIds.pages.checkout.details.fields.statePlaceholder.default,
+    defaultMessage: 'State / Region / Province'
+  }
+});
 
 export const ShippingAddressFormGroup: React.FC<{
   title?: string;
@@ -40,6 +54,7 @@ export const ShippingAddressFormGroup: React.FC<{
     setFieldValue,
     setFieldTouched
   }: FormikContextType<Step1FormData> = useFormikContext();
+  const { formatMessage } = useIntl();
 
   const { spacing } = useTheme();
 
@@ -55,7 +70,7 @@ export const ShippingAddressFormGroup: React.FC<{
 
   const regionPlaceholder: string = useMemo((): string => {
     if (values.country === 'US') {
-      return messages.usPlaceholder;
+      return formatMessage(messages.stateFieldPlaceholderUS);
     }
     if (values.country === 'CA') {
       return messages.caPlaceholder;

@@ -6,41 +6,28 @@ import { InferType } from 'yup';
 
 import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
 
-type ShippingMethod =
-  | 'FreeShipping'
-  | 'FlatRate'
-  | 'UpsGround'
-  | 'UpsSecondDayAir'
-  | 'UpsNextDayAir'
-  | 'UpsNextDayAirSaver'
-  | 'UpsStandard'
-  | 'UpsWorldwideExpedited';
-
 const validation = yup.object({
-  shippingMethod: yup.string() //TODO  yup.mixed<ShippingMethod>().required()
+  paymentMethod: yup.string()
 });
 
-export type Step2FormData = InferType<typeof validation>;
+export type Step3FormData = InferType<typeof validation>;
 
-const defaultValues: Step2FormData = {
-  shippingMethod: ''
+const defaultValues: Step3FormData = {
+  paymentMethod: ''
 };
 
-export type Step2ShippingMethodProps = {
-  values: Step2FormData;
-  formRef: React.RefObject<FormikProps<Step2FormData>> | undefined;
+export type Step3Props = {
+  values: Step3FormData;
+  formRef: React.RefObject<FormikProps<Step3FormData>> | undefined;
 };
 
-export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
-  formRef,
-  values
-}) => {
+export const Step3Payment: React.FC<Step3Props> = ({ values, formRef }) => {
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
 
   return (
-    <Formik<Step2FormData>
+    <Formik<Step3FormData>
       innerRef={formRef}
       initialValues={values}
       initialTouched={initialTouched}
@@ -52,13 +39,13 @@ export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
         //onFormSubmit(values);
       }}
     >
-      <Form>Step 2 Content</Form>
+      <Form>Step 3 Content</Form>
     </Formik>
   );
 };
 
 export default {
-  Component: Step2ShippingMethod,
+  Component: Step3Payment,
   defaultValues,
   validation
 };

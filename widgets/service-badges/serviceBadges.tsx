@@ -1,17 +1,33 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { FontSizes, Icon, Stack, Text, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 import { ServiceBadgesStyles } from './serviceUsps.types';
 
-const messages = {
-  qualityServices: 'Quality Services',
-  secureTransactions: 'Secure Transactions',
-  expertSupport: 'Expert Support'
-};
+const messages = defineMessages({
+  qualityServices: {
+    id: messageIds.pages.checkout.usps.qualityServices,
+    defaultMessage: 'Quality Services',
+    description: 'Quality Services label on checkout USPs'
+  },
+  secureTransactions: {
+    id: messageIds.pages.checkout.usps.secureTransactions,
+    defaultMessage: 'Secure Transactions',
+    description: 'Secure Transactions label on checkout USPs'
+  },
+  expertSupport: {
+    id: messageIds.pages.checkout.usps.expertSupport,
+    defaultMessage: 'Expert Support',
+    description: 'Expert Support label on checkout USPs'
+  }
+});
 
 export const ServiceBadges: React.FC = () => {
   const { spacing, palette } = useTheme();
+  const { formatMessage } = useIntl();
   const styles: ServiceBadgesStyles = {
     iconWrapper: {
       root: {
@@ -43,7 +59,9 @@ export const ServiceBadges: React.FC = () => {
           iconName="Timer"
           styles={styles.iconStyles}
         />
-        <Text styles={styles.iconText}>{messages.qualityServices}</Text>
+        <Text styles={styles.iconText}>
+          {formatMessage(messages.qualityServices)}
+        </Text>
       </Stack>
       <Stack
         verticalAlign="center"
@@ -55,7 +73,9 @@ export const ServiceBadges: React.FC = () => {
           iconName="ProtectionCenterLogo32"
           styles={styles.iconStyles}
         />
-        <Text styles={styles.iconText}>{messages.secureTransactions}</Text>
+        <Text styles={styles.iconText}>
+          {formatMessage(messages.secureTransactions)}
+        </Text>
       </Stack>
       <Stack
         verticalAlign="center"
@@ -67,7 +87,9 @@ export const ServiceBadges: React.FC = () => {
           iconName="Telemarketer"
           styles={styles.iconStyles}
         />
-        <Text styles={styles.iconText}>{messages.expertSupport}</Text>
+        <Text styles={styles.iconText}>
+          {formatMessage(messages.expertSupport)}
+        </Text>
       </Stack>
     </Stack>
   );

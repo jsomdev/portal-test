@@ -373,13 +373,23 @@ export const en: Messages = {
         'You need to be signed in to checkout your cart. Please {signInText}',
       signInText: 'sign in here.',
       unauthorized: 'You are not authorized to view this page.',
+      steps: {
+        details: 'Details',
+        shippingMethod: 'Shipping Method',
+        paymentDetails: 'Payment Method',
+        overview: 'Overview'
+      },
       actions: {
-        nextButton: 'Next',
-        backButton: 'Back',
-        submitButton: 'Submit'
+        nextButton: 'Proceed',
+        backButton: 'Previous Step',
+        submitButton: 'Submit',
+        completePayment: 'Confirm and pay',
+        completePurchaseOrder: 'Confirm and submit'
       },
       details: {
         generalTitle: 'General',
+        shippingContactTitle: 'Shipping Contact',
+        shippingAddressTitle: 'Shipping Address',
         fields: {
           email: 'Email',
           emailPlaceholder: 'example@domain.com',
@@ -393,10 +403,31 @@ export const en: Messages = {
           addressPlaceholder: 'Street and number',
           city: 'City',
           state: 'State / Province',
-          statePlaceholder: 'Select an option',
+          statePlaceholder: {
+            default: 'State / Region / Province',
+            BE: 'Please select a province',
+            US: 'Please select a state',
+            CA: 'Please select a province'
+          },
           postalCode: 'Postal Code',
           phone: 'Phone Number'
         }
+      },
+      summary: {
+        details: 'Details',
+        subTotal: 'Sub Total',
+        shippingCost: 'Shipping',
+        total: 'Order Total',
+        tax: 'Tax'
+      },
+      discounts: {
+        apply: 'Apply',
+        discountCode: 'Discount code'
+      },
+      usps: {
+        qualityServices: 'Quality Services',
+        secureTransactions: 'Secure Transactions',
+        expertSupport: 'Expert Support'
       }
     }
   },

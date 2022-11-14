@@ -378,13 +378,23 @@ export const messageIds: Messages = {
       needsSignIn: 'pages.checkout.needsSignIn',
       signInText: 'pages.checkout.signInText',
       unauthorized: 'pages.checkout.unauthorized',
+      steps: {
+        details: 'pages.checkout.steps.details',
+        shippingMethod: 'pages.checkout.steps.shippingMethod',
+        paymentDetails: 'pages.checkout.steps.paymentDetails',
+        overview: 'pages.checkout.steps.overview'
+      },
       actions: {
         nextButton: 'pages.checkout.actions.nextButton',
         backButton: 'pages.checkout.actions.backButton',
-        submitButton: 'pages.checkout.actions.submitButton'
+        submitButton: 'pages.checkout.actions.submitButton',
+        completePayment: 'pages.checkout.actions.completePayment',
+        completePurchaseOrder: 'pages.checkout.actions.completePurchaseOrder'
       },
       details: {
         generalTitle: 'pages.checkout.details.generalTitle',
+        shippingContactTitle: 'pages.checkout.details.shippingContactTitle',
+        shippingAddressTitle: 'pages.checkout.details.shippingAddressTitle',
         fields: {
           email: 'pages.checkout.details.fields.email',
           emailPlaceholder: 'pages.checkout.details.fields.emailPlaceholder',
@@ -401,10 +411,31 @@ export const messageIds: Messages = {
             'pages.checkout.details.fields.addressPlaceholder',
           city: 'pages.checkout.details.fields.city',
           state: 'pages.checkout.details.fields.state',
-          statePlaceholder: 'pages.checkout.details.fields.statePlaceholder',
+          statePlaceholder: {
+            default: 'pages.checkout.details.fields.statePlaceholder.default',
+            BE: 'pages.checkout.details.fields.statePlaceholder.BE',
+            US: 'pages.checkout.details.fields.statePlaceholder.US',
+            CA: 'pages.checkout.details.fields.statePlaceholder.CA'
+          },
           postalCode: 'pages.checkout.details.fields.postalCode',
           phone: 'pages.checkout.details.fields.phone'
         }
+      },
+      summary: {
+        details: 'pages.checkout.summary.details',
+        subTotal: 'pages.checkout.summary.subTotal',
+        shippingCost: 'pages.checkout.summary.shippingCost',
+        total: 'pages.checkout.summary.total',
+        tax: 'pages.checkout.summary.tax'
+      },
+      discounts: {
+        apply: 'pages.checkout.discounts.apply',
+        discountCode: 'pages.checkout.discounts.discountCode'
+      },
+      usps: {
+        qualityServices: 'pages.checkout.usps.qualityServices',
+        secureTransactions: 'pages.checkout.usps.secureTransactions',
+        expertSupport: 'pages.checkout.usps.expertSupport'
       }
     }
   },

@@ -381,13 +381,23 @@ export const nl: Messages = {
         'U moet ingelogd zijn om uw winkelwagen af te rekenen. Gelieve {signInText}',
       signInText: 'hier inloggen.',
       unauthorized: 'U bent niet bevoegd om deze pagina te bekijken.',
+      steps: {
+        details: 'Details',
+        shippingMethod: 'Levering',
+        paymentDetails: 'Betaling',
+        overview: 'Overzicht'
+      },
       actions: {
         nextButton: 'Doorgaan',
-        backButton: 'Terug',
-        submitButton: 'Bevestigen'
+        backButton: 'Vorige stap',
+        submitButton: 'Bevestigen',
+        completePayment: 'Bevestigen en betalen',
+        completePurchaseOrder: 'Bevestigen en plaatsen'
       },
       details: {
         generalTitle: 'Algemene informatie',
+        shippingContactTitle: 'Levering contact',
+        shippingAddressTitle: 'Leveringsadres',
         fields: {
           email: 'E-mail',
           emailPlaceholder: 'example@domain.com',
@@ -401,10 +411,31 @@ export const nl: Messages = {
           addressPlaceholder: 'Straatnaam en huisnummer',
           city: 'Stad',
           state: 'Provincie',
-          statePlaceholder: 'Maak een selectie',
+          statePlaceholder: {
+            default: 'Staat / Regio / Provincie',
+            BE: 'Provincie',
+            US: 'Selecteer een staat',
+            CA: 'Selecteer een provincie'
+          },
           postalCode: 'Postcode',
           phone: 'Telefoonnummer'
         }
+      },
+      summary: {
+        details: 'Details',
+        subTotal: 'Subtotaal',
+        shippingCost: 'Leveringskosten',
+        total: 'Totale bestelling',
+        tax: 'BTW'
+      },
+      discounts: {
+        apply: 'Toepassen',
+        discountCode: 'Kortingscode'
+      },
+      usps: {
+        qualityServices: 'Kwaliteitsdiensten',
+        secureTransactions: 'Veilige transacties',
+        expertSupport: 'Deskundige ondersteuning'
       }
     }
   },
