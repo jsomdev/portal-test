@@ -56,7 +56,7 @@ const messages = defineMessages({
     defaultMessage: 'State'
   },
   statePlaceholder: {
-    id: fieldMessageIds.statePlaceholder,
+    id: fieldMessageIds.statePlaceholder.default,
     defaultMessage: 'Select an option'
   },
   postalCode: {
