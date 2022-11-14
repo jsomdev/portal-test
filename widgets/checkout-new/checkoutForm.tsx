@@ -4,6 +4,7 @@ import { FormikProps } from 'formik';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
 import { Stack, getTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
@@ -25,6 +26,7 @@ import { CheckoutFormStyles } from '@widgets/checkout/checkout-form/checkoutForm
 import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
 const defaultValues: CheckoutFormValues = {
   details: step1Details.defaultValues,
@@ -117,7 +119,16 @@ const CheckoutFormNew: React.FC = () => {
     leftColumn: {
       root: { flex: 5 }
     },
-    rightColumn: { root: { flex: 2 } }
+    rightColumn: {
+      root: {
+        flex: 2,
+        paddingTop: spacing.l2,
+        ...mediaQueryFrom('tablet', {
+          paddingTop: 0,
+          paddingLeft: spacing.l2
+        })
+      }
+    }
   };
 
   const onProceed = useCallback(async () => {
@@ -145,12 +156,7 @@ const CheckoutFormNew: React.FC = () => {
 
   const isLastStep = stepper.currentIndex === stepperSteps.length - 1;
   return (
-    <Stack
-      horizontal
-      horizontalAlign="space-between"
-      tokens={{ childrenGap: spacing.m, padding: `${spacing.l2} 0` }}
-      wrap={true}
-    >
+    <ResponsiveStack horizontalAlign="space-between">
       <Stack.Item styles={styles.leftColumn}>
         <Stack tokens={{ childrenGap: spacing.l1 }}>
           <Steps
@@ -188,7 +194,7 @@ const CheckoutFormNew: React.FC = () => {
           }
         />
       </Stack.Item>
-    </Stack>
+    </ResponsiveStack>
   );
 };
 

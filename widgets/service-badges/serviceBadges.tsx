@@ -31,7 +31,11 @@ export const ServiceBadges: React.FC = () => {
   const styles: ServiceBadgesStyles = {
     iconWrapper: {
       root: {
-        textAlign: 'center'
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '100px',
+        gap: spacing.s1
       }
     },
     iconStyles: {
@@ -49,11 +53,7 @@ export const ServiceBadges: React.FC = () => {
   };
   return (
     <Stack horizontal horizontalAlign="space-evenly">
-      <Stack
-        verticalAlign="center"
-        styles={styles.iconWrapper}
-        tokens={{ childrenGap: spacing.s2 }}
-      >
+      <Stack.Item styles={styles.iconWrapper}>
         <Icon
           aria-label="Quality Services"
           iconName="Timer"
@@ -62,12 +62,8 @@ export const ServiceBadges: React.FC = () => {
         <Text styles={styles.iconText}>
           {formatMessage(messages.qualityServices)}
         </Text>
-      </Stack>
-      <Stack
-        verticalAlign="center"
-        styles={styles.iconWrapper}
-        tokens={{ childrenGap: spacing.s2 }}
-      >
+      </Stack.Item>
+      <Stack.Item styles={styles.iconWrapper}>
         <Icon
           aria-label="Secure Payment"
           iconName="ProtectionCenterLogo32"
@@ -76,12 +72,9 @@ export const ServiceBadges: React.FC = () => {
         <Text styles={styles.iconText}>
           {formatMessage(messages.secureTransactions)}
         </Text>
-      </Stack>
-      <Stack
-        verticalAlign="center"
-        styles={styles.iconWrapper}
-        tokens={{ childrenGap: spacing.s2 }}
-      >
+      </Stack.Item>
+
+      <Stack.Item styles={styles.iconWrapper}>
         <Icon
           aria-label="Expert Support"
           iconName="Telemarketer"
@@ -90,7 +83,7 @@ export const ServiceBadges: React.FC = () => {
         <Text styles={styles.iconText}>
           {formatMessage(messages.expertSupport)}
         </Text>
-      </Stack>
+      </Stack.Item>
     </Stack>
   );
 };

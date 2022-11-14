@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { Form, Formik, FormikProps, FormikTouched } from 'formik';
+import { Form, Formik, FormikProps } from 'formik';
 import { useIntl } from 'react-intl';
 import { InferType } from 'yup';
 

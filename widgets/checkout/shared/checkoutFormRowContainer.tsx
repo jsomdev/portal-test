@@ -6,9 +6,10 @@ export const CheckoutFormRowContainer: React.FC = ({ children }) => {
   const { spacing } = useTheme();
   const styles: IStackStyles = {
     root: {
+      maxWidth: '800px',
       selectors: {
         '> *': {
-          flex: '0 3 33.33%'
+          flex: '0 3 50%'
         }
       }
     }
