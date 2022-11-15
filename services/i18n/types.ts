@@ -115,6 +115,19 @@ type IFinderMessages = {
 };
 
 type IDataMessages = {
+  resourceType: {
+    interactiveModel: string | undefined;
+    image: string;
+    flowImage: string;
+    video: string;
+    catalog: string;
+    catalogDetail: string;
+    productBulletin: string;
+    caseStudy: string;
+    whitePaper: string;
+    technicalManual: string;
+    default: string;
+  };
   boolean: {
     true: string;
     false: string;
@@ -375,19 +388,55 @@ type ICheckoutMessages = {
 type IProductMessages = {
   imageDisclaimer: string;
   sections: {
+    top: {
+      configurations: {
+        title: string;
+      };
+      display: {
+        pdf: {
+          loading: string;
+          error: string;
+          noData: string;
+          zoomIn: string;
+          zoomOut: string;
+          openNew: string;
+          scaleToWidth: string;
+          fitToWidth: string;
+          fitToPage: string;
+        };
+      };
+    };
     generalInformation: {
+      descriptionTitle: string;
+      keySpecificationsTitle: string;
+      keySpecificationsDescription: string;
+      flowTitle: string;
       title: string;
     };
     performance: {
       title: string;
+      multiChart: {
+        seriesLabel: string;
+      };
     };
     specifications: {
+      actions: {
+        openLink: string;
+      };
       title: string;
     };
     accessories: {
       title: string;
     };
-    downloadsSection: {
+    downloads: {
+      downloadError: string;
+      actions: {
+        dataSheets: string;
+        drawings2d: string;
+        drawings3d: string;
+      };
+      documentsTitle: string;
+      otherTitle: string;
       title: string;
     };
   };
@@ -400,6 +449,11 @@ type ISeriesMessages = INextHeadMessages;
  * The messagesIds object can be used to reference their ids used when formatting messages using react-intl.
  */
 export type Messages = {
+  bookmarks: {
+    actions: {
+      bookmark: string;
+    };
+  };
   steps: IStepsMessages;
   finder: IFinderMessages;
   data: IDataMessages;

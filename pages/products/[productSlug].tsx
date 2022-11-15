@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -8,21 +10,23 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-import { Navigation } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { ProductBookmarkButton } from '@components/buttons/bookmarkButton';
 import { Stack, useTheme } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
+import { ProductPageProvider } from '@providers/product-page/productPageProvider';
+import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { getAudience } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { Model, Product, Series } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
+import { fetchAllConditionTypes } from '@services/portal-api/conditionTypes';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -39,8 +43,15 @@ import { AppLayout } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
+import { ProductAccessories } from '@widgets/product-page/product-accessories/productAccessories';
+import { ProductDownloads } from '@widgets/product-page/product-downloads/productDownloads';
+import { ProductGeneralInformation } from '@widgets/product-page/product-general-information/generalInformation';
+import { ProductPerformance } from '@widgets/product-page/product-performance/productPerformance';
 import { ProductSections } from '@widgets/product-page/product-sections/productSections';
-import { ProductPageProvider } from '@widgets/product-page/productPageProvider';
+import { ProductSectionKey } from '@widgets/product-page/product-sections/productSections.types';
+import { ProductSpecifications } from '@widgets/product-page/product-specifications/productSpecifications';
+import { ProductStickyHeader } from '@widgets/product-page/product-sticky-header/productStickyHeader';
+import { ProductTopSection } from '@widgets/product-page/product-top-section/productTopSection';
 
 export interface ProductsProps {
   product: Product;
@@ -53,20 +64,30 @@ const Products: NextPage<
     Partial<
       Pick<
         GlobalDataContextProps,
-        'attributeGroups' | 'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
+        | 'attributeGroups'
+        | 'conditionTypes'
+        | 'attributeTypes'
+        | 'mainMenuItems'
+        | 'siteMenuItems'
       >
     >
 > = ({
   product,
   attributeGroups,
   attributeTypes,
+  conditionTypes,
   siteMenuItems,
   mainMenuItems
 }) => {
   const { locale } = useRouter();
+  const { registerView } = useRecentlyViewedProducts();
   const { spacing } = useTheme();
   const productFormatter = new ProductFormatter(product, locale);
 
+  useEffect(() => {
+    registerView({ id: product.id, lastViewedOn: new Date() });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Page
       metaProps={{
@@ -81,24 +102,43 @@ const Products: NextPage<
       <GlobalDataProvider
         attributeGroups={attributeGroups}
         attributeTypes={attributeTypes}
+        conditionTypes={conditionTypes}
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
           <ProductPageProvider product={product}>
-            <ContentContainerStack>
-              <Stack
-                tokens={{
+            <ProductStickyHeader product={product} />
+            <ContentContainerStack
+              outerStackProps={{
+                tokens: {
                   padding: `${spacing.l2} 0 ${spacing.l1} 0`
-                }}
-              >
+                }
+              }}
+            >
+              <Stack horizontal>
                 <PagesHeader title={productFormatter.formatTitle()} />
-                {/* TODO Top Section */}
-                <ProductSections
-                  // TODO Section Content
-                  onRenderSectionContent={section => <p>{section.title}</p>}
-                />
+                <ProductBookmarkButton productId={product.id} />
               </Stack>
+              <ProductTopSection />
+              <ProductSections
+                onRenderSectionContent={section => {
+                  switch (section.sectionKey) {
+                    case ProductSectionKey.GeneralInformation:
+                      return <ProductGeneralInformation />;
+                    case ProductSectionKey.ProductDownloads:
+                      return <ProductDownloads />;
+                    case ProductSectionKey.ProductAttributes:
+                      return <ProductSpecifications />;
+                    case ProductSectionKey.ProductAccessories:
+                      return <ProductAccessories />;
+                    case ProductSectionKey.ProductPerformance:
+                      return <ProductPerformance />;
+                    default:
+                      return null;
+                  }
+                }}
+              />
             </ContentContainerStack>
           </ProductPageProvider>
         </AppLayout>
@@ -114,7 +154,8 @@ interface ProductsParsedUrlQuery extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths = async (
   context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult<ProductsParsedUrlQuery>> => {
-  const productsData = await fetchProductsForStaticPaths();
+  // const productsData = await fetchProductsForStaticPaths();
+  const productsData: Product[] = [];
 
   const localizedPaths = (context.locales || []).map(locale => {
     const pathForLocale: {
@@ -147,6 +188,7 @@ export const getStaticProps: GetStaticProps = async (
           GlobalDataContextProps,
           | 'attributeGroups'
           | 'attributeTypes'
+          | 'conditionTypes'
           | 'mainMenuItems'
           | 'siteMenuItems'
         >
@@ -163,7 +205,8 @@ export const getStaticProps: GetStaticProps = async (
     siteMenuData,
     mainMenuData,
     attributeTypesData,
-    attributeTypeGroupsData
+    attributeTypeGroupsData,
+    conditionTypesData
   ] = await Promise.all([
     fetchProductForProductPage(productSlug),
     fetchAllSeries(),
@@ -171,7 +214,8 @@ export const getStaticProps: GetStaticProps = async (
     fetchMenuItemsForSiteHeader(getAudience(locale)),
     fetchMenuItemsForMainHeader(getAudience(locale)),
     fetchAllAttributeTypes(),
-    fetchAllAttributeGroups()
+    fetchAllAttributeGroups(),
+    fetchAllConditionTypes()
   ]);
 
   if (!productData) {
@@ -195,7 +239,8 @@ export const getStaticProps: GetStaticProps = async (
       attributeGroups: attributeTypeGroupsData,
       attributeTypes: attributeTypesData,
       siteMenuItems: siteMenuData || [],
-      mainMenuItems: mainMenuData || []
+      mainMenuItems: mainMenuData || [],
+      conditionTypes: conditionTypesData
     }
   };
 };

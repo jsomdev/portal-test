@@ -126,20 +126,56 @@ export const en: Messages = {
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
+        top: {
+          configurations: {
+            title: 'Product Configuration'
+          },
+          display: {
+            pdf: {
+              loading: 'Loading document...',
+              error: 'Something went wrong',
+              noData: 'Something went missing',
+              zoomIn: 'Zoom in',
+              zoomOut: 'Zoom out',
+              openNew: 'Open in new tab',
+              scaleToWidth: 'Scale to width',
+              fitToWidth: 'Fit to width',
+              fitToPage: 'Fit to page'
+            }
+          }
+        },
         accessories: {
           title: 'Accessories'
         },
-        downloadsSection: {
-          title: 'Product Downloads'
+        downloads: {
+          title: 'Product Downloads',
+          actions: {
+            dataSheets: 'Data Sheets',
+            drawings2d: 'Drawings 2D',
+            drawings3d: 'Drawings 3D'
+          },
+          documentsTitle: 'Documents',
+          downloadError: 'There was an error downloading your file',
+          otherTitle: 'Other'
         },
         performance: {
-          title: 'Product Performance'
+          title: 'Product Performance',
+          multiChart: {
+            seriesLabel: 'for {value} ({type})'
+          }
         },
         generalInformation: {
-          title: 'General Information'
+          title: 'General Information',
+          flowTitle: 'Flow',
+          descriptionTitle: 'Description',
+          keySpecificationsDescription: 'The key specifications of the product',
+          keySpecificationsTitle: 'Specification Summary'
         },
         specifications: {
-          title: 'Product Specifications'
+          title: 'Specifications',
+          actions: {
+            openLink: 'Open link ({index})'
+          }
         }
       }
     },
@@ -384,6 +420,11 @@ export const en: Messages = {
       redirecting: 'Redirecting...'
     }
   },
+  bookmarks: {
+    actions: {
+      bookmark: 'Bookmark'
+    }
+  },
   steps: {
     actions: {
       proceed: 'Proceed',
@@ -391,6 +432,19 @@ export const en: Messages = {
     }
   },
   data: {
+    resourceType: {
+      caseStudy: 'Case Study',
+      catalog: 'Catalog',
+      catalogDetail: ' Catalog Detail',
+      default: 'Download',
+      flowImage: 'Flow Image',
+      image: 'Image',
+      interactiveModel: 'Interactive Model',
+      productBulletin: 'Product Bulletin',
+      technicalManual: 'Technical Manual',
+      video: 'Video',
+      whitePaper: 'White Paper'
+    },
     boolean: {
       true: 'Yes',
       false: 'No'

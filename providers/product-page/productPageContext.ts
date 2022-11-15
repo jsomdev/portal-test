@@ -8,8 +8,7 @@ import {
   ProductAccessory,
   Resource
 } from '@services/portal-api';
-
-import { ProductSection } from './product-sections/productSections.types';
+import { ProductSection } from '@widgets/product-page/product-sections/productSections.types';
 
 export interface ProductPageContextProps {
   product: Product;
@@ -17,10 +16,18 @@ export interface ProductPageContextProps {
   downloads: Resource[];
   cadenasIdentifier: Identifier | undefined;
   keyAttributes: Attribute[];
+  performanceAttributes:
+    | {
+        sprayAngleAttributes: Attribute[];
+        liquidFlowRateAttributes: Attribute[];
+        airFlowRateAttributes: Attribute[];
+      }
+    | undefined;
   sections: ProductSection[];
   attributes: Attribute[];
   configurations: Option[];
   accessories: ProductAccessory[];
+  flow: Attribute | undefined;
   isValidAudience: boolean;
 }
 
@@ -29,7 +36,9 @@ const initialContextProps: ProductPageContextProps = {
   resources: [],
   downloads: [],
   cadenasIdentifier: undefined,
+  flow: undefined,
   keyAttributes: [],
+  performanceAttributes: undefined,
   sections: [],
   attributes: [],
   configurations: [],

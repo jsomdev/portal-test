@@ -3,10 +3,10 @@ import React from 'react';
 import { ImageProps } from 'next/dist/client/image';
 import Image from 'next/image';
 
-import { OptionalLink } from '@components/link/optionalLink';
+import { NextLink } from '@components/link/nextLink';
 import { IStackStyles, Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import productImageLoader from '@utilities/image-loaders/productImageLoader';
+import productImageLoader from '@utilities/image-loaders/widenImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
@@ -38,7 +38,7 @@ const ProductCardImage: React.FC<ProductCardImageProps> = ({
   };
   return (
     <Stack styles={styles.root}>
-      <OptionalLink href={url}>
+      <NextLink href={url}>
         <a>
           <Image
             src={
@@ -53,7 +53,7 @@ const ProductCardImage: React.FC<ProductCardImageProps> = ({
             loader={productImageLoader}
           />
         </a>
-      </OptionalLink>
+      </NextLink>
     </Stack>
   );
 };

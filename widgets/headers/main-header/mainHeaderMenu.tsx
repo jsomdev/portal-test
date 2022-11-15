@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IButtonStyles,
@@ -93,7 +94,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
                   {item.children.map(item => {
                     return (
                       item.href && (
-                        <Link
+                        <NextLink
                           aria-label={item.text}
                           key={item.id}
                           href={item.href}
@@ -103,7 +104,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
                             text={item.text}
                             styles={styles.link('sub')}
                           />
-                        </Link>
+                        </NextLink>
                       )
                     );
                   })}

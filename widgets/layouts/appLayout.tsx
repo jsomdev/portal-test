@@ -13,9 +13,14 @@ export interface AppLayoutProps {
  * Layout component for a page.
  */
 export const AppLayout: React.FC = ({ children }) => {
+  const styles = {
+    header: {
+      zIndex: 3
+    }
+  };
   return (
     <React.Fragment>
-      <header>
+      <header style={styles.header}>
         <SiteHeader />
         <MainHeader />
         <div id="breadcrumb-portal"></div>

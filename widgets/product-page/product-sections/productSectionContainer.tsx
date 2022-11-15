@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
   FontWeights,
+  IStackItemStyles,
   IStackStyles,
   ITextStyles,
   Stack,
@@ -12,8 +13,9 @@ import {
 import { ProductSection } from './productSections.types';
 
 interface ProductSectionContainerStyles {
-  containerStyles: IStackStyles;
-  productDesignSectionHeaderStyles: IStackStyles;
+  root: IStackStyles;
+  contentContainer: IStackItemStyles;
+  headerContainer: IStackStyles;
 }
 
 /**
@@ -29,9 +31,15 @@ export const ProductSectionContainer: React.FC<ProductSection> = ({
   const { spacing } = useTheme();
 
   const styles: ProductSectionContainerStyles = {
-    containerStyles: {
+    root: {
       root: {
-        marginTop: spacing.m
+        paddingTop: spacing.m
+      }
+    },
+    contentContainer: {
+      root: {
+        paddingTop: spacing.m,
+        paddingBottom: spacing.m
       }
     },
     /**
@@ -39,23 +47,23 @@ export const ProductSectionContainer: React.FC<ProductSection> = ({
      * to each section header to account for our sticky header height
      * This allows us to scroll to the correct position when using the section menu
      */
-    productDesignSectionHeaderStyles: {
+    headerContainer: {
       root: {
-        marginTop: -74,
-        paddingTop: 74
+        marginTop: -128,
+        paddingTop: 128
       }
     }
   };
 
   return (
-    <Stack styles={styles.containerStyles}>
+    <Stack styles={styles.root}>
       <Stack.Item
         root={{ id: sectionKey.toString() }}
-        styles={styles.productDesignSectionHeaderStyles}
+        styles={styles.headerContainer}
       >
         <ProductSectionHeader title={title} />
       </Stack.Item>
-      {children}
+      <Stack.Item styles={styles.contentContainer}>{children}</Stack.Item>
     </Stack>
   );
 };
@@ -70,7 +78,7 @@ const ProductSectionHeader: React.FC<Partial<ProductSection>> = ({ title }) => {
     }
   };
   return (
-    <Text styles={styles} variant="large">
+    <Text styles={styles} variant="xLargePlus" as="h2">
       {title}
     </Text>
   );

@@ -18,9 +18,9 @@ import { ATTRIBUTETYPECODES } from '@services/portal-api/constants';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { AttributeSettings } from '@services/portal-api/models/AttributeSettingsFlags';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
+import { ProductSection } from '@widgets/product-page/product-sections/productSections.types';
+import { getProductSections } from '@widgets/product-page/product-sections/productSectionsHelper';
 
-import { ProductSection } from './product-sections/productSections.types';
-import { getProductSections } from './product-sections/productSectionsHelper';
 import { ProductPageContext } from './productPageContext';
 
 interface ProductPageProviderProps {
@@ -31,7 +31,6 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
   product,
   children
 }) => {
-  const { registerView } = useRecentlyViewedProducts();
   const intl = useIntl();
   const { locale } = intl;
 
@@ -40,6 +39,10 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
     product.attributes?.filter(filterKeyAttribute) || [];
   const performanceAttributes = getPerformanceAttributes(
     product.attributes || []
+  );
+  const flow: Attribute | undefined = product.attributes?.find(
+    attribute =>
+      attribute.typeCode === ATTRIBUTETYPECODES.flowDiagramCaptionText
   );
 
   const resources: Resource[] = product.resources || [];
@@ -153,10 +156,6 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
     return undefined;
   }
 
-  useEffect(() => {
-    // registerView({ id: product.id, lastViewedOn: new Date(Date.now()) });
-  }, [product.id, registerView]);
-
   return (
     <ProductPageContext.Provider
       value={{
@@ -164,6 +163,8 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
         attributes,
         downloads,
         keyAttributes,
+        performanceAttributes,
+        flow,
         cadenasIdentifier,
         configurations,
         isValidAudience,

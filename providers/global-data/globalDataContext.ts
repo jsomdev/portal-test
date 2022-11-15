@@ -4,15 +4,18 @@ import {
   AttributeGroup,
   AttributeType,
   Category,
+  ConditionType,
   MenuItem
 } from '@services/portal-api';
 
 export interface GlobalDataContextProps {
   attributeTypes: AttributeType[] | undefined;
   attributeGroups: AttributeGroup[] | undefined;
+  conditionTypes: ConditionType[] | undefined;
   siteMenuItems: MenuItem[] | undefined;
   mainMenuItems: MenuItem[] | undefined;
   category: Category | undefined;
+  getConditionType: (code: string) => ConditionType | undefined;
   getAttributeType: (
     code: string,
     caseSensitive?: boolean
@@ -23,6 +26,7 @@ export interface GlobalDataContextProps {
 const initialContext: GlobalDataContextProps = {
   attributeGroups: [],
   attributeTypes: [],
+  conditionTypes: [],
   siteMenuItems: [],
   mainMenuItems: [],
   category: undefined,
@@ -30,6 +34,9 @@ const initialContext: GlobalDataContextProps = {
     throw new Error('Not implemented');
   },
   getAttributeType: () => {
+    throw new Error('Not implemented');
+  },
+  getConditionType: () => {
     throw new Error('Not implemented');
   }
 };

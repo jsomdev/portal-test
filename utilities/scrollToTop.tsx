@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 export function scrollToTop(
   querySelector: string = '#page-content',
   behavior: 'auto' | 'smooth' = 'smooth'
@@ -36,3 +38,33 @@ export function scrollToTop(
     }
   }
 }
+
+export const usePageScroll = (
+  threshold?: number
+): { isScrolledDown: boolean } => {
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  function evaluateScroll(ev: Event) {
+    const scrollingElement: Element | null | undefined = (ev.target as Document)
+      ?.scrollingElement;
+    if (scrollingElement) {
+      if (scrollingElement.scrollTop > (threshold || 0)) {
+        setIsScrolledDown(true);
+      } else {
+        setIsScrolledDown(false);
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', evaluateScroll);
+
+    return () => {
+      window.removeEventListener('scroll', evaluateScroll);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return {
+    isScrolledDown
+  };
+};

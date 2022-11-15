@@ -39,7 +39,7 @@ export const ProductImageDisclaimerTooltip: React.FC<
       }
     },
     tooltipHost: {
-      root: { display: 'flex', opacity: 0.8 }
+      root: { display: 'flex', opacity: 0.8, cursor: 'help' }
     }
   };
   return (

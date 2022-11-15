@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n';
@@ -60,7 +61,7 @@ const DesktopSiteLogo: React.FC = () => {
       styles={styles.container}
     >
       <Stack.Item grow styles={styles.logo}>
-        <Link href={pagePaths.home}>
+        <NextLink href={pagePaths.home}>
           <a>
             <Image
               priority
@@ -69,7 +70,7 @@ const DesktopSiteLogo: React.FC = () => {
               alt={formatMessage(messages.siteLogoAlt)}
             />
           </a>
-        </Link>
+        </NextLink>
       </Stack.Item>
     </Stack>
   );

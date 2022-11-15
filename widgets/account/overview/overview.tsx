@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { AccountInfo } from '@azure/msal-browser';
 import { useIsAuthenticated } from '@azure/msal-react';
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IStackStyles,
@@ -173,14 +173,14 @@ export const Overview: React.FC = () => {
             </Stack>
           </Stack.Item>
           <Stack>
-            <Link href={pagePaths.orders} passHref>
+            <NextLink href={pagePaths.orders} passHref>
               <a>
                 <ActionButton
                   iconProps={{ iconName: 'ChevronRight' }}
                   text={formatMessage(messages.viewAllRecentOrders)}
                 />
               </a>
-            </Link>
+            </NextLink>
           </Stack>
         </Stack>
       )}

@@ -9,6 +9,7 @@ import {
   useIntl
 } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontWeights,
@@ -169,7 +170,7 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
           tokens={{ childrenGap: spacing.l2 }}
           styles={styles.actionsContainer}
         >
-          <Link href={`/account/orders/${order.id}`} passHref>
+          <NextLink href={`/account/orders/${order.id}`} passHref>
             <a>
               <ActionButton
                 text={formatMessage(messages.viewOrder)}
@@ -177,7 +178,7 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
                 styles={styles.button}
               />
             </a>
-          </Link>
+          </NextLink>
         </Stack>
       </Stack>
     </Stack>

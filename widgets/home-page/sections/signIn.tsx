@@ -19,6 +19,7 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 
 interface SignUpStyles {
   stepsContainer: IStackItemStyles;
@@ -144,51 +145,49 @@ export const SignIn: React.FC = () => {
     return null;
   }
   return (
-    <Stack horizontalAlign="center" tokens={{ padding: spacing.l2 }}>
-      <Text as="h2" variant="xxLargePlus">
-        <FormattedMessage {...messages.signUpTitle} />
-      </Text>
-      <Stack.Item styles={styles.stepsContainer}>
-        <Stack horizontal horizontalAlign="center">
-          {signUpSteps.map((item, index) => (
-            <Stack.Item
-              verticalFill
-              key={formatMessage(item.title)}
-              styles={styles.stepContainer}
-            >
-              <div style={styles.dottedLine(index)} />
-              <Stack
-                horizontalAlign="center"
-                tokens={{ childrenGap: spacing.m }}
+    <ContentContainerStack>
+      <Stack horizontalAlign="center" tokens={{ padding: spacing.l2 }}>
+        <Text as="h2" variant="xxLargePlus">
+          <FormattedMessage {...messages.signUpTitle} />
+        </Text>
+        <Stack.Item styles={styles.stepsContainer}>
+          <Stack horizontal horizontalAlign="center">
+            {signUpSteps.map((item, index) => (
+              <Stack.Item
+                verticalFill
+                key={formatMessage(item.title)}
+                styles={styles.stepContainer}
               >
-                <Stack.Item styles={styles.step}>
-                  <Text variant="xLargePlus" styles={styles.stepIndex}>
-                    {index + 1}
-                  </Text>
-                </Stack.Item>
-                <Text as="h3" variant="xLargePlus" styles={styles.stepTitle}>
-                  <FormattedMessage {...item.title} />
-                </Text>
-                <Text
-                  as="p"
-                  variant="mediumPlus"
-                  styles={styles.stepDescription}
+                <div style={styles.dottedLine(index)} />
+                <Stack
+                  horizontalAlign="center"
+                  tokens={{ childrenGap: spacing.m }}
                 >
-                  <FormattedMessage {...item.description} />
-                </Text>
-              </Stack>
-            </Stack.Item>
-          ))}
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <PrimaryButton
-          styles={styles.callToAction}
-          onClick={() => instance.loginRedirect(customerLoginRequest)}
-        >
-          {formatMessage(messages.signUpCallToAction)}
-        </PrimaryButton>
-      </Stack.Item>
-    </Stack>
+                  <Stack.Item styles={styles.step}>
+                    <Text variant="xLargePlus" styles={styles.stepIndex}>
+                      {index + 1}
+                    </Text>
+                  </Stack.Item>
+                  <Text as="h3" variant="xLarge" styles={styles.stepTitle}>
+                    <FormattedMessage {...item.title} />
+                  </Text>
+                  <Text as="p" styles={styles.stepDescription}>
+                    <FormattedMessage {...item.description} />
+                  </Text>
+                </Stack>
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Stack.Item>
+        <Stack.Item>
+          <PrimaryButton
+            styles={styles.callToAction}
+            onClick={() => instance.loginRedirect(customerLoginRequest)}
+          >
+            {formatMessage(messages.signUpCallToAction)}
+          </PrimaryButton>
+        </Stack.Item>
+      </Stack>
+    </ContentContainerStack>
   );
 };

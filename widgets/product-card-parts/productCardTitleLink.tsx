@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { OptionalLink } from '@components/link/optionalLink';
+import { NextLink } from '@components/link/nextLink';
 import { mergeCss } from '@fluentui/merge-styles';
 import { FontWeights, Text, useTheme } from '@fluentui/react';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
@@ -40,7 +40,7 @@ const ProductCardTitleLink: React.FC<ProductCardTextProps> = ({
   };
 
   return (
-    <OptionalLink href={url} prefetch>
+    <NextLink href={url}>
       <a className={mergeCss(styles.link)}>
         <Text variant="xLarge" styles={styles.title}>
           {number}
@@ -49,7 +49,7 @@ const ProductCardTitleLink: React.FC<ProductCardTextProps> = ({
           {name}
         </Text>
       </a>
-    </OptionalLink>
+    </NextLink>
   );
 };
 

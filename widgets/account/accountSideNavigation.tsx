@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontSizes,
@@ -133,7 +134,7 @@ export const AccountSideNavigation: React.FC = () => {
         {accountNavigationGroups.map(group => {
           return group.links?.map(link => {
             return (
-              <Link key={link.name} href={link.url} passHref>
+              <NextLink key={link.name} href={link.url} passHref>
                 <a>
                   <Stack
                     styles={styles.linkTextContainer}
@@ -142,7 +143,7 @@ export const AccountSideNavigation: React.FC = () => {
                     <Text styles={styles.linkText}>{link.name}</Text>
                   </Stack>
                 </a>
-              </Link>
+              </NextLink>
             );
           });
         })}

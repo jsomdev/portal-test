@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useIntl } from 'react-intl';
-
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 
 /**
@@ -11,7 +9,6 @@ import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb'
  */
 // eslint-disable-next-line max-len
 export const CheckoutBreadcrumb: React.FC = () => {
-  const { formatMessage } = useIntl();
   const breadCrumbItems = [
     {
       key: 'home',

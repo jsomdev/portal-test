@@ -28,7 +28,7 @@ const messages = defineMessages({
     defaultMessage: 'Accessories'
   },
   downloadsSectionTitle: {
-    id: messageIds.pages.product.sections.downloadsSection.title,
+    id: messageIds.pages.product.sections.downloads.title,
     defaultMessage: 'Product Downloads'
   }
 });

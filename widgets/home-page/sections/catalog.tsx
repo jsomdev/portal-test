@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IButtonStyles,
@@ -124,14 +125,15 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
       {categoryItems.map(categoryItem => {
         return (
           <Stack key={categoryItem.id}>
-            <Link passHref href={categoryItem.href}>
+            <NextLink passHref href={categoryItem.href}>
               <a>
                 <Text as="h3" variant="xLargePlus" styles={styles.itemTitle}>
                   {categoryItem.name}
                 </Text>
               </a>
-            </Link>
-            <Link passHref href={categoryItem.href}>
+            </NextLink>
+
+            <NextLink passHref href={categoryItem.href}>
               <a>
                 <Text
                   as="p"
@@ -145,7 +147,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
                     .replace('##', 'Co.')}
                 </Text>
               </a>
-            </Link>
+            </NextLink>
 
             <Stack
               horizontal

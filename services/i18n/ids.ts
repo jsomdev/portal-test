@@ -57,6 +57,11 @@ export const messageIds: Messages = {
     unitPriceSuffix: 'pricing.unitPriceSuffix'
   },
 
+  bookmarks: {
+    actions: {
+      bookmark: 'bookmarks.actions.bookmark'
+    }
+  },
   finder: {
     compare: 'finder.compare',
     seeComparison: 'finder.seeComparison',
@@ -126,19 +131,60 @@ export const messageIds: Messages = {
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
+        top: {
+          configurations: {
+            title: 'pages.product.sections.top.configurations.title'
+          },
+          display: {
+            pdf: {
+              loading: 'pages.product.sections.top.display.pdf.loading',
+              error: 'pages.product.sections.top.display.pdf.error',
+              noData: 'pages.product.sections.top.display.pdf.noData',
+              zoomIn: 'pages.product.sections.top.display.pdf.zoomIn',
+              zoomOut: 'pages.product.sections.top.display.pdf.zoomOut',
+              openNew: 'pages.product.sections.top.display.pdf.openNew',
+              scaleToWidth:
+                'pages.product.sections.top.display.pdf.scaleToWidth',
+              fitToWidth: 'pages.product.sections.top.display.pdf.fitToWidth',
+              fitToPage: 'pages.product.sections.top.display.pdf.fitToPage'
+            }
+          }
+        },
         accessories: {
           title: 'pages.product.sections.accessories.title'
         },
-        downloadsSection: {
-          title: 'pages.product.sections.downloadsSection.title'
+        downloads: {
+          title: 'pages.product.sections.downloads.title',
+          actions: {
+            dataSheets: 'pages.product.sections.downloads.actions.dataSheets',
+            drawings2d: 'pages.product.sections.downloads.actions.drawings2d',
+            drawings3d: 'pages.product.sections.downloads.actions.drawings3d'
+          },
+          documentsTitle: 'pages.product.sections.downloads.documentsTitle',
+          downloadError: 'pages.product.sections.downloads.downloadError',
+          otherTitle: 'pages.product.sections.downloads.otherTitle'
         },
         performance: {
-          title: 'pages.product.sections.performance.title'
+          title: 'pages.product.sections.performance.title',
+          multiChart: {
+            seriesLabel:
+              'pages.product.sections.performance.multiChart.seriesLabel'
+          }
         },
         generalInformation: {
-          title: 'pages.product.sections.generalInformation.title'
+          title: 'pages.product.sections.generalInformation.title',
+          flowTitle: 'pages.product.sections.generalInformation.flowTitle',
+          descriptionTitle:
+            'pages.product.sections.generalInformation.descriptionTitle',
+          keySpecificationsDescription:
+            'pages.product.sections.generalInformation.keySpecificationsDescription',
+          keySpecificationsTitle:
+            'pages.product.sections.generalInformation.keySpecificationsTitle'
         },
         specifications: {
+          actions: {
+            openLink: 'pages.product.sections.specifications.actions.openLink'
+          },
           title: 'pages.product.sections.specifications.title'
         }
       }
@@ -397,6 +443,19 @@ export const messageIds: Messages = {
     }
   },
   data: {
+    resourceType: {
+      image: 'data.resourceType.image',
+      caseStudy: 'data.resourceType.caseStudy',
+      catalog: 'data.resourceType.catalog',
+      flowImage: 'data.resourceType.flowImage',
+      catalogDetail: 'data.resourceType.catalogDetail',
+      default: 'data.resourceType.default',
+      interactiveModel: 'data.resourceType.interactiveModel',
+      productBulletin: 'data.resourceType.productBulletin',
+      technicalManual: 'data.resourceType.technicalManual',
+      video: 'data.resourceType.video',
+      whitePaper: 'data.resourceType.whitePaper'
+    },
     boolean: {
       true: 'data.boolean.true',
       false: 'data.boolean.false'

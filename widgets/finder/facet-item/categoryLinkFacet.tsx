@@ -1,9 +1,9 @@
 import { useContext, useMemo } from 'react';
 
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
@@ -110,7 +110,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
             );
 
             return (
-              <Link
+              <NextLink
                 key={option.key}
                 href={{
                   pathname,
@@ -130,7 +130,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
                     </Text>
                   </Stack.Item>
                 </a>
-              </Link>
+              </NextLink>
             );
           })}
         </Stack>

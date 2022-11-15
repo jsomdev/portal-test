@@ -16,4 +16,8 @@ export class ResourceFormatter {
   formatSrc(): string {
     return this.resource?.url || '';
   }
+
+  formatThumbnailSrc(): string {
+    return this.resource?.thumbnail || this.formatSrc() || '';
+  }
 }

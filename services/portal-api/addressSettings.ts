@@ -150,7 +150,7 @@ export const removeAddressFromAddressBookSetting = async (
     setting = await fetchAddressBookSetting(isAuthenticated);
   }
 
-  if (!!setting?.id) {
+  if (setting?.id) {
     return settingsResource.putEntity(
       setting.id,
       JSON.stringify({

@@ -1,10 +1,10 @@
 import { ImageLoader } from 'next/dist/client/image';
 
-const productImageLoader: ImageLoader = ({ src, width, quality }) => {
+const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
   if (width > 2000) {
     width = 2000;
   }
   return `${src}?w=${width}&q=${quality || 75}&crop=false&color=ffffff`;
 };
 
-export default productImageLoader;
+export default widenImageLoader;

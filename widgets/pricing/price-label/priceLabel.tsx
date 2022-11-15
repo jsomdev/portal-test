@@ -90,7 +90,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
       case 'small':
         return 9;
       case 'large':
-        return 14;
+        return 16;
       default:
         return 12;
     }
@@ -100,7 +100,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
       case 'small':
         return 100;
       case 'large':
-        return 120;
+        return 136;
       default:
         return 110;
     }
@@ -110,7 +110,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
       case 'small':
         return 'medium';
       case 'large':
-        return 'xLarge';
+        return 'xLargePlus';
       default:
         return 'large';
     }
@@ -195,7 +195,12 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
           customElementsGroup={
             <ShimmerElementsGroup
               width={`${getShimmerSize(size)}px`}
-              shimmerElements={[{ type: ShimmerElementType.line, height: 26 }]}
+              shimmerElements={[
+                {
+                  type: ShimmerElementType.line,
+                  height: (getShimmerSize(size) * 0.9) / 4.25
+                }
+              ]}
             />
           }
           width={getShimmerSize(size) * 0.9}

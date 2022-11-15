@@ -9,8 +9,8 @@ import type { Display } from './Display';
 import type { LinkedEntity } from './LinkedEntity';
 
 export type Attribute = LinkedEntity & {
-  conditions?: Array<Condition | null>;
-  displays?: Array<Display | null>;
+  conditions?: Array<Condition>;
+  displays?: Array<Display>;
   groupCode?: string | null;
   settings?: AttributeSettingsFlags | null;
   sortIndex?: number;

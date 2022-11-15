@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
+import { NextLink } from '@components/link/nextLink';
 import { mergeCss } from '@fluentui/merge-styles';
 import { Stack, Text, useTheme } from '@fluentui/react';
 
@@ -66,7 +66,7 @@ export const LanguageMenuItem: React.FC<LanguageMenuItemViewModel> = ({
           {country.languages.map((language, index) => {
             return (
               <Stack.Item key={`${country.name}-${language.name}`}>
-                <Link href={language.path} locale={language.locale}>
+                <NextLink href={language.path} locale={language.locale}>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                   <a
                     onClick={onLocaleSelected}
@@ -74,7 +74,7 @@ export const LanguageMenuItem: React.FC<LanguageMenuItemViewModel> = ({
                   >
                     {language.name}
                   </a>
-                </Link>
+                </NextLink>
                 {index < country.languages.length - 1 ? (
                   <Text styles={styles.separator}>|</Text>
                 ) : null}

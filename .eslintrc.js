@@ -46,6 +46,12 @@ module.exports = {
     'react/prop-types': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/no-unknown-property': [
+      2,
+      {
+        ignore: ['jsx']
+      }
+    ],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

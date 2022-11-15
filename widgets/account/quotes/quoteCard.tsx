@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   FormattedDate,
   FormattedNumber,
@@ -9,6 +8,7 @@ import {
   useIntl
 } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontWeights,
@@ -143,7 +143,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
           tokens={{ childrenGap: spacing.l2 }}
           styles={styles.actionsContainer}
         >
-          <Link href={`/account/quotes/${quote.id}`} passHref>
+          <NextLink href={`/account/quotes/${quote.id}`} passHref>
             <a>
               <ActionButton
                 text={formatMessage(messages.viewQuote)}
@@ -151,7 +151,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
                 styles={styles.button}
               />
             </a>
-          </Link>
+          </NextLink>
         </Stack>
       </Stack>
     </Stack>

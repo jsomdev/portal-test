@@ -43,7 +43,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
   };
 
   return (
-    <ProductCard>
+    <ProductCard verticalAlign={'start'}>
       <Stack>
         <Stack.Item>
           <ProductCardImage {...product} />

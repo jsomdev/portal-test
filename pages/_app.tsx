@@ -10,6 +10,7 @@ import { MsalProvider } from '@azure/msal-react';
 import { initializeIcons } from '@fluentui/react';
 import { AddressBookProvider } from '@providers/address-book/addressBookProvider';
 import { CartProvider } from '@providers/cart/cartProvider';
+import { ProductBookmarksProvider } from '@providers/product-bookmarks/productBookmarksProvider';
 import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewedProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
@@ -67,7 +68,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                   <CartProvider>
                     <SystemOfMeasurementProvider>
                       <ProductCompareProvider>
-                        <Component {...pageProps} />
+                        <RecentlyViewedProvider>
+                          <ProductBookmarksProvider>
+                            <Component {...pageProps} />
+                          </ProductBookmarksProvider>
+                        </RecentlyViewedProvider>
                       </ProductCompareProvider>
                     </SystemOfMeasurementProvider>
                   </CartProvider>

@@ -18,8 +18,76 @@ export enum DisplayValueType {
   Unknown
 }
 
+export function getDisplayValueType(value: unknown): DisplayValueType {
+  if (value === null || value === undefined) {
+    return DisplayValueType.Unknown;
+  }
+
+  const isBoolean: boolean = typeof value === 'boolean';
+  if (isBoolean) {
+    return DisplayValueType.Boolean;
+  }
+  const isRange: boolean = !!(
+    (value as Range).minimum || (value as Range).maximum
+  );
+  if (isRange) {
+    return DisplayValueType.Range;
+  }
+
+  const isMultilingual: boolean = !!(value as MultilingualString)[
+    defaultLanguage
+  ];
+
+  if (isMultilingual) {
+    return DisplayValueType.Multilingual;
+  }
+
+  const isNumber: boolean = !isNaN(value as number);
+  if (isNumber) {
+    return DisplayValueType.Number;
+  }
+
+  const isUrl: boolean =
+    typeof value === 'string' &&
+    (value as string).toLowerCase().startsWith('http');
+  if (isUrl) {
+    return DisplayValueType.Url;
+  }
+  return DisplayValueType.Text;
+}
+
+export function getDisplayForSystemOfMeasurement(
+  displays: Display[],
+  systemOfMeasurement: SystemOfMeasurement
+): Display | undefined {
+  if (displays.length === 0) {
+    return undefined;
+  }
+  const activeDisplayVariation: Variation = getVariation(systemOfMeasurement);
+  const display: Display | undefined = displays.find(display => {
+    const variation: Variation = FlaggedEnum.create<Variation>(
+      Variation,
+      display.variation || ''
+    );
+
+    return variation & activeDisplayVariation;
+  });
+  return display;
+}
+
+function getVariation(systemOfMeasurement: SystemOfMeasurement): Variation {
+  switch (systemOfMeasurement) {
+    case 'Metric':
+      return Variation.Metric;
+    case 'US':
+      return Variation.Us;
+    default:
+      return Variation.Invariant;
+  }
+}
+
+const DEGREES_UNIT_SYMBOL = '°';
 export class DisplayFormatter {
-  private DEGREES_UNIT_SYMBOL: '°' = '°';
   private multilingualStringFormatter: MultilingualStringFormatter;
   private systemOfMeasurement: SystemOfMeasurement;
   private displays: Partial<Display>[];
@@ -40,33 +108,42 @@ export class DisplayFormatter {
     this.onFormatBoolean = onFormatBoolean;
   }
 
-  public format(): string {
-    const display: Display | undefined = this.getDisplay();
+  public format(includeUnitSymbol: boolean = true): string {
+    const display: Display | undefined = getDisplayForSystemOfMeasurement(
+      this.displays,
+      this.systemOfMeasurement
+    );
 
     if (display === undefined) {
       return '';
     }
-    const type: DisplayValueType = this.getValueType(display.value);
+    const type: DisplayValueType = getDisplayValueType(display.value);
 
     switch (type) {
       case DisplayValueType.Url:
         return this.formatUrl(display.value);
       case DisplayValueType.Text:
-        return this.formatText(display.value, display.unitSymbol);
+        return this.formatText(
+          display.value,
+          includeUnitSymbol ? display.unitSymbol : undefined
+        );
       case DisplayValueType.Boolean:
         return this.onFormatBoolean(display.value);
       case DisplayValueType.Number:
-        return this.formatNumber(display.value, display.unitSymbol);
+        return this.formatNumber(
+          display.value,
+          includeUnitSymbol ? display.unitSymbol : undefined
+        );
       case DisplayValueType.Multilingual:
         return this.formatText(
           this.multilingualStringFormatter.format(display.value),
-          display.unitSymbol
+          includeUnitSymbol ? display.unitSymbol : undefined
         );
       case DisplayValueType.Range:
         return this.formatRange(
-          display.minimum,
-          display.maximum,
-          display.unitSymbol
+          display.value.minimum,
+          display.value.maximum,
+          includeUnitSymbol ? display.unitSymbol : undefined
         );
       default:
         break;
@@ -81,7 +158,7 @@ export class DisplayFormatter {
   ): string {
     return `${
       isNaN(value) ? value?.toString() : this.onFormatNumber(value)
-    }${this.formatUnitSymbol(unitSymbol)}`;
+    }${formatUnitSymbol(unitSymbol)}`;
   }
 
   private formatText(
@@ -91,7 +168,7 @@ export class DisplayFormatter {
     const formattedValue: string = this.formatNumericValues(value);
 
     if (isNaN(Number(formattedValue))) {
-      return `${formattedValue}${this.formatUnitSymbol(unitSymbol)}`;
+      return `${formattedValue}${formatUnitSymbol(unitSymbol)}`;
     } else {
       return this.formatNumber(Number(value), unitSymbol);
     }
@@ -127,17 +204,6 @@ export class DisplayFormatter {
     return (value as string | undefined) || '';
   }
 
-  private formatUnitSymbol(unitSymbol: string | undefined | null): string {
-    if (!unitSymbol) {
-      return '';
-    }
-    if (unitSymbol === this.DEGREES_UNIT_SYMBOL) {
-      return unitSymbol;
-    }
-
-    return ` ${unitSymbol}`;
-  }
-
   private formatRange(
     minimum: number | null | undefined,
     maximum: number | null | undefined,
@@ -145,73 +211,19 @@ export class DisplayFormatter {
   ) {
     return `${this.onFormatNumber(Number(minimum))} - ${this.onFormatNumber(
       Number(maximum)
-    )}${this.formatUnitSymbol(unitSymbol)}`;
+    )}${formatUnitSymbol(unitSymbol)}`;
+  }
+}
+
+export function formatUnitSymbol(
+  unitSymbol: string | undefined | null
+): string {
+  if (!unitSymbol) {
+    return '';
+  }
+  if (unitSymbol === DEGREES_UNIT_SYMBOL) {
+    return unitSymbol;
   }
 
-  private getDisplay(): Display | undefined {
-    if (this.displays.length === 0) {
-      return undefined;
-    }
-    const activeDisplayVariation: Variation = this.getVariation(
-      this.systemOfMeasurement
-    );
-    const display: Display | undefined = this.displays.find(display => {
-      const variation: Variation = FlaggedEnum.create<Variation>(
-        Variation,
-        display.variation || ''
-      );
-
-      return variation & activeDisplayVariation;
-    });
-    return display;
-  }
-
-  public getValueType(value: unknown): DisplayValueType {
-    if (value === null || value === undefined) {
-      return DisplayValueType.Unknown;
-    }
-
-    const isBoolean: boolean = typeof value === 'boolean';
-    if (isBoolean) {
-      return DisplayValueType.Boolean;
-    }
-    const isRange: boolean = !!(
-      (value as Range).minimum || (value as Range).maximum
-    );
-    if (isRange) {
-      return DisplayValueType.Range;
-    }
-
-    const isMultilingual: boolean = !!(value as MultilingualString)[
-      defaultLanguage
-    ];
-
-    if (isMultilingual) {
-      return DisplayValueType.Multilingual;
-    }
-
-    const isNumber: boolean = !isNaN(value as number);
-    if (isNumber) {
-      return DisplayValueType.Number;
-    }
-
-    const isUrl: boolean =
-      typeof value === 'string' &&
-      (value as string).toLowerCase().startsWith('http');
-    if (isUrl) {
-      return DisplayValueType.Url;
-    }
-    return DisplayValueType.Text;
-  }
-
-  private getVariation(systemOfMeasurement: SystemOfMeasurement): Variation {
-    switch (systemOfMeasurement) {
-      case 'Metric':
-        return Variation.Metric;
-      case 'US':
-        return Variation.Us;
-      default:
-        return Variation.Invariant;
-    }
-  }
+  return ` ${unitSymbol}`;
 }

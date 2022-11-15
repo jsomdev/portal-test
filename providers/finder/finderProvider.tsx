@@ -1,11 +1,10 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 import { useQuery, useQueryClient } from 'react-query';
 
 import { useFacets } from '@providers/facets/facetsContext';
-import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
 import { productSeriesFacet } from '@services/facet-service/facets/series';
@@ -49,7 +48,6 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
 }) => {
   const { query, pathname, push } = useRouter();
   const textFormatter = new TextFormatter();
-  const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
   // TODO: initialData may be used. Don't want to remove just yet
   const queryClient = useQueryClient();
   const [productCount, setProductCount] = useState<number | undefined>(

@@ -1,4 +1,4 @@
-import { AttributeType } from '@services/portal-api';
+import { AttributeType, ConditionType } from '@services/portal-api';
 
 import { GlobalDataContext, GlobalDataContextProps } from './globalDataContext';
 
@@ -10,6 +10,7 @@ export type GlobalDataProviderProps = Partial<
     | 'mainMenuItems'
     | 'siteMenuItems'
     | 'category'
+    | 'conditionTypes'
   >
 >;
 
@@ -19,6 +20,7 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   mainMenuItems,
   siteMenuItems,
   category,
+  conditionTypes,
   children
 }) => {
   function getAttributeType(
@@ -34,8 +36,11 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
   }
   function getAttributeGroup(code: string): AttributeType | undefined {
     return attributeGroups?.find(
-      attribtueGroup => attribtueGroup.code === code
+      attributeGroup => attributeGroup.code === code
     );
+  }
+  function getConditionType(code: string): ConditionType | undefined {
+    return conditionTypes?.find(conditionType => conditionType.code === code);
   }
 
   return (
@@ -43,10 +48,12 @@ export const GlobalDataProvider: React.FC<GlobalDataProviderProps> = ({
       value={{
         attributeGroups,
         attributeTypes,
+        conditionTypes,
         siteMenuItems,
         mainMenuItems,
         category,
         getAttributeGroup,
+        getConditionType,
         getAttributeType
       }}
     >

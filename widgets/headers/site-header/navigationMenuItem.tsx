@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IButtonStyles,
@@ -78,7 +78,7 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
       styles={styles.linkContainer}
     >
       {renderAs === 'link' && (
-        <Link
+        <NextLink
           aria-label={item.text}
           key={item.id}
           href={item.href as string}
@@ -93,7 +93,7 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
               onDismiss && onDismiss();
             }}
           />
-        </Link>
+        </NextLink>
       )}
       {renderAs === 'default' && (
         <ActionButton

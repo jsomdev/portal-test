@@ -120,6 +120,11 @@ export const nl: Messages = {
       }
     }
   },
+  bookmarks: {
+    actions: {
+      bookmark: 'Bewaren'
+    }
+  },
   pages: {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
@@ -127,20 +132,58 @@ export const nl: Messages = {
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
+        top: {
+          configurations: {
+            title: 'Productconfiguratie'
+          },
+          display: {
+            pdf: {
+              loading: 'Document inladen...',
+              error: 'Er is iets misgelopen',
+              noData: 'Er is iets verdwenen',
+              zoomIn: 'Zoom in',
+              zoomOut: 'Zoom out',
+              openNew: 'Open in nieuw tabblad',
+              scaleToWidth: 'Schalen naar breedte',
+              fitToWidth: 'Aanpassen aan breedte',
+              fitToPage: 'Aanpassen aan pagina'
+            }
+          }
+        },
         accessories: {
           title: 'Accessoires'
         },
-        downloadsSection: {
-          title: 'Downloads'
+        downloads: {
+          title: 'Downloads',
+          actions: {
+            dataSheets: 'Datasheets',
+            drawings2d: '2D Tekeningen',
+            drawings3d: '3D Tekeningen'
+          },
+          documentsTitle: 'Documenten',
+          downloadError:
+            'Er liep een fout op tijdens het downloaden van het bestand',
+          otherTitle: 'Andere'
         },
         performance: {
-          title: 'Performantie'
+          title: 'Performantie',
+          multiChart: {
+            seriesLabel: 'voor {value} ({type})'
+          }
         },
         generalInformation: {
-          title: 'Algemene informatie'
+          title: 'Algemene informatie',
+          flowTitle: 'Flow',
+          descriptionTitle: 'Omschrijving',
+          keySpecificationsDescription:
+            'De belangrijkste gegevens van het product',
+          keySpecificationsTitle: 'Belangrijkste kenmerken'
         },
         specifications: {
-          title: 'Product specificaties'
+          title: 'Alle kenmerken',
+          actions: {
+            openLink: 'Open link ({index})'
+          }
         }
       }
     },
@@ -316,6 +359,7 @@ export const nl: Messages = {
         }
       }
     },
+
     cart: {
       title: 'Winkelwagen',
       loading: 'Winkelwagen laden...',
@@ -396,6 +440,19 @@ export const nl: Messages = {
     }
   },
   data: {
+    resourceType: {
+      caseStudy: 'Case Study',
+      catalog: 'Catalogus',
+      catalogDetail: ' Catalogus Detail',
+      default: 'Download',
+      flowImage: 'Flow Afbeelding',
+      image: 'Afbeelding',
+      interactiveModel: 'Interactief Model',
+      productBulletin: 'Productbulletin',
+      technicalManual: 'Technische handleiding',
+      video: 'Video',
+      whitePaper: 'Whitepaper'
+    },
     boolean: {
       true: 'Ja',
       false: 'Nee'

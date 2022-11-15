@@ -56,6 +56,7 @@ interface MainHeaderStyles {
   headerButton?: IButtonStyles;
 }
 
+export const MAIN_HEADER_HEIGHT = 46;
 export const MainHeader: React.FC = () => {
   return (
     <>
@@ -75,7 +76,7 @@ const MobileMainHeader: React.FC = () => {
   const styles: MainHeaderStyles = {
     root: {
       root: {
-        height: 46,
+        height: MAIN_HEADER_HEIGHT,
         transition: '0.3s all ease',
         backgroundColor: palette.neutralLighter
       }
@@ -121,7 +122,7 @@ const DesktopMainHeader: React.FC = () => {
   const styles: MainHeaderStyles = {
     root: {
       root: {
-        height: 46,
+        height: MAIN_HEADER_HEIGHT,
         transition: '0.3s all ease',
         backgroundColor: palette.neutralLighter
       }
@@ -134,7 +135,7 @@ const DesktopMainHeader: React.FC = () => {
     headerButton: {
       root: {
         position: 'relative',
-        height: rem(46),
+        height: rem(MAIN_HEADER_HEIGHT),
         fontWeight: 500,
         padding: 0,
         textAlign: 'left',

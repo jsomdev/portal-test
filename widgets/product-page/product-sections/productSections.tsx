@@ -3,7 +3,7 @@ import React from 'react';
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { TabletAndDesktop } from '@widgets/media-queries';
 
-import { useProductPage } from '../productPageContext';
+import { useProductPage } from '../../../providers/product-page/productPageContext';
 import { ProductSectionContainer } from './productSectionContainer';
 import { ProductSection } from './productSections.types';
 import { ProductSectionsMenu } from './productSectionsMenu';

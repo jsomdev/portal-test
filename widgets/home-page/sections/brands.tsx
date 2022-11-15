@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontWeights,
@@ -69,9 +69,9 @@ export const Brands: React.FC<BrandsProps> = ({ category }) => {
       >
         {categoryItem.children?.map(item => {
           return (
-            <Link key={item.id} href={item.href} passHref>
+            <NextLink key={item.id} href={item.href} passHref>
               <ActionButton styles={styles.item}>{item.name}</ActionButton>
-            </Link>
+            </NextLink>
           );
         })}
       </Stack>

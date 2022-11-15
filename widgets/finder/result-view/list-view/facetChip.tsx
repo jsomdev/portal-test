@@ -1,7 +1,7 @@
-import { IStackItemStyles, Stack, useTheme } from '@fluentui/react';
+import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
 
 interface FacetChipStyles {
-  root: IStackItemStyles;
+  root: ITextStyles;
 }
 
 interface FacetChipProps {
@@ -17,7 +17,7 @@ export const FacetChip: React.FC<FacetChipProps> = ({ value, code }) => {
       root: {
         color: palette.neutralPrimaryAlt,
         borderBottom: `1px dashed ${palette.neutralPrimaryAlt}`,
-
+        display: 'inline',
         '&:hover': {
           cursor: 'pointer',
           borderBottomStyle: `solid`
@@ -26,8 +26,10 @@ export const FacetChip: React.FC<FacetChipProps> = ({ value, code }) => {
     }
   };
   return (
-    <Stack.Item title={code} styles={styles.root}>
-      {value}
+    <Stack.Item>
+      <Text title={code} styles={styles.root}>
+        {value}
+      </Text>
     </Stack.Item>
   );
 };

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IButtonStyles,
@@ -95,7 +96,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
       >
         {categoryItem.children?.map(categoryItem => (
           <Stack.Item key={categoryItem.id}>
-            <Link passHref href={categoryItem.href}>
+            <NextLink passHref href={categoryItem.href}>
               <a>
                 <Stack styles={styles.itemContainer}>
                   <Image
@@ -120,7 +121,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
                   </Stack>
                 </Stack>
               </a>
-            </Link>
+            </NextLink>
           </Stack.Item>
         ))}
       </Stack>

@@ -1,8 +1,8 @@
 import React, { FC, useContext, useMemo } from 'react';
 
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   Checkbox,
   DefaultButton,
@@ -128,11 +128,11 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
       />
       <TabletAndDesktop>
         {products.length > 1 && checked && (
-          <Link href={getUrl()} passHref>
+          <NextLink href={getUrl()} passHref>
             <Text styles={styles.seeComparison}>
               {formatMessage(messages.seeComparison)}
             </Text>
-          </Link>
+          </NextLink>
         )}
       </TabletAndDesktop>
     </Stack>

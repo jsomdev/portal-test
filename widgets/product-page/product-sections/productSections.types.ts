@@ -10,6 +10,6 @@ export enum ProductSectionKey {
 }
 
 export interface ProductSection {
-  sectionKey: ProductSectionKey;
-  title: string;
+  sectionKey: ProductSectionKey | string;
+  title: string | undefined;
 }

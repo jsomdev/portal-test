@@ -8,24 +8,17 @@ import {
   Callout,
   DirectionalHint,
   IButtonStyles,
-  ISpinButtonStyles,
   IStackStyles,
-  PrimaryButton,
-  SpinButton,
   Stack,
   useTheme
 } from '@fluentui/react';
-import {
-  MAX_CART_QUANTITY,
-  MIN_CART_QUANTITY
-} from '@providers/cart/cartConstants';
 import { CartContext } from '@providers/cart/cartContext';
 import { combineCartItemsInformation } from '@providers/cart/cartHelper';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
+import { AddToCartButton } from '@widgets/add-to-cart-button/addToCartButton';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
-import { mediaQueryFrom } from '@widgets/media-queries';
 import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { PriceBreakList } from '@widgets/pricing/pricebreak-list/priceBreakList';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
@@ -38,8 +31,6 @@ interface ProductListItemPricingStyles {
   container: IStackStyles;
   actionButton: IButtonStyles;
   callout: IStackStyles;
-  spinButton: Partial<ISpinButtonStyles>;
-  addToCartButton: IButtonStyles;
 }
 
 const messages = defineMessages({
@@ -99,12 +90,12 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
 }) => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage, formatNumber } = useIntl();
-  const [quantity, setQuantity] = useState(1);
+  const [addToCartButtonQuantity, setAddToCartButtonQuantity] = useState(1);
   const [showCallout, setShowCallout] = useState(false);
   const [lastItemAdded, setLastItemAdded] = useState<BaseCartItem | undefined>(
     undefined
   );
-  const { spacing, fonts } = useTheme();
+  const { spacing } = useTheme();
   const calloutAnchor = React.useRef<HTMLDivElement>(null);
   const {
     status: priceBreaksStatus,
@@ -128,10 +119,6 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
     return getQuantity(product.number || '');
   }, [getQuantity, product.number]);
 
-  const maxQuantityToAdd = useMemo(() => {
-    return MAX_CART_QUANTITY - (cartQuantity || 0);
-  }, [cartQuantity]);
-
   const basePrice: string | undefined = useMemo(() => {
     const price: number | undefined = getBasePrice();
     if (price === undefined) {
@@ -145,7 +132,7 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
   }, [getBasePrice, currencyCode, formatNumber]);
 
   const unitPrice: string | undefined = useMemo(() => {
-    const price = getUnitPrice(quantity + cartQuantity);
+    const price = getUnitPrice(addToCartButtonQuantity + cartQuantity);
     if (price === undefined) {
       return undefined;
     }
@@ -154,59 +141,13 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       currencyDisplay: 'narrowSymbol',
       style: 'currency'
     });
-  }, [cartQuantity, quantity, getUnitPrice, currencyCode, formatNumber]);
-
-  // useEffect(() => {
-  //   onUpdateQuantity && onUpdateQuantity(quantity, cartQuantity);
-  // }, [cartQuantity, onUpdateQuantity, quantity]);
-
-  function handleIncrement() {
-    if (quantity + 1 > maxQuantityToAdd) {
-      setQuantity(maxQuantityToAdd);
-    } else {
-      setQuantity(Number(quantity + 1));
-    }
-  }
-
-  function handleDecrement() {
-    if (quantity - 1 < MIN_CART_QUANTITY) {
-      setQuantity(MIN_CART_QUANTITY);
-    } else {
-      setQuantity(Number(quantity - 1));
-    }
-  }
-
-  function handleValidate(value: string) {
-    if (isNaN(Number(value))) {
-      return;
-    }
-
-    if (Number(value) < MIN_CART_QUANTITY) {
-      setQuantity(MIN_CART_QUANTITY);
-      return;
-    }
-
-    setQuantity(Number(value));
-  }
-
-  function handleAddToCart() {
-    if (product.number) {
-      let quantityToAdd = quantity;
-      if (quantity > maxQuantityToAdd) {
-        quantityToAdd = maxQuantityToAdd;
-      }
-
-      setLastItemAdded(
-        add(product.id || null, product.number, quantityToAdd, product.name)
-      );
-
-      setQuantity(MIN_CART_QUANTITY);
-    } else {
-      console.warn(
-        'Products can only be added to the cart using their product number'
-      );
-    }
-  }
+  }, [
+    cartQuantity,
+    addToCartButtonQuantity,
+    getUnitPrice,
+    currencyCode,
+    formatNumber
+  ]);
 
   const styles: ProductListItemPricingStyles = {
     container: {
@@ -221,39 +162,6 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       root: {
         maxWidth: 300,
         padding: spacing.l1
-      }
-    },
-    spinButton: {
-      root: {
-        width: 70,
-        minWidth: 70
-      },
-
-      input: {
-        minWidth: 47,
-        flexGrow: 0,
-        fontSize: fonts.mediumPlus.fontSize
-      },
-      spinButtonWrapper: {
-        width: 70,
-        height: 40,
-        minWidth: 70,
-        ...mediaQueryFrom('tablet', {
-          height: 32
-        })
-      }
-    },
-    addToCartButton: {
-      root: {
-        height: 40,
-        ...mediaQueryFrom('tablet', {
-          height: 32
-        })
-      },
-      textContainer: {
-        flexGrow: 1,
-        display: 'block',
-        flexShrink: 0
       }
     }
   };
@@ -311,7 +219,7 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                           <PriceBreakList
                             priceBreaks={priceBreaks}
                             cartQuantity={cartQuantity}
-                            quantity={quantity}
+                            quantity={addToCartButtonQuantity}
                           />
                         </Stack.Item>
                       </Stack>
@@ -336,40 +244,17 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
         <Stack.Item styles={{ root: { width: 220 } }}>
           <Stack horizontal horizontalAlign="space-between">
             <Stack.Item>
-              <Stack horizontal tokens={{ childrenGap: spacing.s2 }}>
-                <Stack.Item>
-                  <SpinButton
-                    value={`${quantity}`}
-                    styles={styles.spinButton}
-                    inputProps={{
-                      onChange: ev => {
-                        handleValidate(
-                          (ev.currentTarget as HTMLInputElement).value
-                        );
-                      }
-                    }}
-                    onIncrement={() => {
-                      handleIncrement();
-                    }}
-                    onDecrement={() => {
-                      handleDecrement();
-                    }}
-                    onValidate={(value: string) => {
-                      handleValidate(value);
-                    }}
-                  />
-                </Stack.Item>
-                <Stack.Item>
-                  <PrimaryButton
-                    text={formatMessage(messages.addToCart)}
-                    styles={styles.addToCartButton}
-                    iconProps={{ iconName: 'ShoppingCart' }}
-                    onClick={() => {
-                      handleAddToCart();
-                    }}
-                  />
-                </Stack.Item>
-              </Stack>
+              {product.number && (
+                <AddToCartButton
+                  productNumber={product.number}
+                  onQuantityChanged={setAddToCartButtonQuantity}
+                  onAddToCartClicked={quantityToAdd =>
+                    product.number
+                      ? add(null, product.number, quantityToAdd, product.name)
+                      : null
+                  }
+                />
+              )}
             </Stack.Item>
           </Stack>
         </Stack.Item>

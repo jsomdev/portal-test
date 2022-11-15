@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { FormattedDate, defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontWeights,
@@ -133,7 +133,10 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
           tokens={{ childrenGap: spacing.l2 }}
           styles={styles.actionsContainer}
         >
-          <Link href={`/account/quote-requests/${quoteRequest.id}`} passHref>
+          <NextLink
+            href={`/account/quote-requests/${quoteRequest.id}`}
+            passHref
+          >
             <a>
               <ActionButton
                 text={formatMessage(messages.viewQuoteRequest)}
@@ -141,7 +144,7 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
                 styles={styles.button}
               />
             </a>
-          </Link>
+          </NextLink>
         </Stack>
       </Stack>
     </Stack>

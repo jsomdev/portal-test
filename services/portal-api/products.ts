@@ -366,18 +366,11 @@ export async function getDesignsForDetailedCompare(
  * Function that retrieves information about the Products that need to be statically optimized
  */
 export async function fetchProductsForStaticPaths(): Promise<Product[]> {
-  // const slugs: { Slug: MultilingualString }[] = (slugsJson as any).slugs as {
-  //   Slug: MultilingualString;
-  // }[];
-  // console.log(slugs);
-  // return slugs.map(slug => ({
-  //   slug: slug.Slug
-  // }));
   const productsResource: ProductsResource = new ProductsResource();
 
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,slug`,
-    top: 20
+    top: 0
   };
 
   const data: OdataCollection<Product> | undefined =
@@ -398,7 +391,7 @@ export async function fetchProductForProductPage(
     selectQuery: `id,number,name,description,modelId,slug,audience`,
     // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
     filterQuery: `slug/en eq '${slug}'`,
-    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,slug;$expand=series($select=id,name,slug)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
+    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions($orderby=typeCode asc),sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,slug;$expand=series($select=id,name,slug)),accessories($select=id;$expand=accessory($select=id,name,number,slug;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
   };
 
   const data: OdataCollection<Product> = await productsResource.getEntities(

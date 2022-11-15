@@ -105,11 +105,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
         <AppLayout>
           <Hero />
           <TabletAndDesktop>
-            <ContentContainerStack
-              outerStackProps={{ styles: styles.sectionContainer }}
-            >
-              <SignIn />
-            </ContentContainerStack>
+            <SignIn />
           </TabletAndDesktop>
           <ContentContainerStack
             outerStackProps={{

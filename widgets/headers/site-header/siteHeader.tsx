@@ -72,6 +72,8 @@ const messages = defineMessages({
   }
 });
 
+export const SITE_HEADER_HEIGHT = 80;
+
 /**
  * Header component for the Spray.com links.
  * Based on the screen size a different version will be displayed.
@@ -144,7 +146,7 @@ const MobileSiteHeader: React.FC = () => {
   const styles: MobileSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80),
+        height: rem(SITE_HEADER_HEIGHT),
         position: 'relative'
       }
     },
@@ -167,7 +169,7 @@ const MobileSiteHeader: React.FC = () => {
     panelHeader: {
       root: {
         borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(80)
+        height: rem(SITE_HEADER_HEIGHT)
       }
     },
     closeButton: {
@@ -304,7 +306,7 @@ const DesktopSiteHeader: React.FC = () => {
   const styles: DesktopSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80)
+        height: rem(SITE_HEADER_HEIGHT)
       }
     },
     button: {
