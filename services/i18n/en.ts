@@ -375,8 +375,8 @@ export const en: Messages = {
       unauthorized: 'You are not authorized to view this page.',
       steps: {
         details: 'Details',
-        shippingMethod: 'Shipping Method',
-        paymentDetails: 'Payment Method',
+        shippingMethod: 'Shipping',
+        paymentDetails: 'Payment',
         overview: 'Overview'
       },
       actions: {
@@ -414,7 +414,8 @@ export const en: Messages = {
         }
       },
       shippingMethods: {
-        shippingMethodLabel: 'Shipping Method'
+        shippingMethodLabel: 'Shipping Method',
+        loadingShippingMethods: 'Loading shipping options...'
       },
       summary: {
         details: 'Details',

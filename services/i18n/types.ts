@@ -410,6 +410,7 @@ type ICheckoutMessages = {
   };
   shippingMethods: {
     shippingMethodLabel: string;
+    loadingShippingMethods: string;
   };
   summary: {
     details: string;

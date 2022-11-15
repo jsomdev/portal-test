@@ -423,7 +423,9 @@ export const messageIds: Messages = {
       },
       shippingMethods: {
         shippingMethodLabel:
-          'pages.checkout.shippingMethods.shippingMethodLabel'
+          'pages.checkout.shippingMethods.shippingMethodLabel',
+        loadingShippingMethods:
+          'pages.checkout.shippingMethods.loadingShippingMethods'
       },
       summary: {
         details: 'pages.checkout.summary.details',

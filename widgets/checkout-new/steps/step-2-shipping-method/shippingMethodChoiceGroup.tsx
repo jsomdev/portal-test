@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useFormikContext } from 'formik';
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { FormikChoiceGroup } from '@components/formik-wrappers/formikChoiceGroup';
 import {
@@ -13,6 +13,7 @@ import {
   Stack,
   getTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
 import { mapShippingCostAmountToShippingMethodChoiceGroupOptions } from '@widgets/checkout-new/steps/step-2-shipping-method/shippingMethodChoiceGroup.helper';
 import { checkoutFormFields } from '@widgets/checkout/checkout-form/checkoutFormHelper';
@@ -20,6 +21,14 @@ import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContex
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 import { Step2FormData } from './step-2-shipping-method';
+
+const messages = defineMessages({
+  loadingShippingMethods: {
+    id: messageIds.pages.checkout.shippingMethods.loadingShippingMethods,
+    defaultMessage: 'Loading shipping options...',
+    description: 'Checkout step2: loading shipping options text'
+  }
+});
 
 type ShippingMethodChoiceGroupProps = {
   title: string;
@@ -29,7 +38,7 @@ type ShippingMethodChoiceGroupProps = {
 export const ShippingMethodChoiceGroup: React.FC<
   ShippingMethodChoiceGroupProps
 > = ({ fields, title }) => {
-  const { formatNumber } = useIntl();
+  const { formatNumber, formatMessage } = useIntl();
   const { fonts, palette } = getTheme();
   const { setFieldValue, setFieldTouched } = useFormikContext<Step2FormData>();
   const {
@@ -87,7 +96,7 @@ export const ShippingMethodChoiceGroup: React.FC<
         <Stack.Item>
           <Spinner
             size={SpinnerSize.large}
-            label="Loading shipping options..."
+            label={formatMessage(messages.loadingShippingMethods)}
             styles={spinnerStyles}
           />
         </Stack.Item>

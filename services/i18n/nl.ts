@@ -422,7 +422,8 @@ export const nl: Messages = {
         }
       },
       shippingMethods: {
-        shippingMethodLabel: 'Levering'
+        shippingMethodLabel: 'Levering',
+        loadingShippingMethods: 'Leveringsmethoden laden...'
       },
       summary: {
         details: 'Details',
