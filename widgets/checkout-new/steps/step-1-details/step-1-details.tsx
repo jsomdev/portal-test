@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { Form, Formik, FormikProps } from 'formik';
 import { useIntl } from 'react-intl';
@@ -15,6 +15,7 @@ import { ShippingAddressFormGroup } from '@widgets/checkout-new/steps/step-1-det
 import { ShippingContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingContactFormGroup';
 import { getFields } from '@widgets/checkout-new/steps/step-1-details/step-1-details.helper';
 import validation from '@widgets/checkout-new/steps/step-1-details/step-1-details.validation';
+import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 
 export type Step1FormData = InferType<typeof validation>;
 
@@ -43,8 +44,10 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
   const { shippingAddress } = useContext(AddressBookContext);
+  const { setShippingAddress, setSelectedShippingOption } =
+    useContext(CheckoutFormContext);
   const { me } = useMe();
-  const fields = getFields(formatMessage);
+  const fields = useMemo(() => getFields(formatMessage), [formatMessage]);
 
   const defaultAndPrefilledValues = useMemo(() => {
     //fill in the form with the user's address if it exists, but don't overwrite any existing form values
@@ -73,6 +76,29 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
     return getTouchedFields(defaultAndPrefilledValues);
   }, [defaultAndPrefilledValues]);
 
+  const onSubmit = useCallback(
+    values => {
+      const shippingAddress: PostalAddress = {
+        city: values.city,
+        region: values.state,
+        postalCode: values.postalCode,
+        lines: [values.address],
+        country: values.country
+      };
+      setShippingAddress((currentState: PostalAddress | undefined) => {
+        if (
+          JSON.stringify(shippingAddress).localeCompare(
+            JSON.stringify(currentState)
+          ) !== 0
+        ) {
+          setSelectedShippingOption(undefined);
+        }
+        return shippingAddress;
+      });
+    },
+    [setSelectedShippingOption, setShippingAddress]
+  );
+
   return (
     <Formik<Step1FormData>
       innerRef={formRef}
@@ -80,11 +106,7 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
       initialTouched={initialTouched}
       validationSchema={validation}
       enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log('submitting');
-        //TODO handle submits
-        //onFormSubmit(values);
-      }}
+      onSubmit={onSubmit}
     >
       <Form>
         <Stack tokens={{ childrenGap: spacing.l1 }}>

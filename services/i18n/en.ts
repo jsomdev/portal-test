@@ -413,6 +413,9 @@ export const en: Messages = {
           phone: 'Phone Number'
         }
       },
+      shippingMethods: {
+        shippingMethodLabel: 'Shipping Method'
+      },
       summary: {
         details: 'Details',
         subTotal: 'Sub Total',

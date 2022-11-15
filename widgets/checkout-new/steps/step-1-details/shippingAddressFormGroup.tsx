@@ -54,8 +54,8 @@ export const ShippingAddressFormGroup: React.FC<{
     setFieldValue,
     setFieldTouched
   }: FormikContextType<Step1FormData> = useFormikContext();
-  const { formatMessage } = useIntl();
 
+  const { formatMessage } = useIntl();
   const { spacing } = useTheme();
 
   const regionOptions: IDropdownOption[] = useMemo(() => {
@@ -73,20 +73,16 @@ export const ShippingAddressFormGroup: React.FC<{
       return formatMessage(messages.stateFieldPlaceholderUS);
     }
     if (values.country === 'CA') {
-      return messages.caPlaceholder;
+      return formatMessage(messages.stateFieldPlaceholderCA);
     }
-    return messages.defaultPlaceholder;
+    return formatMessage(messages.stateFieldPlaceholderDefault);
   }, [values.country]);
 
-  function getSelectedKey(
-    value: string,
-    options: IDropdownOption[]
-  ): string | undefined {
-    const selectedKey = options
-      .find(option => option.key === value)
-      ?.key.toString();
-    return selectedKey;
-  }
+  const getSelectedKey = useCallback(
+    (value: string, options: IDropdownOption[]): string | undefined =>
+      options.find(option => option.key === value)?.key.toString(),
+    []
+  );
 
   const onCountryChange = useCallback(
     async (event: React.FormEvent<IComboBox>, option?: IComboBoxOption) => {
@@ -110,7 +106,9 @@ export const ShippingAddressFormGroup: React.FC<{
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
       <Stack.Item>
-        <CheckoutFormGroupTitle title={title || messages.shippingAddress} />
+        <CheckoutFormGroupTitle
+          title={title || formatMessage(messages.shippingAddressTitle)}
+        />
       </Stack.Item>
       <Stack.Item>
         <Stack tokens={{ childrenGap: spacing.s1 }}>

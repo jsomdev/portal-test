@@ -421,6 +421,10 @@ export const messageIds: Messages = {
           phone: 'pages.checkout.details.fields.phone'
         }
       },
+      shippingMethods: {
+        shippingMethodLabel:
+          'pages.checkout.shippingMethods.shippingMethodLabel'
+      },
       summary: {
         details: 'pages.checkout.summary.details',
         subTotal: 'pages.checkout.summary.subTotal',

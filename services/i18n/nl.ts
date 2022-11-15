@@ -396,7 +396,7 @@ export const nl: Messages = {
       },
       details: {
         generalTitle: 'Algemene informatie',
-        shippingContactTitle: 'Levering contact',
+        shippingContactTitle: 'Contact Informatie',
         shippingAddressTitle: 'Leveringsadres',
         fields: {
           email: 'E-mail',
@@ -420,6 +420,9 @@ export const nl: Messages = {
           postalCode: 'Postcode',
           phone: 'Telefoonnummer'
         }
+      },
+      shippingMethods: {
+        shippingMethodLabel: 'Levering'
       },
       summary: {
         details: 'Details',

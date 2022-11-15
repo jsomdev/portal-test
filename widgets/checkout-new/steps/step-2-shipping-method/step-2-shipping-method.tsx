@@ -1,24 +1,17 @@
 import React, { useMemo } from 'react';
 
 import { Form, Formik, FormikProps } from 'formik';
-import * as yup from 'yup';
+import { useIntl } from 'react-intl';
 import { InferType } from 'yup';
 
 import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
 
-type ShippingMethod =
-  | 'FreeShipping'
-  | 'FlatRate'
-  | 'UpsGround'
-  | 'UpsSecondDayAir'
-  | 'UpsNextDayAir'
-  | 'UpsNextDayAirSaver'
-  | 'UpsStandard'
-  | 'UpsWorldwideExpedited';
-
-const validation = yup.object({
-  shippingMethod: yup.string() //TODO  yup.mixed<ShippingMethod>().required()
-});
+import { ShippingMethodChoiceGroup } from './shippingMethodChoiceGroup';
+import {
+  getFields,
+  messages,
+  validation
+} from './step-2-shipping-method.helper';
 
 export type Step2FormData = InferType<typeof validation>;
 
@@ -35,6 +28,8 @@ export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
   formRef,
   values
 }) => {
+  const { formatMessage } = useIntl();
+  const fields = useMemo(() => getFields(formatMessage), [formatMessage]);
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
@@ -46,13 +41,16 @@ export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
       initialTouched={initialTouched}
       validationSchema={validation}
       enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log('submitting');
-        //TODO handle submits
-        //onFormSubmit(values);
+      onSubmit={() => {
+        /* do nothing */
       }}
     >
-      <Form>Step 2 Content</Form>
+      <Form>
+        <ShippingMethodChoiceGroup
+          fields={fields}
+          title={formatMessage(messages.shippingMethod)}
+        />
+      </Form>
     </Formik>
   );
 };

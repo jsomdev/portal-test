@@ -408,6 +408,9 @@ type ICheckoutMessages = {
       phone: string;
     };
   };
+  shippingMethods: {
+    shippingMethodLabel: string;
+  };
   summary: {
     details: string;
     subTotal: string;

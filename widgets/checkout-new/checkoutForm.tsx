@@ -141,6 +141,7 @@ const CheckoutFormNew: React.FC = () => {
           ...formValues,
           [currentStepKey]: formRef.current.values
         });
+        await formRef.current.submitForm();
         stepper.next();
         scrollToTop('body');
       } else {
