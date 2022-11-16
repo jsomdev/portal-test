@@ -13,8 +13,10 @@ import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
 import { OrderContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/orderContactFormGroup';
 import { ShippingAddressFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingAddressFormGroup';
 import { ShippingContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingContactFormGroup';
-import { getFields } from '@widgets/checkout-new/steps/step-1-details/step-1-details.helper';
-import validation from '@widgets/checkout-new/steps/step-1-details/step-1-details.validation';
+import {
+  getFields,
+  validation
+} from '@widgets/checkout-new/steps/step-1-details/step-1-details.helper';
 import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 
 export type Step1FormData = InferType<typeof validation>;
@@ -42,12 +44,12 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
   formRef
 }) => {
   const { spacing } = useTheme();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
   const { shippingAddress } = useContext(AddressBookContext);
   const { setShippingAddress, setSelectedShippingOption } =
     useContext(CheckoutFormContext);
   const { me } = useMe();
-  const fields = useMemo(() => getFields(formatMessage), [formatMessage]);
+  const fields = useMemo(() => getFields(intl), [intl]);
 
   const defaultAndPrefilledValues = useMemo(() => {
     //fill in the form with the user's address if it exists, but don't overwrite any existing form values

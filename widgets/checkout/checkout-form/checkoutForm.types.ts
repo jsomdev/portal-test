@@ -1,4 +1,4 @@
-import { IStackItemStyles } from '@fluentui/react';
+import { IStackItemStyles, IStackStyles } from '@fluentui/react';
 import { ShippingMethod } from '@services/portal-api';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 
@@ -64,6 +64,7 @@ export interface CheckoutFormFields {
 }
 
 export interface CheckoutFormStyles {
+  container: IStackStyles;
   leftColumn: IStackItemStyles;
   rightColumn: IStackItemStyles;
 }

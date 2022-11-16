@@ -23,7 +23,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   getSelectedKey: getKey,
   ...props
 }) => {
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
   const [input, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const { palette } = useTheme();
@@ -66,7 +66,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         }}
         onClick={onOpenClick}
         selectedKey={getKey?.(input.value, props.options)}
-        errorMessage={formatError(formatMessage, meta)}
+        errorMessage={formatError(intl, meta, input.name)}
         onChange={(e, option) => {
           if (props.onChange) {
             props.onChange(e, option);

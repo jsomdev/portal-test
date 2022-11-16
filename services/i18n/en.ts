@@ -417,6 +417,47 @@ export const en: Messages = {
         shippingMethodLabel: 'Shipping Method',
         loadingShippingMethods: 'Loading shipping options...'
       },
+      payment: {
+        billingContact: 'Billing Contact',
+        billingAddress: 'Billing Address',
+        creditCard: 'Credit card',
+        purchaseOrder: 'Purchase order',
+        fields: {
+          paymentMethod: 'Payment Method',
+          shippingAddressAsBillingAddress: 'Shipping as Billing',
+          shippingContactAsBillingContact:
+            'Shipping Contact as Billing Contact',
+          billingAddressChoice: {
+            sameAsShipping: 'Same as shipping address',
+            differentFromShipping: 'Use a different billing address'
+          },
+          billingContactChoice: {
+            sameAsShipping: 'Same as shipping contact',
+            differentFromShipping: 'Use a different billing contact'
+          },
+          creditCardNumber: 'Card Number',
+          creditCardNumberInvalidFormatError:
+            'Your credit card number is invalid',
+          creditCardName: 'Name on Card',
+          creditCardNameInvalidFormatError: 'Please enter valid name',
+          creditCardExpiration: 'Valid Thru',
+          creditCardExpirationPlaceholder: 'MM/YY',
+          creditCardExpirationInvalidError:
+            'Please enter a valid expiration date',
+          creditCardCVV: 'CVV / CVC Code',
+
+          billingFirstName: 'First Name',
+          billingLastName: 'Last Name',
+          billingCompany: 'Company Name',
+          billingPhone: 'Phone Number',
+
+          billingAddress: 'Address',
+          billingCity: 'City',
+          billingState: 'State / Province',
+          billingCountry: 'Country',
+          billingPostalCode: 'Postal Code'
+        }
+      },
       summary: {
         details: 'Details',
         subTotal: 'Sub Total',

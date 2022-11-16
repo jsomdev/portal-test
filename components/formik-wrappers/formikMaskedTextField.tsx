@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useField } from 'formik';
+import { useIntl } from 'react-intl';
 
+import formatError from '@components/formik-wrappers/formatError';
 import {
   IIconProps,
   IStyleFunctionOrObject,
@@ -21,6 +23,7 @@ export const FormikMaskedTextField: React.FC<FormikMaskedTextFieldProps> = ({
   validationProps,
   ...props
 }) => {
+  const intl = useIntl();
   const [input, meta] = useField(name);
   const { palette } = useTheme();
 
@@ -39,6 +42,7 @@ export const FormikMaskedTextField: React.FC<FormikMaskedTextFieldProps> = ({
     styles: { root: { color: palette.green } }
   };
 
+  const error = formatError(intl, meta, input.name);
   return (
     <Stack.Item>
       <MaskedTextField
@@ -46,7 +50,7 @@ export const FormikMaskedTextField: React.FC<FormikMaskedTextFieldProps> = ({
         {...props}
         name={name}
         value={input.value}
-        errorMessage={meta.touched && meta.error ? meta.error : undefined}
+        errorMessage={error}
         styles={mergedStyles}
         iconProps={
           meta.touched && !meta.error && !validationProps?.disabled

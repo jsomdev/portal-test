@@ -409,7 +409,7 @@ export const nl: Messages = {
           countryPlaceholder: 'Selecteer een land',
           address: 'Adres',
           addressPlaceholder: 'Straatnaam en huisnummer',
-          city: 'Stad',
+          city: 'Gemeente',
           state: 'Provincie',
           statePlaceholder: {
             default: 'Staat / Regio / Provincie',
@@ -424,6 +424,48 @@ export const nl: Messages = {
       shippingMethods: {
         shippingMethodLabel: 'Levering',
         loadingShippingMethods: 'Leveringsmethoden laden...'
+      },
+      payment: {
+        billingContact: 'Facturatie contact',
+        billingAddress: 'Facturatie adres',
+        creditCard: 'Kredietkaart',
+        purchaseOrder: 'Bestelbon',
+        fields: {
+          paymentMethod: 'Betaalmethode',
+          shippingAddressAsBillingAddress:
+            'Verzendingadres als factureringadres',
+          shippingContactAsBillingContact:
+            'Verzendcontact als factureringscontact',
+          billingAddressChoice: {
+            sameAsShipping: 'Zelfde als leveringsadres',
+            differentFromShipping: 'Gebruik een ander facturatieadres'
+          },
+          billingContactChoice: {
+            sameAsShipping: 'Zelfde als leveringscontact',
+            differentFromShipping: 'Gebruik een ander facturatiecontact'
+          },
+          creditCardNumber: 'Kaartnummer',
+          creditCardNumberInvalidFormatError: 'Ongeldig kaartnummer',
+
+          creditCardName: 'Naam op kaart',
+          creditCardNameInvalidFormatError:
+            'Gelieve een geldige naam in te voeren',
+          creditCardExpiration: 'Geldig tot',
+          creditCardExpirationPlaceholder: 'MM/JJ',
+          creditCardExpirationInvalidError: 'Vervaldatum ongeldig',
+          creditCardCVV: 'CVV / CVC Code',
+
+          billingFirstName: 'Voornaam',
+          billingLastName: 'Familienaam',
+          billingCompany: 'Bedrijfsnaam',
+          billingPhone: 'Telefoonnummer',
+
+          billingAddress: 'Adres',
+          billingCity: 'Gemeente',
+          billingState: 'Provincie',
+          billingCountry: 'Land',
+          billingPostalCode: 'Postcode'
+        }
       },
       summary: {
         details: 'Details',

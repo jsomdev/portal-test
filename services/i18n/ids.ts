@@ -427,6 +427,56 @@ export const messageIds: Messages = {
         loadingShippingMethods:
           'pages.checkout.shippingMethods.loadingShippingMethods'
       },
+      payment: {
+        billingContact: 'pages.checkout.payment.billingContact',
+        billingAddress: 'pages.checkout.payment.billingAddress',
+        creditCard: 'pages.checkout.payment.creditCard',
+        purchaseOrder: 'pages.checkout.payment.purchaseOrder',
+        fields: {
+          paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
+          shippingAddressAsBillingAddress:
+            'pages.checkout.payment.fields.shippingAddressAsBillingAddress',
+          shippingContactAsBillingContact:
+            'pages.checkout.payment.fields.shippingContactAsBillingContact',
+          billingAddressChoice: {
+            sameAsShipping:
+              'pages.checkout.payment.fields.billingAddressChoice.sameAsShipping',
+            differentFromShipping:
+              'pages.checkout.payment.fields.billingAddressChoice.differentFromShipping'
+          },
+          billingContactChoice: {
+            sameAsShipping:
+              'pages.checkout.payment.fields.billingContactChoice.sameAsShipping',
+            differentFromShipping:
+              'pages.checkout.payment.fields.billingContactChoice.differentFromShipping'
+          },
+          creditCardNumber: 'pages.checkout.payment.fields.creditCardNumber',
+          creditCardNumberInvalidFormatError:
+            'pages.checkout.payment.fields.creditCardNumberInvalidFormatError',
+
+          creditCardName: 'pages.checkout.payment.fields.creditCardName',
+          creditCardNameInvalidFormatError:
+            'pages.checkout.payment.fields.creditCardNameInvalidFormatError',
+          creditCardExpiration:
+            'pages.checkout.payment.fields.creditCardExpiration',
+          creditCardExpirationPlaceholder:
+            'pages.checkout.payment.fields.creditCardExpirationPlaceholder',
+          creditCardExpirationInvalidError:
+            'pages.checkout.payment.fields.creditCardExpirationInvalidError',
+          creditCardCVV: 'pages.checkout.payment.fields.creditCardCVV',
+
+          billingFirstName: 'pages.checkout.payment.fields.billingFirstName',
+          billingLastName: 'pages.checkout.payment.fields.billingLastName',
+          billingCompany: 'pages.checkout.payment.fields.billingCompany',
+          billingPhone: 'pages.checkout.payment.fields.billingPhone',
+
+          billingAddress: 'pages.checkout.payment.fields.billingAddress',
+          billingCity: 'pages.checkout.payment.fields.billingCity',
+          billingState: 'pages.checkout.payment.fields.billingState',
+          billingCountry: 'pages.checkout.payment.fields.billingCountry',
+          billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode'
+        }
+      },
       summary: {
         details: 'pages.checkout.summary.details',
         subTotal: 'pages.checkout.summary.subTotal',

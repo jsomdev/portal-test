@@ -1,9 +1,9 @@
 import { defineMessages } from 'react-intl';
+import { IntlShape } from 'react-intl/src/types';
 import * as yup from 'yup';
 
 import { messageIds } from '@services/i18n';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
-import { FormatMessage } from '@widgets/checkout-new/shared/types';
 import { Step2FormData } from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 
 export type ShippingMethod =
@@ -40,9 +40,8 @@ export const messages = defineMessages({
   }
 });
 
-export const getFields = (
-  formatMessage: FormatMessage
-): StepFields<Step2FormData> => {
+export const getFields = (intl: IntlShape): StepFields<Step2FormData> => {
+  const { formatMessage } = intl;
   return {
     shippingMethod: {
       label: formatMessage(messages.shippingMethod),

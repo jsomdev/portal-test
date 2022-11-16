@@ -28,8 +28,8 @@ export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
   formRef,
   values
 }) => {
-  const { formatMessage } = useIntl();
-  const fields = useMemo(() => getFields(formatMessage), [formatMessage]);
+  const intl = useIntl();
+  const fields = useMemo(() => getFields(intl), [intl]);
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
@@ -48,7 +48,7 @@ export const Step2ShippingMethod: React.FC<Step2ShippingMethodProps> = ({
       <Form>
         <ShippingMethodChoiceGroup
           fields={fields}
-          title={formatMessage(messages.shippingMethod)}
+          title={intl.formatMessage(messages.shippingMethod)}
         />
       </Form>
     </Formik>

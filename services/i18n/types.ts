@@ -412,6 +412,44 @@ type ICheckoutMessages = {
     shippingMethodLabel: string;
     loadingShippingMethods: string;
   };
+  payment: {
+    billingContact: string;
+    billingAddress: string;
+    creditCard: string;
+    purchaseOrder: string;
+    fields: {
+      paymentMethod: string;
+      shippingAddressAsBillingAddress: string;
+      shippingContactAsBillingContact: string;
+      billingAddressChoice: {
+        sameAsShipping: string;
+        differentFromShipping: string;
+      };
+      billingContactChoice: {
+        sameAsShipping: string;
+        differentFromShipping: string;
+      };
+      creditCardNumber: string;
+      creditCardNumberInvalidFormatError: string;
+      creditCardName: string;
+      creditCardNameInvalidFormatError: string;
+      creditCardExpiration: string;
+      creditCardExpirationPlaceholder: string;
+      creditCardExpirationInvalidError: string;
+      creditCardCVV: string;
+
+      billingFirstName: string;
+      billingLastName: string;
+      billingCompany: string;
+      billingPhone: string;
+
+      billingAddress: string;
+      billingCity: string;
+      billingState: string;
+      billingCountry: string;
+      billingPostalCode: string;
+    };
+  };
   summary: {
     details: string;
     subTotal: string;

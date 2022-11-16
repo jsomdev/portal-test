@@ -24,7 +24,7 @@ export const FormikTextField: React.FC<FormikTextFieldProps> = ({
 }) => {
   const [input, meta] = useField(name);
   const { palette } = useTheme();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
 
   const defaultValidationStyles: Partial<ITextFieldStyles> = {
     fieldGroup: { border: `${rem('1px')} solid ${palette.green}` }
@@ -47,7 +47,7 @@ export const FormikTextField: React.FC<FormikTextFieldProps> = ({
       {...props}
       name={name}
       value={input.value}
-      errorMessage={formatError(formatMessage, meta)}
+      errorMessage={formatError(intl, meta, input.name)}
       styles={mergedStyles}
       iconProps={
         meta.touched && !meta.error && !validationProps?.disabled

@@ -116,6 +116,7 @@ const CheckoutFormNew: React.FC = () => {
   );
 
   const styles: CheckoutFormStyles = {
+    container: { root: { marginBottom: '100px' } },
     leftColumn: {
       root: { flex: 5 }
     },
@@ -157,7 +158,7 @@ const CheckoutFormNew: React.FC = () => {
 
   const isLastStep = stepper.currentIndex === stepperSteps.length - 1;
   return (
-    <ResponsiveStack horizontalAlign="space-between">
+    <ResponsiveStack styles={styles.container} horizontalAlign="space-between">
       <Stack.Item styles={styles.leftColumn}>
         <Stack tokens={{ childrenGap: spacing.l1 }}>
           <Steps
