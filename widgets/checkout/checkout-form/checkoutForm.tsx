@@ -165,6 +165,7 @@ export const CheckoutForm: React.FC<{
     }, [controlledPaymentMethodFormStepValues]);
 
   const styles: CheckoutFormStyles = {
+    container: {},
     leftColumn: {
       root: { flex: 5 }
     },
