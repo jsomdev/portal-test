@@ -448,6 +448,7 @@ type ICheckoutMessages = {
       billingState: string;
       billingCountry: string;
       billingPostalCode: string;
+      referenceNumber: string;
     };
   };
   summary: {

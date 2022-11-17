@@ -474,7 +474,8 @@ export const messageIds: Messages = {
           billingCity: 'pages.checkout.payment.fields.billingCity',
           billingState: 'pages.checkout.payment.fields.billingState',
           billingCountry: 'pages.checkout.payment.fields.billingCountry',
-          billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode'
+          billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode',
+          referenceNumber: 'pages.checkout.payment.fields.referenceNumber'
         }
       },
       summary: {

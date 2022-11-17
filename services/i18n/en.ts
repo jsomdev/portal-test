@@ -455,7 +455,8 @@ export const en: Messages = {
           billingCity: 'City',
           billingState: 'State / Province',
           billingCountry: 'Country',
-          billingPostalCode: 'Postal Code'
+          billingPostalCode: 'Postal Code',
+          referenceNumber: 'Reference Number'
         }
       },
       summary: {

@@ -464,7 +464,8 @@ export const nl: Messages = {
           billingCity: 'Gemeente',
           billingState: 'Provincie',
           billingCountry: 'Land',
-          billingPostalCode: 'Postcode'
+          billingPostalCode: 'Postcode',
+          referenceNumber: 'Referentienummer'
         }
       },
       summary: {

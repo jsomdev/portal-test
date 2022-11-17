@@ -35,7 +35,8 @@ const defaultValues: Step3FormData = {
   billingCity: '',
   billingState: '',
   billingCountry: '',
-  billingPostalCode: ''
+  billingPostalCode: '',
+  referenceNumber: ''
 };
 
 export type Step3Props = {
@@ -47,6 +48,7 @@ export const Step3Payment: React.FC<Step3Props> = ({ values, formRef }) => {
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
+
   const { spacing } = useTheme();
   const intl = useIntl();
   const fields = getFields(intl);

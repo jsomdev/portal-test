@@ -144,7 +144,8 @@ export const validation = yup.object({
     .when('shippingAddressAsBillingAddress', {
       is: 'no',
       then: yup.string().required()
-    })
+    }),
+  referenceNumber: yup.string()
 });
 
 const fieldMessages = messageIds.pages.checkout.payment.fields;
@@ -213,6 +214,10 @@ export const messages = defineMessages({
   billingPostalCode: {
     id: fieldMessages.billingPostalCode,
     defaultMessage: 'Postal Code'
+  },
+  referenceNumber: {
+    id: fieldMessages.referenceNumber,
+    defaultMessage: 'Reference Number'
   }
 });
 
@@ -283,6 +288,10 @@ export const getFields = (intl: IntlShape): StepFields<Step3FormData> => {
     billingPostalCode: {
       label: formatMessage(messages.billingPostalCode),
       name: 'billingPostalCode'
+    },
+    referenceNumber: {
+      label: formatMessage(messages.referenceNumber),
+      name: 'referenceNumber'
     }
   };
 };

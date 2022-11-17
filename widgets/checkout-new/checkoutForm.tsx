@@ -1,4 +1,11 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 
 import { FormikProps } from 'formik';
 import { useRouter } from 'next/router';
@@ -6,7 +13,11 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { ResponsiveStack } from '@components/stacks/responsiveStack';
 import { Stack, getTheme } from '@fluentui/react';
+import { AddressBookContext } from '@providers/address-book/addressBookContext';
+import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
+import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
+import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CheckoutSummary } from '@widgets/checkout-new/checkout-summary/checkoutSummary';
@@ -22,7 +33,10 @@ import step1Details from '@widgets/checkout-new/steps/step-1-details/step-1-deta
 import step2ShippingMethod from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 import step3Payment from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 import step4Overview from '@widgets/checkout-new/steps/step-4-overview/step-4-overview';
-import { CheckoutFormStyles } from '@widgets/checkout/checkout-form/checkoutForm.types';
+import {
+  CheckoutFormStyles,
+  CheckoutPaymentMethodFormValues
+} from '@widgets/checkout/checkout-form/checkoutForm.types';
 import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
@@ -76,32 +90,84 @@ const CheckoutFormNew: React.FC = () => {
   const [formValues, setFormValues] =
     useState<CheckoutFormValues>(defaultValues);
 
-  const steps: CheckoutSteps = {
-    details: {
-      index: 0,
-      label: formatMessage(messages.details),
-      iconProps: { iconName: 'ContactInfo' },
-      ...step1Details
-    },
-    shippingMethod: {
-      index: 1,
-      label: formatMessage(messages.shippingMethod),
-      iconProps: { iconName: 'Product' },
-      ...step2ShippingMethod
-    },
-    payment: {
-      index: 2,
-      label: formatMessage(messages.paymentDetails),
-      iconProps: { iconName: 'PaymentCard' },
-      ...step3Payment
-    },
-    overview: {
-      index: 3,
-      label: formatMessage(messages.overview),
-      iconProps: { iconName: 'WaitlistConfirm' },
-      ...step4Overview
+  const steps: CheckoutSteps = useMemo(
+    () => ({
+      details: {
+        index: 0,
+        label: formatMessage(messages.details),
+        iconProps: { iconName: 'ContactInfo' },
+        ...step1Details
+      },
+      shippingMethod: {
+        index: 1,
+        label: formatMessage(messages.shippingMethod),
+        iconProps: { iconName: 'Product' },
+        ...step2ShippingMethod
+      },
+      payment: {
+        index: 2,
+        label: formatMessage(messages.paymentDetails),
+        iconProps: { iconName: 'PaymentCard' },
+        ...step3Payment
+      },
+      overview: {
+        index: 3,
+        label: formatMessage(messages.overview),
+        iconProps: { iconName: 'WaitlistConfirm' },
+        ...step4Overview
+      }
+    }),
+    [formatMessage]
+  );
+
+  const { billingAddress, shippingAddress } = useContext(AddressBookContext);
+  const { me } = useMe();
+
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  //set default values for the form because on user
+  useEffect(() => {
+    if (!isInitialLoad) {
+      return;
+    } else {
+      setIsInitialLoad(false);
     }
-  };
+    const shippingAsBilling: boolean =
+      !!billingAddress?.id &&
+      !!shippingAddress?.id &&
+      shippingAddress?.id === billingAddress?.id;
+
+    const paymentMethod: PaymentMethod =
+      me?.account?.paymentMethod === PaymentMethod.CREDIT_CARD
+        ? PaymentMethod.CREDIT_CARD
+        : PaymentMethod.PURCHASE_ORDER;
+
+    const address = getValidPostalAddressFromUserAddress(
+      !shippingAsBilling ? billingAddress : shippingAddress
+    );
+
+    setFormValues({
+      ...formValues,
+      payment: {
+        ...formValues.payment,
+        billingAddress: address.lines?.[0] || '',
+        billingCity: address.city || '',
+        billingCountry: address.country || '',
+        billingState: address.region || '',
+        billingPostalCode: address.postalCode || '',
+        paymentMethod,
+        referenceNumber: '',
+        shippingAddressAsBillingAddress: shippingAsBilling ? 'yes' : 'no',
+        shippingContactAsBillingContact: 'yes',
+        billingCompany: ''
+      }
+    });
+  }, [
+    billingAddress,
+    formValues,
+    me?.account?.paymentMethod,
+    shippingAddress,
+    isInitialLoad
+  ]);
 
   const stepperSteps = Object.values(steps);
   const stepper = useStepper({
