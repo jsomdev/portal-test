@@ -84,20 +84,24 @@ export const CreditCardPaymentFormGroup: React.FC<{
               <FormikTextField {...fields.creditCardName} required={true} />
               <Stack.Item>
                 <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
-                  <FormikMaskedTextField
-                    {...fields.creditCardExpiration}
-                    mask={'99/99'}
-                    required={true}
-                    maskChar=""
-                    maxLength={5}
-                  />
-                  <FormikTextField
-                    {...fields.creditCardCVV}
-                    iconProps={{ iconName: 'statusCircleQuestionMark' }}
-                    required={true}
-                    inputMode="numeric"
-                    maxLength={4}
-                  />
+                  <Stack.Item>
+                    <FormikMaskedTextField
+                      {...fields.creditCardExpiration}
+                      mask={'99/99'}
+                      required={true}
+                      maskChar=""
+                      maxLength={5}
+                    />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <FormikTextField
+                      {...fields.creditCardCVV}
+                      iconProps={{ iconName: 'statusCircleQuestionMark' }}
+                      required={true}
+                      inputMode="numeric"
+                      maxLength={4}
+                    />
+                  </Stack.Item>
                 </Stack>
               </Stack.Item>
             </Stack>

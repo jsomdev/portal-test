@@ -81,7 +81,6 @@ export const validation = yup.object({
   billingFirstName: yup
     .string()
     .label(messageIds.pages.checkout.payment.fields.billingFirstName)
-    .matches(/^[A-Za-z ]*$/)
     .max(40)
     .when('shippingContactAsBillingContact', {
       is: 'no',
@@ -90,7 +89,6 @@ export const validation = yup.object({
   billingLastName: yup
     .string()
     .label(messageIds.pages.checkout.payment.fields.billingLastName)
-    .matches(/^[A-Za-z ]*$/)
     .max(40)
     .when('shippingContactAsBillingContact', {
       is: 'no',

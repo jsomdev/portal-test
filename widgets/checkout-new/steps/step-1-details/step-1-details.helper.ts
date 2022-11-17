@@ -31,7 +31,6 @@ export const validation = yup.object({
   firstName: yup
     .string()
     .label(messageIds.pages.checkout.details.fields.firstName)
-    .matches(/^[A-Za-z ]*$/)
     .max(40)
     .required(),
   company: yup
