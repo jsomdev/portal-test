@@ -11,7 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
 
 import { CheckoutSummaryDetailStyles } from './checkoutSummary.types';
@@ -53,7 +53,7 @@ export const CheckoutSummaryDetails: React.FC = () => {
     selectedShippingOption,
     orderTaxAmount,
     orderTaxAmountStatus
-  } = React.useContext(CheckoutFormContext);
+  } = useCheckout();
   const { formatNumber, formatMessage } = useIntl();
 
   const styles: CheckoutSummaryDetailStyles = {

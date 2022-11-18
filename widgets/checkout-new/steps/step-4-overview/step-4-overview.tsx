@@ -36,30 +36,34 @@ export const Step4Overview: React.FC<Step4Props> = ({ values, formRef }) => {
   }, [values]);
 
   return (
-    <Formik<Step4FormData>
-      innerRef={formRef}
-      initialValues={values}
-      initialTouched={initialTouched}
-      validationSchema={validation}
-      enableReinitialize={true}
-      onSubmit={() => {
-        /* do nothing */
-      }}
-    >
-      <Form>
-        <Stack tokens={{ childrenGap: spacing.l1 }}>
-          <Stack.Item>
-            <CheckoutOverview />
-          </Stack.Item>
-          {/* <Stack.Item>
-            <AdditionalInformationFormGroup />
-          </Stack.Item>
-          <Stack.Item>
-            <TermsAndConditionsGroup />
-          </Stack.Item>*/}
-        </Stack>
-      </Form>
-    </Formik>
+    <Stack tokens={{ childrenGap: spacing.l1 }}>
+      <Stack.Item>
+        <CheckoutOverview />
+      </Stack.Item>
+      <Formik<Step4FormData>
+        innerRef={formRef}
+        initialValues={values}
+        initialTouched={initialTouched}
+        validationSchema={validation}
+        enableReinitialize={true}
+        onSubmit={() => {
+          /* do nothing */
+        }}
+      >
+        <Form>
+          <Stack tokens={{ childrenGap: spacing.l1 }}>
+            <Stack.Item>
+              AdditionalInformationFormGroup
+              {/*  <AdditionalInformationFormGroup />*/}
+            </Stack.Item>
+            <Stack.Item>
+              TermsAndConditionsGroup
+              {/*  <TermsAndConditionsGroup />*/}
+            </Stack.Item>
+          </Stack>
+        </Form>
+      </Formik>
+    </Stack>
   );
 };
 

@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 
+import { Form, Formik } from 'formik';
 import { useIntl } from 'react-intl';
 
+import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import {
   IComboBoxOption,
   IComboBoxStyles,
@@ -10,7 +12,6 @@ import {
 } from '@fluentui/react';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
-import { CheckoutFormOverviewGroupContainer } from '@widgets/checkout/shared/checkoutFormOverviewGroupContainer';
 
 import { mapShippingCostAmountToShippingMethodComboBoxOptions } from './shippingMethodSummary.helper';
 
@@ -20,7 +21,8 @@ const messages = {
 
 export const ShippingMethodSummary: React.FC = () => {
   const intl = useIntl();
-  const { shippingCostData, setSelectedShippingOption } = useCheckout();
+  const { shippingCostData, setSelectedShippingOption, formValues } =
+    useCheckout();
   const { formatNumber } = useIntl();
   const { spacing } = useTheme();
 
@@ -40,17 +42,6 @@ export const ShippingMethodSummary: React.FC = () => {
     [shippingMethodOptions]
   );
 
-  /* TODO //When the shipping method changes values, we want to assign the new shipping method to our context
-  React.useEffect(() => {
-    if (!!shippingCostData && values.shippingMethod !== undefined) {
-      setSelectedShippingOption(
-        shippingCostData.find(option => {
-          return option.shippingMethod === values.shippingMethod;
-        })
-      );
-    }
-  }, [setSelectedShippingOption, shippingCostData, values.shippingMethod]);
-*/
   const styles: Partial<IComboBoxStyles> = {
     root: {
       width: 'auto'
@@ -63,17 +54,36 @@ export const ShippingMethodSummary: React.FC = () => {
         <OverviewGroupContainer text={messages.shippingMethod}>
           <Stack tokens={{ childrenGap: spacing.m }}>
             <Stack.Item>
-              {/* TODO <FormikComboBox
-                getSelectedKey={getShipmentOptionKey}
-                name={checkoutFormFields.shippingMethod.name}
-                placeholder={checkoutFormFields.shippingMethod.placeholder}
-                options={shippingMethodOptions}
-                allowFreeform={false}
-                useComboBoxAsMenuWidth
-                ariaLabel={checkoutFormFields.shippingMethod.label}
-                styles={styles}
-                validationProps={{ disabled: true }}
-              />*/}
+              <Formik
+                initialValues={{
+                  shippingMethod: formValues?.shippingMethod.shippingMethod
+                }}
+                initialTouched={[{ shippingMethod: true }]}
+                onSubmit={() => {
+                  /* do nothing */
+                }}
+              >
+                <Form>
+                  <FormikComboBox
+                    getSelectedKey={getShipmentOptionKey}
+                    name={'shippingMethod'}
+                    options={shippingMethodOptions}
+                    useComboBoxAsMenuWidth
+                    styles={styles}
+                    validationProps={{ disabled: true }}
+                    required={true}
+                    allowFreeform={false}
+                    onChange={(ev, changedOption) => {
+                      const shippingMethod = shippingCostData?.find(option => {
+                        return option.shippingMethod === changedOption?.key;
+                      });
+                      if (shippingMethod) {
+                        setSelectedShippingOption(shippingMethod);
+                      }
+                    }}
+                  />
+                </Form>
+              </Formik>
             </Stack.Item>
           </Stack>
         </OverviewGroupContainer>

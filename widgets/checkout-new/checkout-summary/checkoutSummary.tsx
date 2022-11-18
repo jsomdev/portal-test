@@ -4,7 +4,7 @@ import { Summary } from '@components/summary/summary';
 import { Stack, useTheme } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
 import { CheckoutSummaryActions } from '@widgets/checkout-new/checkout-summary/checkoutSummaryActions';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { ServiceBadges } from '@widgets/service-badges/serviceBadges';
 
 import { CheckoutSummaryDetails } from './checkoutSummaryDetails';
@@ -24,7 +24,7 @@ export const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
 }) => {
   const { checkoutItems } = useCart();
   const { spacing } = useTheme();
-  const { orderTaxAmountStatus } = React.useContext(CheckoutFormContext);
+  const { orderTaxAmountStatus } = useCheckout();
 
   return (
     <Stack>
