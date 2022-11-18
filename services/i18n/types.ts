@@ -458,6 +458,16 @@ type ICheckoutMessages = {
     tax: string;
     total: string;
   };
+  overview: {
+    termsAndConditions: string;
+    privacyPolicy: string;
+    fields: {
+      acceptedTerms: string;
+      acceptedTermsRequired: string;
+      additionalInformation: string;
+      additionalInformationPlaceholder: string;
+    };
+  };
   discounts: {
     apply: string;
     discountCode: string;

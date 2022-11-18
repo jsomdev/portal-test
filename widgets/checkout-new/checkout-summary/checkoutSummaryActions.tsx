@@ -66,10 +66,10 @@ export const CheckoutSummaryActions: React.FC<CheckoutSummaryActionsProps> = ({
         {showSubmitButton ? (
           <PrimaryButton
             styles={styles}
-            type="submit"
             disabled={disableSubmit}
             key="MainActionsSubmit"
             text={submitButtonText}
+            onClick={onProceedClick}
           />
         ) : (
           <PrimaryButton

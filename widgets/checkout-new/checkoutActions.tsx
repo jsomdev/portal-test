@@ -76,6 +76,7 @@ export const CheckoutActions: React.FC<{
           disabled={disableSubmit}
           styles={styles.buttons}
           type="submit"
+          onClick={onProceedClick}
         >
           {formatMessage(messages.submitForm)}
           <Icon iconName="chevronRight" styles={styles.nextIcon} />

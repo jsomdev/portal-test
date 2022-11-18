@@ -475,6 +475,18 @@ export const nl: Messages = {
         total: 'Totale bestelling',
         tax: 'BTW'
       },
+      overview: {
+        termsAndConditions: 'Algemene voorwaarden en condities',
+        privacyPolicy: 'Privacybeleid',
+        fields: {
+          acceptedTerms:
+            'Ik ga akkoord met de {termsAndConditions} en het {privacyPolicy}.',
+          acceptedTermsRequired: 'U moet akkoord gaan met de voorwaarden.',
+          additionalInformation: 'Aanvullende informatie',
+          additionalInformationPlaceholder:
+            'Voeg eventuele aanvullende opmerkingen, verzoeken of opmerkingen toe'
+        }
+      },
       discounts: {
         apply: 'Toepassen',
         discountCode: 'Kortingscode'

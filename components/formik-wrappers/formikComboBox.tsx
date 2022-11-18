@@ -59,7 +59,7 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         {...input}
         {...props}
         componentRef={comboBoxRef}
-        allowFreeform={true}
+        allowFreeform={props.allowFreeform || true}
         calloutProps={{
           directionalHintFixed: true,
           directionalHint: DirectionalHint.bottomRightEdge

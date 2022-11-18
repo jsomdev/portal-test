@@ -485,6 +485,19 @@ export const messageIds: Messages = {
         total: 'pages.checkout.summary.total',
         tax: 'pages.checkout.summary.tax'
       },
+      overview: {
+        termsAndConditions: 'pages.checkout.overview.termsAndConditions',
+        privacyPolicy: 'pages.checkout.overview.privacyPolicy',
+        fields: {
+          acceptedTerms: 'pages.checkout.overview.fields.acceptedTerms',
+          acceptedTermsRequired:
+            'pages.checkout.overview.fields.acceptedTermsRequired',
+          additionalInformation:
+            'pages.checkout.overview.fields.additionalInformation',
+          additionalInformationPlaceholder:
+            'pages.checkout.overview.fields.additionalInformationPlaceholder'
+        }
+      },
       discounts: {
         apply: 'pages.checkout.discounts.apply',
         discountCode: 'pages.checkout.discounts.discountCode'

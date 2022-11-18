@@ -466,6 +466,18 @@ export const en: Messages = {
         total: 'Order Total',
         tax: 'Tax'
       },
+      overview: {
+        termsAndConditions: 'Terms and conditions',
+        privacyPolicy: 'Privacy policy',
+        fields: {
+          acceptedTerms:
+            'I agree with the {termsAndConditions} and {privacyPolicy}.',
+          acceptedTermsRequired: 'You must accept the terms and conditions',
+          additionalInformation: 'Additional Information',
+          additionalInformationPlaceholder:
+            'Add any additional comments, request or remarks'
+        }
+      },
       discounts: {
         apply: 'Apply',
         discountCode: 'Discount code'
