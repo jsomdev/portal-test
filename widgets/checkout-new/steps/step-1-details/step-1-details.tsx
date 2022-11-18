@@ -9,7 +9,8 @@ import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
 import { useMe } from '@providers/user/userContext';
 import { PostalAddress } from '@services/portal-api';
-import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
+import { getTouchedFields } from '@widgets/checkout-new/shared/getTouchedFields';
 import { OrderContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/orderContactFormGroup';
 import { ShippingAddressFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingAddressFormGroup';
 import { ShippingContactFormGroup } from '@widgets/checkout-new/steps/step-1-details/shippingContactFormGroup';
@@ -17,7 +18,6 @@ import {
   getFields,
   validation
 } from '@widgets/checkout-new/steps/step-1-details/step-1-details.helper';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 
 export type Step1FormData = InferType<typeof validation>;
 
@@ -46,8 +46,7 @@ export const Step1Details: React.FC<Step1DetailsProps> = ({
   const { spacing } = useTheme();
   const intl = useIntl();
   const { shippingAddress } = useContext(AddressBookContext);
-  const { setShippingAddress, setSelectedShippingOption } =
-    useContext(CheckoutFormContext);
+  const { setShippingAddress, setSelectedShippingOption } = useCheckout();
   const { me } = useMe();
   const fields = useMemo(() => getFields(intl), [intl]);
 

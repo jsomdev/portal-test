@@ -14,8 +14,8 @@ import {
   useTheme
 } from '@fluentui/react';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { PaymentIcons } from '@widgets/payment-icons/paymentIcons';
 
 export const CreditCardPaymentFormGroup: React.FC<{
@@ -34,7 +34,7 @@ export const CreditCardPaymentFormGroup: React.FC<{
   const { spacing } = useTheme();
   const { values }: FormikContextType<Step3FormData> = useFormikContext();
 
-  const { setCreditCardIssuer } = useContext(CheckoutFormContext);
+  const { setCreditCardIssuer } = useCheckout();
 
   useEffect(() => {
     const result = valid.number(values.creditCardNumber);

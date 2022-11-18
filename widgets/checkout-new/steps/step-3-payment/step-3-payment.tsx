@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { InferType } from 'yup';
 
 import { Stack, useTheme } from '@fluentui/react';
-import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
+import { getTouchedFields } from '@widgets/checkout-new/shared/getTouchedFields';
 import { BillingAddressChoiceGroup } from '@widgets/checkout-new/steps/step-3-payment/billingAddressChoiceGroup';
 import { BillingContactChoiceGroup } from '@widgets/checkout-new/steps/step-3-payment/billingContactChoiceGroup';
 import { PaymentMethodChoiceGroup } from '@widgets/checkout-new/steps/step-3-payment/paymentMethodChoiceGroup';
@@ -21,10 +21,10 @@ const defaultValues: Step3FormData = {
   shippingAddressAsBillingAddress: 'yes',
   shippingContactAsBillingContact: 'yes',
 
-  creditCardNumber: '',
-  creditCardName: '',
-  creditCardExpiration: '',
-  creditCardCVV: '',
+  creditCardNumber: '4111111111111111',
+  creditCardName: 'ward',
+  creditCardExpiration: '12/24',
+  creditCardCVV: '123',
 
   billingFirstName: '',
   billingLastName: '',

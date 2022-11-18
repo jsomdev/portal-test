@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
@@ -15,16 +15,16 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
-import { CartContext } from '@providers/cart/cartContext';
+import { useCart } from '@providers/cart/cartContext';
 import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import CheckoutFormNew from '@widgets/checkout-new/checkoutForm';
+import { CheckoutProvider } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { CheckoutBreadcrumb } from '@widgets/checkout/checkout-breadcrumb/checkoutBreadcrumb';
 import { useCreateOrder } from '@widgets/checkout/create-order/useCreateOrder';
 import { CheckoutErrorBox } from '@widgets/checkout/shared/checkoutErrorBox';
-import { CheckoutFormProvider } from '@widgets/checkout/shared/checkoutFormProvider';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
@@ -92,7 +92,7 @@ const CheckoutNew: React.FC = () => {
     checkoutItems,
     itemsStatus: cartInfoStatus,
     initialized: isCartInitialized
-  } = useContext(CartContext);
+  } = useCart();
 
   const orderLineProductNumbers: string[] = React.useMemo(() => {
     if (checkoutItems === undefined) {
@@ -213,12 +213,12 @@ const CheckoutNew: React.FC = () => {
       )}
       {!!checkoutItems?.length && (
         <Stack.Item>
-          <CheckoutFormProvider>
+          <CheckoutProvider>
             <CheckoutFormNew />
             {/*TODO onSubmit={async (order: OrderPost) => {
                 await create(order);
               }}*/}
-          </CheckoutFormProvider>
+          </CheckoutProvider>
         </Stack.Item>
       )}
     </ContentContainerStack>

@@ -2,7 +2,6 @@ import React, {
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useRef,
   useState
 } from 'react';
@@ -18,36 +17,21 @@ import { getValidPostalAddressFromUserAddress } from '@providers/address-book/ad
 import { useMe } from '@providers/user/userContext';
 import { messageIds } from '@services/i18n';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
-import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CheckoutSummary } from '@widgets/checkout-new/checkout-summary/checkoutSummary';
 import { CheckoutActions } from '@widgets/checkout-new/checkoutActions';
 import { getCurrentStep } from '@widgets/checkout-new/checkoutForm.helper';
-import {
-  CheckoutFormValues,
-  CheckoutSteps
-} from '@widgets/checkout-new/checkoutForm.types';
+import { CheckoutFormValues } from '@widgets/checkout-new/checkoutForm.types';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { Steps } from '@widgets/checkout-new/stepper/steps';
-import useStepper from '@widgets/checkout-new/stepper/useStepper';
 import step1Details from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import step2ShippingMethod from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 import step3Payment from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 import step4Overview from '@widgets/checkout-new/steps/step-4-overview/step-4-overview';
-import {
-  CheckoutFormStyles,
-  CheckoutPaymentMethodFormValues
-} from '@widgets/checkout/checkout-form/checkoutForm.types';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
+import { CheckoutFormStyles } from '@widgets/checkout/checkout-form/checkoutForm.types';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
 import { mediaQueryFrom } from '@widgets/media-queries';
-
-const defaultValues: CheckoutFormValues = {
-  details: step1Details.defaultValues,
-  shippingMethod: step2ShippingMethod.defaultValues,
-  payment: step3Payment.defaultValues,
-  overview: step4Overview.defaultValues
-};
 
 const messages = defineMessages({
   completePayment: {
@@ -57,80 +41,41 @@ const messages = defineMessages({
   completePurchaseOrder: {
     id: messageIds.pages.checkout.actions.completePurchaseOrder,
     defaultMessage: 'Confirm and submit'
-  },
-  details: {
-    id: messageIds.pages.checkout.steps.details,
-    defaultMessage: 'Details'
-  },
-  shippingMethod: {
-    id: messageIds.pages.checkout.steps.shippingMethod,
-    defaultMessage: 'Shipping Method'
-  },
-  paymentDetails: {
-    id: messageIds.pages.checkout.steps.paymentDetails,
-    defaultMessage: 'Payment Method'
-  },
-  overview: {
-    id: messageIds.pages.checkout.steps.overview,
-    defaultMessage: 'Overview'
   }
 });
 
+const defaultValues: CheckoutFormValues = {
+  details: step1Details.defaultValues,
+  shippingMethod: step2ShippingMethod.defaultValues,
+  payment: step3Payment.defaultValues,
+  overview: step4Overview.defaultValues
+};
+
 const CheckoutFormNew: React.FC = () => {
+  const { formatMessage } = useIntl();
+  const { orderTaxAmountStatus, formValues, setFormValues, steps, stepper } =
+    useCheckout();
+
   //allows us the access the Formik methods of the form of the current step
   //not possible to use a specific type here, because the type of the form depends on the current step
   const formRef = useRef<FormikProps<any>>(null);
-  const { formatMessage } = useIntl();
   const { spacing } = getTheme();
 
   const { push } = useRouter();
-
-  const { orderTaxAmountStatus } = useContext(CheckoutFormContext);
-
-  const [formValues, setFormValues] =
-    useState<CheckoutFormValues>(defaultValues);
-
-  const steps: CheckoutSteps = useMemo(
-    () => ({
-      details: {
-        index: 0,
-        label: formatMessage(messages.details),
-        iconProps: { iconName: 'ContactInfo' },
-        ...step1Details
-      },
-      shippingMethod: {
-        index: 1,
-        label: formatMessage(messages.shippingMethod),
-        iconProps: { iconName: 'Product' },
-        ...step2ShippingMethod
-      },
-      payment: {
-        index: 2,
-        label: formatMessage(messages.paymentDetails),
-        iconProps: { iconName: 'PaymentCard' },
-        ...step3Payment
-      },
-      overview: {
-        index: 3,
-        label: formatMessage(messages.overview),
-        iconProps: { iconName: 'WaitlistConfirm' },
-        ...step4Overview
-      }
-    }),
-    [formatMessage]
-  );
 
   const { billingAddress, shippingAddress } = useContext(AddressBookContext);
   const { me } = useMe();
 
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-  //set default values for the form because on user
+
+  //set default values for checkout
   useEffect(() => {
     if (!isInitialLoad) {
       return;
     } else {
       setIsInitialLoad(false);
     }
+
     const shippingAsBilling: boolean =
       !!billingAddress?.id &&
       !!shippingAddress?.id &&
@@ -146,9 +91,9 @@ const CheckoutFormNew: React.FC = () => {
     );
 
     setFormValues({
-      ...formValues,
+      ...defaultValues,
       payment: {
-        ...formValues.payment,
+        ...defaultValues.payment,
         billingAddress: address.lines?.[0] || '',
         billingCity: address.city || '',
         billingCountry: address.country || '',
@@ -166,20 +111,14 @@ const CheckoutFormNew: React.FC = () => {
     formValues,
     me?.account?.paymentMethod,
     shippingAddress,
-    isInitialLoad
+    isInitialLoad,
+    setFormValues
   ]);
 
-  const stepperSteps = Object.values(steps);
-  const stepper = useStepper({
-    steps: stepperSteps,
-    initialIndex: 0,
-    onExit: () => push(pagePaths.cart)
-  });
-
-  const { currentStep, currentStepKey } = getCurrentStep(
-    steps,
-    stepper.currentIndex
-  );
+  const { currentStep, currentStepKey } =
+    steps && stepper
+      ? getCurrentStep(steps, stepper.currentIndex)
+      : { currentStep: undefined, currentStepKey: undefined };
 
   const styles: CheckoutFormStyles = {
     container: { root: { marginBottom: '100px' } },
@@ -203,7 +142,7 @@ const CheckoutFormNew: React.FC = () => {
       await formRef.current.validateForm();
       const isValid = formRef.current.isValid;
 
-      if (isValid) {
+      if (isValid && formValues) {
         setFormValues({
           ...formValues,
           [currentStepKey]: formRef.current.values
@@ -222,14 +161,21 @@ const CheckoutFormNew: React.FC = () => {
     scrollToTop('body');
   }, [stepper]);
 
-  const isLastStep = stepper.currentIndex === stepperSteps.length - 1;
+  const isLastStep = stepper
+    ? stepper.currentIndex === stepper.steps.length - 1
+    : false;
+
+  //don't show anything yet when default values for the form are still being set
+  if (!formValues) {
+    return null;
+  }
   return (
     <ResponsiveStack styles={styles.container} horizontalAlign="space-between">
       <Stack.Item styles={styles.leftColumn}>
         <Stack tokens={{ childrenGap: spacing.l1 }}>
           <Steps
             currentIndex={stepper.currentIndex}
-            steps={stepperSteps}
+            steps={stepper.steps}
             navigateToStep={stepper.navigateToStep}
           />
           {!currentStep ? (
@@ -241,6 +187,7 @@ const CheckoutFormNew: React.FC = () => {
               key={currentStep.index}
               formRef={formRef}
               values={formValues[currentStepKey] as any}
+              checkoutValues={formValues}
             />
           )}
           <CheckoutActions
@@ -257,8 +204,9 @@ const CheckoutFormNew: React.FC = () => {
           onProceed={onProceed}
           showSubmitButton={isLastStep}
           submitButtonText={
-            //TODO when working on step 3: formValues.payment.paymentMethod === PaymentMethod.CREDIT_CARD? messages.completePayment : messages.completePurchaseOrder
-            formatMessage(messages.completePayment)
+            formValues.payment.paymentMethod === PaymentMethod.CREDIT_CARD
+              ? formatMessage(messages.completePayment)
+              : formatMessage(messages.completePurchaseOrder)
           }
         />
       </Stack.Item>

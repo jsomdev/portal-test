@@ -1,5 +1,3 @@
-//TODO move out of checkout folder for re-use when working on quote checkout
-// and/or when old checkout can be removed, as this is actually a different stepper from the old one
 import { useState } from 'react';
 
 import { IIconProps } from '@fluentui/react';
@@ -9,17 +7,21 @@ export interface StepModel {
   iconProps?: IIconProps;
 }
 
-type UseStepper = (settings: {
-  steps: StepModel[];
-  initialIndex: number;
-  onExit?: () => void;
-}) => {
+export type Stepper = {
   currentIndex: number;
-  currentStep: StepModel;
+  currentStep: StepModel | undefined;
   next: () => void;
   previous: () => void;
   navigateToStep: (index: number) => void;
+  steps: StepModel[];
 };
+
+export type StepperSettings = {
+  steps: StepModel[];
+  initialIndex: number;
+  onExit?: () => void;
+};
+type UseStepper = (settings: StepperSettings) => Stepper;
 
 const useStepper: UseStepper = ({ steps, initialIndex, onExit }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
@@ -54,7 +56,8 @@ const useStepper: UseStepper = ({ steps, initialIndex, onExit }) => {
     previous,
     navigateToStep,
     currentStep,
-    currentIndex
+    currentIndex,
+    steps
   };
 };
 

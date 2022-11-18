@@ -15,9 +15,9 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { mapShippingCostAmountToShippingMethodChoiceGroupOptions } from '@widgets/checkout-new/steps/step-2-shipping-method/shippingMethodChoiceGroup.helper';
 import { checkoutFormFields } from '@widgets/checkout/checkout-form/checkoutFormHelper';
-import { CheckoutFormContext } from '@widgets/checkout/shared/checkoutFormContext';
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 import { Step2FormData } from './step-2-shipping-method';
@@ -38,7 +38,8 @@ type ShippingMethodChoiceGroupProps = {
 export const ShippingMethodChoiceGroup: React.FC<
   ShippingMethodChoiceGroupProps
 > = ({ fields, title }) => {
-  const { formatNumber, formatMessage } = useIntl();
+  const intl = useIntl();
+  const { formatNumber, formatMessage } = intl;
   const { fonts, palette } = getTheme();
   const { setFieldValue, setFieldTouched } = useFormikContext<Step2FormData>();
   const {
@@ -46,13 +47,13 @@ export const ShippingMethodChoiceGroup: React.FC<
     selectedShippingOption,
     shippingCostData,
     shippingCostDataStatus
-  } = React.useContext(CheckoutFormContext);
+  } = useCheckout();
 
   // This memo maps our API data (ShippingCostAmount[]) to choice group options
   const shippingMethodOptions: IChoiceGroupOption[] = React.useMemo(() => {
     return mapShippingCostAmountToShippingMethodChoiceGroupOptions(
       shippingCostData || [],
-      formatNumber
+      intl
     );
   }, [shippingCostData, formatNumber]);
 

@@ -4,20 +4,33 @@ import { Form, Formik, FormikProps } from 'formik';
 import * as yup from 'yup';
 import { InferType } from 'yup';
 
-import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
+import { Stack, useTheme } from '@fluentui/react';
+import { CheckoutFormValues } from '@widgets/checkout-new/checkoutForm.types';
+import { getTouchedFields } from '@widgets/checkout-new/shared/getTouchedFields';
+import { CheckoutOverview } from '@widgets/checkout-new/steps/step-4-overview/overview/checkoutOverview';
 
-const validation = yup.object({});
+const validation = yup.object({
+  additionalInformation: yup.string(),
+  acceptedTerms: yup.boolean().oneOf([true], () => ({
+    messageId: 'You must accept the terms and conditions'
+  }))
+});
 
 export type Step4FormData = InferType<typeof validation>;
 
-const defaultValues: Step4FormData = {};
+const defaultValues: Step4FormData = {
+  additionalInformation: '',
+  acceptedTerms: false
+};
 
 export type Step4Props = {
   values: Step4FormData;
   formRef: React.RefObject<FormikProps<Step4FormData>> | undefined;
+  checkoutValues: CheckoutFormValues;
 };
 
 export const Step4Overview: React.FC<Step4Props> = ({ values, formRef }) => {
+  const { spacing } = useTheme();
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
@@ -29,13 +42,23 @@ export const Step4Overview: React.FC<Step4Props> = ({ values, formRef }) => {
       initialTouched={initialTouched}
       validationSchema={validation}
       enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log('submitting');
-        //TODO handle submits
-        //onFormSubmit(values);
+      onSubmit={() => {
+        /* do nothing */
       }}
     >
-      <Form>Step 4 Content</Form>
+      <Form>
+        <Stack tokens={{ childrenGap: spacing.l1 }}>
+          <Stack.Item>
+            <CheckoutOverview />
+          </Stack.Item>
+          {/* <Stack.Item>
+            <AdditionalInformationFormGroup />
+          </Stack.Item>
+          <Stack.Item>
+            <TermsAndConditionsGroup />
+          </Stack.Item>*/}
+        </Stack>
+      </Form>
     </Formik>
   );
 };

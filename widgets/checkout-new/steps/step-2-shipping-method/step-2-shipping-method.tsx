@@ -4,7 +4,7 @@ import { Form, Formik, FormikProps } from 'formik';
 import { useIntl } from 'react-intl';
 import { InferType } from 'yup';
 
-import { getTouchedFields } from '@widgets/checkout-new/checkout.helper';
+import { getTouchedFields } from '@widgets/checkout-new/shared/getTouchedFields';
 
 import { ShippingMethodChoiceGroup } from './shippingMethodChoiceGroup';
 import {
