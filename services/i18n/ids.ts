@@ -486,8 +486,12 @@ export const messageIds: Messages = {
         tax: 'pages.checkout.summary.tax'
       },
       overview: {
+        reviewTitle: 'pages.checkout.overview.reviewTitle',
         termsAndConditions: 'pages.checkout.overview.termsAndConditions',
         privacyPolicy: 'pages.checkout.overview.privacyPolicy',
+        editGroup: 'pages.checkout.overview.editGroup',
+        totalCost: 'pages.checkout.overview.totalCost',
+        invoiceAmount: 'pages.checkout.overview.invoiceAmount',
         fields: {
           acceptedTerms: 'pages.checkout.overview.fields.acceptedTerms',
           acceptedTermsRequired:
@@ -561,5 +565,15 @@ export const messageIds: Messages = {
       min: 'validation.string.min',
       max: 'validation.string.max'
     }
+  },
+  shippingMethods: {
+    freeShipping: 'shippingMethods.freeShipping',
+    flatRate: 'shippingMethods.flatRate',
+    upsGround: 'shippingMethods.upsGround',
+    upsSecondDayAir: 'shippingMethods.upsSecondDayAir',
+    upsNextDayAir: 'shippingMethods.upsNextDayAir',
+    upsNextDayAirSaver: 'shippingMethods.upsNextDayAirSaver',
+    upsStandard: 'shippingMethods.upsStandard',
+    upsWorldwideExpedited: 'shippingMethods.upsWorldwideExpedited'
   }
 };

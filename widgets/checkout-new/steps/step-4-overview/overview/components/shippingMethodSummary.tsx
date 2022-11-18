@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { Form, Formik } from 'formik';
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import {
@@ -10,14 +10,18 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 
 import { mapShippingCostAmountToShippingMethodComboBoxOptions } from './shippingMethodSummary.helper';
 
-const messages = {
-  shippingMethod: 'Shipping Method'
-};
+const messages = defineMessages({
+  shippingMethod: {
+    id: messageIds.pages.checkout.shippingMethods.shippingMethodLabel,
+    defaultMessage: 'Shipping Contact'
+  }
+});
 
 export const ShippingMethodSummary: React.FC = () => {
   const intl = useIntl();
@@ -51,7 +55,9 @@ export const ShippingMethodSummary: React.FC = () => {
   return (
     <Stack tokens={{ childrenGap: spacing.l1 }}>
       <Stack.Item>
-        <OverviewGroupContainer text={messages.shippingMethod}>
+        <OverviewGroupContainer
+          text={intl.formatMessage(messages.shippingMethod)}
+        >
           <Stack tokens={{ childrenGap: spacing.m }}>
             <Stack.Item>
               <Formik

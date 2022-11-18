@@ -476,8 +476,12 @@ export const nl: Messages = {
         tax: 'BTW'
       },
       overview: {
+        reviewTitle: 'Controleer uw bestelling',
         termsAndConditions: 'Algemene voorwaarden en condities',
         privacyPolicy: 'Privacybeleid',
+        editGroup: 'Wijzigen',
+        totalCost: 'Je betaalt',
+        invoiceAmount: 'Factuurbedrag',
         fields: {
           acceptedTerms:
             'Ik ga akkoord met de {termsAndConditions} en het {privacyPolicy}.',
@@ -550,5 +554,15 @@ export const nl: Messages = {
       min: '{label} moet minstens {min} tekens bevatten',
       max: '{label} mag maximaal {max} tekens bevatten'
     }
+  },
+  shippingMethods: {
+    freeShipping: 'Gratis verzending',
+    flatRate: 'Vast bedrag',
+    upsGround: 'UPS Grond',
+    upsSecondDayAir: 'UPS 2de dag Air',
+    upsNextDayAir: 'UPS Volgende Dag Air',
+    upsNextDayAirSaver: 'UPS Volgende Dag Air Saver',
+    upsStandard: 'UPS Standaard',
+    upsWorldwideExpedited: 'UPS Wereldwijd versneld'
   }
 };

@@ -1,16 +1,23 @@
 import React, { useMemo } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { Stack } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { ContactInfo } from '@services/portal-api';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 import { OrderSummaryContact } from '@widgets/checkout/temp/orderSummaryContact';
 
-const messages = {
-  billingContact: 'Billing Contact'
-};
+const messages = defineMessages({
+  billingContact: {
+    id: messageIds.pages.checkout.payment.billingContact,
+    defaultMessage: 'Billing Contact'
+  }
+});
 
 export const BillingContactSummary: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { formValues, steps } = useCheckout();
 
   //TODO refactor
@@ -34,18 +41,13 @@ export const BillingContactSummary: React.FC = () => {
         };
   }, [formValues]);
 
-  //TODO i18n
   return (
     <Stack>
       <OverviewGroupContainer
-        text="Billing Contact"
+        text={formatMessage(messages.billingContact)}
         stepIndex={steps?.payment.index}
       >
-        <OrderSummaryContact
-          contactInfo={billingContactInfo}
-          title={messages.billingContact}
-          displayTitle={false}
-        />
+        <OrderSummaryContact contactInfo={billingContactInfo} />
       </OverviewGroupContainer>
     </Stack>
   );

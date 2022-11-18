@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   ActionButton,
   FontSizes,
@@ -12,11 +14,14 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 
-const messages = {
-  edit: 'Edit'
-};
+const messages = defineMessages({
+  edit: {
+    id: messageIds.pages.checkout.overview.editGroup
+  }
+});
 
 export interface OverviewGroupContainerStyles {
   label: ITextStyles;
@@ -30,6 +35,7 @@ export const OverviewGroupContainer: React.FC<
     stepIndex?: number;
   }
 > = ({ text, children, stepIndex, ...props }) => {
+  const { formatMessage } = useIntl();
   const { spacing, effects, semanticColors } = useTheme();
   const { stepper } = useCheckout();
   const styles: OverviewGroupContainerStyles = {
@@ -71,7 +77,7 @@ export const OverviewGroupContainer: React.FC<
                 stepper.navigateToStep(stepIndex);
               }}
               iconProps={{ iconName: 'Edit' }}
-              text={messages.edit}
+              text={formatMessage(messages.edit)}
               styles={styles.editButton}
             />
           )}

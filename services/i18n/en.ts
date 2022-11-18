@@ -467,8 +467,12 @@ export const en: Messages = {
         tax: 'Tax'
       },
       overview: {
+        reviewTitle: 'Review',
         termsAndConditions: 'Terms and conditions',
         privacyPolicy: 'Privacy policy',
+        editGroup: 'Edit',
+        totalCost: 'You will pay',
+        invoiceAmount: 'Invoice amount',
         fields: {
           acceptedTerms:
             'I agree with the {termsAndConditions} and {privacyPolicy}.',
@@ -541,5 +545,15 @@ export const en: Messages = {
       min: '{label} must be at least {min} characters',
       max: '{label} must be at most {max} characters'
     }
+  },
+  shippingMethods: {
+    freeShipping: 'Free Shipping',
+    flatRate: 'Flat Rate',
+    upsGround: 'UPS Ground',
+    upsSecondDayAir: 'UPS 2nd Day Air',
+    upsNextDayAir: 'UPS Next Day Air',
+    upsNextDayAirSaver: 'UPS Next Day Air Saver',
+    upsStandard: 'UPS Standard',
+    upsWorldwideExpedited: 'UPS Worldwide Expedited'
   }
 };

@@ -459,8 +459,12 @@ type ICheckoutMessages = {
     total: string;
   };
   overview: {
+    reviewTitle: string;
     termsAndConditions: string;
     privacyPolicy: string;
+    editGroup: string;
+    totalCost: string;
+    invoiceAmount: string;
     fields: {
       acceptedTerms: string;
       acceptedTermsRequired: string;
@@ -545,6 +549,7 @@ export type Messages = {
     details: string;
   };
   validation: ValidationMessages;
+  shippingMethods: ShippingMethods;
 };
 
 export interface Language {
@@ -574,6 +579,17 @@ export interface ValidationMessages {
     min: string;
     max: string;
   };
+}
+
+export interface ShippingMethods {
+  freeShipping: string;
+  flatRate: string;
+  upsGround: string;
+  upsSecondDayAir: string;
+  upsNextDayAir: string;
+  upsNextDayAirSaver: string;
+  upsStandard: string;
+  upsWorldwideExpedited: string;
 }
 
 export type LanguageCode =

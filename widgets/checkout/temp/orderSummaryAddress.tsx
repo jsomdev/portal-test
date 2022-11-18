@@ -7,10 +7,9 @@ import { PostalAddress } from '@services/portal-api';
 import { OrderSummaryAddressStyles } from './orderDetail.types';
 
 export const OrderSummaryAddress: React.FC<{
-  title: string;
+  title?: string;
   address: Partial<PostalAddress> | null;
-  displayTitle?: boolean;
-}> = ({ address, title, displayTitle = true }) => {
+}> = ({ address, title }) => {
   const { spacing } = useTheme();
 
   const styles: OrderSummaryAddressStyles = {
@@ -26,7 +25,7 @@ export const OrderSummaryAddress: React.FC<{
   }
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
-      {displayTitle && (
+      {title && (
         <Stack.Item>
           <Text styles={styles.boldText} variant="mediumPlus">
             {title}

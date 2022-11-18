@@ -6,10 +6,9 @@ import { ContactInfo } from '@services/portal-api';
 import { OrderSummaryAddressStyles } from '@widgets/checkout/temp/orderDetail.types';
 
 export const OrderSummaryContact: React.FC<{
-  title: string;
+  title?: string;
   contactInfo: Partial<ContactInfo> | null;
-  displayTitle?: boolean;
-}> = ({ title, contactInfo, displayTitle = true }) => {
+}> = ({ title, contactInfo }) => {
   const { spacing } = useTheme();
 
   const styles: OrderSummaryAddressStyles = {
@@ -25,7 +24,7 @@ export const OrderSummaryContact: React.FC<{
   }
   return (
     <Stack tokens={{ childrenGap: spacing.s1 }}>
-      {displayTitle && (
+      {title && (
         <Stack.Item>
           <Text styles={styles.boldText} variant="mediumPlus">
             {title}

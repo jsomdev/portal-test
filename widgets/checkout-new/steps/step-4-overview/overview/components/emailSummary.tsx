@@ -1,20 +1,27 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { Stack, Text } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 
-const messages = {
-  email: 'Email'
-};
+const messages = defineMessages({
+  email: {
+    id: messageIds.pages.checkout.details.fields.email,
+    defaultMessage: 'Email'
+  }
+});
 
 export const EmailSummary: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { formValues, steps } = useCheckout();
   return (
     <Stack>
       <Stack.Item>
         <OverviewGroupContainer
-          text={messages.email}
+          text={formatMessage(messages.email)}
           stepIndex={steps?.details.index}
         >
           <Text>{formValues?.details.email}</Text>

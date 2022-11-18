@@ -1,16 +1,23 @@
 import React, { useMemo } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { Stack, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { PostalAddress } from '@services/portal-api';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 import { OrderSummaryAddress } from '@widgets/checkout/temp/orderSummaryAddress';
 
-const messages = {
-  billingAddress: 'billingAddress'
-};
+const messages = defineMessages({
+  billingAddress: {
+    id: messageIds.pages.checkout.payment.billingAddress,
+    defaultMessage: 'Shipping Address'
+  }
+});
 
 export const BillingAddressSummary: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { formValues, steps } = useCheckout();
   const { spacing } = useTheme();
 
@@ -46,16 +53,11 @@ export const BillingAddressSummary: React.FC = () => {
   }
   return (
     <Stack tokens={{ childrenGap: spacing.l1 }}>
-      {/*TODO i18n*/}
       <OverviewGroupContainer
-        text="Billing Address"
+        text={formatMessage(messages.billingAddress)}
         stepIndex={steps?.payment.index}
       >
-        <OrderSummaryAddress
-          address={billingAddress}
-          title={messages.billingAddress}
-          displayTitle={false}
-        />
+        <OrderSummaryAddress address={billingAddress} />
       </OverviewGroupContainer>
     </Stack>
   );

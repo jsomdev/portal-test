@@ -69,11 +69,13 @@ export type Step4Props = {
 export const Step4Overview: React.FC<Step4Props> = ({ values, formRef }) => {
   const { spacing } = useTheme();
   const intl = useIntl();
+
   const initialTouched = useMemo(() => {
     return getTouchedFields(values);
   }, [values]);
 
-  const fields = getFields(intl);
+  const fields = useMemo(() => getFields(intl), [intl]);
+
   return (
     <Stack tokens={{ childrenGap: spacing.l1 }}>
       <Stack.Item>

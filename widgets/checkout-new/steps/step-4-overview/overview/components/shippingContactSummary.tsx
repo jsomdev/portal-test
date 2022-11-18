@@ -1,17 +1,24 @@
 import React, { useMemo } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { Stack } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { ContactInfo } from '@services/portal-api';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 import { OrderSummaryContact } from '@widgets/checkout/temp/orderSummaryContact';
 
-const messages = {
-  shippingContact: 'Shipping Contact'
-};
+const messages = defineMessages({
+  shippingContact: {
+    id: messageIds.pages.checkout.details.shippingContactTitle,
+    defaultMessage: 'Shipping Contact'
+  }
+});
 
 export const ShippingContactSummary: React.FC = () => {
-  const { formValues } = useCheckout();
+  const { formatMessage } = useIntl();
+  const { formValues, steps } = useCheckout();
 
   const shippingContactInfo: ContactInfo = useMemo(() => {
     return {
@@ -26,12 +33,11 @@ export const ShippingContactSummary: React.FC = () => {
 
   return (
     <Stack>
-      <OverviewGroupContainer text={messages.shippingContact} stepIndex={0}>
-        <OrderSummaryContact
-          contactInfo={shippingContactInfo}
-          title={messages.shippingContact}
-          displayTitle={false}
-        />
+      <OverviewGroupContainer
+        text={formatMessage(messages.shippingContact)}
+        stepIndex={steps?.details.index}
+      >
+        <OrderSummaryContact contactInfo={shippingContactInfo} />
       </OverviewGroupContainer>
     </Stack>
   );

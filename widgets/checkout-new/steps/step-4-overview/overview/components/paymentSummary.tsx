@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 import {
   FontSizes,
@@ -12,30 +12,45 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
 import { CheckoutFormOverviewGroupContainer } from '@widgets/checkout/shared/checkoutFormOverviewGroupContainer';
 
-export const formatCreditCardIssuer = (issuer: string): string => {
+const formatCreditCardIssuer = (issuer: string): string => {
   return issuer.replace(/^\w/, c => c.toUpperCase());
 };
 
-export const formatCreditCardNumber = (cardNumber: string): string => {
+const formatCreditCardNumber = (cardNumber: string): string => {
   return `${cardNumber
     .substring(0, cardNumber.length - 4)
     .replace(/[0-9]/g, '●')
     .replace(/X/g, '●')}${cardNumber.substring(cardNumber.length - 4)}`;
 };
 
-//TODO i18n
-const messages = {
-  paymentMethod: 'Payment Method',
-  totalCost: 'You will pay',
-  creditCardLabel: 'Credit Card',
-  purchaseOrder: 'Purchase Order',
-  invoiceAmount: 'Invoice amount'
-};
+const messages = defineMessages({
+  paymentMethod: {
+    id: messageIds.pages.checkout.payment.fields.paymentMethod,
+    defaultMessage: 'Payment Method'
+  },
+  totalCost: {
+    id: messageIds.pages.checkout.overview.totalCost,
+    defaultMessage: 'You will pay'
+  },
+  creditCardLabel: {
+    id: messageIds.pages.checkout.payment.creditCard,
+    defaultMessage: 'Credit Card'
+  },
+  purchaseOrder: {
+    id: messageIds.pages.checkout.payment.purchaseOrder,
+    defaultMessage: 'Purchase Order'
+  },
+  invoiceAmount: {
+    id: messageIds.pages.checkout.overview.invoiceAmount,
+    defaultMessage: 'Invoice amount'
+  }
+});
 
 export interface CheckoutFormOverviewPaymentInfoStyles {
   price: ITextStyles;
@@ -43,7 +58,7 @@ export interface CheckoutFormOverviewPaymentInfoStyles {
 }
 
 export const PaymentSummary: React.FC = () => {
-  const { formatNumber } = useIntl();
+  const { formatNumber, formatMessage } = useIntl();
   const {
     formValues,
     currencyCode,
@@ -83,7 +98,7 @@ export const PaymentSummary: React.FC = () => {
     return (
       <Stack tokens={{ childrenGap: spacing.l2 }}>
         <OverviewGroupContainer
-          text={messages.paymentMethod}
+          text={formatMessage(messages.paymentMethod)}
           stepIndex={steps?.payment.index}
         >
           <Stack horizontal horizontalAlign="space-between">
@@ -93,14 +108,14 @@ export const PaymentSummary: React.FC = () => {
                   <Text>{formValues.payment.referenceNumber || '---'}</Text>
                 </Stack.Item>
                 <Stack.Item>
-                  <Text>{messages.purchaseOrder}</Text>
+                  <Text>{formatMessage(messages.purchaseOrder)}</Text>
                 </Stack.Item>
               </Stack>
             </Stack.Item>
             <Stack.Item>
               <Stack tokens={{ childrenGap: spacing.s1 }} horizontalAlign="end">
                 <Stack.Item>
-                  <Text>{messages.invoiceAmount}</Text>
+                  <Text>{formatMessage(messages.invoiceAmount)}</Text>
                 </Stack.Item>
                 <Stack.Item>
                   {orderTaxAmountStatus === 'loading' ? (
@@ -119,9 +134,9 @@ export const PaymentSummary: React.FC = () => {
 
   return (
     <Stack tokens={{ childrenGap: spacing.l2 }}>
-      <CheckoutFormOverviewGroupContainer
-        text={messages.paymentMethod}
-        stepIndex={2}
+      <OverviewGroupContainer
+        text={formatMessage(messages.paymentMethod)}
+        stepIndex={steps?.payment.index}
       >
         <Stack horizontal horizontalAlign="space-between">
           <Stack.Item>
@@ -133,16 +148,16 @@ export const PaymentSummary: React.FC = () => {
                 </Text>
               </Stack.Item>
               <Stack.Item>
-                <Text>{`${formatCreditCardIssuer(creditCardIssuer || '')} ${
-                  messages.creditCardLabel
-                }`}</Text>
+                <Text>{`${formatCreditCardIssuer(
+                  creditCardIssuer || ''
+                )} ${formatMessage(messages.creditCardLabel)}`}</Text>
               </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>
             <Stack tokens={{ childrenGap: spacing.s1 }} horizontalAlign="end">
               <Stack.Item>
-                <Text>{messages.totalCost}</Text>
+                <Text>{formatMessage(messages.totalCost)}</Text>
               </Stack.Item>
               <Stack.Item>
                 {orderTaxAmountStatus === 'loading' ? (
@@ -154,7 +169,7 @@ export const PaymentSummary: React.FC = () => {
             </Stack>
           </Stack.Item>
         </Stack>
-      </CheckoutFormOverviewGroupContainer>
+      </OverviewGroupContainer>
     </Stack>
   );
 };

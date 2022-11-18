@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { BillingAddressSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/billingAddressSummary';
 import { BillingContactSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/billingContactSummary';
 import { PaymentSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/paymentSummary';
@@ -11,11 +14,15 @@ import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGro
 
 import { EmailSummary } from './components/emailSummary';
 
-const messages = {
-  review: 'Review'
-};
+const messages = defineMessages({
+  reviewTitle: {
+    id: messageIds.pages.checkout.overview.reviewTitle,
+    defaultMessage: 'Review'
+  }
+});
 
 export const CheckoutOverview: React.FC = () => {
+  const { formatMessage } = useIntl();
   const { spacing } = useTheme();
 
   const styles: IStackStyles = {
@@ -32,7 +39,7 @@ export const CheckoutOverview: React.FC = () => {
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
       <Stack.Item>
-        <CheckoutFormGroupTitle title={messages.review} />
+        <CheckoutFormGroupTitle title={formatMessage(messages.reviewTitle)} />
       </Stack.Item>
       <Stack.Item>
         <Stack tokens={{ childrenGap: spacing.l1 }}>
