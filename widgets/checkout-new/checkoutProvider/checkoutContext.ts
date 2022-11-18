@@ -6,7 +6,7 @@ import { ReactQueryStatus } from '@services/react-query/types';
 import {
   CheckoutFormValues,
   CheckoutSteps
-} from '@widgets/checkout-new/checkoutForm.types';
+} from '@widgets/checkout-new/shared/types';
 import { Stepper } from '@widgets/checkout-new/stepper/useStepper';
 
 export interface CheckoutContextProps {

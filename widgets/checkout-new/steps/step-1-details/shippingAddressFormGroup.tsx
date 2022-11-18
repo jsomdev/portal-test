@@ -18,10 +18,10 @@ import {
   supportedProvinceOptions,
   supportedStateOptions
 } from '@utilities/places';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { CheckoutFormRowContainer } from '@widgets/checkout-new/shared/checkoutFormRowContainer';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step1FormData } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
-import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
 const messages = defineMessages({
   shippingAddressTitle: {

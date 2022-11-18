@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   IChoiceGroupOption,
@@ -12,24 +14,37 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
+import { StepFields } from '@widgets/checkout-new/shared/types';
+import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 
-import { checkoutFormFields } from '../checkout-form/checkoutFormHelper';
-
-const messages = {
-  info: 'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.'
-};
+const messages = defineMessages({
+  info: {
+    id: messageIds.pages.checkout.payment.purchaseOrderInfo,
+    defaultMessage:
+      'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.'
+  }
+});
 
 interface PurchaseOrderFormGroupStyles {
   textField: Partial<ITextFieldStyles>;
   container: IStackStyles;
 }
 
-export const PurchaseOrderFormGroup: React.FC<{
+type PurchaseOrderFormGroupProps = {
   props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
   render: IRenderFunction<
     IChoiceGroupOption | IChoiceGroupOptionProps | undefined
   >;
-}> = ({ props, render }) => {
+  fields: Pick<StepFields<Step3FormData>, 'referenceNumber'>;
+};
+
+export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
+  props,
+  render,
+  fields
+}) => {
+  const { formatMessage } = useIntl();
   const { spacing } = useTheme();
 
   const styles: PurchaseOrderFormGroupStyles = {
@@ -60,10 +75,10 @@ export const PurchaseOrderFormGroup: React.FC<{
           styles={styles.container}
         >
           <MessageBar messageBarType={MessageBarType.info}>
-            {messages.info}
+            {formatMessage(messages.info)}
           </MessageBar>
           <FormikTextField
-            {...checkoutFormFields.referenceNumber}
+            {...fields.referenceNumber}
             required={true}
             styles={styles.textField}
           />

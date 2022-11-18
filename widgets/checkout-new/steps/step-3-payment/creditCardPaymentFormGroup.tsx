@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import valid from 'card-validator';
 import { FormikContextType, useFormikContext } from 'formik';
@@ -13,8 +13,8 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 import { PaymentIcons } from '@widgets/payment-icons/paymentIcons';
 

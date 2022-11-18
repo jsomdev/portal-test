@@ -6,10 +6,10 @@ import { defineMessages, useIntl } from 'react-intl';
 import { FormikChoiceGroup } from '@components/formik-wrappers/formikChoiceGroup';
 import { IChoiceGroupStyles, Stack } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { getBillingAddressOptions } from '@widgets/checkout-new/steps/step-3-payment/billingAddressChoiceGroup.helper';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 const messages = defineMessages({
   billingAddress: {

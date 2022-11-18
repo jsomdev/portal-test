@@ -10,7 +10,6 @@ import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb'
  * This smart component will pass on the expected IBreadcrumbItems to the MainBreadcrumb.
  * It is expected to be used on the checkout page.
  */
-// eslint-disable-next-line max-len
 export const CheckoutBreadcrumb: React.FC = () => {
   const { formatMessage } = useIntl();
   const breadCrumbItems = [

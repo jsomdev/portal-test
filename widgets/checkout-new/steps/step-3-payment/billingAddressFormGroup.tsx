@@ -18,9 +18,9 @@ import {
   supportedProvinceOptions,
   supportedStateOptions
 } from '@utilities/places';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormRowContainer } from '@widgets/checkout-new/shared/checkoutFormRowContainer';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
-import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
 export const BillingAddressFormGroup: React.FC<{
   props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;

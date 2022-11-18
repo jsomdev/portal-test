@@ -16,7 +16,7 @@ import { sortShippingOptionsByCostAscending } from '@utilities/sortBy';
 import {
   CheckoutFormValues,
   CheckoutSteps
-} from '@widgets/checkout-new/checkoutForm.types';
+} from '@widgets/checkout-new/shared/types';
 import useStepper from '@widgets/checkout-new/stepper/useStepper';
 import step1Details from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import step2ShippingMethod from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
@@ -187,5 +187,5 @@ export const CheckoutProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useCheckout = () =>
+export const useCheckout: () => CheckoutContextProps = () =>
   useContext<CheckoutContextProps>(CheckoutContext);

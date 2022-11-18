@@ -422,6 +422,8 @@ export const en: Messages = {
         billingAddress: 'Billing Address',
         creditCard: 'Credit card',
         purchaseOrder: 'Purchase order',
+        purchaseOrderInfo:
+          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.',
         fields: {
           paymentMethod: 'Payment Method',
           shippingAddressAsBillingAddress: 'Shipping as Billing',

@@ -1,9 +1,18 @@
-//TODO ward refactor/move/cleanup
+//TODO this is a temporary file, should be moved to be re-usable for order account pages, Gregory is still working on these
 import React from 'react';
 
-import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
+import {
+  FontWeights,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
 import { ContactInfo } from '@services/portal-api';
-import { OrderSummaryAddressStyles } from '@widgets/checkout/temp/orderDetail.types';
+
+interface OrderSummaryContactStyles {
+  boldText: ITextStyles;
+}
 
 export const OrderSummaryContact: React.FC<{
   title?: string;
@@ -11,7 +20,7 @@ export const OrderSummaryContact: React.FC<{
 }> = ({ title, contactInfo }) => {
   const { spacing } = useTheme();
 
-  const styles: OrderSummaryAddressStyles = {
+  const styles: OrderSummaryContactStyles = {
     boldText: {
       root: {
         fontWeight: FontWeights.semibold

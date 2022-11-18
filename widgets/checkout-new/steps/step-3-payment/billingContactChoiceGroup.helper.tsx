@@ -4,10 +4,10 @@ import { IntlShape, defineMessages } from 'react-intl';
 
 import { IChoiceGroupOption, Stack } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { ChoiceGroupOptionContainer } from '@widgets/checkout-new/shared/choiceGroupOptionWrapper';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { BillingContactFormGroup } from '@widgets/checkout-new/steps/step-3-payment/billingContactFormGroup';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
-import { ChoiceGroupOptionContainer } from '@widgets/checkout/shared/choiceGroupOptionWrapper';
 
 const messages = defineMessages({
   sameAsShipping: {

@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 import { Step } from '@components/stepper/stepperContext';
+import setYupLocalisation from '@utilities/yup/setYupLocalisation';
 import {
   addressValidation,
   cityValidation,
@@ -9,9 +10,9 @@ import {
   firstNameValidation,
   lastNameValidation,
   phoneValidation,
-  stateValidation,
-  zipCodeValidation
-} from '@widgets/checkout/checkout-form/checkoutFormValidation';
+  postalCodeValidation,
+  stateValidation
+} from '@widgets/checkout-new/shared/validation';
 import { formRequiredMessages } from '@widgets/forms/formMessages';
 
 import {
@@ -20,6 +21,8 @@ import {
   ContactDetailsFormValues,
   CustomerDetailsFormValues
 } from './completeSignUp.types';
+
+setYupLocalisation();
 
 // TODO: i18n
 export const contactDetailsFormFields: CompleteSignUpFormFields = {
@@ -183,18 +186,17 @@ export const customerCompanyValidation = {
 };
 
 export const completeSignUpValidation = yup.object().shape({
-  ...phoneValidation,
-  ...addressValidation,
-  ...countryValidation,
-  ...cityValidation,
-  ...stateValidation,
-  ...zipCodeValidation,
+  email: emailValidation,
+  phone: phoneValidation,
+  address: addressValidation,
+  country: countryValidation,
+  city: cityValidation,
+  state: stateValidation,
+  zipCode: postalCodeValidation,
+  firstName: firstNameValidation,
+  lastName: lastNameValidation,
   ...customerCompanyValidation,
-  ...emailValidation,
   ...customerNumberValidation,
   ...invoiceNumbersValidation,
-  ...firstNameValidation,
-  ...lastNameValidation,
-  ...jobTitleValidation,
-  ...phoneValidation
+  ...jobTitleValidation
 });

@@ -14,11 +14,10 @@ import {
   getTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { mapShippingCostAmountToShippingMethodChoiceGroupOptions } from '@widgets/checkout-new/steps/step-2-shipping-method/shippingMethodChoiceGroup.helper';
-import { checkoutFormFields } from '@widgets/checkout/checkout-form/checkoutFormHelper';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 import { Step2FormData } from './step-2-shipping-method';
 
@@ -60,11 +59,11 @@ export const ShippingMethodChoiceGroup: React.FC<
   // When the selected shipping option changes (in the context) we want to update the field values of the form.
   useEffect(() => {
     setFieldValue(
-      checkoutFormFields.shippingMethod.name,
+      fields.shippingMethod.name,
       selectedShippingOption?.shippingMethod.toString(),
       true
     );
-    setFieldTouched(checkoutFormFields.shippingMethod.name, true, false);
+    setFieldTouched(fields.shippingMethod.name, true, false);
   }, [selectedShippingOption, setFieldTouched, setFieldValue]);
 
   const styles: IChoiceGroupStyles = {

@@ -417,6 +417,7 @@ type ICheckoutMessages = {
     billingAddress: string;
     creditCard: string;
     purchaseOrder: string;
+    purchaseOrderInfo: string;
     fields: {
       paymentMethod: string;
       shippingAddressAsBillingAddress: string;

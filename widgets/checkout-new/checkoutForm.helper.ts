@@ -1,7 +1,4 @@
-import {
-  CheckoutSteps,
-  StepKey
-} from '@widgets/checkout-new/checkoutForm.types';
+import { CheckoutSteps, StepKey } from '@widgets/checkout-new/shared/types';
 
 export const getCurrentStep = (steps: CheckoutSteps, currentIndex: number) => {
   const stepKeys = Object.keys(steps) as StepKey[];

@@ -7,7 +7,7 @@ import { messageIds } from '@services/i18n';
 import { ContactInfo } from '@services/portal-api';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
-import { OrderSummaryContact } from '@widgets/checkout/temp/orderSummaryContact';
+import { OrderSummaryContact } from '@widgets/checkout-new/shared/temp/orderSummaryContact';
 
 const messages = defineMessages({
   billingContact: {

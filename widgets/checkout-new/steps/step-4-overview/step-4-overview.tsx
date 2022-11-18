@@ -8,9 +8,11 @@ import { InferType } from 'yup';
 
 import { Stack, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
-import { CheckoutFormValues } from '@widgets/checkout-new/checkoutForm.types';
 import { getTouchedFields } from '@widgets/checkout-new/shared/getTouchedFields';
+import {
+  CheckoutFormValues,
+  StepFields
+} from '@widgets/checkout-new/shared/types';
 import { AdditionalInformationFormGroup } from '@widgets/checkout-new/steps/step-4-overview/additionalInformationGroup';
 import { CheckoutOverview } from '@widgets/checkout-new/steps/step-4-overview/overview/checkoutOverview';
 import { TermsAndConditionsGroup } from '@widgets/checkout-new/steps/step-4-overview/termsAndConditionsGroup';

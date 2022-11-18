@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { FormikCheckbox } from '@components/formik-wrappers/formikCheckbox';
 import { Link, Stack, Text, getTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step4FormData } from '@widgets/checkout-new/steps/step-4-overview/step-4-overview';
 
 const messages = {

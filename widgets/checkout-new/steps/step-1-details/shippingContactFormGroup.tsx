@@ -5,10 +5,10 @@ import { defineMessages, useIntl } from 'react-intl';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { CheckoutFormRowContainer } from '@widgets/checkout-new/shared/checkoutFormRowContainer';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step1FormData } from '@widgets/checkout-new/steps/step-1-details/step-1-details';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
-import { CheckoutFormRowContainer } from '@widgets/checkout/shared/checkoutFormRowContainer';
 
 const messages = defineMessages({
   shippingContactTitle: {

@@ -4,13 +4,13 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
 import { BillingAddressSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/billingAddressSummary';
 import { BillingContactSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/billingContactSummary';
 import { PaymentSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/paymentSummary';
 import { ShippingAddressSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/shippingAddressSummary';
 import { ShippingContactSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/shippingContactSummary';
 import { ShippingMethodSummary } from '@widgets/checkout-new/steps/step-4-overview/overview/components/shippingMethodSummary';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 import { EmailSummary } from './components/emailSummary';
 

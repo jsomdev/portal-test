@@ -1,8 +1,12 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import {
   ActionButton,
   FontWeights,
+  IButtonStyles,
+  IMessageBarStyles,
+  IStackStyles,
+  ITextStyles,
   MessageBar,
   MessageBarType,
   Stack,
@@ -12,13 +16,24 @@ import {
 import {
   CreateOrderError,
   CreateOrderErrorName
-} from '@widgets/checkout/create-order/CreateOrderError';
+} from '@widgets/checkout-new/create-order/CreateOrderError';
 
-import {
-  CheckoutErrorBoxProps,
-  CheckoutErrorBoxStyles,
-  CheckoutErrorBoxText
-} from './checkoutErrorBox.types';
+interface CheckoutErrorBoxStyles {
+  title: ITextStyles;
+  actionButton: IButtonStyles;
+  actions: IStackStyles;
+  messageBar: IMessageBarStyles;
+}
+
+interface CheckoutErrorBoxProps {
+  error: CreateOrderError | unknown;
+}
+
+interface CheckoutErrorBoxText {
+  title: string;
+  description: string;
+  subText?: string;
+}
 
 const messages = {
   chatWithUs: 'Chat with us',

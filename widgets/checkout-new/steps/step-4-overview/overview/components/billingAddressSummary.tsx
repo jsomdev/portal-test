@@ -7,7 +7,7 @@ import { messageIds } from '@services/i18n';
 import { PostalAddress } from '@services/portal-api';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
-import { OrderSummaryAddress } from '@widgets/checkout/temp/orderSummaryAddress';
+import { OrderSummaryAddress } from '@widgets/checkout-new/shared/temp/orderSummaryAddress';
 
 const messages = defineMessages({
   billingAddress: {

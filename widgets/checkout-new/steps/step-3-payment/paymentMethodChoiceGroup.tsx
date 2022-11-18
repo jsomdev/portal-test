@@ -7,10 +7,10 @@ import { FormikChoiceGroup } from '@components/formik-wrappers/formikChoiceGroup
 import { IChoiceGroupOption, IChoiceGroupStyles, Stack } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { getPaymentMethodOptions } from '@widgets/checkout-new/steps/step-3-payment/paymentMethodChoiceGroup.helper';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 type PaymentMethodChoiceGroupProps = {
   fields: Pick<
@@ -20,6 +20,7 @@ type PaymentMethodChoiceGroupProps = {
     | 'creditCardName'
     | 'creditCardCVV'
     | 'creditCardExpiration'
+    | 'referenceNumber'
   >;
 };
 

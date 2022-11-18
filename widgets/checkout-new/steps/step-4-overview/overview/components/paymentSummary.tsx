@@ -16,7 +16,6 @@ import { messageIds } from '@services/i18n';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout-new/shared/overviewGroupContainer';
-import { CheckoutFormOverviewGroupContainer } from '@widgets/checkout/shared/checkoutFormOverviewGroupContainer';
 
 const formatCreditCardIssuer = (issuer: string): string => {
   return issuer.replace(/^\w/, c => c.toUpperCase());

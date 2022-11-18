@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 import { messageIds } from '@services/i18n';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step3FormData } from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 
 export type YesNo = 'yes' | 'no';

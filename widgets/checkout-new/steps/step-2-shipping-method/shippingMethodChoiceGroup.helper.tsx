@@ -4,8 +4,8 @@ import { IChoiceGroupOption, Stack } from '@fluentui/react';
 import { ShippingMethod } from '@services/portal-api';
 import { ShippingCostAmount } from '@services/portal-api/base/types';
 import { sortShippingOptionsByCostAscending } from '@utilities/sortBy';
+import { ChoiceGroupOptionContainer } from '@widgets/checkout-new/shared/choiceGroupOptionWrapper';
 import { formatShippingMethod } from '@widgets/checkout-new/shared/shippingMethods';
-import { ChoiceGroupOptionContainer } from '@widgets/checkout/shared/choiceGroupOptionWrapper';
 import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
 
 export const mapShippingCostAmountToShippingMethodChoiceGroupOptions = (

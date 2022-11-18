@@ -23,8 +23,7 @@ const messages = {
   quotedPrice: 'Quoted Price'
 };
 
-//TODO ward: move to formatter or mapper
-export const formatCartItemName = (cartItem: CartItem): string => {
+const formatCartItemName = (cartItem: CartItem): string => {
   if (cartItem.name?.[defaultLanguage]) {
     //TODO ward i18n
     return cartItem.name[defaultLanguage]; //TODO ward i18n
@@ -36,12 +35,7 @@ export const formatCartItemName = (cartItem: CartItem): string => {
   return '';
 };
 
-/**
- * Function that will map a CartItem to its displayValue
- * @param item CartItem that needs to be formatted
- */
-//TODO ward: move to formatter or mapper
-export const formatCartItemDisplayValue = (
+const formatCartItemDisplayValue = (
   item: BaseCartItem | OrderLine | undefined
 ): string => {
   return item?.productNumber || item?.productName?.[defaultLanguage] || ''; //TODO ward i18n

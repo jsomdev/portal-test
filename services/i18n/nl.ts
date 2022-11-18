@@ -430,6 +430,8 @@ export const nl: Messages = {
         billingAddress: 'Facturatie adres',
         creditCard: 'Kredietkaart',
         purchaseOrder: 'Bestelbon',
+        purchaseOrderInfo:
+          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening.',
         fields: {
           paymentMethod: 'Betaalmethode',
           shippingAddressAsBillingAddress:

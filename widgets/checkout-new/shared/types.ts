@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IIconProps } from '@fluentui/react';
 import step1Details, {
   Step1DetailsProps,
@@ -56,5 +54,13 @@ export type CheckoutSteps = {
       : key extends 'overview'
       ? typeof step4Overview.validation
       : never;
+  };
+};
+
+export type StepFields<T> = {
+  [Property in keyof T]: {
+    readonly name: Property;
+    readonly label: string;
+    readonly placeholder?: string;
   };
 };

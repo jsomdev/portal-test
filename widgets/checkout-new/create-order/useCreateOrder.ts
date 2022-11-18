@@ -1,4 +1,3 @@
-//TODO ward refactor/move/cleanup
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 
@@ -8,7 +7,7 @@ import { OrderPost } from '@services/portal-api/base/types';
 import { createOrder } from '@services/portal-api/orders';
 import { ReactQueryStatus } from '@services/react-query/types';
 import { scrollToTop } from '@utilities/scrollToTop';
-import { CreateOrderError } from '@widgets/checkout/create-order/CreateOrderError';
+import { CreateOrderError } from '@widgets/checkout-new/create-order/CreateOrderError';
 
 export interface CreateOrderHook {
   create: (order: OrderPost) => Promise<Order>;

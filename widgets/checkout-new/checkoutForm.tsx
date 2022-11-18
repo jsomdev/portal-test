@@ -11,7 +11,12 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { ResponsiveStack } from '@components/stacks/responsiveStack';
-import { Stack, getTheme } from '@fluentui/react';
+import {
+  IStackItemStyles,
+  IStackStyles,
+  Stack,
+  getTheme
+} from '@fluentui/react';
 import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
 import { useMe } from '@providers/user/userContext';
@@ -21,17 +26,22 @@ import { scrollToTop } from '@utilities/scrollToTop';
 import { CheckoutSummary } from '@widgets/checkout-new/checkout-summary/checkoutSummary';
 import { CheckoutActions } from '@widgets/checkout-new/checkoutActions';
 import { getCurrentStep } from '@widgets/checkout-new/checkoutForm.helper';
-import { CheckoutFormValues } from '@widgets/checkout-new/checkoutForm.types';
 import { useCheckout } from '@widgets/checkout-new/checkoutProvider/checkoutProvider';
+import { CheckoutFormValues } from '@widgets/checkout-new/shared/types';
 import { Steps } from '@widgets/checkout-new/stepper/steps';
 import step1Details from '@widgets/checkout-new/steps/step-1-details/step-1-details';
 import step2ShippingMethod from '@widgets/checkout-new/steps/step-2-shipping-method/step-2-shipping-method';
 import step3Payment from '@widgets/checkout-new/steps/step-3-payment/step-3-payment';
 import step4Overview from '@widgets/checkout-new/steps/step-4-overview/step-4-overview';
-import { CheckoutFormStyles } from '@widgets/checkout/checkout-form/checkoutForm.types';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
 import { mediaQueryFrom } from '@widgets/media-queries';
+
+interface CheckoutFormStyles {
+  container: IStackStyles;
+  leftColumn: IStackItemStyles;
+  rightColumn: IStackItemStyles;
+}
 
 const messages = defineMessages({
   completePayment: {

@@ -1,10 +1,18 @@
-//TODO ward refactor/move/cleanup
+//TODO this is a temporary file, should be moved to be re-usable for order account pages, Gregory is still working on these
 import React from 'react';
 
-import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
+import {
+  FontWeights,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
 import { PostalAddress } from '@services/portal-api';
 
-import { OrderSummaryAddressStyles } from './orderDetail.types';
+interface OrderSummaryAddressStyles {
+  boldText: ITextStyles;
+}
 
 export const OrderSummaryAddress: React.FC<{
   title?: string;

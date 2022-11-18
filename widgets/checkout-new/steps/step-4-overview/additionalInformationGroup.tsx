@@ -2,9 +2,9 @@ import React from 'react';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, useTheme } from '@fluentui/react';
-import { StepFields } from '@widgets/checkout-new/checkout.types';
+import { CheckoutFormGroupTitle } from '@widgets/checkout-new/shared/checkoutFormGroupTitle';
+import { StepFields } from '@widgets/checkout-new/shared/types';
 import { Step4FormData } from '@widgets/checkout-new/steps/step-4-overview/step-4-overview';
-import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 
 type AdditionalInformationFormGroupProps = {
   fields: Pick<StepFields<Step4FormData>, 'additionalInformation'>;

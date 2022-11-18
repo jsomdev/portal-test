@@ -432,6 +432,7 @@ export const messageIds: Messages = {
         billingAddress: 'pages.checkout.payment.billingAddress',
         creditCard: 'pages.checkout.payment.creditCard',
         purchaseOrder: 'pages.checkout.payment.purchaseOrder',
+        purchaseOrderInfo: 'pages.checkout.payment.purchaseOrderInfo',
         fields: {
           paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
           shippingAddressAsBillingAddress:
