@@ -8,12 +8,12 @@ import { inletConnectionSizeFacet } from '../facets/inletConnectionSize';
 import { inletConnectionThreadTypeFacet } from '../facets/inletConnectionThreadType';
 import { inletConnectionTypeFacet } from '../facets/inletConnectionType';
 import { materialsFacet } from '../facets/materials';
+import { modelIdFacet } from '../facets/modelId';
 import { motorTypeFacet } from '../facets/motorType';
 import { motorVersionFacet } from '../facets/motorVersion';
 import { nozzleCountFacet } from '../facets/nozzleCount';
 import { nozzleHubFacet } from '../facets/nozzleHub';
 import { pressureGroupFacet } from '../facets/pressureGroup';
-import { productModelFacet } from '../facets/productModel';
 import { productTypeFacet } from '../facets/productType';
 import { liquidFlowRateFacet } from '../facets/range-facets/liquidFlowRate';
 import { liquidPressureFacet } from '../facets/range-facets/liquidPressure';
@@ -41,8 +41,7 @@ export class FacetFactory {
   static getFacetsFromFiles(excludedFacetKeys: FacetKey[]): Facet[] {
     return [
       categoryIdFacet as Facet,
-      productSeriesFacet as Facet,
-      productModelFacet as Facet,
+      modelIdFacet as Facet,
       liquidFlowRateFacet as unknown as Facet, // Operating Conditions
       liquidPressureFacet as unknown as Facet, // Operating Conditions
       liquidSpecificGravityFacet as unknown as Facet, // Operating Conditions

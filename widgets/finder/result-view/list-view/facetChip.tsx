@@ -1,3 +1,6 @@
+import { useState } from 'react';
+
+import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
 
 interface FacetChipStyles {
@@ -7,29 +10,49 @@ interface FacetChipStyles {
 interface FacetChipProps {
   code: string;
   value: string;
+  description: string;
+  title: string;
 }
 // TODO: move to better folder
-export const FacetChip: React.FC<FacetChipProps> = ({ value, code }) => {
+export const FacetChip: React.FC<FacetChipProps> = ({
+  value,
+  code,
+  title,
+  description
+}) => {
   const { palette } = useTheme();
-
+  const [showDialog, setShowDialog] = useState(false);
+  const hasDialog: boolean = !!(code && description);
   const styles: FacetChipStyles = {
     root: {
       root: {
         color: palette.neutralPrimaryAlt,
-        borderBottom: `1px dashed ${palette.neutralPrimaryAlt}`,
+        borderBottom: `1px ${hasDialog ? 'dashed' : 'none'} ${
+          palette.neutralPrimaryAlt
+        }`,
         display: 'inline',
         '&:hover': {
-          cursor: 'pointer',
-          borderBottomStyle: `solid`
+          cursor: hasDialog ? 'pointer' : 'default',
+          borderBottomStyle: hasDialog ? `solid` : 'none'
         }
       }
     }
   };
   return (
-    <Stack.Item>
-      <Text title={code} styles={styles.root}>
-        {value}
-      </Text>
-    </Stack.Item>
+    <>
+      <Stack.Item onClick={hasDialog ? () => setShowDialog(true) : undefined}>
+        <Text title={code} styles={styles.root}>
+          {value}
+        </Text>
+        <MarkDownDialog
+          dialogProps={{
+            onDismiss: () => setShowDialog(false),
+            hidden: !showDialog
+          }}
+          title={title}
+          markdownSource={description}
+        />
+      </Stack.Item>
+    </>
   );
 };

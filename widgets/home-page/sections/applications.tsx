@@ -12,6 +12,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { Category } from '@services/portal-api';
+import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 import { HomeCategoryItem, mapCategoryToHomeCategoryItem } from '../helper';
@@ -28,6 +29,8 @@ interface ApplicationsStyles {
   button: Partial<IButtonStyles>;
 }
 
+const width: number = 268;
+
 export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const { locale } = useIntl();
   const { palette, spacing, fonts } = useTheme();
@@ -37,7 +40,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const styles: ApplicationsStyles = {
     itemContainer: {
       root: {
-        width: 268,
+        width: width,
         background: palette.white,
         borderRadius: 7,
         border: `1px solid ${palette.neutralLight}`,
@@ -63,7 +66,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         background: palette.themeDark,
         borderBottomLeftRadius: 7,
         borderBottomRightRadius: 7,
-        width: 268,
+        width: width,
         borderTop: `1px solid ${palette.neutralLight}`
       }
     },
@@ -102,10 +105,11 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
                   <Image
                     layout="fixed"
                     width={268}
-                    height={204}
-                    alt={categoryItem.imageCaption}
+                    height={width * 0.7}
+                    alt={categoryItem.imageAlt}
                     src={categoryItem.imageSrc}
                     objectFit="cover"
+                    loader={widenImageLoader}
                     objectPosition="center"
                   />
                   <Stack

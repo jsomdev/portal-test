@@ -24,7 +24,7 @@ interface ProductListItemComponentStyles {
 
 export type FacetedSearchProductViewModel = {
   product: ProductCardViewModel;
-  chips: { code: string; value: string }[];
+  chips: { code: string; value: string; description: string; title: string }[];
   data: FacetedSearchProduct; //TODO map to view model and rename FacetedSearchProductProps to more generic name?
 };
 
@@ -44,7 +44,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
 
   return (
     <ProductCard verticalAlign={'start'}>
-      <Stack>
+      <Stack tokens={{ padding: spacing.s1 }}>
         <Stack.Item>
           <ProductCardImage {...product} />
         </Stack.Item>
@@ -53,7 +53,11 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
         </Mobile>
       </Stack>
 
-      <Stack verticalAlign="space-between" styles={styles.productInfoContainer}>
+      <Stack
+        verticalAlign="space-between"
+        styles={styles.productInfoContainer}
+        tokens={{ padding: spacing.s1 }}
+      >
         <Stack>
           <ProductCardTitleLink {...product} />
 
@@ -65,7 +69,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
               padding: `${spacing.s1} 0`
             }}
           >
-            {chips.slice().map((chip, index) => (
+            {chips.map((chip, index) => (
               <React.Fragment key={chip.code}>
                 <FacetChip key={chip.code} {...chip} />
                 {chips.length > 1 && index < chips.length - 1 && (
@@ -89,7 +93,9 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
         </Mobile>
       </Stack>
       <TabletAndDesktop>
-        <ProductListItemPricing product={data} />
+        <Stack tokens={{ padding: `${spacing.s1} 0` }}>
+          <ProductListItemPricing product={data} />
+        </Stack>
       </TabletAndDesktop>
     </ProductCard>
   );

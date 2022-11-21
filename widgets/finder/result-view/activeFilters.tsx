@@ -43,8 +43,9 @@ export const ActiveFilters: React.FC = () => {
   const {
     clearSearch,
     clearTheoreticalFlow,
-    clearFacetOptions,
     clearAllFacets,
+    clearFacetOptions,
+    toggleFacetOption,
     searchQuery,
     visibleMainFacets,
     visibleOperatingConditionsFacets
@@ -71,7 +72,7 @@ export const ActiveFilters: React.FC = () => {
         visibleMainFacets,
         systemOfMeasurement,
         intl,
-        clearFacetOptions
+        toggleFacetOption
       );
 
     return [
@@ -86,6 +87,7 @@ export const ActiveFilters: React.FC = () => {
     intl,
     searchQuery,
     systemOfMeasurement,
+    toggleFacetOption,
     visibleMainFacets,
     visibleOperatingConditionsFacets
   ]);

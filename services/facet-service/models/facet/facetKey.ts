@@ -50,5 +50,6 @@ export enum FacetKey {
   FlangeOptions = 'FlangeOptions',
   InletConnectionThreadType = 'InletConnectionThreadType',
   NozzleCount = 'NozzleCount',
-  NozzleHub = 'NozzleHub'
+  NozzleHub = 'NozzleHub',
+  ModelId = 'ModelId'
 }

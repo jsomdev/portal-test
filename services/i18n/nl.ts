@@ -68,6 +68,9 @@ export const nl: Messages = {
     categoryFacet: {
       title: 'Categorie'
     },
+    overview: {
+      browseAll: 'Bekijk alle {category}'
+    },
     operatingConditions: {
       validation: {
         title: 'Foute ingave',

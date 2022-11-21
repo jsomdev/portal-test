@@ -69,6 +69,9 @@ export const messageIds: Messages = {
       clearAll: 'finder.filters.clearAll',
       search: 'finder.filters.search'
     },
+    overview: {
+      browseAll: 'finder.overview.browseAll'
+    },
     resultsHeader: {
       count: 'finder.resultsHeader.count',
       actions: {

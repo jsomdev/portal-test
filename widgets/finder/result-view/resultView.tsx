@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { ClosePanelButton } from '@components/buttons/closePanelButton';
+import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
   IButtonStyles,
   IPanelStyles,
@@ -23,18 +24,28 @@ import { Category } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+import {
+  Mobile,
+  TabletAndDesktop,
+  mediaQueryFrom
+} from '@widgets/media-queries';
 
 import { FinderPanel } from '../panel/finderPanel';
+import { QuickFilter } from '../quick-filter/quickFilter';
 import { ActiveFilters } from './activeFilters';
 import { FilterResultsButton } from './filterResultsButton';
 import { ProductListView } from './list-view/listView';
+import { ProductResultOverview } from './overview/productResultOverview';
+import { ProductResultOverviewItem } from './overview/productResultOverview.types';
+import { mapCategoriesToProductResultOverviewItems } from './overview/productResultOverviewHelper';
 import { ResultViewPagination } from './product-result-view-pagination/resultViewPagination';
 import { getTotalPages } from './product-result-view-pagination/resultViewPaginationHelper';
 import { ResultsHeader } from './resultsHeader';
 
+export type ResultViewType = 'list' | 'overview';
 interface ResultViewProps {
   category: Category;
+  viewAs: ResultViewType;
 }
 
 interface ResultViewStyles {
@@ -80,7 +91,7 @@ const messages = defineMessages({
   }
 });
 
-export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
+export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
   const [isFiltersPanelOpen, setIsFiltersPanelOpen] = useState<boolean>(false);
   const { spacing, palette, semanticColors } = useTheme();
   const { locale } = useIntl();
@@ -101,6 +112,16 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
     router.push(router, undefined, { shallow: true });
   }
   const categoryFormatter = new CategoryFormatter(category, locale);
+
+  const overviewItems: ProductResultOverviewItem[] = useMemo(() => {
+    if (viewAs == 'overview') {
+      return mapCategoriesToProductResultOverviewItems(
+        category.children || [],
+        locale
+      );
+    }
+    return [];
+  }, [category.children, locale, viewAs]);
 
   const styles: ResultViewStyles = {
     panel: {
@@ -130,7 +151,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
     },
     sidePanelContainer: {
       root: {
-        flex: 2,
+        width: 360,
         paddingLeft: spacing.l1,
         paddingRight: spacing.m
       }
@@ -139,7 +160,10 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
       root: {
         paddingLeft: spacing.m,
         paddingRight: spacing.m,
-        flex: 6
+        width: '100%',
+        ...mediaQueryFrom('tablet', {
+          width: 'calc(100% - 360px)'
+        })
       }
     },
     stickyContainer: {
@@ -226,6 +250,10 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
             })}
             description={categoryFormatter.formatDescription()}
           />
+
+          {viewAs === 'list' && (
+            <QuickFilter subCategories={category.children || []} />
+          )}
           <ResultsHeader
             onClickFilter={() => setIsFiltersPanelOpen(true)}
             filterButtonText={formatMessage(messages.filterResults, {
@@ -234,17 +262,31 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
             productCount={productCount || 0}
             modelCount={modelCount || 0}
           />
-          <ActiveFilters />
-          <ProductListView />
-          <ResultViewPagination
-            totalItems={productCount || 0}
-            currentPage={page}
-            pageSize={FINDER_PAGE_SIZE}
-            onPageChange={newPage => {
-              scrollToTop('body');
-              updatePage(newPage);
-            }}
-          />
+          {viewAs === 'list' && (
+            <>
+              <ActiveFilters />
+              <ProductListView />
+              <ResultViewPagination
+                totalItems={productCount || 0}
+                currentPage={page}
+                pageSize={FINDER_PAGE_SIZE}
+                onPageChange={newPage => {
+                  scrollToTop('body');
+                  updatePage(newPage);
+                }}
+              />
+              <TrustFactors />
+            </>
+          )}
+
+          {viewAs === 'overview' && (
+            <>
+              <ProductResultOverview
+                category={category}
+                categoryItems={overviewItems}
+              />
+            </>
+          )}
           <Mobile>
             <Stack
               tokens={{ padding: `${spacing.m} ${rem(25)}` }}

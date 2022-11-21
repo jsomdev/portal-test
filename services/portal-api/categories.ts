@@ -70,9 +70,9 @@ export async function fetchAllCategories(): Promise<Category[]> {
   }
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,slug,settings,image`,
+    selectQuery: `id,number,name,description,slug,settings,image,parentId`,
     expandQuery:
-      'parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
+      'image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
   };
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions

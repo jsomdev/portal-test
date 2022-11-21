@@ -307,12 +307,12 @@ export enum ModelFacetOptionKey {
   RoundSprayAa707 = 'RoundSprayAa707'
 }
 
-export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
+export const modelIdFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._12jAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '571616eb-4946-4666-8fe1-04bc8a1c87cf',
-    value: '1/2J Air Atomizing Air Caps',
+    value: '571616eb-4946-4666-8fe1-04bc8a1c87cf',
+
     parentId: '',
     children: [],
     configuration: {
@@ -332,8 +332,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._12jAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: 'c6f1526a-e14a-4297-9d95-497059c41495',
-    value: '1/2J Air Atomizing Assemblies',
+    value: 'c6f1526a-e14a-4297-9d95-497059c41495',
+
     parentId: '',
     children: [],
     configuration: {
@@ -353,8 +353,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._12jAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: 'aeb7e661-8267-46e6-a58b-b66d4c762479',
-    value: '1/2J Air Atomizing Bodies',
+    value: 'aeb7e661-8267-46e6-a58b-b66d4c762479',
+
     parentId: '',
     children: [],
     configuration: {
@@ -374,8 +374,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._12jAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '81523c04-13e6-453a-9d55-ad2c18b734fe',
-    value: '1/2J Air Atomizing Fluid Caps',
+    value: '81523c04-13e6-453a-9d55-ad2c18b734fe',
+
     parentId: '',
     children: [],
     configuration: {
@@ -395,8 +395,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._12jAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: 'eaf5fb8a-ac1c-4a12-a7e8-b0cbfbe7534e',
-    value: '1/2J Air Atomizing Setups',
+    value: 'eaf5fb8a-ac1c-4a12-a7e8-b0cbfbe7534e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -416,8 +416,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._14j18jAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: 'c6003f3a-51a3-405b-8753-3eae138f0de1',
-    value: '1/4J, 1/8J Air Atomizing Air Caps',
+    value: 'c6003f3a-51a3-405b-8753-3eae138f0de1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -437,8 +437,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._14j18jAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: 'f5abae1b-8aa0-4ae7-a16b-0b4f9ae36a24',
-    value: '1/4J, 1/8J Air Atomizing Assemblies',
+    value: 'f5abae1b-8aa0-4ae7-a16b-0b4f9ae36a24',
+
     parentId: '',
     children: [],
     configuration: {
@@ -458,8 +458,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._14j18jAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: 'aa954dbc-3b84-4f09-ba39-54ce320d82a2',
-    value: '1/4J, 1/8J Air Atomizing Bodies',
+    value: 'aa954dbc-3b84-4f09-ba39-54ce320d82a2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -479,8 +479,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._14j18jAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '1042cdbf-2d6d-4601-b3b8-4f2c9a749815',
-    value: '1/4J, 1/8J Air Atomizing Fluid Caps',
+    value: '1042cdbf-2d6d-4601-b3b8-4f2c9a749815',
+
     parentId: '',
     children: [],
     configuration: {
@@ -500,8 +500,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._14j18jAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: '4756b388-3f98-4c42-bb43-9d951851b887',
-    value: '1/4J, 1/8J Air Atomizing Setups',
+    value: '4756b388-3f98-4c42-bb43-9d951851b887',
+
     parentId: '',
     children: [],
     configuration: {
@@ -521,8 +521,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._18jjAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '89288687-b5b8-4369-84c5-33f77d095b0d',
-    value: '1/8JJ Air Atomizing Air Caps',
+    value: '89288687-b5b8-4369-84c5-33f77d095b0d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -542,8 +542,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._18jjAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: '7eaac977-b0aa-471d-b18b-21c6d3db53aa',
-    value: '1/8JJ Air Atomizing Assemblies',
+    value: '7eaac977-b0aa-471d-b18b-21c6d3db53aa',
+
     parentId: '',
     children: [],
     configuration: {
@@ -563,8 +563,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._18jjAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: 'e68dfee9-0408-41de-b569-2fb853fe55a7',
-    value: '1/8JJ Air Atomizing Bodies',
+    value: 'e68dfee9-0408-41de-b569-2fb853fe55a7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -584,8 +584,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._18jjAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: 'ed568ca5-3ec3-420f-8835-030e13a48f76',
-    value: '1/8JJ Air Atomizing Fluid Caps',
+    value: 'ed568ca5-3ec3-420f-8835-030e13a48f76',
+
     parentId: '',
     children: [],
     configuration: {
@@ -605,8 +605,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._18jjAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: '6235a960-64e3-42ae-88a3-54eb840b0d6c',
-    value: '1/8JJ Air Atomizing Setups',
+    value: '6235a960-64e3-42ae-88a3-54eb840b0d6c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -626,8 +626,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._1jAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '0ea7ad2a-0a27-4580-a7e2-8c8de6420eac',
-    value: '1J Air Atomizing Air Caps',
+    value: '0ea7ad2a-0a27-4580-a7e2-8c8de6420eac',
+
     parentId: '',
     children: [],
     configuration: {
@@ -647,8 +647,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._1jAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: 'a6ab58c8-75d9-496d-9312-6aa706714a46',
-    value: '1J Air Atomizing Assemblies',
+    value: 'a6ab58c8-75d9-496d-9312-6aa706714a46',
+
     parentId: '',
     children: [],
     configuration: {
@@ -668,8 +668,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._1jAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: '3b319c4b-557c-4bc9-9ea9-a7d43b85c721',
-    value: '1J Air Atomizing Bodies',
+    value: '3b319c4b-557c-4bc9-9ea9-a7d43b85c721',
+
     parentId: '',
     children: [],
     configuration: {
@@ -687,8 +687,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._1jAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '55d488c1-7050-4282-85e6-86b52a01c546',
-    value: '1J Air Atomizing Fluid Caps',
+    value: '55d488c1-7050-4282-85e6-86b52a01c546',
+
     parentId: '',
     children: [],
     configuration: {
@@ -708,8 +708,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey._1jAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: '6db1d2a7-d017-4e9c-bb29-4baf8157091a',
-    value: '1J Air Atomizing Setups',
+    value: '6db1d2a7-d017-4e9c-bb29-4baf8157091a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -727,8 +727,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.Aa090TankWasher,
     ...defaultFacetOption,
-    valueId: '637395be-c569-4975-9717-486444aae779',
-    value: 'AA090 TANK WASHER',
+    value: '637395be-c569-4975-9717-486444aae779',
+
     parentId: '',
     children: [],
     configuration: {
@@ -746,8 +746,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.Aa190TankWasher,
     ...defaultFacetOption,
-    valueId: 'a618011a-d186-4311-9ed7-28a501138e13',
-    value: 'AA190 TANK WASHER',
+    value: 'a618011a-d186-4311-9ed7-28a501138e13',
+
     parentId: '',
     children: [],
     configuration: {
@@ -765,8 +765,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AdjustableBallFittings36275,
     ...defaultFacetOption,
-    valueId: '277a628d-fb0e-4e20-9256-943cfedb308d',
-    value: 'Adjustable Ball Fitting',
+    value: '277a628d-fb0e-4e20-9256-943cfedb308d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -789,8 +789,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1053612j,
     ...defaultFacetOption,
-    valueId: '1edd1a11-dfb8-4a7e-8e58-9740aa661f9b',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '1edd1a11-dfb8-4a7e-8e58-9740aa661f9b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -813,8 +813,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing4966018jjau,
     ...defaultFacetOption,
-    valueId: '282b7f4c-f3ce-40f4-b60e-8b7e95bfcaeb',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '282b7f4c-f3ce-40f4-b60e-8b7e95bfcaeb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -837,8 +837,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing608314jau,
     ...defaultFacetOption,
-    valueId: '5a886a9a-d264-4ccf-817d-8b9205a8fcc8',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '5a886a9a-d264-4ccf-817d-8b9205a8fcc8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -861,8 +861,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14jau,
     ...defaultFacetOption,
-    valueId: 'e5ceef72-9e96-49d5-919e-8250267a3a80',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'e5ceef72-9e96-49d5-919e-8250267a3a80',
+
     parentId: '',
     children: [],
     configuration: {
@@ -885,8 +885,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizingVx82,
     ...defaultFacetOption,
-    valueId: '547ce13b-e6af-4b8a-a99a-ab48a541ec80',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '547ce13b-e6af-4b8a-a99a-ab48a541ec80',
+
     parentId: '',
     children: [],
     configuration: {
@@ -909,8 +909,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1769018jjau,
     ...defaultFacetOption,
-    valueId: 'd11a18af-c127-489a-955d-ae68316678cc',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'd11a18af-c127-489a-955d-ae68316678cc',
+
     parentId: '',
     children: [],
     configuration: {
@@ -933,8 +933,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing731014jau,
     ...defaultFacetOption,
-    valueId: '561c0ef7-16f7-42d1-ad02-9fe1791e17df',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '561c0ef7-16f7-42d1-ad02-9fe1791e17df',
+
     parentId: '',
     children: [],
     configuration: {
@@ -957,8 +957,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing7210018jjau,
     ...defaultFacetOption,
-    valueId: '7163b537-8e0e-4f02-8e68-98a7018d903a',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '7163b537-8e0e-4f02-8e68-98a7018d903a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -981,8 +981,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing621814jau,
     ...defaultFacetOption,
-    valueId: '429266c2-e0b1-4156-924a-a4c571b8f378',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '429266c2-e0b1-4156-924a-a4c571b8f378',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1005,8 +1005,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1053514j,
     ...defaultFacetOption,
-    valueId: '938ed361-5a16-47cf-a60f-b69452dc3e60',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '938ed361-5a16-47cf-a60f-b69452dc3e60',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1029,8 +1029,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1470018jjau,
     ...defaultFacetOption,
-    valueId: '25a3a05d-35bc-49ec-8ae1-ba0194d2c4b0',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '25a3a05d-35bc-49ec-8ae1-ba0194d2c4b0',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1053,8 +1053,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14vmau,
     ...defaultFacetOption,
-    valueId: 'd1064f32-4bcf-41a9-997b-c1fcd0f75ef7',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'd1064f32-4bcf-41a9-997b-c1fcd0f75ef7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1077,8 +1077,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1686018jjau,
     ...defaultFacetOption,
-    valueId: 'b5b1fc79-ed1d-448d-ab76-c73ae38ca9fe',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'b5b1fc79-ed1d-448d-ab76-c73ae38ca9fe',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1101,8 +1101,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaumco,
     ...defaultFacetOption,
-    valueId: '12708c45-f35e-4525-af0b-d9a9d8b79109',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '12708c45-f35e-4525-af0b-d9a9d8b79109',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1125,8 +1125,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1688318jjau,
     ...defaultFacetOption,
-    valueId: '9abace59-ed93-4719-acf0-f054b861d7a2',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '9abace59-ed93-4719-acf0-f054b861d7a2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1149,8 +1149,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing3849918jjau,
     ...defaultFacetOption,
-    valueId: '8b1cbbce-8ed4-4d40-bf25-f3a40a4b9c3c',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '8b1cbbce-8ed4-4d40-bf25-f3a40a4b9c3c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1173,8 +1173,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaupm,
     ...defaultFacetOption,
-    valueId: '453c2f0e-eb5e-4fb4-82e0-280be8324b92',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '453c2f0e-eb5e-4fb4-82e0-280be8324b92',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1197,8 +1197,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizingVx80,
     ...defaultFacetOption,
-    valueId: '09b95f2b-03e3-4adf-a60a-351b74b96902',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '09b95f2b-03e3-4adf-a60a-351b74b96902',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1221,8 +1221,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizingVx72,
     ...defaultFacetOption,
-    valueId: '84ce2b53-81b6-480d-acbc-39bbd29d29d8',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '84ce2b53-81b6-480d-acbc-39bbd29d29d8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1245,8 +1245,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing18vau,
     ...defaultFacetOption,
-    valueId: '5a7ece8a-7056-4601-b33a-3be1c5200d81',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '5a7ece8a-7056-4601-b33a-3be1c5200d81',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1269,8 +1269,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizingVx70,
     ...defaultFacetOption,
-    valueId: '4881179a-a072-452f-b551-1130c2a411ff',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '4881179a-a072-452f-b551-1130c2a411ff',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1293,8 +1293,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14jauco,
     ...defaultFacetOption,
-    valueId: '660f2c89-3c3d-48c1-b8e9-12435a3dd9c9',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '660f2c89-3c3d-48c1-b8e9-12435a3dd9c9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1317,8 +1317,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1088014jau,
     ...defaultFacetOption,
-    valueId: 'eb12208e-945a-4b9c-ba34-1d8fac2bf2bc',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'eb12208e-945a-4b9c-ba34-1d8fac2bf2bc',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1341,8 +1341,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1933014jaupm,
     ...defaultFacetOption,
-    valueId: '41cade1c-de60-468f-be35-4feff1671c39',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '41cade1c-de60-468f-be35-4feff1671c39',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1365,8 +1365,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing18jjau,
     ...defaultFacetOption,
-    valueId: '0e47ef9c-9287-4885-a5ea-4691274c09f3',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '0e47ef9c-9287-4885-a5ea-4691274c09f3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1389,8 +1389,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing18jjaumco,
     ...defaultFacetOption,
-    valueId: 'fd38a845-ad00-4ece-a1ba-475116b9f3e9',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'fd38a845-ad00-4ece-a1ba-475116b9f3e9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1413,8 +1413,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1467518jjau,
     ...defaultFacetOption,
-    valueId: '7f8c7575-a84e-4b3b-8fff-73b1e62c32c3',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '7f8c7575-a84e-4b3b-8fff-73b1e62c32c3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1437,8 +1437,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizingD55500Jau,
     ...defaultFacetOption,
-    valueId: '09c29da1-626f-4845-a89f-64a51477e69d',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '09c29da1-626f-4845-a89f-64a51477e69d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1461,8 +1461,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing1324214jau,
     ...defaultFacetOption,
-    valueId: '58df9ab4-f018-49e5-8ff2-f65c4a222959',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: '58df9ab4-f018-49e5-8ff2-f65c4a222959',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1485,8 +1485,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedAirAtomizing14jaupmco,
     ...defaultFacetOption,
-    valueId: 'cf730fce-c57e-491e-9f36-fd8b0d6dcc04',
-    value: 'Air-Actuated Air Atomizing Nozzle',
+    value: 'cf730fce-c57e-491e-9f36-fd8b0d6dcc04',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1509,8 +1509,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs11024,
     ...defaultFacetOption,
-    valueId: 'aeb0f86d-3422-4d2e-92cc-fd9984ad5027',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: 'aeb0f86d-3422-4d2e-92cc-fd9984ad5027',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1533,8 +1533,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8395,
     ...defaultFacetOption,
-    valueId: '7825c33a-d5d7-4a0b-9238-73e5a667b45c',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '7825c33a-d5d7-4a0b-9238-73e5a667b45c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1557,8 +1557,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh0,
     ...defaultFacetOption,
-    valueId: 'a6fa54fa-5a66-4d1c-9d2b-72e0087172ce',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: 'a6fa54fa-5a66-4d1c-9d2b-72e0087172ce',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1581,8 +1581,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua20190,
     ...defaultFacetOption,
-    valueId: 'abc27656-0fa4-451c-b97c-713e8f544e9a',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: 'abc27656-0fa4-451c-b97c-713e8f544e9a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1605,8 +1605,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua8980,
     ...defaultFacetOption,
-    valueId: '1b682906-5029-4c8f-8ae4-0d49878d30ed',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '1b682906-5029-4c8f-8ae4-0d49878d30ed',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1629,8 +1629,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa24aua,
     ...defaultFacetOption,
-    valueId: '447b9a88-8cb6-427b-89c3-0dee2d3ced20',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '447b9a88-8cb6-427b-89c3-0dee2d3ced20',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1653,8 +1653,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicD55500Jauh1,
     ...defaultFacetOption,
-    valueId: '23bf2f25-ddc3-442b-ae6f-33271a489d72',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '23bf2f25-ddc3-442b-ae6f-33271a489d72',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1677,8 +1677,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa22auhSs14799,
     ...defaultFacetOption,
-    valueId: '0cf59d3c-590e-4a6e-8fea-edf309183855',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '0cf59d3c-590e-4a6e-8fea-edf309183855',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1701,8 +1701,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa22auh,
     ...defaultFacetOption,
-    valueId: '8346f5af-8243-4fc7-8e0f-c835108ebf4b',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '8346f5af-8243-4fc7-8e0f-c835108ebf4b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1725,8 +1725,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulic14jauh,
     ...defaultFacetOption,
-    valueId: '61dd75b1-6066-496f-8446-b80ad03911af',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '61dd75b1-6066-496f-8446-b80ad03911af',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1749,8 +1749,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulic18jjauh,
     ...defaultFacetOption,
-    valueId: 'ecf85aba-ee61-4dd2-9647-b70666b171df',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: 'ecf85aba-ee61-4dd2-9647-b70666b171df',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1773,8 +1773,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.AirActuatedHydraulicAa22auh7676,
     ...defaultFacetOption,
-    valueId: '0d65d0a5-b852-43de-85ae-a738775bb07e',
-    value: 'Air-Actuated Hydraulic Nozzle',
+    value: '0d65d0a5-b852-43de-85ae-a738775bb07e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1797,8 +1797,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SprayHollowCone8686,
     ...defaultFacetOption,
-    valueId: '4f868b52-49e2-436c-970b-c2cc22f546c4',
-    value: 'DeflectoJet® Deflected Hollow Cone Nozzles - Wide Angle Spray',
+    value: '4f868b52-49e2-436c-970b-c2cc22f546c4',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1821,8 +1821,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves8460,
     ...defaultFacetOption,
-    valueId: '5d0c9ef2-9156-45b8-8f76-c5397ed3397f',
-    value: 'Diaphragm-Type Pressure Relief Valve',
+    value: '5d0c9ef2-9156-45b8-8f76-c5397ed3397f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1845,8 +1845,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LargeFreePassageFullConeRRrRf,
     ...defaultFacetOption,
-    valueId: '6d14d545-1d4a-4fbd-9d48-1efdcc7895ac',
-    value: 'DistriboJet® Full Cone Nozzles - Extra Large Free Passage',
+    value: '6d14d545-1d4a-4fbd-9d48-1efdcc7895ac',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1869,8 +1869,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa29jauco,
     ...defaultFacetOption,
-    valueId: 'f1623ddd-905b-4e86-8279-3227a4721387',
-    value: 'Electrically-Actuated Air Atomizing Nozzle',
+    value: 'f1623ddd-905b-4e86-8279-3227a4721387',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1893,8 +1893,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa28jjau49815,
     ...defaultFacetOption,
-    valueId: '25e505f9-6f51-4ff7-a90a-c3ff2303bba5',
-    value: 'Electrically-Actuated Air Atomizing Nozzle',
+    value: '25e505f9-6f51-4ff7-a90a-c3ff2303bba5',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1917,8 +1917,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa10000jau10,
     ...defaultFacetOption,
-    valueId: '016f2396-0fb5-4854-bb4f-dfcba003749f',
-    value: 'Electrically-Actuated Air Atomizing Nozzle',
+    value: '016f2396-0fb5-4854-bb4f-dfcba003749f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1941,8 +1941,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedAirAtomizingAa10000jjau,
     ...defaultFacetOption,
-    valueId: '166eec60-dcb2-486e-8661-e1feb804048b',
-    value: 'Electrically-Actuated Air Atomizing Nozzle',
+    value: '166eec60-dcb2-486e-8661-e1feb804048b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1965,8 +1965,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa26auh,
     ...defaultFacetOption,
-    valueId: '1d932aeb-f436-4d7e-9550-25f61bec7bb7',
-    value: 'Electrically-Actuated Hydraulic Nozzle',
+    value: '1d932aeb-f436-4d7e-9550-25f61bec7bb7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -1989,8 +1989,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa250auh,
     ...defaultFacetOption,
-    valueId: 'ff515a36-2910-4d9f-bd06-19a9408ca959',
-    value: 'Electrically-Actuated Hydraulic Nozzle',
+    value: 'ff515a36-2910-4d9f-bd06-19a9408ca959',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2013,9 +2013,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.NarrowAngleDeflectedFlatSprayP,
     ...defaultFacetOption,
-    valueId: '0650c8d8-df42-4b04-bb45-c06bf6ff01c8',
-    value:
-      'FlatJet® Deflected Flat Spray Nozzles - Narrow Angle Spray - High Impact',
+    value: '0650c8d8-df42-4b04-bb45-c06bf6ff01c8',
     parentId: '',
     children: [],
     configuration: {
@@ -2038,9 +2036,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleDeflectedFlatSprayTek,
     ...defaultFacetOption,
-    valueId: 'e0e3dc75-1a9a-46ec-ba9f-4ef665d62b28',
-    value:
-      'FloodJet® Deflected Flat Spray Nozzle Systems - Wide Angle Spray - Tapered Edge',
+    value: 'e0e3dc75-1a9a-46ec-ba9f-4ef665d62b28',
     parentId: '',
     children: [],
     configuration: {
@@ -2063,8 +2059,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleDeflectedFlatSprayK,
     ...defaultFacetOption,
-    valueId: '2582aac8-4f3a-4691-8a58-46f6318c67a4',
-    value: 'FloodJet® Deflected Flat Spray Nozzles - Wide Angle Spray',
+    value: '2582aac8-4f3a-4691-8a58-46f6318c67a4',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2087,8 +2083,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.TankjetD41800,
     ...defaultFacetOption,
-    valueId: 'e76a43b2-bda9-4a9f-819c-d6d3c7d49493',
-    value: 'Fluid Driven Slow Rotationg TankJet Nozzle',
+    value: 'e76a43b2-bda9-4a9f-819c-d6d3c7d49493',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2109,8 +2105,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.TankjetD41892,
     ...defaultFacetOption,
-    valueId: '3d020fed-43c1-4668-899c-aba5f4efd33e',
-    value: 'Fluid Driven Slow Rotationg TankJet Nozzle',
+    value: '3d020fed-43c1-4668-899c-aba5f4efd33e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2131,8 +2127,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MultiOrificeHydraulicFineSprayFf,
     ...defaultFacetOption,
-    valueId: '370dce2e-3fa3-461d-b6b6-3fe971f1a12d',
-    value: 'FogJet® Fine Spray Nozzles - Narrow Angle',
+    value: '370dce2e-3fa3-461d-b6b6-3fe971f1a12d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2155,8 +2151,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MultiOrificeHydraulicFineSpray7n,
     ...defaultFacetOption,
-    valueId: '9b01fbf5-2571-43d8-8f0e-1ee964e8f669',
-    value: 'FogJet® Wide Angle Fine Spray Nozzles - Cluster Type - Lower Flow',
+    value: '9b01fbf5-2571-43d8-8f0e-1ee964e8f669',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2179,8 +2175,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MultiOrificeHydraulicFineSpray7g,
     ...defaultFacetOption,
-    valueId: 'c5d7c48f-d75f-41f2-bac3-b8bb2f256f04',
-    value: 'FogJet® Wide Fine Spray Nozzles - Cluster Type',
+    value: 'c5d7c48f-d75f-41f2-bac3-b8bb2f256f04',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2203,8 +2199,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.NarrowAngleFullConeH15,
     ...defaultFacetOption,
-    valueId: 'ecc062da-17c0-4a21-9608-083726038b04',
-    value: 'FullJet® Full Cone Nozzles - 15° Spray Angle - One-piece Design',
+    value: 'ecc062da-17c0-4a21-9608-083726038b04',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2227,8 +2223,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.NarrowAngleFullConeG15Gg15,
     ...defaultFacetOption,
-    valueId: 'b83ccba8-f4ad-4be3-968c-193e9cbdc275',
-    value: 'FullJet® Full Cone Nozzles - 15° Spray Angle - Removable Cap/Vane',
+    value: 'b83ccba8-f4ad-4be3-968c-193e9cbdc275',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2251,8 +2247,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.NarrowAngleFullConeHh30,
     ...defaultFacetOption,
-    valueId: 'd2a4a723-86e9-4aca-99dd-c8c8f90acf26',
-    value: 'FullJet® Full Cone Nozzles - 30° Spray Angle - One-piece Design',
+    value: 'd2a4a723-86e9-4aca-99dd-c8c8f90acf26',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2275,8 +2271,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.NarrowAngleFullConeG30Gg30,
     ...defaultFacetOption,
-    valueId: 'ae139954-8552-4bbd-a421-e28458c63d85',
-    value: 'FullJet® Full Cone Nozzles - 30° Spray Angle - Removable Cap/Vane',
+    value: 'ae139954-8552-4bbd-a421-e28458c63d85',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2299,8 +2295,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeHf,
     ...defaultFacetOption,
-    valueId: 'a7f0a9be-adbe-43dd-92e4-d19abd5738a9',
-    value: 'FullJet® Full Cone Nozzles - Cast - Flanged',
+    value: 'a7f0a9be-adbe-43dd-92e4-d19abd5738a9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2323,8 +2319,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LargeFreePassageFullConeHmfpHhmfp,
     ...defaultFacetOption,
-    valueId: '42cfb17c-28a2-4dd7-b6b2-69f204f6cf6b',
-    value: 'FullJet® Full Cone Nozzles - Maximum Free Passage',
+    value: '42cfb17c-28a2-4dd7-b6b2-69f204f6cf6b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2347,8 +2343,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeHHh,
     ...defaultFacetOption,
-    valueId: 'a415a13a-89c6-4620-b63a-739225aa97c1',
-    value: 'FullJet® Full Cone Nozzles - One-piece Design',
+    value: 'a415a13a-89c6-4620-b63a-739225aa97c1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2371,8 +2367,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SquareOvalVanelessSprayFullConeGVlGgVl,
     ...defaultFacetOption,
-    valueId: '2ec567d1-3c63-4e5e-8a20-a570f2918808',
-    value: 'FullJet® Full Cone Nozzles - Oval Spray - Removable Cap/Vane',
+    value: '2ec567d1-3c63-4e5e-8a20-a570f2918808',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2395,9 +2391,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeDHh,
     ...defaultFacetOption,
-    valueId: '494d62fe-4320-4714-98fa-ea757f9f2f89',
-    value:
-      'FullJet® Full Cone Nozzles - Plastic - One-piece Design - Standard Angle',
+    value: '494d62fe-4320-4714-98fa-ea757f9f2f89',
     parentId: '',
     children: [],
     configuration: {
@@ -2417,9 +2411,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleFullConeDHh,
     ...defaultFacetOption,
-    valueId: 'fce8966a-0773-4766-af35-b576b85a2382',
-    value:
-      'FullJet® Full Cone Nozzles - Plastic - One-piece Design - Wide Angle',
+    value: 'fce8966a-0773-4766-af35-b576b85a2382',
     parentId: '',
     children: [],
     configuration: {
@@ -2439,8 +2431,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeHhKy,
     ...defaultFacetOption,
-    valueId: '897332ba-4fc0-43ce-ab4d-9d3148cae675',
-    value: 'FullJet® Full Cone Nozzles - PVDF',
+    value: '897332ba-4fc0-43ce-ab4d-9d3148cae675',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2463,8 +2455,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeGGg,
     ...defaultFacetOption,
-    valueId: 'c33ec757-8a10-4767-82c9-22e72f40d45d',
-    value: 'FullJet® Full Cone Nozzles - Removable Cap/Vane',
+    value: 'c33ec757-8a10-4767-82c9-22e72f40d45d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2487,8 +2479,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeGaGga,
     ...defaultFacetOption,
-    valueId: '657255a1-a041-4722-9ab2-84c5244b89d6',
-    value: 'FullJet® Full Cone Nozzles - Right Angle Type',
+    value: '657255a1-a041-4722-9ab2-84c5244b89d6',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2511,8 +2503,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SquareOvalVanelessSprayFullConeGanvGganv,
     ...defaultFacetOption,
-    valueId: '8c0df8ef-2527-49b4-ad75-01bd942163c1',
-    value: 'FullJet® Full Cone Nozzles - Right Angle Type - Vaneless design',
+    value: '8c0df8ef-2527-49b4-ad75-01bd942163c1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2535,8 +2527,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleFullConeGaWGgaW,
     ...defaultFacetOption,
-    valueId: '197ca83b-297a-4291-9d9d-04827f3e2124',
-    value: 'FullJet® Full Cone Nozzles - Right Angle Type - Wide Angle Spray',
+    value: '197ca83b-297a-4291-9d9d-04827f3e2124',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2559,8 +2551,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SquareOvalVanelessSprayFullConeHSqHhSq,
     ...defaultFacetOption,
-    valueId: '7a1c680a-50dd-4efa-853a-749c29fdc1ae',
-    value: 'FullJet® Full Cone Nozzles - Square Spray - One-piece Design',
+    value: '7a1c680a-50dd-4efa-853a-749c29fdc1ae',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2583,8 +2575,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SquareOvalVanelessSprayFullConeGSqGgSq,
     ...defaultFacetOption,
-    valueId: '828a23a0-dba2-416a-a1c5-6ed89c7165ba',
-    value: 'FullJet® Full Cone Nozzles - Square Spray - Removable Cap/Vane',
+    value: '828a23a0-dba2-416a-a1c5-6ed89c7165ba',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2607,8 +2599,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeHd,
     ...defaultFacetOption,
-    valueId: '96b61a45-ff98-4bba-bb97-3b24152687e2',
-    value: 'FullJet® Full Cone Nozzles - Wall-Mount - One-piece Design',
+    value: '96b61a45-ff98-4bba-bb97-3b24152687e2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2631,8 +2623,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleFullConeGdGgd,
     ...defaultFacetOption,
-    valueId: 'be75b7f9-7da1-4199-a13d-83f4f9df4d9c',
-    value: 'FullJet® Full Cone Nozzles - Wall-Mount - Removable Cap/Vane',
+    value: 'be75b7f9-7da1-4199-a13d-83f4f9df4d9c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2655,8 +2647,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleFullConeHWHhW,
     ...defaultFacetOption,
-    valueId: 'c5d597e9-ad35-439b-a886-16fe84939f3a',
-    value: 'FullJet® Full Cone Nozzles - Wide Angle Spray - One-piece Design',
+    value: 'c5d597e9-ad35-439b-a886-16fe84939f3a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2679,8 +2671,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleFullConeGWGgW,
     ...defaultFacetOption,
-    valueId: '9a9fe34e-fbbe-4fe3-b5fd-ab340f90d987',
-    value: 'FullJet® Full Cone Nozzles - Wide Angle Spray - Removable Cap/Vane',
+    value: '9a9fe34e-fbbe-4fe3-b5fd-ab340f90d987',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2703,8 +2695,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SquareOvalVanelessSprayFullConeHWsqHhWsq,
     ...defaultFacetOption,
-    valueId: 'e81a4118-5d49-43cc-bf35-5f52fd0dc09d',
-    value: 'FullJet® Full Cone Nozzles - Wide Angle Square Spray',
+    value: 'e81a4118-5d49-43cc-bf35-5f52fd0dc09d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2727,8 +2719,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsAa80,
     ...defaultFacetOption,
-    valueId: 'f80a1af3-65cc-494f-8516-429cba04093f',
-    value: 'GunJet® High Pressure Spray Gun',
+    value: 'f80a1af3-65cc-494f-8516-429cba04093f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2751,8 +2743,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsAa60,
     ...defaultFacetOption,
-    valueId: 'f0e37e35-a8fa-432a-b03d-9fddfe89d250',
-    value: 'GunJet® High Pressure Spray Gun',
+    value: 'f0e37e35-a8fa-432a-b03d-9fddfe89d250',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2775,8 +2767,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsAa70,
     ...defaultFacetOption,
-    valueId: 'e78b0a39-4c84-457b-8543-9833464bdf53',
-    value: 'GunJet® High Pressure Spray Gun',
+    value: 'e78b0a39-4c84-457b-8543-9833464bdf53',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2799,8 +2791,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsPw4000a,
     ...defaultFacetOption,
-    valueId: '4bf4b952-56e4-42cb-b2f7-fea9527502d5',
-    value: 'GunJet® High Pressure Spray Gun',
+    value: '4bf4b952-56e4-42cb-b2f7-fea9527502d5',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2823,8 +2815,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsAa30a,
     ...defaultFacetOption,
-    valueId: 'e3009c23-e1cf-4807-a7d0-fcfb26632f74',
-    value: 'GunJet® High Pressure Spray Gun',
+    value: 'e3009c23-e1cf-4807-a7d0-fcfb26632f74',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2847,8 +2839,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighPressureGunjetSprayGunsPw4000as,
     ...defaultFacetOption,
-    valueId: '3dc54a53-e941-4e80-b0e2-7741f13e3efa',
-    value: 'GunJet® High Pressure Spray Gun with Swivel',
+    value: '3dc54a53-e941-4e80-b0e2-7741f13e3efa',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2871,8 +2863,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsCu150a,
     ...defaultFacetOption,
-    valueId: '7a2d08b0-e531-4caa-bd38-a54b124ddcf8',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '7a2d08b0-e531-4caa-bd38-a54b124ddcf8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2895,8 +2887,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsAa30l,
     ...defaultFacetOption,
-    valueId: '599ceff4-2998-4c0f-aa33-9dd61e265756',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '599ceff4-2998-4c0f-aa33-9dd61e265756',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2919,8 +2911,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsAa43lc,
     ...defaultFacetOption,
-    valueId: '41db17a6-6ef6-4e9d-b806-e4077fd9b739',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '41db17a6-6ef6-4e9d-b806-e4077fd9b739',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2943,8 +2935,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsAa3020940,
     ...defaultFacetOption,
-    valueId: '82582c4b-d0b8-4154-a221-1152ad0e4960',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '82582c4b-d0b8-4154-a221-1152ad0e4960',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2967,8 +2959,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns2362430l,
     ...defaultFacetOption,
-    valueId: '8fc23212-19f2-4f84-918f-007ef1aee0d2',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '8fc23212-19f2-4f84-918f-007ef1aee0d2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -2991,8 +2983,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsAa6021580,
     ...defaultFacetOption,
-    valueId: '280861b5-fde1-496c-b93d-041d47e944cc',
-    value: 'GunJet® Low Pressure Spray Gun',
+    value: '280861b5-fde1-496c-b93d-041d47e944cc',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3015,8 +3007,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l,
     ...defaultFacetOption,
-    valueId: '487be0fd-26b5-4660-8ad4-3dfb02641f78',
-    value: 'GunJet® Medium Pressure Spray Gun',
+    value: '487be0fd-26b5-4660-8ad4-3dfb02641f78',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3039,8 +3031,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23h,
     ...defaultFacetOption,
-    valueId: '351afaf6-1bb5-4420-b199-560874ad40cb',
-    value: 'GunJet® Medium Pressure Spray Gun',
+    value: '351afaf6-1bb5-4420-b199-560874ad40cb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3063,8 +3055,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGuns3653360,
     ...defaultFacetOption,
-    valueId: '44f8a3b1-8b1d-4afc-bc07-671d240ef94f',
-    value: 'GunJet® Medium Pressure Spray Gun',
+    value: '44f8a3b1-8b1d-4afc-bc07-671d240ef94f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3087,8 +3079,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa23l45885,
     ...defaultFacetOption,
-    valueId: '0ca083c2-d887-4cdb-9c6a-ed274961af2d',
-    value: 'GunJet® Medium Pressure Spray Gun',
+    value: '0ca083c2-d887-4cdb-9c6a-ed274961af2d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3111,8 +3103,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa43hc,
     ...defaultFacetOption,
-    valueId: 'b5b1c778-19c4-4229-a5d6-7691379f7b9e',
-    value: 'GunJet® Medium Pressure Spray Gun',
+    value: 'b5b1c778-19c4-4229-a5d6-7691379f7b9e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3135,8 +3127,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactSolidjetD55606,
     ...defaultFacetOption,
-    valueId: 'd7e25e1d-91dc-4cb9-b318-799f8501cfaa',
-    value: 'High Impact SolidJet D55606',
+    value: 'd7e25e1d-91dc-4cb9-b318-799f8501cfaa',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3159,8 +3151,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SingleOrificeHydraulicFineSprayLnLnn,
     ...defaultFacetOption,
-    valueId: 'fa134537-9f3f-4ebf-a1ec-550b4f1e6791',
-    value: 'Hydraulic Fine Spray Nozzles - Integral Strainer',
+    value: 'fa134537-9f3f-4ebf-a1ec-550b4f1e6791',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3183,8 +3175,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SingleOrificeHydraulicFineSprayLndLnnd,
     ...defaultFacetOption,
-    valueId: '65575c53-c59a-4843-a579-2cf20256eec0',
-    value: 'Hydraulic Fine Spray Nozzles - Integral Strainer - Wall Mount',
+    value: '65575c53-c59a-4843-a579-2cf20256eec0',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3207,8 +3199,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SingleOrificeHydraulicFineSprayNNn,
     ...defaultFacetOption,
-    valueId: 'fa638387-96f6-46ed-aca2-16f1d52627c2',
-    value: 'Hydraulic Fine Spray Nozzles - One-piece design',
+    value: 'fa638387-96f6-46ed-aca2-16f1d52627c2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3231,8 +3223,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SingleOrificeHydraulicFineSprayM,
     ...defaultFacetOption,
-    valueId: '7a2c4765-8f59-468e-aad6-7b6c01683ad3',
-    value: 'Hydraulic Fine Spray Nozzles - Two-piece design',
+    value: '7a2c4765-8f59-468e-aad6-7b6c01683ad3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3255,8 +3247,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SingleOrificeHydraulicFineSprayNW,
     ...defaultFacetOption,
-    valueId: 'c60533de-34b3-4414-9ba7-5b0bead0048a',
-    value: 'Hydraulic Fine Spray Nozzles - Wide Angle Spray',
+    value: 'c60533de-34b3-4414-9ba7-5b0bead0048a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3279,8 +3271,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa124sc,
     ...defaultFacetOption,
-    valueId: 'e8a2ff8b-5670-417f-bef2-5ceef21366b2',
-    value: 'Liquid Strainer',
+    value: 'e8a2ff8b-5670-417f-bef2-5ceef21366b2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3303,8 +3295,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa430ml,
     ...defaultFacetOption,
-    valueId: 'd292bd14-d559-42a2-bc03-731ac2c1604b',
-    value: 'Liquid Strainer',
+    value: 'd292bd14-d559-42a2-bc03-731ac2c1604b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3327,8 +3319,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa122,
     ...defaultFacetOption,
-    valueId: '44f88cdb-1c99-458d-bfaa-55b2ebd84c12',
-    value: 'Liquid Strainer',
+    value: '44f88cdb-1c99-458d-bfaa-55b2ebd84c12',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3351,8 +3343,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa430mlsc,
     ...defaultFacetOption,
-    valueId: '5edf0932-f11a-4395-b49f-54eeacf2708a',
-    value: 'Liquid Strainer',
+    value: '5edf0932-f11a-4395-b49f-54eeacf2708a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3375,8 +3367,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa124a,
     ...defaultFacetOption,
-    valueId: '361eb54f-dee4-4d9c-bc92-4dc88e3bbfb8',
-    value: 'Liquid Strainer',
+    value: '361eb54f-dee4-4d9c-bc92-4dc88e3bbfb8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3399,8 +3391,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa122ml,
     ...defaultFacetOption,
-    valueId: '03e319eb-69d0-4725-b272-3f54f1a8a66c',
-    value: 'Liquid Strainer',
+    value: '03e319eb-69d0-4725-b272-3f54f1a8a66c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3423,8 +3415,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersTwd,
     ...defaultFacetOption,
-    valueId: 'afc876c3-751d-40c4-b3fd-18073e6f9db3',
-    value: 'Liquid Strainer',
+    value: 'afc876c3-751d-40c4-b3fd-18073e6f9db3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3447,8 +3439,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa124asc,
     ...defaultFacetOption,
-    valueId: '8352f9ef-1649-4669-bd18-32282ee02acf',
-    value: 'Liquid Strainer',
+    value: '8352f9ef-1649-4669-bd18-32282ee02acf',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3471,8 +3463,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa124ml,
     ...defaultFacetOption,
-    valueId: 'eb5f68de-59ba-4d1d-aa97-8397de19bed7',
-    value: 'Liquid Strainer',
+    value: 'eb5f68de-59ba-4d1d-aa97-8397de19bed7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3495,8 +3487,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StrainersAa124,
     ...defaultFacetOption,
-    valueId: '69a9ebee-e449-4272-ba17-f3c1de80138f',
-    value: 'Liquid Strainer',
+    value: '69a9ebee-e449-4272-ba17-f3c1de80138f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3519,8 +3511,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns6590,
     ...defaultFacetOption,
-    valueId: '928bda75-63eb-40cf-bbe6-e682e96208cd',
-    value: 'Low Pressure Trigger Valve',
+    value: '928bda75-63eb-40cf-bbe6-e682e96208cd',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3543,8 +3535,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns4688,
     ...defaultFacetOption,
-    valueId: '6c1c31b1-c7c5-47f4-96f3-dae6f5609816',
-    value: 'Low Pressure Trigger Valve',
+    value: '6c1c31b1-c7c5-47f4-96f3-dae6f5609816',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3567,8 +3559,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns6466,
     ...defaultFacetOption,
-    valueId: '1ea7789f-35b5-4c5d-81b9-b59c16f0e90f',
-    value: 'Low Pressure Trigger Valve',
+    value: '1ea7789f-35b5-4c5d-81b9-b59c16f0e90f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3591,8 +3583,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGunsAa36,
     ...defaultFacetOption,
-    valueId: '2cf2e0fb-dcb5-43ca-9d66-23c516099884',
-    value: 'Low Pressure Trigger Valve',
+    value: '2cf2e0fb-dcb5-43ca-9d66-23c516099884',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3615,8 +3607,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns6104,
     ...defaultFacetOption,
-    valueId: 'b0edc6ac-91a8-40db-9845-65459ecdb9ff',
-    value: 'Low Pressure Trigger Valve',
+    value: 'b0edc6ac-91a8-40db-9845-65459ecdb9ff',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3639,8 +3631,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MediumPressureGunjetSprayGunsAa31,
     ...defaultFacetOption,
-    valueId: 'a0d606ea-bce5-4cc0-86ce-ffc7755112d2',
-    value: 'Medium Pressure Trigger Valve',
+    value: 'a0d606ea-bce5-4cc0-86ce-ffc7755112d2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3663,8 +3655,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns236233114f,
     ...defaultFacetOption,
-    valueId: '318ca923-08b3-4f0d-b19d-e594b753a800',
-    value: 'MeterJet® Low Pressure Trigger Valve',
+    value: '318ca923-08b3-4f0d-b19d-e594b753a800',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3687,8 +3679,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo6MD41990Large,
     ...defaultFacetOption,
-    valueId: '89e03562-8a80-40a4-baf6-59472b5dbd88',
-    value: 'Micro ROKON Large',
+    value: '89e03562-8a80-40a4-baf6-59472b5dbd88',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3711,8 +3703,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo6MD41990Small,
     ...defaultFacetOption,
-    valueId: 'a039e648-a7df-4c48-80b9-f2dad96f6102',
-    value: 'Micro ROKON Small',
+    value: 'a039e648-a7df-4c48-80b9-f2dad96f6102',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3735,8 +3727,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.PromaxQuickjetQuickConnectQmvv,
     ...defaultFacetOption,
-    valueId: '8a49c023-9195-4d83-9c76-67c168b212f5',
-    value: 'Mini ProMax® Quick VeeJet® Flat Spray Nozzle Systems - Low Flow',
+    value: '8a49c023-9195-4d83-9c76-67c168b212f5',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3759,8 +3751,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFloodjetQuickConnectQstk,
     ...defaultFacetOption,
-    valueId: '9349504e-9d43-44aa-83f3-608778a17b21',
-    value: 'Mini Quick FloodJet® Flat Spray Nozzle Systems - Wide Angle Spray',
+    value: '9349504e-9d43-44aa-83f3-608778a17b21',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3783,8 +3775,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MiniQuickVeejetFlatSprayQuickConnectQsvv,
     ...defaultFacetOption,
-    valueId: '4ef5d5fc-97c5-462f-9812-b3ae4d069038',
-    value: 'Mini Quick VeeJet® Flat Spray Nozzle Systems - Low Flow',
+    value: '4ef5d5fc-97c5-462f-9812-b3ae4d069038',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3807,8 +3799,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.MiniQuickVeejetSolidStreamQuickConnectQsvv,
     ...defaultFacetOption,
-    valueId: 'de4845e1-e292-4eca-b62c-b4915fba0d3f',
-    value: 'Mini Quick VeeJet® Solid Stream Nozzle Systems - Low Flow',
+    value: 'de4845e1-e292-4eca-b62c-b4915fba0d3f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3831,8 +3823,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves6815,
     ...defaultFacetOption,
-    valueId: '512e8699-406e-4f74-8385-4dfcc7dc79bc',
-    value: 'Piston-Type Pressure Relief Valve',
+    value: '512e8699-406e-4f74-8385-4dfcc7dc79bc',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3855,8 +3847,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves6815g,
     ...defaultFacetOption,
-    valueId: 'bd8b0e4e-6bf7-4aad-822a-3609c445aed8',
-    value: 'Piston-Type Pressure Relief Valve',
+    value: 'bd8b0e4e-6bf7-4aad-822a-3609c445aed8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3879,8 +3871,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValvesAa110,
     ...defaultFacetOption,
-    valueId: '03745036-b778-4997-aefe-f74ba27de30c',
-    value: 'Piston-Type Pressure Relief Valve',
+    value: '03745036-b778-4997-aefe-f74ba27de30c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3903,8 +3895,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves23120a,
     ...defaultFacetOption,
-    valueId: '6c118096-c6c9-4175-baad-fc41861e793f',
-    value: 'Pressure Relief Valve',
+    value: '6c118096-c6c9-4175-baad-fc41861e793f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3927,8 +3919,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves23120,
     ...defaultFacetOption,
-    valueId: 'ba19052e-7097-4ace-8cef-bf4af860bd50',
-    value: 'Pressure Relief Valve',
+    value: 'ba19052e-7097-4ace-8cef-bf4af860bd50',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3951,8 +3943,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.PromaxQuickFulljetQuickConnectQpha,
     ...defaultFacetOption,
-    valueId: '392d1869-7199-4858-8622-947ba4ea0324',
-    value: 'ProMax® Quick FullJet® Quick-Connect Nozzle Systems',
+    value: '392d1869-7199-4858-8622-947ba4ea0324',
+
     parentId: '',
     children: [],
     configuration: {
@@ -3975,9 +3967,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.PromaxQuickFulljetQuickConnectQphaW,
     ...defaultFacetOption,
-    valueId: 'a23252be-8391-4bad-9bc2-d0b5833afe97',
-    value:
-      'ProMax® Quick FullJet® Quick-Connect Nozzle Systems - Wide Angle Spray',
+    value: 'a23252be-8391-4bad-9bc2-d0b5833afe97',
     parentId: '',
     children: [],
     configuration: {
@@ -4000,8 +3990,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.PromaxQuickjetQuickConnectQpta,
     ...defaultFacetOption,
-    valueId: '4362181d-2186-4b4a-93eb-579ba3ff6033',
-    value: 'ProMax® Quick VeeJet® Flat Spray Nozzle Systems - Medium Flow',
+    value: '4362181d-2186-4b4a-93eb-579ba3ff6033',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4024,8 +4014,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.PromaxQuickjetQuickConnectQppaQppm,
     ...defaultFacetOption,
-    valueId: 'f68fd73e-92fc-4475-a0e2-e024a007f50b',
-    value: 'ProMax® QuickJet® Quick-Connect Nozzle Bodies',
+    value: 'f68fd73e-92fc-4475-a0e2-e024a007f50b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4048,8 +4038,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh104210,
     ...defaultFacetOption,
-    valueId: '9c4e25fd-c14a-44a5-9a9d-e4c22e466753',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '9c4e25fd-c14a-44a5-9a9d-e4c22e466753',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4072,8 +4062,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh03Z1,
     ...defaultFacetOption,
-    valueId: '0daa6d8f-4f1e-46ab-89e6-a793685b0368',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '0daa6d8f-4f1e-46ab-89e6-a793685b0368',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4096,8 +4086,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh7244014,
     ...defaultFacetOption,
-    valueId: '6a0db788-b7bb-4931-af31-b135542fb265',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '6a0db788-b7bb-4931-af31-b135542fb265',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4120,8 +4110,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh03,
     ...defaultFacetOption,
-    valueId: '1f993666-280e-4282-99ad-444d08406e32',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '1f993666-280e-4282-99ad-444d08406e32',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4144,8 +4134,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh10,
     ...defaultFacetOption,
-    valueId: 'dc4a0333-3efd-425f-8b3a-5d318f7dfec3',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: 'dc4a0333-3efd-425f-8b3a-5d318f7dfec3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4168,8 +4158,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh104214,
     ...defaultFacetOption,
-    valueId: '3d613d9f-e6f8-4b3a-8b92-358aa9947c1d',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '3d613d9f-e6f8-4b3a-8b92-358aa9947c1d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4192,8 +4182,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh104215,
     ...defaultFacetOption,
-    valueId: 'df3dfdcd-3aea-42c9-abfa-24257c017a2a',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: 'df3dfdcd-3aea-42c9-abfa-24257c017a2a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4216,8 +4206,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ElectricallyActuatedHydraulicAa10000auh0050,
     ...defaultFacetOption,
-    valueId: '63257e79-c198-4fc0-a459-1ef42f5e8953',
-    value: 'PulsaJet® Electrically-Actuated Hydraulic Nozzle',
+    value: '63257e79-c198-4fc0-a459-1ef42f5e8953',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4240,8 +4230,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QmjAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '83b59894-e165-4855-85a2-986c89dd1d88',
-    value: 'QMJ Air Atomizing Air Caps',
+    value: '83b59894-e165-4855-85a2-986c89dd1d88',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4261,8 +4251,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QmjAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: '82f34d4f-85a9-4499-8f57-818db4e2d577',
-    value: 'QMJ Air Atomizing Assemblies',
+    value: '82f34d4f-85a9-4499-8f57-818db4e2d577',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4282,8 +4272,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QmjAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: '986c36a4-b284-42cd-ac67-205a765f9257',
-    value: 'QMJ Air Atomizing Bodies',
+    value: '986c36a4-b284-42cd-ac67-205a765f9257',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4301,8 +4291,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QmjAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '2262907f-3139-4f00-8447-1478409243eb',
-    value: 'QMJ Air Atomizing Fluid Caps',
+    value: '2262907f-3139-4f00-8447-1478409243eb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4322,8 +4312,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QmjAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: 'e78f7743-0a91-4f73-9925-caae4c17e5cb',
-    value: 'QMJ Air Atomizing Setups',
+    value: 'e78f7743-0a91-4f73-9925-caae4c17e5cb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4341,9 +4331,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFloodjetQuickConnectQtka,
     ...defaultFacetOption,
-    valueId: '33e1da19-1440-490d-b259-3a7f0c68763d',
-    value:
-      'Quick FloodJet® Deflected Flat Spray Nozzle Systems - Wide Angle Spray',
+    value: '33e1da19-1440-490d-b259-3a7f0c68763d',
     parentId: '',
     children: [],
     configuration: {
@@ -4366,9 +4354,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQga15Qlga15,
     ...defaultFacetOption,
-    valueId: 'd5b4cf88-804f-4113-be6e-eed199f8075f',
-    value:
-      'Quick FullJet® Full Cone Nozzle Systems - 15° Spray Angle - Removable Cap/Vane',
+    value: 'd5b4cf88-804f-4113-be6e-eed199f8075f',
     parentId: '',
     children: [],
     configuration: {
@@ -4391,9 +4377,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQga30Qlga30,
     ...defaultFacetOption,
-    valueId: '083cdbac-16d3-431f-9476-7d80d4c7be8d',
-    value:
-      'Quick FullJet® Full Cone Nozzle Systems - 30° Spray Angle - Removable Cap/Vane',
+    value: '083cdbac-16d3-431f-9476-7d80d4c7be8d',
     parentId: '',
     children: [],
     configuration: {
@@ -4416,8 +4400,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQhaQlha,
     ...defaultFacetOption,
-    valueId: '71dbb18d-7093-45a4-8cc5-cdc46c8c3c1e',
-    value: 'Quick FullJet® Full Cone Nozzle Systems - Non-removable Vane',
+    value: '71dbb18d-7093-45a4-8cc5-cdc46c8c3c1e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4440,8 +4424,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQgaQlga,
     ...defaultFacetOption,
-    valueId: 'e1cb44b8-f5aa-46b1-aea7-31cd0ae715e9',
-    value: 'Quick FullJet® Full Cone Nozzle Systems - Removable Cap/Vane',
+    value: 'e1cb44b8-f5aa-46b1-aea7-31cd0ae715e9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4464,9 +4448,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQhaWQlhaW,
     ...defaultFacetOption,
-    valueId: 'e22ccd21-295e-4439-bdbb-85dce0af576c',
-    value:
-      'Quick FullJet® Full Cone Nozzle Systems - Wide Angle Spray - Non-removable Vane',
+    value: 'e22ccd21-295e-4439-bdbb-85dce0af576c',
     parentId: '',
     children: [],
     configuration: {
@@ -4489,9 +4471,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickFulljetQuickConnectQgaWQlgaW,
     ...defaultFacetOption,
-    valueId: '3b227913-e820-4f57-a6df-dd9e0431d5b4',
-    value:
-      'Quick FullJet® Full Cone Nozzle Systems - Wide Angle Spray - Removable Cap/Vane',
+    value: '3b227913-e820-4f57-a6df-dd9e0431d5b4',
     parentId: '',
     children: [],
     configuration: {
@@ -4514,8 +4494,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickVeejetFlatSprayQuickConnectQuaQluaQvva,
     ...defaultFacetOption,
-    valueId: 'c67523a3-0692-4d97-8780-c1f7eb149538',
-    value: 'Quick VeeJet® Flat Spray Nozzle Systems',
+    value: 'c67523a3-0692-4d97-8780-c1f7eb149538',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4538,8 +4518,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickVeejetSolidStreamQuickConnectQuaQluaQvva,
     ...defaultFacetOption,
-    valueId: 'e4a5bba3-4c2e-4e7c-b97e-45411e09ed63',
-    value: 'Quick VeeJet® Solid Stream Nozzle Systems',
+    value: 'e4a5bba3-4c2e-4e7c-b97e-45411e09ed63',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4562,8 +4542,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickjetQuickConnectNozzleBodiesQjaQjja,
     ...defaultFacetOption,
-    valueId: '054ff212-fe44-41d1-a453-f66093d09dfb',
-    value: 'QuickJet® Quick-Connect Nozzle Bodies',
+    value: '054ff212-fe44-41d1-a453-f66093d09dfb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4586,8 +4566,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickjetQuickConnectNozzleBodiesQjlaQjjla,
     ...defaultFacetOption,
-    valueId: '32c1be38-60d3-4068-b1a9-0f2da1c162a6',
-    value: 'QuickJet® Quick-Connect Nozzle Bodies - Large Capacity',
+    value: '32c1be38-60d3-4068-b1a9-0f2da1c162a6',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4610,8 +4590,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.QuickjetQuickConnectNozzleBodiesQjjs,
     ...defaultFacetOption,
-    valueId: '0168fa84-d355-40ce-b7ba-c366734dbc11',
-    value: 'QuickJet® Quick-Connect Nozzle Bodies - Miniature',
+    value: '0168fa84-d355-40ce-b7ba-c366734dbc11',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4634,8 +4614,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.TankjetD27500,
     ...defaultFacetOption,
-    valueId: '3eab9286-677e-49d1-9abd-27ae91531dc3',
-    value: 'Rotating Tank Cleaning Nozzle, ATEX Certified D27500',
+    value: '3eab9286-677e-49d1-9abd-27ae91531dc3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4658,9 +4638,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LargeFreePassageFullConeHhsjx,
     ...defaultFacetOption,
-    valueId: 'ff87c736-7369-4277-a736-a218f168180d',
-    value:
-      'SpiralJet® Full Cone Nozzles - Spiral Type - Extra Large Free Passage',
+    value: 'ff87c736-7369-4277-a736-a218f168180d',
     parentId: '',
     children: [],
     configuration: {
@@ -4683,8 +4661,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LargeFreePassageFullConeHhsj,
     ...defaultFacetOption,
-    valueId: '95380b8d-90dc-440a-a2fe-dcc4324580df',
-    value: 'SpiralJet® Full Cone Nozzles - Spiral Type - Large Free Passage',
+    value: '95380b8d-90dc-440a-a2fe-dcc4324580df',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4707,9 +4685,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LargeFreePassageHollowConeBsj,
     ...defaultFacetOption,
-    valueId: '2973c05a-b134-4239-ba5b-3d7ab541687d',
-    value:
-      'SpiralJet® Hollow Cone Nozzles - Spiral Type - Extra Large Free Passage',
+    value: '2973c05a-b134-4239-ba5b-3d7ab541687d',
     parentId: '',
     children: [],
     configuration: {
@@ -4732,8 +4708,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SplitEyeletConnectors7521,
     ...defaultFacetOption,
-    valueId: '03aa1f8a-44d0-4202-9350-28980503eb96',
-    value: 'Split-Eyelet Connector',
+    value: '03aa1f8a-44d0-4202-9350-28980503eb96',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4756,8 +4732,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SplitEyeletConnectors8370,
     ...defaultFacetOption,
-    valueId: '3518c79e-b7f8-49c7-96ea-4f88fbd01388',
-    value: 'Split-Eyelet Connector',
+    value: '3518c79e-b7f8-49c7-96ea-4f88fbd01388',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4780,8 +4756,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SplitEyeletConnectors15475,
     ...defaultFacetOption,
-    valueId: '7f574ba5-7a4d-418d-8222-71620eac36bf',
-    value: 'Split-Eyelet Connector',
+    value: '7f574ba5-7a4d-418d-8222-71620eac36bf',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4804,8 +4780,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo14MAa190,
     ...defaultFacetOption,
-    valueId: '2fc00fc1-f412-4923-bf67-697f2190e1b7',
-    value: 'TankJet AA(B)190',
+    value: '2fc00fc1-f412-4923-bf67-697f2190e1b7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4828,8 +4804,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.TankjetCleanup,
     ...defaultFacetOption,
-    valueId: '34e216cf-c779-40c9-aaa8-5ef733b4ebbf',
-    value: 'TankJet CleanUp',
+    value: '34e216cf-c779-40c9-aaa8-5ef733b4ebbf',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4852,8 +4828,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtTj78m,
     ...defaultFacetOption,
-    valueId: '2a634cd7-62b4-4633-91b9-2d51acfee170',
-    value: 'TankJet® 78M Fluid-Driven Turbine Tank Cleaners',
+    value: '2a634cd7-62b4-4633-91b9-2d51acfee170',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4876,8 +4852,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10FtTj9A,
     ...defaultFacetOption,
-    valueId: '4e9b8006-a691-4286-bfea-6b4a58056c2a',
-    value: 'TankJet® 9-A Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: '4e9b8006-a691-4286-bfea-6b4a58056c2a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4900,8 +4876,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtD40159,
     ...defaultFacetOption,
-    valueId: 'f53757ea-9eed-4fd9-afd7-57f78f04b952',
-    value: 'TankJet® Fluid-Driven Constant Speed Tank Cleaning Nozzle',
+    value: 'f53757ea-9eed-4fd9-afd7-57f78f04b952',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4924,8 +4900,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtD41800e,
     ...defaultFacetOption,
-    valueId: 'fa5d962a-43fa-4443-bcab-56114fedc8d1',
-    value: 'TankJet® Fluid-Driven Constant Speed Tank Cleaning Nozzle',
+    value: 'fa5d962a-43fa-4443-bcab-56114fedc8d1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4948,8 +4924,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtD26984,
     ...defaultFacetOption,
-    valueId: '5488f5c3-4ad1-4694-b14b-df7d88b91227',
-    value: 'TankJet® Fluid-Driven Constant Speed Tank Cleaning Nozzle',
+    value: '5488f5c3-4ad1-4694-b14b-df7d88b91227',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4972,8 +4948,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo5Ft21400a,
     ...defaultFacetOption,
-    valueId: 'c2e175fd-27ce-438a-ab7c-e2879735b584',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: 'c2e175fd-27ce-438a-ab7c-e2879735b584',
+
     parentId: '',
     children: [],
     configuration: {
@@ -4996,8 +4972,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo5FtD26564,
     ...defaultFacetOption,
-    valueId: 'fa4190d7-8f7e-414c-93da-a2973bf315ac',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: 'fa4190d7-8f7e-414c-93da-a2973bf315ac',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5020,8 +4996,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo5Ft30473,
     ...defaultFacetOption,
-    valueId: '823a3890-dfc2-4c86-ac3c-a50c948d8141',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: '823a3890-dfc2-4c86-ac3c-a50c948d8141',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5044,8 +5020,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10FtD41892,
     ...defaultFacetOption,
-    valueId: 'd6b72f4a-6b2f-4072-85ee-52ff6184f2ca',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: 'd6b72f4a-6b2f-4072-85ee-52ff6184f2ca',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5068,8 +5044,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo5Ft23240,
     ...defaultFacetOption,
-    valueId: '574b9c80-5d04-4672-bec2-46c88bb23733',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: '574b9c80-5d04-4672-bec2-46c88bb23733',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5092,8 +5068,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10Ft18250a,
     ...defaultFacetOption,
-    valueId: '62cec7ff-c8b2-40ed-8033-5e2b09094c6d',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzle',
+    value: '62cec7ff-c8b2-40ed-8033-5e2b09094c6d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5116,8 +5092,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtTj9BTj9C,
     ...defaultFacetOption,
-    valueId: 'c7daeddf-ce4f-4c3a-be87-1f5ca8db2c73',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles',
+    value: 'c7daeddf-ce4f-4c3a-be87-1f5ca8db2c73',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5140,8 +5116,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20Ft2850028500R,
     ...defaultFacetOption,
-    valueId: '22196138-5c63-420a-8dc5-c611c649f940',
-    value: 'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles',
+    value: '22196138-5c63-420a-8dc5-c611c649f940',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5164,9 +5140,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtD41990,
     ...defaultFacetOption,
-    valueId: '23aed055-e135-4aab-8d7b-bde12b395ef8',
-    value:
-      'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles (1/2" - 3/4" or CIP192 connections)',
+    value: '23aed055-e135-4aab-8d7b-bde12b395ef8',
     parentId: '',
     children: [],
     configuration: {
@@ -5189,9 +5163,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45Ft2750027500R,
     ...defaultFacetOption,
-    valueId: 'dfb6e1ae-e385-4f53-a876-fbbda32ac7ae',
-    value:
-      'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles (3" connections)',
+    value: 'dfb6e1ae-e385-4f53-a876-fbbda32ac7ae',
     parentId: '',
     children: [],
     configuration: {
@@ -5214,9 +5186,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20Ft2750027500R,
     ...defaultFacetOption,
-    valueId: '13e38fa6-7ee7-4049-9acb-5f0b027be0fe',
-    value:
-      'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles (3/4" - 2" connections)',
+    value: '13e38fa6-7ee7-4049-9acb-5f0b027be0fe',
     parentId: '',
     children: [],
     configuration: {
@@ -5239,9 +5209,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10Ft2750027500R,
     ...defaultFacetOption,
-    valueId: 'caa23c5a-427d-43ea-8e8b-e3efc88dddc8',
-    value:
-      'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles (3/8" - 1/2" connections)',
+    value: 'caa23c5a-427d-43ea-8e8b-e3efc88dddc8',
     parentId: '',
     children: [],
     configuration: {
@@ -5264,9 +5232,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10FtD41990,
     ...defaultFacetOption,
-    valueId: '63ce8847-9252-418f-a754-4d6aec0d5a99',
-    value:
-      'TankJet® Fluid-Driven Reactionary Force Tank Cleaning Nozzles (3/8" or CIP182 connections)',
+    value: '63ce8847-9252-418f-a754-4d6aec0d5a99',
     parentId: '',
     children: [],
     configuration: {
@@ -5289,8 +5255,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtTj14,
     ...defaultFacetOption,
-    valueId: 'bca5d102-13e5-4459-bbc6-29157dfe8b36',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
+    value: 'bca5d102-13e5-4459-bbc6-29157dfe8b36',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5313,8 +5279,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtTj19,
     ...defaultFacetOption,
-    valueId: '7f5eccb0-851c-4dfe-a9f3-2459b6640828',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
+    value: '7f5eccb0-851c-4dfe-a9f3-2459b6640828',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5337,8 +5303,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo100FtTj360,
     ...defaultFacetOption,
-    valueId: '1457c6a7-c9eb-45c9-9050-2313cd7d7256',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
+    value: '1457c6a7-c9eb-45c9-9050-2313cd7d7256',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5361,8 +5327,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo100FtTj180,
     ...defaultFacetOption,
-    valueId: 'f885ee3b-a147-45c3-97bc-be2b42d11210',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaner',
+    value: 'f885ee3b-a147-45c3-97bc-be2b42d11210',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5385,8 +5351,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtTj65Tj65ht,
     ...defaultFacetOption,
-    valueId: 'f3e5f8d6-414d-4afa-b9f8-d8ed41b3340b',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    value: 'f3e5f8d6-414d-4afa-b9f8-d8ed41b3340b',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5409,8 +5375,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtTj75Tj75h,
     ...defaultFacetOption,
-    valueId: '227f577a-29a7-46fc-966c-8815541c7985',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    value: '227f577a-29a7-46fc-966c-8815541c7985',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5433,8 +5399,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo100FtTj80Tj80h,
     ...defaultFacetOption,
-    valueId: 'fe9329e4-f1fe-454b-9e5f-23826a2b9f12',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    value: 'fe9329e4-f1fe-454b-9e5f-23826a2b9f12',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5457,8 +5423,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtTj78Tj78d,
     ...defaultFacetOption,
-    valueId: '50875e5d-5ae3-4311-a5c8-5808b6b48516',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaners',
+    value: '50875e5d-5ae3-4311-a5c8-5808b6b48516',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5481,8 +5447,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtTj16,
     ...defaultFacetOption,
-    valueId: '0512ae8f-d685-4280-ac46-57e77f63af9a',
-    value: 'TankJet® Fluid-Driven Turbine Tank Cleaning Nozzle',
+    value: '0512ae8f-d685-4280-ac46-57e77f63af9a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5505,8 +5471,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtYmd3,
     ...defaultFacetOption,
-    valueId: '25c51006-f539-47db-a35f-e617eb981f28',
-    value: 'TankJet® High Pressure Motor-Driven Tank Cleaner',
+    value: '25c51006-f539-47db-a35f-e617eb981f28',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5526,8 +5492,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo100FtAa290,
     ...defaultFacetOption,
-    valueId: '67d9ebc4-b489-47df-910d-cd388f05a35e',
-    value: 'TankJet® Motor-Driven Tank Cleaner',
+    value: '67d9ebc4-b489-47df-910d-cd388f05a35e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5550,8 +5516,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo45FtAa190,
     ...defaultFacetOption,
-    valueId: '628cf011-0f4d-48b8-9394-7a7bb64debd0',
-    value: 'TankJet® Motor-Driven Tank Cleaner',
+    value: '628cf011-0f4d-48b8-9394-7a7bb64debd0',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5574,8 +5540,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20FtAa090,
     ...defaultFacetOption,
-    valueId: 'a7915f7e-ef3f-41fc-bbdc-31517b2853ce',
-    value: 'TankJet® Motor-Driven Tank Cleaner',
+    value: 'a7915f7e-ef3f-41fc-bbdc-31517b2853ce',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5598,8 +5564,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo5FtVsm,
     ...defaultFacetOption,
-    valueId: '065f4d1a-5890-493e-847c-80e26d065027',
-    value: 'TankJet® Stationary Tank Cleaning Nozzle',
+    value: '065f4d1a-5890-493e-847c-80e26d065027',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5622,8 +5588,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20Ft12900,
     ...defaultFacetOption,
-    valueId: 'e305f6cc-a4d4-4c57-8eb0-acf2d24412e0',
-    value: 'TankJet® Stationary Tank Cleaning Nozzle',
+    value: 'e305f6cc-a4d4-4c57-8eb0-acf2d24412e0',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5646,8 +5612,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo10Ft63536353Mfp,
     ...defaultFacetOption,
-    valueId: '4f3a5c55-17ba-4474-a791-5931b9237562',
-    value: 'TankJet® Stationary Tank Cleaning Nozzles',
+    value: '4f3a5c55-17ba-4474-a791-5931b9237562',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5670,8 +5636,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ForTanksUpTo20Ft63225632253a,
     ...defaultFacetOption,
-    valueId: '36f224c1-3fd3-4b00-a495-1c8473c0a2c2',
-    value: 'TankJet® Tank Cleaning Spray Balls',
+    value: '36f224c1-3fd3-4b00-a495-1c8473c0a2c2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5694,8 +5660,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.ThrottlingAndPressureReliefRegulatingValves23520,
     ...defaultFacetOption,
-    valueId: '960f0829-963e-4c9b-bc23-db0f3d634f68',
-    value: 'Throttling Valve',
+    value: '960f0829-963e-4c9b-bc23-db0f3d634f68',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5718,8 +5684,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.LowPressureGunjetSprayGuns22650Pp,
     ...defaultFacetOption,
-    valueId: '45e183f7-b0d2-48f4-a42d-a1e90d19b6a3',
-    value: 'TriggerJet® 22650-PP Low Pressure Trigger Valve',
+    value: '45e183f7-b0d2-48f4-a42d-a1e90d19b6a3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5742,8 +5708,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureFlatSprayFs013Fs020,
     ...defaultFacetOption,
-    valueId: 'a96215f7-fe90-4c43-bb06-0bcbd2b4f0ad',
-    value: 'Ultra-High Pressure Flat Spray Nozzle Assemblies',
+    value: 'a96215f7-fe90-4c43-bb06-0bcbd2b4f0ad',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5766,8 +5732,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureNozzleBodies5883358834,
     ...defaultFacetOption,
-    valueId: '9dcfc2fd-13f0-4fc3-80ff-cdfc03558754',
-    value: 'Ultra-High Pressure Nozzle Bodies',
+    value: '9dcfc2fd-13f0-4fc3-80ff-cdfc03558754',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5790,8 +5756,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureSolidStreamVs940,
     ...defaultFacetOption,
-    valueId: 'aaeeee7f-7ced-4b30-8f59-cb645e510618',
-    value: 'Ultra-High Pressure Spray Tips - Up to 15,000 psi (1000 bar)',
+    value: 'aaeeee7f-7ced-4b30-8f59-cb645e510618',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5814,8 +5780,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureSolidStreamVs625,
     ...defaultFacetOption,
-    valueId: '444148d3-f105-4ac8-a8e4-68ecf3b8c830',
-    value: 'Ultra-High Pressure Spray Tips - Up to 17,500 psi (1200 bar)',
+    value: '444148d3-f105-4ac8-a8e4-68ecf3b8c830',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5838,8 +5804,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureSolidStreamVs010,
     ...defaultFacetOption,
-    valueId: '23df6221-5311-4621-86a2-8fb970a785de',
-    value: 'Ultra-High Pressure Spray Tips - Up to 20,000 psi (1400 bar)',
+    value: '23df6221-5311-4621-86a2-8fb970a785de',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5862,8 +5828,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureSolidStreamVs020,
     ...defaultFacetOption,
-    valueId: '0222020e-1ae4-4561-83ff-13fd16cfef9e',
-    value: 'Ultra-High Pressure Spray Tips - Up to 30,000 psi (2000 bar)',
+    value: '0222020e-1ae4-4561-83ff-13fd16cfef9e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5886,8 +5852,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UltraHighPressureSolidStreamVs051,
     ...defaultFacetOption,
-    valueId: '738b75f2-079b-4f9d-aeb7-f3b6a765c729',
-    value: 'Ultra-High Pressure Spray Tips - Up to 60,000 psi (4000 bar)',
+    value: '738b75f2-079b-4f9d-aeb7-f3b6a765c729',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5910,8 +5876,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFlatSprayTk,
     ...defaultFacetOption,
-    valueId: 'e81724b9-c0dc-43dc-9f42-69b35877c0b7',
-    value: 'UniJet® Deflected Flat Spray Nozzle Systems - Wide Angle',
+    value: 'e81724b9-c0dc-43dc-9f42-69b35877c0b7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5934,8 +5900,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFlatSprayEg,
     ...defaultFacetOption,
-    valueId: '03020652-a130-4afe-809b-122467eb765d',
-    value: 'UniJet® Flat Spray Nozzle Systems - High Pressure',
+    value: '03020652-a130-4afe-809b-122467eb765d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5958,8 +5924,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFlatSprayTpu,
     ...defaultFacetOption,
-    valueId: 'dc542b52-c2d0-4694-8d96-71d4a901bec7',
-    value: 'UniJet® Flat Spray Nozzle Systems - Medium Flow',
+    value: 'dc542b52-c2d0-4694-8d96-71d4a901bec7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -5982,8 +5948,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFlatSpray13802,
     ...defaultFacetOption,
-    valueId: '688380f3-3419-4a2d-b76f-a5de4dc615ab',
-    value: 'UniJet® Flat Spray Nozzle Systems - Self-Aligning',
+    value: '688380f3-3419-4a2d-b76f-a5de4dc615ab',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6006,8 +5972,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFullConeTg,
     ...defaultFacetOption,
-    valueId: 'baa7b8ce-827f-418e-8e47-0e0ec847a322',
-    value: 'UniJet® Full Cone Nozzle Systems',
+    value: 'baa7b8ce-827f-418e-8e47-0e0ec847a322',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6030,8 +5996,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFullConeD,
     ...defaultFacetOption,
-    valueId: '73a27932-730e-4569-a2a2-b4ce29d3c289',
-    value: 'UniJet® Full Cone Nozzle Systems - Disk-Type',
+    value: '73a27932-730e-4569-a2a2-b4ce29d3c289',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6054,8 +6020,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFullConeTgSq,
     ...defaultFacetOption,
-    valueId: '33dd4f32-b616-4ebb-94d7-b79714470aa7',
-    value: 'UniJet® Full Cone Nozzle Systems - Square Spray',
+    value: '33dd4f32-b616-4ebb-94d7-b79714470aa7',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6078,8 +6044,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFullConeTgW,
     ...defaultFacetOption,
-    valueId: '84d839a2-83f7-4bf3-8dca-7c3ea5cc6aea',
-    value: 'UniJet® Full Cone Nozzle Systems - Wide Angle Spray',
+    value: '84d839a2-83f7-4bf3-8dca-7c3ea5cc6aea',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6102,9 +6068,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetFullConeThW,
     ...defaultFacetOption,
-    valueId: '00cf5fe4-ef80-43e9-af4a-5ef10da1437d',
-    value:
-      'UniJet® Full Cone Nozzle Systems - Wide Angle Spray - One-piece Tip/Retainer',
+    value: '00cf5fe4-ef80-43e9-af4a-5ef10da1437d',
     parentId: '',
     children: [],
     configuration: {
@@ -6127,8 +6091,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetHollowConeTx,
     ...defaultFacetOption,
-    valueId: '175cf5cc-84e1-49f8-9305-e4994849784c',
-    value: 'UniJet® Hollow Cone Nozzle Systems',
+    value: '175cf5cc-84e1-49f8-9305-e4994849784c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6151,8 +6115,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetHollowConeD,
     ...defaultFacetOption,
-    valueId: 'e3f2baae-7574-47b0-8eeb-13a1e682c019',
-    value: 'UniJet® Hollow Cone Nozzle Systems - Disk-Type',
+    value: 'e3f2baae-7574-47b0-8eeb-13a1e682c019',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6175,8 +6139,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetHollowConeTn,
     ...defaultFacetOption,
-    valueId: '25fb855b-e25a-4662-b3fb-4b58e625bb64',
-    value: 'UniJet® Hollow Cone Nozzle Systems - Fine Spray',
+    value: '25fb855b-e25a-4662-b3fb-4b58e625bb64',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6199,8 +6163,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetHollowConeTnSstc,
     ...defaultFacetOption,
-    valueId: 'ad7a4b2b-9342-425c-8740-ed79e1263d2c',
-    value: 'UniJet® Hollow Cone Nozzle Systems - Fine Spray - SSTC Insert',
+    value: 'ad7a4b2b-9342-425c-8740-ed79e1263d2c',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6223,8 +6187,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetHollowConeTW,
     ...defaultFacetOption,
-    valueId: '3d8f6411-9335-49cb-9a2f-3642639f0720',
-    value: 'UniJet® Hollow Cone Nozzle Systems - Fine Spray - Wide Angle Spray',
+    value: '3d8f6411-9335-49cb-9a2f-3642639f0720',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6247,8 +6211,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetNozzleBodiesTTt,
     ...defaultFacetOption,
-    valueId: 'fbebe335-ba7e-4a35-a79e-74a046c49d33',
-    value: 'UniJet® Nozzle Bodies',
+    value: 'fbebe335-ba7e-4a35-a79e-74a046c49d33',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6271,8 +6235,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetNozzleBodies11430,
     ...defaultFacetOption,
-    valueId: 'd58364c4-9a39-4d6b-95e2-ff6a7b2f33eb',
-    value: 'UniJet® Nozzle Body - High Pressure',
+    value: 'd58364c4-9a39-4d6b-95e2-ff6a7b2f33eb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6295,8 +6259,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetSolidStreamEg,
     ...defaultFacetOption,
-    valueId: '0d2401e6-ecbe-4d5c-ad46-7772198d66de',
-    value: 'UniJet® Solid Stream Nozzle Systems - High Pressure',
+    value: '0d2401e6-ecbe-4d5c-ad46-7772198d66de',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6319,8 +6283,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.UnijetSolidStreamTpu,
     ...defaultFacetOption,
-    valueId: '1ee5695a-abe4-41d2-9b42-b7e50854fd73',
-    value: 'UniJet® Solid Stream Nozzle Systems - Medium Flow',
+    value: '1ee5695a-abe4-41d2-9b42-b7e50854fd73',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6343,8 +6307,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VaaVauAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '0acc09cb-b1b3-44fd-876c-56175da3da45',
-    value: 'VAA, VAU Air Atomizing Air Caps',
+    value: '0acc09cb-b1b3-44fd-876c-56175da3da45',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6364,8 +6328,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VaaVauAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: 'ab131e15-e569-4334-8ec7-7b7eed28636f',
-    value: 'VAA, VAU Air Atomizing Assemblies',
+    value: 'ab131e15-e569-4334-8ec7-7b7eed28636f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6385,8 +6349,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VaaVauAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: '9e5b6b2f-ded9-48e5-b847-a58c8383c5f3',
-    value: 'VAA, VAU Air Atomizing Bodies',
+    value: '9e5b6b2f-ded9-48e5-b847-a58c8383c5f3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6406,8 +6370,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VaaVauAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '81112fe2-3c24-4fdf-9db8-d22499ba9322',
-    value: 'VAA, VAU Air Atomizing Fluid Caps',
+    value: '81112fe2-3c24-4fdf-9db8-d22499ba9322',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6427,8 +6391,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VaaVauAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: '38979bf0-745e-43f8-97d3-642483220cb8',
-    value: 'VAA, VAU Air Atomizing Setups',
+    value: '38979bf0-745e-43f8-97d3-642483220cb8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6448,8 +6412,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardFlatSprayHVvHDt,
     ...defaultFacetOption,
-    valueId: 'ae48d1b9-a1c1-490a-99c7-af0733df0346',
-    value: 'VeeJet® Flat Spray Nozzles - Low Flow',
+    value: 'ae48d1b9-a1c1-490a-99c7-af0733df0346',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6472,8 +6436,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardFlatSprayHVvl,
     ...defaultFacetOption,
-    valueId: '70a11cb0-eefb-4a72-8d74-de277e9f3646',
-    value: 'VeeJet® Flat Spray Nozzles - Low Flow - Integral Strainer',
+    value: '70a11cb0-eefb-4a72-8d74-de277e9f3646',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6496,8 +6460,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardFlatSprayHUHDu,
     ...defaultFacetOption,
-    valueId: '4b582aae-446f-43a8-8784-711474418253',
-    value: 'VeeJet® Flat Spray Nozzles - Medium Flow',
+    value: '4b582aae-446f-43a8-8784-711474418253',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6520,8 +6484,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardFlatSprayU,
     ...defaultFacetOption,
-    valueId: '029216d2-7620-422c-bcda-4e1963ff344a',
-    value: 'VeeJet® Nozzles - Flat Spray - High Flow',
+    value: '029216d2-7620-422c-bcda-4e1963ff344a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6544,8 +6508,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardSolidStreamU,
     ...defaultFacetOption,
-    valueId: 'a36542ba-e323-4af7-a33c-ffd5965d0eb8',
-    value: 'VeeJet® Nozzles - Solid Stream - High Flow',
+    value: 'a36542ba-e323-4af7-a33c-ffd5965d0eb8',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6568,8 +6532,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardSolidStreamHUHDu,
     ...defaultFacetOption,
-    valueId: '927552cf-256a-482c-8bd3-9d06439d89bb',
-    value: 'VeeJet® Solid Stream Nozzles - Medium Flow',
+    value: '927552cf-256a-482c-8bd3-9d06439d89bb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6592,8 +6556,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VmauAirAtomizingAirCaps,
     ...defaultFacetOption,
-    valueId: '3cba55f5-65bd-4b55-a475-35dc75b4b44e',
-    value: 'VMAU Air Atomizing Air Caps',
+    value: '3cba55f5-65bd-4b55-a475-35dc75b4b44e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6613,8 +6577,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VmauAirAtomizingAssemblies,
     ...defaultFacetOption,
-    valueId: '3f9abc94-eaf2-498a-a7d0-79fd55e18c85',
-    value: 'VMAU Air Atomizing Assemblies',
+    value: '3f9abc94-eaf2-498a-a7d0-79fd55e18c85',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6634,8 +6598,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VmauAirAtomizingBodies,
     ...defaultFacetOption,
-    valueId: '00de3529-932e-44ac-a56b-ab869db4da2f',
-    value: 'VMAU Air Atomizing Bodies',
+    value: '00de3529-932e-44ac-a56b-ab869db4da2f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6655,8 +6619,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VmauAirAtomizingFluidCaps,
     ...defaultFacetOption,
-    valueId: '62751765-d255-4521-b9ac-e135a8102df9',
-    value: 'VMAU Air Atomizing Fluid Caps',
+    value: '62751765-d255-4521-b9ac-e135a8102df9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6676,8 +6640,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.VmauAirAtomizingSetups,
     ...defaultFacetOption,
-    valueId: '511b4866-c60e-459c-8201-1281263a98e0',
-    value: 'VMAU Air Atomizing Setups',
+    value: '511b4866-c60e-459c-8201-1281263a98e0',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6697,8 +6661,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactFlatSprayQcimeg,
     ...defaultFacetOption,
-    valueId: '83dfdd49-54a6-467f-b176-3f80595d33bb',
-    value: 'WashJet® Extra High Impact - Quick-Connect Spray Tips',
+    value: '83dfdd49-54a6-467f-b176-3f80595d33bb',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6721,8 +6685,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactFlatSprayImeg,
     ...defaultFacetOption,
-    valueId: '8f336c2b-12b2-4105-8f5e-ff0e2eda5db3',
-    value: 'WashJet® Extra High Impact Flat Spray Nozzles',
+    value: '8f336c2b-12b2-4105-8f5e-ff0e2eda5db3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6745,8 +6709,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactFlatSprayMegWeg,
     ...defaultFacetOption,
-    valueId: '2b9c31d0-2687-485f-abc3-289fac12bdf1',
-    value: 'WashJet® High Impact Flat Spray Nozzles',
+    value: '2b9c31d0-2687-485f-abc3-289fac12bdf1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6769,8 +6733,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactFlatSprayQcmeg,
     ...defaultFacetOption,
-    valueId: '2c668fc0-505f-4772-9b64-cbf7fc6ca4cf',
-    value: 'WashJet® High Impact Flat Spray Nozzles - Quick-Connect Spray Tips',
+    value: '2c668fc0-505f-4772-9b64-cbf7fc6ca4cf',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6793,9 +6757,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactFlatSprayMegSstc,
     ...defaultFacetOption,
-    valueId: '8ad33685-5313-4bca-88c3-c1eb22baf5b7',
-    value:
-      'WashJet® High Impact Flat Spray Nozzles - Tungsten Carbide Orifice Insert',
+    value: '8ad33685-5313-4bca-88c3-c1eb22baf5b7',
     parentId: '',
     children: [],
     configuration: {
@@ -6818,8 +6780,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactSolidStreamMegWeg,
     ...defaultFacetOption,
-    valueId: '8c8a1da2-6c6c-4fd6-a660-6a144642482d',
-    value: 'WashJet® High Impact Solid Stream Nozzles',
+    value: '8c8a1da2-6c6c-4fd6-a660-6a144642482d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6842,9 +6804,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactSolidStreamQcmeg,
     ...defaultFacetOption,
-    valueId: '048c87f2-931e-460c-98a2-748be62be487',
-    value:
-      'WashJet® High Impact Solid Stream Nozzles - Quick-Connect Spray Tips',
+    value: '048c87f2-931e-460c-98a2-748be62be487',
     parentId: '',
     children: [],
     configuration: {
@@ -6867,9 +6827,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.HighImpactSolidStreamMegSstc,
     ...defaultFacetOption,
-    valueId: '2243c78c-6d29-4ce8-936a-9e3315454bd2',
-    value:
-      'WashJet® High Impact Solid Stream Nozzles - Tungsten Carbide Orifice Insert',
+    value: '2243c78c-6d29-4ce8-936a-9e3315454bd2',
     parentId: '',
     children: [],
     configuration: {
@@ -6892,8 +6850,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeAxBx,
     ...defaultFacetOption,
-    valueId: '3c509403-f286-41b9-a954-8a1d999bfa4e',
-    value: 'WhirlJet® Hollow Cone Nozzles',
+    value: '3c509403-f286-41b9-a954-8a1d999bfa4e',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6916,8 +6874,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeCf,
     ...defaultFacetOption,
-    valueId: '1d228a88-c343-4c66-94a7-ea427488689f',
-    value: 'WhirlJet® Hollow Cone Nozzles - Cast - Flanged',
+    value: '1d228a88-c343-4c66-94a7-ea427488689f',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6940,8 +6898,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeD,
     ...defaultFacetOption,
-    valueId: '1294a136-ba0c-49c0-8719-fb6090a5a948',
-    value: 'WhirlJet® Hollow Cone Nozzles - Cast - One-piece',
+    value: '1294a136-ba0c-49c0-8719-fb6090a5a948',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6964,8 +6922,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeCx,
     ...defaultFacetOption,
-    valueId: '3441dbc9-29af-4a0a-8132-964951d837be',
-    value: 'WhirlJet® Hollow Cone Nozzles - Cast - One-piece - Slope-bottom',
+    value: '3441dbc9-29af-4a0a-8132-964951d837be',
+
     parentId: '',
     children: [],
     configuration: {
@@ -6988,8 +6946,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeCrc,
     ...defaultFacetOption,
-    valueId: '40d60d4e-63d1-4fa0-97d0-ade0baef55d1',
-    value: 'WhirlJet® Hollow Cone Nozzles - Cast - Two-piece',
+    value: '40d60d4e-63d1-4fa0-97d0-ade0baef55d1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7012,8 +6970,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleHollowConeE,
     ...defaultFacetOption,
-    valueId: 'c703fb0c-f14a-4ee0-af62-8b7291ac1de1',
-    value: 'WhirlJet® Hollow Cone Nozzles - Extra Wide Angle Spray',
+    value: 'c703fb0c-f14a-4ee0-af62-8b7291ac1de1',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7036,8 +6994,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SprayHollowConeBd,
     ...defaultFacetOption,
-    valueId: 'a2cc3638-85b2-48d8-8e93-bc98a004153d',
-    value: 'WhirlJet® Hollow Cone Nozzles - Inline Style',
+    value: 'a2cc3638-85b2-48d8-8e93-bc98a004153d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7060,8 +7018,7 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SprayHollowConeBdm,
     ...defaultFacetOption,
-    valueId: '9c8c4bfb-53ee-4710-970c-ae11411aabca',
-    value: 'WhirlJet® Hollow Cone Nozzles - Inline Style - Nylon Body',
+    value: '9c8c4bfb-53ee-4710-970c-ae11411aabca',
     parentId: '',
     children: [],
     configuration: {
@@ -7084,8 +7041,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SprayHollowConeBa,
     ...defaultFacetOption,
-    valueId: 'f2d76ebc-7c5e-44f4-836e-0e818e3630e3',
-    value: 'WhirlJet® Hollow Cone Nozzles - Offset Style',
+    value: 'f2d76ebc-7c5e-44f4-836e-0e818e3630e3',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7108,8 +7065,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.StandardAngleHollowConeApLapLbp,
     ...defaultFacetOption,
-    valueId: '3b81914f-c6a1-4377-a8bb-334b5c32da47',
-    value: 'WhirlJet® Hollow Cone Nozzles - Polypropylene',
+    value: '3b81914f-c6a1-4377-a8bb-334b5c32da47',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7132,8 +7089,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleHollowConeAxWBxW,
     ...defaultFacetOption,
-    valueId: 'ab2a51fa-4a6d-4a0c-9530-61a9261ffcc9',
-    value: 'WhirlJet® Hollow Cone Nozzles - Wide Angle Spray',
+    value: 'ab2a51fa-4a6d-4a0c-9530-61a9261ffcc9',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7156,8 +7113,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.SprayHollowConeBdW,
     ...defaultFacetOption,
-    valueId: '4b411e3d-05ba-471c-a118-cc825f6ec016',
-    value: 'WhirlJet® Hollow Cone Nozzles - Wide Angle Spray - Inline Style',
+    value: '4b411e3d-05ba-471c-a118-cc825f6ec016',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7180,8 +7137,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.WideAngleHollowConeApWLapWLbpW,
     ...defaultFacetOption,
-    valueId: 'a1b9549b-0168-40ba-92ec-ae23ca1cb1e2',
-    value: 'WhirlJet® Hollow Cone Nozzles - Wide Angle Spray - Polypropylene',
+    value: 'a1b9549b-0168-40ba-92ec-ae23ca1cb1e2',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7204,8 +7161,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.FlatFanY767,
     ...defaultFacetOption,
-    valueId: '77772412-79df-4a83-915d-829ddfe1d2cd',
-    value: 'WindJet® Compact Flat Fan Air Nozzle, ABS',
+    value: '77772412-79df-4a83-915d-829ddfe1d2cd',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7225,8 +7182,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.FlatFanAa727,
     ...defaultFacetOption,
-    valueId: 'e7069cf7-fb16-4c94-8503-adbd9468f22a',
-    value: 'WindJet® Flat Fan Air Nozzle, ABS / PPS / Stainless Steel',
+    value: 'e7069cf7-fb16-4c94-8503-adbd9468f22a',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7246,8 +7203,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.FlatFanY727,
     ...defaultFacetOption,
-    valueId: '934bd134-458f-4eed-b0cc-63dfa2bdba81',
-    value: 'WindJet® Flat Fan Air Nozzle, Aluminum',
+    value: '934bd134-458f-4eed-b0cc-63dfa2bdba81',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7265,8 +7222,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.FlatFanDaa727,
     ...defaultFacetOption,
-    valueId: 'e0ba38e2-f527-4030-b8c6-28987eaa605d',
-    value: 'WindJet® Flat Fan Air Nozzle, Food Grade PVDF',
+    value: 'e0ba38e2-f527-4030-b8c6-28987eaa605d',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7286,8 +7243,8 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   {
     key: ModelFacetOptionKey.RoundSprayAa707,
     ...defaultFacetOption,
-    valueId: '99fcc03d-fc27-4480-8b5f-5f15bb4b2c37',
-    value: 'WindJet® Round Spray Air Nozzle',
+    value: '99fcc03d-fc27-4480-8b5f-5f15bb4b2c37',
+
     parentId: '',
     children: [],
     configuration: {
@@ -7309,13 +7266,13 @@ export const productModelFacetOptions: FacetOption<ModelFacetOptionKey>[] = [
   }
 ];
 
-export const productModelFacet: Facet<
+export const modelIdFacet: Facet<
   ModelFacetOptionKey,
   FacetOption<ModelFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.ProductModel,
-  attributeTypeCode: 'ProductModel',
+  key: FacetKey.ModelId,
+  attributeTypeCode: 'ModelId',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
@@ -7324,5 +7281,5 @@ export const productModelFacet: Facet<
     description: 'Model',
     isFacetingEnabled: true
   },
-  options: productModelFacetOptions
+  options: modelIdFacetOptions
 };

@@ -17,6 +17,7 @@ import {
 import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { rem } from '@utilities/rem';
+import { CategoryCard } from '@widgets/category-card/categoryCard';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 import { HomeCategoryItem, mapCategoriesToHomeCategoryItems } from '../helper';
@@ -31,9 +32,6 @@ interface CatalogStyles {
   itemTitle: ITextStyles;
   itemDescription: ITextStyles;
   subItemsContainer: IStackStyles;
-  subItemContainer: IStackStyles;
-  subItemLinkContainer: IStackStyles;
-  subItemButton: Partial<IButtonStyles>;
 }
 
 const messages = defineMessages({
@@ -51,7 +49,7 @@ const messages = defineMessages({
 
 export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
   const { locale } = useIntl();
-  const { palette, spacing, fonts } = useTheme();
+  const { palette, spacing } = useTheme();
   const categoryItems: HomeCategoryItem[] = useMemo(() => {
     return mapCategoriesToHomeCategoryItems(categories, locale);
   }, [categories, locale]);
@@ -88,33 +86,6 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
     },
     subItemsContainer: {
       root: { width: '100%' }
-    },
-    subItemContainer: {
-      root: {
-        width: 268,
-        background: palette.white,
-        borderRadius: 7,
-        img: {
-          borderTopLeftRadius: 7,
-          borderTopRightRadius: 7
-        }
-      }
-    },
-    subItemLinkContainer: {
-      root: {
-        height: 65,
-        width: '100%',
-        borderTop: `1px solid ${palette.neutralLight}`
-      }
-    },
-    subItemButton: {
-      root: {
-        fontSize: fonts.mediumPlus.fontSize,
-        color: palette.accent
-      },
-      labelHovered: {
-        color: palette.themeDark
-      }
     }
   };
   return (
@@ -160,32 +131,7 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
             >
               {categoryItem.children.map(childCategoryItem => (
                 <Stack.Item key={childCategoryItem.id}>
-                  <Link passHref href={childCategoryItem.href}>
-                    <a>
-                      <Stack styles={styles.subItemContainer}>
-                        <Image
-                          layout="fixed"
-                          width={268}
-                          height={204}
-                          alt={childCategoryItem.imageCaption}
-                          src={childCategoryItem.imageSrc}
-                          objectFit="cover"
-                          objectPosition="center"
-                        />
-                        <Stack
-                          styles={styles.subItemLinkContainer}
-                          horizontalAlign="center"
-                          verticalAlign="center"
-                        >
-                          <Link passHref href={childCategoryItem.href}>
-                            <ActionButton styles={styles.subItemButton}>
-                              {childCategoryItem.name}
-                            </ActionButton>
-                          </Link>
-                        </Stack>
-                      </Stack>
-                    </a>
-                  </Link>
+                  <CategoryCard {...childCategoryItem} />
                 </Stack.Item>
               ))}
             </Stack>

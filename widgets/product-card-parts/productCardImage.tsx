@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { NextLink } from '@components/link/nextLink';
 import { IStackStyles, Stack } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import productImageLoader from '@utilities/image-loaders/widenImageLoader';
+import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
@@ -50,7 +50,7 @@ const ProductCardImage: React.FC<ProductCardImageProps> = ({
             layout="intrinsic"
             objectFit="contain"
             objectPosition="center"
-            loader={productImageLoader}
+            loader={widenImageLoader}
           />
         </a>
       </NextLink>

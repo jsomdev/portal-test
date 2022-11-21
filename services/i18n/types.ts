@@ -58,6 +58,9 @@ type IFinderMessages = {
     clearAll: string;
     search: string;
   };
+  overview: {
+    browseAll: string;
+  };
   // TODO move to better place
   compare: string;
   // TODO move to better place

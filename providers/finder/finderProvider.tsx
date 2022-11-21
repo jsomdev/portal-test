@@ -243,27 +243,12 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         !!facet.configuration.hideInProductFinderPanel;
       let isHiddenByHierarchy: boolean = false;
 
-      if (
-        facet.key === FacetKey.ProductSeries ||
-        facet.key === FacetKey.ProductModel
-      ) {
+      if (facet.key === FacetKey.ModelId) {
         const subCategoriesForCurrentCategory: number =
           categoryIdFacet.options.find(
             option => option.valueId === preFilters.categoryId
           )?.children?.length || 0;
-
-        if (facet.key === FacetKey.ProductSeries) {
-          isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
-        } else {
-          const productSeriesFacetResults:
-            | FacetedSearchFacetResult[]
-            | undefined = getFacetResult(productSeriesFacet as Facet);
-          const isSeriesActive = isFacetActive(productSeriesFacet.key);
-          const isModelsActive = isFacetActive(productSeriesFacet.key);
-          isHiddenByHierarchy = productSeriesFacetResults?.length
-            ? productSeriesFacetResults.length > 1
-            : !isSeriesActive && !isModelsActive;
-        }
+        isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
       }
 
       if (isHiddenByConfiguration || isHiddenByHierarchy) {

@@ -83,7 +83,7 @@ export function mapFacetedSearchProductsToProductListItems(
   function getChips(
     product: FacetedSearchProduct,
     getAttributeType: (code: string) => AttributeType | undefined
-  ): { code: string; value: string }[] {
+  ): { code: string; value: string; description: string; title: string }[] {
     return facetPropertyKeys
       .map(key => {
         const attributeTypeFormatter = new AttributeTypeFormatter(
@@ -91,7 +91,9 @@ export function mapFacetedSearchProductsToProductListItems(
         );
         return {
           code: attributeTypeFormatter.formatName(),
-          value: getChipValue(key, product?.[key])
+          value: getChipValue(key, product?.[key]),
+          description: attributeTypeFormatter.formatDescription(),
+          title: attributeTypeFormatter.formatName()
         };
       })
       .filter(chip => !!chip.value)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack, Text, useTheme } from '@fluentui/react';
+import { IStackStyles, Stack, Text, useTheme } from '@fluentui/react';
 import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
@@ -24,6 +24,10 @@ export const FinderPanel: React.FC = () => {
   );
 };
 
+interface DesktopFinderPanelStyles {
+  root: IStackStyles;
+}
+
 const DesktopFinderPanel: React.FC = () => {
   const { category } = useGlobalData();
   const { palette, spacing } = useTheme();
@@ -33,8 +37,18 @@ const DesktopFinderPanel: React.FC = () => {
     isFacetActive,
     visibleMainFacets
   } = useFinder();
+
+  const styles: DesktopFinderPanelStyles = {
+    root: {
+      root: {
+        width: 360,
+        maxWidth: '100%'
+      }
+    }
+  };
+
   return (
-    <Stack tokens={{ maxWidth: 360 }}>
+    <Stack styles={styles.root}>
       {/* TODO: Check if we can replace the current image with this text */}
       <Text
         as="h1"

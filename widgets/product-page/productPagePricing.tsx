@@ -18,7 +18,7 @@ import { PriceBreaksSummary } from '@widgets/pricing/priceBreakSummary';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
 interface ProductPagePricingProps {
-  product: Pick<Product, 'number' | 'name'>;
+  product: Pick<Product, 'number' | 'id' | 'name'>;
   enablePriceBreakInfo?: boolean;
   inSticky?: boolean;
 }
@@ -157,7 +157,14 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
             onQuantityChanged={setAddToCartButtonQuantity}
             onAddToCartClicked={quantityToAdd =>
               product.number
-                ? add(null, product.number, quantityToAdd, product.name)
+                ? setLastItemAdded(
+                    add(
+                      product.id || null,
+                      product.number,
+                      quantityToAdd,
+                      product.name
+                    )
+                  )
                 : null
             }
           />
@@ -226,7 +233,14 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
                 onQuantityChanged={setAddToCartButtonQuantity}
                 onAddToCartClicked={quantityToAdd =>
                   product.number
-                    ? add(null, product.number, quantityToAdd, product.name)
+                    ? setLastItemAdded(
+                        add(
+                          product.id || null,
+                          product.number,
+                          quantityToAdd,
+                          product.name
+                        )
+                      )
                     : null
                 }
               />
@@ -253,6 +267,21 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
         priceBreaks={priceBreaks}
         quantity={cartQuantity + addToCartButtonQuantity}
       />
+      {product && lastItemAdded && (
+        <CartItemAddedDialog
+          lastAddedItems={combineCartItemsInformation(
+            [lastItemAdded],
+            [product],
+            [
+              {
+                productNumber: product.number || '',
+                priceBreaks: priceBreaks || []
+              }
+            ]
+          )}
+          setLastAddedItems={setLastItemAdded}
+        />
+      )}
     </>
   );
 };

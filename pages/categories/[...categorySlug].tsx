@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -36,7 +38,10 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { ResultView } from '@widgets/finder/result-view/resultView';
+import {
+  ResultView,
+  ResultViewType
+} from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
@@ -44,6 +49,7 @@ import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 
 type CategoryProps = {
   category: CategoryModel;
+  initialViewAs: ResultViewType;
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
@@ -53,7 +59,8 @@ const Category: NextPage<CategoryProps> = ({
   siteMenuItems,
   mainMenuItems,
   attributeTypeGroups,
-  attributeTypes
+  attributeTypes,
+  initialViewAs
 }) => {
   const router = useRouter();
   const { locale } = useIntl();
@@ -61,6 +68,12 @@ const Category: NextPage<CategoryProps> = ({
     category,
     locale
   );
+  const viewAs: ResultViewType = useMemo(() => {
+    if (router.asPath.includes('?')) {
+      return 'list';
+    }
+    return initialViewAs;
+  }, [initialViewAs, router.asPath]);
   return (
     <Page
       metaProps={{
@@ -90,7 +103,7 @@ const Category: NextPage<CategoryProps> = ({
           >
             <FinderProvider initialData={undefined}>
               <ContentContainerStack>
-                <ResultView category={category} />
+                <ResultView viewAs={viewAs} category={category} />
               </ContentContainerStack>
             </FinderProvider>
           </FacetsProvider>
@@ -138,19 +151,13 @@ export const getStaticProps: GetStaticProps = async (
 
   const { categorySlug } = context.params as CategoryParsedUrlQuery;
 
-  const [
-    categoriesData,
-    siteMenuData,
-    mainMenuData,
-    attributeTypesData
-    // attributeTypeGroupsData
-  ] = await Promise.all([
-    fetchAllCategories(),
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale)),
-    fetchAllAttributeTypes()
-    // fetchAllAttributeGroups()
-  ]);
+  const [categoriesData, siteMenuData, mainMenuData, attributeTypesData] =
+    await Promise.all([
+      fetchAllCategories(),
+      fetchMenuItemsForSiteHeader(getAudience(locale)),
+      fetchMenuItemsForMainHeader(getAudience(locale)),
+      fetchAllAttributeTypes()
+    ]);
 
   const category: CategoryModel | undefined = categoriesData.find(category => {
     const categoryFormatter: CategoryFormatter = new CategoryFormatter(
@@ -211,10 +218,19 @@ export const getStaticProps: GetStaticProps = async (
     }
   });
 
+  const categoryChildren: CategoryModel[] = categoriesData.filter(
+    cat => cat.parentId === category.id
+  );
+
   const props: CategoryProps = {
     attributeTypeGroups: [],
     attributeTypes: filteredAttributeTypes,
-    category,
+    category: {
+      ...category,
+      children: categoryChildren
+    },
+    initialViewAs: categoryChildren.length ? 'overview' : 'list',
+
     siteMenuItems: siteMenuData,
     mainMenuItems: mainMenuData
   };

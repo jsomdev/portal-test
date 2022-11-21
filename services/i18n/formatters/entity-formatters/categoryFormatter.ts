@@ -31,6 +31,9 @@ export class CategoryFormatter {
   public formatImageCaption(): string {
     return this.resourceFormatter.formatCaption();
   }
+  public formatThumbnailSrc(): string {
+    return this.resourceFormatter.formatThumbnailSrc();
+  }
 
   public formatImageSrc(): string {
     return this.resourceFormatter.formatSrc();

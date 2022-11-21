@@ -65,6 +65,9 @@ export const en: Messages = {
       clearAll: 'Clear all filters',
       search: 'Search: {query}'
     },
+    overview: {
+      browseAll: 'Browse all {category}'
+    },
     checkboxFacet: {
       actions: {
         more: 'More',

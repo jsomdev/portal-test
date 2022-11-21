@@ -30,6 +30,7 @@ interface ProductListItemPricingProps {
 interface ProductListItemPricingStyles {
   container: IStackStyles;
   actionButton: IButtonStyles;
+
   callout: IStackStyles;
 }
 
@@ -250,7 +251,14 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                   onQuantityChanged={setAddToCartButtonQuantity}
                   onAddToCartClicked={quantityToAdd =>
                     product.number
-                      ? add(null, product.number, quantityToAdd, product.name)
+                      ? setLastItemAdded(
+                          add(
+                            product.id || null,
+                            product.number,
+                            quantityToAdd,
+                            product.name
+                          )
+                        )
                       : null
                   }
                 />

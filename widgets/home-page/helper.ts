@@ -6,7 +6,7 @@ export interface HomeCategoryItem {
   href: string;
   name: string;
   imageSrc: string;
-  imageCaption: string;
+  imageAlt: string;
   description: string;
   children: HomeCategoryItem[];
 }
@@ -35,7 +35,7 @@ export function mapCategoryToHomeCategoryItem(
     description: categoryFormatter.formatDescription(),
     children: mapCategoriesToHomeCategoryItems(category.children || []),
     imageSrc: categoryFormatter.formatImageSrc(),
-    imageCaption: categoryFormatter.formatImageCaption()
+    imageAlt: categoryFormatter.formatImageCaption()
   };
   return item;
 }
