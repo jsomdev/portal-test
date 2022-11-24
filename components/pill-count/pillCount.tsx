@@ -2,7 +2,10 @@ import React from 'react';
 
 import { ITextStyles, Text, mergeStyleSets, useTheme } from '@fluentui/react';
 
-import { PillCountProps } from './pillCount.types';
+interface PillCountProps {
+  value: number;
+  styles?: ITextStyles;
+}
 
 export const PillCount: React.FC<PillCountProps> = ({
   value,
@@ -28,5 +31,5 @@ export const PillCount: React.FC<PillCountProps> = ({
 
   const mergedRootStyles = mergeStyleSets(styles, customStyles);
 
-  return <Text styles={mergedRootStyles}>{value}</Text>;
+  return <Text styles={mergedRootStyles}>{value >= 100 ? '99+' : value}</Text>;
 };
