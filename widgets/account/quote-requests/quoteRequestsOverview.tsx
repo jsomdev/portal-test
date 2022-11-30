@@ -63,8 +63,11 @@ export const QuoteRequestsOverview: React.FC = () => {
   }, [quoteRequests]);
 
   function updatePage(newPage: number): void {
-    router.query.page = newPage >= 1 ? newPage.toString() : '1';
-    router.push(router, undefined, { shallow: true });
+    router.push(
+      { query: { page: newPage >= 1 ? newPage.toString() : '1' } },
+      undefined,
+      { shallow: true }
+    );
   }
 
   const styles: QuoteRequestsOverviewStyles = {
@@ -93,7 +96,7 @@ export const QuoteRequestsOverview: React.FC = () => {
       {quoteRequestsStatus === 'success' && quoteRequests?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
+            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
               {quoteRequests.value.map(quote => {
                 return (
                   <QuoteRequestOverviewCard

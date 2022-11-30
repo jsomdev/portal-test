@@ -14,8 +14,9 @@ import {
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
-import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 import { rem } from '@utilities/rem';
+
+import { getPaymentMethodText } from '../orders/orderHelper';
 
 const messages = defineMessages({
   companyHeader: {
@@ -32,16 +33,6 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.companyInformation.paymentHeader,
     description: 'Header text for payment type',
     defaultMessage: 'Payment type'
-  },
-  creditCard: {
-    id: messageIds.data.payments.creditCard,
-    description: 'Credit card payment string',
-    defaultMessage: 'Creditcard default'
-  },
-  purchaseOrder: {
-    id: messageIds.data.payments.purchaseOrder,
-    description: 'Purchase order payment string',
-    defaultMessage: 'Purchase order default'
   }
 });
 
@@ -59,7 +50,8 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
   me
 }) => {
   const { spacing, semanticColors, effects, palette } = useTheme();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
+  const { formatMessage } = intl;
 
   const styles: OverviewCompanyInfoStyles = {
     container: {
@@ -83,15 +75,6 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
     }
   };
 
-  function getPaymentMethodText(
-    paymentMethod: PaymentMethod | null | undefined
-  ) {
-    if (paymentMethod === PaymentMethod.PURCHASE_ORDER) {
-      return formatMessage(messages.purchaseOrder);
-    }
-    return formatMessage(messages.creditCard);
-  }
-
   return (
     <Stack styles={styles.container}>
       <Stack tokens={{ childrenGap: spacing.m }}>
@@ -112,7 +95,7 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
             {formatMessage(messages.paymentHeader)}
           </Text>
           <Text variant="mediumPlus">
-            {getPaymentMethodText(me?.account?.paymentMethod)}
+            {getPaymentMethodText(intl, me?.account?.paymentMethod)}
           </Text>
         </Stack>
       </Stack>

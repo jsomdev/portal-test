@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
@@ -117,11 +116,11 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
                     horizontalAlign="center"
                     verticalAlign="center"
                   >
-                    <Link passHref href={categoryItem.href}>
+                    <NextLink passHref href={categoryItem.href}>
                       <ActionButton styles={styles.button}>
                         {categoryItem.name}
                       </ActionButton>
-                    </Link>
+                    </NextLink>
                   </Stack>
                 </Stack>
               </a>

@@ -301,12 +301,18 @@ export const nl: Messages = {
             customer: 'Klant',
             verified: 'Geverifieerd'
           }
+        },
+        addressBook: {
+          title: 'Adresboek',
+          shippingAddress: 'Verzend adres',
+          billingAddress: 'Factuur adres',
+          viewAllText: 'Bekijk alle adressen'
         }
       },
       quotes: {
-        numberHeader: 'Offerte number:',
+        numberHeader: 'Offertenummer:',
         quoteDateHeader: 'Offerte aangemaakt op:',
-        totalHeader: 'Totaal prijs:',
+        totalHeader: 'Totaalprijs:',
         viewQuote: 'Bekijk offerte'
       },
       orders: {
@@ -314,21 +320,44 @@ export const nl: Messages = {
         orderDateHeader: 'Besteld op:',
         totalHeader: 'Totaal prijs:',
         viewOrder: 'Bekijk bestelling',
-        numberHeader: 'Bestelling nummer:'
+        numberHeader: 'Bestelling nummer:',
+        commentsHeader: 'Opmerkingen:',
+        reorderAll: 'Bestel alle producten opnieuw',
+        reorderSingle: 'Product opnieuw bestellen',
+        viewAllLines:
+          '{number, plural,=0 {Geen aanvullende producten} one {Toon 1 product meer} other {Toon {number} meer producten}}',
+        detailsHeader: 'Adres- en betalingsgegevens',
+        shippingAddressHeader: 'Bezorgadres',
+        billingAddressHeader: 'Factuuradres',
+        overviewHeader: 'Overzicht',
+        shippingMethodHeader: 'Verzendmethode',
+        paymentMethodHeader: 'Betalingswijze',
+        totalProducts: 'Totaal producten',
+        shippingCosts: 'Verzendkosten',
+        taxHeader: 'VAT'
       },
       quoteRequests: {
         requestDateHeader: 'Aangevraagd op:',
-        viewQuoteRequest: 'Bekijk offerte aanvraag'
+        viewQuoteRequest: 'Bekijk offerteaanvraag'
       },
       sections: {
         orders: {
           title: 'Bestellingen'
         },
+        order: {
+          title: 'Bestelling'
+        },
         quotes: {
           title: 'Offertes'
         },
+        quote: {
+          title: 'Offerte'
+        },
+        quoteRequest: {
+          title: 'Offerte aanvrag'
+        },
         quoteRequests: {
-          title: 'Offerte Aanvragen'
+          title: 'Offerteaanvragen'
         },
         infoAndPreferences: {
           title: 'Info & Voorkeuren',
@@ -478,6 +507,16 @@ export const nl: Messages = {
     payments: {
       creditCard: 'Kredietkaart',
       purchaseOrder: 'Bestelling'
+    },
+    shippingMethods: {
+      freeShipping: 'Free Shipping',
+      flatRate: 'Flat Rate',
+      upsGround: 'UPS Ground',
+      upsSecondDayAir: 'UPS Second Day Air',
+      upsNextDayAir: 'UPS Next Day Air',
+      upsNextDayAirSaver: 'UPS Next Day Air Saver',
+      upsStandard: 'UPS Standard',
+      upsWorldwideExpedited: 'UPS Worldwide Expedited'
     }
   },
   summary: {

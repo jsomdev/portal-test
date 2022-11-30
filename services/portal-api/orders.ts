@@ -68,7 +68,7 @@ export const fetchMyOrder = async (
   );
   const queryOptions: Partial<QueryOptions> = {
     expandQuery:
-      'lines($expand=product($select=id;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
+      'lines($expand=product($select=id,name,number,slug;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
   };
   const data: Order & OdataEntity = await baseResource.getEntity(
     orderId,

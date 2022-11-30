@@ -48,44 +48,23 @@ const messages = defineMessages({
  * This component renders the account menu on the desktop verion of the account pages
  */
 export const AccountSideNavigation: React.FC = () => {
+  const ACTIVE_LINK = 'active-link';
   const { spacing, palette } = useTheme();
   const intl = useIntl();
   const { instance } = useMsal();
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
 
-  // NOTE: Will be shortened / obsolete once quote, order and qrs detail pages are implemented
   function getActiveClassName(path: string): string {
     if (router.pathname === path) {
-      return 'active-link';
+      return ACTIVE_LINK;
     }
-    // set active state for info and preferences link
+    // set active state for info and preferences pages
     if (
       path.includes(pagePaths.infoAndPreferences) &&
       router.pathname.includes(pagePaths.infoAndPreferences)
     ) {
-      return 'active-link';
-    }
-    // set active state for orders
-    if (
-      path.includes(pagePaths.orders) &&
-      router.pathname.includes(pagePaths.orders)
-    ) {
-      return 'active-link';
-    }
-    // set active state for quote requests
-    if (
-      path.includes(pagePaths.quoteRequests) &&
-      router.pathname.includes(pagePaths.quoteRequests)
-    ) {
-      return 'active-link';
-    }
-    // set active state for quotes
-    if (
-      path.includes(pagePaths.quotes) &&
-      router.pathname.includes(pagePaths.quotes)
-    ) {
-      return 'active-link';
+      return ACTIVE_LINK;
     }
     return '';
   }

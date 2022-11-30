@@ -281,6 +281,12 @@ export const messageIds: Messages = {
             customer: 'pages.account.overview.account.status.customer',
             verified: 'pages.account.overview.account.status.verified'
           }
+        },
+        addressBook: {
+          title: 'pages.account.overview.addressBook.title',
+          billingAddress: 'pages.account.overview.addressBook.billingAddress',
+          shippingAddress: 'pages.account.overview.addressBook.shippingAddress',
+          viewAllText: 'pages.account.overview.addressBook.viewAllText'
         }
       },
       orders: {
@@ -288,7 +294,20 @@ export const messageIds: Messages = {
         orderDateHeader: 'pages.account.orders.orderDateHeader',
         totalHeader: 'pages.account.orders.totalHeader',
         viewOrder: 'pages.account.orders.viewOrder',
-        numberHeader: 'pages.account.orders.numberHeader'
+        numberHeader: 'pages.account.orders.numberHeader',
+        reorderAll: 'pages.account.orders.reorderAll',
+        reorderSingle: 'pages.account.orders.reorderSingle',
+        viewAllLines: 'pages.account.orders.viewAllLines',
+        detailsHeader: 'pages.account.orders.detailsHeader',
+        shippingAddressHeader: 'pages.account.orders.shippingAddressHeader',
+        billingAddressHeader: 'pages.account.orders.billingAddressHeader',
+        overviewHeader: 'pages.account.orders.overviewHeader',
+        shippingMethodHeader: 'pages.account.orders.shippingMethodHeader',
+        paymentMethodHeader: 'pages.account.orders.paymentMethodHeader',
+        totalProducts: 'pages.account.orders.totalProducts',
+        shippingCosts: 'pages.account.orders.shippingCosts',
+        taxHeader: 'pages.account.orders.taxHeader',
+        commentsHeader: 'pages.account.orders.commentsHeader'
       },
       quoteRequests: {
         requestDateHeader: 'pages.account.quoteRequests.requestDateHeader',
@@ -304,11 +323,20 @@ export const messageIds: Messages = {
         orders: {
           title: 'pages.account.sections.orders.title'
         },
+        order: {
+          title: 'pages.account.sections.order.title'
+        },
         quotes: {
           title: 'pages.account.sections.quotes.title'
         },
         quoteRequests: {
           title: 'pages.account.sections.quoteRequests.title'
+        },
+        quote: {
+          title: 'pages.account.sections.quote.title'
+        },
+        quoteRequest: {
+          title: 'pages.account.sections.quoteRequest.title'
         },
         infoAndPreferences: {
           title: 'pages.account.sections.infoAndPreferences.title',
@@ -481,6 +509,16 @@ export const messageIds: Messages = {
     payments: {
       creditCard: 'data.payments.creditCard',
       purchaseOrder: 'data.payments.purchaseOrder'
+    },
+    shippingMethods: {
+      freeShipping: 'data.shippingMethods.freeShipping',
+      flatRate: 'data.shippingMethods.flatRate',
+      upsGround: 'data.shippingMethods.upsGround',
+      upsSecondDayAir: 'data.shippingMethods.upsSecondDayAir',
+      upsNextDayAir: 'data.shippingMethods.upsNextDayAir',
+      upsNextDayAirSaver: 'data.shippingMethods.upsNextDayAirSaver',
+      upsStandard: 'data.shippingMethods.upsStandard',
+      upsWorldwideExpedited: 'data.shippingMethods.upsWorldwideExpedited'
     }
   },
   summary: {

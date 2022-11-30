@@ -4,7 +4,10 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { NextLink } from '@components/link/nextLink';
 import {
+  ActionButton,
+  IButtonStyles,
   IMessageBarStyles,
   IStackStyles,
   MessageBar,
@@ -26,17 +29,21 @@ import { LocalePaths } from '@widgets/page/page.types';
 import { AccountSideNavigation } from './accountSideNavigation';
 
 interface AccountPageProps {
-  metaTitle: string;
   pageTitle: string;
   siteMenuItems: MenuItem[] | undefined;
   mainMenuItems: MenuItem[] | undefined;
   localePaths: LocalePaths | undefined;
+  breadCrumbItem?: {
+    text: string;
+    link: string;
+  };
 }
 
 interface AccountPageStyles {
   accountNavigationContainer: IStackStyles;
   mainContainer: IStackStyles;
   signInPrompt: IMessageBarStyles;
+  breadCrumbButton: IButtonStyles;
 }
 
 const messages = defineMessages({
@@ -48,12 +55,12 @@ const messages = defineMessages({
 });
 
 export const AccountPage: React.FC<AccountPageProps> = ({
-  metaTitle,
   pageTitle,
   mainMenuItems,
   siteMenuItems,
   localePaths,
-  children
+  children,
+  breadCrumbItem
 }) => {
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
@@ -78,14 +85,22 @@ export const AccountPage: React.FC<AccountPageProps> = ({
       root: {
         height: '100%'
       }
+    },
+    breadCrumbButton: {
+      root: {
+        padding: 0,
+        margin: 0
+      },
+      icon: {
+        margin: 0
+      }
     }
   };
 
   return (
     <Page
       metaProps={{
-        title: metaTitle,
-        description: '',
+        title: pageTitle,
         noIndex: true
       }}
       i18nProps={{
@@ -118,6 +133,19 @@ export const AccountPage: React.FC<AccountPageProps> = ({
                     styles={styles.mainContainer}
                     tokens={{ childrenGap: spacing.l1 }}
                   >
+                    {breadCrumbItem && (
+                      <Stack.Item>
+                        <NextLink href={breadCrumbItem.link} passHref>
+                          <a>
+                            <ActionButton
+                              text={breadCrumbItem.text}
+                              iconProps={{ iconName: 'ChevronLeft' }}
+                              styles={styles.breadCrumbButton}
+                            />
+                          </a>
+                        </NextLink>
+                      </Stack.Item>
+                    )}
                     <Stack.Item>
                       <Text variant="xLarge" as={'h1'}>
                         {pageTitle}

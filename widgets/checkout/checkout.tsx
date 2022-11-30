@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 
-import Link from 'next/link';
-
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { NextLink } from '@components/link/nextLink';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   Link as FluentUILink,
@@ -161,11 +160,11 @@ const Checkout: React.FC = () => {
         <Stack.Item>
           <MessageBar messageBarType={MessageBarType.blocked}>
             <Text>{messages.noItems}</Text>
-            <Link href={pagePaths.cart}>
+            <NextLink href={pagePaths.cart}>
               <a>
                 <Text>{messages.noItemsLink}</Text>
               </a>
-            </Link>
+            </NextLink>
           </MessageBar>
         </Stack.Item>
       )}

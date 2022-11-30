@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
@@ -79,14 +78,14 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
           return (
             <Stack key={item.id} tokens={{ childrenGap: spacing.m }}>
               {item.href && (
-                <Link
+                <NextLink
                   aria-label={item.text}
                   key={item.id}
                   href={item.href}
                   passHref
                 >
                   <ActionButton text={item.text} styles={styles.link('main')} />
-                </Link>
+                </NextLink>
               )}
 
               {item.children && (
@@ -115,7 +114,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
         })}
       </Stack>
       {activeMenuItem.href && (
-        <Link
+        <NextLink
           aria-label={activeMenuItem.text}
           key={activeMenuItem.id}
           href={activeMenuItem.href}
@@ -128,7 +127,7 @@ export const MainHeaderMenu: React.FC<MainHeaderMenuProps> = ({
             styles={styles.viewAllLink}
             menuIconProps={{ iconName: 'chevronRight' }}
           />
-        </Link>
+        </NextLink>
       )}
     </Stack>
   );

@@ -2,10 +2,10 @@ import React from 'react';
 
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
 import { useIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 
+import { NextLink } from '@components/link/nextLink';
 import { getMarkdownByFileName } from '@docs/data';
 import { messageIds, supportedLocales } from '@services/i18n';
 
@@ -33,7 +33,7 @@ const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
       </p>
       <h3>Supported Locales</h3>
       {supportedLocales?.map(supportedLocale => (
-        <Link
+        <NextLink
           key={supportedLocale}
           href={pathname}
           locale={supportedLocale}
@@ -43,10 +43,9 @@ const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
             className={supportedLocale === locale ? 'active' : ''}
             rel="canonical"
           >
-            {' '}
             {supportedLocale}
           </a>
-        </Link>
+        </NextLink>
       ))}
       {/* <style jsx>{`
         .container {

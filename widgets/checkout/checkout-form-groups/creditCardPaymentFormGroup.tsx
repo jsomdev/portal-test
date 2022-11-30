@@ -20,9 +20,9 @@ import { checkoutFormFields } from '../checkout-form/checkoutFormHelper';
 import { CheckoutFormContext } from '../shared/checkoutFormContext';
 
 export const CreditCardPaymentFormGroup: React.FC<{
-  props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
+  props: (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined;
   render: IRenderFunction<
-    IChoiceGroupOption | IChoiceGroupOptionProps | undefined
+    (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined
   >;
 }> = ({ props, render }) => {
   const { spacing } = useTheme();

@@ -154,6 +154,16 @@ type IDataMessages = {
     creditCard: string;
     purchaseOrder: string;
   };
+  shippingMethods: {
+    freeShipping: string;
+    flatRate: string;
+    upsGround: string;
+    upsSecondDayAir: string;
+    upsNextDayAir: string;
+    upsNextDayAirSaver: string;
+    upsStandard: string;
+    upsWorldwideExpedited: string;
+  };
 };
 
 type IPricingMessages = {
@@ -222,6 +232,12 @@ type IAccountMessages = {
       customerHeader: string;
       paymentHeader: string;
     };
+    addressBook: {
+      title: string;
+      shippingAddress: string;
+      billingAddress: string;
+      viewAllText: string;
+    };
   };
   orders: {
     statusHeader: string;
@@ -229,6 +245,19 @@ type IAccountMessages = {
     totalHeader: string;
     numberHeader: string;
     viewOrder: string;
+    reorderAll: string;
+    reorderSingle: string;
+    viewAllLines: string;
+    detailsHeader: string;
+    shippingAddressHeader: string;
+    billingAddressHeader: string;
+    overviewHeader: string;
+    shippingMethodHeader: string;
+    paymentMethodHeader: string;
+    totalProducts: string;
+    shippingCosts: string;
+    taxHeader: string;
+    commentsHeader: string;
   };
   quoteRequests: {
     requestDateHeader: string;
@@ -244,10 +273,19 @@ type IAccountMessages = {
     orders: {
       title: string;
     };
+    order: {
+      title: string;
+    };
     quotes: {
       title: string;
     };
+    quote: {
+      title: string;
+    };
     quoteRequests: {
+      title: string;
+    };
+    quoteRequest: {
       title: string;
     };
     infoAndPreferences: {

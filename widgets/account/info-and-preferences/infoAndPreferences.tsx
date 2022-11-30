@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 
-import Link from 'next/link';
 import { IntlShape, defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   FontSizes,
@@ -248,7 +248,12 @@ export const InfoAndPreferences: React.FC = () => {
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
                   {section.links.map(link => {
                     return (
-                      <Link key={link.text} href={link.href} shallow passHref>
+                      <NextLink
+                        key={link.text}
+                        href={link.href}
+                        shallow
+                        passHref
+                      >
                         <a>
                           <ActionButton
                             text={link.text}
@@ -256,7 +261,7 @@ export const InfoAndPreferences: React.FC = () => {
                             styles={styles.linkStyles}
                           />
                         </a>
-                      </Link>
+                      </NextLink>
                     );
                   })}
                 </Stack>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
@@ -102,7 +101,7 @@ const MobileSiteLogo: React.FC<{ className: string }> = ({ className }) => {
   return (
     <Stack styles={styles.container} className={className}>
       <Stack.Item grow styles={styles.logo}>
-        <Link href={'/'}>
+        <NextLink href={'/'}>
           <a>
             <Image
               priority
@@ -111,7 +110,7 @@ const MobileSiteLogo: React.FC<{ className: string }> = ({ className }) => {
               alt={formatMessage(messages.siteLogoAlt)}
             />
           </a>
-        </Link>
+        </NextLink>
       </Stack.Item>
     </Stack>
   );

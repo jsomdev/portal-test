@@ -14,9 +14,9 @@ import { checkoutFormFields } from '../checkout-form/checkoutFormHelper';
 import { CheckoutFormRowContainer } from '../shared/checkoutFormRowContainer';
 
 export const BillingContactFormGroup: React.FC<{
-  props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
+  props: (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined;
   render: IRenderFunction<
-    IChoiceGroupOption | IChoiceGroupOptionProps | undefined
+    (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined
   >;
 }> = ({ props, render }) => {
   const { spacing } = useTheme();

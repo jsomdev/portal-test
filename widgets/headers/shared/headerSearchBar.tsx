@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   Callout,
@@ -234,12 +234,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, styles }) => {
               onRenderCell={item => {
                 return (
                   <Stack>
-                    <Link href={item?.href || '/404'} passHref>
+                    <NextLink href={item?.href || '/404'} passHref>
                       <ActionButton
                         iconProps={item?.iconProps}
                         text={item?.text}
                       />
-                    </Link>
+                    </NextLink>
                   </Stack>
                 );
               }}

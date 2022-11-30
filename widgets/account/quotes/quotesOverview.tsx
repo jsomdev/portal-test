@@ -49,7 +49,7 @@ export const QuotesOverview: React.FC = () => {
       ),
     {
       keepPreviousData: true,
-      enabled: !!isAuthenticated,
+      enabled: isAuthenticated,
       refetchOnMount: true,
       refetchOnWindowFocus: true
     }
@@ -60,8 +60,11 @@ export const QuotesOverview: React.FC = () => {
   }, [quotes]);
 
   function updatePage(newPage: number): void {
-    router.query.page = newPage >= 1 ? newPage.toString() : '1';
-    router.push(router, undefined, { shallow: true });
+    router.push(
+      { query: { page: newPage >= 1 ? newPage.toString() : '1' } },
+      undefined,
+      { shallow: true }
+    );
   }
 
   const styles: QuotesOverviewStyles = {
@@ -90,7 +93,7 @@ export const QuotesOverview: React.FC = () => {
       {quotesStatus === 'success' && quotes?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
+            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
               {quotes.value.map(quote => {
                 return (
                   <QuoteCard compactView={false} key={quote.id} quote={quote} />

@@ -33,7 +33,6 @@ const Preferences: NextPage<
     <AccountPage
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
-      metaTitle={formatMessage(messages.title)}
       pageTitle={formatMessage(messages.title)}
       localePaths={getLocalePaths('account/info-and-preferences/preferences')}
     ></AccountPage>

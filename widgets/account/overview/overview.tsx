@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
@@ -8,11 +8,14 @@ import { useIsAuthenticated } from '@azure/msal-react';
 import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
+  FontWeights,
   IStackStyles,
+  ITextStyles,
   Stack,
   Text,
   useTheme
 } from '@fluentui/react';
+import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { useMe } from '@providers/user/userContext';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';
 import { useClaims } from '@services/authentication/claims';
@@ -23,7 +26,13 @@ import { QUERYKEYS } from '@services/react-query/constants';
 import pagePaths from '@utilities/pagePaths';
 import { OverviewTag } from '@widgets/account/overview/overviewTag';
 
+import { AddressBookAddress } from '../address-book/addressBookAddress';
 import { OrderCard } from '../orders/orderCard';
+import { getPaymentMethodText } from '../orders/orderHelper';
+import {
+  AddressViewModel,
+  mapPostalAddressToAddressViewModel
+} from '../shared/accountAddress.helper';
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
 
@@ -73,26 +82,40 @@ const messages = defineMessages({
     description: 'View all previous orders link text',
     defaultMessage: 'View all previous orders default'
   },
+  viewAllAddresses: {
+    id: messageIds.pages.account.overview.addressBook.viewAllText,
+    description: 'View all addresses link text',
+    defaultMessage: 'View all addresses default'
+  },
   profileInformation: {
     id: messageIds.pages.account.overview.profileInformation.title,
     description: 'Profile sub section title',
     defaultMessage: 'Profile information default'
+  },
+  addressBookTitle: {
+    id: messageIds.pages.account.overview.addressBook.title,
+    description: 'Address book sub section title',
+    defaultMessage: 'Address book default'
   }
 });
 
 interface OverviewStyles {
   welcomeSection: IStackStyles;
+  subHeader: ITextStyles;
+  header: ITextStyles;
 }
 
 export const Overview: React.FC = () => {
   const { spacing, effects, palette } = useTheme();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
+  const { formatMessage } = intl;
   const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
   const claims = useClaims();
   const { me, isOrderHistoryEnabled, showCustomerDetails } = useMe();
   const { isAccountManager, isAdministrator, isEmployee } = claims;
+  const { billingAddress, shippingAddress } = useContext(AddressBookContext);
 
   const { data: orders, status: ordersStatus } = useQuery(
     [QUERYKEYS.recentOrders, isAuthenticated, accountId, isOrderHistoryEnabled],
@@ -105,6 +128,14 @@ export const Overview: React.FC = () => {
       refetchOnWindowFocus: true
     }
   );
+
+  const formattedBillingAddress: AddressViewModel | undefined = useMemo(() => {
+    return mapPostalAddressToAddressViewModel(billingAddress);
+  }, [billingAddress]);
+
+  const formattedShippingAddress: AddressViewModel | undefined = useMemo(() => {
+    return mapPostalAddressToAddressViewModel(shippingAddress);
+  }, [shippingAddress]);
 
   const name = useMemo(() => {
     const userFormatter = new UserFormatter(me, account);
@@ -121,25 +152,40 @@ export const Overview: React.FC = () => {
         padding: spacing.l1,
         borderRadius: effects.roundedCorner4
       }
+    },
+    header: {
+      root: {
+        fontWeight: FontWeights.semibold
+      }
+    },
+    subHeader: {
+      root: {
+        color: palette.neutralDark
+      }
     }
   };
 
   return (
     <Stack tokens={{ childrenGap: spacing.l2 }}>
-      <Stack
-        styles={styles.welcomeSection}
-        tokens={{ childrenGap: spacing.s1 }}
-      >
-        <Stack>
+      <Stack styles={styles.welcomeSection} tokens={{ childrenGap: spacing.m }}>
+        <Stack tokens={{ childrenGap: spacing.s1 }}>
           <Stack.Item>
-            <Text variant="large">
+            <Text styles={styles.header} variant="large">
               {formatMessage(messages.welcome, {
                 name
               })}
             </Text>
           </Stack.Item>
+          <Stack.Item>
+            {me?.contactInfo?.jobTitle && (
+              <Text
+                styles={styles.subHeader}
+              >{`${me.contactInfo.jobTitle}, `}</Text>
+            )}
+            {<Text styles={styles.subHeader}>{`${me?.account?.name}`}</Text>}
+          </Stack.Item>
         </Stack>
-        <Stack tokens={{ childrenGap: spacing.l1 }}>
+        <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
             {isAccountManager && (
               <OverviewTag text={formatMessage(messages.accountManager)} />
@@ -149,6 +195,11 @@ export const Overview: React.FC = () => {
             )}
             {isEmployee && (
               <OverviewTag text={formatMessage(messages.accountEmployee)} />
+            )}
+            {me?.account?.paymentMethod && (
+              <OverviewTag
+                text={getPaymentMethodText(intl, me.account.paymentMethod)}
+              />
             )}
           </Stack>
           <Stack.Item>
@@ -173,7 +224,7 @@ export const Overview: React.FC = () => {
             </Stack>
           </Stack.Item>
           <Stack>
-            <NextLink href={pagePaths.orders} passHref>
+            <NextLink href={pagePaths.orders()} passHref>
               <a>
                 <ActionButton
                   iconProps={{ iconName: 'ChevronRight' }}
@@ -196,6 +247,41 @@ export const Overview: React.FC = () => {
             {showCustomerDetails && <OverviewCompanyInfo me={me} />}
           </Stack>
         </Stack.Item>
+      </Stack>
+      <Stack tokens={{ childrenGap: spacing.m }}>
+        <Stack.Item>
+          <Text variant="large" as={'h2'}>
+            {formatMessage(messages.addressBookTitle)}
+          </Text>
+        </Stack.Item>
+
+        <Stack.Item>
+          <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
+            {formattedBillingAddress && (
+              <AddressBookAddress
+                address={formattedBillingAddress}
+                isDefaultBilling={true}
+              />
+            )}
+            {formattedShippingAddress && (
+              <AddressBookAddress
+                address={formattedShippingAddress}
+                isDefaultShipping={true}
+              />
+            )}
+          </Stack>
+        </Stack.Item>
+
+        <Stack>
+          <NextLink href={pagePaths.addressBook} passHref>
+            <a>
+              <ActionButton
+                iconProps={{ iconName: 'ChevronRight' }}
+                text={formatMessage(messages.viewAllAddresses)}
+              />
+            </a>
+          </NextLink>
+        </Stack>
       </Stack>
     </Stack>
   );

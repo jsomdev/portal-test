@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   Callout,
@@ -209,7 +209,7 @@ const DesktopMainHeader: React.FC = () => {
               iconName: 'FavoriteList'
             }}
           />
-          <Link href={pagePaths.cart}>
+          <NextLink href={pagePaths.cart}>
             <a>
               <SiteHeaderButton
                 title={intl.formatMessage(messages.cartAriaLabel)}
@@ -219,7 +219,7 @@ const DesktopMainHeader: React.FC = () => {
                 onRenderMenuIcon={() => <CartCountButtonIcon />}
               />
             </a>
-          </Link>
+          </NextLink>
           {inProgress === InteractionStatus.None && (
             <SiteHeaderButton
               title={intl.formatMessage(messages.userAriaLabel)}

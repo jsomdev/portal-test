@@ -291,6 +291,12 @@ export const en: Messages = {
             customer: 'Customer',
             verified: 'Verified'
           }
+        },
+        addressBook: {
+          title: 'Address Book',
+          billingAddress: 'Billing Address',
+          shippingAddress: 'Shipping Address',
+          viewAllText: 'View all addresses'
         }
       },
       orders: {
@@ -298,7 +304,21 @@ export const en: Messages = {
         orderDateHeader: 'Ordered on:',
         totalHeader: 'Total price:',
         viewOrder: 'View order',
-        numberHeader: 'Order number:'
+        numberHeader: 'Order number:',
+        reorderAll: 'Reorder all products',
+        reorderSingle: 'Reorder product',
+        viewAllLines:
+          '{number, plural,=0 {No additional products} one {Show 1 more product} other {Show {number} more products}}',
+        detailsHeader: 'Address and payment information',
+        shippingAddressHeader: 'Delivery address',
+        billingAddressHeader: 'Invoice address',
+        overviewHeader: 'Overview',
+        shippingMethodHeader: 'Shipping method',
+        paymentMethodHeader: 'Payment method',
+        totalProducts: 'Total products',
+        shippingCosts: 'Shipping costs',
+        taxHeader: 'Tax',
+        commentsHeader: 'Comments'
       },
       quoteRequests: {
         requestDateHeader: 'Requested on:',
@@ -314,11 +334,20 @@ export const en: Messages = {
         orders: {
           title: 'Orders'
         },
+        order: {
+          title: 'Order'
+        },
         quotes: {
           title: 'Quotes'
         },
         quoteRequests: {
           title: 'Quote Requests'
+        },
+        quoteRequest: {
+          title: 'Quote Request'
+        },
+        quote: {
+          title: 'Quote'
         },
         infoAndPreferences: {
           title: 'Info & Preferences',
@@ -470,6 +499,16 @@ export const en: Messages = {
         new: 'New',
         shipped: 'Shipped'
       }
+    },
+    shippingMethods: {
+      freeShipping: 'Free Shipping',
+      flatRate: 'Flat Rate',
+      upsGround: 'UPS Ground',
+      upsSecondDayAir: 'UPS Second Day Air',
+      upsNextDayAir: 'UPS Next Day Air',
+      upsNextDayAirSaver: 'UPS Next Day Air Saver',
+      upsStandard: 'UPS Standard',
+      upsWorldwideExpedited: 'UPS Worldwide Expedited'
     }
   },
   summary: {

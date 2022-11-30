@@ -129,83 +129,85 @@ const CartItemAddedDialog: React.FC<CartListConfirmationProps> = ({
   );
 
   return (
-    <Modal
-      isOpen={!!lastAddedItems?.length}
-      isBlocking={false}
-      onDismiss={() => setLastAddedItems(undefined)}
-      styles={styles.modalContent}
-    >
-      <Stack tokens={{ childrenGap: rem(16) }}>
-        <Stack.Item>
-          <Stack horizontal horizontalAlign="space-between">
-            <Stack.Item>
-              <Text variant="xLarge">
-                {formatMessage(messages.productAdded)}
-              </Text>
-            </Stack.Item>
-            <Stack.Item>
-              <IconButton
-                iconProps={{ iconName: 'ChromeClose' }}
-                onClick={() => setLastAddedItems(undefined)}
-              />
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-        {warningMessages?.length && (
+    <>
+      <Modal
+        isOpen={!!lastAddedItems?.length}
+        isBlocking={false}
+        onDismiss={() => setLastAddedItems(undefined)}
+        styles={styles.modalContent}
+      >
+        <Stack tokens={{ childrenGap: rem(16) }}>
           <Stack.Item>
-            <Stack
-              tokens={{ padding: `${spacing.s1} 0`, childrenGap: spacing.s2 }}
-            >
-              {warningMessages?.map(warningMessage => (
-                <MessageBar
-                  messageBarType={MessageBarType.warning}
-                  key={warningMessage}
-                >
-                  {warningMessage}
-                </MessageBar>
-              ))}
+            <Stack horizontal horizontalAlign="space-between">
+              <Stack.Item>
+                <Text variant="xLarge">
+                  {formatMessage(messages.productAdded)}
+                </Text>
+              </Stack.Item>
+              <Stack.Item>
+                <IconButton
+                  iconProps={{ iconName: 'ChromeClose' }}
+                  onClick={() => setLastAddedItems(undefined)}
+                />
+              </Stack.Item>
             </Stack>
           </Stack.Item>
-        )}
-        {filteredItems?.length && (
-          <Stack.Item
-            root={{ className: 'list-scroll' }}
-            styles={styles.listWrapperStyles}
-          >
-            <List
-              items={items}
-              getKey={item => item.product.number}
-              onRenderCell={item => item && <CartItemAddedCard item={item} />}
-            />
+          {!!warningMessages?.length && (
+            <Stack.Item>
+              <Stack
+                tokens={{ padding: `${spacing.s1} 0`, childrenGap: spacing.s2 }}
+              >
+                {warningMessages?.map(warningMessage => (
+                  <MessageBar
+                    messageBarType={MessageBarType.warning}
+                    key={warningMessage}
+                  >
+                    {warningMessage}
+                  </MessageBar>
+                ))}
+              </Stack>
+            </Stack.Item>
+          )}
+          {filteredItems?.length && (
+            <Stack.Item
+              root={{ className: 'list-scroll' }}
+              styles={styles.listWrapperStyles}
+            >
+              <List
+                items={items}
+                getKey={item => item.product.number}
+                onRenderCell={item => item && <CartItemAddedCard item={item} />}
+              />
+            </Stack.Item>
+          )}
+          <Stack.Item>
+            <Stack horizontalAlign="space-between" horizontal wrap>
+              <Stack.Item>
+                <DefaultButton
+                  iconProps={{
+                    iconName: 'ChevronLeft',
+                    styles: styles.modalContinueButton
+                  }}
+                  text={formatMessage(messages.continueShopping)}
+                  onClick={() => setLastAddedItems(undefined)}
+                />
+              </Stack.Item>
+              <Stack.Item>
+                <PrimaryButton
+                  text={formatMessage(messages.goToCart)}
+                  styles={styles.modalCartButton}
+                  href={pagePaths.cart}
+                  onClick={ev => {
+                    ev.preventDefault();
+                    push(pagePaths.cart);
+                  }}
+                />
+              </Stack.Item>
+            </Stack>
           </Stack.Item>
-        )}
-        <Stack.Item>
-          <Stack horizontalAlign="space-between" horizontal wrap>
-            <Stack.Item>
-              <DefaultButton
-                iconProps={{
-                  iconName: 'ChevronLeft',
-                  styles: styles.modalContinueButton
-                }}
-                text={formatMessage(messages.continueShopping)}
-                onClick={() => setLastAddedItems(undefined)}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <PrimaryButton
-                text={formatMessage(messages.goToCart)}
-                styles={styles.modalCartButton}
-                href={pagePaths.cart}
-                onClick={ev => {
-                  ev.preventDefault();
-                  push(pagePaths.cart);
-                }}
-              />
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-      </Stack>
-    </Modal>
+        </Stack>
+      </Modal>
+    </>
   );
 };
 

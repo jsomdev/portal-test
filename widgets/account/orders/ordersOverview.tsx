@@ -52,7 +52,7 @@ export const OrdersOverview: React.FC = () => {
       ),
     {
       keepPreviousData: true,
-      enabled: !!isAuthenticated && isOrderHistoryEnabled && !!accountId,
+      enabled: isAuthenticated && isOrderHistoryEnabled && !!accountId,
       refetchOnMount: true,
       refetchOnWindowFocus: true
     }
@@ -63,8 +63,11 @@ export const OrdersOverview: React.FC = () => {
   }, [orders]);
 
   function updatePage(newPage: number): void {
-    router.query.page = newPage >= 1 ? newPage.toString() : '1';
-    router.push(router, undefined, { shallow: true });
+    router.push(
+      { query: { page: newPage >= 1 ? newPage.toString() : '1' } },
+      undefined,
+      { shallow: true }
+    );
   }
 
   const styles: OrdersOverviewStyles = {
@@ -93,7 +96,7 @@ export const OrdersOverview: React.FC = () => {
       {ordersStatus === 'success' && orders?.value.length && (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
+            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
               {orders.value.map(order => {
                 return (
                   <OrderCard compactView={false} key={order.id} order={order} />
