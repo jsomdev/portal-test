@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -91,11 +91,12 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
 }) => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage, formatNumber } = useIntl();
+  const { getQuantity, add } = useContext(CartContext);
   const [addToCartButtonQuantity, setAddToCartButtonQuantity] = useState(1);
   const [showCallout, setShowCallout] = useState(false);
-  const [lastItemAdded, setLastItemAdded] = useState<BaseCartItem | undefined>(
-    undefined
-  );
+  const [lastAddedBaseCartItem, setLastAddedBaseCartItem] = useState<
+    BaseCartItem | undefined
+  >(undefined);
   const { spacing } = useTheme();
   const calloutAnchor = React.useRef<HTMLDivElement>(null);
   const {
@@ -105,6 +106,33 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
     currencyCode,
     priceBreaks
   } = useProductPricing(product.number || '');
+
+  const handleAddToCart = useCallback(
+    (quantityToAdd: number) => {
+      if (product.number) {
+        setLastAddedBaseCartItem(
+          add(product.id || null, product.number, quantityToAdd, product.name)
+        );
+      }
+    },
+    [add, product.id, product.name, product.number]
+  );
+
+  const combineLastAddedBaseCartItemToCartItem = useCallback(() => {
+    if (!lastAddedBaseCartItem || !product) {
+      return [];
+    }
+    return combineCartItemsInformation(
+      [lastAddedBaseCartItem],
+      [product],
+      [
+        {
+          productNumber: product.number || '',
+          priceBreaks: []
+        }
+      ]
+    );
+  }, [lastAddedBaseCartItem, product]);
   const tooltipText: string | undefined = useMemo(() => {
     if (!isAuthenticated) {
       return formatMessage(messages.priceTooltipNotAuthenticated);
@@ -114,7 +142,6 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
     }
     return undefined;
   }, [formatMessage, getBasePrice, isAuthenticated]);
-  const { getQuantity, add } = useContext(CartContext);
 
   const cartQuantity: number | undefined = useMemo(() => {
     return getQuantity(product.number || '');
@@ -228,18 +255,6 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                   )}
                 </Stack.Item>
               )}
-            {/* {enableStockInfo && (
-              <Stack.Item>
-                <ActionButton
-                  iconProps={{ iconName: 'ProductionFloorManagement' }}
-                  styles={styles.actionButton}
-                  allowDisabledFocus
-                  disabled={true}
-                >
-                  {messages.inStock}
-                </ActionButton>
-              </Stack.Item>
-            )} */}
           </Stack>
         </Stack.Item>
         <Stack.Item styles={{ root: { width: 220 } }}>
@@ -249,37 +264,17 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                 <AddToCartButton
                   productNumber={product.number}
                   onQuantityChanged={setAddToCartButtonQuantity}
-                  onAddToCartClicked={quantityToAdd =>
-                    product.number
-                      ? setLastItemAdded(
-                          add(
-                            product.id || null,
-                            product.number,
-                            quantityToAdd,
-                            product.name
-                          )
-                        )
-                      : null
-                  }
+                  onAddToCartClicked={handleAddToCart}
                 />
               )}
             </Stack.Item>
           </Stack>
         </Stack.Item>
       </Stack>
-      {product && lastItemAdded && (
+      {product && lastAddedBaseCartItem && (
         <CartItemAddedDialog
-          lastAddedItems={combineCartItemsInformation(
-            [lastItemAdded],
-            [product],
-            [
-              {
-                productNumber: product.number || '',
-                priceBreaks: priceBreaks || []
-              }
-            ]
-          )}
-          setLastAddedItems={setLastItemAdded}
+          lastAddedItems={combineLastAddedBaseCartItemToCartItem()}
+          setLastAddedItems={setLastAddedBaseCartItem}
         />
       )}
     </>

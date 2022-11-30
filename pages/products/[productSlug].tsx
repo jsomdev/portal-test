@@ -32,10 +32,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
-import {
-  fetchProductForProductPage,
-  fetchProductsForStaticPaths
-} from '@services/portal-api/products';
+import { fetchProductForProductPage } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
 import { generateProductStructuredData } from '@utilities/structuredData';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
@@ -50,7 +47,8 @@ import { ProductPerformance } from '@widgets/product-page/product-performance/pr
 import { ProductSections } from '@widgets/product-page/product-sections/productSections';
 import { ProductSectionKey } from '@widgets/product-page/product-sections/productSections.types';
 import { ProductSpecifications } from '@widgets/product-page/product-specifications/productSpecifications';
-import { ProductStickyHeader } from '@widgets/product-page/product-sticky-header/productStickyHeader';
+import { ProductStickyHeader } from '@widgets/product-page/product-sticky/productStickyHeader';
+import { ProductStickyThumb } from '@widgets/product-page/product-sticky/productStickyThumb';
 import { ProductTopSection } from '@widgets/product-page/product-top-section/productTopSection';
 
 export interface ProductsProps {
@@ -109,6 +107,7 @@ const Products: NextPage<
         <AppLayout>
           <ProductPageProvider product={product}>
             <ProductStickyHeader product={product} />
+            <ProductStickyThumb product={product} />
             <ContentContainerStack
               outerStackProps={{
                 tokens: {

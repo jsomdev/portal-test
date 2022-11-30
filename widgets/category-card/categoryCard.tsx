@@ -26,6 +26,16 @@ interface CategoryCardStyles {
   button: Partial<IButtonStyles>;
 }
 
+function getWidth(size: CategoryCardSize): number {
+  switch (size) {
+    case 'small':
+      return 216;
+
+    default:
+      return 268;
+  }
+}
+
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   href,
   imageAlt,
@@ -33,15 +43,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
   size = 'large',
   name
 }) => {
-  function getWidth(size: CategoryCardSize): number {
-    switch (size) {
-      case 'small':
-        return 216;
-
-      default:
-        return 268;
-    }
-  }
   const { palette, fonts } = useTheme();
   const styles: CategoryCardStyles = {
     container: {

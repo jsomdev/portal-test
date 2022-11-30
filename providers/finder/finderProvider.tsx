@@ -7,7 +7,6 @@ import { useQuery, useQueryClient } from 'react-query';
 import { useFacets } from '@providers/facets/facetsContext';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
-import { productSeriesFacet } from '@services/facet-service/facets/series';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
@@ -41,13 +40,14 @@ interface FinderProviderProps {
  */
 
 export const FINDER_PAGE_SIZE = 10;
+const textFormatter = new TextFormatter();
 export const FinderProvider: React.FC<FinderProviderProps> = ({
   children,
   // TODO: initialData may be used. Don't want to remove just yet
   initialData
 }) => {
   const { query, pathname, push } = useRouter();
-  const textFormatter = new TextFormatter();
+
   // TODO: initialData may be used. Don't want to remove just yet
   const queryClient = useQueryClient();
   const [productCount, setProductCount] = useState<number | undefined>(
@@ -241,6 +241,10 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     (facet: Facet) => {
       const isHiddenByConfiguration: boolean =
         !!facet.configuration.hideInProductFinderPanel;
+
+      if (isHiddenByConfiguration) {
+        return false;
+      }
       let isHiddenByHierarchy: boolean = false;
 
       if (facet.key === FacetKey.ModelId) {
@@ -251,7 +255,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
       }
 
-      if (isHiddenByConfiguration || isHiddenByHierarchy) {
+      if (isHiddenByHierarchy) {
         return false;
       }
 
@@ -261,12 +265,15 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
       const isFacetWithMoreThan1Result: boolean = !!(
         facetResults && facetResults.length > 1
       );
+      if (isFacetWithMoreThan1Result) {
+        return true;
+      }
       const isActiveCheckboxFacet: boolean =
         facet.configuration.controlType === FacetControlType.Checkbox
           ? isFacetActive(facet.key)
           : false;
 
-      return isFacetWithMoreThan1Result || isActiveCheckboxFacet;
+      return isActiveCheckboxFacet;
     },
     [getFacetResult, isFacetActive, preFilters.categoryId]
   );

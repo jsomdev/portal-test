@@ -2,8 +2,9 @@ import React from 'react';
 
 import {
   IStackItemStyles,
+  ITextStyles,
   Stack,
-  VerticalDivider,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
@@ -20,6 +21,7 @@ import { ProductListItemPricing } from './listItemPricing';
 interface ProductListItemComponentStyles {
   productInfoContainer: IStackItemStyles;
   productPricingContainer: IStackItemStyles;
+  chipDivider: ITextStyles;
 }
 
 export type FacetedSearchProductViewModel = {
@@ -35,11 +37,21 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
   chips,
   data
 }) => {
-  const { spacing } = useTheme();
+  const { spacing, fonts, palette } = useTheme();
 
   const styles: ProductListItemComponentStyles = {
     productInfoContainer: { root: { flex: 1, minWidth: 220 } },
-    productPricingContainer: { root: { padding: `${spacing.s1} 0` } }
+    productPricingContainer: { root: { padding: `${spacing.s1} 0` } },
+    chipDivider: {
+      root: {
+        fontSize: fonts.mediumPlus.fontSize,
+        color: palette.neutralLight,
+        display: 'inline-block',
+        marginLeft: 4,
+        lineHeight: '140%',
+        marginRight: 4
+      }
+    }
   };
 
   return (
@@ -54,32 +66,25 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
       </Stack>
 
       <Stack
-        verticalAlign="space-between"
         styles={styles.productInfoContainer}
-        tokens={{ padding: spacing.s1 }}
+        tokens={{
+          padding: `${spacing.m} ${spacing.s1}`,
+          childrenGap: spacing.s1
+        }}
       >
-        <Stack>
+        <Stack tokens={{ childrenGap: spacing.s2 }}>
           <ProductCardTitleLink {...product} />
 
-          <Stack
-            horizontal
-            wrap
-            tokens={{
-              childrenGap: spacing.s2,
-              padding: `${spacing.s1} 0`
-            }}
-          >
+          <div>
             {chips.map((chip, index) => (
               <React.Fragment key={chip.code}>
                 <FacetChip key={chip.code} {...chip} />
                 {chips.length > 1 && index < chips.length - 1 && (
-                  <Stack tokens={{ padding: `0 ${spacing.s1}` }}>
-                    <VerticalDivider />
-                  </Stack>
+                  <Text styles={styles.chipDivider}>|</Text>
                 )}
               </React.Fragment>
             ))}
-          </Stack>
+          </div>
         </Stack>
         <TabletAndDesktop>
           <Stack.Item tokens={{ padding: `${spacing.s1} 0` }}>
@@ -93,7 +98,7 @@ export const ProductListItem: React.FC<ProductListItemProps> = ({
         </Mobile>
       </Stack>
       <TabletAndDesktop>
-        <Stack tokens={{ padding: `${spacing.s1} 0` }}>
+        <Stack tokens={{ padding: `${spacing.m} ${spacing.s1}` }}>
           <ProductListItemPricing product={data} />
         </Stack>
       </TabletAndDesktop>

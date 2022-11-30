@@ -20,7 +20,6 @@ import { liquidPressureFacet } from '../facets/range-facets/liquidPressure';
 import { liquidSpecificGravityFacet } from '../facets/range-facets/liquidSpecificGravity';
 import { sprayAngleFacet } from '../facets/range-facets/sprayAngle';
 import { relativeDropSizeGroupFacet } from '../facets/relativeDropSizeGroup';
-import { productSeriesFacet } from '../facets/series';
 import { shaftLengthFacet } from '../facets/shaftLength';
 import { sprayAngleCatalogCodeFacet } from '../facets/sprayAngleCatalogCode';
 import { sprayCoverageFacet } from '../facets/sprayCoverage';

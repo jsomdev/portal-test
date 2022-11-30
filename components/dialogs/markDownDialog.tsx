@@ -15,11 +15,14 @@ export const MarkDownDialog: React.FC<MarkdownDialogProps> = ({
   markdownSource,
   title
 }) => {
+  if (!markdownSource) {
+    return null;
+  }
   return (
     <Dialog
       dialogContentProps={{ showCloseButton: true, title }}
       {...dialogProps}
-      hidden={!markdownSource || !title || dialogProps.hidden}
+      hidden={dialogProps.hidden}
     >
       <ReactMarkdown className="reactMarkdown">{markdownSource}</ReactMarkdown>
     </Dialog>

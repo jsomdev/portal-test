@@ -149,36 +149,32 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   };
   return (
     <Stack horizontal tokens={{ childrenGap: spacing.s2 }}>
-      <Stack.Item>
-        <SpinButton
-          value={`${quantity}`}
-          styles={mergeStyleSets(styles.spinButton, spinButtonStyles)}
-          inputProps={{
-            onChange: ev => {
-              handleValidate((ev.currentTarget as HTMLInputElement).value);
-            }
-          }}
-          onIncrement={() => {
-            handleIncrement();
-          }}
-          onDecrement={() => {
-            handleDecrement();
-          }}
-          onValidate={(value: string) => {
-            handleValidate(value);
-          }}
-        />
-      </Stack.Item>
-      <Stack.Item>
-        <PrimaryButton
-          text={formatMessage(messages.addToCart)}
-          styles={mergeStyleSets(styles.addToCartButton, addButtonStyles)}
-          iconProps={{ iconName: 'ShoppingCart' }}
-          onClick={() => {
-            handleAddToCart();
-          }}
-        />
-      </Stack.Item>
+      <SpinButton
+        value={`${quantity}`}
+        styles={mergeStyleSets(styles.spinButton, spinButtonStyles)}
+        inputProps={{
+          onChange: ev => {
+            handleValidate((ev.currentTarget as HTMLInputElement).value);
+          }
+        }}
+        onIncrement={() => {
+          handleIncrement();
+        }}
+        onDecrement={() => {
+          handleDecrement();
+        }}
+        onValidate={(value: string) => {
+          handleValidate(value);
+        }}
+      />
+      <PrimaryButton
+        text={formatMessage(messages.addToCart)}
+        styles={mergeStyleSets(styles.addToCartButton, addButtonStyles)}
+        iconProps={{ iconName: 'ShoppingCart' }}
+        onClick={() => {
+          handleAddToCart();
+        }}
+      />
     </Stack>
   );
 };

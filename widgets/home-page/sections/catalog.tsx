@@ -1,13 +1,9 @@
 import { useMemo } from 'react';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
 import {
-  ActionButton,
-  IButtonStyles,
   IStackStyles,
   ITextStyles,
   Stack,

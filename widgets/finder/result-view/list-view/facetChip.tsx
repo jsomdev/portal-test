@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { MarkDownDialog } from '@components/dialogs/markDownDialog';
-import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
+import { ITextStyles, Text, useTheme } from '@fluentui/react';
 
 interface FacetChipStyles {
   root: ITextStyles;
@@ -30,6 +30,7 @@ export const FacetChip: React.FC<FacetChipProps> = ({
         borderBottom: `1px ${hasDialog ? 'dashed' : 'none'} ${
           palette.neutralPrimaryAlt
         }`,
+        lineHeight: '140%',
         display: 'inline',
         '&:hover': {
           cursor: hasDialog ? 'pointer' : 'default',
@@ -40,19 +41,21 @@ export const FacetChip: React.FC<FacetChipProps> = ({
   };
   return (
     <>
-      <Stack.Item onClick={hasDialog ? () => setShowDialog(true) : undefined}>
-        <Text title={code} styles={styles.root}>
-          {value}
-        </Text>
-        <MarkDownDialog
-          dialogProps={{
-            onDismiss: () => setShowDialog(false),
-            hidden: !showDialog
-          }}
-          title={title}
-          markdownSource={description}
-        />
-      </Stack.Item>
+      <Text
+        onClick={hasDialog ? () => setShowDialog(true) : undefined}
+        title={code}
+        styles={styles.root}
+      >
+        {value}
+      </Text>
+      <MarkDownDialog
+        dialogProps={{
+          onDismiss: () => setShowDialog(false),
+          hidden: !showDialog
+        }}
+        title={title}
+        markdownSource={description}
+      />
     </>
   );
 };

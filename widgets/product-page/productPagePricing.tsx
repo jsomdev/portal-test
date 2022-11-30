@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -78,6 +78,7 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
 }) => {
   const isAuthenticated = useIsAuthenticated();
   const { spacing, fonts } = useTheme();
+  const { getQuantity, add } = useContext(CartContext);
   const { formatMessage, formatNumber } = useIntl();
   const {
     status: priceBreaksStatus,
@@ -87,9 +88,9 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
     priceBreaks
   } = useProductPricing(product.number || '');
   const [addToCartButtonQuantity, setAddToCartButtonQuantity] = useState(1);
-  const [lastItemAdded, setLastItemAdded] = useState<BaseCartItem | undefined>(
-    undefined
-  );
+  const [lastAddedBaseCartItem, setLastAddedBaseCartItem] = useState<
+    BaseCartItem | undefined
+  >(undefined);
   const tooltipText: string | undefined = useMemo(() => {
     if (!isAuthenticated) {
       return formatMessage(messages.priceTooltipNotAuthenticated);
@@ -99,7 +100,33 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
     }
     return undefined;
   }, [formatMessage, getBasePrice, isAuthenticated]);
-  const { getQuantity, add } = useContext(CartContext);
+
+  const handleAddToCart = useCallback(
+    (quantityToAdd: number) => {
+      if (product.number) {
+        setLastAddedBaseCartItem(
+          add(product.id || null, product.number, quantityToAdd, product.name)
+        );
+      }
+    },
+    [add, product.id, product.name, product.number]
+  );
+
+  const combineLastAddedBaseCartItemToCartItem = useCallback(() => {
+    if (!lastAddedBaseCartItem || !product) {
+      return [];
+    }
+    return combineCartItemsInformation(
+      [lastAddedBaseCartItem],
+      [product],
+      [
+        {
+          productNumber: product.number || '',
+          priceBreaks: []
+        }
+      ]
+    );
+  }, [lastAddedBaseCartItem, product]);
 
   const cartQuantity: number | undefined = useMemo(() => {
     return getQuantity(product.number || '');
@@ -155,18 +182,7 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
           <AddToCartButton
             productNumber={product.number}
             onQuantityChanged={setAddToCartButtonQuantity}
-            onAddToCartClicked={quantityToAdd =>
-              product.number
-                ? setLastItemAdded(
-                    add(
-                      product.id || null,
-                      product.number,
-                      quantityToAdd,
-                      product.name
-                    )
-                  )
-                : null
-            }
+            onAddToCartClicked={handleAddToCart}
           />
         )}
       </Stack>
@@ -231,55 +247,20 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
                 }}
                 productNumber={product.number}
                 onQuantityChanged={setAddToCartButtonQuantity}
-                onAddToCartClicked={quantityToAdd =>
-                  product.number
-                    ? setLastItemAdded(
-                        add(
-                          product.id || null,
-                          product.number,
-                          quantityToAdd,
-                          product.name
-                        )
-                      )
-                    : null
-                }
+                onAddToCartClicked={handleAddToCart}
               />
             )}
           </Stack.Item>
         </Stack>
       </Stack>
-      {product && lastItemAdded && (
-        <CartItemAddedDialog
-          lastAddedItems={combineCartItemsInformation(
-            [lastItemAdded],
-            [product],
-            [
-              {
-                productNumber: product.number || '',
-                priceBreaks: priceBreaks || []
-              }
-            ]
-          )}
-          setLastAddedItems={setLastItemAdded}
-        />
-      )}
       <PriceBreaksSummary
         priceBreaks={priceBreaks}
         quantity={cartQuantity + addToCartButtonQuantity}
       />
-      {product && lastItemAdded && (
+      {product && lastAddedBaseCartItem && (
         <CartItemAddedDialog
-          lastAddedItems={combineCartItemsInformation(
-            [lastItemAdded],
-            [product],
-            [
-              {
-                productNumber: product.number || '',
-                priceBreaks: priceBreaks || []
-              }
-            ]
-          )}
-          setLastAddedItems={setLastItemAdded}
+          lastAddedItems={combineLastAddedBaseCartItemToCartItem()}
+          setLastAddedItems={setLastAddedBaseCartItem}
         />
       )}
     </>

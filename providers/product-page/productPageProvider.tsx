@@ -1,8 +1,7 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
-import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { getAudience } from '@services/i18n';
 import {
   Attribute,

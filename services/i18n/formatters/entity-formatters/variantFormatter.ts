@@ -26,6 +26,10 @@ export class VariantFormatter {
   public formatDisplayValue(): string {
     return this.displayFormatter.format();
   }
+  // TODO: Implement when api is ready
+  public formatHref(): string {
+    return '/to-be-implemented';
+  }
 
   private formatBoolean(value: boolean, intl: IntlShape): string {
     const id: string = value

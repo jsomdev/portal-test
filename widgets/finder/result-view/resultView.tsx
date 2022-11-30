@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { ClosePanelButton } from '@components/buttons/closePanelButton';
+import { StickyThumbContainer } from '@components/sticky/stickyThumbContainer';
 import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
   IButtonStyles,
@@ -160,10 +161,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
       root: {
         paddingLeft: spacing.m,
         paddingRight: spacing.m,
-        width: '100%',
-        ...mediaQueryFrom('tablet', {
-          width: 'calc(100% - 360px)'
-        })
+        width: '100%'
       }
     },
     stickyContainer: {
@@ -288,17 +286,14 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
             </>
           )}
           <Mobile>
-            <Stack
-              tokens={{ padding: `${spacing.m} ${rem(25)}` }}
-              styles={styles.stickyContainer}
-            >
+            <StickyThumbContainer>
               <FilterResultsButton
                 onClick={() => setIsFiltersPanelOpen(true)}
                 text={formatMessage(messages.filterResults, {
                   productCount: productCount || 0
                 })}
               />
-            </Stack>
+            </StickyThumbContainer>
           </Mobile>
         </Stack>
       </Stack.Item>

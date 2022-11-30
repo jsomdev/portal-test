@@ -6,7 +6,10 @@ import { VariantFormatter } from '@services/i18n/formatters/entity-formatters/va
 import { AttributeType, Option, Variant } from '@services/portal-api';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 
-import { ProductConfigurationItem } from './productConfigurations.types';
+import {
+  ProductConfigurationItem,
+  ProductConfigurationItemOption
+} from './productConfigurations.types';
 
 export function mapOptionsToProductConfigurationItems(
   options: Option[],
@@ -37,8 +40,39 @@ export function mapOptionsToProductConfigurationItems(
     );
     return {
       title: attributeTypeFormatter.formatName(),
-      text: variantFormatter.formatDisplayValue()
+      text: variantFormatter.formatDisplayValue(),
+      options: mapVariantsToDropdownOptions(
+        option.variants || [],
+        productNumber,
+        intl,
+        systemOfMeasurement,
+        locale
+      )
     };
   });
   return items;
+}
+
+function mapVariantsToDropdownOptions(
+  variants: Variant[],
+  productNumber: string | undefined,
+  intl: IntlShape,
+  systemOfMeasurement: SystemOfMeasurement,
+  locale: string = ENVIRONMENT_VARIABLES.defaultLocale
+): ProductConfigurationItemOption[] {
+  return variants.map(variant => {
+    const variantFormatter: VariantFormatter = new VariantFormatter(
+      variant,
+      intl,
+      systemOfMeasurement,
+      locale
+    );
+    const option: ProductConfigurationItemOption = {
+      key: variant.productNumber || '',
+      text: variantFormatter.formatDisplayValue(),
+      selected: productNumber === variant.productNumber,
+      href: variantFormatter.formatHref()
+    };
+    return option;
+  });
 }
