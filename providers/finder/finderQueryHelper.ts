@@ -54,7 +54,7 @@ export class FinderQueryHelper {
   static removeSearchInUrlQuery(query: ParsedUrlQuery): ParsedUrlQuery {
     const newQuery: ParsedUrlQuery = { ...query };
 
-    delete newQuery['search'];
+    delete newQuery['query'];
 
     return newQuery;
   }

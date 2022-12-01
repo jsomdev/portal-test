@@ -53,7 +53,7 @@ export const ActiveFilters: React.FC = () => {
   const activeFilterChips: ActiveFilterChipProps[] = useMemo(() => {
     const searchFilterChip: ActiveFilterChipProps | undefined = searchQuery
       ? mapSearchQueryToActiveFilterChipProps(
-          intl.formatMessage(messages.searchFilter, { value: searchQuery }),
+          intl.formatMessage(messages.searchFilter, { query: searchQuery }),
           clearSearch
         )
       : undefined;

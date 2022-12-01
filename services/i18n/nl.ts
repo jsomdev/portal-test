@@ -34,6 +34,9 @@ export const nl: Messages = {
     }
   },
   searchBar: {
+    noResults: 'Er werden geen resultaten gevonden...',
+    recentSearches: 'Recente zoekopdrachten',
+    suggestedProducts: 'Voorgestelde producten',
     placeholder: 'Zoek onderdeel nummer...'
   },
   pricing: {
@@ -131,6 +134,11 @@ export const nl: Messages = {
   pages: {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
+    },
+    search: {
+      title: `Search results for: '{searchQuery}'`,
+      headDescription: 'Experts in Spray Technology',
+      headTitle: 'Search {searchQuery}'
     },
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
@@ -242,7 +250,9 @@ export const nl: Messages = {
     },
     category: {
       title: '{name}',
-      titleWithSearch: '{searchQuery} in {name}'
+      titleWithoutSearchOrCategory: 'Blader door alle producten',
+      titleWithOnlySearch: `Zoekresultaten voor: ''{searchQuery}''`,
+      titleWithSearchAndCategory: "''{searchQuery}'' in {name}"
     },
     series: {
       headTitle: '{name}',

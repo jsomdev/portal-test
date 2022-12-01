@@ -34,6 +34,9 @@ export const messageIds: Messages = {
     }
   },
   searchBar: {
+    noResults: 'searchBar.noResults',
+    recentSearches: 'searchBar.recentSearches',
+    suggestedProducts: 'searchBar.suggestedProducts',
     placeholder: 'searchBar.placeholder'
   },
   pricing: {
@@ -130,6 +133,11 @@ export const messageIds: Messages = {
   pages: {
     default: {
       headTitle: 'pages.default.headTitle'
+    },
+    search: {
+      title: 'pages.search.title',
+      headDescription: 'pages.search.headTitle',
+      headTitle: 'pages.search.headDescription'
     },
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
@@ -240,7 +248,10 @@ export const messageIds: Messages = {
     },
     category: {
       title: 'pages.category.title',
-      titleWithSearch: 'pages.category.titleWithSearch'
+      titleWithoutSearchOrCategory:
+        'pages.category.titleWithoutSearchOrCategory',
+      titleWithSearchAndCategory: 'pages.category.titleWithSearchAndCategory',
+      titleWithOnlySearch: 'pages.category.titleWithOnlySearch'
     },
     series: {
       headTitle: 'pages.series.headTitle',

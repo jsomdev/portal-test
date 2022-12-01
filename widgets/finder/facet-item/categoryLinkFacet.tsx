@@ -11,6 +11,7 @@ import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { messageIds } from '@services/i18n';
 import { FacetOptionFormatter } from '@services/i18n/formatters/facetFormatter';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 
 import {
@@ -112,11 +113,14 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
             return (
               <NextLink
                 key={option.key}
+                locale={locale}
                 href={{
-                  pathname,
+                  pathname: pagePaths.category(
+                    option.configuration.seoPath || ''
+                  ),
+
                   query: {
-                    ...query,
-                    categorySlug: [option.configuration.seoPath as string]
+                    ...query
                   }
                 }}
               >

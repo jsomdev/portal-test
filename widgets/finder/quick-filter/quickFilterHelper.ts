@@ -38,24 +38,35 @@ export function mapFacetOptionsToQuickFilterItem(
   systemOfMeasurement: SystemOfMeasurement,
   locale: string
 ): QuickFilterItem[] {
-  return facetOptions.map(facetOption => {
-    const facetOptionFormatter: FacetOptionFormatter = new FacetOptionFormatter(
-      facetOption,
-      undefined,
-      intl,
-      systemOfMeasurement,
-      locale
-    );
-    return {
-      query: {
-        [facetKey]: query[facetKey]
-          ? (query[facetKey] as string).concat(`,${facetOption.key}`)
-          : facetOption.key
-      },
-      image: null,
-      isActive: facetOption.isActive,
-      shallowNavigation: true,
-      text: facetOptionFormatter.formatDisplayValue()
-    };
-  });
+  return facetOptions
+    .filter(facetOption => {
+      if (facetKey === FacetKey.CategoryId) {
+        return !facetOption.parentId;
+      }
+      return true;
+    })
+    .map(facetOption => {
+      const facetOptionFormatter: FacetOptionFormatter =
+        new FacetOptionFormatter(
+          facetOption,
+          undefined,
+          intl,
+          systemOfMeasurement,
+          locale
+        );
+      return {
+        query:
+          facetKey === FacetKey.CategoryId
+            ? { categorySlug: [facetOption.configuration.seoPath || ''] }
+            : {
+                [facetKey]: query[facetKey]
+                  ? (query[facetKey] as string).concat(`,${facetOption.key}`)
+                  : facetOption.key
+              },
+        image: null,
+        isActive: facetOption.isActive,
+        shallowNavigation: facetKey !== FacetKey.CategoryId,
+        text: facetOptionFormatter.formatDisplayValue()
+      };
+    });
 }

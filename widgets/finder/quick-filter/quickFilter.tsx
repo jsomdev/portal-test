@@ -24,7 +24,7 @@ import {
 } from './quickFilterHelper';
 
 interface QuickFiltersProps {
-  subCategories: Category[];
+  category: Category | undefined;
 }
 
 interface QuickFiltersStyles {
@@ -35,7 +35,7 @@ interface QuickFiltersStyles {
 
 const NAVIGATION_FAILSAFE_WIDTH: string = rem(32);
 
-export const QuickFilter: React.FC<QuickFiltersProps> = ({ subCategories }) => {
+export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
   const { visibleMainFacets, getFacetResult } = useFinder();
 
   const intl = useIntl();
@@ -45,11 +45,19 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ subCategories }) => {
   const { query } = useRouter();
 
   const quickFilterFacet: Facet | undefined = useMemo(() => {
-    return visibleMainFacets.filter(
-      facet =>
-        ![FacetKey.CategoryId, FacetKey.CapacitySize].includes(facet.key) &&
+    return visibleMainFacets.filter(facet => {
+      const excludedKeys: FacetKey[] = [
+        FacetKey.CapacitySize,
+        FacetKey.CategoryId
+      ];
+
+      console.log(excludedKeys);
+
+      return (
+        !excludedKeys.includes(facet.key) &&
         !facet.options.find(option => option.isActive)
-    )[0];
+      );
+    })[0];
   }, [visibleMainFacets]);
 
   const quickFilterItems: QuickFilterItem[] = useMemo(() => {
@@ -60,9 +68,10 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ subCategories }) => {
       const categoryResult = getFacetResult(categoryFacet);
       const categoryResultValues: string[] =
         categoryResult?.map(option => option.value.toString()) || [];
-      const filteredSubCategories: Category[] = subCategories.filter(category =>
-        category.id ? categoryResultValues.includes(category.id) : false
-      );
+      const filteredSubCategories: Category[] =
+        category?.children?.filter(category =>
+          category.id ? categoryResultValues.includes(category.id) : false
+        ) || [];
       if (filteredSubCategories.length) {
         return mapCategoriesToQuickFilterItems(filteredSubCategories, locale);
       }
@@ -89,14 +98,14 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ subCategories }) => {
     }
     return [];
   }, [
-    getFacetResult,
-    intl,
-    locale,
+    visibleMainFacets,
     quickFilterFacet,
+    getFacetResult,
+    category?.children,
+    locale,
     query,
-    subCategories,
-    systemOfMeasurement,
-    visibleMainFacets
+    intl,
+    systemOfMeasurement
   ]);
 
   const styles: QuickFiltersStyles = {

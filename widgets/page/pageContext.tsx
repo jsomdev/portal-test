@@ -4,10 +4,16 @@ import { LocalePaths } from '@widgets/page/page.types';
 
 export interface PageContextProps {
   localePaths: LocalePaths;
+  showPageOverlay: boolean;
+  togglePageOverlay: (on: boolean) => void;
 }
 
 const initialContext: PageContextProps = {
-  localePaths: {}
+  localePaths: {},
+  showPageOverlay: false,
+  togglePageOverlay: () => {
+    throw Error('Not implemented');
+  }
 };
 
 export const PageContext = createContext<PageContextProps>(initialContext);

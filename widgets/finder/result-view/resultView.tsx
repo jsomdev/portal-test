@@ -45,7 +45,8 @@ import { ResultsHeader } from './resultsHeader';
 
 export type ResultViewType = 'list' | 'overview';
 interface ResultViewProps {
-  category: Category;
+  category?: Category;
+  searchQuery?: string;
   viewAs: ResultViewType;
 }
 
@@ -65,9 +66,19 @@ const messages = defineMessages({
     description: 'Title for the category result view',
     defaultMessage: 'Category'
   },
-  titleWithSearch: {
-    id: messageIds.pages.category.titleWithSearch,
+  titleWithSearchAndCategory: {
+    id: messageIds.pages.category.titleWithSearchAndCategory,
     description: 'Title for the category result view with a search query',
+    defaultMessage: ''
+  },
+  titleWithOnlySearch: {
+    id: messageIds.pages.category.titleWithOnlySearch,
+    description: 'Title for the result view with a search query',
+    defaultMessage: ''
+  },
+  titleWithoutSearchOrCategory: {
+    id: messageIds.pages.category.titleWithoutSearchOrCategory,
+    description: 'Title for the result view without a search query or category',
     defaultMessage: ''
   },
   panelTitle: {
@@ -92,14 +103,16 @@ const messages = defineMessages({
   }
 });
 
-export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
+export const ResultView: React.FC<ResultViewProps> = ({
+  category,
+  viewAs,
+  searchQuery
+}) => {
   const [isFiltersPanelOpen, setIsFiltersPanelOpen] = useState<boolean>(false);
   const { spacing, palette, semanticColors } = useTheme();
-  const { locale } = useIntl();
+  const { locale, formatMessage } = useIntl();
   const { productCount, modelCount } = useFinder();
   const router = useRouter();
-  const { formatMessage } = useIntl();
-
   const page = useMemo(() => {
     const pageValue: number = Number(router.query.page || '1');
     const isValidPage =
@@ -112,17 +125,38 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
     router.query.page = newPage >= 1 ? newPage.toString() : '1';
     router.push(router, undefined, { shallow: true });
   }
-  const categoryFormatter = new CategoryFormatter(category, locale);
+  const categoryFormatter = useMemo(() => {
+    return new CategoryFormatter(category, locale);
+  }, [category, locale]);
+  const title = useMemo(() => {
+    if (searchQuery) {
+      return category
+        ? formatMessage(messages.titleWithSearchAndCategory, {
+            name: categoryFormatter.formatName(),
+            searchQuery: searchQuery
+          })
+        : formatMessage(messages.titleWithOnlySearch, {
+            searchQuery: searchQuery
+          });
+    }
 
+    if (category) {
+      return formatMessage(messages.title, {
+        name: categoryFormatter.formatName()
+      });
+    }
+
+    return formatMessage(messages.titleWithoutSearchOrCategory);
+  }, [searchQuery, formatMessage, categoryFormatter, category]);
   const overviewItems: ProductResultOverviewItem[] = useMemo(() => {
     if (viewAs == 'overview') {
       return mapCategoriesToProductResultOverviewItems(
-        category.children || [],
+        category?.children || [],
         locale
       );
     }
     return [];
-  }, [category.children, locale, viewAs]);
+  }, [category?.children, locale, viewAs]);
 
   const styles: ResultViewStyles = {
     panel: {
@@ -161,7 +195,10 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
       root: {
         paddingLeft: spacing.m,
         paddingRight: spacing.m,
-        width: '100%'
+        width: '100%',
+        ...mediaQueryFrom('tablet', {
+          width: 'calc(100% - 360px)'
+        })
       }
     },
     stickyContainer: {
@@ -243,15 +280,11 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
       <Stack.Item styles={styles.mainContainer}>
         <Stack tokens={{ childrenGap: `${spacing.m} 0` }}>
           <PagesHeader
-            title={formatMessage(messages.title, {
-              name: categoryFormatter.formatName()
-            })}
+            title={title}
             description={categoryFormatter.formatDescription()}
           />
 
-          {viewAs === 'list' && (
-            <QuickFilter subCategories={category.children || []} />
-          )}
+          {viewAs === 'list' && <QuickFilter category={category} />}
           <ResultsHeader
             onClickFilter={() => setIsFiltersPanelOpen(true)}
             filterButtonText={formatMessage(messages.filterResults, {
@@ -277,7 +310,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category, viewAs }) => {
             </>
           )}
 
-          {viewAs === 'overview' && (
+          {viewAs === 'overview' && category && (
             <>
               <ProductResultOverview
                 category={category}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
@@ -30,6 +30,10 @@ const messages = defineMessages({
 const Page: NextPage<PageProps> = ({ metaProps, i18nProps, children }) => {
   const router = useRouter();
   const { formatMessage } = useIntl();
+  const [showPageOverlay, setShowPageOverlay] = useState<boolean>(false);
+  const togglePageOverlay = useCallback((on: boolean) => {
+    setShowPageOverlay(on);
+  }, []);
 
   const { defaultLocale } = router;
   const { description, keywords, image, imageAlt, noIndex } = metaProps;
@@ -52,6 +56,8 @@ const Page: NextPage<PageProps> = ({ metaProps, i18nProps, children }) => {
   return (
     <PageContext.Provider
       value={{
+        showPageOverlay,
+        togglePageOverlay: togglePageOverlay,
         localePaths: i18nProps.localePaths || {}
       }}
     >

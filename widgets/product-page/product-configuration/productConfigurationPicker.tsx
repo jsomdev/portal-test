@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import { useIntl } from 'react-intl';
 
 import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
-import { useSystemOfMeasurement } from '@providers/system-of-measurement/systemOfMeasurementContext';
 
 import {
   ProductConfigurationItem,
@@ -20,10 +18,7 @@ interface ProductConfigurationPickerStyles {
 export const ProductConfigurationPicker: React.FC<
   ProductConfigurationPickerProps
 > = ({ items }) => {
-  const { spacing, palette, semanticColors, effects } = useTheme();
-  const intl = useIntl();
-  const { locale } = intl;
-  const { systemOfMeasurement } = useSystemOfMeasurement();
+  const { spacing, palette } = useTheme();
 
   const styles: ProductConfigurationPickerStyles = {
     label: {

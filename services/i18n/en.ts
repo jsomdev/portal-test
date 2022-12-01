@@ -34,7 +34,10 @@ export const en: Messages = {
     }
   },
   searchBar: {
-    placeholder: 'Search by part number...'
+    placeholder: 'Looking for...',
+    noResults: 'No results found. Try something else...',
+    recentSearches: 'Recent searches',
+    suggestedProducts: 'Suggested Products'
   },
   pricing: {
     quantityLabel: 'Quantity',
@@ -126,6 +129,11 @@ export const en: Messages = {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },
+    search: {
+      title: `Search results for: '{searchQuery}'`,
+      headDescription: 'Experts in Spray Technology',
+      headTitle: 'Search {searchQuery}'
+    },
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
@@ -190,7 +198,7 @@ export const en: Messages = {
           imageAlt: 'Hero image',
           title: 'Choose Quality Nozzles',
           description: `Paired with excellent customer service, Spraying Systems Co.'s digital catalog helps you find, compare and purchase the products your company needs.`,
-          callToAction: `Get started`
+          callToAction: `Start browsing`
         },
         signUp: {
           title: 'Sign in for the best experience',
@@ -233,7 +241,9 @@ export const en: Messages = {
     },
     category: {
       title: '{name}',
-      titleWithSearch: '{searchQuery} in {name}'
+      titleWithoutSearchOrCategory: 'Browse all products',
+      titleWithSearchAndCategory: `''{searchQuery}'' in {name}`,
+      titleWithOnlySearch: `Search results for: ''{searchQuery}''`
     },
     series: {
       headTitle: 'Series',

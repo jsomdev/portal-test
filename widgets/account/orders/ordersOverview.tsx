@@ -24,8 +24,8 @@ interface OrdersOverviewStyles {
   spinner: ISpinnerStyles;
 }
 
+const PAGE_SIZE = 10;
 export const OrdersOverview: React.FC = () => {
-  const PAGE_SIZE = 10;
   const { spacing, fonts, palette } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();

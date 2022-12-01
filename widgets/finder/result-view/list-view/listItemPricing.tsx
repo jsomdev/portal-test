@@ -25,7 +25,9 @@ import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
 interface ProductListItemPricingProps {
   product: Pick<Product, 'id' | 'number' | 'name'>;
-  enablePriceBreakInfo?: boolean;
+  hidePriceBreaks?: boolean;
+  hidePriceInfo?: boolean;
+  hideAddToCart?: boolean;
 }
 interface ProductListItemPricingStyles {
   container: IStackStyles;
@@ -87,7 +89,9 @@ const messages = defineMessages({
 // TODO: add stateful cart context
 export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
   product,
-  enablePriceBreakInfo = true
+  hidePriceBreaks = false,
+  hideAddToCart = false,
+  hidePriceInfo = false
 }) => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage, formatNumber } = useIntl();
@@ -204,22 +208,26 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
       >
         <Stack.Item>
           <Stack tokens={{ childrenGap: spacing.s1 }}>
-            <Stack.Item>
-              <PriceLabel
-                primaryText={unitPrice || formatMessage(messages.quotedPrice)}
-                secondaryText={unitPrice !== basePrice ? basePrice : undefined}
-                status={priceBreaksStatus}
-                suffix={
-                  unitPrice && basePrice
-                    ? formatMessage(messages.suffix)
-                    : undefined
-                }
-                tooltipText={tooltipText}
-              />
-            </Stack.Item>
+            {!hidePriceInfo && (
+              <Stack.Item>
+                <PriceLabel
+                  primaryText={unitPrice || formatMessage(messages.quotedPrice)}
+                  secondaryText={
+                    unitPrice !== basePrice ? basePrice : undefined
+                  }
+                  status={priceBreaksStatus}
+                  suffix={
+                    unitPrice && basePrice
+                      ? formatMessage(messages.suffix)
+                      : undefined
+                  }
+                  tooltipText={tooltipText}
+                />
+              </Stack.Item>
+            )}
             {!!priceBreaks?.length &&
               priceBreaks.length > 1 &&
-              enablePriceBreakInfo && (
+              !hidePriceBreaks && (
                 <Stack.Item root={{ ref: calloutAnchor }}>
                   <ActionButton
                     iconProps={{ iconName: 'Quantity' }}
@@ -257,19 +265,21 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
               )}
           </Stack>
         </Stack.Item>
-        <Stack.Item styles={{ root: { width: 220 } }}>
-          <Stack horizontal horizontalAlign="space-between">
-            <Stack.Item>
-              {product.number && (
-                <AddToCartButton
-                  productNumber={product.number}
-                  onQuantityChanged={setAddToCartButtonQuantity}
-                  onAddToCartClicked={handleAddToCart}
-                />
-              )}
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
+        {!hideAddToCart && (
+          <Stack.Item styles={{ root: { width: 220 } }}>
+            <Stack horizontal horizontalAlign="space-between">
+              <Stack.Item>
+                {product.number && (
+                  <AddToCartButton
+                    productNumber={product.number}
+                    onQuantityChanged={setAddToCartButtonQuantity}
+                    onAddToCartClicked={handleAddToCart}
+                  />
+                )}
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        )}
       </Stack>
       {product && lastAddedBaseCartItem && (
         <CartItemAddedDialog

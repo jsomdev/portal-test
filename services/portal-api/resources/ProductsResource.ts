@@ -1,6 +1,9 @@
 import { BaseResource } from '../base/baseResource';
 import { ODataQueryHelper } from '../base/queryHelper';
-import { FacetedSearchOdataCollection } from '../faceted-search/types';
+import {
+  AutoCompleteOdataCollection,
+  FacetedSearchOdataCollection
+} from '../faceted-search/types';
 import { Product } from '../models/Product';
 import { OdataCollection } from '../o-data/oData';
 import { QueryOptions } from '../o-data/queryOptions';
@@ -10,11 +13,19 @@ export class ProductsResource extends BaseResource<Product> {
     super('/Products');
   }
 
+  async autoComplete(
+    encodedQuery: string
+  ): Promise<AutoCompleteOdataCollection> {
+    const resourcePath = this.getAutoCompleteResourcePath(encodedQuery);
+
+    return this.fetch(resourcePath, '', {});
+  }
+
   async facetedSearch(
     top: number,
     skip: number = 0,
     urlEncodedFilters?: string | undefined,
-    urlEncodedQuery?: string | undefined,
+    encodedQuery?: string | undefined,
     urlEncodedOperatingConditions?: string | undefined
   ): Promise<FacetedSearchOdataCollection> {
     const queryOptions: Partial<QueryOptions> = {
@@ -27,7 +38,7 @@ export class ProductsResource extends BaseResource<Product> {
         .concat(
           `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
         );
-    const resourcePath = this.getFacetedSearchResourcePath(urlEncodedQuery);
+    const resourcePath = this.getFacetedSearchResourcePath(encodedQuery);
 
     return this.fetch(resourcePath, queryOptionsString, {});
   }
@@ -60,6 +71,9 @@ export class ProductsResource extends BaseResource<Product> {
           )}')`
         : '(operatingConditions=@operatingConditions,filters=@filters,query=null)'
     }`;
+  }
+  private getAutoCompleteResourcePath(urlEncodedQuery: string) {
+    return `${this.getResourcePath()}/autoComplete(query='${urlEncodedQuery}')`;
   }
 
   private getFindResourcePath(urlEncodedQuery?: string): string {

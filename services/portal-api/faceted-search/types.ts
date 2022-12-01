@@ -9,6 +9,7 @@ export type FacetedSearchOdataCollection =
     '@search.facets': FacetedSearchFacetResults;
   };
 
+export type AutoCompleteOdataCollection = OdataCollection<string>;
 // Type that represents a product in the collection that is returned by the faceted search call. It shares a number of properties
 // with a Product Entity as we know but also has a score and a set of relevant attributes (previously known as the key specifications or display in table row)
 export type FacetedSearchProduct = {

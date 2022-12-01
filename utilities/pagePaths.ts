@@ -1,6 +1,11 @@
 const pagePaths = {
   home: '/',
+  search: (query?: string): string =>
+    query ? `/search?query=${query}` : '/search',
   compare: '/compare',
+  categories: '/categories',
+  category: (slug: string): string => `/categories/${slug}`,
+  quoteRequest: '/cart/create-quote-request',
   cart: '/cart',
   checkout: '/cart/checkout',
   infoAndPreferences: '/account/info-and-preferences',

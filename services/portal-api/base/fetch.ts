@@ -105,6 +105,7 @@ export const digitalHighWayFetch = async <T>(
     .concat(resourcePath)
     .concat(odataQueryOptions);
 
+  console.log(fetchUrl);
   // Return the parsed response as promise instead of the response itselve
   const response: Response = await fetch(fetchUrl, options);
   const result: T | Response = await handleResponse<T>(

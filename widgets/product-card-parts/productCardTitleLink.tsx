@@ -2,18 +2,39 @@ import React from 'react';
 
 import { NextLink } from '@components/link/nextLink';
 import { mergeCss } from '@fluentui/merge-styles';
-import { FontWeights, Text, useTheme } from '@fluentui/react';
+import { FontWeights, IFontStyles, Text, useTheme } from '@fluentui/react';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
-type ProductCardTextProps = Pick<
+type ProductCardTitleLinkSize = 'small' | 'default';
+
+type ProductCardTitleLinkProps = Pick<
   ProductCardViewModel,
   'url' | 'number' | 'name'
->;
+> & {
+  size?: ProductCardTitleLinkSize;
+};
 
-const ProductCardTitleLink: React.FC<ProductCardTextProps> = ({
+function getTitleVariant(size: ProductCardTitleLinkSize): keyof IFontStyles {
+  if (size === 'small') {
+    return 'large';
+  }
+  return 'xLarge';
+}
+
+function getDescriptionVariant(
+  size: ProductCardTitleLinkSize
+): keyof IFontStyles {
+  if (size === 'small') {
+    return 'medium';
+  }
+  return 'mediumPlus';
+}
+
+const ProductCardTitleLink: React.FC<ProductCardTitleLinkProps> = ({
   url,
   number,
-  name
+  name,
+  size = 'default'
 }) => {
   const { palette } = useTheme();
   const styles = {
@@ -42,10 +63,10 @@ const ProductCardTitleLink: React.FC<ProductCardTextProps> = ({
   return (
     <NextLink href={url}>
       <a className={mergeCss(styles.link)}>
-        <Text variant="xLarge" styles={styles.title}>
+        <Text variant={getTitleVariant(size)} styles={styles.title}>
           {number}
         </Text>
-        <Text variant="mediumPlus" styles={styles.description}>
+        <Text variant={getDescriptionVariant(size)} styles={styles.description}>
           {name}
         </Text>
       </a>

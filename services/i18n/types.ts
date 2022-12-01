@@ -35,6 +35,9 @@ type IMainNavigationMessages = {
   viewAllCategory: string;
 };
 type ISiteSearchBarMessages = {
+  noResults: string;
+  suggestedProducts: string;
+  recentSearches: string;
   placeholder: string;
 };
 
@@ -363,8 +366,10 @@ type IHomeMessages = INextHeadMessages & {
 };
 
 type ICategoryMessages = {
+  titleWithoutSearchOrCategory: string;
   title: string;
-  titleWithSearch: string;
+  titleWithSearchAndCategory: string;
+  titleWithOnlySearch: string;
 };
 
 type ICartMessages = {
@@ -426,6 +431,9 @@ type ICheckoutMessages = {
   title: string;
 };
 
+type ISearchMessages = INextHeadMessages & {
+  title: string;
+};
 type IProductMessages = {
   imageDisclaimer: string;
   sections: {
@@ -512,6 +520,7 @@ export type Messages = {
   pricing: IPricingMessages;
   pages: {
     product: IProductMessages;
+    search: ISearchMessages;
     default: {
       headTitle: string;
     };

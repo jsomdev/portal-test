@@ -97,13 +97,18 @@ const Category: NextPage<CategoryProps> = ({
         <AppLayout>
           <FacetsProvider
             preFilters={{
-              categoryId: category?.id
+              categoryId: category?.id,
+              searchQuery: router.query.query?.toString()
             }}
             initialFacets={getInitialFacetsFromFiles([], router.query)}
           >
             <FinderProvider initialData={undefined}>
               <ContentContainerStack>
-                <ResultView viewAs={viewAs} category={category} />
+                <ResultView
+                  viewAs={viewAs}
+                  category={category}
+                  searchQuery={router.query.query?.toString()}
+                />
               </ContentContainerStack>
             </FinderProvider>
           </FacetsProvider>

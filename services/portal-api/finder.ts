@@ -3,7 +3,10 @@ import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { FacetResult } from '../facet-service/models/facet/facetResult';
 import { BaseResource } from './base/baseResource';
 import { digitalHighWayFetch } from './base/fetch';
-import { FacetedSearchOdataCollection } from './faceted-search/types';
+import {
+  AutoCompleteOdataCollection,
+  FacetedSearchOdataCollection
+} from './faceted-search/types';
 import { FlaggedEnum } from './flaggedEnum';
 import { AttributeSettings } from './models/AttributeSettingsFlags';
 import { ModelSeriesGrouping } from './models/ModelSeriesGrouping';
@@ -256,7 +259,7 @@ export async function fetchCountByModelSeries(
 export async function fetchFacetedSearchResults(
   encodedExternalFilters: string,
   encodedOperatingConditions: string,
-  searchQuery: string | undefined,
+  encodedSearchQuery: string | undefined,
   top: number,
   skip: number
 ): Promise<FacetedSearchOdataCollection> {
@@ -267,9 +270,23 @@ export async function fetchFacetedSearchResults(
       top,
       skip,
       `@filters=${encodedExternalFilters}`,
-      searchQuery,
+      encodedSearchQuery,
       encodedOperatingConditions
     );
 
+  return data;
+}
+
+export async function fetchAutoCompleteSearch(
+  encodedSearchQuery: string | undefined
+): Promise<AutoCompleteOdataCollection | null> {
+  const productsResource: ProductsResource = new ProductsResource();
+
+  if (!encodedSearchQuery) {
+    return null;
+  }
+  const data: AutoCompleteOdataCollection = await productsResource.autoComplete(
+    encodedSearchQuery
+  );
   return data;
 }

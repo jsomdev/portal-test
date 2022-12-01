@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   FontWeights,
   IButtonStyles,
@@ -16,6 +17,7 @@ import {
 } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n/ids';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import { mediaQueryFrom } from '@widgets/media-queries';
@@ -132,10 +134,12 @@ export const Hero: React.FC = () => {
               <FormattedMessage {...messages.heroDescription} />
             </Text>
             <Stack.Item tokens={{ padding: `${spacing.m} 0 0` }}>
-              <PrimaryButton
-                text={formatMessage(messages.heroCallToAction)}
-                styles={styles.callToAction}
-              />
+              <NextLink href={pagePaths.search()}>
+                <PrimaryButton
+                  text={formatMessage(messages.heroCallToAction)}
+                  styles={styles.callToAction}
+                />
+              </NextLink>
             </Stack.Item>
           </Stack>
         </Stack.Item>
