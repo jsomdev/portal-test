@@ -69,6 +69,7 @@ export const Hero: React.FC = () => {
       root: {
         marginBottom: spacing.s1,
         fontSize: rem(56),
+        lineHeight: '100%',
         fontWeight: FontWeights.bold,
         color: palette.white
       }
