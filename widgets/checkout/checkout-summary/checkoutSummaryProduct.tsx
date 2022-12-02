@@ -1,15 +1,13 @@
 import React from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
-import { CartItem } from '@providers/cart/cartContext';
-import { BaseCartItem } from '@providers/cart/cartModels';
 import { STATIC_IMAGES } from '@public/media/images';
-import { defaultLanguage } from '@services/i18n';
+import { CartItemFormatter } from '@services/i18n/formatters/cartItemFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
-import { OrderLine } from '@services/portal-api';
 import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
@@ -23,41 +21,19 @@ const messages = {
   quotedPrice: 'Quoted Price'
 };
 
-//TODO ward: move to formatter or mapper
-export const formatCartItemName = (cartItem: CartItem): string => {
-  if (cartItem.name?.[defaultLanguage]) {
-    //TODO ward i18n
-    return cartItem.name[defaultLanguage]; //TODO ward i18n
-  }
-  if (cartItem.productName?.[defaultLanguage]) {
-    //TODO ward i18n
-    return cartItem.productName[defaultLanguage]; //TODO ward i18n
-  }
-  return '';
-};
-
-/**
- * Function that will map a CartItem to its displayValue
- * @param item CartItem that needs to be formatted
- */
-//TODO ward: move to formatter or mapper
-export const formatCartItemDisplayValue = (
-  item: BaseCartItem | OrderLine | undefined
-): string => {
-  return item?.productNumber || item?.productName?.[defaultLanguage] || ''; //TODO ward i18n
-};
-
 export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
   item
 }) => {
-  const ITEMHEIGHT: number = 57;
-  const CHARACTERSPERLINE = 28;
+  const ITEM_HEIGHT: number = 57;
+  const CHARACTERS_PER_LINE = 28;
   const { palette, spacing } = useTheme();
   const { formatNumber } = useIntl();
   const { getUnitPrice, currencyCode, status } = useProductPricing(
     item.productNumber || '',
     item.priceBreaks
   );
+  const { locale } = useRouter();
+  const cartItemFormatter = new CartItemFormatter(item, locale);
 
   const unitPrice = React.useMemo(() => {
     if (!item) {
@@ -74,8 +50,8 @@ export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
     root: {
       root: {
         backgroundColor: palette.white,
-        minHeight: ITEMHEIGHT,
-        overflowX: 'hidden',
+        minHeight: ITEM_HEIGHT,
+
         position: 'relative',
         marginTop: spacing.s1,
         marginBottom: spacing.s1,
@@ -85,8 +61,8 @@ export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
     imageContainer: {
       root: {
         alignSelf: 'center',
-        width: ITEMHEIGHT,
-        height: ITEMHEIGHT
+        width: ITEM_HEIGHT,
+        height: ITEM_HEIGHT
       }
     },
     title: {
@@ -108,11 +84,10 @@ export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
         <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
           <Stack.Item styles={styles.imageContainer}>
             <Image
-              alt={formatCartItemDisplayValue(item)}
-              height={ITEMHEIGHT}
-              width={ITEMHEIGHT}
-              objectFit="contain"
-              objectPosition="center"
+              alt={cartItemFormatter.formatDisplayValue()}
+              height={ITEM_HEIGHT}
+              width={ITEM_HEIGHT}
+              layout="fixed"
               src={
                 item.productId && item?.image?.url
                   ? item?.image?.url
@@ -135,13 +110,13 @@ export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
                 >
                   {new TextFormatter().formatText(
                     item.productNumber || '',
-                    CHARACTERSPERLINE - 1,
+                    CHARACTERS_PER_LINE - 1,
                     '...'
                   )}
                 </Text>
               </Stack.Item>
               <Stack.Item styles={styles.productName}>
-                <Text>{formatCartItemName(item)}</Text>
+                <Text>{cartItemFormatter.formatName()}</Text>
               </Stack.Item>
             </Stack>
           </Stack.Item>

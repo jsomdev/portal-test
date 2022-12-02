@@ -1,4 +1,3 @@
-//TODO ward refactor/move/cleanup
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 

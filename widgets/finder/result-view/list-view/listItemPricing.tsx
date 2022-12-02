@@ -32,7 +32,6 @@ interface ProductListItemPricingProps {
 interface ProductListItemPricingStyles {
   container: IStackStyles;
   actionButton: IButtonStyles;
-
   callout: IStackStyles;
 }
 

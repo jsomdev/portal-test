@@ -11,7 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
-import { CheckoutFormValues } from '@widgets/checkout/checkout-form/checkoutForm.types';
+import { CheckoutFormValues } from '@widgets/checkout/shared/types';
 
 const messages = {
   nextButtonText: 'Proceed',
@@ -46,7 +46,7 @@ export const CheckoutFormSummaryStepActions: React.FC<{
             disabled={disableSubmit}
             key="MainActionsSubmit"
             text={
-              values.paymentMethod === PaymentMethod.CREDIT_CARD
+              values.payment.paymentMethod === PaymentMethod.CREDIT_CARD
                 ? messages.completePayment
                 : messages.completePurchaseOrder
             }

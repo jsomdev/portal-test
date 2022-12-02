@@ -429,6 +429,181 @@ type ICartMessages = {
 
 type ICheckoutMessages = {
   title: string;
+  orderSuccess: string;
+  creatingOrder: string;
+  loadingCart: string;
+  loadingCartFailed: string;
+  loadingProductInfo: string;
+  loadingProductInfoFailed: string;
+  noItems: string;
+  noItemsLink: string;
+  needsSignIn: string;
+  signInText: string;
+  unauthorized: string;
+  steps: {
+    details: string;
+    shippingMethod: string;
+    paymentDetails: string;
+    overview: string;
+  };
+  actions: {
+    nextButton: string;
+    backButton: string;
+    submitButton: string;
+    completePayment: string;
+    completePurchaseOrder: string;
+  };
+  details: {
+    generalTitle: string;
+    shippingContactTitle: string;
+    shippingAddressTitle: string;
+    fields: {
+      email: string;
+      emailPlaceholder: string;
+      firstName: string;
+      name: string;
+      company: string;
+      companyPlaceholder: string;
+      country: string;
+      countryPlaceholder: string;
+      address: string;
+      addressPlaceholder: string;
+      city: string;
+      state: string;
+      statePlaceholder: {
+        default: string;
+        BE: string;
+        US: string;
+        CA: string;
+      };
+      postalCode: string;
+      phone: string;
+    };
+  };
+  shippingMethods: {
+    shippingMethodLabel: string;
+    loadingShippingMethods: string;
+  };
+  payment: {
+    billingContact: string;
+    billingAddress: string;
+    creditCard: string;
+    purchaseOrder: string;
+    purchaseOrderInfo: string;
+    fields: {
+      paymentMethod: string;
+      shippingAddressAsBillingAddress: string;
+      shippingContactAsBillingContact: string;
+      billingAddressChoice: {
+        sameAsShipping: string;
+        differentFromShipping: string;
+      };
+      billingContactChoice: {
+        sameAsShipping: string;
+        differentFromShipping: string;
+      };
+      creditCardNumber: string;
+      creditCardNumberInvalidFormatError: string;
+      creditCardName: string;
+      creditCardNameInvalidFormatError: string;
+      creditCardExpiration: string;
+      creditCardExpirationPlaceholder: string;
+      creditCardExpirationInvalidError: string;
+      creditCardCVV: string;
+
+      billingFirstName: string;
+      billingLastName: string;
+      billingCompany: string;
+      billingCompanyPlaceholder: string;
+      billingPhone: string;
+
+      billingAddress: string;
+      billingCity: string;
+      billingState: string;
+      billingCountry: string;
+      billingPostalCode: string;
+      referenceNumber: string;
+    };
+  };
+  summary: {
+    details: string;
+    subTotal: string;
+    shippingCost: string;
+    tax: string;
+    total: string;
+  };
+  overview: {
+    reviewTitle: string;
+    termsAndConditions: string;
+    privacyPolicy: string;
+    editGroup: string;
+    totalCost: string;
+    invoiceAmount: string;
+    fields: {
+      acceptedTerms: string;
+      acceptedTermsRequired: string;
+      additionalInformation: string;
+      additionalInformationPlaceholder: string;
+    };
+  };
+  discounts: {
+    apply: string;
+    discountCode: string;
+  };
+  usps: {
+    qualityServices: string;
+    secureTransactions: string;
+    expertSupport: string;
+  };
+  formErrors: {
+    vatError: string;
+    noShippingOptions: string;
+    retryButton: string;
+    editAddress: string;
+  };
+  errors: {
+    chatWithUs: string;
+    mailTo: string;
+    send: string;
+    subText: string;
+    default: {
+      title: string;
+    };
+    cardDeclined: {
+      title: string;
+    };
+    cardInfoIncorrect: {
+      title: string;
+    };
+    cartHasNoPricedItems: {
+      title: string;
+      description: string;
+    };
+    cartIsEmpty: {
+      title: string;
+      description: string;
+    };
+    contentTypeHeaderMissing: {
+      title: string;
+      description: string;
+    };
+    givenAmountAndCalculatedAmountDoNotMatch: {
+      title: string;
+      description: string;
+    };
+    invalidPaymentMethod: {
+      title: string;
+      description: string;
+    };
+    userDoesNotHaveAccount: {
+      title: string;
+      description: string;
+    };
+    todo: {
+      title: string;
+      description: string;
+    };
+  };
 };
 
 type ISearchMessages = INextHeadMessages & {
@@ -541,6 +716,7 @@ export type Messages = {
   summary: {
     details: string;
   };
+  validation: ValidationMessages;
 };
 
 export interface Language {
@@ -558,6 +734,29 @@ export interface Region {
   audience: Audience;
   name: string;
   countries: Country[];
+}
+
+export interface ValidationMessages {
+  mixed: {
+    required: string;
+  };
+  string: {
+    email: string;
+    matches: string;
+    min: string;
+    max: string;
+  };
+}
+
+export interface ShippingMethods {
+  freeShipping: string;
+  flatRate: string;
+  upsGround: string;
+  upsSecondDayAir: string;
+  upsNextDayAir: string;
+  upsNextDayAirSaver: string;
+  upsStandard: string;
+  upsWorldwideExpedited: string;
 }
 
 export type LanguageCode =

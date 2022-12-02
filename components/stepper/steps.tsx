@@ -1,3 +1,4 @@
+//TODO move when old stepper is no longer used
 import React from 'react';
 
 import { Stack, getTheme } from '@fluentui/react';

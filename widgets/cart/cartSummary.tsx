@@ -81,7 +81,6 @@ export const CartSummary: React.FC = () => {
   return (
     <Stack>
       <Summary
-        headerText={formatMessage(messages.header)}
         onRenderDetails={() => (
           <Stack.Item>
             <Stack horizontalAlign="space-between" horizontal>

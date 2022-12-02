@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react';
 
 export const ChoiceGroupOptionContainer: React.FC<{
-  props: IChoiceGroupOption | IChoiceGroupOptionProps | undefined;
+  props: (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined;
 }> = ({ props, children }) => {
   const { spacing, palette, semanticColors, effects } = useTheme();
   const isChecked =

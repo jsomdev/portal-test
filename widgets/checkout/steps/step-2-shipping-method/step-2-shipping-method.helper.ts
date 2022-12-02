@@ -1,0 +1,55 @@
+import { defineMessages } from 'react-intl';
+import { IntlShape } from 'react-intl/src/types';
+import * as yup from 'yup';
+
+import { messageIds } from '@services/i18n';
+import setYupLocalisation from '@utilities/yup/setYupLocalisation';
+import { StepFields } from '@widgets/checkout/shared/types';
+import { Step2FormData } from '@widgets/checkout/steps/step-2-shipping-method/step-2-shipping-method';
+
+export type ShippingMethod =
+  | ''
+  | 'FreeShipping'
+  | 'FlatRate'
+  | 'UpsGround'
+  | 'UpsSecondDayAir'
+  | 'UpsNextDayAir'
+  | 'UpsNextDayAirSaver'
+  | 'UpsStandard'
+  | 'UpsWorldwideExpedited';
+
+setYupLocalisation();
+
+export const validation = yup.object({
+  shippingMethod: yup
+    .mixed<ShippingMethod>()
+    .oneOf([
+      'FreeShipping',
+      'FlatRate',
+      'UpsGround',
+      'UpsSecondDayAir',
+      'UpsNextDayAir',
+      'UpsNextDayAirSaver',
+      'UpsStandard',
+      'UpsWorldwideExpedited'
+    ])
+    .required()
+});
+
+export const messages = defineMessages({
+  shippingMethod: {
+    id: messageIds.pages.checkout.shippingMethods.shippingMethodLabel,
+    defaultMessage: 'Email'
+  }
+});
+
+export const getFields = (intl: IntlShape): StepFields<Step2FormData> => {
+  const { formatMessage } = intl;
+  return {
+    shippingMethod: {
+      label: formatMessage(messages.shippingMethod),
+      placeholder: formatMessage(messages.shippingMethod),
+      name: 'shippingMethod'
+    }
+  };
+};

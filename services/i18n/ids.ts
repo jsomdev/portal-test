@@ -467,7 +467,207 @@ export const messageIds: Messages = {
       continueShopping: 'pages.cart.continueShopping'
     },
     checkout: {
-      title: 'pages.checkout.title'
+      title: 'pages.checkout.title',
+      orderSuccess: 'pages.checkout.orderSuccess',
+      creatingOrder: 'pages.checkout.creatingOrder',
+      loadingCart: 'pages.checkout.loadingCart',
+      loadingCartFailed: 'pages.checkout.loadingCartFailed',
+      loadingProductInfo: 'pages.checkout.loadingProductInfo',
+      loadingProductInfoFailed: 'pages.checkout.loadingProductInfoFailed',
+      noItems: 'pages.checkout.noItems',
+      noItemsLink: 'pages.checkout.noItemsLink',
+      needsSignIn: 'pages.checkout.needsSignIn',
+      signInText: 'pages.checkout.signInText',
+      unauthorized: 'pages.checkout.unauthorized',
+      steps: {
+        details: 'pages.checkout.steps.details',
+        shippingMethod: 'pages.checkout.steps.shippingMethod',
+        paymentDetails: 'pages.checkout.steps.paymentDetails',
+        overview: 'pages.checkout.steps.overview'
+      },
+      actions: {
+        nextButton: 'pages.checkout.actions.nextButton',
+        backButton: 'pages.checkout.actions.backButton',
+        submitButton: 'pages.checkout.actions.submitButton',
+        completePayment: 'pages.checkout.actions.completePayment',
+        completePurchaseOrder: 'pages.checkout.actions.completePurchaseOrder'
+      },
+      details: {
+        generalTitle: 'pages.checkout.details.generalTitle',
+        shippingContactTitle: 'pages.checkout.details.shippingContactTitle',
+        shippingAddressTitle: 'pages.checkout.details.shippingAddressTitle',
+        fields: {
+          email: 'pages.checkout.details.fields.email',
+          emailPlaceholder: 'pages.checkout.details.fields.emailPlaceholder',
+          firstName: 'pages.checkout.details.fields.firstName',
+          name: 'pages.checkout.details.fields.name',
+          company: 'pages.checkout.details.fields.company',
+          companyPlaceholder:
+            'pages.checkout.details.fields.companyPlaceholder',
+          country: 'pages.checkout.details.fields.country',
+          countryPlaceholder:
+            'pages.checkout.details.fields.countryPlaceholder',
+          address: 'pages.checkout.details.fields.address',
+          addressPlaceholder:
+            'pages.checkout.details.fields.addressPlaceholder',
+          city: 'pages.checkout.details.fields.city',
+          state: 'pages.checkout.details.fields.state',
+          statePlaceholder: {
+            default: 'pages.checkout.details.fields.statePlaceholder.default',
+            BE: 'pages.checkout.details.fields.statePlaceholder.BE',
+            US: 'pages.checkout.details.fields.statePlaceholder.US',
+            CA: 'pages.checkout.details.fields.statePlaceholder.CA'
+          },
+          postalCode: 'pages.checkout.details.fields.postalCode',
+          phone: 'pages.checkout.details.fields.phone'
+        }
+      },
+      shippingMethods: {
+        shippingMethodLabel:
+          'pages.checkout.shippingMethods.shippingMethodLabel',
+        loadingShippingMethods:
+          'pages.checkout.shippingMethods.loadingShippingMethods'
+      },
+      payment: {
+        billingContact: 'pages.checkout.payment.billingContact',
+        billingAddress: 'pages.checkout.payment.billingAddress',
+        creditCard: 'pages.checkout.payment.creditCard',
+        purchaseOrder: 'pages.checkout.payment.purchaseOrder',
+        purchaseOrderInfo: 'pages.checkout.payment.purchaseOrderInfo',
+        fields: {
+          paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
+          shippingAddressAsBillingAddress:
+            'pages.checkout.payment.fields.shippingAddressAsBillingAddress',
+          shippingContactAsBillingContact:
+            'pages.checkout.payment.fields.shippingContactAsBillingContact',
+          billingAddressChoice: {
+            sameAsShipping:
+              'pages.checkout.payment.fields.billingAddressChoice.sameAsShipping',
+            differentFromShipping:
+              'pages.checkout.payment.fields.billingAddressChoice.differentFromShipping'
+          },
+          billingContactChoice: {
+            sameAsShipping:
+              'pages.checkout.payment.fields.billingContactChoice.sameAsShipping',
+            differentFromShipping:
+              'pages.checkout.payment.fields.billingContactChoice.differentFromShipping'
+          },
+          creditCardNumber: 'pages.checkout.payment.fields.creditCardNumber',
+          creditCardNumberInvalidFormatError:
+            'pages.checkout.payment.fields.creditCardNumberInvalidFormatError',
+
+          creditCardName: 'pages.checkout.payment.fields.creditCardName',
+          creditCardNameInvalidFormatError:
+            'pages.checkout.payment.fields.creditCardNameInvalidFormatError',
+          creditCardExpiration:
+            'pages.checkout.payment.fields.creditCardExpiration',
+          creditCardExpirationPlaceholder:
+            'pages.checkout.payment.fields.creditCardExpirationPlaceholder',
+          creditCardExpirationInvalidError:
+            'pages.checkout.payment.fields.creditCardExpirationInvalidError',
+          creditCardCVV: 'pages.checkout.payment.fields.creditCardCVV',
+
+          billingFirstName: 'pages.checkout.payment.fields.billingFirstName',
+          billingLastName: 'pages.checkout.payment.fields.billingLastName',
+          billingCompany: 'pages.checkout.payment.fields.billingCompany',
+          billingCompanyPlaceholder:
+            'pages.checkout.payment.fields.billingCompanyPlaceholder',
+          billingPhone: 'pages.checkout.payment.fields.billingPhone',
+
+          billingAddress: 'pages.checkout.payment.fields.billingAddress',
+          billingCity: 'pages.checkout.payment.fields.billingCity',
+          billingState: 'pages.checkout.payment.fields.billingState',
+          billingCountry: 'pages.checkout.payment.fields.billingCountry',
+          billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode',
+          referenceNumber: 'pages.checkout.payment.fields.referenceNumber'
+        }
+      },
+      summary: {
+        details: 'pages.checkout.summary.details',
+        subTotal: 'pages.checkout.summary.subTotal',
+        shippingCost: 'pages.checkout.summary.shippingCost',
+        total: 'pages.checkout.summary.total',
+        tax: 'pages.checkout.summary.tax'
+      },
+      overview: {
+        reviewTitle: 'pages.checkout.overview.reviewTitle',
+        termsAndConditions: 'pages.checkout.overview.termsAndConditions',
+        privacyPolicy: 'pages.checkout.overview.privacyPolicy',
+        editGroup: 'pages.checkout.overview.editGroup',
+        totalCost: 'pages.checkout.overview.totalCost',
+        invoiceAmount: 'pages.checkout.overview.invoiceAmount',
+        fields: {
+          acceptedTerms: 'pages.checkout.overview.fields.acceptedTerms',
+          acceptedTermsRequired:
+            'pages.checkout.overview.fields.acceptedTermsRequired',
+          additionalInformation:
+            'pages.checkout.overview.fields.additionalInformation',
+          additionalInformationPlaceholder:
+            'pages.checkout.overview.fields.additionalInformationPlaceholder'
+        }
+      },
+      discounts: {
+        apply: 'pages.checkout.discounts.apply',
+        discountCode: 'pages.checkout.discounts.discountCode'
+      },
+      usps: {
+        qualityServices: 'pages.checkout.usps.qualityServices',
+        secureTransactions: 'pages.checkout.usps.secureTransactions',
+        expertSupport: 'pages.checkout.usps.expertSupport'
+      },
+      formErrors: {
+        vatError: 'pages.checkout.formErrors.vatError',
+        noShippingOptions: 'pages.checkout.formErrors.noShippingOptions',
+        retryButton: 'pages.checkout.formErrors.retryButton',
+        editAddress: 'pages.checkout.formErrors.editAddress'
+      },
+      errors: {
+        chatWithUs: 'pages.checkout.errors.chatWithUs',
+        mailTo: 'pages.checkout.errors.mailTo',
+        send: 'pages.checkout.errors.send',
+        subText: 'pages.checkout.errors.default.description',
+        default: {
+          title: 'pages.checkout.errors.default.title'
+        },
+        cardDeclined: {
+          title: 'pages.checkout.errors.cardDeclined.title'
+        },
+        cardInfoIncorrect: {
+          title: 'pages.checkout.errors.cardInfoIncorrect.title'
+        },
+        cartHasNoPricedItems: {
+          title: 'pages.checkout.errors.cartHasNoPricedItems.title',
+          description: 'pages.checkout.errors.cartHasNoPricedItems.description'
+        },
+        cartIsEmpty: {
+          title: 'pages.checkout.errors.cartIsEmpty.title',
+          description: 'pages.checkout.errors.cartIsEmpty.description'
+        },
+        contentTypeHeaderMissing: {
+          title: 'pages.checkout.errors.contentTypeHeaderMissing.title',
+          description:
+            'pages.checkout.errors.contentTypeHeaderMissing.description'
+        },
+        givenAmountAndCalculatedAmountDoNotMatch: {
+          title:
+            'pages.checkout.errors.givenAmountAndCalculatedAmountDoNotMatch.title',
+          description:
+            'pages.checkout.errors.givenAmountAndCalculatedAmountDoNotMatch.description'
+        },
+        invalidPaymentMethod: {
+          title: 'pages.checkout.errors.invalidPaymentMethod.title',
+          description: 'pages.checkout.errors.invalidPaymentMethod.description'
+        },
+        userDoesNotHaveAccount: {
+          title: 'pages.checkout.errors.userDoesNotHaveAccount.title',
+          description:
+            'pages.checkout.errors.userDoesNotHaveAccount.description'
+        },
+        todo: {
+          title: 'pages.checkout.errors.todo.title',
+          description: 'pages.checkout.errors.todo.description'
+        }
+      }
     }
   },
   loading: {
@@ -534,5 +734,16 @@ export const messageIds: Messages = {
   },
   summary: {
     details: 'summary.details'
+  },
+  validation: {
+    mixed: {
+      required: 'validation.mixed.required'
+    },
+    string: {
+      email: 'validation.string.email',
+      matches: 'validation.string.matches',
+      min: 'validation.string.min',
+      max: 'validation.string.max'
+    }
   }
 };

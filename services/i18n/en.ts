@@ -451,7 +451,197 @@ export const en: Messages = {
       continueShopping: 'Continue shopping'
     },
     checkout: {
-      title: 'Checkout'
+      title: 'Checkout',
+      orderSuccess: 'Your order has been created. Redirecting...',
+      creatingOrder: 'Creating your order...',
+      loadingCart: 'Loading cart...',
+      loadingCartFailed: 'Loading cart failed!',
+      loadingProductInfo: 'Loading product information...',
+      loadingProductInfoFailed: 'Loading product information failed!',
+      noItems: 'There were no items found in your cart with available pricing.',
+      noItemsLink: 'Please return to the cart page and request a quote.',
+      needsSignIn:
+        'You need to be signed in to checkout your cart. Please {signInText}',
+      signInText: 'sign in here.',
+      unauthorized: 'You are not authorized to view this page.',
+      steps: {
+        details: 'Details',
+        shippingMethod: 'Shipping',
+        paymentDetails: 'Payment',
+        overview: 'Overview'
+      },
+      actions: {
+        nextButton: 'Proceed',
+        backButton: 'Previous Step',
+        submitButton: 'Submit',
+        completePayment: 'Confirm and pay',
+        completePurchaseOrder: 'Confirm and submit'
+      },
+      details: {
+        generalTitle: 'General',
+        shippingContactTitle: 'Shipping Contact',
+        shippingAddressTitle: 'Shipping Address',
+        fields: {
+          email: 'Email',
+          emailPlaceholder: 'example@domain.com',
+          firstName: 'First Name',
+          name: 'Last Name',
+          company: 'Company Name',
+          companyPlaceholder: 'Name of organization',
+          country: 'Country',
+          countryPlaceholder: 'Select an option',
+          address: 'Address',
+          addressPlaceholder: 'Street and number',
+          city: 'City',
+          state: 'State / Province',
+          statePlaceholder: {
+            default: 'State / Region / Province',
+            BE: 'Please select a province',
+            US: 'Please select a state',
+            CA: 'Please select a province'
+          },
+          postalCode: 'Postal Code',
+          phone: 'Phone Number'
+        }
+      },
+      shippingMethods: {
+        shippingMethodLabel: 'Shipping Method',
+        loadingShippingMethods: 'Loading shipping options...'
+      },
+      payment: {
+        billingContact: 'Billing Contact',
+        billingAddress: 'Billing Address',
+        creditCard: 'Credit card',
+        purchaseOrder: 'Purchase order',
+        purchaseOrderInfo:
+          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.',
+        fields: {
+          paymentMethod: 'Payment Method',
+          shippingAddressAsBillingAddress: 'Shipping as Billing',
+          shippingContactAsBillingContact:
+            'Shipping Contact as Billing Contact',
+          billingAddressChoice: {
+            sameAsShipping: 'Same as shipping address',
+            differentFromShipping: 'Use a different billing address'
+          },
+          billingContactChoice: {
+            sameAsShipping: 'Same as shipping contact',
+            differentFromShipping: 'Use a different billing contact'
+          },
+          creditCardNumber: 'Card Number',
+          creditCardNumberInvalidFormatError:
+            'Your credit card number is invalid',
+          creditCardName: 'Name on Card',
+          creditCardNameInvalidFormatError: 'Please enter valid name',
+          creditCardExpiration: 'Valid Thru',
+          creditCardExpirationPlaceholder: 'MM/YY',
+          creditCardExpirationInvalidError:
+            'Please enter a valid expiration date',
+          creditCardCVV: 'CVV / CVC Code',
+
+          billingFirstName: 'First Name',
+          billingLastName: 'Last Name',
+          billingCompany: 'Company Name',
+          billingCompanyPlaceholder: 'Name of organization',
+          billingPhone: 'Phone Number',
+
+          billingAddress: 'Address',
+          billingCity: 'City',
+          billingState: 'State / Province',
+          billingCountry: 'Country',
+          billingPostalCode: 'Postal Code',
+          referenceNumber: 'Reference Number'
+        }
+      },
+      summary: {
+        details: 'Details',
+        subTotal: 'Sub Total',
+        shippingCost: 'Shipping',
+        total: 'Order Total',
+        tax: 'Tax'
+      },
+      overview: {
+        reviewTitle: 'Review',
+        termsAndConditions: 'Terms and conditions',
+        privacyPolicy: 'Privacy policy',
+        editGroup: 'Edit',
+        totalCost: 'You will pay',
+        invoiceAmount: 'Invoice amount',
+        fields: {
+          acceptedTerms:
+            'I agree with the {termsAndConditions} and {privacyPolicy}.',
+          acceptedTermsRequired: 'You must accept the terms and conditions',
+          additionalInformation: 'Additional Information',
+          additionalInformationPlaceholder:
+            'Add any additional comments, request or remarks'
+        }
+      },
+      discounts: {
+        apply: 'Apply',
+        discountCode: 'Discount code'
+      },
+      usps: {
+        qualityServices: 'Quality Services',
+        secureTransactions: 'Secure Transactions',
+        expertSupport: 'Expert Support'
+      },
+      formErrors: {
+        vatError: 'Error loading tax',
+        noShippingOptions:
+          'No shipping options found. Please check if your shipping address is entered correctly.',
+        retryButton: 'Retry',
+        editAddress: 'Edit'
+      },
+      errors: {
+        chatWithUs: 'Chat with us',
+        mailTo:
+          'mailto:webteam@spray.com?subject=I Could not find any results for ...',
+        send: 'Send us your feedback',
+        subText:
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+        default: {
+          title:
+            'Something unexpected happened! Please contact customer support.'
+        },
+        cardDeclined: {
+          title: 'Your credit card was declined.'
+        },
+        cardInfoIncorrect: {
+          title: 'Your credit card information is incorrect.'
+        },
+        cartHasNoPricedItems: {
+          title: 'Your cart has no items with available pricing.',
+          description: 'Please refresh the page to load current prices.'
+        },
+        cartIsEmpty: {
+          title: 'Your cart is empty.',
+          description: 'Please refresh the page to reload your cart.'
+        },
+        contentTypeHeaderMissing: {
+          title: 'There was an unexpected error while placing your order.',
+          description: 'The content type header is missing.'
+        },
+        givenAmountAndCalculatedAmountDoNotMatch: {
+          title: 'A pricing discrepancy has occurred.',
+          description:
+            'The price calculated by the cart does not match the expected amount.'
+        },
+        invalidPaymentMethod: {
+          title: 'The selected payment method is invalid for this account.',
+          description:
+            'Orders with their payment method set to purchase order require a reference number.'
+        },
+        userDoesNotHaveAccount: {
+          title: 'You are not currently logged in or your session has expired.',
+          description:
+            'Please reload the page and log back in using your user account.'
+        },
+        todo: {
+          title: 'An unexpected error occurred.',
+          description:
+            'Please check if your credit card information was entered correctly.'
+        }
+      }
     }
   },
   loading: {
@@ -523,5 +713,16 @@ export const en: Messages = {
   },
   summary: {
     details: 'Details'
+  },
+  validation: {
+    mixed: {
+      required: '{label} is required'
+    },
+    string: {
+      email: 'Please enter a valid email address',
+      matches: '{label} is not valid',
+      min: '{label} must be at least {min} characters',
+      max: '{label} must be at most {max} characters'
+    }
   }
 };

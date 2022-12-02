@@ -46,7 +46,8 @@ export const appTheme: PartialTheme = {
     },
     medium: {
       fontSize: rem(FontSizes.medium),
-      color: '#222'
+      color: '#222',
+      lineHeight: '1.35rem'
     },
     mediumPlus: {
       fontSize: rem(FontSizes.mediumPlus)

@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useField, useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
 
+import formatError from '@components/formik-wrappers/formatError';
 import {
   ComboBox,
   DirectionalHint,
@@ -19,8 +21,10 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   name,
   validationProps,
   getSelectedKey: getKey,
+  defaultSelectedKey,
   ...props
 }) => {
+  const intl = useIntl();
   const [input, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const { palette } = useTheme();
@@ -56,22 +60,26 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         {...input}
         {...props}
         componentRef={comboBoxRef}
-        allowFreeform={true}
+        allowFreeform={
+          props.allowFreeform === undefined ? true : props.allowFreeform
+        }
         calloutProps={{
           directionalHintFixed: true,
           directionalHint: DirectionalHint.bottomRightEdge
         }}
         onClick={onOpenClick}
         selectedKey={getKey?.(input.value, props.options)}
-        errorMessage={meta.touched && meta.error ? meta.error : undefined}
-        onChange={(e, option) => {
-          setFieldValue(name, option?.key, true);
+        errorMessage={formatError(intl, meta, input.name)}
+        onChange={(e, option, index, value) => {
+          if (props.onChange) {
+            return props.onChange(e, option, index, value);
+          }
+          return setFieldValue(name, option?.key || defaultSelectedKey, true);
         }}
         styles={mergedStyles}
         onBlur={() => {
           setFieldTouched(name, true, false);
         }}
-        //autofill={{ name: input.name } as any}
       />
     </Stack>
   );

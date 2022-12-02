@@ -1,20 +1,21 @@
 import React from 'react';
 
 import {
-  FontSizes,
   FontWeights,
   ITextStyles,
   Stack,
-  Text
+  Text,
+  useTheme
 } from '@fluentui/react';
 
 export const CheckoutFormGroupTitle: React.FC<{ title: string }> = ({
   title
 }) => {
+  const { fonts } = useTheme();
   const styles: ITextStyles = {
     root: {
-      fontWeight: FontWeights.bold,
-      fontSize: FontSizes.large
+      ...fonts.large,
+      fontWeight: FontWeights.bold
     }
   };
   return (

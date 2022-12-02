@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
 
-import { useStepper } from '@components/stepper/stepperContext';
 import {
+  IMessageBarStyles,
+  IStackItemStyles,
   MessageBar,
   MessageBarButton,
   MessageBarType,
@@ -11,18 +13,34 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { QUERYKEYS } from '@services/react-query/constants';
+import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 
-import { CheckoutFormContext } from './checkoutFormContext';
-import { CheckoutFormErrorBoxStyles } from './checkoutFormErrorBox.types';
+const messages = defineMessages({
+  vatError: {
+    id: messageIds.pages.checkout.formErrors.vatError,
+    defaultMessage: 'Error loading tax'
+  },
+  noShippingOptions: {
+    id: messageIds.pages.checkout.formErrors.noShippingOptions,
+    defaultMessage:
+      'No shipping options found. Please check if your shipping address is entered correctly.'
+  },
+  retryButton: {
+    id: messageIds.pages.checkout.formErrors.retryButton,
+    defaultMessage: 'Retry'
+  },
+  editAddress: {
+    id: messageIds.pages.checkout.formErrors.editAddress,
+    defaultMessage: 'Edit'
+  }
+});
 
-const messages = {
-  vatError: 'Error loading tax',
-  noShippingOptions:
-    'No shipping options found. Please check if your shipping address is entered correctly.',
-  retryButton: 'Retry',
-  editAddress: 'Edit'
-};
+export interface CheckoutFormErrorBoxStyles {
+  messageBarWrapper: IStackItemStyles;
+  messageBar: IMessageBarStyles;
+}
 
 export const CheckoutFormErrorBox: React.FC = () => {
   const {
@@ -31,11 +49,13 @@ export const CheckoutFormErrorBox: React.FC = () => {
     shippingCostData,
     shippingCostDataStatus,
     shippingAddress,
-    selectedShippingOption
-  } = React.useContext(CheckoutFormContext);
+    selectedShippingOption,
+    stepper,
+    steps
+  } = useCheckout();
   const { spacing } = useTheme();
-  const { navigateToStep } = useStepper();
   const queryClient = useQueryClient();
+  const { formatMessage } = useIntl();
 
   const styles: CheckoutFormErrorBoxStyles = {
     messageBarWrapper: {
@@ -73,7 +93,7 @@ export const CheckoutFormErrorBox: React.FC = () => {
               tokens={{ childrenGap: spacing.m }}
             >
               <Stack.Item>
-                <Text>{messages.vatError}</Text>
+                <Text>{formatMessage(messages.vatError)}</Text>
               </Stack.Item>
               <Stack.Item>
                 <MessageBarButton
@@ -85,7 +105,7 @@ export const CheckoutFormErrorBox: React.FC = () => {
                     ]);
                   }}
                 >
-                  {messages.retryButton}
+                  {formatMessage(messages.retryButton)}
                 </MessageBarButton>
               </Stack.Item>
             </Stack>
@@ -107,15 +127,17 @@ export const CheckoutFormErrorBox: React.FC = () => {
               tokens={{ childrenGap: spacing.m }}
             >
               <Stack.Item>
-                <Text>{messages.noShippingOptions}</Text>
+                <Text>{formatMessage(messages.noShippingOptions)}</Text>
               </Stack.Item>
               <Stack.Item>
                 <MessageBarButton
                   onClick={() => {
-                    navigateToStep(0);
+                    if (steps) {
+                      stepper.navigateToStep(steps.details.index);
+                    }
                   }}
                 >
-                  {messages.editAddress}
+                  {formatMessage(messages.editAddress)}
                 </MessageBarButton>
               </Stack.Item>
             </Stack>

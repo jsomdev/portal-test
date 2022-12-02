@@ -1,68 +1,145 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
 
 import {
   ActionButton,
   FontWeights,
+  IButtonStyles,
+  IMessageBarStyles,
+  IStackStyles,
+  ITextStyles,
   MessageBar,
   MessageBarType,
   Stack,
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import {
   CreateOrderError,
   CreateOrderErrorName
 } from '@widgets/checkout/create-order/CreateOrderError';
 
-import {
-  CheckoutErrorBoxProps,
-  CheckoutErrorBoxStyles,
-  CheckoutErrorBoxText
-} from './checkoutErrorBox.types';
+interface CheckoutErrorBoxStyles {
+  title: ITextStyles;
+  actionButton: IButtonStyles;
+  actions: IStackStyles;
+  messageBar: IMessageBarStyles;
+}
 
-const messages = {
-  chatWithUs: 'Chat with us',
-  mailTo:
-    'mailto:webteam@spray.com?subject=I Could not find any results for ...',
-  send: 'Send us your feedback'
-};
+interface CheckoutErrorBoxProps {
+  error: CreateOrderError | unknown;
+}
 
-const errorTitleMessages = {
-  default: 'Something unexpected happened! Please contact customer support.',
-  cardDeclined: 'Your credit card was declined.',
-  cardInfoIncorrect: 'Your credit card information is incorrect.',
-  cartHasNoPricedItems: 'Your cart has no items with available pricing.',
-  cartIsEmpty: 'Your cart is empty.',
-  contentTypeHeaderMissing:
-    'There was an unexpected error while placing your order.',
-  givenAmountAndCalculatedAmountDoNotMatch:
-    'A pricing discrepancy has occurred.',
-  invalidPaymentMethod:
-    'The selected payment method is invalid for this account.',
-  userDoesNotHaveAccount:
-    'You are not currently logged in or your session has expired.',
-  todo: 'An unexpected error occurred.'
-};
+interface CheckoutErrorBoxText {
+  title: string;
+  description: string;
+  subText?: string;
+}
 
-const errorDescriptionMessages = {
-  default:
-    'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
-  cartHasNoPricedItems: 'Please refresh the page to load current prices.',
-  cartIsEmpty: 'Please refresh the page to reload your cart.',
-  contentTypeHeaderMissing: 'The content type header is missing.',
-  givenAmountAndCalculatedAmountDoNotMatch:
-    'The price calculated by the cart does not match the expected amount.',
-  invalidPaymentMethod:
-    'Orders with their payment method set to purchase order require a reference number.',
-  userDoesNotHaveAccount:
-    'Please reload the page and log back in using your user account.',
-  todo: 'Please check if your credit card information was entered correctly.'
-};
+const messages = defineMessages({
+  chatWithUs: {
+    id: messageIds.pages.checkout.errors.chatWithUs,
+    defaultMessage: 'Chat with us'
+  },
+  mailTo: {
+    id: messageIds.pages.checkout.errors.mailTo,
+    defaultMessage:
+      'mailto:webteam@spray.com?subject=I Could not find any results for ...'
+  },
+  send: {
+    id: messageIds.pages.checkout.errors.send,
+    defaultMessage: 'Send us your feedback'
+  },
+  default: {
+    id: messageIds.pages.checkout.errors.default.title,
+    defaultMessage:
+      'Something unexpected happened! Please contact customer support.'
+  },
+  subText: {
+    id: messageIds.pages.checkout.errors.subText,
+    defaultMessage:
+      'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.'
+  },
+  cardDeclined: {
+    id: messageIds.pages.checkout.errors.cardDeclined.title,
+    defaultMessage: 'Your credit card was declined.'
+  },
+  cardInfoIncorrect: {
+    id: messageIds.pages.checkout.errors.cardInfoIncorrect.title,
+    defaultMessage: 'Your credit card information is incorrect.'
+  },
+  cartHasNoPricedItems: {
+    id: messageIds.pages.checkout.errors.cartHasNoPricedItems.title,
+    defaultMessage: 'Your cart has no items with available pricing.'
+  },
+  cartHasNoPricedItemsDescription: {
+    id: messageIds.pages.checkout.errors.cartHasNoPricedItems.description,
+    defaultMessage: 'Please refresh the page to load current prices.'
+  },
+  cartIsEmpty: {
+    id: messageIds.pages.checkout.errors.cartIsEmpty.title,
+    defaultMessage: 'Please refresh the page to reload your cart.'
+  },
+  cartIsEmptyDescription: {
+    id: messageIds.pages.checkout.errors.cartIsEmpty.description,
+    defaultMessage: 'Please refresh the page to reload your cart.'
+  },
+  contentTypeHeaderMissing: {
+    id: messageIds.pages.checkout.errors.contentTypeHeaderMissing.title,
+    defaultMessage: 'There was an unexpected error while placing your order.'
+  },
+  contentTypeHeaderMissingDescription: {
+    id: messageIds.pages.checkout.errors.contentTypeHeaderMissing.description,
+    defaultMessage: 'The content type header is missing.'
+  },
+  givenAmountAndCalculatedAmountDoNotMatch: {
+    id: messageIds.pages.checkout.errors
+      .givenAmountAndCalculatedAmountDoNotMatch.title,
+    defaultMessage: 'A pricing discrepancy has occurred.'
+  },
+  givenAmountAndCalculatedAmountDoNotMatchDescription: {
+    id: messageIds.pages.checkout.errors
+      .givenAmountAndCalculatedAmountDoNotMatch.description,
+    defaultMessage:
+      'The price calculated by the cart does not match the expected amount.'
+  },
+  invalidPaymentMethod: {
+    id: messageIds.pages.checkout.errors.invalidPaymentMethod.title,
+    defaultMessage: 'The selected payment method is invalid for this account.'
+  },
+  invalidPaymentMethodDescription: {
+    id: messageIds.pages.checkout.errors.invalidPaymentMethod.description,
+    defaultMessage:
+      'Orders with their payment method set to purchase order require a reference number.'
+  },
+  userDoesNotHaveAccount: {
+    id: messageIds.pages.checkout.errors.userDoesNotHaveAccount.title,
+    defaultMessage:
+      'You are not currently logged in or your session has expired.'
+  },
+  userDoesNotHaveAccountDescription: {
+    id: messageIds.pages.checkout.errors.userDoesNotHaveAccount.description,
+    defaultMessage:
+      'Please reload the page and log back in using your user account.'
+  },
+  todo: {
+    id: messageIds.pages.checkout.errors.todo.title,
+    defaultMessage: 'An unexpected error occurred.'
+  },
+  todoDescription: {
+    id: messageIds.pages.checkout.errors.todo.description,
+    defaultMessage:
+      'Please check if your credit card information was entered correctly.'
+  }
+});
 
 export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
   error
 }) => {
   const { palette, spacing } = useTheme();
+  const { formatMessage } = useIntl();
 
   const styles: CheckoutErrorBoxStyles = {
     title: {
@@ -90,67 +167,78 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
       switch (error.name as CreateOrderErrorName) {
         case CreateOrderErrorName.CardIsDeclined:
           return {
-            title: errorTitleMessages.cardDeclined,
+            title: formatMessage(messages.cardDeclined),
             description: error.message,
-            subText: errorDescriptionMessages.default
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.CardNumberIsInvalid:
           return {
-            title: errorTitleMessages.cardInfoIncorrect,
+            title: formatMessage(messages.cardInfoIncorrect),
             description: error.message,
-            subText: errorDescriptionMessages.default
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.CartHasNoPricedItems:
           return {
-            title: errorTitleMessages.cartHasNoPricedItems,
-            description: errorDescriptionMessages.cartHasNoPricedItems,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.cartHasNoPricedItems),
+            description: formatMessage(
+              messages.cartHasNoPricedItemsDescription
+            ),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.CartIsEmpty:
           return {
-            title: errorTitleMessages.cartIsEmpty,
-            description: errorDescriptionMessages.cartIsEmpty,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.cartIsEmpty),
+            description: formatMessage(messages.cartIsEmptyDescription),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.ContentTypeHeaderMissing:
           return {
-            title: errorTitleMessages.contentTypeHeaderMissing,
-            description: errorDescriptionMessages.contentTypeHeaderMissing,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.contentTypeHeaderMissing),
+            description: formatMessage(
+              messages.contentTypeHeaderMissingDescription
+            ),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.GivenAmountAndCalculatedAmountDoNotMatch:
           return {
-            title: errorTitleMessages.givenAmountAndCalculatedAmountDoNotMatch,
-            description:
-              errorDescriptionMessages.givenAmountAndCalculatedAmountDoNotMatch,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(
+              messages.givenAmountAndCalculatedAmountDoNotMatch
+            ),
+            description: formatMessage(
+              messages.givenAmountAndCalculatedAmountDoNotMatchDescription
+            ),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.InvalidPaymentMethod:
           return {
-            title: errorTitleMessages.invalidPaymentMethod,
-            description: errorDescriptionMessages.invalidPaymentMethod,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.invalidPaymentMethod),
+            description: formatMessage(
+              messages.invalidPaymentMethodDescription
+            ),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.UserDoesNotHaveAccount:
           return {
-            title: errorTitleMessages.userDoesNotHaveAccount,
-            description: errorDescriptionMessages.userDoesNotHaveAccount,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.userDoesNotHaveAccount),
+            description: formatMessage(
+              messages.userDoesNotHaveAccountDescription
+            ),
+            subText: formatMessage(messages.subText)
           };
         case CreateOrderErrorName.TODO:
           return {
-            title: errorTitleMessages.todo,
-            description: errorDescriptionMessages.todo,
-            subText: errorDescriptionMessages.default
+            title: formatMessage(messages.todo),
+            description: formatMessage(messages.todoDescription),
+            subText: formatMessage(messages.subText)
           };
       }
     }
 
     return {
-      title: errorTitleMessages.default,
-      description: errorDescriptionMessages.default
+      title: formatMessage(messages.default),
+      description: formatMessage(messages.subText)
     };
-  }, [error]);
+  }, [error, formatMessage]);
 
   return (
     <MessageBar
@@ -165,20 +253,22 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
         >
           <ActionButton
             iconProps={{ iconName: 'ChatInviteFriend' }}
-            text={messages.chatWithUs}
+            text={formatMessage(messages.chatWithUs)}
             styles={styles.actionButton}
             onRenderText={props => (
               <div
-                dangerouslySetInnerHTML={{
-                  __html: `<a onclick="SnapEngage.startLink()">${props?.text}</>`
-                }}
+                dangerouslySetInnerHTML={
+                  {
+                    __html: `<a onclick="SnapEngage.startLink()">${props?.text}</>`
+                  } /*TODO handle chat function*/
+                }
               ></div>
             )}
           />
           <ActionButton
             iconProps={{ iconName: 'EditMail' }}
             styles={styles.actionButton}
-            href={messages.mailTo}
+            href={formatMessage(messages.mailTo)}
           >
             {messages.send}
           </ActionButton>

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { useIntl } from 'react-intl';
+
+import { messageIds } from '@services/i18n';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 
 /**
@@ -7,24 +10,24 @@ import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb'
  * This smart component will pass on the expected IBreadcrumbItems to the MainBreadcrumb.
  * It is expected to be used on the checkout page.
  */
-// eslint-disable-next-line max-len
 export const CheckoutBreadcrumb: React.FC = () => {
+  const { formatMessage } = useIntl();
   const breadCrumbItems = [
     {
       key: 'home',
-      text: 'Home', //TODO ward i18n
+      text: formatMessage({ id: messageIds.pages.home.headTitle }),
       isCurrentItem: false,
       href: '/'
     },
     {
       key: 'cart',
-      text: 'Cart', //TODO ward i18n
+      text: formatMessage({ id: messageIds.pages.cart.title }),
       href: '/cart',
       isCurrentItem: false
     },
     {
       key: 'checkout',
-      text: 'Checkout', //TODO ward i18n
+      text: formatMessage({ id: messageIds.pages.checkout.title }),
       isCurrentItem: true
     }
   ];

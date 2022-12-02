@@ -16,7 +16,6 @@ const messages = defineMessages({
 });
 
 export const Summary: React.FC<SummaryProps> = ({
-  headerText,
   onRenderDetails,
   onRenderActions,
   onRenderTopSection
@@ -42,25 +41,17 @@ export const Summary: React.FC<SummaryProps> = ({
         textTransform: 'uppercase'
       }
     },
-    headerWrapper: {
-      root: {
-        backgroundColor: palette.themePrimary
-      }
-    },
     topSection: {
       root: {
         borderBottom: `1px solid ${semanticColors.variantBorder}`
       }
     },
     contentWrapper: {
-      root: {
-        border: `1px solid ${semanticColors.variantBorder}`,
-        borderTop: 'none',
-        borderRadius: `0 0 ${effects.roundedCorner4} ${effects.roundedCorner4}`
-      }
+      root: {}
     },
     wrapper: {
       root: {
+        border: `1px solid ${semanticColors.variantBorder}`,
         borderRadius: effects.roundedCorner4,
         overflow: 'hidden'
       }
@@ -68,17 +59,6 @@ export const Summary: React.FC<SummaryProps> = ({
   };
   return (
     <Stack styles={styles.wrapper}>
-      <Stack.Item>
-        <Stack
-          styles={styles.headerWrapper}
-          tokens={{ padding: spacing.m }}
-          horizontalAlign="center"
-        >
-          <Stack.Item>
-            <Text styles={styles.headerText}>{headerText}</Text>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
       <Stack.Item>
         <Stack
           styles={styles.contentWrapper}

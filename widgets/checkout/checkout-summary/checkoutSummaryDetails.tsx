@@ -1,30 +1,44 @@
 import React from 'react';
 
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
-import {
-  FontSizes,
-  FontWeights,
-  Shimmer,
-  Stack,
-  Text,
-  useTheme
-} from '@fluentui/react';
+import { FontWeights, Shimmer, Stack, Text, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
+import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
 
-import { CheckoutFormContext } from '../shared/checkoutFormContext';
 import { CheckoutSummaryDetailStyles } from './checkoutSummary.types';
 
-const messages = {
-  details: 'Details',
-  subTotal: 'Sub Total',
-  shippingCost: 'Shipping',
-  total: 'Order Total',
-  vat: 'Tax'
-};
+const messages = defineMessages({
+  details: {
+    id: messageIds.pages.checkout.summary.details,
+    defaultMessage: 'Details',
+    description: 'Details section title on checkout summary'
+  },
+  subTotal: {
+    id: messageIds.pages.checkout.summary.subTotal,
+    defaultMessage: 'Subtotal',
+    description: 'Subtotal label on checkout summary'
+  },
+  shippingCost: {
+    id: messageIds.pages.checkout.summary.shippingCost,
+    defaultMessage: 'Shipping',
+    description: 'Shipping label on checkout summary'
+  },
+  total: {
+    id: messageIds.pages.checkout.summary.total,
+    defaultMessage: 'Shipping',
+    description: 'Total label on checkout summary'
+  },
+  tax: {
+    id: messageIds.pages.checkout.summary.tax,
+    defaultMessage: 'Tax',
+    description: 'Tax label on checkout summary'
+  }
+});
 
 export const CheckoutSummaryDetails: React.FC = () => {
-  const { spacing, semanticColors, palette } = useTheme();
+  const { spacing, semanticColors, palette, fonts } = useTheme();
   const {
     currencyCode,
     subTotalCost,
@@ -32,8 +46,8 @@ export const CheckoutSummaryDetails: React.FC = () => {
     selectedShippingOption,
     orderTaxAmount,
     orderTaxAmountStatus
-  } = React.useContext(CheckoutFormContext);
-  const { formatNumber } = useIntl();
+  } = useCheckout();
+  const { formatNumber, formatMessage } = useIntl();
 
   const styles: CheckoutSummaryDetailStyles = {
     headerText: {
@@ -49,9 +63,9 @@ export const CheckoutSummaryDetails: React.FC = () => {
     },
     totalText: {
       root: {
+        ...fonts.mediumPlus,
         color: palette.themePrimary,
-        fontWeight: FontWeights.semibold,
-        fontSize: FontSizes.mediumPlus
+        fontWeight: FontWeights.semibold
       }
     },
     totalShimmer: {
@@ -64,7 +78,7 @@ export const CheckoutSummaryDetails: React.FC = () => {
       <Stack.Item>
         <Stack horizontalAlign="space-between" horizontal>
           <Stack.Item>
-            <Text>{messages.subTotal}</Text>
+            <Text>{formatMessage(messages.subTotal)}</Text>
           </Stack.Item>
           <Stack.Item>
             <PricePrimaryText
@@ -83,7 +97,7 @@ export const CheckoutSummaryDetails: React.FC = () => {
           horizontal
         >
           <Stack.Item>
-            <Text>{messages.shippingCost}</Text>
+            <Text>{formatMessage(messages.shippingCost)}</Text>
           </Stack.Item>
           <Stack.Item>
             <Text>
@@ -111,7 +125,7 @@ export const CheckoutSummaryDetails: React.FC = () => {
           horizontal
         >
           <Stack.Item>
-            <Text>{messages.vat}</Text>
+            <Text>{formatMessage(messages.tax)}</Text>
           </Stack.Item>
           <Stack.Item>
             {orderTaxAmountStatus === 'loading' ? (
@@ -145,7 +159,9 @@ export const CheckoutSummaryDetails: React.FC = () => {
           horizontal
         >
           <Stack.Item>
-            <Text styles={styles.totalText}>{messages.total}</Text>
+            <Text styles={styles.totalText}>
+              {formatMessage(messages.total)}
+            </Text>
           </Stack.Item>
           <Stack.Item>
             {orderTaxAmountStatus === 'loading' ? (

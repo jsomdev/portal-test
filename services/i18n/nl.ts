@@ -464,7 +464,202 @@ export const nl: Messages = {
       continueShopping: 'Doorgaan met winkelen'
     },
     checkout: {
-      title: 'Bestellen'
+      title: 'Bestellen',
+      orderSuccess: 'Je bestelling is aangemaakt. Omleiden...',
+      creatingOrder: 'Uw bestelling maken......',
+      loadingCart: 'Laden van winkelwagen...',
+      loadingCartFailed: 'Het laden van je winkelwagen is mislukt!',
+      loadingProductInfo: 'Laden van productinformatie...',
+      loadingProductInfoFailed: 'Laden van productinformatie mislukt!',
+      noItems:
+        'Er zijn geen artikelen gevonden in uw winkelwagen met beschikbare prijzen.',
+      noItemsLink:
+        'Ga terug naar de winkelwagenpagina en vraag een offerte aan.',
+      needsSignIn:
+        'U moet ingelogd zijn om uw winkelwagen af te rekenen. Gelieve {signInText}',
+      signInText: 'hier inloggen.',
+      unauthorized: 'U bent niet bevoegd om deze pagina te bekijken.',
+      steps: {
+        details: 'Details',
+        shippingMethod: 'Levering',
+        paymentDetails: 'Betaling',
+        overview: 'Overzicht'
+      },
+      actions: {
+        nextButton: 'Doorgaan',
+        backButton: 'Vorige stap',
+        submitButton: 'Bevestigen',
+        completePayment: 'Bevestigen en betalen',
+        completePurchaseOrder: 'Bevestigen en plaatsen'
+      },
+      details: {
+        generalTitle: 'Algemene informatie',
+        shippingContactTitle: 'Contact Informatie',
+        shippingAddressTitle: 'Leveringsadres',
+        fields: {
+          email: 'E-mail',
+          emailPlaceholder: 'example@domain.com',
+          firstName: 'Voornaam',
+          name: 'Familienaam',
+          company: 'Bedrijf',
+          companyPlaceholder: 'Bedrijfsnaam',
+          country: 'Land',
+          countryPlaceholder: 'Selecteer een land',
+          address: 'Adres',
+          addressPlaceholder: 'Straatnaam en huisnummer',
+          city: 'Gemeente',
+          state: 'Provincie',
+          statePlaceholder: {
+            default: 'Staat / Regio / Provincie',
+            BE: 'Provincie',
+            US: 'Selecteer een staat',
+            CA: 'Selecteer een provincie'
+          },
+          postalCode: 'Postcode',
+          phone: 'Telefoonnummer'
+        }
+      },
+      shippingMethods: {
+        shippingMethodLabel: 'Levering',
+        loadingShippingMethods: 'Leveringsmethoden laden...'
+      },
+      payment: {
+        billingContact: 'Facturatie contact',
+        billingAddress: 'Facturatie adres',
+        creditCard: 'Kredietkaart',
+        purchaseOrder: 'Bestelbon',
+        purchaseOrderInfo:
+          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening.',
+        fields: {
+          paymentMethod: 'Betaalmethode',
+          shippingAddressAsBillingAddress:
+            'Verzendingadres als factureringadres',
+          shippingContactAsBillingContact:
+            'Verzendcontact als factureringscontact',
+          billingAddressChoice: {
+            sameAsShipping: 'Zelfde als leveringsadres',
+            differentFromShipping: 'Gebruik een ander facturatieadres'
+          },
+          billingContactChoice: {
+            sameAsShipping: 'Zelfde als leveringscontact',
+            differentFromShipping: 'Gebruik een ander facturatiecontact'
+          },
+          creditCardNumber: 'Kaartnummer',
+          creditCardNumberInvalidFormatError: 'Ongeldig kaartnummer',
+
+          creditCardName: 'Naam op kaart',
+          creditCardNameInvalidFormatError:
+            'Gelieve een geldige naam in te voeren',
+          creditCardExpiration: 'Geldig tot',
+          creditCardExpirationPlaceholder: 'MM/JJ',
+          creditCardExpirationInvalidError: 'Vervaldatum ongeldig',
+          creditCardCVV: 'CVV / CVC Code',
+
+          billingFirstName: 'Voornaam',
+          billingLastName: 'Familienaam',
+          billingCompany: 'Bedrijfsnaam',
+          billingCompanyPlaceholder: 'Bedrijfsnaam',
+          billingPhone: 'Telefoonnummer',
+
+          billingAddress: 'Adres',
+          billingCity: 'Gemeente',
+          billingState: 'Provincie',
+          billingCountry: 'Land',
+          billingPostalCode: 'Postcode',
+          referenceNumber: 'Referentienummer'
+        }
+      },
+      summary: {
+        details: 'Details',
+        subTotal: 'Subtotaal',
+        shippingCost: 'Leveringskosten',
+        total: 'Totale bestelling',
+        tax: 'BTW'
+      },
+      overview: {
+        reviewTitle: 'Controleer uw bestelling',
+        termsAndConditions: 'Algemene voorwaarden en condities',
+        privacyPolicy: 'Privacybeleid',
+        editGroup: 'Wijzigen',
+        totalCost: 'Je betaalt',
+        invoiceAmount: 'Factuurbedrag',
+        fields: {
+          acceptedTerms:
+            'Ik ga akkoord met de {termsAndConditions} en het {privacyPolicy}.',
+          acceptedTermsRequired: 'U moet akkoord gaan met de voorwaarden.',
+          additionalInformation: 'Aanvullende informatie',
+          additionalInformationPlaceholder:
+            'Voeg eventuele aanvullende opmerkingen, verzoeken of opmerkingen toe'
+        }
+      },
+      discounts: {
+        apply: 'Toepassen',
+        discountCode: 'Kortingscode'
+      },
+      usps: {
+        qualityServices: 'Kwaliteits-diensten',
+        secureTransactions: 'Veilige transacties',
+        expertSupport: 'Deskundige ondersteuning'
+      },
+      formErrors: {
+        vatError: 'Fout bij laden van BTW tarief',
+        noShippingOptions:
+          'Geen leveringsopties gevonden. Controleer of je leveringsadres correct is.',
+        retryButton: 'Opnieuw proberen',
+        editAddress: 'Wijzigen'
+      },
+      errors: {
+        chatWithUs: 'Chat met ons',
+        mailTo:
+          'mailto:webteam@spray.com?subject=Ik kon geen resultaten vinden voor...',
+        send: 'Stuur ons uw feedback',
+        subText:
+          'Neem gerust contact op met de klantenservice als je vragen hebt. Een medewerker van de klantenservice staat klaar op 1-800-9577729.',
+        default: {
+          title:
+            'Er gebeurde iets onverwachts! Neem contact op met de klantenservice.'
+        },
+        cardDeclined: {
+          title: 'Je credit card is niet geaccepteerd.'
+        },
+        cardInfoIncorrect: {
+          title: 'Uw creditcardgegevens zijn onjuist.'
+        },
+        cartHasNoPricedItems: {
+          title: 'Uw winkelwagen bevat geen artikelen met beschikbare prijzen.',
+          description: 'Ververs de pagina om de huidige prijzen te laden.'
+        },
+        cartIsEmpty: {
+          title: 'Uw winkelwagen is leeg.',
+          description: 'Ververs de pagina om uw winkelwagen opnieuw te laden.'
+        },
+        contentTypeHeaderMissing: {
+          title:
+            'Er is een onverwachte fout opgetreden bij het plaatsen van uw bestelling.',
+          description: 'De content type header ontbreekt.'
+        },
+        givenAmountAndCalculatedAmountDoNotMatch: {
+          title: 'Er is een prijsverschil opgetreden.',
+          description:
+            'De door de winkelwagen berekende prijs komt niet overeen met het verwachte bedrag.'
+        },
+        invalidPaymentMethod: {
+          title:
+            'De geselecteerde betaalmethode is ongeldig voor deze account.',
+          description:
+            'Bestellingen waarvan de betaalmethode is ingesteld op inkooporder hebben een referentienummer nodig.'
+        },
+        userDoesNotHaveAccount: {
+          title: 'U bent momenteel niet ingelogd of uw sessie is verlopen.',
+          description:
+            'Laad de pagina opnieuw en log opnieuw in met uw gebruikersaccount.'
+        },
+        todo: {
+          title: 'Er is een onverwachte fout opgetreden.',
+          description:
+            'Controleer of uw creditcardgegevens correct zijn ingevoerd.'
+        }
+      }
     }
   },
   loading: {
@@ -531,5 +726,16 @@ export const nl: Messages = {
   },
   summary: {
     details: 'Details'
+  },
+  validation: {
+    mixed: {
+      required: '{label} is verplicht'
+    },
+    string: {
+      email: 'Gelieve een geldig e-mail adres in te vullen',
+      matches: '{label} is niet in een geldig formaat',
+      min: '{label} moet minstens {min} tekens bevatten',
+      max: '{label} mag maximaal {max} tekens bevatten'
+    }
   }
 };

@@ -492,7 +492,14 @@ const SearchBar: React.FC = () => {
                           horizontal
                           verticalAlign="center"
                           styles={styles.linkText}
-                          tokens={{ childrenGap: spacing.s1 }}
+                          tokens={{
+                            childrenGap: spacing.s1,
+                            padding: `0 ${spacing.s1}`
+                          }}
+                          onClick={() => {
+                            setShowContextualMenu(false);
+                            setIsBoxFocused(false);
+                          }}
                         >
                           <Image
                             height={80}

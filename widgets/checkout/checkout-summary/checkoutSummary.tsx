@@ -3,48 +3,43 @@ import React from 'react';
 import { Summary } from '@components/summary/summary';
 import { Stack, useTheme } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
-import { scrollToTop } from '@utilities/scrollToTop';
-import { CheckoutFormSummaryStepActions } from '@widgets/forms/checkoutFormSummaryStepAction';
-import { FormStepActions } from '@widgets/forms/formStepActions';
+import { CheckoutSummaryActions } from '@widgets/checkout/checkout-summary/checkoutSummaryActions';
+import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { ServiceBadges } from '@widgets/service-badges/serviceBadges';
 
-import { getCheckoutFieldNames } from '../checkout-form/checkoutFormHelper';
-import { CheckoutFormContext } from '../shared/checkoutFormContext';
 import { CheckoutSummaryDetails } from './checkoutSummaryDetails';
 import { CheckoutSummaryProductsList } from './checkoutSummaryProductsList';
 
-const messages = {
-  header: 'SUMMARY'
+type CheckoutSummaryProps = {
+  onProceed: () => void;
+  onPrevious: () => void;
+  submitButtonText: string;
+  showSubmitButton: boolean;
 };
-
-export const CheckoutSummary: React.FC = () => {
+export const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
+  onProceed,
+  onPrevious,
+  submitButtonText,
+  showSubmitButton
+}) => {
   const { checkoutItems } = useCart();
   const { spacing } = useTheme();
-  const { orderTaxAmountStatus } = React.useContext(CheckoutFormContext);
+  const { orderTaxAmountStatus } = useCheckout();
 
   return (
     <Stack>
       <Summary
-        headerText={messages.header}
         onRenderActions={() => {
           return (
             <Stack tokens={{ childrenGap: spacing.m }}>
               <Stack.Item>
-                <FormStepActions getFieldNames={getCheckoutFieldNames}>
-                  {(onProceed: () => void, onPrevious: () => void) => (
-                    <CheckoutFormSummaryStepActions
-                      onProceedClick={() => {
-                        onProceed();
-                        scrollToTop('body');
-                      }}
-                      onPreviousClick={() => {
-                        onPrevious();
-                        scrollToTop('body');
-                      }}
-                      disableSubmit={orderTaxAmountStatus === 'loading'}
-                    />
-                  )}
-                </FormStepActions>
+                <CheckoutSummaryActions
+                  submitButtonText={submitButtonText}
+                  showSubmitButton={showSubmitButton}
+                  onProceedClick={onProceed}
+                  onPreviousClick={onPrevious}
+                  disableSubmit={orderTaxAmountStatus === 'loading'}
+                />
               </Stack.Item>
               <Stack.Item>
                 <ServiceBadges />
