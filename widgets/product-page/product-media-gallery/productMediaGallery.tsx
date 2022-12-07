@@ -447,6 +447,7 @@ export const ProductMediaGalleryThumbnail: React.FC<
         top: 0,
         right: 0,
         left: 0,
+        aspectRatio: '1/1',
         bottom: 0,
         cursor: 'pointer',
         background: 'rgba(0,0,0,0.5)',
