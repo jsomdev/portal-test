@@ -51,8 +51,6 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         FacetKey.CategoryId
       ];
 
-      console.log(excludedKeys);
-
       return (
         !excludedKeys.includes(facet.key) &&
         !facet.options.find(option => option.isActive)

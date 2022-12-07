@@ -663,10 +663,15 @@ type IProductMessages = {
       otherTitle: string;
       title: string;
     };
+    alternativeModels: {
+      title: string;
+    };
   };
 };
 
-type IModelMessages = INextHeadMessages;
+type IModelMessages = INextHeadMessages & {
+  browseAll: string;
+};
 type ISeriesMessages = INextHeadMessages;
 /**
  * Tree structure that represents all messages used throughout the application.

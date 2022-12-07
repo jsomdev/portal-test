@@ -17,7 +17,7 @@ export function mapFacetedSearchProductsToProductSuggestions(
       imageUrl: facetedSearchProductFormatter.formatImageSrc(),
       name: facetedSearchProductFormatter.formatName(),
       number: product.number || '',
-      url: facetedSearchProductFormatter.formatHref()
+      url: facetedSearchProductFormatter.formatUrl()
     };
   });
 }
@@ -31,12 +31,15 @@ export function mapAutoCompleteStringsToViewModel(
     return [];
   }
   return values.slice(0, count).map(value => {
-    const textBefore: string = value.substring(0, value.indexOf(match));
+    const textBefore: string = value.substring(
+      0,
+      value.indexOf(match.toUpperCase())
+    );
     const textAfter: string = value.substring(
-      value.indexOf(match) + match.length
+      value.indexOf(match.toUpperCase()) + match.length
     );
     return {
-      htmlText: `<strong>${textBefore}</strong>${match}<strong>${textAfter}</strong>`,
+      htmlText: `<strong>${textBefore}</strong>${match.toUpperCase()}<strong>${textAfter}</strong>`,
       query: value
     };
   });

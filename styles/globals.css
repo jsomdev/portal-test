@@ -293,6 +293,10 @@ p {
   display: none;
 }
 
+.ms-Link {
+  color: #0065a4;
+}
+
 ul {
   list-style: none;
   padding: 0;

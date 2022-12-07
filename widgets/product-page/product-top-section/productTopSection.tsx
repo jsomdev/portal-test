@@ -19,7 +19,13 @@ interface ProductTopSectionStyles {
   mainContainer: IStackStyles;
 }
 
-export const ProductTopSection: React.FC = () => {
+interface ProductTopSectionProps {
+  isModel?: boolean;
+}
+
+export const ProductTopSection: React.FC<ProductTopSectionProps> = ({
+  isModel = false
+}) => {
   const { spacing } = useTheme();
   const { product } = useProductPage();
   const styles: ProductTopSectionStyles = {
@@ -60,14 +66,16 @@ export const ProductTopSection: React.FC = () => {
         <Stack.Item styles={styles.mediaGalleryContainer}>
           <ProductMediaGallery />
         </Stack.Item>
-        <Stack
-          tokens={{ childrenGap: spacing.l1 }}
-          styles={styles.mainContainer}
-        >
-          <ActiveProductConfiguration />
-          <ProductPagePricing product={product} />
-          <ProductCompareButton product={product} />
-        </Stack>
+        {!isModel && (
+          <Stack
+            tokens={{ childrenGap: spacing.l1 }}
+            styles={styles.mainContainer}
+          >
+            <ActiveProductConfiguration />
+            <ProductPagePricing product={product} />
+            <ProductCompareButton product={product} />
+          </Stack>
+        )}
       </Stack>
     </ProductSectionContainer>
   );

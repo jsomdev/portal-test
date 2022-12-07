@@ -182,6 +182,9 @@ export const nl: Messages = {
             seriesLabel: 'voor {value} ({type})'
           }
         },
+        alternativeModels: {
+          title: 'Alternatieve Modellen'
+        },
         generalInformation: {
           title: 'Algemene informatie',
           flowTitle: 'Flow',
@@ -246,6 +249,7 @@ export const nl: Messages = {
     },
     model: {
       headTitle: '{name}',
+      browseAll: "Doorblader alle '{number}' producten",
       headDescription: 'pages.model.headDescription'
     },
     category: {

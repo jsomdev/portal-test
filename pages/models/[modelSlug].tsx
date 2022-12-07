@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -8,58 +6,62 @@ import {
   GetStaticPropsResult,
   NextPage
 } from 'next';
-import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
+import { defineMessages, useIntl } from 'react-intl';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { ProductBookmarkButton } from '@components/buttons/bookmarkButton';
-import { Stack, useTheme } from '@fluentui/react';
+import { NextLink } from '@components/link/nextLink';
+import { IButtonStyles, PrimaryButton, Stack, useTheme } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
-import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
-import { getAudience } from '@services/i18n';
+import { modelIdFacet } from '@services/facet-service/facets/modelId';
+import { getAudience, messageIds } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
-import { Model, Product, Series } from '@services/portal-api';
+import { Model, Series } from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
-import { fetchAllConditionTypes } from '@services/portal-api/conditionTypes';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
-import { fetchProductForProductPage } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
+import pagePaths from '@utilities/pagePaths';
+import { rem } from '@utilities/rem';
 import { generateProductStructuredData } from '@utilities/structuredData';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { mediaQueryFrom } from '@widgets/media-queries';
+import { AlternativeModels } from '@widgets/model-page/alternative-models/alternativeModels';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
-import { ProductAccessories } from '@widgets/product-page/product-accessories/productAccessories';
-import { ProductDownloads } from '@widgets/product-page/product-downloads/productDownloads';
 import { ProductGeneralInformation } from '@widgets/product-page/product-general-information/generalInformation';
-import { ProductPerformance } from '@widgets/product-page/product-performance/productPerformance';
 import { ProductSections } from '@widgets/product-page/product-sections/productSections';
 import { ProductSectionKey } from '@widgets/product-page/product-sections/productSections.types';
-import { ProductSpecifications } from '@widgets/product-page/product-specifications/productSpecifications';
-import { ProductStickyHeader } from '@widgets/product-page/product-sticky/productStickyHeader';
-import { ProductStickyThumb } from '@widgets/product-page/product-sticky/productStickyThumb';
 import { ProductTopSection } from '@widgets/product-page/product-top-section/productTopSection';
-import { ProductSubHeader } from '@widgets/product-page/productSubHeader';
 
-export interface ProductsProps {
-  product: Product;
+export interface ModelsProps {
+  model: Model;
+  alternativeModels: Model[];
   series: Series | undefined;
-  model: Model | undefined;
 }
 
-const Products: NextPage<
-  ProductsProps &
+const messages = defineMessages({
+  browseProducts: {
+    id: messageIds.pages.model.browseAll,
+    defaultMessage: 'Browse all products',
+    description:
+      'Button text to go to search page with this models filter active'
+  }
+});
+
+const Models: NextPage<
+  ModelsProps &
     Partial<
       Pick<
         GlobalDataContextProps,
@@ -71,32 +73,40 @@ const Products: NextPage<
       >
     >
 > = ({
-  product,
   model,
+  alternativeModels,
   attributeGroups,
   attributeTypes,
   conditionTypes,
   siteMenuItems,
   mainMenuItems
 }) => {
-  const { locale } = useRouter();
-  const { registerView } = useRecentlyViewedProducts();
-  const { spacing } = useTheme();
-  const productFormatter = new ProductFormatter(product, locale);
+  const { locale, formatMessage } = useIntl();
+  const { spacing, fonts } = useTheme();
+  const modelFormatter = new ProductFormatter(model, locale);
+  const modelOption = modelIdFacet.options.find(
+    option => option.value === model.id
+  );
 
-  useEffect(() => {
-    registerView({ id: product.id, lastViewedOn: new Date() });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const browseAllButtonStyles: IButtonStyles = {
+    root: {
+      height: 48,
+      ...fonts.mediumPlus,
+      ...mediaQueryFrom('tablet', {
+        ...fonts.large,
+        height: 56
+      })
+    }
+  };
   return (
     <Page
       metaProps={{
-        title: productFormatter.formatTitle(),
-        description: productFormatter.formatDescription()
+        title: modelFormatter.formatTitle(),
+        description: modelFormatter.formatDescription()
       }}
       i18nProps={{
-        localePaths: getLocalePathsFromMultilingual('products', product.slug),
-        structuredData: generateProductStructuredData(product, locale)
+        localePaths: getLocalePathsFromMultilingual('models', model.slug),
+        structuredData: generateProductStructuredData(model, locale)
       }}
     >
       <GlobalDataProvider
@@ -107,9 +117,11 @@ const Products: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
-          <ProductPageProvider product={product}>
-            <ProductStickyHeader product={product} />
-            <ProductStickyThumb product={product} />
+          <ProductPageProvider
+            hasAlternativeModels={!!alternativeModels.length}
+            isModel={true}
+            product={model}
+          >
             <ContentContainerStack
               outerStackProps={{
                 tokens: {
@@ -117,30 +129,45 @@ const Products: NextPage<
                 }
               }}
             >
-              <Stack horizontal>
-                <PagesHeader title={productFormatter.formatTitle()} />
-                <ProductBookmarkButton productId={product.id} />
-              </Stack>
-              <ProductSubHeader model={model} />
-              <ProductTopSection />
+              <PagesHeader title={modelFormatter.formatTitle()} />
+              <ProductTopSection isModel={true} />
               <ProductSections
                 onRenderSectionContent={section => {
                   switch (section.sectionKey) {
                     case ProductSectionKey.GeneralInformation:
                       return <ProductGeneralInformation />;
-                    case ProductSectionKey.ProductDownloads:
-                      return <ProductDownloads />;
-                    case ProductSectionKey.ProductAttributes:
-                      return <ProductSpecifications />;
-                    case ProductSectionKey.ProductAccessories:
-                      return <ProductAccessories />;
-                    case ProductSectionKey.ProductPerformance:
-                      return <ProductPerformance />;
+
+                    case ProductSectionKey.AlternativeModels:
+                      return (
+                        <AlternativeModels
+                          alternativeModels={alternativeModels}
+                        />
+                      );
                     default:
                       return null;
                   }
                 }}
               />
+              <Stack.Item
+                align="center"
+                tokens={{ margin: `0 0 ${rem(80)} 0`, padding: spacing.s1 }}
+              >
+                <NextLink
+                  passHref
+                  href={{
+                    pathname: pagePaths.search(),
+                    query: {
+                      [modelIdFacet.key]: modelOption?.key
+                    }
+                  }}
+                >
+                  <PrimaryButton styles={browseAllButtonStyles}>
+                    {formatMessage(messages.browseProducts, {
+                      number: model.number
+                    })}
+                  </PrimaryButton>
+                </NextLink>
+              </Stack.Item>
             </ContentContainerStack>
           </ProductPageProvider>
         </AppLayout>
@@ -149,27 +176,27 @@ const Products: NextPage<
   );
 };
 
-interface ProductsParsedUrlQuery extends ParsedUrlQuery {
-  productSlug: string;
+interface ModelsParsedUrlQuery extends ParsedUrlQuery {
+  modelSlug: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async (
   context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<ProductsParsedUrlQuery>> => {
+): Promise<GetStaticPathsResult<ModelsParsedUrlQuery>> => {
   // const productsData = await fetchProductsForStaticPaths();
-  const productsData: Product[] = [];
+  const modelsData: Model[] = await fetchAllModels();
 
   const localizedPaths = (context.locales || []).map(locale => {
     const pathForLocale: {
-      params: ProductsParsedUrlQuery;
+      params: ModelsParsedUrlQuery;
       locale?: string | undefined;
-    }[] = productsData.map(product => {
+    }[] = modelsData.map(model => {
       const multilingualStringFormatter = new MultilingualStringFormatter(
         locale
       );
       return {
         params: {
-          productSlug: multilingualStringFormatter.format(product.slug)
+          modelSlug: multilingualStringFormatter.format(model.slug)
         },
         locale
       };
@@ -184,7 +211,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<
   GetStaticPropsResult<
-    ProductsProps &
+    ModelsProps &
       Partial<
         Pick<
           GlobalDataContextProps,
@@ -198,53 +225,59 @@ export const getStaticProps: GetStaticProps = async (
   >
 > => {
   const { locale } = context;
-  const { productSlug } = context.params as ProductsParsedUrlQuery;
+  const { modelSlug } = context.params as ModelsParsedUrlQuery;
 
   const [
-    productData,
     seriesData,
     modelsData,
     siteMenuData,
     mainMenuData,
     attributeTypesData,
-    attributeTypeGroupsData,
-    conditionTypesData
+    attributeTypeGroupsData
   ] = await Promise.all([
-    fetchProductForProductPage(productSlug),
     fetchAllSeries(),
     fetchAllModels(),
     fetchMenuItemsForSiteHeader(getAudience(locale)),
     fetchMenuItemsForMainHeader(getAudience(locale)),
     fetchAllAttributeTypes(),
-    fetchAllAttributeGroups(),
-    fetchAllConditionTypes()
+    fetchAllAttributeGroups()
   ]);
 
-  if (!productData) {
+  const multilingualStringFormatter: MultilingualStringFormatter =
+    new MultilingualStringFormatter(locale);
+
+  const model: Model | undefined = modelsData.find(
+    model => multilingualStringFormatter.format(model.slug) === modelSlug
+  );
+
+  if (!model) {
     return {
       notFound: true
     };
   }
 
   const series: Series | undefined = seriesData.find(
-    series => series.id === productData.model?.seriesId
+    series => series.id === model.seriesId
   );
-  const model: Model | undefined = modelsData.find(
-    model => model.id === productData.modelId
+
+  const alternativeModels: Model[] = modelsData.filter(
+    possibleModel =>
+      series &&
+      possibleModel.seriesId === series.id &&
+      model.id !== possibleModel.id
   );
 
   return {
     props: {
-      product: productData,
-      series: series,
       model: model,
+      alternativeModels,
+      series: series,
       attributeGroups: attributeTypeGroupsData,
       attributeTypes: attributeTypesData,
       siteMenuItems: siteMenuData || [],
-      mainMenuItems: mainMenuData || [],
-      conditionTypes: conditionTypesData
+      mainMenuItems: mainMenuData || []
     }
   };
 };
 
-export default Products;
+export default Models;

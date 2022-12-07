@@ -109,7 +109,7 @@ export function mapFacetedSearchProductsToProductListItems(
         id: product.id || Guid.create().toString(),
         number: product.number || '',
         name: productFormatter.formatName(),
-        url: productFormatter.formatHref() || undefined,
+        url: productFormatter.formatUrl() || undefined,
         imageUrl: productFormatter.formatImageSrc()
       },
       chips: getChips(product, getAttributeType),

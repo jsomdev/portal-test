@@ -30,6 +30,10 @@ const messages = defineMessages({
   downloadsSectionTitle: {
     id: messageIds.pages.product.sections.downloads.title,
     defaultMessage: 'Product Downloads'
+  },
+  alternativeModelsTitle: {
+    id: messageIds.pages.product.sections.alternativeModels.title,
+    defaultMessage: 'Alternative Models'
   }
 });
 
@@ -39,6 +43,7 @@ interface ProductSections {
   downloadsSection: ProductSection;
   performanceSection: ProductSection;
   specificationsSection: ProductSection;
+  alternativeModelsSection: ProductSection;
 }
 
 function createSection(key: ProductSectionKey, title: string): ProductSection {
@@ -69,6 +74,10 @@ export function getProductSections(intl: IntlShape): ProductSections {
     specificationsSection: createSection(
       ProductSectionKey.ProductAttributes,
       intl.formatMessage(messages.specificationsSectionTitle)
+    ),
+    alternativeModelsSection: createSection(
+      ProductSectionKey.AlternativeModels,
+      intl.formatMessage(messages.alternativeModelsTitle)
     )
   };
 }

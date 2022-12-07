@@ -4,6 +4,8 @@ const pagePaths = {
     query ? `/search?query=${query}` : '/search',
   compare: '/compare',
   categories: '/categories',
+  models: (slug: string): string => `/models/${slug}`,
+  products: (slug: string): string => `/products/${slug}`,
   category: (slug: string): string => `/categories/${slug}`,
   quoteRequest: '/cart/create-quote-request',
   cart: '/cart',

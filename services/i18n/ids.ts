@@ -197,6 +197,9 @@ export const messageIds: Messages = {
             openLink: 'pages.product.sections.specifications.actions.openLink'
           },
           title: 'pages.product.sections.specifications.title'
+        },
+        alternativeModels: {
+          title: 'pages.product.sections.alternativeModels.title'
         }
       }
     },
@@ -243,6 +246,7 @@ export const messageIds: Messages = {
       }
     },
     model: {
+      browseAll: 'pages.model.browseAll',
       headTitle: 'pages.model.headTitle',
       headDescription: 'pages.model.headDescription'
     },

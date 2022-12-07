@@ -23,11 +23,17 @@ import { getProductSections } from '@widgets/product-page/product-sections/produ
 import { ProductPageContext } from './productPageContext';
 
 interface ProductPageProviderProps {
+  // TODO (after release) create provider for model pages
+  isModel?: boolean;
+  hasAlternativeModels?: boolean;
   product: Product;
 }
 
 export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
   product,
+  // Used for model page initial release
+  isModel = false,
+  hasAlternativeModels = false,
   children
 }) => {
   const intl = useIntl();
@@ -61,17 +67,22 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
       filteredSections.push(productSections.generalInformationSection);
     }
 
-    if (cadenasIdentifier || downloads.length) {
+    if ((cadenasIdentifier || downloads.length) && !isModel) {
       filteredSections.push(productSections.downloadsSection);
     }
-    if (performanceAttributes) {
+    if (performanceAttributes && !isModel) {
       filteredSections.push(productSections.performanceSection);
     }
-    if (attributes.length) {
+    if (attributes.length && !isModel) {
       filteredSections.push(productSections.specificationsSection);
     }
-    if (accessories.length) {
+    if (accessories.length && !isModel) {
       filteredSections.push(productSections.accessoriesSection);
+    }
+
+    if (isModel && hasAlternativeModels) {
+      console.log(isModel, hasAlternativeModels);
+      filteredSections.push(productSections.alternativeModelsSection);
     }
 
     return filteredSections;
@@ -80,7 +91,9 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
     attributes.length,
     cadenasIdentifier,
     downloads.length,
+    hasAlternativeModels,
     intl,
+    isModel,
     performanceAttributes,
     product.description,
     resources.length

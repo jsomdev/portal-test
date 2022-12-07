@@ -48,10 +48,7 @@ export const ProductSectionContainer: React.FC<ProductSection> = ({
      * This allows us to scroll to the correct position when using the section menu
      */
     headerContainer: {
-      root: {
-        marginTop: -128,
-        paddingTop: 128
-      }
+      root: {}
     }
   };
 

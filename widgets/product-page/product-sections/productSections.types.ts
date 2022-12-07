@@ -6,7 +6,8 @@ export enum ProductSectionKey {
   ProductPerformance = 'ProductPerformance',
   ProductAttributes = 'ProductSpecifications',
   ProductAccessories = 'ProductAccessories',
-  ProductDownloads = 'ProductDownloads'
+  ProductDownloads = 'ProductDownloads',
+  AlternativeModels = 'AlternativeModels'
 }
 
 export interface ProductSection {

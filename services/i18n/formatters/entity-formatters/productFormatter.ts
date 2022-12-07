@@ -1,5 +1,6 @@
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
 import { Product } from '@services/portal-api/models/Product';
+import pagePaths from '@utilities/pagePaths';
 
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 import { ResourceFormatter } from './resourceFormatter';
@@ -32,7 +33,7 @@ export class ProductFormatter {
     if (!slug) {
       return null;
     }
-    return `/products/${slug}`;
+    return pagePaths.products(slug);
   }
 
   public formatTitle(): string {
@@ -80,9 +81,8 @@ export class FacetedSearchProductFormatter {
   public formatImageSrc(): string {
     return this.productImageFormatter.formatSrc();
   }
-  public formatHref(): string {
-    return `/products/${
-      this.multilingualStringFormatter.format(this.product?.slug) || '404'
-    }`;
+  public formatUrl(): string {
+    const slug = this.multilingualStringFormatter.format(this.product?.slug);
+    return pagePaths.products(slug);
   }
 }

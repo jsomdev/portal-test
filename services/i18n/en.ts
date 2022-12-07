@@ -158,6 +158,9 @@ export const en: Messages = {
         accessories: {
           title: 'Accessories'
         },
+        alternativeModels: {
+          title: 'Alternative Models'
+        },
         downloads: {
           title: 'Product Downloads',
           actions: {
@@ -237,7 +240,8 @@ export const en: Messages = {
     },
     model: {
       headTitle: 'Model',
-      headDescription: '{name}'
+      headDescription: '{name}',
+      browseAll: "Browse all ''{number}'' products"
     },
     category: {
       title: '{name}',
