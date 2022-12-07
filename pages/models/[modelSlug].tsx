@@ -60,6 +60,8 @@ const messages = defineMessages({
   }
 });
 
+const UnspecifiedModelId: string = 'ee96fcc8-6782-4a31-b986-73425dd0035e';
+
 const Models: NextPage<
   ModelsProps &
     Partial<
@@ -131,43 +133,47 @@ const Models: NextPage<
             >
               <PagesHeader title={modelFormatter.formatTitle()} />
               <ProductTopSection isModel={true} />
-              <ProductSections
-                onRenderSectionContent={section => {
-                  switch (section.sectionKey) {
-                    case ProductSectionKey.GeneralInformation:
-                      return <ProductGeneralInformation />;
+              {model.id !== UnspecifiedModelId && (
+                <>
+                  <ProductSections
+                    onRenderSectionContent={section => {
+                      switch (section.sectionKey) {
+                        case ProductSectionKey.GeneralInformation:
+                          return <ProductGeneralInformation />;
 
-                    case ProductSectionKey.AlternativeModels:
-                      return (
-                        <AlternativeModels
-                          alternativeModels={alternativeModels}
-                        />
-                      );
-                    default:
-                      return null;
-                  }
-                }}
-              />
-              <Stack.Item
-                align="center"
-                tokens={{ margin: `0 0 ${rem(80)} 0`, padding: spacing.s1 }}
-              >
-                <NextLink
-                  passHref
-                  href={{
-                    pathname: pagePaths.search(),
-                    query: {
-                      [modelIdFacet.key]: modelOption?.key
-                    }
-                  }}
-                >
-                  <PrimaryButton styles={browseAllButtonStyles}>
-                    {formatMessage(messages.browseProducts, {
-                      number: model.number
-                    })}
-                  </PrimaryButton>
-                </NextLink>
-              </Stack.Item>
+                        case ProductSectionKey.AlternativeModels:
+                          return (
+                            <AlternativeModels
+                              alternativeModels={alternativeModels}
+                            />
+                          );
+                        default:
+                          return null;
+                      }
+                    }}
+                  />
+                  <Stack.Item
+                    align="center"
+                    tokens={{ margin: `0 0 ${rem(80)} 0`, padding: spacing.s1 }}
+                  >
+                    <NextLink
+                      passHref
+                      href={{
+                        pathname: pagePaths.search(),
+                        query: {
+                          [modelIdFacet.key]: modelOption?.key
+                        }
+                      }}
+                    >
+                      <PrimaryButton styles={browseAllButtonStyles}>
+                        {formatMessage(messages.browseProducts, {
+                          number: model.number
+                        })}
+                      </PrimaryButton>
+                    </NextLink>
+                  </Stack.Item>
+                </>
+              )}
             </ContentContainerStack>
           </ProductPageProvider>
         </AppLayout>
