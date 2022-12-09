@@ -9,8 +9,11 @@ import {
   DefaultButton,
   FontWeights,
   IButtonStyles,
+  IMessageBarStyles,
   IStackStyles,
   ITextStyles,
+  MessageBar,
+  MessageBarType,
   PrimaryButton,
   Stack,
   Text,
@@ -19,6 +22,7 @@ import {
 import { CartItem } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
 import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { rem } from '@utilities/rem';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
 
@@ -60,11 +64,22 @@ const messages = defineMessages({
     id: messageIds.pages.account.orders.statusHeader,
     description: 'order card status header',
     defaultMessage: 'Status default'
+  },
+  confirmationTitle: {
+    id: messageIds.pages.account.orders.confirmationTitle,
+    description: 'order card confirmation title',
+    defaultMessage: 'Order confirmation default'
+  },
+  confirmationText: {
+    id: messageIds.pages.account.orders.confirmationText,
+    description: 'order card confirmation text',
+    defaultMessage: 'Your order has been placed default'
   }
 });
 
 interface OrderDetailProps {
   id: string;
+  showConfirmation?: boolean;
 }
 
 interface OrderDetailStyles {
@@ -79,7 +94,10 @@ interface OrderDetailStyles {
   statusDetailText: (color: string) => ITextStyles;
 }
 
-export const OrderDetail: React.FC<OrderDetailProps> = ({ id }) => {
+export const OrderDetail: React.FC<OrderDetailProps> = ({
+  id,
+  showConfirmation
+}) => {
   const { spacing, palette, semanticColors, effects, fonts } = useTheme();
   const MAX_ITEMS = 3;
   const {
@@ -212,6 +230,7 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({ id }) => {
 
   return (
     <Stack id="order-detail-container" tokens={{ childrenGap: spacing.m }}>
+      {showConfirmation && <OrderConfirmationCard />}
       <Stack
         id="order-detail-header"
         horizontal
@@ -387,5 +406,53 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({ id }) => {
         }
       />
     </Stack>
+  );
+};
+
+interface OrderConfirmationCardStyles {
+  title: ITextStyles;
+  root: IStackStyles;
+  messageBar: Partial<IMessageBarStyles>;
+}
+
+const OrderConfirmationCard: React.FC = () => {
+  const { formatMessage } = useIntl();
+  const { palette, spacing } = useTheme();
+
+  const styles: OrderConfirmationCardStyles = {
+    messageBar: {
+      root: {
+        marginBottom: rem(20),
+        padding: spacing.m
+      }
+    },
+    title: {
+      root: {
+        fontWeight: FontWeights.semibold
+      }
+    },
+    root: {
+      root: {
+        border: `1px solid ${palette.greenDark}`,
+        backgroundColor: palette.greenLight
+      }
+    }
+  };
+  return (
+    <MessageBar
+      styles={styles.messageBar}
+      messageBarType={MessageBarType.success}
+    >
+      <Stack tokens={{ childrenGap: spacing.s1 }}>
+        <Stack.Item>
+          <Text styles={styles.title} variant="mediumPlus">
+            {formatMessage(messages.confirmationTitle)}
+          </Text>
+        </Stack.Item>
+        <Stack.Item>
+          <Text>{formatMessage(messages.confirmationText)}</Text>
+        </Stack.Item>
+      </Stack>
+    </MessageBar>
   );
 };

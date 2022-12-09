@@ -12,7 +12,9 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
+import { AddressBook } from '@widgets/account/address-book/addressBook';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
@@ -24,7 +26,7 @@ const messages = defineMessages({
   }
 });
 
-const AddressBook: NextPage<
+const AddressBookPage: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -34,8 +36,10 @@ const AddressBook: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths('account/info-and-preferences/address-book')}
-    ></AccountPage>
+      localePaths={getLocalePaths(pagePaths.addressBook())}
+    >
+      <AddressBook />
+    </AccountPage>
   );
 };
 
@@ -60,4 +64,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default AddressBook;
+export default AddressBookPage;

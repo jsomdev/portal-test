@@ -27,7 +27,6 @@ export const ShippingMethodSummary: React.FC = () => {
   const intl = useIntl();
   const { shippingCostData, setSelectedShippingOption, formValues } =
     useCheckout();
-  const { formatNumber } = useIntl();
   const { spacing } = useTheme();
 
   const shippingMethodOptions: IComboBoxOption[] = useMemo(() => {
@@ -36,15 +35,6 @@ export const ShippingMethodSummary: React.FC = () => {
       intl
     );
   }, [shippingCostData, intl]);
-
-  const getShipmentOptionKey = React.useCallback(
-    (value: string) => {
-      return shippingMethodOptions
-        .find(option => option.key === value)
-        ?.key.toString();
-    },
-    [shippingMethodOptions]
-  );
 
   const styles: Partial<IComboBoxStyles> = {
     root: {
@@ -71,7 +61,6 @@ export const ShippingMethodSummary: React.FC = () => {
               >
                 <Form>
                   <FormikComboBox
-                    getSelectedKey={getShipmentOptionKey}
                     name={'shippingMethod'}
                     options={shippingMethodOptions}
                     useComboBoxAsMenuWidth

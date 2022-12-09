@@ -9,6 +9,7 @@ import {
   DirectionalHint,
   IComboBox,
   IComboBoxStyles,
+  IDropdownOption,
   Stack,
   useTheme
 } from '@fluentui/react';
@@ -20,8 +21,6 @@ import { useFormikWrapperStyles } from './useFormikWrapperStyles';
 export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   name,
   validationProps,
-  getSelectedKey: getKey,
-  defaultSelectedKey,
   ...props
 }) => {
   const intl = useIntl();
@@ -47,6 +46,14 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
     }
   };
 
+  function getSelectedKey(value: string, options: IDropdownOption[]) {
+    return (
+      options.find(option => option.key === value)?.key.toString() ||
+      props.defaultSelectedKey ||
+      null
+    );
+  }
+
   const { mergedStyles } = useFormikWrapperStyles<Partial<IComboBoxStyles>>(
     name,
     props.styles,
@@ -68,13 +75,13 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
           directionalHint: DirectionalHint.bottomRightEdge
         }}
         onClick={onOpenClick}
-        selectedKey={getKey?.(input.value, props.options)}
+        selectedKey={getSelectedKey(input.value, props.options)}
         errorMessage={formatError(intl, meta, input.name)}
         onChange={(e, option, index, value) => {
           if (props.onChange) {
             return props.onChange(e, option, index, value);
           }
-          return setFieldValue(name, option?.key || defaultSelectedKey, true);
+          return setFieldValue(name, option?.key || null, true);
         }}
         styles={mergedStyles}
         onBlur={() => {

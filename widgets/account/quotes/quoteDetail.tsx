@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
-import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { Stack } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { fetchMyQuote } from '@services/portal-api/quotes';
@@ -14,14 +14,13 @@ interface QuoteDetailProps {
   id: string;
 }
 
-interface QuoteDetailStyles {
-  container: IStackStyles;
-}
+// interface QuoteDetailStyles {
+//   container: IStackStyles;
+// }
 
 // NOTE: BASE IMPLEMENTION
 
 export const QuoteDetail: React.FC<QuoteDetailProps> = ({ id }) => {
-  const { spacing, fonts, palette } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
   const { isQuoteHistoryEnabled } = useMe();
@@ -45,9 +44,9 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({ id }) => {
     console.log(quote);
   }, [quote]);
 
-  const styles: QuoteDetailStyles = {
-    container: {}
-  };
+  // const styles: QuoteDetailStyles = {
+  //   container: {}
+  // };
 
   if (quoteDataStatus === 'loading') {
     return <LoadingSpinner />;

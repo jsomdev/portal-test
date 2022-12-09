@@ -6,6 +6,7 @@ import { Order } from '@services/portal-api';
 import { OrderPost } from '@services/portal-api/base/types';
 import { createOrder } from '@services/portal-api/orders';
 import { ReactQueryStatus } from '@services/react-query/types';
+import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CreateOrderError } from '@widgets/checkout/create-order/CreateOrderError';
 
@@ -36,7 +37,7 @@ export const useCreateOrder = (productNumbers: string[]): CreateOrderHook => {
   function handleRedirect(order: Order) {
     const searchParams = new URLSearchParams();
     searchParams.set('confirmation', 'true');
-    push(`/account/orders/${order.id}?confirmation=true`);
+    push(pagePaths.orders(order.id, true));
   }
 
   return {

@@ -31,7 +31,7 @@ import { OrderCard } from '../orders/orderCard';
 import { getPaymentMethodText } from '../orders/orderHelper';
 import {
   AddressViewModel,
-  mapPostalAddressToAddressViewModel
+  mapAddressToAddressViewModel
 } from '../shared/accountAddress.helper';
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
@@ -117,6 +117,8 @@ export const Overview: React.FC = () => {
   const { isAccountManager, isAdministrator, isEmployee } = claims;
   const { billingAddress, shippingAddress } = useContext(AddressBookContext);
 
+  // Write a yup object to validate the address
+
   const { data: orders, status: ordersStatus } = useQuery(
     [QUERYKEYS.recentOrders, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
@@ -130,11 +132,17 @@ export const Overview: React.FC = () => {
   );
 
   const formattedBillingAddress: AddressViewModel | undefined = useMemo(() => {
-    return mapPostalAddressToAddressViewModel(billingAddress);
+    return (
+      (billingAddress && mapAddressToAddressViewModel(billingAddress)) ||
+      undefined
+    );
   }, [billingAddress]);
 
   const formattedShippingAddress: AddressViewModel | undefined = useMemo(() => {
-    return mapPostalAddressToAddressViewModel(shippingAddress);
+    return (
+      (shippingAddress && mapAddressToAddressViewModel(shippingAddress)) ||
+      undefined
+    );
   }, [shippingAddress]);
 
   const name = useMemo(() => {
@@ -261,19 +269,21 @@ export const Overview: React.FC = () => {
               <AddressBookAddress
                 address={formattedBillingAddress}
                 isDefaultBilling={true}
+                isDefaultShipping={shippingAddress?.id === billingAddress?.id}
               />
             )}
-            {formattedShippingAddress && (
-              <AddressBookAddress
-                address={formattedShippingAddress}
-                isDefaultShipping={true}
-              />
-            )}
+            {formattedShippingAddress &&
+              shippingAddress?.id !== billingAddress?.id && (
+                <AddressBookAddress
+                  address={formattedShippingAddress}
+                  isDefaultShipping={true}
+                />
+              )}
           </Stack>
         </Stack.Item>
 
         <Stack>
-          <NextLink href={pagePaths.addressBook} passHref>
+          <NextLink href={pagePaths.addressBook()} passHref>
             <a>
               <ActionButton
                 iconProps={{ iconName: 'ChevronRight' }}

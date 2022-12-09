@@ -39,6 +39,7 @@ export function mapMenuItemsToMenuItemViewModel(
   parentId: string | null | undefined = undefined,
   parentViewModel: MenuItemViewModel | undefined = undefined
 ): MenuItemViewModel[] {
+  // menuItems.length === 3 && console.log('menu items', menuItems);
   // This function will determine if a given menu item has sub items based on the parent ID / item ID
   const hasSubItems: (id: string | undefined) => boolean = (
     id: string | undefined

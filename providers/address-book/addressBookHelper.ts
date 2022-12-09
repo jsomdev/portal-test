@@ -86,7 +86,7 @@ export function getValidPostalAddressFromUserAddress(
   // else, return empty address if country and / or state is invalid
   return {
     city: '',
-    country: '',
+    country: 'US',
     lines: [],
     postalCode: '',
     region: ''

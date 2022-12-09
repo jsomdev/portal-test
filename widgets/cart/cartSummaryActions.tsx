@@ -260,7 +260,6 @@ export const CartSummaryActions: React.FC = () => {
                     onClick={() => setShowCallout(!showCallout)}
                   >
                     {formatMessage(messages.quotedPriceWarning)}
-                    dfqsd fq
                   </ActionButton>
                 </Stack>
                 {showCallout && (

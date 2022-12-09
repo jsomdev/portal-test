@@ -8,10 +8,8 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import {
-  AddressFormGroup,
-  AddressFormGroupFields
-} from '@widgets/checkout/shared/addressFormGroup';
+import { AddressFormGroupFields } from '@widgets/account/address-book/useAddressFormGroup';
+import { AddressFormGroup } from '@widgets/checkout/shared/addressFormGroup';
 import { StepFields } from '@widgets/checkout/shared/types';
 import { Step3FormData } from '@widgets/checkout/steps/step-3-payment/step-3-payment';
 import { mediaQueryFrom } from '@widgets/media-queries';

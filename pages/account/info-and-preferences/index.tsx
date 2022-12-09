@@ -24,7 +24,7 @@ const messages = defineMessages({
   }
 });
 
-const Account: NextPage<
+const InfoAndPreferencesPage: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -62,4 +62,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Account;
+export default InfoAndPreferencesPage;

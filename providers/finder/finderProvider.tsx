@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { useFacets } from '@providers/facets/facetsContext';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
@@ -42,14 +42,14 @@ interface FinderProviderProps {
 export const FINDER_PAGE_SIZE = 10;
 const textFormatter = new TextFormatter();
 export const FinderProvider: React.FC<FinderProviderProps> = ({
-  children,
+  children
   // TODO: initialData may be used. Don't want to remove just yet
-  initialData
+  // initialData
 }) => {
   const { query, pathname, push } = useRouter();
 
   // TODO: initialData may be used. Don't want to remove just yet
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const [productCount, setProductCount] = useState<number | undefined>(
     undefined
   );

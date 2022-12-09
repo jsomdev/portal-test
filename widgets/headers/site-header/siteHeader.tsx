@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { AccountInfo } from '@azure/msal-browser';
-import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
   Callout,
   IButtonStyles,

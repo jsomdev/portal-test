@@ -40,6 +40,7 @@ const messages = defineMessages({
 
 interface OrderParsedUrlQuery extends ParsedUrlQuery {
   id: string | undefined;
+  confirmation: string | undefined;
 }
 
 const Orders: NextPage<
@@ -58,6 +59,8 @@ const Orders: NextPage<
       ? getLocalePaths(pagePaths.orders(query.id))
       : getLocalePaths(pagePaths.orders());
 
+  console.log(query);
+
   return (
     <AccountPage
       pageTitle={router.isReady ? title : ''}
@@ -75,7 +78,7 @@ const Orders: NextPage<
     >
       {router.isReady ? (
         query.id ? (
-          <OrderDetail id={query.id} />
+          <OrderDetail id={query.id} showConfirmation={!!query.confirmation} />
         ) : (
           <OrdersOverview />
         )

@@ -47,7 +47,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
   const { formatMessage, locale } = intl;
   const { palette } = useTheme();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
-  const { query, pathname } = useRouter();
+  const { query } = useRouter();
   const visibleOptions: FacetOption[] = useMemo(() => {
     function getFilteredNestedCategoryOptions(
       options: FacetOption[],

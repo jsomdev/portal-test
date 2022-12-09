@@ -335,7 +335,14 @@ export const nl: Messages = {
           title: 'Adresboek',
           shippingAddress: 'Verzend adres',
           billingAddress: 'Factuur adres',
-          viewAllText: 'Bekijk alle adressen'
+          viewAllText: 'Bekijk alle adressen',
+          setAsDefaultBilling: 'Stel in als factuur adres',
+          setAsDefaultShipping: 'Stel in als verzend adres',
+          editAddress: 'Bewerk adres',
+          deleteConfirmation: 'Bent u zeker dat u dit adres wilt verwijderen?',
+          deleteButtonText: 'Verwijder',
+          cancelButtonText: 'Annuleer',
+          addAddressButtonText: 'Voeg een adres toe'
         }
       },
       quotes: {
@@ -363,7 +370,10 @@ export const nl: Messages = {
         paymentMethodHeader: 'Betalingswijze',
         totalProducts: 'Totaal producten',
         shippingCosts: 'Verzendkosten',
-        taxHeader: 'VAT'
+        taxHeader: 'VAT',
+        confirmationTitle: 'Bedankt! Uw bestelling is succesvol ingediend.',
+        confirmationText:
+          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.'
       },
       quoteRequests: {
         requestDateHeader: 'Aangevraagd op:',
@@ -402,7 +412,54 @@ export const nl: Messages = {
               title: 'Adresboek',
               description:
                 'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.',
-              viewAddressBookLink: 'Adresboek bekijken'
+              viewAddressBookLink: 'Adresboek bekijken',
+              panel: {
+                title: 'Adresboek',
+                ariaClose: 'Sluiten',
+                cancel: 'Annuleer',
+                save: 'Opslaan'
+              },
+              formFields: {
+                name: {
+                  label: 'Naam'
+                },
+                country: {
+                  label: 'Land',
+                  placeholder: 'Selecteer een land'
+                },
+                address: {
+                  label: 'Adres'
+                },
+                city: {
+                  label: 'Stad'
+                },
+                region: {
+                  label: {
+                    us: 'Staat',
+                    ca: 'Provincie',
+                    default: 'Regio'
+                  },
+                  placeholder: {
+                    us: 'Selecteer een staat',
+                    ca: 'Selecteer een provincie',
+                    default: 'Regio'
+                  },
+                  required: {
+                    us: 'Staat is verplicht',
+                    ca: 'Provincie is verplicht',
+                    default: 'Regio is verplicht'
+                  }
+                },
+                postalCode: {
+                  label: 'Postcode'
+                },
+                setAsBilling: {
+                  label: 'Stel in als factuuradres'
+                },
+                setAsShipping: {
+                  label: 'Stel in als bezorgadres'
+                }
+              }
             },
             companyInformation: {
               title: 'Bedrijf Informatie',

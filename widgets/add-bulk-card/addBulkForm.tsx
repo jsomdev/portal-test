@@ -248,15 +248,16 @@ export const AddBulkToCartForm: React.FC = () => {
                   </MessageBar>
                 </Stack.Item>
               )}
-            {validateBulk.status === 'success' && invalidProductNumbers.length && (
-              <Stack.Item>
-                <MessageBar messageBarType={MessageBarType.error}>
-                  {formatMessage(messages.bulkFailMessage, {
-                    productNumbers: invalidProductNumbers.join(', ')
-                  })}
-                </MessageBar>
-              </Stack.Item>
-            )}
+            {validateBulk.status === 'success' &&
+              invalidProductNumbers.length && (
+                <Stack.Item>
+                  <MessageBar messageBarType={MessageBarType.error}>
+                    {formatMessage(messages.bulkFailMessage, {
+                      productNumbers: invalidProductNumbers.join(', ')
+                    })}
+                  </MessageBar>
+                </Stack.Item>
+              )}
           </Stack>
         )}
       </FieldArray>

@@ -316,7 +316,20 @@ export const messageIds: Messages = {
           title: 'pages.account.overview.addressBook.title',
           billingAddress: 'pages.account.overview.addressBook.billingAddress',
           shippingAddress: 'pages.account.overview.addressBook.shippingAddress',
-          viewAllText: 'pages.account.overview.addressBook.viewAllText'
+          viewAllText: 'pages.account.overview.addressBook.viewAllText',
+          setAsDefaultBilling:
+            'pages.account.overview.addressBook.setAsDefaultBilling',
+          setAsDefaultShipping:
+            'pages.account.overview.addressBook.setAsDefaultShipping',
+          editAddress: 'pages.account.overview.addressBook.editAddress',
+          deleteConfirmation:
+            'pages.account.overview.addressBook.deleteConfirmation',
+          cancelButtonText:
+            'pages.account.overview.addressBook.cancelButtonText',
+          deleteButtonText:
+            'pages.account.overview.addressBook.deleteButtonText',
+          addAddressButtonText:
+            'pages.account.overview.addressBook.addAddressButtonText'
         }
       },
       orders: {
@@ -337,7 +350,9 @@ export const messageIds: Messages = {
         totalProducts: 'pages.account.orders.totalProducts',
         shippingCosts: 'pages.account.orders.shippingCosts',
         taxHeader: 'pages.account.orders.taxHeader',
-        commentsHeader: 'pages.account.orders.commentsHeader'
+        commentsHeader: 'pages.account.orders.commentsHeader',
+        confirmationText: 'pages.account.orders.confirmationText',
+        confirmationTitle: 'pages.account.orders.confirmationTitle'
       },
       quoteRequests: {
         requestDateHeader: 'pages.account.quoteRequests.requestDateHeader',
@@ -387,7 +402,68 @@ export const messageIds: Messages = {
               description:
                 'pages.account.sections.infoAndPreferences.sections.addressBook.description',
               viewAddressBookLink:
-                'pages.account.sections.infoAndPreferences.sections.addressBook.viewAddressBookLink'
+                'pages.account.sections.infoAndPreferences.sections.addressBook.viewAddressBookLink',
+              panel: {
+                title:
+                  'pages.account.sections.infoAndPreferences.sections.addressBook.panel.title',
+                ariaClose:
+                  'pages.account.sections.infoAndPreferences.sections.addressBook.panel.ariaClose',
+                cancel:
+                  'pages.account.sections.infoAndPreferences.sections.addressBook.panel.cancel',
+                save: 'pages.account.sections.infoAndPreferences.sections.addressBook.panel.save'
+              },
+              formFields: {
+                name: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.name.label'
+                },
+                country: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.country.label',
+                  placeholder:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.country.placeholder'
+                },
+                address: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.address.label'
+                },
+                city: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.city.label'
+                },
+                region: {
+                  label: {
+                    us: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.label.us',
+                    ca: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.label.ca',
+                    default:
+                      'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.label.default'
+                  },
+                  placeholder: {
+                    us: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.placeholder.us',
+                    ca: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.placeholder.ca',
+                    default:
+                      'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.placeholder.default'
+                  },
+                  required: {
+                    us: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.required.us',
+                    ca: 'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.required.ca',
+                    default:
+                      'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.region.required.default'
+                  }
+                },
+                postalCode: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.postalCode.label'
+                },
+                setAsBilling: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.setAsBilling.label'
+                },
+                setAsShipping: {
+                  label:
+                    'pages.account.sections.infoAndPreferences.sections.addressBook.formFields.setAsShipping.label'
+                }
+              }
             },
             companyInformation: {
               title:

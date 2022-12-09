@@ -21,19 +21,19 @@ import { Step1FormData } from '@widgets/checkout/steps/step-1-details/step-1-det
 setYupLocalisation();
 
 export const validation = yup.object({
-  email: emailValidation,
-  name: lastNameValidation,
-  firstName: firstNameValidation,
+  email: emailValidation(),
+  name: lastNameValidation(),
+  firstName: firstNameValidation(),
   company: yup
     .string()
     .label(messageIds.pages.checkout.details.fields.company)
     .required(),
-  country: countryValidation,
-  address: addressValidation,
-  city: cityValidation,
-  state: stateValidation,
-  postalCode: postalCodeValidation,
-  phone: phoneValidation
+  country: countryValidation(),
+  address: addressValidation(),
+  city: cityValidation(),
+  state: stateValidation('state'),
+  postalCode: postalCodeValidation(),
+  phone: phoneValidation()
 });
 
 const fieldMessageIds = messageIds.pages.checkout.details.fields;

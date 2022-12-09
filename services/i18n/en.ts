@@ -325,7 +325,14 @@ export const en: Messages = {
           title: 'Address Book',
           billingAddress: 'Billing Address',
           shippingAddress: 'Shipping Address',
-          viewAllText: 'View all addresses'
+          viewAllText: 'View all addresses',
+          setAsDefaultBilling: 'Set as billing address',
+          setAsDefaultShipping: 'Set as shipping address',
+          editAddress: 'Edit',
+          deleteConfirmation: 'Are you sure you want to delete this address?',
+          deleteButtonText: 'Delete',
+          cancelButtonText: 'Cancel',
+          addAddressButtonText: 'Add new address'
         }
       },
       orders: {
@@ -347,7 +354,11 @@ export const en: Messages = {
         totalProducts: 'Total products',
         shippingCosts: 'Shipping costs',
         taxHeader: 'Tax',
-        commentsHeader: 'Comments'
+        commentsHeader: 'Comments',
+        confirmationText:
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+        confirmationTitle:
+          'Thank you! Your order has been submitted successfully.'
       },
       quoteRequests: {
         requestDateHeader: 'Requested on:',
@@ -392,7 +403,54 @@ export const en: Messages = {
               title: 'Address Book',
               description:
                 'You can add and change addresses on this page. When ordering you can quickly select the right address.',
-              viewAddressBookLink: 'View address book'
+              viewAddressBookLink: 'View address book',
+              panel: {
+                title: 'Address book',
+                ariaClose: 'close',
+                cancel: 'Cancel',
+                save: 'Save'
+              },
+              formFields: {
+                address: {
+                  label: 'Address'
+                },
+                city: {
+                  label: 'City'
+                },
+                country: {
+                  label: 'Country',
+                  placeholder: 'Select a country'
+                },
+                name: {
+                  label: 'Address name'
+                },
+                postalCode: {
+                  label: 'Postal code'
+                },
+                region: {
+                  label: {
+                    ca: 'Province',
+                    us: 'State',
+                    default: 'Region'
+                  },
+                  placeholder: {
+                    ca: 'Select a province',
+                    us: 'Select a state',
+                    default: 'Select a region'
+                  },
+                  required: {
+                    ca: 'Please select a province',
+                    us: 'Please select a state',
+                    default: 'Please select a region'
+                  }
+                },
+                setAsBilling: {
+                  label: 'Set as billing address'
+                },
+                setAsShipping: {
+                  label: 'Set as shipping address'
+                }
+              }
             },
             companyInformation: {
               title: 'Company Information',

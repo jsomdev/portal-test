@@ -15,7 +15,7 @@ import {
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
 import { ReactQueryStatus } from '@services/react-query/types';
 
-import { mapPostalAddressToAddressViewModel } from '../shared/accountAddress.helper';
+import { mapAddressToAddressViewModel } from '../shared/accountAddress.helper';
 import {
   OrderCardViewModel,
   OrderLineViewModel,
@@ -383,7 +383,10 @@ export function mapOrderToOrderViewModel(
   }
 
   return {
-    billingAddress: mapPostalAddressToAddressViewModel(order?.billingAddress),
+    billingAddress:
+      (order?.billingAddress &&
+        mapAddressToAddressViewModel(order.billingAddress)) ||
+      undefined,
     billingContactInfo: order?.billingContactInfo || undefined,
     canReorder: canReorder(),
     comment: order?.comment || undefined,
@@ -396,7 +399,10 @@ export function mapOrderToOrderViewModel(
     number: order?.number || undefined,
     paymentMethodType: order?.paymentMethod || undefined,
     paymentMethodReadable: getPaymentMethodText(intl, order?.paymentMethod),
-    shippingAddress: mapPostalAddressToAddressViewModel(order?.shippingAddress),
+    shippingAddress:
+      (order?.shippingAddress &&
+        mapAddressToAddressViewModel(order.shippingAddress)) ||
+      undefined,
     shippingAmount: formatCurrencyValue(
       order?.shippingCostAmount,
       currencyCode,

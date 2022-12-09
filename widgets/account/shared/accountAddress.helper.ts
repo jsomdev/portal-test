@@ -14,6 +14,7 @@ export interface AddressViewModel {
   address: (string | undefined)[] | undefined;
   region: string | undefined;
   name: string | undefined;
+  id: string;
 }
 
 /**
@@ -21,12 +22,9 @@ export interface AddressViewModel {
  * @param address a valid PostalAddress or UserAddress
  * @returns an AddressViewModel
  */
-export function mapPostalAddressToAddressViewModel(
-  address: PostalAddress | UserAddress | undefined | null
-): AddressViewModel | undefined {
-  if (!address) {
-    return undefined;
-  }
+export function mapAddressToAddressViewModel(
+  address: PostalAddress | UserAddress
+): AddressViewModel {
   // Function that accepts a full US state name and return the US state code
   function getUsStateCode(name: string | undefined | null): string | undefined {
     return (
@@ -107,6 +105,7 @@ export function mapPostalAddressToAddressViewModel(
     address: getAddressLines(address?.lines),
     region: getRegionText(address?.region, address?.country),
     countryCode: address?.country || 'US',
-    name: address?.name || undefined
+    name: address?.name || undefined,
+    id: address.id
   };
 }

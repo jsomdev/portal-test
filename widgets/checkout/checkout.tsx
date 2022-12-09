@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';

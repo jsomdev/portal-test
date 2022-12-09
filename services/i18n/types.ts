@@ -240,6 +240,13 @@ type IAccountMessages = {
       shippingAddress: string;
       billingAddress: string;
       viewAllText: string;
+      setAsDefaultBilling: string;
+      setAsDefaultShipping: string;
+      editAddress: string;
+      deleteConfirmation: string;
+      deleteButtonText: string;
+      cancelButtonText: string;
+      addAddressButtonText: string;
     };
   };
   orders: {
@@ -261,6 +268,8 @@ type IAccountMessages = {
     shippingCosts: string;
     taxHeader: string;
     commentsHeader: string;
+    confirmationTitle: string;
+    confirmationText: string;
   };
   quoteRequests: {
     requestDateHeader: string;
@@ -304,6 +313,53 @@ type IAccountMessages = {
           title: string;
           description: string;
           viewAddressBookLink: string;
+          panel: {
+            title: string;
+            ariaClose: string;
+            cancel: string;
+            save: string;
+          };
+          formFields: {
+            name: {
+              label: string;
+            };
+            country: {
+              label: string;
+              placeholder: string;
+            };
+            address: {
+              label: string;
+            };
+            city: {
+              label: string;
+            };
+            region: {
+              label: {
+                us: string;
+                ca: string;
+                default: string;
+              };
+              placeholder: {
+                us: string;
+                ca: string;
+                default: string;
+              };
+              required: {
+                us: string;
+                ca: string;
+                default: string;
+              };
+            };
+            postalCode: {
+              label: string;
+            };
+            setAsBilling: {
+              label: string;
+            };
+            setAsShipping: {
+              label: string;
+            };
+          };
         };
         companyInformation: {
           title: string;

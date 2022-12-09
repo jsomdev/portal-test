@@ -11,8 +11,17 @@ const pagePaths = {
   cart: '/cart',
   checkout: '/cart/checkout',
   infoAndPreferences: '/account/info-and-preferences',
-  orders: (id?: string | undefined): string => {
-    return id ? '/account/orders?id=' + id : '/account/orders';
+  orders: (
+    id?: string | undefined,
+    showConfirmation?: boolean | undefined
+  ): string => {
+    if (showConfirmation && id) {
+      return '/account/orders?id=' + id + '&confirmation=true';
+    }
+    if (id) {
+      return '/account/orders?id=' + id;
+    }
+    return '/account/orders';
   },
   accountOverview: '/account',
   quoteRequests: (id?: string | undefined): string => {
@@ -21,7 +30,11 @@ const pagePaths = {
   quotes: (id?: string | undefined): string => {
     return id ? '/account/quotes?id=' + id : '/account/quotes';
   },
-  addressBook: '/account/info-and-preferences/address-book',
+  addressBook: (id?: string | undefined): string => {
+    return id
+      ? '/account/info-and-preferences/address-book?id=' + id
+      : '/account/info-and-preferences/address-book';
+  },
   profileInfo: '/account/info-and-preferences/profile-information',
   preferences: '/account/info-and-preferences/preferences'
 };
