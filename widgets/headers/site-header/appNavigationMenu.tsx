@@ -69,7 +69,6 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
     mainMenu: {
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: false,
-      style: 'default',
       items: mapMenuItemsToMenuItemViewModel(
         globalMainMenuItems || [],
         'expanded',
@@ -80,7 +79,6 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
     languageMenu: {
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: true,
-      style: 'plain',
       items: [
         {
           id: 'language-menu',
@@ -94,7 +92,6 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
     siteMenu: {
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: true,
-      style: 'plain',
       items: mapMenuItemsToMenuItemViewModel(
         globalSiteMenuItems || [],
         'default',
@@ -104,7 +101,6 @@ export const AppNavigationMenu: React.FC<AppNavigationMenuProps> = ({
     userMenu: {
       backButtonText: formatMessage(messages.mainMenuViewAllCategories),
       hideOtherMenusWhenActive: true,
-      style: 'plain',
       items: getAppNavigationAccountMenuItems(intl, me, instance)
     }
   };

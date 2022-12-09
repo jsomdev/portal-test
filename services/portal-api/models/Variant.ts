@@ -12,6 +12,7 @@ export type Variant = ComplexLinkedEntity & {
   productNumber?: string | null;
   productName?: MultilingualString | null;
   productSeoPath?: string | null;
+  productSlug?: MultilingualString | null;
   displays?: Array<Display>;
   sortIndex?: number;
 };

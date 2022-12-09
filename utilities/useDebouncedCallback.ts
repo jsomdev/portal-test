@@ -9,12 +9,10 @@ import { useCallback, useRef } from 'react';
  * @param wait Wait period after function hasn't been called for
  * @returns A memoized function that is debounced
  */
-
 export const useDebouncedCallback = (func: any, wait: number): any => {
+  const timeout = useRef<number | undefined>();
   // Use a ref to store the timeout between renders
   // and prevent changes to it from causing re-renders
-  const timeout = useRef<number | undefined>();
-
   return useCallback(
     (...args: any[]) => {
       const later = () => {

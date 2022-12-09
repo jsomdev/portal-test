@@ -97,8 +97,6 @@ export const SiteHeader: React.FC = () => {
 interface MobileSiteHeaderStyles {
   root: IStackStyles;
   panel: Partial<IPanelStyles>;
-  panelHeader: IStackStyles;
-  closeButton: IButtonStyles;
 }
 
 const MobileSiteHeader: React.FC = () => {
@@ -151,30 +149,30 @@ const MobileSiteHeader: React.FC = () => {
       }
     },
     panel: {
-      commands: {
-        display: 'none'
-      },
-      root: {
-        height: '100%'
-      },
       content: {
-        padding: 0,
-        overflow: 'auto',
-        maxHeight: `calc(100% - ${rem(90)})`
+        background: palette.white,
+        padding: 0
       },
-      main: {
-        backgroundColor: palette.white
-      }
-    },
-    panelHeader: {
-      root: {
+      commands: {
+        padding: 0,
+        position: 'sticky'
+      },
+      navigation: {
+        height: 80,
         borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(SITE_HEADER_HEIGHT)
-      }
-    },
-    closeButton: {
-      icon: {
-        color: palette.neutralPrimary
+        background: palette.white,
+        padding: spacing.m
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
       }
     }
   };
@@ -233,36 +231,23 @@ const MobileSiteHeader: React.FC = () => {
       </Stack>
       {showPanel && (
         <Panel
-          hasCloseButton={false}
+          hasCloseButton={true}
           type={panelType}
-          onRenderHeader={props => (
-            <Stack
-              horizontal
-              horizontalAlign="space-between"
-              verticalAlign="center"
-              tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
-              styles={styles.panelHeader}
-            >
-              <ClosePanelButton
-                iconProps={{
-                  iconName: 'Cancel'
-                }}
-                onClick={() => props?.onDismiss?.()}
-                text={panelHeaderText}
-                styles={styles.closeButton}
-              />
-            </Stack>
-          )}
+          headerText={panelHeaderText}
           isOpen={!!showPanel}
           onDismiss={onPanelDismiss}
+          closeButtonAriaLabel={formatMessage(messages.closeMenu)}
           styles={styles.panel}
         >
-          {showPanel === 'user' && (
-            <AccountNavigationMenu onDismiss={onPanelDismiss} />
-          )}
-          {showPanel === 'app' && (
-            <AppNavigationMenu onDismiss={onPanelDismiss} />
-          )}
+          <Stack.Item styles={{ root: { overflow: 'hidden' } }}>
+            {showPanel === 'user' && (
+              <AccountNavigationMenu onDismiss={onPanelDismiss} />
+            )}
+
+            {showPanel === 'app' && (
+              <AppNavigationMenu onDismiss={onPanelDismiss} />
+            )}
+          </Stack.Item>
         </Panel>
       )}
     </Stack>

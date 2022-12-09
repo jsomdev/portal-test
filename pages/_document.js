@@ -64,7 +64,7 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
-        <body>
+        <body className="list-scroll">
           <Main />
           <NextScript />
         </body>

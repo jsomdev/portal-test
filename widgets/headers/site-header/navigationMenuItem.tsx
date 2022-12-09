@@ -13,11 +13,8 @@ import {
 
 import { MenuItemViewModel } from '../main-header/mainHeader.helper';
 
-export type NavigationMenuStyle = 'default' | 'plain';
-
 interface NavigationMenuItemViewModel {
   item: MenuItemViewModel;
-  style: NavigationMenuStyle;
   onClick?: () => void;
   onDismiss?: () => void;
 }
@@ -27,30 +24,19 @@ interface NavigationMenuItemStyles {
   linkContainer: IStackStyles;
 }
 
-type NavigationMenuItemType = 'link' | 'default';
-
 export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
   item,
-  style,
   onClick,
   onDismiss
 }) => {
   const { semanticColors, spacing, palette } = useTheme();
 
-  const renderAs: NavigationMenuItemType = useMemo(() => {
-    if (item.href) {
-      return 'link';
-    }
-    return 'default';
-  }, [item]);
-
   const styles: NavigationMenuItemStyles = {
     linkContainer: {
       root: {
-        borderBottom:
-          style === 'default'
-            ? `1px solid ${semanticColors.variantBorder}`
-            : undefined
+        borderBottom: !item.href
+          ? `1px solid ${semanticColors.variantBorder}`
+          : `1px solid transparent`
       }
     },
     link: {
@@ -77,30 +63,20 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
       key={`site-menu-panel-item-${item.text}`}
       styles={styles.linkContainer}
     >
-      {renderAs === 'link' && (
-        <NextLink
-          aria-label={item.text}
-          key={item.id}
-          href={item.href as string}
-          locale={item.locale || undefined}
-          passHref
-        >
-          <ActionButton
-            text={item.text}
-            styles={styles.link}
-            onClick={() => {
-              onClick && onClick();
-              onDismiss && onDismiss();
-            }}
-          />
-        </NextLink>
-      )}
-      {renderAs === 'default' && (
+      <NextLink
+        aria-label={item.text}
+        key={item.id}
+        href={item.href}
+        locale={item.locale || undefined}
+        passHref
+      >
         <ActionButton
           onRenderIcon={() => {
             return item.image ? (
               <Image
                 src={item.image}
+                layout="fixed"
+                height={20}
                 style={{ border: '1px solid black' }}
                 width={20}
               />
@@ -110,12 +86,13 @@ export const NavigationMenuItem: React.FC<NavigationMenuItemViewModel> = ({
           styles={styles.link}
           onClick={() => {
             onClick && onClick();
+            item.href && onDismiss && onDismiss();
           }}
           menuIconProps={
             item.children?.length ? { iconName: 'chevronRight' } : undefined
           }
         />
-      )}
+      </NextLink>
     </Stack>
   );
 };

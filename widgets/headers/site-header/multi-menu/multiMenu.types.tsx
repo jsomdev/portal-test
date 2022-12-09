@@ -1,12 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { MenuItemViewModel } from '@widgets/headers/main-header/mainHeader.helper';
-import { NavigationMenuStyle } from '@widgets/headers/site-header/navigationMenuItem';
 
 export type MenuConfiguration = {
   backButtonText?: string;
   hideOtherMenusWhenActive: boolean;
-  style: NavigationMenuStyle;
   items: MenuItemViewModel[] | undefined;
 };
 

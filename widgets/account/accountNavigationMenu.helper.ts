@@ -104,6 +104,7 @@ export function getAppNavigationAccountMenuItems(
   }
   return [
     {
+      href: '#',
       text: formatMessage(messages.signIn),
       onClick: () => {
         instance.loginRedirect(customerLoginRequest);
@@ -155,6 +156,7 @@ export function getAccountNavigationMenuItems(
         id: 'account-info-and-preferences'
       },
       {
+        href: '#',
         text: formatMessage(messages.signOut),
         onClick: () => {
           return instance.logoutRedirect(customerLoginRequest);
@@ -165,6 +167,7 @@ export function getAccountNavigationMenuItems(
   }
   return [
     {
+      href: '#',
       text: formatMessage(messages.signIn),
       onClick: () => {
         instance.loginRedirect(customerLoginRequest);

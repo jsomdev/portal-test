@@ -30,6 +30,10 @@ export class MenuItemFormatter {
   }
 
   formatHref(): string {
+    const slug: string = this.formatSlug();
+    if (!slug) {
+      return this.urlFormatter?.formatHref() || '404';
+    }
     return `/categories/${this.formatSlug()}`;
   }
 }

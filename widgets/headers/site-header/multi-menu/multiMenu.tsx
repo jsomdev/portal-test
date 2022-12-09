@@ -21,11 +21,6 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
   const { semanticColors, spacing } = useTheme();
   const multiMenu = useMultiMenu(configuration);
   const styles = {
-    siteMenuItem: {
-      root: {
-        padding: `${spacing.l1} ${spacing.m}`
-      }
-    },
     subItemContainer: {
       root: {
         borderLeft: `1px solid ${semanticColors.variantBorder}`,
@@ -51,7 +46,7 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
   );
 
   return (
-    <Stack>
+    <>
       <BreadCrumbs multiMenu={multiMenu} />
       {Object.keys(visibleMenus).map(menuId => {
         const menu = visibleMenus[menuId];
@@ -69,7 +64,6 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
                 <NavigationMenuItem
                   item={menuItem}
                   key={menuItem.id}
-                  style={menu.style}
                   onDismiss={onDismiss}
                   onClick={() => {
                     if (menuItem.onClick) {
@@ -83,7 +77,7 @@ const MultiMenu: React.FC<MultiMenuProps> = ({
           </Stack>
         );
       })}
-    </Stack>
+    </>
   );
 };
 

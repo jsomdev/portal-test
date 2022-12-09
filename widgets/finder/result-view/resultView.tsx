@@ -55,8 +55,6 @@ interface ResultViewStyles {
   sidePanelContainer?: IStackItemStyles;
   mainContainer?: IStackItemStyles;
   panel?: Partial<IPanelStyles>;
-  panelHeader: IStackStyles;
-  closeButton: IButtonStyles;
   stickyContainer: IStackStyles;
 }
 
@@ -160,30 +158,33 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
   const styles: ResultViewStyles = {
     panel: {
-      commands: {
-        display: 'none'
-      },
-      root: {
-        height: '100%',
-        background: palette.white
-      },
       content: {
+        background: palette.white,
+        padding: 0
+      },
+      commands: {
         padding: 0,
-        overflow: 'auto',
-        maxHeight: `calc(100% - ${rem(90)})`
+        position: 'sticky'
+      },
+      navigation: {
+        height: 80,
+        background: palette.white,
+        padding: spacing.m,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
       }
     },
-    panelHeader: {
-      root: {
-        borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(90)
-      }
-    },
-    closeButton: {
-      icon: {
-        color: palette.neutralPrimary
-      }
-    },
+
     sidePanelContainer: {
       root: {
         width: 360,
@@ -219,8 +220,27 @@ export const ResultView: React.FC<ResultViewProps> = ({
           type={PanelType.smallFluid}
           isOpen={isFiltersPanelOpen}
           onDismiss={() => setIsFiltersPanelOpen(false)}
-          hasCloseButton={false}
+          hasCloseButton={true}
           isFooterAtBottom={true}
+          onRenderHeader={() => (
+            <Stack.Item
+              align="center"
+              styles={{ root: { flex: 1, justifySelf: 'center' } }}
+            >
+              <Text
+                variant="xxLarge"
+                as="h1"
+                styles={{ root: { lineHeight: '2rem' } }}
+              >
+                {/* This is temp text */}
+                <span>Spray</span>
+                <span style={{ color: palette.themePrimary }}>
+                  {/* This is temp text */}
+                  Finder
+                </span>
+              </Text>
+            </Stack.Item>
+          )}
           onRenderFooterContent={() => (
             <Stack>
               <FilterResultsButton
@@ -229,42 +249,6 @@ export const ResultView: React.FC<ResultViewProps> = ({
                   productCount: productCount || 0
                 })}
               />
-            </Stack>
-          )}
-          onRenderHeader={props => (
-            <Stack
-              horizontal
-              verticalAlign="center"
-              tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
-              styles={styles.panelHeader}
-            >
-              <ClosePanelButton
-                iconProps={{
-                  iconName: 'Cancel'
-                }}
-                onClick={() => props?.onDismiss?.()}
-                title={formatMessage(messages.ariaClose)}
-                styles={styles.closeButton}
-              />
-              <Stack.Item
-                align="center"
-                styles={{ root: { justifySelf: 'center' } }}
-              >
-                <Text
-                  as="h1"
-                  styles={{ root: { marginTop: 0, marginBottom: 8 } }}
-                >
-                  {/* This is temp text */}
-                  <Text variant="xxLarge">Spray</Text>
-                  <Text
-                    variant="xxLarge"
-                    styles={{ root: { color: palette.themePrimary } }}
-                  >
-                    {/* This is temp text */}
-                    Finder
-                  </Text>
-                </Text>
-              </Stack.Item>
             </Stack>
           )}
           styles={styles.panel}

@@ -28,8 +28,6 @@ import { mapOptionsToProductConfigurationItems } from './productConfigurationsHe
 interface ActiveProductConfigurationStyles {
   cardContainer: IStackStyles;
   panel: Partial<IPanelStyles>;
-  panelHeader: IStackStyles;
-  closeButton: Partial<IButtonStyles>;
 }
 
 const messages = defineMessages({
@@ -85,33 +83,30 @@ export const ActiveProductConfiguration: React.FC = () => {
       }
     },
     panel: {
-      commands: {
-        display: 'none'
-      },
-      root: {
-        height: '100%'
-      },
       content: {
-        padding: 0,
         background: palette.white,
-        overflow: 'auto',
-        maxHeight: `calc(100% - ${rem(90)})`
+        padding: 0
       },
-      footer: {
-        background: palette.white
-      }
-    },
-
-    panelHeader: {
-      root: {
+      commands: {
+        padding: 0,
+        position: 'sticky'
+      },
+      navigation: {
+        height: 80,
         background: palette.white,
-        borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(90)
-      }
-    },
-    closeButton: {
-      icon: {
-        color: palette.neutralPrimary
+        padding: spacing.m,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
       }
     }
   };
@@ -154,27 +149,10 @@ export const ActiveProductConfiguration: React.FC = () => {
         isBlocking
         isOpen={showConfigurationsPanel}
         onDismiss={() => setShowConfigurationsPanel(false)}
-        hasCloseButton={false}
+        hasCloseButton={true}
+        headerText={formatMessage(messages.title)}
+        closeButtonAriaLabel={formatMessage(messages.ariaClose)}
         isFooterAtBottom={true}
-        onRenderHeader={props => (
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            verticalAlign="center"
-            tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
-            styles={styles.panelHeader}
-          >
-            <ClosePanelButton
-              iconProps={{
-                iconName: 'Cancel'
-              }}
-              onClick={() => props?.onDismiss?.()}
-              title={formatMessage(messages.ariaClose)}
-              text={formatMessage(messages.title)}
-              styles={styles.closeButton}
-            />
-          </Stack>
-        )}
         styles={styles.panel}
       >
         <ProductConfigurationPicker items={productConfigurationItems} />

@@ -52,10 +52,13 @@ import playMovieThumbnail from './play-button-white.png';
 import smallCardVerifiedImage1 from './process_customerverification_1.png';
 import smallCardVerifiedImage2 from './process_customerverification_2.png';
 import smallCardVerifiedImage3 from './process_customerverification_3.png';
+import salesRepHome from './sales-rep-home.jpg';
+import searchToolHome from './search-tool-home.jpg';
 import signInCustomer from './signInCustomer.jpg';
 import signInEmployee from './signInEmployee.jpg';
 import siteIcon from './site-icon.svg';
 import siteLogo from './site-logo.svg';
+import videoChatHome from './video-chat-home.jpg';
 
 export const STATIC_IMAGES = {
   app: {
@@ -102,6 +105,11 @@ export const STATIC_IMAGES = {
   },
   home: {
     hero,
+    support: {
+      salesRepHome,
+      videoChatHome,
+      searchToolHome
+    },
     highlights: {
       bigCardImage,
       smallCardSalesImage,

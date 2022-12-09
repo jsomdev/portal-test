@@ -207,6 +207,21 @@ export const messageIds: Messages = {
       headTitle: 'pages.home.headTitle',
       headDescription: 'pages.home.headDescription',
       sections: {
+        support: {
+          title: 'pages.home.sections.support.title',
+          searchToolTitle: 'pages.home.sections.support.searchToolTitle',
+          searchToolDescription:
+            'pages.home.sections.support.searchToolDescription',
+          searchToolAction: 'pages.home.sections.support.searchToolAction',
+          localRepTitle: 'pages.home.sections.support.localRepTitle',
+          localRepDescription:
+            'pages.home.sections.support.localRepDescription',
+          localRepAction: 'pages.home.sections.support.localRepAction',
+          onlineChatTitle: 'pages.home.sections.support.onlineChatTitle',
+          onlineChatDescription:
+            'pages.home.sections.support.onlineChatDescription',
+          onlineChatAction: 'pages.home.sections.support.onlineChatAction'
+        },
         signUp: {
           callToAction: 'pages.home.sections.signUp.callToAction',
           title: 'pages.home.sections.signUp.title',

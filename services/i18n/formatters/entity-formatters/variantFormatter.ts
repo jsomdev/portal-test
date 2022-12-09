@@ -3,11 +3,15 @@ import { IntlShape } from 'react-intl';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { messageIds } from '@services/i18n/ids';
 import { Variant } from '@services/portal-api';
+import pagePaths from '@utilities/pagePaths';
 
+import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
 import { DisplayFormatter } from './displayFormatter';
 
 export class VariantFormatter {
   private displayFormatter: DisplayFormatter;
+  private multilingualStringFormatter: MultilingualStringFormatter;
+  private variant: Partial<Variant> | undefined;
   constructor(
     variant: Partial<Variant> | undefined,
     intl: IntlShape,
@@ -21,14 +25,18 @@ export class VariantFormatter {
       intl.formatNumber,
       locale
     );
+    this.multilingualStringFormatter = new MultilingualStringFormatter(locale);
+    this.variant = variant;
   }
 
   public formatDisplayValue(): string {
     return this.displayFormatter.format();
   }
-  // TODO: Implement when api is ready
+
   public formatHref(): string {
-    return '/to-be-implemented';
+    return pagePaths.products(
+      this.multilingualStringFormatter.format(this.variant?.productSlug)
+    );
   }
 
   private formatBoolean(value: boolean, intl: IntlShape): string {

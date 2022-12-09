@@ -197,6 +197,21 @@ export const en: Messages = {
       headTitle: 'Welcome',
       headDescription: 'Experts in Spray Technology',
       sections: {
+        support: {
+          title: 'Need help finding the product you need?',
+          searchToolTitle: 'Try the search tool',
+          searchToolDescription:
+            'Find a product based on its part number, name and more',
+          searchToolAction: 'Start searching',
+          localRepTitle: 'Find a local representative',
+          localRepDescription:
+            'Your local representative can help you if you are not finding what you are looking for',
+          localRepAction: 'Get in contact',
+          onlineChatTitle: 'Online support',
+          onlineChatDescription:
+            'Want to speak with someone before you dive into our big product range?',
+          onlineChatAction: 'Schedule a meeting'
+        },
         hero: {
           imageAlt: 'Hero image',
           title: 'Choose Quality Nozzles',

@@ -124,7 +124,7 @@ interface SearchBarStyles {
 
 const SearchBar: React.FC = () => {
   const { togglePageOverlay } = usePageContext();
-  const { spacing, palette, semanticColors, effects } = useTheme();
+  const { spacing, palette, semanticColors, fonts, effects } = useTheme();
   const { locale, formatMessage } = useIntl();
   const { push } = useRouter();
   const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
@@ -346,6 +346,7 @@ const SearchBar: React.FC = () => {
       root: {
         margin: 'auto',
         width: '100%',
+        fontSize: fonts.mediumPlus.fontSize,
         position: 'relative',
         zIndex: 4,
         padding: 0,
@@ -386,6 +387,7 @@ const SearchBar: React.FC = () => {
         onSearch={onSearch}
         onClickCapture={onClickCapture}
         role="search"
+        id="header-search-box"
         autoComplete="off"
         onClear={onClear}
         onEscape={onEscape}

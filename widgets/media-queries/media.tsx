@@ -7,6 +7,7 @@ import {
 
 const breakpoints = {
   mobile: 0,
+  largePhone: 425,
   tablet: 1024,
   desktop: 1280
 };

@@ -42,7 +42,7 @@ export const Mobile: React.FC<
 > = props => {
   const { children, ...otherProps } = props;
   return (
-    <Media {...otherProps} at="mobile">
+    <Media {...otherProps} between={['mobile', 'tablet']}>
       {children}
     </Media>
   );
@@ -57,7 +57,7 @@ export const TabletAndDesktop: React.FC<
 > = props => {
   const { children, ...otherProps } = props;
   return (
-    <Media {...otherProps} greaterThan="mobile">
+    <Media {...otherProps} greaterThan="largePhone">
       {children}
     </Media>
   );

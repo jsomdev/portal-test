@@ -6,7 +6,7 @@ describe('getMediaQueryString', () => {
       match: 'at',
       breakpoint: 'mobile'
     });
-    expect(mediaQuery).toBe('(min-width:0px) and (max-width:1023.98px)');
+    expect(mediaQuery).toBe('(min-width:0px) and (max-width:424.98px)');
   });
 
   it('at tablet, returns correct media query', () => {
@@ -35,7 +35,7 @@ describe('getMediaQueryString', () => {
       match: 'greaterThan',
       breakpoint: 'mobile'
     });
-    expect(mediaQuery).toBe('(min-width:1024px)');
+    expect(mediaQuery).toBe('(min-width:425px)');
   });
 
   it('greaterThan tablet, returns correct media query', () => {

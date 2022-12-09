@@ -48,7 +48,7 @@ const messages = {
 };
 
 export const CompleteSignUp: React.FC = () => {
-  const { spacing } = useTheme();
+  const { spacing, palette } = useTheme();
   const { instance } = useMsal();
 
   const { isEmployee } = useClaims();
@@ -208,7 +208,7 @@ export const CompleteSignUp: React.FC = () => {
     boxContainer: {
       root: {
         width: '100%',
-        background: 'white',
+        background: palette.white,
         border: '1px solid #ddd',
         borderRadius: spacing.s2,
         boxShadow: '0 1px 1px rgba(0,0,0,0.05)'

@@ -81,7 +81,6 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
     }
 
     if (isModel && hasAlternativeModels) {
-      console.log(isModel, hasAlternativeModels);
       filteredSections.push(productSections.alternativeModelsSection);
     }
 

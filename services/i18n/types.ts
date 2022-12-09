@@ -326,6 +326,18 @@ type ILocaleMessages = {
 
 type IHomeMessages = INextHeadMessages & {
   sections: {
+    support: {
+      title: string;
+      searchToolTitle: string;
+      searchToolDescription: string;
+      searchToolAction: string;
+      localRepTitle: string;
+      localRepDescription: string;
+      localRepAction: string;
+      onlineChatTitle: string;
+      onlineChatDescription: string;
+      onlineChatAction: string;
+    };
     hero: {
       imageAlt: string;
       title: string;

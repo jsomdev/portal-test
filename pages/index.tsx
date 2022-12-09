@@ -22,6 +22,7 @@ import { Brands } from '@widgets/home-page/sections/brands';
 import { Catalog } from '@widgets/home-page/sections/catalog';
 import { Hero } from '@widgets/home-page/sections/hero';
 import { SignIn } from '@widgets/home-page/sections/signIn';
+import { Support } from '@widgets/home-page/sections/support';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack, {
   ContentContainerStyles
@@ -151,6 +152,11 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
                   CATEGORY_IDS.brands.toLowerCase()
               )}
             />
+          </ContentContainerStack>
+          <ContentContainerStack
+            outerStackProps={{ styles: styles.sectionContainer }}
+          >
+            <Support />
           </ContentContainerStack>
         </AppLayout>
       </GlobalDataProvider>

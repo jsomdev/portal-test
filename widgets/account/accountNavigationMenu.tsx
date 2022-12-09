@@ -36,7 +36,6 @@ export const AccountNavigationMenu: React.FC<AccountNavigationMenuProps> = ({
     accountMenu: {
       backButtonText: intl.formatMessage(messages.menuReset),
       hideOtherMenusWhenActive: true,
-      style: 'plain',
       items: getAccountNavigationMenuItems(intl, me, instance)
     }
   };
