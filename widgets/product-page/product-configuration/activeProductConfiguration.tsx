@@ -87,6 +87,9 @@ export const ActiveProductConfiguration: React.FC = () => {
         background: palette.white,
         padding: 0
       },
+      scrollableContent: {
+        background: palette.white
+      },
       commands: {
         padding: 0,
         position: 'sticky'

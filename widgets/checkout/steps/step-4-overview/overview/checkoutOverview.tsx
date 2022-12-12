@@ -13,7 +13,7 @@ import { PaymentSummary } from '@widgets/checkout/steps/step-4-overview/overview
 import { ShippingAddressSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingAddressSummary';
 import { ShippingContactSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingContactSummary';
 import { ShippingMethodSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingMethodSummary';
-import { useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
 
 import { EmailSummary } from './components/emailSummary';
 
@@ -27,7 +27,7 @@ const messages = defineMessages({
 export const CheckoutOverview: React.FC = () => {
   const { formatMessage } = useIntl();
   const { spacing } = useTheme();
-  const isMobile = useMobile();
+  const isMobileOrTablet = useBetweenMobileAndTablet();
   const { totalCost, orderTaxAmountStatus, formValues } = useCheckout();
 
   const order = useMemo(
@@ -66,7 +66,7 @@ export const CheckoutOverview: React.FC = () => {
           <Stack.Item>
             <Stack
               styles={styles}
-              horizontal={!isMobile}
+              horizontal={!isMobileOrTablet}
               horizontalAlign="space-between"
               tokens={{ childrenGap: spacing.l1 }}
             >
@@ -85,7 +85,7 @@ export const CheckoutOverview: React.FC = () => {
           <Stack.Item>
             <Stack
               styles={styles}
-              horizontal={!isMobile}
+              horizontal={!isMobileOrTablet}
               horizontalAlign="space-between"
               tokens={{ childrenGap: spacing.l1 }}
             >
@@ -102,7 +102,7 @@ export const CheckoutOverview: React.FC = () => {
           <Stack.Item>
             <Stack
               styles={styles}
-              horizontal={!isMobile}
+              horizontal={!isMobileOrTablet}
               horizontalAlign="space-between"
               tokens={{ childrenGap: spacing.l1 }}
             >

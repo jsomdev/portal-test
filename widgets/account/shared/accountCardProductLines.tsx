@@ -21,6 +21,7 @@ import { QuoteRequestLine } from '@services/portal-api/models/QuoteRequestLine';
 import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
 import {
   mediaQueryFrom,
+  useBetweenMobileAndTablet,
   useMobile,
   useTablet,
   useTabletAndDesktop
@@ -43,18 +44,18 @@ export const AccountCardProductLines: React.FC<
   AccountCardProductLinesProps
 > = ({ lines, href, compactView }) => {
   const { spacing, semanticColors, palette, effects } = useTheme();
-  const isMobile = useMobile();
+  const isMobileOrTablet = useBetweenMobileAndTablet();
   const isTablet = useTablet();
 
   const visibleItems: number = React.useMemo(() => {
-    if (isMobile || compactView) {
+    if (isMobileOrTablet || compactView) {
       return 1;
     }
     if (isTablet) {
       return 1;
     }
     return 3;
-  }, [isMobile, isTablet, compactView]);
+  }, [isMobileOrTablet, isTablet, compactView]);
 
   const viewMoreText: string = useMemo(() => {
     if (lines?.length) {

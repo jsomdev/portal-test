@@ -69,30 +69,12 @@ export const ProductStickyHeader: React.FC<ProductStickyHeaderProps> = ({
         opacity: isScrolledDown ? 1 : 0,
         visibility: isScrolledDown ? 'visible' : 'hidden',
         maxHeight: isScrolledDown ? 'auto' : 0,
-
+        boxShadow: `rgb(0 0 0 / 20%) 0px 5px 4px -4px`,
         height: '100%',
         transition:
           isScrolledDown && isTabletAndDesktop
             ? 'visibility .3s, opacity 0.3s'
-            : 'none',
-        // The :before and :after will visualize the sticky header as 100vw and apply a box shadow
-        selectors: {
-          '::before, ::after': {
-            content: "''",
-            display: 'block',
-            width: '50%',
-            height: '100%',
-            position: 'absolute',
-            zIndex: -1,
-            boxShadow: '0 5px 4px -4px rgba(0,0,0,.2)'
-          },
-          '::before': {
-            right: '50%'
-          },
-          '::after': {
-            left: '50%'
-          }
-        }
+            : 'none'
       }
     },
     headerActions: {

@@ -1,5 +1,5 @@
 import { Icon, Stack, Text, useTheme } from '@fluentui/react';
-import { useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
 
 export interface TrustFactorItem {
   iconName: string;
@@ -25,7 +25,7 @@ export const tempTrustFactors: TrustFactorItem[] = [
  */
 export const TrustFactors: React.FC = () => {
   const { spacing } = useTheme();
-  const isMobile = useMobile();
+  const isMobileOrTablet = useBetweenMobileAndTablet();
   return (
     <Stack
       horizontal
@@ -36,7 +36,7 @@ export const TrustFactors: React.FC = () => {
         childrenGap: spacing.m
       }}
     >
-      {tempTrustFactors.slice(0, isMobile ? 1 : 3).map(item => (
+      {tempTrustFactors.slice(0, isMobileOrTablet ? 1 : 3).map(item => (
         <TrustFactor key={item.text} {...item} />
       ))}
     </Stack>
