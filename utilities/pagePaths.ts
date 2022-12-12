@@ -10,6 +10,7 @@ const pagePaths = {
   quoteRequest: '/cart/create-quote-request',
   cart: '/cart',
   checkout: '/cart/checkout',
+  requestForQuote: '/cart/request-for-quote',
   infoAndPreferences: '/account/info-and-preferences',
   orders: (
     id?: string | undefined,

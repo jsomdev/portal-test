@@ -495,6 +495,10 @@ type ICartMessages = {
   continueShopping: string;
 };
 
+type IRequestForQuoteMessages = {
+  title: string;
+};
+
 type ICheckoutMessages = {
   title: string;
   orderSuccess: string;
@@ -785,6 +789,7 @@ export type Messages = {
     account: IAccountMessages;
     cart: ICartMessages;
     checkout: ICheckoutMessages;
+    requestForQuote: IRequestForQuoteMessages;
   };
   summary: {
     details: string;
