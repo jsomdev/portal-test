@@ -129,13 +129,13 @@ function getInfoAndPreferencesAccountSection(
       title: formatMessage(messages.profileInformationTitle),
       links: [
         {
-          href: pagePaths.profileInfo,
+          href: pagePaths.profileInformation(),
           text: formatMessage(messages.viewPersonalInfoLink)
-        },
-        {
-          href: pagePaths.accountOverview,
-          text: formatMessage(messages.changePassword)
         }
+        // {
+        //   href: pagePaths.accountOverview,
+        //   text: formatMessage(messages.changePassword)
+        // }
       ]
     },
     {
@@ -159,10 +159,10 @@ function getInfoAndPreferencesAccountSection(
       description: formatMessage(messages.preferencesDescription),
       title: formatMessage(messages.preferencesTitle),
       links: [
-        {
-          href: pagePaths.accountOverview,
-          text: formatMessage(messages.privacySettings)
-        },
+        // {
+        //   href: pagePaths.accountOverview,
+        //   text: formatMessage(messages.privacySettings)
+        // },
         {
           href: pagePaths.preferences,
           text: formatMessage(messages.measurementSettings)

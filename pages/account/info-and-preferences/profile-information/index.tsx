@@ -12,7 +12,9 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
+import { ProfileInformation } from '@widgets/account/info-and-preferences/profileInformation';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
@@ -24,7 +26,7 @@ const messages = defineMessages({
   }
 });
 
-const ProfileInformation: NextPage<
+const ProfileInformationPage: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -34,10 +36,10 @@ const ProfileInformation: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths(
-        'account/info-and-preferences/profile-information'
-      )}
-    ></AccountPage>
+      localePaths={getLocalePaths(pagePaths.profileInformation())}
+    >
+      <ProfileInformation />
+    </AccountPage>
   );
 };
 
@@ -62,4 +64,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default ProfileInformation;
+export default ProfileInformationPage;

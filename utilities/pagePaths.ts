@@ -10,6 +10,12 @@ const pagePaths = {
   quoteRequest: '/cart/create-quote-request',
   cart: '/cart',
   checkout: '/cart/checkout',
+  profileInformation: (edit?: boolean): string => {
+    if (edit) {
+      return '/account/info-and-preferences/profile-information?edit=true';
+    }
+    return '/account/info-and-preferences/profile-information';
+  },
   infoAndPreferences: '/account/info-and-preferences',
   orders: (
     id?: string | undefined,
@@ -35,7 +41,6 @@ const pagePaths = {
       ? '/account/info-and-preferences/address-book?id=' + id
       : '/account/info-and-preferences/address-book';
   },
-  profileInfo: '/account/info-and-preferences/profile-information',
   preferences: '/account/info-and-preferences/preferences'
 };
 

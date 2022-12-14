@@ -24,15 +24,14 @@ import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userF
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
 import pagePaths from '@utilities/pagePaths';
-import { OverviewTag } from '@widgets/account/overview/overviewTag';
 
 import { AddressBookAddress } from '../address-book/addressBookAddress';
 import { OrderCard } from '../orders/orderCard';
-import { getPaymentMethodText } from '../orders/orderHelper';
 import {
   AddressViewModel,
   mapAddressToAddressViewModel
 } from '../shared/accountAddress.helper';
+import { AccountOverviewTags } from '../shared/accountOverviewTags';
 import { OverviewCompanyInfo } from './overviewCompanyInfo';
 import { OverviewProfileInfo } from './overviewProfileInfo';
 
@@ -46,31 +45,6 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.subTitle,
     description: 'Account page sub title',
     defaultMessage: 'Subtitle default text'
-  },
-  accountManager: {
-    id: messageIds.pages.account.overview.account.status.manager,
-    description: 'manager tag',
-    defaultMessage: 'manager default'
-  },
-  accountEmployee: {
-    id: messageIds.pages.account.overview.account.status.employee,
-    description: 'employee tag',
-    defaultMessage: 'employee default'
-  },
-  accountAdmin: {
-    id: messageIds.pages.account.overview.account.status.admin,
-    description: 'admin tag',
-    defaultMessage: 'admin default'
-  },
-  accountVerified: {
-    id: messageIds.pages.account.overview.account.status.verified,
-    description: 'verified tag',
-    defaultMessage: 'verified default'
-  },
-  accountCustomer: {
-    id: messageIds.pages.account.overview.account.status.customer,
-    description: 'customer tag',
-    defaultMessage: 'customer default'
   },
   recentOrders: {
     id: messageIds.pages.account.overview.orders.title,
@@ -114,7 +88,7 @@ export const Overview: React.FC = () => {
   const { accountId } = useClaims();
   const claims = useClaims();
   const { me, isOrderHistoryEnabled, showCustomerDetails } = useMe();
-  const { isAccountManager, isAdministrator, isEmployee } = claims;
+
   const { billingAddress, shippingAddress } = useContext(AddressBookContext);
 
   // Write a yup object to validate the address
@@ -194,22 +168,7 @@ export const Overview: React.FC = () => {
           </Stack.Item>
         </Stack>
         <Stack tokens={{ childrenGap: spacing.m }}>
-          <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
-            {isAccountManager && (
-              <OverviewTag text={formatMessage(messages.accountManager)} />
-            )}
-            {isAdministrator && (
-              <OverviewTag text={formatMessage(messages.accountAdmin)} />
-            )}
-            {isEmployee && (
-              <OverviewTag text={formatMessage(messages.accountEmployee)} />
-            )}
-            {me?.account?.paymentMethod && (
-              <OverviewTag
-                text={getPaymentMethodText(intl, me.account.paymentMethod)}
-              />
-            )}
-          </Stack>
+          <AccountOverviewTags />
           <Stack.Item>
             <Text variant="medium">{formatMessage(messages.subTitle)}</Text>
           </Stack.Item>
