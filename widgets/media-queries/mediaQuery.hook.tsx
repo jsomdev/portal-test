@@ -87,6 +87,11 @@ export const useTablet = (): boolean =>
     breakpoint: 'tablet'
   }).isMatch;
 
+export const useBetweenMobileAndTablet = (): boolean =>
+  useMediaQuery({
+    match: 'between',
+    breakpoint: ['mobile', 'tablet']
+  }).isMatch;
 export const useTabletAndDesktop = (): boolean =>
   useMediaQuery({
     match: 'greaterThanOrEqual',

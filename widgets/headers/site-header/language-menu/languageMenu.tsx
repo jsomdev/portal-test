@@ -6,7 +6,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Pivot, PivotItem, Stack, Text, useTheme } from '@fluentui/react';
 import { getAudience, messageIds } from '@services/i18n';
 import { getSupportedRegionsWithPaths } from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
-import { useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
 import { usePageContext } from '@widgets/page/pageContext';
 
 import { LanguageMenuStyles, RegionWithPaths } from './languageMenu.types';
@@ -28,7 +28,7 @@ export const LanguageMenu: React.FC<LanguageMenuProps> = ({ onDismiss }) => {
   const { palette, spacing } = useTheme();
   const { locale, defaultLocale } = useRouter();
   const audience = getAudience(locale);
-  const isMobile = useMobile();
+  const isMobileOrTablet = useBetweenMobileAndTablet();
   const { localePaths } = usePageContext();
   const { formatMessage } = useIntl();
   const regions: RegionWithPaths[] | null = useMemo(
@@ -80,7 +80,7 @@ export const LanguageMenu: React.FC<LanguageMenuProps> = ({ onDismiss }) => {
         width: 550,
         minHeight: 200,
         maxWidth: 'calc(100vw - 220px)',
-        maxHeight: isMobile ? 400 : 'auto',
+        maxHeight: isMobileOrTablet ? 400 : 'auto',
         overflow: 'auto'
       },
       inner: {
@@ -95,7 +95,7 @@ export const LanguageMenu: React.FC<LanguageMenuProps> = ({ onDismiss }) => {
     },
     regionContainer: {
       root: {
-        flex: isMobile ? `1 0 100%` : `0 1 calc(33% - ${spacing.l1})`
+        flex: isMobileOrTablet ? `1 0 100%` : `0 1 calc(33% - ${spacing.l1})`
       }
     },
     pivot: {

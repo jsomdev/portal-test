@@ -68,6 +68,9 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
         background: palette.white,
         zIndex: 1
       },
+      contentInner: {
+        background: palette.white
+      },
       scrollableContent: {
         marginRight: spacing.s1,
         padding: `0 ${spacing.l1}`
