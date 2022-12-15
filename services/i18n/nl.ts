@@ -406,7 +406,13 @@ export const nl: Messages = {
               description:
                 'Wijzig uw inloggegevens of persoonlijke gegevens, zoals uw telefoonnummer.',
               viewInfoLink: 'Persoonlijke info bekijken',
-              changePasswordLink: 'Verander wachtwoord'
+              changePasswordLink: 'Verander wachtwoord',
+              panel: {
+                title: 'Profiel Informatie',
+                ariaClose: 'Sluiten',
+                cancel: 'Annuleer',
+                save: 'Opslaan'
+              }
             },
             addressBook: {
               title: 'Adresboek',
