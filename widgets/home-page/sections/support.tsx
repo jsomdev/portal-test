@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo } from 'react';
+import { CSSProperties, useMemo, useRef } from 'react';
 
 import Image, { StaticImageData } from 'next/image';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
@@ -245,7 +245,9 @@ const SupportCard: React.FC<SupportCardProps> = ({
           style={styles.image}
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
           objectPosition="center"
+          sizes="(max-width: 435px) calc(100vw - 40px),(max-width: 1040px) calc ((100vw - 80px) / 2), 425px"
         />
       </Stack.Item>
       <Text as="h3" styles={styles.title}>

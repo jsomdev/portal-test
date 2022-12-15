@@ -195,7 +195,7 @@ export const CartSummaryActions: React.FC = () => {
               text={formatMessage(messages.request)}
               onClick={event => {
                 event.preventDefault();
-                push(pagePaths.quoteRequests());
+                push(pagePaths.requestForQuote);
               }}
               disabled={!quoteItems.length || !isRequestForQuoteEnabled}
               styles={styles.primaryButton}
@@ -239,7 +239,7 @@ export const CartSummaryActions: React.FC = () => {
                 text={formatMessage(messages.request)}
                 onClick={event => {
                   event.preventDefault();
-                  push(pagePaths.quoteRequests());
+                  push(pagePaths.requestForQuote);
                 }}
                 styles={styles.defaultButton}
                 disabled={quoteItems.length < 1 || !isRequestForQuoteEnabled}

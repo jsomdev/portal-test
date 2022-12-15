@@ -19,6 +19,7 @@ import pagePaths from '@utilities/pagePaths';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
+import { RequestForQuote } from '@widgets/request-for-quote/requestForQuote';
 
 const messages = defineMessages({
   title: {
@@ -48,7 +49,9 @@ const RequestForQuotePage: NextPage<
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}
       >
-        <AppLayout>{/* <RequestForQuote /> */}</AppLayout>
+        <AppLayout>
+          <RequestForQuote />
+        </AppLayout>
       </GlobalDataProvider>
     </Page>
   );

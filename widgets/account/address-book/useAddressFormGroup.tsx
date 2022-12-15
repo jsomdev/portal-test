@@ -9,7 +9,7 @@ import {
   supportedProvinceOptions,
   supportedStateOptions
 } from '@utilities/places';
-import { Fields } from '@widgets/checkout/shared/types';
+import { StepFields } from '@widgets/checkout/shared/types';
 
 import { AddressBookFormData } from './addressBookForm.helper';
 
@@ -21,7 +21,7 @@ export type AddressFormGroupValues = {
   postalCode: string;
 };
 
-export type AddressFormGroupFields = Fields<AddressFormGroupValues>;
+export type AddressFormGroupFields = StepFields<AddressFormGroupValues>;
 
 interface AddressFormGroupProps {
   defaultSelectedCountryKey: string;
@@ -65,7 +65,7 @@ const messages = defineMessages({
 
 export const useAddressFormGroup = (
   countryValue: string,
-  fields: Fields<AddressFormGroupValues>
+  fields: StepFields<AddressFormGroupValues>
 ): AddressFormGroupProps => {
   const { formatMessage } = useIntl();
   const {

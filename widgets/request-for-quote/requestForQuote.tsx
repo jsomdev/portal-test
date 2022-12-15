@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { defineMessages } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   Link as FluentUILink,
   MessageBar,
@@ -14,24 +14,21 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
+import { QuoteRequest } from '@services/portal-api/models/QuoteRequest';
+import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
-import { LoadingOverlay } from '../../../components/overlays/loadingOverlay';
-import { PagesHeader } from '../../../components/pages-header/pagesHeader';
-import { QuoteRequestBreadcrumb } from '../../../components/spray-portal-breadcrumb/quote-request-breadcrumb/quoteRequestBreadcrumb';
-import { STATIC_IMAGES } from '../../../media/images';
-import { QuoteRequest as QuoteRequestModel } from '../../../services/portal-api/models/QuoteRequest';
-import { formatLocationHref } from '../../../utilities/formatHref';
-import { useCreateQuoteRequest } from '../../../utilities/useCreateQuote';
-import { customerLoginRequest } from '../../providers/authentication/authConfig';
 import { useCart } from '../../providers/cart/cartContext';
 import { useMe } from '../../providers/user/userContext';
-import { PageContainer } from '../pageContainer';
-import { pageRoutePaths } from '../pagesHelper';
-import { QuoteRequestFormValues } from './quoteRequest.types';
-import { QuoteRequestErrorMessage } from './quoteRequestErrorMessage';
-import { QuoteRequestForm } from './quoteRequestForm';
-import { mapQuoteRequestFormValuesToQuoteRequest } from './quoteRequestHelper';
+import { RequestForQuoteProvider } from './providers/requestForQuoteProvider';
+import { useCreateQuoteRequest } from './providers/useCreateQuoteRequest';
+import { RequestForQuoteBreadcrumb } from './requestForQuoteBreadcrumb';
+import { RequestForQuoteForm } from './requestForQuoteForm';
+import { RequestForQuoteErrorMessage } from './requoteForQuoteError';
+import { RequestForQuoteFormValues } from './shared/types';
 
 const messages = defineMessages({
   title: {
@@ -56,7 +53,7 @@ const messages = defineMessages({
     description: 'Spinner text while redirecting you to the new quote request',
     defaultMessage: 'Your request has been created. Redirecting...'
   },
-  creatingRequest: {
+  creatingRequestForQuotet: {
     id: messageIds.pages.requestForQuote.creatingRequest,
     description: 'Spinner text while creating the new quote request',
     defaultMessage: 'Creating your request...'
@@ -77,76 +74,70 @@ const messages = defineMessages({
       'Spinner text to show while product information for the cart is loading',
     defaultMessage: 'Loading product information...'
   },
-  needSignIn: {
+  needsSignIn: {
     id: messageIds.pages.requestForQuote.needSignIn,
     description: 'Text with action to sign in',
     defaultMessage:
       'You need to be signed in to place a quote request. Please {signInText}'
+  },
+  signInText: {
+    id: messageIds.pages.requestForQuote.signInText,
+    description: 'Action text to sign in',
+    defaultMessage: 'sign in here.'
+  },
+  redirectingLogin: {
+    id: messageIds.pages.requestForQuote.redirectingLogin,
+    description: 'Action text to sign in',
+    defaultMessage: 'sign in here.'
+  },
+  noItems: {
+    id: messageIds.pages.requestForQuote.noItems,
+    description: 'Info text when there are no items to request for quote',
+    defaultMessage:
+      'There were no items found in your cart that are eligible for quotation.'
   }
 });
 
-// const messages = {
-//   title: 'Quote Request',
-//   submitting: 'Submitting your request...',
-//   metaTitle: 'Quote Request | Spraying Systems Co. ',
-//   metaDescription: 'Complete your personal details to make a quote request.',
-//   requestSuccess: 'Your request has been created. Redirecting...',
-//   requestFailed:
-//     'Something unexpected happened! Please contact customer support.',
-//   creatingRequest: 'Creating your request...',
-//   loadingCart: 'Loading cart...',
-//   loadingCartFailed: 'Loading cart failed!',
-//   loadingProductInfo: 'Loading product information...',
-//   loadingProductsFailed: 'Loading product information failed',
-//   needSignIn: 'You need to be signed in to place a quote request. Please ',
-//   signIn: 'sign in here.',
-//   redirecting: 'Redirecting to login',
-//   noItems:
-//     'There were no items found in your cart that are eligible for quotation.',
-//   noItemsLink:
-//     'Please return to the cart page and proceed to request a price if you have items with quoted pricing.'
-// };
-
-const QuoteRequest: React.FC = () => {
+export const RequestForQuote: React.FC = () => {
   const { spacing } = useTheme();
-  const { quoteItems, initialized, itemsStatus: cartInfoStatus } = useCart();
+  const { formatMessage } = useIntl();
+  const {
+    quoteItems,
+    initialized: isCartInitialized,
+    itemsStatus: cartInfoStatus
+  } = useCart();
   const { meStatus } = useMe();
   const isAuthenticated = useIsAuthenticated();
   const { inProgress, instance } = useMsal();
 
-  const { create, status: createRequestStatus } = useCreateQuoteRequest(
-    quoteItems.map(item => item.productNumber || '')
-  );
+  const quoteLineProductNumbers: string[] = useMemo(() => {
+    return quoteItems
+      .filter(item => !!item.productNumber)
+      .map(item => item.productNumber) as string[];
+  }, [quoteItems]);
 
-  function submitRequest(values: QuoteRequestFormValues) {
-    const request: QuoteRequestModel = mapQuoteRequestFormValuesToQuoteRequest(
-      values,
-      quoteItems
-    );
-    create(request);
-  }
+  const { create, status: createRequestStatus } = useCreateQuoteRequest(
+    quoteLineProductNumbers
+  );
 
   function getSpinnerText(): string {
     if (meStatus === 'loading') {
-      return messages.loadingCart;
+      return formatMessage(messages.loadingCart);
     }
     if (cartInfoStatus === 'loading') {
-      return messages.loadingProductInfo;
+      return formatMessage(messages.loadingCartProductInformation);
     }
+
     if (createRequestStatus === 'loading') {
-      return messages.creatingRequest;
-    }
-    if (inProgress === InteractionStatus.Login) {
-      return messages.redirecting;
+      return formatMessage(messages.creatingRequestForQuotet);
     }
 
     return '';
   }
-
   if (
     meStatus === 'loading' ||
     // Mapping of the me.cart to cartItems takes a few miliseconds. We assume that it will be initliaized ALWAYS after a successful me fetch
-    (meStatus === 'success' && initialized === false) ||
+    (meStatus === 'success' && isCartInitialized === false) ||
     cartInfoStatus === 'loading' ||
     inProgress === InteractionStatus.Login
   ) {
@@ -164,77 +155,64 @@ const QuoteRequest: React.FC = () => {
   if (!isAuthenticated && inProgress === InteractionStatus.None) {
     return (
       <MessageBar messageBarType={MessageBarType.warning}>
-        {messages.needSignIn}
-        <FluentUILink
-          onClick={ev => instance.loginRedirect(customerLoginRequest)}
-        >
-          {messages.signIn}
-        </FluentUILink>
+        {formatMessage(messages.needsSignIn, {
+          signInText: (
+            <FluentUILink
+              onClick={() => instance.loginRedirect(customerLoginRequest)}
+            >
+              {formatMessage(messages.signInText)}
+            </FluentUILink>
+          )
+        })}
       </MessageBar>
     );
   }
 
   return (
-    <Stack>
+    <ContentContainerStack
+      innerStackProps={{ tokens: { childrenGap: spacing.l1 } }}
+    >
       {createRequestStatus === 'loading' && (
         <LoadingOverlay spinnerText={getSpinnerText()} />
       )}
-      <PageContainer
-        metaTitle={messages.metaTitle}
-        metaImage={STATIC_IMAGES.app.smallLogo}
-        metaDescription={messages.metaDescription}
-      >
+      <StackItem>
+        <PagesHeader title={formatMessage(messages.title)} />
+      </StackItem>
+      <BreadcrumbPortal>
+        <RequestForQuoteBreadcrumb />
+      </BreadcrumbPortal>
+      {/* When there is an error submitting the form */}
+      {createRequestStatus === 'error' && <RequestForQuoteErrorMessage />}
+      {/* When the user is not currently logging in and is not authenticated */}
+      {!isAuthenticated && inProgress === InteractionStatus.None && (
+        <MessageBar messageBarType={MessageBarType.warning}>
+          <Text>{formatMessage(messages.signInText)}</Text>
+        </MessageBar>
+      )}
+      {/* When fetching the persisted cart from the /me endpoint returns an error */}
+      {meStatus === 'error' && (
+        <MessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.loadingCartFailed)}</Text>
+        </MessageBar>
+      )}
+      {cartInfoStatus === 'error' && (
+        <MessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.loadingCartProductInformation)}</Text>
+        </MessageBar>
+      )}
+      {createRequestStatus === 'success' && (
+        <MessageBar messageBarType={MessageBarType.success}>
+          <Text>{formatMessage(messages.requestSuccess)}</Text>
+        </MessageBar>
+      )}
+
+      {!!quoteItems?.length && (
         <Stack.Item>
-          <QuoteRequestBreadcrumb />
+          <RequestForQuoteProvider>
+            <RequestForQuoteForm onCreateRequest={create} />
+          </RequestForQuoteProvider>
         </Stack.Item>
-        <StackItem>
-          <PagesHeader title={messages.title} />
-        </StackItem>
-        <Stack tokens={{ childrenGap: spacing.s1 }}>
-          <Stack.Item>
-            {/* When there is an error submitting the quote request */}
-            {createRequestStatus === 'error' && <QuoteRequestErrorMessage />}
-
-            {/* When fetching the persisted cart from the /me endpoint returns an error */}
-            {meStatus === 'error' && (
-              <MessageBar messageBarType={MessageBarType.error}>
-                <Text>{messages.loadingCartFailed}</Text>
-              </MessageBar>
-            )}
-
-            {cartInfoStatus === 'error' && (
-              <MessageBar messageBarType={MessageBarType.error}>
-                <Text>{messages.loadingProductsFailed}</Text>
-              </MessageBar>
-            )}
-            {quoteItems?.length === 0 && (
-              <Stack.Item>
-                <MessageBar messageBarType={MessageBarType.blocked}>
-                  <Text>{messages.noItems}</Text>
-                  <Link
-                    to={formatLocationHref(pageRoutePaths.cart, false)}
-                    href={formatLocationHref(pageRoutePaths.cart, true)}
-                  >
-                    <Text>{messages.noItemsLink}</Text>
-                  </Link>
-                </MessageBar>
-              </Stack.Item>
-            )}
-            {!!quoteItems.length && (
-              <QuoteRequestForm
-                items={quoteItems}
-                onSubmit={values => {
-                  if (quoteItems) {
-                    submitRequest(values);
-                  }
-                }}
-              />
-            )}
-          </Stack.Item>
-        </Stack>
-      </PageContainer>
-    </Stack>
+      )}
+    </ContentContainerStack>
   );
 };
-
-export default QuoteRequest;

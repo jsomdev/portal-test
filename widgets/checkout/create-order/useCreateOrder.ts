@@ -35,8 +35,6 @@ export const useCreateOrder = (productNumbers: string[]): CreateOrderHook => {
   });
 
   function handleRedirect(order: Order) {
-    const searchParams = new URLSearchParams();
-    searchParams.set('confirmation', 'true');
     push(pagePaths.orders(order.id, true));
   }
 

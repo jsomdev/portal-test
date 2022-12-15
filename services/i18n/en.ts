@@ -134,6 +134,33 @@ export const en: Messages = {
       headDescription: 'Experts in Spray Technology',
       headTitle: 'Search {searchQuery}'
     },
+    requestForQuote: {
+      actions: {
+        submit: 'Confirm and submit'
+      },
+      details: {
+        billingAddressTitle: 'Billing Address',
+        billingContactTitle: 'Billing Contact',
+        generalTitle: 'General'
+      },
+      summary: {
+        details: 'Details',
+        numberOfItems: 'Number of items',
+        numberOfProducts: 'Number of products'
+      },
+      creatingRequest: 'Creating your request...',
+      needSignIn:
+        'You need to be signed in to place a quote request. Please {signInText}',
+      noItems:
+        'There were no items found in your cart that are eligible for quotation.',
+      redirectingLogin: 'pages.requestForQuote.redirectingLogin',
+      requestFailed:
+        'Something unexpected happened while processing your request! Please contact customer support.',
+      requestSuccess: 'Your request has been created. Redirecting...',
+      signInText: 'sign in here.',
+      submitting: 'Submitting your request...',
+      title: 'Quote request'
+    },
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
@@ -671,8 +698,7 @@ export const en: Messages = {
       },
       errors: {
         chatWithUs: 'Chat with us',
-        mailTo:
-          'mailto:webteam@spray.com?subject=I Could not find any results for ...',
+        mailTo: 'mailto:webteam@spray.com?subject=Checkout / RFQ failed',
         send: 'Send us your feedback',
         subText:
           'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',

@@ -5,9 +5,11 @@ import { OdataCollection } from './o-data';
 export async function createQuoteRequest(
   request: QuoteRequest
 ): Promise<QuoteRequest> {
-  const requestResource = new BaseResource<QuoteRequest>('/SubmitQuoteRequest');
-  await requestResource.postEntity(JSON.stringify(request));
-  return request;
+  const requestResource = new BaseResource<QuoteRequest>('/Me/quoteRequests');
+  const quoteRequest = await requestResource.postEntity(
+    JSON.stringify(request)
+  );
+  return { ...request, id: quoteRequest.id };
 }
 
 export async function fetchMyQuoteRequest(

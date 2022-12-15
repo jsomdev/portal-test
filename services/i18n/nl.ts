@@ -132,6 +132,33 @@ export const nl: Messages = {
     }
   },
   pages: {
+    requestForQuote: {
+      actions: {
+        submit: 'Bevestigen en versturen'
+      },
+      details: {
+        billingAddressTitle: 'Facturatie Adres',
+        billingContactTitle: 'Facturatie Contactgegevens',
+        generalTitle: 'Algemeen'
+      },
+      summary: {
+        details: 'Details',
+        numberOfItems: 'Aantal items',
+        numberOfProducts: 'Aantal producten'
+      },
+      creatingRequest: 'Offerteaanvraag aan het verwerken...',
+      noItems:
+        'Er zijn geen artikelen gevonden in uw winkelwagen met beschikbare prijzen.',
+      needSignIn:
+        'U moet ingelogd zijn om uw winkelwagen af te rekenen. Gelieve {signInText}',
+      redirectingLogin: 'pages.requestForQuote.redirectingLogin',
+      requestFailed:
+        'Something unexpected happened while processing your request! Please contact customer support.',
+      requestSuccess: 'Your request has been created. Redirecting...',
+      signInText: 'sign in here.',
+      submitting: 'Submitting your request...',
+      title: 'Quote request'
+    },
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },

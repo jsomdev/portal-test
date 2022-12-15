@@ -7,17 +7,18 @@ import {
 } from '@fluentui/react';
 import { CartItem } from '@providers/cart/cartContext';
 
-export interface CheckoutSummaryStyles {
+export interface RequestForQuoteSummaryStyles {
   submitButton: IButtonStyles;
 }
 
-export interface CheckoutSummaryDetailStyles {
+export interface RequestForQuoteSummaryDetailStyles {
+  headerText: IStackItemStyles;
   totalText: ITextStyles;
   total: IStackStyles;
   totalShimmer: IShimmerStyles;
 }
 
-export interface CheckoutSummaryProductStyles {
+export interface RequestForQuoteSummaryProductStyles {
   root: IStackStyles;
   title: ITextStyles;
   imageContainer: IStackItemStyles;
@@ -25,11 +26,11 @@ export interface CheckoutSummaryProductStyles {
   pricingContainer: IStackStyles;
 }
 
-export interface CheckoutSummaryProductProps {
+export interface RequestForQuoteSummaryProductProps {
   item: CartItem;
 }
 
-export interface CheckoutSummaryProductListStyles {
+export interface RequestForQuoteSummaryProductListStyles {
   listItem: IStackItemStyles;
   shimmer: IShimmerStyles;
   list: IStackStyles;

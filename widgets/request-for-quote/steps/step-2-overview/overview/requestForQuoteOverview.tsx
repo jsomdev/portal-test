@@ -3,19 +3,16 @@ import React, { useMemo } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { useCart } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
-import { mapFormFieldsToOrderPost } from '@widgets/checkout/checkoutForm.helper';
-import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
+import { QuoteRequest } from '@services/portal-api/models/QuoteRequest';
 import { CheckoutFormGroupTitle } from '@widgets/checkout/shared/checkoutFormGroupTitle';
 import { BillingAddressSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/billingAddressSummary';
 import { BillingContactSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/billingContactSummary';
-import { PaymentSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/paymentSummary';
-import { ShippingAddressSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingAddressSummary';
-import { ShippingContactSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingContactSummary';
-import { ShippingMethodSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingMethodSummary';
+import { EmailSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/emailSummary';
 import { useMobile } from '@widgets/media-queries';
-
-import { EmailSummary } from './components/emailSummary';
+import { useRequestForQuote } from '@widgets/request-for-quote/providers/requestForQuoteProvider';
+import { mapRequestForQuoteFormValuesToQuoteRequest } from '@widgets/request-for-quote/requestForQuoteHelper';
 
 const messages = defineMessages({
   reviewTitle: {
@@ -24,22 +21,22 @@ const messages = defineMessages({
   }
 });
 
-export const CheckoutOverview: React.FC = () => {
+export const RequestForQuoteOverview: React.FC = () => {
   const { formatMessage } = useIntl();
   const { spacing } = useTheme();
   const isMobile = useMobile();
+  const { formValues, steps } = useRequestForQuote();
+  const { quoteItems } = useCart();
 
-  const { steps, totalCost, orderTaxAmountStatus, formValues } = useCheckout();
-
-  const order = useMemo(
+  const quoteRequest: QuoteRequest | undefined = useMemo(
     () =>
       formValues
-        ? mapFormFieldsToOrderPost(formValues, totalCost, orderTaxAmountStatus)
+        ? mapRequestForQuoteFormValuesToQuoteRequest(formValues, quoteItems)
         : undefined,
-    [formValues, totalCost, orderTaxAmountStatus]
+    [formValues, quoteItems]
   );
 
-  if (!order) {
+  if (!quoteRequest) {
     return null;
   }
 
@@ -63,8 +60,8 @@ export const CheckoutOverview: React.FC = () => {
         <Stack tokens={{ childrenGap: spacing.l1 }}>
           <Stack.Item>
             <EmailSummary
-              email={order.emailAddresses?.[0]}
               stepIndex={steps?.details.index}
+              email={quoteRequest.emailAddresses?.[0] || undefined}
             />
           </Stack.Item>
           <Stack.Item>
@@ -75,14 +72,9 @@ export const CheckoutOverview: React.FC = () => {
               tokens={{ childrenGap: spacing.l1 }}
             >
               <Stack.Item>
-                <ShippingContactSummary
-                  shippingContactInfo={order.shippingContactInfo}
-                />
-              </Stack.Item>
-              <Stack.Item>
                 <BillingContactSummary
-                  stepIndex={steps?.payment.index}
-                  billingContactInfo={order.billingContactInfo}
+                  stepIndex={steps?.details.index}
+                  billingContactInfo={quoteRequest.contactInfo}
                 />
               </Stack.Item>
             </Stack>
@@ -95,27 +87,7 @@ export const CheckoutOverview: React.FC = () => {
               tokens={{ childrenGap: spacing.l1 }}
             >
               <Stack.Item>
-                <ShippingAddressSummary
-                  shippingAddress={order.shippingAddress}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <BillingAddressSummary billingAddress={order.billingAddress} />
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <Stack
-              styles={styles}
-              horizontal={!isMobile}
-              horizontalAlign="space-between"
-              tokens={{ childrenGap: spacing.l1 }}
-            >
-              <Stack.Item>
-                <ShippingMethodSummary />
-              </Stack.Item>
-              <Stack.Item>
-                <PaymentSummary />
+                <BillingAddressSummary billingAddress={quoteRequest.address} />
               </Stack.Item>
             </Stack>
           </Stack.Item>
