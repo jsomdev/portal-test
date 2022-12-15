@@ -308,6 +308,12 @@ type IAccountMessages = {
           description: string;
           viewInfoLink: string;
           changePasswordLink: string;
+          panel: {
+            title: string;
+            ariaClose: string;
+            cancel: string;
+            save: string;
+          };
         };
         addressBook: {
           title: string;

@@ -4,12 +4,10 @@ import { Form, Formik } from 'formik';
 import { Guid } from 'guid-typescript';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
   DefaultButton,
   IButtonStyles,
   IPanelStyles,
-  IStackStyles,
   Panel,
   PanelType,
   PrimaryButton,
@@ -34,8 +32,6 @@ interface AddressBookFormProps {
 
 interface AddressBookFormStyles {
   panel: Partial<IPanelStyles>;
-  panelHeader: IStackStyles;
-  closeButton: Partial<IButtonStyles>;
   actionButton: Partial<IButtonStyles>;
 }
 
@@ -172,20 +168,6 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
     actionButton: {
       root: {
         width: '100%'
-      }
-    },
-
-    panelHeader: {
-      root: {
-        background: palette.white,
-        borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(90),
-        padding: `0 ${spacing.s1}`
-      }
-    },
-    closeButton: {
-      icon: {
-        color: palette.neutralPrimary
       }
     }
   };

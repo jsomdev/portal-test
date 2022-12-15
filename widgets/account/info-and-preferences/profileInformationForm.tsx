@@ -7,7 +7,6 @@ import {
   DefaultButton,
   IButtonStyles,
   IPanelStyles,
-  IStackStyles,
   Panel,
   PanelType,
   PrimaryButton,
@@ -28,21 +27,27 @@ import { ProfileInformationFormGroup } from './profileInformationFormGroup';
 const messages = defineMessages({
   ariaClose: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
-      .addressBook.panel.ariaClose,
+      .profileInformation.panel.ariaClose,
     description: 'Arialabel to close the panel',
     defaultMessage: 'Close'
   },
   cancel: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
-      .addressBook.panel.cancel,
+      .profileInformation.panel.cancel,
     defaultMessage: 'Cancel',
     description: 'Address book panel close'
   },
   save: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
-      .addressBook.panel.save,
+      .profileInformation.panel.save,
     defaultMessage: 'Submit',
     description: 'Address book panel save'
+  },
+  title: {
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.panel.title,
+    defaultMessage: 'Edit information',
+    description: 'Edit information'
   }
 });
 
@@ -53,8 +58,6 @@ interface ProfileInformationFormProps {
 
 interface ProfileInformationFormStyles {
   panel: Partial<IPanelStyles>;
-  panelHeader: IStackStyles;
-  closeButton: Partial<IButtonStyles>;
   actionButton: Partial<IButtonStyles>;
 }
 
@@ -93,63 +96,57 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
 
   const styles: ProfileInformationFormStyles = {
     panel: {
-      commands: {
+      content: {
         background: palette.white,
-        zIndex: 1
+        padding: 0
+      },
+      contentInner: {
+        background: palette.white
       },
       scrollableContent: {
-        marginRight: spacing.s1
+        background: palette.white
       },
-      content: {
-        padding: `0 ${spacing.l1}`
-      },
-      main: {
-        background: palette.white,
-        paddingBottom: spacing.l1,
-        maxWidth: rem('425px'),
-        cursor: 'default'
-      },
-      root: {
-        cursor: 'default'
+      commands: {
+        padding: 0,
+        position: 'sticky'
       },
       navigation: {
-        display: 'none'
+        height: 80,
+        background: palette.white,
+        padding: spacing.m,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
       }
     },
     actionButton: {
       root: {
         width: '100%'
       }
-    },
-
-    panelHeader: {
-      root: {
-        background: palette.white,
-        borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        height: rem(90),
-        padding: `0 ${spacing.s1}`
-      }
-    },
-    closeButton: {
-      icon: {
-        color: palette.neutralPrimary
-      }
     }
   };
   return (
     <Panel
       isLightDismiss
+      headerText={formatMessage(messages.title)}
       isOpen={!!editInformation}
       onDismiss={() => {
         setEditInformation(false);
       }}
       styles={styles.panel}
-      allowTouchBodyScroll={true}
       type={PanelType.custom}
       customWidth={rem(600)}
       isBlocking
-      hasCloseButton={false}
-      isFooterAtBottom={true}
+      hasCloseButton={true}
     >
       <Formik<ProfileInformationFormData>
         initialValues={defaultAndPrefilledValues}
@@ -159,21 +156,17 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
           saveContactDetails(values);
+          setEditInformation(false);
         }}
       >
         <Form noValidate>
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            tokens={{ childrenGap: spacing.m, padding: `${spacing.l1} 0` }}
-            wrap={true}
-          >
+          <Stack tokens={{ padding: spacing.l1 }}>
             <ProfileInformationFormGroup />
           </Stack>
           <Stack
             horizontal
             horizontalAlign="space-between"
-            tokens={{ childrenGap: spacing.m }}
+            tokens={{ childrenGap: spacing.m, padding: spacing.l1 }}
           >
             <PrimaryButton
               type="submit"

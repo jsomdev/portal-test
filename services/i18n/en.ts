@@ -397,7 +397,13 @@ export const en: Messages = {
               description:
                 'Change your login details or personal information, such as your phone number.',
               changePasswordLink: 'Change password',
-              viewInfoLink: 'View personal information'
+              viewInfoLink: 'View personal information',
+              panel: {
+                title: 'Edit information',
+                ariaClose: 'close',
+                cancel: 'Cancel',
+                save: 'Save'
+              }
             },
             addressBook: {
               title: 'Address Book',

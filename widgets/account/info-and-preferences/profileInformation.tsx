@@ -68,6 +68,9 @@ export const ProfileInformation: React.FC = () => {
 
   const name = useMemo(() => {
     const userFormatter = new UserFormatter(me, account);
+    if (me && me.contactInfo?.firstName && me.contactInfo?.lastName) {
+      return `${me.contactInfo?.firstName} ${me.contactInfo?.lastName}`;
+    }
     const name = userFormatter.formatDisplayName(
       `${claims.firstName} ${claims.lastName}`
     );
@@ -133,7 +136,6 @@ export const ProfileInformation: React.FC = () => {
       <Stack grow tokens={{ childrenGap: spacing.l2 }}>
         <Stack
           horizontal
-          wrap
           tokens={{ childrenGap: spacing.m }}
           verticalAlign="center"
           horizontalAlign="space-between"
