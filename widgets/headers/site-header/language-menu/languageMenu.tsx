@@ -6,7 +6,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Pivot, PivotItem, Stack, Text, useTheme } from '@fluentui/react';
 import { getAudience, messageIds } from '@services/i18n';
 import { getSupportedRegionsWithPaths } from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
-import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet } from '@widgets/media-queries';
 import { usePageContext } from '@widgets/page/pageContext';
 
 import { LanguageMenuStyles, RegionWithPaths } from './languageMenu.types';

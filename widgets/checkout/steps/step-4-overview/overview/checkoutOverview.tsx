@@ -13,7 +13,7 @@ import { PaymentSummary } from '@widgets/checkout/steps/step-4-overview/overview
 import { ShippingAddressSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingAddressSummary';
 import { ShippingContactSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingContactSummary';
 import { ShippingMethodSummary } from '@widgets/checkout/steps/step-4-overview/overview/components/shippingMethodSummary';
-import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet } from '@widgets/media-queries';
 
 import { EmailSummary } from './components/emailSummary';
 
