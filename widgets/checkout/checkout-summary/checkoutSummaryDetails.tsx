@@ -10,11 +10,6 @@ import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText'
 import { CheckoutSummaryDetailStyles } from './checkoutSummary.types';
 
 const messages = defineMessages({
-  details: {
-    id: messageIds.pages.checkout.summary.details,
-    defaultMessage: 'Details',
-    description: 'Details section title on checkout summary'
-  },
   subTotal: {
     id: messageIds.pages.checkout.summary.subTotal,
     defaultMessage: 'Subtotal',
@@ -50,11 +45,6 @@ export const CheckoutSummaryDetails: React.FC = () => {
   const { formatNumber, formatMessage } = useIntl();
 
   const styles: CheckoutSummaryDetailStyles = {
-    headerText: {
-      root: {
-        borderBottom: `1px solid ${semanticColors.variantBorder}`
-      }
-    },
     total: {
       root: {
         borderTop: `1px solid ${semanticColors.variantBorder}`,

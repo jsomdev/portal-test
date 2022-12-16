@@ -3,11 +3,9 @@ import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import { StickyThumbContainer } from '@components/sticky/stickyThumbContainer';
 import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
-  IButtonStyles,
   IPanelStyles,
   IStackItemStyles,
   IStackStyles,
@@ -22,7 +20,6 @@ import { FINDER_PAGE_SIZE } from '@providers/finder/finderProvider';
 import { messageIds } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { Category } from '@services/portal-api';
-import { rem } from '@utilities/rem';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import {

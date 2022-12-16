@@ -17,7 +17,7 @@ const messages = defineMessages({
 });
 
 export const BillingAddressSummary: React.FC<{
-  billingAddress: PostalAddress;
+  billingAddress: PostalAddress | null | undefined;
 }> = ({ billingAddress }) => {
   const { formatMessage } = useIntl();
   const { steps } = useCheckout();

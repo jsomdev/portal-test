@@ -153,7 +153,7 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
           <AccountCardProductLines
             compactView={compactView}
             lines={order.lines}
-            href={pagePaths.orders(order.id)}
+            href={pagePaths.orders(order.id).toString()}
           />
         )}
 

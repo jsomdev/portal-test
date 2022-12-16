@@ -16,7 +16,7 @@ interface OrderSummaryAddressStyles {
 
 export const OrderSummaryAddress: React.FC<{
   title?: string;
-  address: Partial<PostalAddress> | null;
+  address: Partial<PostalAddress> | undefined | null;
 }> = ({ address, title }) => {
   const { spacing } = useTheme();
 
@@ -28,7 +28,7 @@ export const OrderSummaryAddress: React.FC<{
     }
   };
 
-  if (address === null) {
+  if (!address) {
     return null;
   }
   return (

@@ -8,7 +8,7 @@ import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, Text, useTheme } from '@fluentui/react';
 import { allCountryOptions } from '@utilities/places';
-import { Fields } from '@widgets/checkout/shared/types';
+import { StepFields } from '@widgets/checkout/shared/types';
 
 import { AddressBookFormData, getFields } from './addressBookForm.helper';
 import { useAddressFormGroup } from './useAddressFormGroup';
@@ -21,7 +21,7 @@ export const AddressBookFormGroup: React.FC<{
   const intl = useIntl();
   const { values }: FormikContextType<AddressBookFormData> = useFormikContext();
 
-  const fields: Fields<AddressBookFormData> = useMemo(
+  const fields: StepFields<AddressBookFormData> = useMemo(
     () => getFields(intl),
     [intl]
   );

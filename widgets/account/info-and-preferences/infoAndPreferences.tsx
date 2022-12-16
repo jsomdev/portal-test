@@ -144,7 +144,7 @@ function getInfoAndPreferencesAccountSection(
       title: formatMessage(messages.addressBookTitle),
       links: [
         {
-          href: pagePaths.addressBook(),
+          href: pagePaths.addressBook().toString(),
           text: formatMessage(messages.addressBook)
         }
       ]

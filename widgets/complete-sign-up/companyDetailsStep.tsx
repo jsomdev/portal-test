@@ -2,7 +2,6 @@ import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   IComboBoxStyles,
-  IDropdownOption,
   ITextFieldStyles,
   ITextStyles,
   Stack,

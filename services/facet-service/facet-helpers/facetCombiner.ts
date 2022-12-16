@@ -71,6 +71,7 @@ export function mapFacetsToExernalFilters(
     .forEach(facet => {
       const type: 'string' | 'number' =
         facet.key === FacetKey.InletConnectionSize ||
+        facet.key === FacetKey.NozzleCount ||
         facet.key === FacetKey.StrainerScreenMeshSize
           ? 'number'
           : 'string';

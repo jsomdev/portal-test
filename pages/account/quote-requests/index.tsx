@@ -48,10 +48,9 @@ const QuoteRequests: NextPage<
     ? formatMessage(messages.quoteRequestTitle)
     : formatMessage(messages.quoteRequestsTitle);
 
-  const localePaths =
-    router.isReady && query.id
-      ? getLocalePaths(pagePaths.quoteRequests(query.id))
-      : getLocalePaths(pagePaths.quoteRequests());
+  const localePaths = getLocalePaths(
+    pagePaths.quoteRequests(query.id).toString()
+  );
 
   return (
     <AccountPage

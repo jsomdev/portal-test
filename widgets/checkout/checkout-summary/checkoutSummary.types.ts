@@ -12,7 +12,6 @@ export interface CheckoutSummaryStyles {
 }
 
 export interface CheckoutSummaryDetailStyles {
-  headerText: IStackItemStyles;
   totalText: ITextStyles;
   total: IStackStyles;
   totalShimmer: IShimmerStyles;

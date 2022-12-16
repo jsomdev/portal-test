@@ -13,7 +13,7 @@ import { OdataCollection } from './o-data';
 export const fetchMe = async (): Promise<User | undefined> => {
   const baseResource: BaseResource<User> = new BaseResource<User>('/Me');
   const me: User = await baseResource.fetch<User>(
-    '/Me',
+    '/me',
     {
       selectQuery: 'id,accountId,contactInfo,roles,name',
       expandQuery: `account($select=number,name,paymentMethod),cart,customerVerificationRequests($select=status;$filter=status eq '${CustomerVerificationRequestStatus.PENDING}')`
@@ -38,7 +38,7 @@ export const updateCart = async (
   const baseResource: BaseResource<User> = new BaseResource<User>('/Me');
   const cartItems: OdataCollection<CartItem> | undefined =
     await baseResource.fetch<OdataCollection<CartItem>>(
-      '/Me/Cart/Update',
+      '/me/cart/update',
       {},
       {
         method: 'POST',

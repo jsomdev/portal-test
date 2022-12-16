@@ -15,8 +15,7 @@ import { AddToCartButton } from '@widgets/add-to-cart-button/addToCartButton';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import {
   mediaQueryFrom,
-  useBetweenMobileAndTablet,
-  useMobile
+  useBetweenMobileAndTablet
 } from '@widgets/media-queries';
 
 interface ProductStickyThumbStyles {

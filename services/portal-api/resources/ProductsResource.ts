@@ -10,7 +10,7 @@ import { QueryOptions } from '../o-data/queryOptions';
 
 export class ProductsResource extends BaseResource<Product> {
   constructor() {
-    super('/Products');
+    super('/products');
   }
 
   async autoComplete(
@@ -64,7 +64,7 @@ export class ProductsResource extends BaseResource<Product> {
     >;
   }
   private getFacetedSearchResourcePath(urlEncodedQuery?: string) {
-    return `${this.getResourcePath()}/FacetedSearch${
+    return `${this.getResourcePath()}/facetedSearch${
       urlEncodedQuery
         ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
             urlEncodedQuery
@@ -77,7 +77,7 @@ export class ProductsResource extends BaseResource<Product> {
   }
 
   private getFindResourcePath(urlEncodedQuery?: string): string {
-    return `${this.getResourcePath()}/Find${
+    return `${this.getResourcePath()}/find${
       urlEncodedQuery
         ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
             urlEncodedQuery

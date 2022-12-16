@@ -3,6 +3,6 @@ import { Order } from '../models/Order';
 
 export class OrdersResource extends BaseResource<Order> {
   constructor() {
-    super('/Orders');
+    super('/orders');
   }
 }

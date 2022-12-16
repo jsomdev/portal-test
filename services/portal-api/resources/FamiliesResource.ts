@@ -3,6 +3,6 @@ import { Family } from '../models/Family';
 
 export class FamiliesResource extends BaseResource<Family> {
   constructor() {
-    super('/Families');
+    super('/families');
   }
 }

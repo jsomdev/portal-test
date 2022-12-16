@@ -4,7 +4,6 @@ import { Form, Formik } from 'formik';
 import { Guid } from 'guid-typescript';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
   DefaultButton,
   IButtonStyles,

@@ -155,7 +155,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
           <AccountCardProductLines
             compactView={compactView}
             lines={quote.lines}
-            href={pagePaths.quotes(quote.id)}
+            href={pagePaths.quotes(quote.id).toString()}
           />
         )}
         <Stack

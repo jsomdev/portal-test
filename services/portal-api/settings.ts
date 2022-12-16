@@ -24,7 +24,7 @@ export const fetchProductBookmarksSetting = async (
     return undefined;
   }
   const baseResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/Me/settings'
+    '/me/settings'
   );
   const queryOptions: Partial<QueryOptions> = {
     filterQuery: `key eq '${SETTINGKEYS.productBookmarks}'`

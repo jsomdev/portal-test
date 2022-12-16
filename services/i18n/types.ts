@@ -495,6 +495,31 @@ type ICartMessages = {
   continueShopping: string;
 };
 
+type IRequestForQuoteMessages = {
+  summary: {
+    details: string;
+    numberOfProducts: string;
+    numberOfItems: string;
+  };
+  actions: {
+    submit: string;
+  };
+  details: {
+    generalTitle: string;
+    billingContactTitle: string;
+    billingAddressTitle: string;
+  };
+  submitting: string;
+  requestFailed: string;
+  requestSuccess: string;
+  creatingRequest: string;
+  needSignIn: string;
+  signInText: string;
+  redirectingLogin: string;
+  noItems: string;
+  title: string;
+};
+
 type ICheckoutMessages = {
   title: string;
   orderSuccess: string;
@@ -785,6 +810,7 @@ export type Messages = {
     account: IAccountMessages;
     cart: ICartMessages;
     checkout: ICheckoutMessages;
+    requestForQuote: IRequestForQuoteMessages;
   };
   summary: {
     details: string;
