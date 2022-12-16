@@ -64,3 +64,11 @@ export type StepFields<T> = {
     readonly placeholder?: string;
   };
 };
+
+export type GenericStepFields<T> = {
+  [Property in keyof T]: {
+    readonly name: string;
+    readonly label: string;
+    readonly placeholder?: string;
+  };
+};

@@ -270,7 +270,7 @@ const SearchBar: React.FC = () => {
 
     // Navigate to the search page
     push({
-      pathname: pagePaths.search(),
+      pathname: pagePaths.search().toString(),
       query: { query: newValue }
     });
   }
@@ -433,7 +433,7 @@ const SearchBar: React.FC = () => {
                       onClick={() => onSearch(item.query)}
                     >
                       <a
-                        href={pagePaths.search(item.query)}
+                        href={pagePaths.search(item.query).toString()}
                         dangerouslySetInnerHTML={{ __html: item.htmlText }}
                       />
                     </Text>
@@ -458,7 +458,7 @@ const SearchBar: React.FC = () => {
                       styles={styles.linkText}
                       onClick={() => onSearch(recentSearch)}
                     >
-                      <a href={pagePaths.search(recentSearch)}>
+                      <a href={pagePaths.search(recentSearch).toString()}>
                         {recentSearch}
                       </a>
                     </Text>

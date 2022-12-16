@@ -50,8 +50,8 @@ const Quotes: NextPage<
 
   const localePaths =
     router.isReady && query.id
-      ? getLocalePaths(pagePaths.quotes(query.id))
-      : getLocalePaths(pagePaths.quotes());
+      ? getLocalePaths(pagePaths.quotes(query.id).toString())
+      : getLocalePaths(pagePaths.quotes().toString());
 
   return (
     <AccountPage

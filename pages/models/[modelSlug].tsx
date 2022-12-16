@@ -159,7 +159,7 @@ const Models: NextPage<
                     <NextLink
                       passHref
                       href={{
-                        pathname: pagePaths.search(),
+                        pathname: pagePaths.search().toString(),
                         query: {
                           [modelIdFacet.key]: modelOption?.key
                         }

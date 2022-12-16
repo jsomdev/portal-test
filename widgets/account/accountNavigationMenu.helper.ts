@@ -136,17 +136,17 @@ export function getAccountNavigationMenuItems(
         id: 'account'
       },
       {
-        href: pagePaths.orders(),
+        href: pagePaths.orders().toString(),
         text: formatMessage(messages.orders),
         id: 'account-orders'
       },
       {
-        href: pagePaths.quotes(),
+        href: pagePaths.quotes().toString(),
         text: formatMessage(messages.quotes),
         id: 'account-quotes'
       },
       {
-        href: pagePaths.quoteRequests(),
+        href: pagePaths.quoteRequests().toString(),
         text: formatMessage(messages.quoteRequests),
         id: 'account-quote-requests'
       },
@@ -199,15 +199,15 @@ export function getAccountSideNavigationLinkGroupItems(
           },
           {
             name: formatMessage(messages.orders),
-            url: pagePaths.orders()
+            url: pagePaths.orders().toString()
           },
           {
             name: formatMessage(messages.quotes),
-            url: pagePaths.quotes()
+            url: pagePaths.quotes().toString()
           },
           {
             name: formatMessage(messages.quoteRequests),
-            url: pagePaths.quoteRequests()
+            url: pagePaths.quoteRequests().toString()
           },
           {
             name: formatMessage(messages.infoAndPreferences),
