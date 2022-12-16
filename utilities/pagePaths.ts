@@ -2,8 +2,18 @@ import { Url } from 'url';
 
 const pagePaths = {
   home: '/',
-  search: (query?: string): string =>
-    query ? `/search?query=${query}` : '/search',
+  search: (query?: string): Partial<Url> | string => {
+    const pathname: string = '/search';
+    if (query) {
+      return {
+        pathname,
+        query: {
+          query
+        }
+      };
+    }
+    return pathname;
+  },
   compare: '/compare',
   categories: '/categories',
   models: (slug: string): string => `/models/${slug}`,
@@ -17,9 +27,10 @@ const pagePaths = {
     id?: string | undefined,
     showConfirmation = false
   ): Partial<Url> | string => {
+    const pathname: string = '/account/orders';
     if (showConfirmation && id) {
       return {
-        pathname: '/account/orders',
+        pathname,
         query: {
           id: id,
           confirmation: 'true'
@@ -28,22 +39,23 @@ const pagePaths = {
     }
     if (id) {
       return {
-        pathname: '/account/orders',
+        pathname,
         query: {
           id: id
         }
       };
     }
-    return '/account/orders';
+    return pathname;
   },
   accountOverview: '/account',
   quoteRequests: (
     id?: string | undefined,
     showConfirmation: boolean = false
   ): Partial<Url> | string => {
+    const pathname: string = '/account/quote-requests';
     if (showConfirmation && id) {
       return {
-        pathname: '/account/quote-requests',
+        pathname,
         query: {
           id: id,
           confirmation: 'true'
@@ -52,35 +64,37 @@ const pagePaths = {
     }
     if (id) {
       return {
-        pathname: '/account/quote-requests',
+        pathname,
         query: {
           id: id
         }
       };
     }
-    return '/account/quote-requests';
+    return pathname;
   },
   quotes: (id?: string | undefined): Partial<Url> | string => {
+    const pathname: string = '/account/quotes';
     if (id) {
       return {
-        pathname: '/account/quotes',
+        pathname,
         query: {
           id: id
         }
       };
     }
-    return '/account/quotes';
+    return pathname;
   },
   addressBook: (id?: string | undefined): Partial<Url> | string => {
+    const pathname: string = '/account/info-and-preferences/address-book';
     if (id) {
       return {
-        pathname: '/account/info-and-preferences/address-book',
+        pathname,
         query: {
           id: id
         }
       };
     }
-    return ' /account/info-and-preferences/address-book';
+    return pathname;
   },
   profileInfo: '/account/info-and-preferences/profile-information',
   preferences: '/account/info-and-preferences/preferences'
