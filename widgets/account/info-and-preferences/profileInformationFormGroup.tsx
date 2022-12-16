@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { Stack, useTheme } from '@fluentui/react';
-import { Fields } from '@widgets/checkout/shared/types';
+import { StepFields } from '@widgets/checkout/shared/types';
 
 import {
   ProfileInformationFormData,
@@ -15,7 +15,7 @@ export const ProfileInformationFormGroup: React.FC = () => {
   const { spacing } = useTheme();
   const intl = useIntl();
 
-  const fields: Fields<ProfileInformationFormData> = useMemo(
+  const fields: StepFields<ProfileInformationFormData> = useMemo(
     () => getFields(intl),
     [intl]
   );

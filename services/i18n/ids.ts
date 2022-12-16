@@ -139,6 +139,32 @@ export const messageIds: Messages = {
       headDescription: 'pages.search.headTitle',
       headTitle: 'pages.search.headDescription'
     },
+    requestForQuote: {
+      actions: {
+        submit: 'pages.requestForQuote.actions.submit'
+      },
+      details: {
+        billingAddressTitle:
+          'pages.requestForQuote.actions.billingAddressTitle',
+        billingContactTitle:
+          'pages.requestForQuote.actions.billingContactTitle',
+        generalTitle: 'pages.requestForQuote.actions.generalTitle'
+      },
+      summary: {
+        details: 'pages.requestForQuote.actions.details',
+        numberOfItems: 'pages.requestForQuote.actions.numberOfItems',
+        numberOfProducts: 'pages.requestForQuote.actions.numberOfProducts'
+      },
+      creatingRequest: 'pages.requestForQuote.creatingRequest',
+      needSignIn: 'pages.requestForQuote.needSignIn',
+      noItems: 'pages.requestForQuote.noItems',
+      redirectingLogin: 'pages.requestForQuote.redirectingLogin',
+      requestFailed: 'pages.requestForQuote.requestFailed',
+      requestSuccess: 'pages.requestForQuote.requestSuccess',
+      signInText: 'pages.requestForQuote.signInText',
+      submitting: 'pages.requestForQuote.submitting',
+      title: 'pages.requestForQuote.title'
+    },
     product: {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {

@@ -1,5 +1,5 @@
 import { Icon, Stack, Text, useTheme } from '@fluentui/react';
-import { useBetweenMobileAndTablet, useMobile } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet } from '@widgets/media-queries';
 
 export interface TrustFactorItem {
   iconName: string;

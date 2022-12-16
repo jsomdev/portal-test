@@ -5,7 +5,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Stack } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { ContactInfo } from '@services/portal-api';
-import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout/shared/overviewGroupContainer';
 import { OrderSummaryContact } from '@widgets/checkout/shared/temp/orderSummaryContact';
 
@@ -17,16 +16,16 @@ const messages = defineMessages({
 });
 
 export const BillingContactSummary: React.FC<{
-  billingContactInfo: ContactInfo;
-}> = ({ billingContactInfo }) => {
+  billingContactInfo: ContactInfo | null | undefined;
+  stepIndex: number | undefined;
+}> = ({ billingContactInfo, stepIndex }) => {
   const { formatMessage } = useIntl();
-  const { steps } = useCheckout();
 
   return (
     <Stack>
       <OverviewGroupContainer
         text={formatMessage(messages.billingContact)}
-        stepIndex={steps?.payment.index}
+        stepIndex={stepIndex}
       >
         <OrderSummaryContact contactInfo={billingContactInfo} />
       </OverviewGroupContainer>

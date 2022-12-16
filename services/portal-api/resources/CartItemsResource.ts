@@ -3,6 +3,6 @@ import { CartItem } from '../models/CartItem';
 
 export class CartItemsResource extends BaseResource<CartItem> {
   constructor() {
-    super('/CartItems');
+    super('/cartItems');
   }
 }

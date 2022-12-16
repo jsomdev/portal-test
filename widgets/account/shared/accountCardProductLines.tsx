@@ -22,7 +22,6 @@ import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
 import {
   mediaQueryFrom,
   useBetweenMobileAndTablet,
-  useMobile,
   useTablet,
   useTabletAndDesktop
 } from '@widgets/media-queries';

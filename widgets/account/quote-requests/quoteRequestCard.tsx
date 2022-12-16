@@ -142,7 +142,7 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
           <AccountCardProductLines
             compactView={compactView}
             lines={quoteRequest.lines}
-            href={pagePaths.quoteRequests(quoteRequest.id)}
+            href={pagePaths.quoteRequests(quoteRequest.id).toString()}
           />
         )}
         <Stack

@@ -16,7 +16,7 @@ interface OrderSummaryContactStyles {
 
 export const OrderSummaryContact: React.FC<{
   title?: string;
-  contactInfo: Partial<ContactInfo> | null;
+  contactInfo: Partial<ContactInfo> | null | undefined;
 }> = ({ title, contactInfo }) => {
   const { spacing } = useTheme();
 
@@ -28,7 +28,7 @@ export const OrderSummaryContact: React.FC<{
     }
   };
 
-  if (contactInfo === null) {
+  if (!contactInfo) {
     return null;
   }
   return (

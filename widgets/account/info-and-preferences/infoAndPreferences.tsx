@@ -129,7 +129,7 @@ function getInfoAndPreferencesAccountSection(
       title: formatMessage(messages.profileInformationTitle),
       links: [
         {
-          href: pagePaths.profileInformation(),
+          href: pagePaths.profileInformation,
           text: formatMessage(messages.viewPersonalInfoLink)
         }
         // {
@@ -144,7 +144,7 @@ function getInfoAndPreferencesAccountSection(
       title: formatMessage(messages.addressBookTitle),
       links: [
         {
-          href: pagePaths.addressBook(),
+          href: pagePaths.addressBook().toString(),
           text: formatMessage(messages.addressBook)
         }
       ]

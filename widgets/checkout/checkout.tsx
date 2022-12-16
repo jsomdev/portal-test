@@ -50,7 +50,7 @@ const messages = defineMessages({
     id: messageIds.pages.checkout.loadingCartFailed,
     defaultMessage: 'Loading cart failed!'
   },
-  loadingProductInfo: {
+  loadingProductInformation: {
     id: messageIds.pages.checkout.loadingProductInfo,
     defaultMessage: 'Loading product information...'
   },
@@ -114,7 +114,7 @@ export const Checkout: React.FC = () => {
       return formatMessage(messages.loadingCart);
     }
     if (cartInfoStatus === 'loading') {
-      return formatMessage(messages.loadingProductInfo);
+      return formatMessage(messages.loadingProductInformation);
     }
 
     if (createOrderStatus === 'loading') {
@@ -128,7 +128,8 @@ export const Checkout: React.FC = () => {
     meStatus === 'loading' ||
     // Mapping of the me.cart to cartItems takes a few miliseconds. We assume that it will be initliaized ALWAYS after a successful me fetch
     (meStatus === 'success' && isCartInitialized === false) ||
-    cartInfoStatus === 'loading'
+    cartInfoStatus === 'loading' ||
+    inProgress === InteractionStatus.Login
   ) {
     return (
       <Stack

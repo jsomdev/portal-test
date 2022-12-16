@@ -5,9 +5,11 @@ import { OdataCollection } from './o-data';
 export async function createQuoteRequest(
   request: QuoteRequest
 ): Promise<QuoteRequest> {
-  const requestResource = new BaseResource<QuoteRequest>('/SubmitQuoteRequest');
-  await requestResource.postEntity(JSON.stringify(request));
-  return request;
+  const requestResource = new BaseResource<QuoteRequest>('/me/quoteRequests');
+  const quoteRequest = await requestResource.postEntity(
+    JSON.stringify(request)
+  );
+  return { ...request, id: quoteRequest.id };
 }
 
 export async function fetchMyQuoteRequest(
@@ -17,7 +19,7 @@ export async function fetchMyQuoteRequest(
   if (!isAuthenticated) {
     return undefined;
   }
-  const requestResource = new BaseResource<QuoteRequest>('/Me/quoteRequests');
+  const requestResource = new BaseResource<QuoteRequest>('/me/quoteRequests');
   const data: QuoteRequest = await requestResource.getEntity(
     quoteRequestId,
 
@@ -39,7 +41,7 @@ export async function fetchMyQuoteRequests(
   if (!isAuthenticated) {
     return undefined;
   }
-  const requestResource = new BaseResource<QuoteRequest>('/Me/quoteRequests');
+  const requestResource = new BaseResource<QuoteRequest>('/me/quoteRequests');
   const data: OdataCollection<QuoteRequest> = await requestResource.getEntities(
     {
       includeCount: true,

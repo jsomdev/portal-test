@@ -37,8 +37,6 @@ export const AddressBookProvider: React.FC = ({ children }) => {
     () => fetchAddressBookSetting(isAuthenticated),
     {
       enabled: isAuthenticated,
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
       onSuccess(data) {
         const value = data?.value as AddressBookSettingValue;
         if (value) {

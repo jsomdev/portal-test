@@ -65,7 +65,7 @@ export type StepFields<T> = {
   };
 };
 
-export type Fields<T> = {
+export type GenericStepFields<T> = {
   [Property in keyof T]: {
     readonly name: string;
     readonly label: string;

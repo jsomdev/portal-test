@@ -36,7 +36,7 @@ const ProfileInformationPage: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths(pagePaths.profileInformation())}
+      localePaths={getLocalePaths(pagePaths.profileInformation)}
     >
       <ProfileInformation />
     </AccountPage>

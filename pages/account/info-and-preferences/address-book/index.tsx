@@ -36,7 +36,7 @@ const AddressBookPage: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths(pagePaths.addressBook())}
+      localePaths={getLocalePaths(pagePaths.addressBook().toString())}
     >
       <AddressBook />
     </AccountPage>

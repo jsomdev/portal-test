@@ -4,7 +4,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack, Text } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout/shared/overviewGroupContainer';
 
 const messages = defineMessages({
@@ -14,17 +13,23 @@ const messages = defineMessages({
   }
 });
 
-export const EmailSummary: React.FC = () => {
+interface EmailSummaryProps {
+  stepIndex: number | undefined;
+  email: string | undefined;
+}
+export const EmailSummary: React.FC<EmailSummaryProps> = ({
+  stepIndex,
+  email
+}) => {
   const { formatMessage } = useIntl();
-  const { formValues, steps } = useCheckout();
   return (
     <Stack>
       <Stack.Item>
         <OverviewGroupContainer
           text={formatMessage(messages.email)}
-          stepIndex={steps?.details.index}
+          stepIndex={stepIndex}
         >
-          <Text>{formValues?.details.email}</Text>
+          <Text>{email}</Text>
         </OverviewGroupContainer>
       </Stack.Item>
     </Stack>
