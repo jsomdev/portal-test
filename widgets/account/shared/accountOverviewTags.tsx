@@ -14,27 +14,27 @@ const messages = defineMessages({
   accountManager: {
     id: messageIds.pages.account.overview.account.status.manager,
     description: 'manager tag',
-    defaultMessage: 'manager default'
+    defaultMessage: 'Manager'
   },
   accountEmployee: {
     id: messageIds.pages.account.overview.account.status.employee,
     description: 'employee tag',
-    defaultMessage: 'employee default'
+    defaultMessage: 'Employee'
   },
   accountAdmin: {
     id: messageIds.pages.account.overview.account.status.admin,
     description: 'admin tag',
-    defaultMessage: 'admin default'
+    defaultMessage: 'Admin'
   },
   accountVerified: {
     id: messageIds.pages.account.overview.account.status.verified,
     description: 'verified tag',
-    defaultMessage: 'verified default'
+    defaultMessage: 'Verified'
   },
   accountCustomer: {
     id: messageIds.pages.account.overview.account.status.customer,
     description: 'customer tag',
-    defaultMessage: 'customer default'
+    defaultMessage: 'Customer'
   }
 });
 

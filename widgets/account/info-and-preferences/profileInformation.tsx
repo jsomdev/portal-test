@@ -26,6 +26,11 @@ import { AccountOverviewTags } from '../shared/accountOverviewTags';
 import { ProfileInformationForm } from './profileInformationForm';
 
 const messages = defineMessages({
+  title: {
+    id: messageIds.pages.account.overview.profileInformation.title,
+    description: 'Title text for profile information',
+    defaultMessage: 'Profile Information'
+  },
   nameHeader: {
     id: messageIds.pages.account.overview.profileInformation.nameHeader,
     description: 'Header text for profile name',
@@ -64,7 +69,7 @@ export const ProfileInformation: React.FC = () => {
   const { me } = useMe();
   const claims = useClaims();
   const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
-  const [editInformation, setEditInformation] = useState(false);
+  const [showEditInformation, setShowEditInformation] = useState(false);
 
   const name = useMemo(() => {
     const userFormatter = new UserFormatter(me, account);
@@ -128,6 +133,11 @@ export const ProfileInformation: React.FC = () => {
       }
     }
   };
+
+  if (!me?.contactInfo) {
+    return null;
+  }
+
   return (
     <Stack styles={styles.cardContainer} horizontal>
       <Stack styles={styles.iconContainer} verticalAlign="center">
@@ -142,7 +152,7 @@ export const ProfileInformation: React.FC = () => {
         >
           <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
             <Text styles={styles.sectionTitle} as="h3">
-              {'Personal Information'}
+              {formatMessage(messages.title)}
             </Text>
             <AccountOverviewTags />
           </Stack>
@@ -151,7 +161,7 @@ export const ProfileInformation: React.FC = () => {
               styles={styles.editButton}
               iconProps={{ iconName: 'Edit' }}
               onClick={() => {
-                setEditInformation(true);
+                setShowEditInformation(true);
               }}
             />
           </Stack>
@@ -177,7 +187,7 @@ export const ProfileInformation: React.FC = () => {
             <Text styles={styles.headerText}>
               {formatMessage(messages.jobHeader)}
             </Text>
-            <Text variant="mediumPlus">{me?.contactInfo?.jobTitle}</Text>
+            <Text variant="mediumPlus">{me.contactInfo.jobTitle}</Text>
           </Stack>
           <Stack
             styles={styles.infoContainter}
@@ -187,7 +197,7 @@ export const ProfileInformation: React.FC = () => {
             <Text styles={styles.headerText}>
               {formatMessage(messages.phoneHeader)}
             </Text>
-            <Text variant="mediumPlus">{me?.contactInfo?.phoneNumber}</Text>
+            <Text variant="mediumPlus">{me.contactInfo.phoneNumber}</Text>
           </Stack>
           <Stack
             styles={styles.infoContainter}
@@ -197,7 +207,7 @@ export const ProfileInformation: React.FC = () => {
             <Text styles={styles.headerText}>
               {formatMessage(messages.emailHeader)}
             </Text>
-            {me?.contactInfo?.emailAddresses?.map(email => {
+            {me.contactInfo.emailAddresses?.map(email => {
               return (
                 <Text variant="mediumPlus" key={email}>
                   {email}
@@ -208,8 +218,8 @@ export const ProfileInformation: React.FC = () => {
         </Stack>
       </Stack>
       <ProfileInformationForm
-        editInformation={editInformation}
-        setEditInformation={setEditInformation}
+        showEditInformation={showEditInformation}
+        setShowEditInformation={setShowEditInformation}
       />
     </Stack>
   );

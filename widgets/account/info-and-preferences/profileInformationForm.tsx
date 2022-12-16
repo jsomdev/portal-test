@@ -52,8 +52,8 @@ const messages = defineMessages({
 });
 
 interface ProfileInformationFormProps {
-  editInformation: boolean;
-  setEditInformation: (value: boolean) => void;
+  showEditInformation: boolean;
+  setShowEditInformation: (value: boolean) => void;
 }
 
 interface ProfileInformationFormStyles {
@@ -62,8 +62,8 @@ interface ProfileInformationFormStyles {
 }
 
 export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
-  editInformation,
-  setEditInformation
+  showEditInformation,
+  setShowEditInformation
 }) => {
   const { palette, spacing, semanticColors } = useTheme();
   const { formatMessage } = useIntl();
@@ -138,9 +138,9 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
     <Panel
       isLightDismiss
       headerText={formatMessage(messages.title)}
-      isOpen={!!editInformation}
+      isOpen={!!showEditInformation}
       onDismiss={() => {
-        setEditInformation(false);
+        setShowEditInformation(false);
       }}
       styles={styles.panel}
       type={PanelType.custom}
@@ -156,7 +156,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
           saveContactDetails(values);
-          setEditInformation(false);
+          setShowEditInformation(false);
         }}
       >
         <Form noValidate>
@@ -175,7 +175,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
             />
             <DefaultButton
               onClick={() => {
-                setEditInformation(false);
+                setShowEditInformation(false);
               }}
               text={formatMessage(messages.cancel)}
               styles={styles.actionButton}

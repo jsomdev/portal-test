@@ -3,6 +3,7 @@ import { IntlShape } from 'react-intl/src/types';
 import * as yup from 'yup';
 
 import { messageIds } from '@services/i18n';
+import setYupLocalisation from '@utilities/yup/setYupLocalisation';
 import { StepFields } from '@widgets/checkout/shared/types';
 import {
   emailValidation,
@@ -10,6 +11,8 @@ import {
   lastNameValidation,
   phoneValidation
 } from '@widgets/checkout/shared/validation';
+
+setYupLocalisation();
 
 export const validation = yup.object({
   email: emailValidation(),
