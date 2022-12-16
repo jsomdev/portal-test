@@ -137,27 +137,36 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
 
   const styles: AddressBookFormStyles = {
     panel: {
-      commands: {
+      content: {
         background: palette.white,
-        zIndex: 1
+        padding: 0
+      },
+      contentInner: {
+        background: palette.white
       },
       scrollableContent: {
-        marginRight: spacing.s1
+        background: palette.white
       },
-      content: {
-        padding: `0 ${spacing.l1}`
-      },
-      main: {
-        background: palette.white,
-        paddingBottom: spacing.l1,
-        maxWidth: rem('425px'),
-        cursor: 'default'
-      },
-      root: {
-        cursor: 'default'
+      commands: {
+        padding: 0,
+        position: 'sticky'
       },
       navigation: {
-        display: 'none'
+        height: 80,
+        background: palette.white,
+        padding: spacing.m,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
       }
     },
     actionButton: {
@@ -185,35 +194,15 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
     <Panel
       isLightDismiss
       isOpen={!!editAddress}
+      headerText={formatMessage(messages.title)}
       onDismiss={() => {
         setEditAddress(undefined);
       }}
       styles={styles.panel}
-      allowTouchBodyScroll={true}
       type={PanelType.custom}
       customWidth={rem(600)}
       isBlocking
-      hasCloseButton={false}
-      isFooterAtBottom={true}
-      onRenderHeader={props => (
-        <Stack
-          horizontal
-          horizontalAlign="space-between"
-          verticalAlign="center"
-          // tokens={{ padding: `${rem(25)} ${spacing.s1}` }}
-          styles={styles.panelHeader}
-        >
-          <ClosePanelButton
-            iconProps={{
-              iconName: 'Cancel'
-            }}
-            onClick={() => props?.onDismiss?.()}
-            title={formatMessage(messages.ariaClose)}
-            text={formatMessage(messages.title)}
-            styles={styles.closeButton}
-          />
-        </Stack>
-      )}
+      hasCloseButton={true}
     >
       <Formik<AddressBookFormData>
         initialValues={defaultAndPrefilledValues}
@@ -230,32 +219,27 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
         }}
       >
         <Form noValidate>
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            tokens={{ childrenGap: spacing.m, padding: `${spacing.l1} 0` }}
-            wrap={true}
-          >
+          <Stack.Item tokens={{ padding: spacing.l1 }}>
             <AddressBookFormGroup
               isDefaultBilling={billingAddress?.id === editAddress}
               isDefaultShipping={shippingAddress?.id === editAddress}
             />
-          </Stack>
+          </Stack.Item>
           <Stack
             horizontal
             horizontalAlign="space-between"
-            tokens={{ childrenGap: spacing.m }}
+            tokens={{ childrenGap: spacing.m, padding: spacing.l1 }}
           >
-            <PrimaryButton
-              type="submit"
-              text={formatMessage(messages.save)}
-              styles={styles.actionButton}
-            />
             <DefaultButton
               onClick={() => {
                 setEditAddress(undefined);
               }}
               text={formatMessage(messages.cancel)}
+              styles={styles.actionButton}
+            />
+            <PrimaryButton
+              type="submit"
+              text={formatMessage(messages.save)}
               styles={styles.actionButton}
             />
           </Stack>

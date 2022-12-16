@@ -159,6 +159,9 @@ export const ResultView: React.FC<ResultViewProps> = ({
         background: palette.white,
         padding: 0
       },
+      contentInner: {
+        background: palette.white
+      },
       commands: {
         padding: 0,
         position: 'sticky'

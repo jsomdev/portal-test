@@ -147,10 +147,14 @@ const MobileSiteHeader: React.FC = () => {
         position: 'relative'
       }
     },
+
     panel: {
       content: {
         background: palette.white,
         padding: 0
+      },
+      contentInner: {
+        background: palette.white
       },
       commands: {
         padding: 0,

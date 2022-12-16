@@ -13,7 +13,11 @@ import { BaseCartItem } from '@providers/cart/cartModels';
 import { Product } from '@services/portal-api';
 import { AddToCartButton } from '@widgets/add-to-cart-button/addToCartButton';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
-import { mediaQueryFrom, useMobile } from '@widgets/media-queries';
+import {
+  mediaQueryFrom,
+  useBetweenMobileAndTablet,
+  useMobile
+} from '@widgets/media-queries';
 
 interface ProductStickyThumbStyles {
   addToCartButton: Partial<IButtonStyles>;
@@ -35,7 +39,7 @@ export const ProductStickyThumb: React.FC<ProductStickyThumbProps> = ({
   >(undefined);
   const { add } = useCart();
   const { fonts } = useTheme();
-  const isMobile = useMobile();
+  const isMobileTablet = useBetweenMobileAndTablet();
   const handleAddToCart = useCallback(
     (quantityToAdd: number) => {
       if (product?.number) {
@@ -62,7 +66,7 @@ export const ProductStickyThumb: React.FC<ProductStickyThumbProps> = ({
     );
   }, [lastAddedBaseCartItem, product]);
 
-  if (!product || !product.number || !isMobile) {
+  if (!product || !product.number || !isMobileTablet) {
     return null;
   }
 

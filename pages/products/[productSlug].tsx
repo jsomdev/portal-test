@@ -38,6 +38,7 @@ import { generateProductStructuredData } from '@utilities/structuredData';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { Mobile } from '@widgets/media-queries';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 import { ProductAccessories } from '@widgets/product-page/product-accessories/productAccessories';
@@ -109,7 +110,9 @@ const Products: NextPage<
         <AppLayout>
           <ProductPageProvider product={product}>
             <ProductStickyHeader product={product} />
-            <ProductStickyThumb product={product} />
+            <Mobile>
+              <ProductStickyThumb product={product} />
+            </Mobile>
             <ContentContainerStack
               outerStackProps={{
                 tokens: {
