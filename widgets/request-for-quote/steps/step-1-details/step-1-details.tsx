@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { Form, Formik, FormikProps } from 'formik';
 import { useIntl } from 'react-intl';
@@ -9,11 +9,7 @@ import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { getValidPostalAddressFromUserAddress } from '@providers/address-book/addressBookHelper';
 import { useMe } from '@providers/user/userContext';
 import { PostalAddress } from '@services/portal-api';
-import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { getTouchedFields } from '@widgets/checkout/shared/getTouchedFields';
-import { OrderContactFormGroup } from '@widgets/checkout/steps/step-1-details/orderContactFormGroup';
-import { ShippingAddressFormGroup } from '@widgets/checkout/steps/step-1-details/shippingAddressFormGroup';
-import { ShippingContactFormGroup } from '@widgets/checkout/steps/step-1-details/shippingContactFormGroup';
 
 import { BillingAddressFormGroup } from './billingAddressFormGroup';
 import { BillingContactFormGroup } from './billingContactFormGroup';

@@ -3,6 +3,6 @@ import { AttributeType } from '../models/AttributeType';
 
 export class AttributeTypesResource extends BaseResource<AttributeType> {
   constructor() {
-    super('/AttributeTypes');
+    super('/attributeTypes');
   }
 }

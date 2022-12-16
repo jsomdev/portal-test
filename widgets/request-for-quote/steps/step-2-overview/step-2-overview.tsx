@@ -5,7 +5,6 @@ import { useIntl } from 'react-intl';
 
 import { Stack, useTheme } from '@fluentui/react';
 import { getTouchedFields } from '@widgets/checkout/shared/getTouchedFields';
-import { CheckoutFormValues } from '@widgets/checkout/shared/types';
 import { AdditionalInformationFormGroup } from '@widgets/checkout/steps/step-4-overview/additionalInformationGroup';
 import { TermsAndConditionsGroup } from '@widgets/checkout/steps/step-4-overview/termsAndConditionsGroup';
 import { RequestForQuoteFormValues } from '@widgets/request-for-quote/shared/types';

@@ -216,23 +216,23 @@ export const fetchSearchedProductsSuggestions = async (
 export const fetchProductPriceBreaksByNumber = async (
   productNumber: string,
   isAuthenticated: boolean,
-  isVerified: boolean,
+  isCustomer: boolean,
   isEmployee: boolean
 ): Promise<PriceBreak[]> => {
-  if (!isAuthenticated || (!isVerified && !isEmployee)) {
+  if (!isAuthenticated || (!isCustomer && !isEmployee)) {
     return [];
   }
 
   const productsResource: ProductsResource = new ProductsResource();
 
-  let priceFunction: string = '/StandardPrice';
+  let priceFunction: string = '/standardPrice';
 
-  if (isVerified) {
-    priceFunction = '/CustomerPrice';
+  if (isCustomer) {
+    priceFunction = '/customerPrice';
   }
   const data: OdataCollection<PriceBreak & OdataEntity> | Response | undefined =
     await productsResource.fetch(
-      `/Products(number='${productNumber}')${priceFunction}`,
+      `/products(number='${productNumber}')${priceFunction}`,
       {},
       {},
       true

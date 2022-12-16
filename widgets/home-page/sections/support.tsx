@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo, useRef } from 'react';
+import { CSSProperties, useMemo } from 'react';
 
 import Image, { StaticImageData } from 'next/image';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';

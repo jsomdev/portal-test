@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 
 import { IStackItemStyles, Stack } from '@fluentui/react';
 import { Model } from '@services/portal-api';
-import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
 
 import { ModelsGallerySwiper } from './alternativeModelsGallery';
 import {

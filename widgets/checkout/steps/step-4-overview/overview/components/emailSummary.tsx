@@ -4,7 +4,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack, Text } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { useCheckout } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { OverviewGroupContainer } from '@widgets/checkout/shared/overviewGroupContainer';
 
 const messages = defineMessages({

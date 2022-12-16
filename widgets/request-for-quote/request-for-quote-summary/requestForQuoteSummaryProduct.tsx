@@ -2,14 +2,11 @@ import React from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useIntl } from 'react-intl';
 
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { CartItemFormatter } from '@services/i18n/formatters/cartItemFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
-import { PricePrimaryText } from '@widgets/pricing/price-label/pricePrimaryText';
-import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
 import {
   RequestForQuoteSummaryProductProps,

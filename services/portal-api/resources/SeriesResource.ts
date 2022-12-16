@@ -3,6 +3,6 @@ import { Series } from '../models/Series';
 
 export class SeriesResource extends BaseResource<Series> {
   constructor() {
-    super('/Series');
+    super('/series');
   }
 }

@@ -2,9 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
-import { ClosePanelButton } from '@components/buttons/closePanelButton';
 import {
-  IButtonStyles,
   IPanelStyles,
   IStackStyles,
   IconButton,

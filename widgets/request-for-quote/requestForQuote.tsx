@@ -16,7 +16,6 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
-import { QuoteRequest } from '@services/portal-api/models/QuoteRequest';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
@@ -26,9 +25,8 @@ import { useMe } from '../../providers/user/userContext';
 import { RequestForQuoteProvider } from './providers/requestForQuoteProvider';
 import { useCreateQuoteRequest } from './providers/useCreateQuoteRequest';
 import { RequestForQuoteBreadcrumb } from './requestForQuoteBreadcrumb';
+import { RequestForQuoteErrorMessage } from './requestForQuoteError';
 import { RequestForQuoteForm } from './requestForQuoteForm';
-import { RequestForQuoteErrorMessage } from './requoteForQuoteError';
-import { RequestForQuoteFormValues } from './shared/types';
 
 const messages = defineMessages({
   title: {

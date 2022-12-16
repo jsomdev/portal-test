@@ -3,6 +3,6 @@ import { List } from '../models/List';
 
 export class ListsResource extends BaseResource<List> {
   constructor() {
-    super('/Lists');
+    super('/lists');
   }
 }
