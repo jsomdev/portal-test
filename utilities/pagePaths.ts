@@ -21,8 +21,9 @@ const pagePaths = {
   category: (slug: string): string => `/categories/${slug}`,
   cart: '/cart',
   checkout: '/cart/checkout',
-  requestForQuote: '/cart/request-for-quote',
+  profileInformation: '/account/info-and-preferences/profile-information',
   infoAndPreferences: '/account/info-and-preferences',
+  requestForQuote: '/cart/request-for-quote',
   orders: (
     id?: string | undefined,
     showConfirmation = false
@@ -96,7 +97,6 @@ const pagePaths = {
     }
     return pathname;
   },
-  profileInfo: '/account/info-and-preferences/profile-information',
   preferences: '/account/info-and-preferences/preferences'
 };
 

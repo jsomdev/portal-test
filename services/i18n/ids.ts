@@ -420,7 +420,17 @@ export const messageIds: Messages = {
               changePasswordLink:
                 'pages.account.sections.infoAndPreferences.sections.profileInformation.changePasswordLink',
               viewInfoLink:
-                'pages.account.sections.infoAndPreferences.sections.profileInformation.viewInfoLink'
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.viewInfoLink',
+
+              panel: {
+                title:
+                  'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.title',
+                ariaClose:
+                  'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.ariaClose',
+                cancel:
+                  'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.cancel',
+                save: 'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.save'
+              }
             },
             addressBook: {
               title:
