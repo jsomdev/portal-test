@@ -1,3 +1,4 @@
+import { TextView } from '@fluentui/react';
 import { FacetedSearchProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';
@@ -31,15 +32,15 @@ export function mapAutoCompleteStringsToViewModel(
     return [];
   }
   return values.slice(0, count).map(value => {
-    const textBefore: string = value.substring(
-      0,
-      value.indexOf(match.toUpperCase())
-    );
-    const textAfter: string = value.substring(
-      value.indexOf(match.toUpperCase()) + match.length
-    );
+    const matchStartIndex = value.toUpperCase().indexOf(match.toUpperCase());
+    const matchEndIndex =
+      value.toUpperCase().indexOf(match.toUpperCase()) + match.length;
+    const textBefore: string = value.substring(0, matchStartIndex);
+    const textAfter: string = value.substring(matchEndIndex);
+    const textMatch: string = value.substring(matchStartIndex, matchEndIndex);
+
     return {
-      htmlText: `<strong>${textBefore}</strong>${match.toUpperCase()}<strong>${textAfter}</strong>`,
+      htmlText: `<strong>${textBefore}</strong>${textMatch}<strong>${textAfter}</strong>`,
       query: value
     };
   });
