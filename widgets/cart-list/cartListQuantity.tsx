@@ -52,37 +52,58 @@ export const CartListQuantity: React.FC<CartListQuantityProps> = ({ item }) => {
   }
 
   const styles: Partial<ISpinButtonStyles> = {
-    root: {
-      width: 70,
-      minWidth: 70
-    },
     input: {
-      minWidth: 47,
-      flexGrow: 0
-    },
-    spinButtonWrapper: {
-      width: 70,
-      minWidth: 70
+      width: '100px',
+      minWidth: '100px',
+      textAlign: 'center'
     }
   };
 
   return (
-    <Stack>
-      <Stack>
-        <SpinButton
-          value={`${quantity}`}
-          styles={styles}
-          onIncrement={() => {
-            handleIncrement();
-          }}
-          onDecrement={() => {
-            handleDecrement();
-          }}
-          onValidate={(value: string) => {
-            handleValidate(value);
-          }}
-        />
-      </Stack>
+    <Stack horizontal>
+      <SpinButton
+        value={`${quantity}`}
+        decrementButtonIcon={{
+          iconName: 'Remove'
+        }}
+        incrementButtonIcon={{
+          iconName: 'Add'
+        }}
+        downArrowButtonStyles={{
+          root: {
+            left: '0',
+            top: 0,
+            position: 'absolute',
+            height: '100%',
+            width: 30,
+            color: 'black',
+            textAlign: 'center',
+            borderRight: '1px solid #ccc'
+          }
+        }}
+        upArrowButtonStyles={{
+          root: {
+            right: '0',
+            top: 0,
+            position: 'absolute',
+            height: '100%',
+            width: 30,
+            color: 'black',
+            textAlign: 'center',
+            borderLeft: '1px solid #ccc'
+          }
+        }}
+        styles={styles}
+        onIncrement={() => {
+          handleIncrement();
+        }}
+        onDecrement={() => {
+          handleDecrement();
+        }}
+        onValidate={(value: string) => {
+          handleValidate(value);
+        }}
+      />
     </Stack>
   );
 };
