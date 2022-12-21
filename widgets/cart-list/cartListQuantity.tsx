@@ -10,13 +10,9 @@ import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 
 type CartListQuantityProps = {
   item: CartItemViewModel;
-  disabled?: boolean;
 };
 
-export const CartListQuantity: React.FC<CartListQuantityProps> = ({
-  item,
-  disabled = false
-}) => {
+export const CartListQuantity: React.FC<CartListQuantityProps> = ({ item }) => {
   const [quantity, setQuantity] = useState(item.quantity);
   const { add, remove, updateItem } = useCart();
   const { product } = item;
@@ -74,7 +70,6 @@ export const CartListQuantity: React.FC<CartListQuantityProps> = ({
     <Stack>
       <Stack>
         <SpinButton
-          disabled={disabled}
           value={`${quantity}`}
           styles={styles}
           onIncrement={() => {

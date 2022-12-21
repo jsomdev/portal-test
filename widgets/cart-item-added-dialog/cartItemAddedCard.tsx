@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { rem } from '@utilities/rem';
+import { CartItemCard } from '@widgets/cart-list/cartItemCard';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import ProductCard from '@widgets/product-card-parts/productCard';
@@ -28,55 +29,8 @@ const CartItemAddedCard: React.FC<CartItemAddedCardProps> = ({ item }) => {
   const showPricing =
     (hasPricing === 'Customer' || hasPricing === 'Standard') &&
     item.quantity > 1;
-  const { spacing } = useTheme();
-  const styles: CartItemAddedCardStyles = {
-    leftContainer: {
-      root: { flex: 1, minWidth: rem(220) }
-    },
-    mobilePrice: { root: { alignSelf: 'end' } }
-  };
-  return (
-    <ProductCard>
-      <Stack.Item>
-        <ProductCardImage {...item.product} />
-      </Stack.Item>
-      <Stack verticalAlign="space-between" styles={styles.leftContainer}>
-        <Stack>
-          <ProductCardTitleLink {...item.product} />
-          <Mobile>
-            {(className, renderChildren) => (
-              <Stack.Item
-                className={className}
-                tokens={{ padding: spacing.m }}
-                styles={styles.mobilePrice}
-              >
-                {/* TODO {renderChildren && (
-                  <CartItemPrices
-                    item={item}
-                    showPricing={showPricing}
-                    readonly={true}
-                  />
-                )}*/}
-              </Stack.Item>
-            )}
-          </Mobile>
-        </Stack>
-      </Stack>
-      <TabletAndDesktop>
-        {(className, renderChildren) => (
-          <Stack.Item className={className}>
-            {/*TODO   {renderChildren && (
-              <CartItemPrices
-                item={item}
-                showPricing={showPricing}
-                readonly={true}
-              />
-            )}*/}
-          </Stack.Item>
-        )}
-      </TabletAndDesktop>
-    </ProductCard>
-  );
+
+  return <CartItemCard item={item} showPricing={showPricing} readOnly={true} />;
 };
 
 export default CartItemAddedCard;

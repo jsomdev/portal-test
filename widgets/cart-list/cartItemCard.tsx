@@ -1,80 +1,21 @@
 import React from 'react';
 
-import { defineMessages, useIntl } from 'react-intl';
-
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
-import { CartListTotalPrice } from '@widgets/cart-list/cartListTotalPrice';
 import { CartListUnitPrice } from '@widgets/cart-list/cartListUnitPrice';
 import CartProductImage from '@widgets/cart-list/cartProductImage';
 import { CartRemoveButton } from '@widgets/cart-list/cartRemoveButton';
-import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
+import { CartSubTotal } from '@widgets/cart-list/cartSubTotal';
+import { mediaQueryFrom } from '@widgets/media-queries';
+import { useProductPricing } from '@widgets/pricing/useProductPrice';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 
 type CartItemCardProps = {
   item: CartItemViewModel;
   showPricing: boolean;
   readOnly: boolean;
-};
-
-const messages = defineMessages({
-  subTotalLabel: {
-    id: 'missing.id',
-    defaultMessage: 'Subtotal'
-  },
-  subTotalItems: {
-    id: 'missing.id2',
-    defaultMessage: '{quantity} {quantity, plural, one {item} other {items}}'
-  }
-});
-
-const SubTotal: React.FC<{
-  item: CartItemViewModel;
-}> = ({ item }) => {
-  const { spacing } = useTheme();
-  const { formatMessage } = useIntl();
-  const isTabletOrDesktop = useTabletAndDesktop();
-
-  if (!isTabletOrDesktop && item.quantity === 1) {
-    return null;
-  }
-
-  return (
-    <Stack
-      horizontal
-      tokens={{
-        childrenGap: spacing.m
-      }}
-      styles={{
-        root: {
-          textAlign: 'right',
-          justifyContent: 'space-between',
-          ...mediaQueryFrom('tablet', {
-            justifyContent: 'flex-end'
-          }),
-          alignItems: 'center'
-        }
-      }}
-    >
-      <Stack.Item>
-        {formatMessage(messages.subTotalLabel)}
-        {isTabletOrDesktop && (
-          <span>
-            {' ('}
-            {formatMessage(messages.subTotalItems, {
-              quantity: item.quantity
-            })}
-            {')'}
-          </span>
-        )}
-      </Stack.Item>
-      <Stack.Item>
-        <CartListTotalPrice item={item} />
-      </Stack.Item>
-    </Stack>
-  );
 };
 
 export const CartItemCard: React.FC<CartItemCardProps> = ({
@@ -98,6 +39,13 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
       alignItems: 'flex-start'
     }
   };
+
+  const { getUnitPrice } = useProductPricing(
+    item.product.number || '',
+    item.priceBreaks
+  );
+
+  const price = getUnitPrice(item.quantity);
 
   return (
     <Stack>
@@ -130,16 +78,18 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
             horizontalAlign="space-between"
             verticalAlign="center"
           >
-            <Stack.Item>
-              <CartListQuantity item={item} disabled={readOnly} />
-            </Stack.Item>
+            {!readOnly && (
+              <Stack.Item>
+                <CartListQuantity item={item} />
+              </Stack.Item>
+            )}
             <Stack.Item>
               <CartListUnitPrice item={item} />
             </Stack.Item>
           </Stack>
-          {showPricing && item.priceBreaks && item.priceBreaks.length > 0 && (
+          {showPricing && price && (
             <Stack.Item>
-              <SubTotal item={item} />
+              <CartSubTotal item={item} />
             </Stack.Item>
           )}
         </Stack>
