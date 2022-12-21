@@ -1,12 +1,15 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import CartItemPrices from '@widgets/cart-list/cartItemPrices';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
+import { CartListTotalPrice } from '@widgets/cart-list/cartListTotalPrice';
+import { CartListUnitPrice } from '@widgets/cart-list/cartListUnitPrice';
+import CartProductImage from '@widgets/cart-list/cartProductImage';
 import { CartRemoveButton } from '@widgets/cart-list/cartRemoveButton';
-import ProductCard from '@widgets/product-card-parts/productCard';
 import ProductCardImage from '@widgets/product-card-parts/productCardImage';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 
@@ -21,44 +24,99 @@ type CartItemCardStyles = {
   rightContainer: IStackStyles;
 };
 
+const messages = defineMessages({
+  subTotal: {
+    id: 'missing.id',
+    defaultMessage:
+      'Subtotal ({quantity} {quantity, plural, one {item} other {items}})'
+  }
+});
+
 export const CartItemCard: React.FC<CartItemCardProps> = ({
   item,
   showPricing,
   readOnly
 }) => {
-  const { spacing } = useTheme();
+  const { semanticColors, spacing } = useTheme();
+  const { formatMessage } = useIntl();
   const styles: CartItemCardStyles = {
     leftContainer: {
       root: { flex: 1, minWidth: 220 }
     },
     rightContainer: { root: { flex: 2 } }
   };
+
+  const stackStyles: IStackStyles = {
+    root: {
+      marginBottom: spacing.l1,
+      border: `1px solid ${semanticColors.variantBorder}`,
+      borderRadius: 7,
+      justifyContent: 'space-around'
+    }
+  };
+
   return (
-    <ProductCard>
-      <Stack.Item>
-        <ProductCardImage
-          {...item.product}
-          fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
-        />
-      </Stack.Item>
-      <Stack verticalAlign="space-between" styles={styles.leftContainer}>
-        <Stack tokens={{ childrenGap: spacing.m }}>
-          <ProductCardTitleLink {...item.product} />
-          {!readOnly && (
-            <Stack horizontal>
-              <CartListQuantity item={item} />
-              <CartRemoveButton productNumber={item.product.number} />
-            </Stack>
-          )}
+    <Stack
+      styles={stackStyles}
+      tokens={{ padding: `${spacing.m} ${spacing.m} 0 ${spacing.m}` }}
+    >
+      <Stack horizontal>
+        <Stack.Item>
+          <CartProductImage
+            {...item.product}
+            fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
+          />
+        </Stack.Item>
+        <Stack verticalAlign="space-between" styles={styles.leftContainer}>
+          <Stack
+            horizontal
+            horizontalAlign="space-between"
+            tokens={{ childrenGap: spacing.m }}
+          >
+            <ProductCardTitleLink {...item.product} />
+            <Stack.Item>
+              <CartListUnitPrice item={item} />
+            </Stack.Item>
+          </Stack>
+          <Stack
+            horizontal
+            horizontalAlign="space-between"
+            verticalAlign="end"
+            tokens={{ padding: `${spacing.m} 0` }}
+          >
+            {!readOnly && (
+              <Stack horizontal>
+                <CartListQuantity item={item} />
+                <CartRemoveButton productNumber={item.product.number} />
+              </Stack>
+            )}
+          </Stack>
         </Stack>
       </Stack>
-      <Stack.Item styles={styles.rightContainer}>
-        <CartItemPrices
-          item={item}
-          showPricing={showPricing}
-          readonly={readOnly}
-        />
-      </Stack.Item>
-    </ProductCard>
+      {showPricing && item.priceBreaks && item.priceBreaks.length > 0 && (
+        <Stack
+          horizontal
+          tokens={{
+            childrenGap: spacing.m
+          }}
+          styles={{
+            root: {
+              borderTop: `1px solid ${semanticColors.variantBorder}`,
+              padding: `${spacing.m} 0 ${spacing.m} 0`,
+              width: '100%',
+              textAlign: 'right',
+              justifyContent: 'flex-end'
+            }
+          }}
+        >
+          <Stack.Item>
+            {formatMessage(messages.subTotal, { quantity: item.quantity })}
+          </Stack.Item>
+          <Stack.Item>
+            <CartListTotalPrice item={item} />
+          </Stack.Item>
+        </Stack>
+      )}
+    </Stack>
   );
 };

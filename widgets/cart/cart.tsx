@@ -103,12 +103,12 @@ const Cart: React.FC<CartProps> = ({ title }) => {
       }
     },
     summaryContainer: {
-      root: { flex: '2', paddingTop: spacing.m, minWidth: rem('280px') }
+      root: { flex: '2', minWidth: rem('280px') }
     },
     itemsContainer: { root: { flex: '5', minWidth: rem('280px') } },
     mergeCartContainer: {
       root: {
-        marginTop: 14
+        marginTop: spacing.m
       }
     }
   };
@@ -141,7 +141,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
             }}
           >
             <Stack.Item styles={styles.itemsContainer}>
-              <Stack styles={styles.listContainer}>
+              <Stack>
                 {isAuthenticated && !!cookieBaseItems.length && (
                   <Stack styles={styles.mergeCartContainer}>
                     <MessageBar

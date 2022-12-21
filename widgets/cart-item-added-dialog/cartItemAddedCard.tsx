@@ -8,7 +8,6 @@ import {
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { rem } from '@utilities/rem';
-import CartItemPrices from '@widgets/cart-list/cartItemPrices';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 import ProductCard from '@widgets/product-card-parts/productCard';
@@ -51,13 +50,13 @@ const CartItemAddedCard: React.FC<CartItemAddedCardProps> = ({ item }) => {
                 tokens={{ padding: spacing.m }}
                 styles={styles.mobilePrice}
               >
-                {renderChildren && (
+                {/* TODO {renderChildren && (
                   <CartItemPrices
                     item={item}
                     showPricing={showPricing}
                     readonly={true}
                   />
-                )}
+                )}*/}
               </Stack.Item>
             )}
           </Mobile>
@@ -66,13 +65,13 @@ const CartItemAddedCard: React.FC<CartItemAddedCardProps> = ({ item }) => {
       <TabletAndDesktop>
         {(className, renderChildren) => (
           <Stack.Item className={className}>
-            {renderChildren && (
+            {/*TODO   {renderChildren && (
               <CartItemPrices
                 item={item}
                 showPricing={showPricing}
                 readonly={true}
               />
-            )}
+            )}*/}
           </Stack.Item>
         )}
       </TabletAndDesktop>
