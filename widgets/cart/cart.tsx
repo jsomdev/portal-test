@@ -31,6 +31,7 @@ import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { useBetweenMobileAndTablet } from '@widgets/media-queries';
 import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 const messages = defineMessages({
@@ -84,6 +85,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const [showDialog, setShowDialog] = useState(false);
   const { locale } = useRouter();
 
+  const isMobile = useBetweenMobileAndTablet();
   const cartItems = useMemo(
     () =>
       mapCartItemsToCartItemViewModels(
@@ -133,8 +135,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
 
         <Stack.Item>
           <Stack
-            horizontal
-            wrap
+            horizontal={!isMobile}
             tokens={{
               padding: `${spacing.m} 0`,
               childrenGap: spacing.m

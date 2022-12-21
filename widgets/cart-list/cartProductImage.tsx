@@ -23,16 +23,19 @@ const CartProductImage: React.FC<ProductCardImageProps> = ({
   imageUrl,
   fallbackImageUrl
 }) => {
-  const largeImageSize = 100;
+  const largeImageSize = 120;
+  const smallImageSize = 80;
   const styles: ProductCardImageStyles = {
     root: {
       root: {
         position: 'relative',
-        width: 46,
-        height: 46,
+        minWidth: smallImageSize,
+        width: smallImageSize,
+        height: smallImageSize,
         ...mediaQueryFrom('tablet', {
           width: largeImageSize,
-          height: largeImageSize
+          height: largeImageSize,
+          minWidth: largeImageSize
         })
       }
     }

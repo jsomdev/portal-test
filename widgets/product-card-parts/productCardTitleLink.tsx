@@ -40,6 +40,7 @@ const ProductCardTitleLink: React.FC<ProductCardTitleLinkProps> = ({
   const styles = {
     title: {
       root: {
+        wordBreak: 'break-all',
         display: 'block',
         fontWeight: FontWeights.semibold
       }
