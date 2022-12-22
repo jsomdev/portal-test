@@ -8,7 +8,6 @@ import { CartListUnitPrice } from '@widgets/cart-list/cartListUnitPrice';
 import CartProductImage from '@widgets/cart-list/cartProductImage';
 import { CartRemoveButton } from '@widgets/cart-list/cartRemoveButton';
 import { CartSubTotal } from '@widgets/cart-list/cartSubTotal';
-import { mediaQueryFrom } from '@widgets/media-queries';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 
@@ -23,7 +22,7 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   showPricing,
   readOnly
 }) => {
-  const { semanticColors, spacing, effects } = useTheme();
+  const { semanticColors, spacing } = useTheme();
 
   const stackStyles: IStackStyles = {
     root: {
