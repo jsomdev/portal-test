@@ -70,7 +70,9 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
             tokens={{ childrenGap: spacing.s1 }}
           >
             <ProductCardTitleLink {...item.product} />
-            <CartRemoveButton productNumber={item.product.number} />
+            {!readOnly && (
+              <CartRemoveButton productNumber={item.product.number} />
+            )}
           </Stack>
 
           <Stack
@@ -79,11 +81,9 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
             horizontalAlign="space-between"
             verticalAlign="center"
           >
-            {!readOnly && (
-              <Stack.Item>
-                <CartListQuantity item={item} />
-              </Stack.Item>
-            )}
+            <Stack.Item>
+              <CartListQuantity item={item} disabled={readOnly} />
+            </Stack.Item>
             <Stack.Item grow={1}>
               <CartListUnitPrice item={item} />
             </Stack.Item>

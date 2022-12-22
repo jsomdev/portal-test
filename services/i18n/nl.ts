@@ -565,7 +565,9 @@ export const nl: Messages = {
       list: {
         emptyCart: 'Uw winkelwagen is leeg',
         loading: 'Productinformatie laden...',
-        cartError: 'Er is een fout opgetreden bij het laden van uw winkelwagen'
+        cartError: 'Er is een fout opgetreden bij het laden van uw winkelwagen',
+        quantityItemsReadOnlyText:
+          '{quantity} {quantity, plural, one {item} other {items}}'
       },
       addedToCart: 'Toegevoegd aan winkelwagen',
       limitReached: `Uw winkelwagen heeft de limiet voor Product ''{productNumber}'' bereikt. Er {quantityAdded, plural, one {is 1 artikel} other {zijn {quantityAdded} artikels}} aan uw winkelwagen toegevoegd.`,

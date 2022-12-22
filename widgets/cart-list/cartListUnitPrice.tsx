@@ -39,8 +39,12 @@ export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
     useProductPricing(item.product.number || '', item.priceBreaks);
   const { getQuantity } = useCart();
 
+  const cartQuantity: number | undefined = useMemo(() => {
+    return getQuantity(item.product.number || '');
+  }, [getQuantity, item.product.number]);
+
   const unitPrice: string | undefined = useMemo(() => {
-    const price = getUnitPrice(item.quantity);
+    const price = getUnitPrice(cartQuantity);
     if (price === undefined) {
       return undefined;
     }
@@ -64,7 +68,7 @@ export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
   }, [getBasePrice, currencyCode, formatNumber]);
 
   // This is to avoid the flashing to Quoted Price as you remove the item
-  if (getQuantity(item.product.number || '') === 0) {
+  if (cartQuantity === 0) {
     return null;
   }
 
