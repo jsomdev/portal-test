@@ -12,15 +12,10 @@ export const CartSubTotal: React.FC<{
   return (
     <Stack
       horizontal
+      horizontalAlign="end"
+      verticalAlign="center"
       tokens={{
         childrenGap: spacing.m
-      }}
-      styles={{
-        root: {
-          textAlign: 'right',
-          justifyContent: 'flex-end',
-          alignItems: 'center'
-        }
       }}
     >
       <Stack.Item>

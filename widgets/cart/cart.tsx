@@ -86,7 +86,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const [showDialog, setShowDialog] = useState(false);
   const { locale } = useRouter();
 
-  const isMobile = useBetweenMobileAndTablet();
+  const isBetweenMobileAndTablet = useBetweenMobileAndTablet();
   const cartItems = useMemo(
     () =>
       mapCartItemsToCartItemViewModels(
@@ -136,7 +136,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
 
         <Stack.Item>
           <Stack
-            horizontal={!isMobile}
+            horizontal={!isBetweenMobileAndTablet}
             tokens={{
               padding: `${spacing.m} 0`,
               childrenGap: spacing.m

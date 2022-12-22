@@ -24,7 +24,6 @@ type CartItemCardProps = {
 
 type CartItemCardStyles = {
   root: IStackStyles;
-  cartImageContainer: IStackItemStyles;
 };
 
 export const CartItemCard: React.FC<CartItemCardProps> = ({
@@ -38,12 +37,9 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
     root: {
       root: {
         padding: `${spacing.m} 0`,
-        borderBottom: `1px solid ${semanticColors.variantBorder}`,
-        justifyContent: 'space-around',
-        alignItems: 'flex-start'
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
       }
-    },
-    cartImageContainer: { root: { marginRight: spacing.m } }
+    }
   };
 
   const { getUnitPrice } = useProductPricing(
@@ -54,8 +50,8 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   const price = getUnitPrice(item.quantity);
 
   return (
-    <Stack horizontal styles={styles.root}>
-      <Stack.Item grow={0} styles={styles.cartImageContainer}>
+    <Stack horizontal styles={styles.root} tokens={{ childrenGap: spacing.m }}>
+      <Stack.Item grow={0}>
         <CartProductImage
           {...item.product}
           fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
