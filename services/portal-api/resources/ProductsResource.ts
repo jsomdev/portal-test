@@ -66,10 +66,10 @@ export class ProductsResource extends BaseResource<Product> {
   private getFacetedSearchResourcePath(urlEncodedQuery?: string) {
     return `${this.getResourcePath()}/facetedSearch${
       urlEncodedQuery
-        ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
+        ? `(query='${ProductsResource.escapeSearchQuery(
             urlEncodedQuery
-          )}')`
-        : '(operatingConditions=@operatingConditions,filters=@filters,query=null)'
+          )}',operatingConditions=@operatingConditions,filters=@filters)`
+        : '(query=null,operatingConditions=@operatingConditions,filters=@filters)'
     }`;
   }
   private getAutoCompleteResourcePath(urlEncodedQuery: string) {
