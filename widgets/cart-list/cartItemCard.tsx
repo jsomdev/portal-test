@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import {
+  IStackItemStyles,
+  IStackStyles,
+  Stack,
+  useTheme
+} from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
@@ -17,6 +22,11 @@ type CartItemCardProps = {
   readOnly: boolean;
 };
 
+type CartItemCardStyles = {
+  root: IStackStyles;
+  cartImageContainer: IStackItemStyles;
+};
+
 export const CartItemCard: React.FC<CartItemCardProps> = ({
   item,
   showPricing,
@@ -24,13 +34,16 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
 }) => {
   const { semanticColors, spacing } = useTheme();
 
-  const stackStyles: IStackStyles = {
+  const styles: CartItemCardStyles = {
     root: {
-      padding: `${spacing.m} 0`,
-      borderBottom: `1px solid ${semanticColors.variantBorder}`,
-      justifyContent: 'space-around',
-      alignItems: 'flex-start'
-    }
+      root: {
+        padding: `${spacing.m} 0`,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`,
+        justifyContent: 'space-around',
+        alignItems: 'flex-start'
+      }
+    },
+    cartImageContainer: { root: { marginRight: spacing.m } }
   };
 
   const { getUnitPrice } = useProductPricing(
@@ -41,52 +54,49 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   const price = getUnitPrice(item.quantity);
 
   return (
-    <Stack>
-      <Stack horizontal styles={stackStyles}>
-        <Stack.Item grow={0} styles={{ root: { marginRight: spacing.m } }}>
-          <CartProductImage
-            {...item.product}
-            fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
-          />
-        </Stack.Item>
+    <Stack horizontal styles={styles.root}>
+      <Stack.Item grow={0} styles={styles.cartImageContainer}>
+        <CartProductImage
+          {...item.product}
+          fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
+        />
+      </Stack.Item>
+      <Stack
+        grow={1}
+        verticalAlign="space-around"
+        tokens={{
+          childrenGap: spacing.s1
+        }}
+      >
         <Stack
-          grow={1}
-          verticalAlign={'space-around'}
-          tokens={{
-            childrenGap: spacing.s1
-          }}
+          horizontal
+          horizontalAlign="space-between"
+          verticalAlign="start"
+          tokens={{ childrenGap: spacing.s1 }}
         >
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            verticalAlign="start"
-            tokens={{ childrenGap: spacing.s1 }}
-          >
-            <ProductCardTitleLink {...item.product} />
-            {!readOnly && (
-              <CartRemoveButton productNumber={item.product.number} />
-            )}
-          </Stack>
-
-          <Stack
-            wrap
-            horizontal
-            horizontalAlign="space-between"
-            verticalAlign="center"
-          >
-            <Stack.Item>
-              <CartListQuantity item={item} disabled={readOnly} />
-            </Stack.Item>
-            <Stack.Item grow={1}>
-              <CartListUnitPrice item={item} />
-            </Stack.Item>
-          </Stack>
-          {showPricing && price && (
-            <Stack.Item>
-              <CartSubTotal item={item} />
-            </Stack.Item>
+          <ProductCardTitleLink {...item.product} />
+          {!readOnly && (
+            <CartRemoveButton productNumber={item.product.number} />
           )}
         </Stack>
+        <Stack
+          wrap
+          horizontal
+          horizontalAlign="space-between"
+          verticalAlign="center"
+        >
+          <Stack.Item>
+            <CartListQuantity item={item} disabled={readOnly} />
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <CartListUnitPrice item={item} />
+          </Stack.Item>
+        </Stack>
+        {showPricing && price && (
+          <Stack.Item>
+            <CartSubTotal item={item} />
+          </Stack.Item>
+        )}
       </Stack>
     </Stack>
   );
