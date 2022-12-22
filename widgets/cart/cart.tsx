@@ -28,10 +28,11 @@ import { CartListActions } from '@widgets/cart-list/cartListActions';
 import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
 import { mapCartItemsToCartItemViewModels } from '@widgets/cart/cart.helper';
 import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
+import { CartStickyThumb } from '@widgets/cart/cartStickyThumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
-import { useBetweenMobileAndTablet } from '@widgets/media-queries';
+import { Mobile, useBetweenMobileAndTablet } from '@widgets/media-queries';
 import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 const messages = defineMessages({
@@ -208,6 +209,9 @@ const Cart: React.FC<CartProps> = ({ title }) => {
           }}
         />
       </ContentContainerStack>
+      <Mobile>
+        <CartStickyThumb />
+      </Mobile>
     </React.Fragment>
   );
 };
