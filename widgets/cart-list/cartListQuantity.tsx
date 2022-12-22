@@ -55,7 +55,8 @@ export const CartListQuantity: React.FC<CartListQuantityProps> = ({ item }) => {
     input: {
       width: '100px',
       minWidth: '100px',
-      textAlign: 'center'
+      textAlign: 'center',
+      fontSize: '16px' //hardcoded here, so we are sure it is 16px no matter what font sizes are set in the theme. This makes sure the page doesn't zoom in when this input is focussed on iOS devices
     }
   };
 

@@ -23,19 +23,25 @@ const CartProductImage: React.FC<ProductCardImageProps> = ({
   imageUrl,
   fallbackImageUrl
 }) => {
-  const largeImageSize = 120;
-  const smallImageSize = 80;
+  const largeSize = 120;
+  const mediumSize = 80;
+  const smallSize = 40;
   const styles: ProductCardImageStyles = {
     root: {
       root: {
         position: 'relative',
-        minWidth: smallImageSize,
-        width: smallImageSize,
-        height: smallImageSize,
+        minWidth: smallSize,
+        width: smallSize,
+        height: smallSize,
+        ...mediaQueryFrom('largePhone', {
+          width: mediumSize,
+          height: mediumSize,
+          minWidth: mediumSize
+        }),
         ...mediaQueryFrom('tablet', {
-          width: largeImageSize,
-          height: largeImageSize,
-          minWidth: largeImageSize
+          width: largeSize,
+          height: largeSize,
+          minWidth: largeSize
         })
       }
     }
@@ -49,8 +55,8 @@ const CartProductImage: React.FC<ProductCardImageProps> = ({
               imageUrl || fallbackImageUrl || STATIC_IMAGES.app.noImageAvailable
             }
             alt={''}
-            width={largeImageSize}
-            height={largeImageSize}
+            width={largeSize}
+            height={largeSize}
             layout="intrinsic"
             objectFit="contain"
             objectPosition="center"

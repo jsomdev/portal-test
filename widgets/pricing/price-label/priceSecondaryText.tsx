@@ -9,7 +9,8 @@ export const PriceSecondaryText: React.FC<ITextProps & { text: string }> = ({
   const styles: ITextStyles = {
     root: {
       fontWeight: FontWeights.regular,
-      textDecoration: 'line-through'
+      textDecoration: 'line-through',
+      wordBreak: 'break-all'
     }
   };
   return (

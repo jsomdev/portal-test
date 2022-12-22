@@ -1,16 +1,30 @@
 import React, { useMemo } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
-  IStackStyles,
   Shimmer,
   ShimmerElementType,
-  ShimmerElementsGroup,
-  Stack
+  ShimmerElementsGroup
 } from '@fluentui/react';
 import { useCart } from '@providers/cart/cartContext';
+import { messageIds } from '@services/i18n';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
-import CartPrice from '@widgets/cart-list/cartPrice';
+import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
+
+const messages = defineMessages({
+  quotedPrice: {
+    id: messageIds.pricing.quotedPrice,
+    description: 'Label for Quoted Price',
+    defaultMessage: 'Quoted Price'
+  },
+  suffix: {
+    id: messageIds.pricing.unitPriceSuffix,
+    description: 'Text to show after the unit price',
+    defaultMessage: '/ each'
+  }
+});
 
 type CartListUnitPriceProps = {
   item: CartItemViewModel;
@@ -19,23 +33,35 @@ type CartListUnitPriceProps = {
 export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
   item
 }) => {
+  const { formatMessage, formatNumber } = useIntl();
+
   const { getUnitPrice, getBasePrice, currencyCode, status } =
     useProductPricing(item.product.number || '', item.priceBreaks);
   const { getQuantity } = useCart();
 
-  const unitPrice = useMemo(() => {
-    return getUnitPrice(getQuantity(item.product.number || undefined));
-  }, [getQuantity, getUnitPrice, item.product.number]);
-
-  const basePrice = useMemo(() => {
-    return getBasePrice();
-  }, [getBasePrice]);
-
-  const styles: IStackStyles = {
-    root: {
-      width: '100%'
+  const unitPrice: string | undefined = useMemo(() => {
+    const price = getUnitPrice(item.quantity);
+    if (price === undefined) {
+      return undefined;
     }
-  };
+    return formatNumber(price, {
+      currency: currencyCode,
+      currencyDisplay: 'narrowSymbol',
+      style: 'currency'
+    });
+  }, [getUnitPrice, item.quantity, formatNumber, currencyCode]);
+
+  const basePrice: string | undefined = useMemo(() => {
+    const price: number | undefined = getBasePrice();
+    if (price === undefined) {
+      return undefined;
+    }
+    return formatNumber(price, {
+      currency: currencyCode,
+      currencyDisplay: 'narrowSymbol',
+      style: 'currency'
+    });
+  }, [getBasePrice, currencyCode, formatNumber]);
 
   // This is to avoid the flashing to Quoted Price as you remove the item
   if (getQuantity(item.product.number || '') === 0) {
@@ -43,26 +69,25 @@ export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
   }
 
   return (
-    <Stack styles={styles}>
-      <Shimmer
-        customElementsGroup={
-          <ShimmerElementsGroup
-            width="100%"
-            shimmerElements={[{ type: ShimmerElementType.line, height: 24 }]}
-          />
+    <Shimmer
+      styles={{ root: { float: 'right' } }}
+      customElementsGroup={
+        <ShimmerElementsGroup
+          width="100%"
+          shimmerElements={[{ type: ShimmerElementType.line, height: 24 }]}
+        />
+      }
+      width={'100%'}
+      isDataLoaded={status !== 'loading'}
+    >
+      <PriceLabel
+        primaryText={unitPrice || formatMessage(messages.quotedPrice)}
+        secondaryText={unitPrice !== basePrice ? basePrice : undefined}
+        status={status}
+        suffix={
+          unitPrice && basePrice ? formatMessage(messages.suffix) : undefined
         }
-        width={'100%'}
-        isDataLoaded={status !== 'loading'}
-      >
-        <Stack.Item>
-          <CartPrice
-            price={unitPrice}
-            basePrice={basePrice}
-            currencyCode={currencyCode}
-            status={status}
-          />
-        </Stack.Item>
-      </Shimmer>
-    </Stack>
+      />
+    </Shimmer>
   );
 };

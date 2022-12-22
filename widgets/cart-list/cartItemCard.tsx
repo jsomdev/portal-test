@@ -74,6 +74,7 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
           </Stack>
 
           <Stack
+            wrap
             horizontal
             horizontalAlign="space-between"
             verticalAlign="center"
@@ -83,7 +84,7 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
                 <CartListQuantity item={item} />
               </Stack.Item>
             )}
-            <Stack.Item>
+            <Stack.Item grow={1}>
               <CartListUnitPrice item={item} />
             </Stack.Item>
           </Stack>
