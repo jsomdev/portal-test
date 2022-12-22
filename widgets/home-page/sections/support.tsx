@@ -247,7 +247,7 @@ const SupportCard: React.FC<SupportCardProps> = ({
           objectFit="cover"
           placeholder="blur"
           objectPosition="center"
-          sizes="(max-width: 435px) calc(100vw - 40px),(max-width: 1040px) calc ((100vw - 80px) / 2), 425px"
+          sizes="(max-width: 439) 100vw, 440px"
         />
       </Stack.Item>
       <Text as="h3" styles={styles.title}>

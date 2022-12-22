@@ -83,7 +83,12 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
             height={getWidth(size) * 0.7}
             alt={imageAlt}
             src={imageSrc}
-            objectFit="cover"
+            objectFit={
+              imageSrc.indexOf('?crop=true') > -1 ? 'cover' : 'contain'
+              /* Legacy behavior:
+              - images with a non-white background can be cropped, you can identify these by the url that has a querystring "?crop=true"
+              - image with a white background can not be cropped and should be fully visible, as parts of the product will be cut off when cropped  */
+            }
             objectPosition="center"
             loader={widenImageLoader}
           />
