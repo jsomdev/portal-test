@@ -1,13 +1,19 @@
 import React from 'react';
 
-import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import {
+  IStackItemStyles,
+  IStackStyles,
+  Stack,
+  useTheme
+} from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
-import CartItemPrices from '@widgets/cart-list/cartItemPrices';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';
+import { CartListUnitPrice } from '@widgets/cart-list/cartListUnitPrice';
+import CartProductImage from '@widgets/cart-list/cartProductImage';
 import { CartRemoveButton } from '@widgets/cart-list/cartRemoveButton';
-import ProductCard from '@widgets/product-card-parts/productCard';
-import ProductCardImage from '@widgets/product-card-parts/productCardImage';
+import { CartSubTotal } from '@widgets/cart-list/cartSubTotal';
+import { useProductPricing } from '@widgets/pricing/useProductPrice';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 
 type CartItemCardProps = {
@@ -17,8 +23,7 @@ type CartItemCardProps = {
 };
 
 type CartItemCardStyles = {
-  leftContainer: IStackStyles;
-  rightContainer: IStackStyles;
+  root: IStackStyles;
 };
 
 export const CartItemCard: React.FC<CartItemCardProps> = ({
@@ -26,39 +31,69 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   showPricing,
   readOnly
 }) => {
-  const { spacing } = useTheme();
+  const { semanticColors, spacing } = useTheme();
+
   const styles: CartItemCardStyles = {
-    leftContainer: {
-      root: { flex: 1, minWidth: 220 }
-    },
-    rightContainer: { root: { flex: 2 } }
+    root: {
+      root: {
+        padding: `${spacing.m} 0`,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      }
+    }
   };
+
+  const { getUnitPrice } = useProductPricing(
+    item.product.number || '',
+    item.priceBreaks
+  );
+
+  const price = getUnitPrice(item.quantity);
+
   return (
-    <ProductCard>
-      <Stack.Item>
-        <ProductCardImage
+    <Stack horizontal styles={styles.root} tokens={{ childrenGap: spacing.m }}>
+      <Stack.Item grow={0}>
+        <CartProductImage
           {...item.product}
           fallbackImageUrl={STATIC_IMAGES.cart.defaultItem}
         />
       </Stack.Item>
-      <Stack verticalAlign="space-between" styles={styles.leftContainer}>
-        <Stack tokens={{ childrenGap: spacing.m }}>
+      <Stack
+        grow={1}
+        verticalAlign="space-around"
+        tokens={{
+          childrenGap: spacing.s1
+        }}
+      >
+        <Stack
+          horizontal
+          horizontalAlign="space-between"
+          verticalAlign="start"
+          tokens={{ childrenGap: spacing.s1 }}
+        >
           <ProductCardTitleLink {...item.product} />
           {!readOnly && (
-            <Stack horizontal>
-              <CartListQuantity item={item} />
-              <CartRemoveButton productNumber={item.product.number} />
-            </Stack>
+            <CartRemoveButton productNumber={item.product.number} />
           )}
         </Stack>
+        <Stack
+          wrap
+          horizontal
+          horizontalAlign="space-between"
+          verticalAlign="center"
+        >
+          <Stack.Item>
+            <CartListQuantity item={item} disabled={readOnly} />
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <CartListUnitPrice item={item} />
+          </Stack.Item>
+        </Stack>
+        {showPricing && price && (
+          <Stack.Item>
+            <CartSubTotal item={item} />
+          </Stack.Item>
+        )}
       </Stack>
-      <Stack.Item styles={styles.rightContainer}>
-        <CartItemPrices
-          item={item}
-          showPricing={showPricing}
-          readonly={readOnly}
-        />
-      </Stack.Item>
-    </ProductCard>
+    </Stack>
   );
 };

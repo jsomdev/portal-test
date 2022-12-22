@@ -8,7 +8,8 @@ export const PricePrimaryText: React.FC<
   const styles: ITextStyles = {
     root: {
       color,
-      fontWeight: FontWeights.semibold
+      fontWeight: FontWeights.semibold,
+      wordBreak: 'break-all'
     }
   };
   return (

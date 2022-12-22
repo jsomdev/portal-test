@@ -553,7 +553,9 @@ export const en: Messages = {
       list: {
         emptyCart: 'Your cart is empty.',
         loading: 'Loading product information...',
-        cartError: 'There was an error loading your cart.'
+        cartError: 'There was an error loading your cart.',
+        quantityItemsReadOnlyText:
+          '{quantity} {quantity, plural, one {item} other {items}}'
       },
       addedToCart: 'Added to cart',
       limitReached: `Your cart has reached its limit for Product ''{productNumber}''. {quantityAdded} {quantityAdded, plural, one {item} other {items}} have been added to your cart`,

@@ -208,7 +208,7 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
         >
           <Stack
             horizontal
-            tokens={{ childrenGap: spacing.s2 }}
+            tokens={{ childrenGap: spacing.s1 }}
             verticalAlign="center"
           >
             {order === 'primaryFirst'

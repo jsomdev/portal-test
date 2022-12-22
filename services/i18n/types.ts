@@ -494,6 +494,7 @@ type ICartMessages = {
     emptyCart: string;
     loading: string;
     cartError: string;
+    quantityItemsReadOnlyText: string;
   };
   addedToCart: string;
   limitReached: string;

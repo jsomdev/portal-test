@@ -1,19 +1,8 @@
 import React from 'react';
 
-import { defineMessages, useIntl } from 'react-intl';
-
-import { Stack, Text, useTheme } from '@fluentui/react';
-import { messageIds } from '@services/i18n';
+import { Stack, useTheme } from '@fluentui/react';
 
 import { SummaryProps, SummaryStyles } from './summary.types';
-
-const messages = defineMessages({
-  details: {
-    id: messageIds.summary.details,
-    defaultMessage: 'Details',
-    description: 'Title for summary component'
-  }
-});
 
 export const Summary: React.FC<SummaryProps> = ({
   onRenderDetails,
@@ -21,7 +10,6 @@ export const Summary: React.FC<SummaryProps> = ({
   onRenderTopSection
 }) => {
   const { palette, spacing, effects, semanticColors } = useTheme();
-  const { formatMessage } = useIntl();
   const styles: SummaryStyles = {
     detailsText: {
       root: {
@@ -77,18 +65,6 @@ export const Summary: React.FC<SummaryProps> = ({
               </Stack>
             </Stack.Item>
           )}
-          <Stack.Item>
-            <Stack
-              styles={styles.detailsText}
-              tokens={{ padding: `0 0 ${spacing.m}` }}
-            >
-              <Stack.Item>
-                <Text variant="mediumPlus">
-                  {formatMessage(messages.details)}
-                </Text>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
           <Stack.Item>{onRenderDetails()}</Stack.Item>
           {onRenderActions && (
             <Stack.Item styles={styles.actionsWrapper}>

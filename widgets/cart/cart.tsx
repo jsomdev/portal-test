@@ -28,9 +28,11 @@ import { CartListActions } from '@widgets/cart-list/cartListActions';
 import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
 import { mapCartItemsToCartItemViewModels } from '@widgets/cart/cart.helper';
 import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
+import { CartStickyThumb } from '@widgets/cart/cartStickyThumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { Mobile, useBetweenMobileAndTablet } from '@widgets/media-queries';
 import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 const messages = defineMessages({
@@ -84,6 +86,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
   const [showDialog, setShowDialog] = useState(false);
   const { locale } = useRouter();
 
+  const isBetweenMobileAndTablet = useBetweenMobileAndTablet();
   const cartItems = useMemo(
     () =>
       mapCartItemsToCartItemViewModels(
@@ -99,16 +102,16 @@ const Cart: React.FC<CartProps> = ({ title }) => {
       root: {
         padding: spacing.l1,
         border: `1px solid ${semanticColors.variantBorder}`,
-        borderRadius: effects.roundedCorner2
+        borderRadius: effects.roundedCorner4
       }
     },
     summaryContainer: {
-      root: { flex: '2', paddingTop: spacing.m, minWidth: rem('280px') }
+      root: { flex: '2', minWidth: rem('280px') }
     },
     itemsContainer: { root: { flex: '5', minWidth: rem('280px') } },
     mergeCartContainer: {
       root: {
-        marginTop: 14
+        marginTop: spacing.m
       }
     }
   };
@@ -133,15 +136,14 @@ const Cart: React.FC<CartProps> = ({ title }) => {
 
         <Stack.Item>
           <Stack
-            horizontal
-            wrap
+            horizontal={!isBetweenMobileAndTablet}
             tokens={{
               padding: `${spacing.m} 0`,
               childrenGap: spacing.m
             }}
           >
             <Stack.Item styles={styles.itemsContainer}>
-              <Stack styles={styles.listContainer}>
+              <Stack>
                 {isAuthenticated && !!cookieBaseItems.length && (
                   <Stack styles={styles.mergeCartContainer}>
                     <MessageBar
@@ -185,7 +187,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
               </Stack>
             </Stack.Item>
             <Stack.Item styles={styles.summaryContainer}>
-              <Stack tokens={{ childrenGap: spacing.s1 }}>
+              <Stack tokens={{ childrenGap: spacing.m }}>
                 <CartSummary />
                 <Stack.Item styles={styles.bulkContainer}>
                   <AddBulkCard />
@@ -207,6 +209,9 @@ const Cart: React.FC<CartProps> = ({ title }) => {
           }}
         />
       </ContentContainerStack>
+      <Mobile>
+        <CartStickyThumb />
+      </Mobile>
     </React.Fragment>
   );
 };

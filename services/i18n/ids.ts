@@ -590,7 +590,8 @@ export const messageIds: Messages = {
       list: {
         emptyCart: 'pages.cart.list.emptyCart',
         loading: 'pages.cart.list.loading',
-        cartError: 'pages.cart.list.cartError'
+        cartError: 'pages.cart.list.cartError',
+        quantityItemsReadOnlyText: 'pages.cart.list.quantityItemsReadOnlyText'
       },
       addedToCart: 'pages.cart.addedToCart',
       limitReached: 'pages.cart.limitReached',
