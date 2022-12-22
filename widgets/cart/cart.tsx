@@ -101,7 +101,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
       root: {
         padding: spacing.l1,
         border: `1px solid ${semanticColors.variantBorder}`,
-        borderRadius: effects.roundedCorner2
+        borderRadius: effects.roundedCorner4
       }
     },
     summaryContainer: {

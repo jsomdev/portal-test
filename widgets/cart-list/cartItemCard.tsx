@@ -23,7 +23,7 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   showPricing,
   readOnly
 }) => {
-  const { semanticColors, spacing } = useTheme();
+  const { semanticColors, spacing, effects } = useTheme();
 
   const stackStyles: IStackStyles = {
     root: {
@@ -31,7 +31,7 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
       borderBottom: `1px solid ${semanticColors.variantBorder}`,
       ...mediaQueryFrom('tablet', {
         border: `1px solid ${semanticColors.variantBorder}`,
-        borderRadius: 7,
+        borderRadius: effects.roundedCorner4,
         padding: `${spacing.m}`,
         marginBottom: spacing.m
       }),
