@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
+import { useMobile } from '@widgets/media-queries';
 
 export const CheckoutFormRowContainer: React.FC = ({ children }) => {
   const { spacing } = useTheme();
+  const isMobile = useMobile();
   const styles: IStackStyles = {
     root: {
       maxWidth: '800px',
@@ -15,7 +17,11 @@ export const CheckoutFormRowContainer: React.FC = ({ children }) => {
     }
   };
   return (
-    <Stack horizontal styles={styles} tokens={{ childrenGap: spacing.s1 }}>
+    <Stack
+      horizontal={!isMobile}
+      styles={styles}
+      tokens={{ childrenGap: spacing.s1 }}
+    >
       {children}
     </Stack>
   );

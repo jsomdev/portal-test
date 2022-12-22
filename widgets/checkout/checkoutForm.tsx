@@ -40,7 +40,10 @@ import step3Payment from '@widgets/checkout/steps/step-3-payment/step-3-payment'
 import step4Overview from '@widgets/checkout/steps/step-4-overview/step-4-overview';
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
-import { mediaQueryFrom } from '@widgets/media-queries';
+import {
+  mediaQueryFrom,
+  useBetweenMobileAndTablet
+} from '@widgets/media-queries';
 
 interface CheckoutFormStyles {
   container: IStackStyles;
@@ -85,7 +88,7 @@ export const CheckoutForm: React.FC<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const activeFormRef = useRef<FormikProps<any>>(null);
   const { spacing } = getTheme();
-
+  const isMobile = useBetweenMobileAndTablet();
   const { billingAddress, shippingAddress } = useContext(AddressBookContext);
   const { me } = useMe();
 
@@ -254,18 +257,20 @@ export const CheckoutForm: React.FC<{
           />
         </Stack>
       </Stack.Item>
-      <Stack.Item styles={styles.rightColumn}>
-        <CheckoutSummary
-          onPrevious={onPrevious}
-          onProceed={onProceed}
-          showSubmitButton={isLastStep}
-          submitButtonText={
-            formValues.payment.paymentMethod === PaymentMethod.CREDIT_CARD
-              ? formatMessage(messages.completePayment)
-              : formatMessage(messages.completePurchaseOrder)
-          }
-        />
-      </Stack.Item>
+      {(!isMobile || isLastStep) && (
+        <Stack.Item styles={styles.rightColumn}>
+          <CheckoutSummary
+            onPrevious={onPrevious}
+            onProceed={onProceed}
+            showSubmitButton={isLastStep}
+            submitButtonText={
+              formValues.payment.paymentMethod === PaymentMethod.CREDIT_CARD
+                ? formatMessage(messages.completePayment)
+                : formatMessage(messages.completePurchaseOrder)
+            }
+          />
+        </Stack.Item>
+      )}
     </ResponsiveStack>
   );
 };

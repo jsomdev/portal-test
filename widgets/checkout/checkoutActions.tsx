@@ -11,6 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
+import { useMobile } from '@widgets/media-queries';
 
 interface SecondaryFormStepActionsStyles {
   buttons: IButtonStyles;
@@ -41,6 +42,7 @@ export const CheckoutActions: React.FC<{
 }> = ({ onProceedClick, onPreviousClick, disableSubmit, isLastStep }) => {
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
+  const isMobile = useMobile();
   const styles: SecondaryFormStepActionsStyles = {
     buttons: {
       flexContainer: {
@@ -60,6 +62,9 @@ export const CheckoutActions: React.FC<{
     }
   };
 
+  if (isMobile && isLastStep) {
+    return null;
+  }
   return (
     <Stack
       horizontal={true}
