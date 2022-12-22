@@ -186,7 +186,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
               </Stack>
             </Stack.Item>
             <Stack.Item styles={styles.summaryContainer}>
-              <Stack tokens={{ childrenGap: spacing.s1 }}>
+              <Stack tokens={{ childrenGap: spacing.m }}>
                 <CartSummary />
                 <Stack.Item styles={styles.bulkContainer}>
                   <AddBulkCard />
