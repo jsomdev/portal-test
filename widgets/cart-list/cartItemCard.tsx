@@ -29,12 +29,6 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
     root: {
       padding: `${spacing.m} 0`,
       borderBottom: `1px solid ${semanticColors.variantBorder}`,
-      ...mediaQueryFrom('tablet', {
-        border: `1px solid ${semanticColors.variantBorder}`,
-        borderRadius: effects.roundedCorner4,
-        padding: `${spacing.m}`,
-        marginBottom: spacing.m
-      }),
       justifyContent: 'space-around',
       alignItems: 'flex-start'
     }
