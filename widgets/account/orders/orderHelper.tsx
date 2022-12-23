@@ -26,32 +26,32 @@ const messages = defineMessages({
   orderStatusNew: {
     id: messageIds.data.orders.status.new,
     description: 'new order status',
-    defaultMessage: 'New default'
+    defaultMessage: 'New'
   },
   orderStatusCanceled: {
     id: messageIds.data.orders.status.canceled,
     description: 'canceled order status',
-    defaultMessage: 'Canceled default'
+    defaultMessage: 'Canceled'
   },
   orderStatusInProcess: {
     id: messageIds.data.orders.status.inProcess,
     description: 'in process order status',
-    defaultMessage: 'In process default'
+    defaultMessage: 'In process'
   },
   orderStatusShipped: {
     id: messageIds.data.orders.status.shipped,
     description: 'shipped order status',
-    defaultMessage: 'Shipped default'
+    defaultMessage: 'Shipped'
   },
   creditCard: {
     id: messageIds.data.payments.creditCard,
     description: 'Credit card payment string',
-    defaultMessage: 'Creditcard default'
+    defaultMessage: 'Creditcard'
   },
   purchaseOrder: {
     id: messageIds.data.payments.purchaseOrder,
     description: 'Purchase order payment string',
-    defaultMessage: 'Purchase order default'
+    defaultMessage: 'Purchase order'
   },
   freeShipping: {
     id: messageIds.data.shippingMethods.freeShipping,

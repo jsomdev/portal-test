@@ -40,14 +40,6 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({ id }) => {
     }
   );
 
-  useEffect(() => {
-    console.log(quote);
-  }, [quote]);
-
-  // const styles: QuoteDetailStyles = {
-  //   container: {}
-  // };
-
   if (quoteDataStatus === 'loading') {
     return <LoadingSpinner />;
   }

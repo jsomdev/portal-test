@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { Stack } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { getAudience, messageIds } from '@services/i18n';
 import {
@@ -17,6 +16,7 @@ import {
 } from '@services/portal-api/menuItems';
 import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
+import { QuoteRequestDetail } from '@widgets/account/quote-requests/quoteRequestDetail';
 import { QuoteRequestsOverview } from '@widgets/account/quote-requests/quoteRequestsOverview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
@@ -30,11 +30,17 @@ const messages = defineMessages({
     id: messageIds.pages.account.sections.quoteRequest.title,
     description: 'Quote request page title',
     defaultMessage: 'Quote Request'
+  },
+  viewAll: {
+    id: messageIds.pages.account.quoteRequests.viewAll,
+    description: 'View all quote requests link text',
+    defaultMessage: 'View all quote requests'
   }
 });
 
 interface QuoteRequestsParsedUrlQuery extends ParsedUrlQuery {
   id: string | undefined;
+  confirmation: string | undefined;
 }
 
 const QuoteRequests: NextPage<
@@ -58,10 +64,21 @@ const QuoteRequests: NextPage<
       siteMenuItems={siteMenuItems}
       pageTitle={router.isReady ? title : ''}
       localePaths={localePaths}
+      breadCrumbItem={
+        query.id
+          ? {
+              link: pagePaths.quoteRequests()?.toString(),
+              text: formatMessage(messages.viewAll)
+            }
+          : undefined
+      }
     >
       {router.isReady ? (
         query.id ? (
-          <Stack>{query.id}</Stack>
+          <QuoteRequestDetail
+            id={query.id}
+            showConfirmation={!!query.confirmation}
+          />
         ) : (
           <QuoteRequestsOverview />
         )

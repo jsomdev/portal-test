@@ -27,7 +27,7 @@ export async function fetchMyQuoteRequest(
       selectQuery:
         'id,name,number,contactInfo,submittedOn,emailAddresses,comment,address',
       expandQuery:
-        'lines($select=productId,productName,quantity,productNumber;$expand=product($select=id;$expand=image($select=url)))'
+        'lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,slug;$expand=image($select=url)))'
     }
   );
   return data;

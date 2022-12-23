@@ -30,27 +30,27 @@ const messages = defineMessages({
   dateHeader: {
     id: messageIds.pages.account.orders.orderDateHeader,
     description: 'order card date header',
-    defaultMessage: 'Ordered on default'
+    defaultMessage: 'Ordered on'
   },
   statusHeader: {
     id: messageIds.pages.account.orders.statusHeader,
     description: 'order card status header',
-    defaultMessage: 'Status default'
+    defaultMessage: 'Status'
   },
   priceHeader: {
     id: messageIds.pages.account.orders.totalHeader,
-    defaultMessage: 'Price default',
+    defaultMessage: 'Price',
     description: 'order card price header'
   },
   viewOrder: {
     id: messageIds.pages.account.orders.viewOrder,
     description: 'View order link text',
-    defaultMessage: 'View order default'
+    defaultMessage: 'View order'
   },
   numberHeader: {
     id: messageIds.pages.account.orders.numberHeader,
     description: 'order number header',
-    defaultMessage: 'Order number default'
+    defaultMessage: 'Order number'
   }
 });
 

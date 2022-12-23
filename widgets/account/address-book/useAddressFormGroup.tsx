@@ -37,16 +37,16 @@ interface AddressFormGroupProps {
 const messages = defineMessages({
   stateFieldPlaceholderUS: {
     id: messageIds.pages.checkout.details.fields.statePlaceholder.US,
-    defaultMessage: 'Please select a state default'
+    defaultMessage: 'Please select a state'
   },
   stateFieldPlaceholderCA: {
     id: messageIds.pages.checkout.details.fields.statePlaceholder.CA,
-    defaultMessage: 'Please select a province default'
+    defaultMessage: 'Please select a province'
   },
   stateFieldLabel: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .addressBook.formFields.region.label.default,
-    defaultMessage: 'State / Province default',
+    defaultMessage: 'State / Province',
     description: 'State / Province field label'
   },
   stateFieldLabelCa: {

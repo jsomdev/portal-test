@@ -33,22 +33,22 @@ const messages = defineMessages({
   dateHeader: {
     id: messageIds.pages.account.quotes.quoteDateHeader,
     description: 'order card date header',
-    defaultMessage: 'Quoted on default'
+    defaultMessage: 'Quoted on'
   },
   priceHeader: {
     id: messageIds.pages.account.quotes.totalHeader,
-    defaultMessage: 'Price default',
+    defaultMessage: 'Price',
     description: 'Quote card price header'
   },
   viewQuote: {
     id: messageIds.pages.account.quotes.viewQuote,
     description: 'View quote link text',
-    defaultMessage: 'View quote default'
+    defaultMessage: 'View quote'
   },
   numberHeader: {
     id: messageIds.pages.account.quotes.numberHeader,
     description: 'Quote number header',
-    defaultMessage: 'Quote number default'
+    defaultMessage: 'Quote number'
   }
 });
 

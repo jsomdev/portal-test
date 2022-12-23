@@ -404,7 +404,18 @@ export const nl: Messages = {
       },
       quoteRequests: {
         requestDateHeader: 'Aangevraagd op:',
-        viewQuoteRequest: 'Bekijk offerteaanvraag'
+        viewQuoteRequest: 'Bekijk offerteaanvraag',
+        linesHeader: 'Offerteaanvraag',
+        title: 'Offerteaanvrag',
+        viewAll: 'Bekijk alle offerteaanvragen',
+        viewAllLines:
+          '{number, plural,=0 {Geen aanvullende producten} one {Toon 1 product meer} other {Toon {number} meer producten}}',
+        confirmationText:
+          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.',
+        confirmationTitle: 'Bedankt! Uw oferteaanvraag is succesvol ingediend',
+        detailsHeader: 'Adres- en contact gegevens',
+        addressHeader: 'Klant details',
+        commentsHeader: 'Comments'
       },
       sections: {
         orders: {

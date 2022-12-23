@@ -28,18 +28,4 @@ export class UserFormatter {
     // Fallback to any of the properties in the accountInfo or the provided fallback
     return this.accountInfo?.name || this.accountInfo?.username || fallBack;
   }
-
-  public formatDisplayFirstName(fallBack: string = ''): string {
-    // If the user has a name in the claims, we want to return that first
-    if (this.accountInfo?.idTokenClaims?.given_name) {
-      return `${this.accountInfo.idTokenClaims.given_name}`;
-    }
-    // If the logged in user has a firstName in the User.ContactInfo we want to return that
-    if (this.user?.contactInfo?.firstName) {
-      return this.user.contactInfo.firstName;
-    }
-
-    // Fallback to any of the properties in the accountInfo or the provided fallback
-    return this.accountInfo?.name || this.accountInfo?.username || fallBack;
-  }
 }

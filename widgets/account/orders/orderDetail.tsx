@@ -37,43 +37,43 @@ const messages = defineMessages({
   dateHeader: {
     id: messageIds.pages.account.orders.orderDateHeader,
     description: 'order card date header',
-    defaultMessage: 'Ordered on default'
+    defaultMessage: 'Ordered on'
   },
   numberHeader: {
     id: messageIds.pages.account.orders.numberHeader,
     description: 'order number header',
-    defaultMessage: 'Order number default'
+    defaultMessage: 'Order number'
   },
   reorderAll: {
     id: messageIds.pages.account.orders.reorderAll,
     description: 'Reorder all products button',
-    defaultMessage: 'Reorder default'
+    defaultMessage: 'Reorder'
   },
   viewAllLines: {
     id: messageIds.pages.account.orders.viewAllLines,
     description: 'Button text to show all order lines',
-    defaultMessage: 'Show all default'
+    defaultMessage: 'Show all'
   },
 
   reorderSingle: {
     id: messageIds.pages.account.orders.reorderSingle,
     description: 'Reorder button text',
-    defaultMessage: 'Reorder default'
+    defaultMessage: 'Reorder'
   },
   statusHeader: {
     id: messageIds.pages.account.orders.statusHeader,
     description: 'order card status header',
-    defaultMessage: 'Status default'
+    defaultMessage: 'Status'
   },
   confirmationTitle: {
     id: messageIds.pages.account.orders.confirmationTitle,
     description: 'order card confirmation title',
-    defaultMessage: 'Order confirmation default'
+    defaultMessage: 'Order confirmation'
   },
   confirmationText: {
     id: messageIds.pages.account.orders.confirmationText,
     description: 'order card confirmation text',
-    defaultMessage: 'Your order has been placed default'
+    defaultMessage: 'Your order has been placed'
   }
 });
 
@@ -229,10 +229,9 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
   }
 
   return (
-    <Stack id="order-detail-container" tokens={{ childrenGap: spacing.m }}>
+    <Stack tokens={{ childrenGap: spacing.m }}>
       {showConfirmation && <OrderConfirmationCard />}
       <Stack
-        id="order-detail-header"
         horizontal
         tokens={{ childrenGap: spacing.l1 }}
         verticalAlign="center"
@@ -312,7 +311,7 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
           />
         )}
       </Stack>
-      <Stack id="order-detail-list-items" tokens={{ childrenGap: spacing.m }}>
+      <Stack tokens={{ childrenGap: spacing.m }}>
         {visibleOrderLines?.map(line => {
           return (
             <Stack
@@ -422,7 +421,7 @@ const OrderConfirmationCard: React.FC = () => {
   const styles: OrderConfirmationCardStyles = {
     messageBar: {
       root: {
-        marginBottom: rem(20),
+        marginBottom: rem(spacing.l1),
         padding: spacing.m
       }
     },

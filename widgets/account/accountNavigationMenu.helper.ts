@@ -12,37 +12,37 @@ const messages = defineMessages({
   overview: {
     id: messageIds.pages.account.overview.title,
     description: 'Link text for account overview',
-    defaultMessage: 'Account Overview default'
+    defaultMessage: 'Account Overview'
   },
   orders: {
     id: messageIds.pages.account.sections.orders.title,
     description: 'Link text for orders',
-    defaultMessage: 'Orders default'
+    defaultMessage: 'Orders'
   },
   quotes: {
     id: messageIds.pages.account.sections.quotes.title,
     description: 'Link text for quotes',
-    defaultMessage: 'Quotes default'
+    defaultMessage: 'Quotes'
   },
   quoteRequests: {
     id: messageIds.pages.account.sections.quoteRequests.title,
     description: 'Link text for quote requests',
-    defaultMessage: 'Quote Requests default'
+    defaultMessage: 'Quote Requests'
   },
   infoAndPreferences: {
     id: messageIds.pages.account.sections.infoAndPreferences.title,
     description: 'Link text for quote info and preferences',
-    defaultMessage: 'Info & Preferences default'
+    defaultMessage: 'Info & Preferences'
   },
   signOut: {
     id: messageIds.pages.account.signOut,
     description: 'Text for the sign out button',
-    defaultMessage: 'Sign out default'
+    defaultMessage: 'Sign out'
   },
   welcome: {
     id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
-    defaultMessage: 'Welcome default'
+    defaultMessage: 'Welcome'
   },
   profileInformation: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
@@ -76,7 +76,7 @@ const messages = defineMessages({
   accountPage: {
     id: messageIds.pages.account.overview.link,
     description: 'Link text for account page',
-    defaultMessage: 'My Account default'
+    defaultMessage: 'My Account'
   }
 });
 

@@ -26,17 +26,17 @@ const messages = defineMessages({
   jobHeader: {
     id: messageIds.pages.account.overview.profileInformation.jobHeader,
     description: 'Header text for job title',
-    defaultMessage: 'Job title default'
+    defaultMessage: 'Job title'
   },
   phoneHeader: {
     id: messageIds.pages.account.overview.profileInformation.phoneHeader,
     description: 'Header text for phone number',
-    defaultMessage: 'Phonenumber default'
+    defaultMessage: 'Phonenumber'
   },
   emailHeader: {
     id: messageIds.pages.account.overview.profileInformation.emailHeader,
     description: 'Header text for email',
-    defaultMessage: 'Email default'
+    defaultMessage: 'Email'
   }
 });
 

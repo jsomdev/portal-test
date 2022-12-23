@@ -14,7 +14,7 @@ const messages = defineMessages({
   menuReset: {
     id: messageIds.pages.account.overview.title,
     description: 'Back to user menu overview',
-    defaultMessage: 'Go to overview default'
+    defaultMessage: 'Go to overview'
   }
 });
 

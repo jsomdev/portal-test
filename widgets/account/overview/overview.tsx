@@ -39,7 +39,7 @@ const messages = defineMessages({
   welcome: {
     id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
-    defaultMessage: 'Welcome default'
+    defaultMessage: 'Welcome'
   },
   subTitle: {
     id: messageIds.pages.account.overview.subTitle,
@@ -49,27 +49,27 @@ const messages = defineMessages({
   recentOrders: {
     id: messageIds.pages.account.overview.orders.title,
     description: 'Recent orders title',
-    defaultMessage: 'Your recent orders default'
+    defaultMessage: 'Your recent orders'
   },
   viewAllRecentOrders: {
     id: messageIds.pages.account.overview.orders.viewAllText,
     description: 'View all previous orders link text',
-    defaultMessage: 'View all previous orders default'
+    defaultMessage: 'View all previous orders'
   },
   viewAllAddresses: {
     id: messageIds.pages.account.overview.addressBook.viewAllText,
     description: 'View all addresses link text',
-    defaultMessage: 'View all addresses default'
+    defaultMessage: 'View all addresses'
   },
   profileInformation: {
     id: messageIds.pages.account.overview.profileInformation.title,
     description: 'Profile sub section title',
-    defaultMessage: 'Profile information default'
+    defaultMessage: 'Profile information'
   },
   addressBookTitle: {
     id: messageIds.pages.account.overview.addressBook.title,
     description: 'Address book sub section title',
-    defaultMessage: 'Address book default'
+    defaultMessage: 'Address book'
   }
 });
 

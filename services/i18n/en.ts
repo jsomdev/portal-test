@@ -389,7 +389,18 @@ export const en: Messages = {
       },
       quoteRequests: {
         requestDateHeader: 'Requested on:',
-        viewQuoteRequest: 'View quote request'
+        viewQuoteRequest: 'View quote request',
+        linesHeader: 'Products',
+        title: 'Quote Requests',
+        viewAll: 'View all quote requests',
+        viewAllLines:
+          '{number, plural,=0 {No additional products} one {Show 1 more product} other {Show {number} more products}}',
+        confirmationText:
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+        confirmationTitle: 'Thank you! Your quote request has been submitted.',
+        detailsHeader: 'Contact and shipping information',
+        addressHeader: 'Customer details',
+        commentsHeader: 'Comments'
       },
       quotes: {
         numberHeader: 'Quote number:',

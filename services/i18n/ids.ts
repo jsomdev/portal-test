@@ -382,7 +382,16 @@ export const messageIds: Messages = {
       },
       quoteRequests: {
         requestDateHeader: 'pages.account.quoteRequests.requestDateHeader',
-        viewQuoteRequest: 'pages.account.quoteRequests.viewQuoteRequest'
+        viewQuoteRequest: 'pages.account.quoteRequests.viewQuoteRequest',
+        linesHeader: 'pages.account.quoteRequests.linesHeader',
+        title: 'pages.account.quoteRequests.title',
+        viewAll: 'pages.account.quoteRequests.viewAll',
+        viewAllLines: 'pages.account.quoteRequests.viewAllLines',
+        confirmationText: 'pages.account.quoteRequests.confirmationText',
+        confirmationTitle: 'pages.account.quoteRequests.confirmationTitle',
+        detailsHeader: 'pages.account.quoteRequests.detailsHeader',
+        addressHeader: 'pages.account.quoteRequests.addressHeader',
+        commentsHeader: 'pages.account.quoteRequests.commentsHeader'
       },
       quotes: {
         numberHeader: 'pages.account.quotes.numberHeader',

@@ -24,79 +24,79 @@ const messages = defineMessages({
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .profileInformation.title,
     description: 'Title for profile information subsection',
-    defaultMessage: 'Profile information default'
+    defaultMessage: 'Profile information'
   },
   profileInformationDescription: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .profileInformation.description,
     description: 'Description for profile information subsection',
-    defaultMessage: 'Profile information description default'
+    defaultMessage: 'Profile information description'
   },
   companyInformationTitle: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .companyInformation.title,
     description: 'Title for company information subsection',
-    defaultMessage: 'Company information default'
+    defaultMessage: 'Company information'
   },
   companyInformationDescription: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .companyInformation.description,
     description: 'Description for company information subsection',
-    defaultMessage: 'Company information description default'
+    defaultMessage: 'Company information description'
   },
   addressBookTitle: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .addressBook.title,
     description: 'Title for address book subsection',
-    defaultMessage: 'Address book default'
+    defaultMessage: 'Address book'
   },
   addressBookDescription: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .addressBook.description,
     description: 'Description for address book subsection',
-    defaultMessage: 'Address book description default'
+    defaultMessage: 'Address book description'
   },
   preferencesTitle: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .preferences.title,
     description: 'Title for preferences subsection',
-    defaultMessage: 'Preferences default'
+    defaultMessage: 'Preferences'
   },
   preferencesDescription: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .preferences.description,
     description: 'Description for preferences subsection',
-    defaultMessage: 'Preferences description default'
+    defaultMessage: 'Preferences description'
   },
   viewPersonalInfoLink: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .profileInformation.viewInfoLink,
     description: 'Link to view personal information',
-    defaultMessage: 'View personal info default'
+    defaultMessage: 'View personal info'
   },
   changePassword: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .profileInformation.changePasswordLink,
     description: 'Link to change password',
-    defaultMessage: 'Change password default'
+    defaultMessage: 'Change password'
   },
   addressBook: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .addressBook.viewAddressBookLink,
     description: 'Link to view address book',
-    defaultMessage: 'Address book default'
+    defaultMessage: 'Address book'
   },
   privacySettings: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .preferences.privacySettingsLink,
     description: 'Link to view privacy settings',
-    defaultMessage: 'Privacy settings default'
+    defaultMessage: 'Privacy settings'
   },
   measurementSettings: {
     id: messageIds.pages.account.sections.infoAndPreferences.sections
       .preferences.settingsLink,
     description: 'Link to view measurement settings',
-    defaultMessage: 'Measurements settings default'
+    defaultMessage: 'Measurements settings'
   }
 });
 

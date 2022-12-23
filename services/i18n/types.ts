@@ -274,6 +274,15 @@ type IAccountMessages = {
   quoteRequests: {
     requestDateHeader: string;
     viewQuoteRequest: string;
+    title: string;
+    linesHeader: string;
+    viewAll: string;
+    viewAllLines: string;
+    confirmationTitle: string;
+    confirmationText: string;
+    detailsHeader: string;
+    commentsHeader: string;
+    addressHeader: string;
   };
   quotes: {
     quoteDateHeader: string;

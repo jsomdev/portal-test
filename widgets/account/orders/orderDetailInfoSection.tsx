@@ -21,12 +21,12 @@ const messages = defineMessages({
   detailsHeader: {
     id: messageIds.pages.account.orders.detailsHeader,
     description: 'Detail & info header text',
-    defaultMessage: 'Address and payment information default'
+    defaultMessage: 'Address and payment information'
   },
   overviewHeader: {
     id: messageIds.pages.account.orders.overviewHeader,
     description: 'Overview header text',
-    defaultMessage: 'Overview default'
+    defaultMessage: 'Overview'
   },
   totalProducts: {
     id: messageIds.pages.account.orders.totalProducts,
@@ -51,32 +51,32 @@ const messages = defineMessages({
   commentsHeader: {
     id: messageIds.pages.account.orders.commentsHeader,
     description: 'order card comments header',
-    defaultMessage: 'Comments default'
+    defaultMessage: 'Comments'
   },
   paymentMethodHeader: {
     id: messageIds.pages.account.orders.paymentMethodHeader,
     description: 'Payment method header text',
-    defaultMessage: 'Payment method default'
+    defaultMessage: 'Payment method'
   },
   shippingMethodHeader: {
     id: messageIds.pages.account.orders.shippingMethodHeader,
     description: 'Shipping method header text',
-    defaultMessage: 'Shipping method default'
+    defaultMessage: 'Shipping method'
   },
   deliveryAddress: {
     id: messageIds.pages.account.orders.shippingAddressHeader,
     description: 'Header for shipping address',
-    defaultMessage: 'Shipping address default'
+    defaultMessage: 'Shipping address'
   },
   billingAddress: {
     id: messageIds.pages.account.orders.billingAddressHeader,
     description: 'Header for billing address',
-    defaultMessage: 'Billing address default'
+    defaultMessage: 'Billing address'
   },
   reorderAll: {
     id: messageIds.pages.account.orders.reorderAll,
     description: 'Reorder all products button',
-    defaultMessage: 'Reorder default'
+    defaultMessage: 'Reorder'
   }
 });
 
@@ -142,35 +142,24 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
   };
 
   return (
-    <Stack id="order-detail-section" tokens={{ childrenGap: spacing.l2 }}>
-      <Stack
-        className="order-detail-section-title"
-        tokens={{ padding: `${spacing.l1} 0 0` }}
-      >
+    <Stack tokens={{ childrenGap: spacing.l2 }}>
+      <Stack tokens={{ padding: `${spacing.l1} 0 0` }}>
         <Text styles={styles.sectionTitle} as="h2">
           {formatMessage(messages.detailsHeader)}
         </Text>
       </Stack>
-      <Stack
-        className="order-detail-section-content"
-        horizontal
-        wrap
-        tokens={{ childrenGap: spacing.l2 }}
-      >
+      <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
         {/* Shipping Address */}
         <Stack
           styles={styles.subSectionContainer}
           tokens={{ childrenGap: spacing.m }}
         >
-          <Stack className="order-detail-sub-section-title">
+          <Stack>
             <Text styles={styles.subSectionTitle}>
               {formatMessage(messages.deliveryAddress)}
             </Text>
           </Stack>
-          <Stack
-            className="order-detail-sub-section-content"
-            tokens={{ childrenGap: spacing.m }}
-          >
+          <Stack tokens={{ childrenGap: spacing.m }}>
             {order.shippingContactInfo && (
               <Text>{`${order.shippingContactInfo?.firstName} ${order.shippingContactInfo?.lastName}`}</Text>
             )}
@@ -191,15 +180,12 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
           styles={styles.subSectionContainer}
           tokens={{ childrenGap: spacing.m }}
         >
-          <Stack className="order-detail-sub-section-title">
+          <Stack>
             <Text styles={styles.subSectionTitle}>
               {formatMessage(messages.billingAddress)}
             </Text>
           </Stack>
-          <Stack
-            className="order-detail-sub-section-content"
-            tokens={{ childrenGap: spacing.m }}
-          >
+          <Stack tokens={{ childrenGap: spacing.m }}>
             {order.billingContactInfo && (
               <Text>{`${order.billingContactInfo?.firstName} ${order.billingContactInfo?.lastName}`}</Text>
             )}
@@ -221,12 +207,12 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
             styles={styles.subSectionContainer}
             tokens={{ childrenGap: spacing.m }}
           >
-            <Stack className="order-detail-sub-section-title">
+            <Stack>
               <Text styles={styles.subSectionTitle}>
                 {formatMessage(messages.shippingMethodHeader)}
               </Text>
             </Stack>
-            <Stack className="order-detail-sub-section-content">
+            <Stack>
               <Text>{order.shippingMethod}</Text>
             </Stack>
           </Stack>
@@ -237,22 +223,19 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
             styles={styles.subSectionContainer}
             tokens={{ childrenGap: spacing.m }}
           >
-            <Stack className="order-detail-sub-section-title">
+            <Stack>
               <Text styles={styles.subSectionTitle}>
                 {formatMessage(messages.paymentMethodHeader)}
               </Text>
             </Stack>
             {order.paymentMethodType === PaymentMethod.CREDIT_CARD && (
-              <Stack
-                className="order-detail-sub-section-content"
-                tokens={{ childrenGap: spacing.s1 }}
-              >
+              <Stack tokens={{ childrenGap: spacing.s1 }}>
                 <Text>{`${order.transactionIssuer} ${order.paymentMethodReadable}`}</Text>
                 <Text>{order.creditCardNumber}</Text>
               </Stack>
             )}
             {order.paymentMethodType === PaymentMethod.PURCHASE_ORDER && (
-              <Stack className="order-detail-sub-section-content">
+              <Stack>
                 <Text>{order.paymentMethodReadable}</Text>
               </Stack>
             )}
@@ -264,12 +247,12 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
             styles={styles.subSectionContainer}
             tokens={{ childrenGap: spacing.m }}
           >
-            <Stack className="order-detail-sub-section-title">
+            <Stack>
               <Text styles={styles.subSectionTitle}>
                 {formatMessage(messages.commentsHeader)}
               </Text>
             </Stack>
-            <Stack className="order-detail-sub-section-content">
+            <Stack>
               <Text>{order.comment}</Text>
             </Stack>
           </Stack>
@@ -279,15 +262,12 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
           styles={styles.subSectionContainer}
           tokens={{ childrenGap: spacing.m }}
         >
-          <Stack className="order-detail-sub-section-title">
+          <Stack>
             <Text styles={styles.subSectionTitle}>
               {formatMessage(messages.overviewHeader)}
             </Text>
           </Stack>
-          <Stack
-            className="order-detail-sub-section-content"
-            tokens={{ childrenGap: spacing.m }}
-          >
+          <Stack tokens={{ childrenGap: spacing.m }}>
             <Stack tokens={{ childrenGap: spacing.s1 }}>
               {order.subTotal && (
                 <Stack horizontal horizontalAlign="space-between">

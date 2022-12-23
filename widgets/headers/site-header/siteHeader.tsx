@@ -52,7 +52,7 @@ const messages = defineMessages({
   welcome: {
     id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
-    defaultMessage: 'Welcome default'
+    defaultMessage: 'Welcome'
   },
   mainMenuViewAllCategories: {
     id: messageIds.navigation.main.viewAllCategories,
@@ -67,7 +67,7 @@ const messages = defineMessages({
   closeMenu: {
     id: messageIds.navigation.main.title,
     description: 'Button text for app navigation header',
-    defaultMessage: 'Menu default'
+    defaultMessage: 'Menu'
   }
 });
 

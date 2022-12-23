@@ -25,7 +25,7 @@ const messages = defineMessages({
   pageTitle: {
     id: messageIds.pages.account.overview.title,
     description: 'Account page title',
-    defaultMessage: 'Account Overview default'
+    defaultMessage: 'Account Overview'
   }
 });
 

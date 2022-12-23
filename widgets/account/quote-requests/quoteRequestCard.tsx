@@ -28,12 +28,12 @@ const messages = defineMessages({
   dateHeader: {
     id: messageIds.pages.account.quoteRequests.requestDateHeader,
     description: 'Quote request card date header',
-    defaultMessage: 'Quote requested on default'
+    defaultMessage: 'Quote requested on'
   },
   viewQuoteRequest: {
     id: messageIds.pages.account.quoteRequests.viewQuoteRequest,
     description: 'View quote request link text',
-    defaultMessage: 'View quote request default'
+    defaultMessage: 'View quote request'
   }
 });
 
