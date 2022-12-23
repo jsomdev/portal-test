@@ -349,13 +349,17 @@ export async function getDesignsForDetailedCompare(
     const productsResource: ProductsResource = new ProductsResource();
 
     const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `number in (${numbers.join(', ')})`,
-      selectQuery: 'id,name,description,number',
-      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`
+      filterQuery: `${numbers
+        // The + signs in the product number do not get encoded for some strange reason.
+        .map(number => `number eq '${encodeURIComponent(number)}'`)
+        .join(' or ')}`,
+      selectQuery: 'id,name,description,number,slug',
+      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions($orderby=typeCode),sortIndex,value,displays,settings;$orderby=sortIndex asc)`
     };
 
     const products: OdataCollection<Product> =
       await productsResource.getEntities(queryOptions);
+
     return products;
   } catch (e) {
     throw new Error('Could not get the product previews');

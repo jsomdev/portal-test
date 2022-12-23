@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 
+import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { Url } from 'url';
 
@@ -8,11 +9,17 @@ import { OdataCollection } from '@services/portal-api/o-data';
 import { getDesignsForDetailedCompare } from '@services/portal-api/products';
 import { QUERYKEYS } from '@services/react-query/constants';
 import pagePaths from '@utilities/pagePaths';
+import {
+  useDesktop,
+  useTablet,
+  useTabletAndDesktop
+} from '@widgets/media-queries';
 
 import { ProductCompareContext } from './productCompareContext';
 
 export const ProductCompareProvider: FC = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const router = useRouter();
   const [productDetailsNumbers, setProductDetailsNumbers] = useState<string[]>(
     []
   );
@@ -21,6 +28,10 @@ export const ProductCompareProvider: FC = ({ children }) => {
     string | undefined
   >(undefined);
   const [showPrivateValues, setShowPrivateValues] = useState(false);
+  const isTablet = useTablet();
+  const isDesktop = useDesktop();
+  const visibleProducts: number = isDesktop ? 3 : isTablet ? 2 : 1;
+  const [visibleIndex, setVisibleIndex] = useState<number>(0);
 
   const addProduct = (product: Product) => {
     if (!products.find(x => x.number === product.number)) {
@@ -62,6 +73,7 @@ export const ProductCompareProvider: FC = ({ children }) => {
       enabled: !!productDetailsNumbers.length,
       onSuccess: (data: OdataCollection<Product>) => {
         setProducts(data.value);
+        setBaseProductNumber(data.value[0]?.number || undefined);
       },
       keepPreviousData: true
     }
@@ -72,7 +84,7 @@ export const ProductCompareProvider: FC = ({ children }) => {
       pathname: pagePaths.compare,
       query: {
         // TODO use slugs when developing the product compare page
-        products: products.map(x => x.number || '')
+        products: products.map(x => x.number || '').join(',')
       }
     };
   };
@@ -86,6 +98,9 @@ export const ProductCompareProvider: FC = ({ children }) => {
         productsDetailsStatus,
         addProduct,
         removeProduct,
+        visibleIndex,
+        visibleProducts,
+        setVisibleIndex,
         clearProducts,
         getUrl,
         baseProductNumber,

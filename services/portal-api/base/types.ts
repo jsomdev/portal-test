@@ -89,6 +89,8 @@ export interface SettingKeys {
 }
 
 export interface AttributeTypeCodes {
+  atomizingAirFlowRate: string;
+  fanAirFlowRate: string;
   airFlowRate: string;
   specificGravity: string;
   relativeDropSizeRange: string;

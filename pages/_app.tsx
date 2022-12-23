@@ -18,6 +18,7 @@ import { msalInstance } from '@services/authentication/authenticationConfigurati
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
+import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
 import { ProductCompareProvider } from '@widgets/compare/productCompareProvider';
 import { MediaContextProvider } from '@widgets/media-queries/media';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';

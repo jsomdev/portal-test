@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import { Url } from 'url';
 
@@ -7,6 +7,9 @@ import { ReactQueryStatus } from '@services/react-query/types';
 
 type ProductCompareContextProps = {
   products: Product[];
+  visibleProducts: number;
+  visibleIndex: number;
+  setVisibleIndex: (index: number) => void;
   productsDetailsStatus: ReactQueryStatus;
   setBaseProduct: (productNumber: string | undefined) => void;
   baseProductNumber: string | undefined;
@@ -42,6 +45,11 @@ const initialContextProps: ProductCompareContextProps = {
   showIdenticalValues: false,
   showPrivateValues: false,
   baseProductNumber: undefined,
+  setVisibleIndex: () => {
+    throw new Error('Not implemented');
+  },
+  visibleIndex: 0,
+  visibleProducts: 1,
   loadDetails: () => {
     throw new Error('Not implemented');
   },
@@ -61,3 +69,6 @@ const initialContextProps: ProductCompareContextProps = {
 
 export const ProductCompareContext =
   createContext<ProductCompareContextProps>(initialContextProps);
+
+export const useProductCompare = (): ProductCompareContextProps =>
+  useContext(ProductCompareContext);

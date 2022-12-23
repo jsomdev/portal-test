@@ -57,7 +57,6 @@ const Orders: NextPage<
   const localePaths = getLocalePaths(
     pagePaths.quoteRequests(query.id).toString()
   );
-  console.log(query);
 
   return (
     <AccountPage

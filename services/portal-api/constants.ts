@@ -85,6 +85,8 @@ export const SETTINGKEYS: SettingKeys = {
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   relativeDropSizeRange: 'RelativeDropSizeRange',
+  atomizingAirFlowRate: 'AtomizingAirFlowRate',
+  fanAirFlowRate: 'FanAirFlowRate',
   airFlowRate: 'AirFlowRate',
   liquidPressure: 'LiquidPressure',
   maximumTransverseSprayCoverageWidthHorizontalSpray:

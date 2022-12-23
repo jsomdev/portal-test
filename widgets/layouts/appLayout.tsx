@@ -1,6 +1,7 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 
 import { MenuItem } from '@services/portal-api';
+import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { usePageContext } from '@widgets/page/pageContext';
@@ -28,7 +29,11 @@ export const AppLayout: React.FC = ({ children }) => {
         <div id="breadcrumb-portal"></div>
         <AppOverlay />
       </header>
-      <main>{children}</main>
+      <main>
+        {children}
+
+        <ComparisonPopup />
+      </main>
       <footer></footer>
     </React.Fragment>
   );

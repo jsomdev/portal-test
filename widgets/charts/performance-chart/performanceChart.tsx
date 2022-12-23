@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   CartesianGrid,
   Line,
@@ -15,6 +15,7 @@ import {
 import { MessageBar, MessageBarType, Stack, useTheme } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
+import { messageIds } from '@services/i18n';
 import { filterProductPerformanceChartAttributes } from '@widgets/product-page/product-performance/productPerformanceHelper';
 
 import {
@@ -27,9 +28,14 @@ import { getChartConfiguration } from '../general/configuration';
 import { mapAttributesToChartData } from '../general/mapper';
 import { formatTooltip } from './performanceChartHelper';
 
-const messages = {
-  noData: 'No chart data available.'
-};
+const messages = defineMessages({
+  noData: {
+    id: messageIds.pages.product.sections.performance.noData,
+    defaultMessage: 'No chart data available.',
+    description: 'Text to display when no data is available'
+  }
+});
+
 /**
  * A component that builds a chart configuration based on a list of attributes, systemOfMeasurement and an attributeTypeId.
  * To build the configuration we assume that all the attributes and conditions share the same ID.
@@ -47,7 +53,7 @@ export const PerformanceChart: React.FC<ChartProps> = ({
   const { palette, spacing } = useTheme();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
   const intl = useIntl();
-  const { locale } = intl;
+  const { locale, formatMessage } = intl;
   const configuration = useMemo((): ChartConfiguration | null => {
     const filteredAttributes = filterProductPerformanceChartAttributes(
       attributeTypeCode,
@@ -113,7 +119,7 @@ export const PerformanceChart: React.FC<ChartProps> = ({
           messageBarType={MessageBarType.info}
           styles={styles.messageBar}
         >
-          {messages.noData}
+          {formatMessage(messages.noData)}
         </MessageBar>
       </Stack.Item>
     );

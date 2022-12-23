@@ -125,10 +125,28 @@ export const en: Messages = {
       }
     }
   },
+  comparisonPopup: {
+    title: 'Compare products',
+    clearAll: 'Clear all',
+    compare: 'Compare'
+  },
   pages: {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },
+    compare: {
+      currentBaseline: 'Current baseline product',
+      differencesView: 'Show only differences',
+      generalTitle: 'General',
+      internalView: 'Show all attributes',
+      loading: 'Loading product comparison...',
+      noResults:
+        'There are no products to compare. On the finder or product page, you can add products to the comparison.',
+      publicView: 'Show public attributes',
+      setBaseline: 'Set as baseline product',
+      title: 'Product Comparison'
+    },
+
     search: {
       title: `Search results for: '{searchQuery}'`,
       headDescription: 'Experts in Spray Technology',
@@ -200,6 +218,7 @@ export const en: Messages = {
           otherTitle: 'Other'
         },
         performance: {
+          noData: 'No chart data available.',
           title: 'Product Performance',
           multiChart: {
             seriesLabel: 'for {value} ({type})'

@@ -33,6 +33,11 @@ export const messageIds: Messages = {
       title: 'navigation.locale.title'
     }
   },
+  comparisonPopup: {
+    title: 'comparisonPopup.title',
+    clearAll: 'comparisonPopup.clearAll',
+    compare: 'comparisonPopup.compare'
+  },
   searchBar: {
     noResults: 'searchBar.noResults',
     recentSearches: 'searchBar.recentSearches',
@@ -131,6 +136,17 @@ export const messageIds: Messages = {
     }
   },
   pages: {
+    compare: {
+      generalTitle: 'pages.compare.generalTitle',
+      title: 'pages.compare.title',
+      loading: 'pages.compare.loading',
+      noResults: 'pages.compare.noResults',
+      currentBaseline: 'pages.compare.currentBaseline',
+      setBaseline: 'pages.compare.setBaseline',
+      differencesView: 'pages.compare.differencesView',
+      internalView: 'pages.compare.internalView',
+      publicView: 'pages.compare.publicView'
+    },
     default: {
       headTitle: 'pages.default.headTitle'
     },
@@ -203,6 +219,7 @@ export const messageIds: Messages = {
         },
         performance: {
           title: 'pages.product.sections.performance.title',
+          noData: 'pages.product.sections.performance.noData',
           multiChart: {
             seriesLabel:
               'pages.product.sections.performance.multiChart.seriesLabel'

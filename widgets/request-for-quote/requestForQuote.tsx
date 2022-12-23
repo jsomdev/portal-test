@@ -62,6 +62,7 @@ const messages = defineMessages({
     defaultMessage: 'Loading cart...'
   },
   loadingCartFailed: {
+    // TODO: fix description
     id: messageIds.pages.cart.list.cartError,
     description: 'Spinner text while redirecting you to the new quote request',
     defaultMessage: 'Your request has been created. Redirecting...'

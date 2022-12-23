@@ -129,9 +129,11 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
       <TabletAndDesktop>
         {products.length > 1 && checked && (
           <NextLink href={getUrl()} passHref>
-            <Text styles={styles.seeComparison}>
-              {formatMessage(messages.seeComparison)}
-            </Text>
+            <a>
+              <Text styles={styles.seeComparison}>
+                {formatMessage(messages.seeComparison)}
+              </Text>
+            </a>
           </NextLink>
         )}
       </TabletAndDesktop>

@@ -33,6 +33,11 @@ export const nl: Messages = {
       title: 'Geselecteerd land/regio'
     }
   },
+  comparisonPopup: {
+    clearAll: 'Wis alle',
+    compare: 'Vergelijk',
+    title: 'Vergelijk producten'
+  },
   searchBar: {
     noResults: 'Er werden geen resultaten gevonden...',
     recentSearches: 'Recente zoekopdrachten',
@@ -162,6 +167,19 @@ export const nl: Messages = {
     default: {
       headTitle: '{title} | Spraying Systems Co.'
     },
+    compare: {
+      currentBaseline: 'Referentieproduct',
+      differencesView: 'Toon enkel verschillen',
+      generalTitle: 'Algemeen',
+      internalView: 'Toon alle specificaties',
+      loading: 'Productvergelijking aan het laden...',
+      noResults:
+        'Er zijn geen producten om te vergelijken. Ga naar een categorie, product of zoekpagina om producten te vergelijken.',
+      publicView: 'Toon publieke specificaties',
+      setBaseline: 'Zet als referentieproduct',
+      title: 'Productvergelijking'
+    },
+
     search: {
       title: `Search results for: '{searchQuery}'`,
       headDescription: 'Experts in Spray Technology',
@@ -205,6 +223,7 @@ export const nl: Messages = {
         },
         performance: {
           title: 'Performantie',
+          noData: 'Geen data beschikbaar.',
           multiChart: {
             seriesLabel: 'voor {value} ({type})'
           }

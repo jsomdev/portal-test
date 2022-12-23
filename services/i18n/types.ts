@@ -718,6 +718,18 @@ type ICheckoutMessages = {
 type ISearchMessages = INextHeadMessages & {
   title: string;
 };
+
+type ICompareMessages = {
+  differencesView: string;
+  publicView: string;
+  internalView: string;
+  setBaseline: string;
+  currentBaseline: string;
+  noResults: string;
+  loading: string;
+  generalTitle: string;
+  title: string;
+};
 type IProductMessages = {
   imageDisclaimer: string;
   sections: {
@@ -747,6 +759,7 @@ type IProductMessages = {
       title: string;
     };
     performance: {
+      noData: any;
       title: string;
       multiChart: {
         seriesLabel: string;
@@ -792,6 +805,11 @@ export type Messages = {
       bookmark: string;
     };
   };
+  comparisonPopup: {
+    compare: string;
+    clearAll: string;
+    title: string;
+  };
   steps: IStepsMessages;
   finder: IFinderMessages;
   data: IDataMessages;
@@ -808,6 +826,7 @@ export type Messages = {
   };
   pricing: IPricingMessages;
   pages: {
+    compare: ICompareMessages;
     product: IProductMessages;
     search: ISearchMessages;
     default: {

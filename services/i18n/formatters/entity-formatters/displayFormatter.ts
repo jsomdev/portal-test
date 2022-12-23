@@ -28,7 +28,8 @@ export function getDisplayValueType(value: unknown): DisplayValueType {
     return DisplayValueType.Boolean;
   }
   const isRange: boolean = !!(
-    (value as Range).minimum || (value as Range).maximum
+    (value as Range).minimum !== undefined ||
+    (value as Range).maximum !== undefined
   );
   if (isRange) {
     return DisplayValueType.Range;
@@ -165,6 +166,9 @@ export class DisplayFormatter {
     value: string,
     unitSymbol: string | null | undefined
   ): string {
+    if (typeof value !== 'string') {
+      return '-';
+    }
     const formattedValue: string = this.formatNumericValues(value);
 
     if (isNaN(Number(formattedValue))) {
@@ -176,6 +180,7 @@ export class DisplayFormatter {
 
   private formatNumericValues(value: string): string {
     // Characters between {} are considered numeric (by data design)
+
     const regexp: RegExp = new RegExp('{([^}]+)}', 'g');
     const matches = value.match(regexp);
     if (matches === null) {

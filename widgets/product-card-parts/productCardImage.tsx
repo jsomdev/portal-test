@@ -12,26 +12,41 @@ import { ProductCardViewModel } from '@widgets/product-card-parts/productCardVie
 
 type ProductCardImageProps = Pick<ProductCardViewModel, 'url' | 'imageUrl'> & {
   fallbackImageUrl?: ImageProps['src'];
+  size?: ProductCardImageSize;
 };
 
 type ProductCardImageStyles = {
   root: IStackStyles;
 };
 
+type ProductCardImageSize = 'small' | 'default';
+
+function getWidth(size: ProductCardImageSize): number {
+  switch (size) {
+    case 'small':
+      return 60;
+      break;
+    default:
+      return 160;
+      break;
+  }
+}
+
 const ProductCardImage: React.FC<ProductCardImageProps> = ({
   url,
   imageUrl,
+  size = 'default',
   fallbackImageUrl
 }) => {
   const styles: ProductCardImageStyles = {
     root: {
       root: {
         position: 'relative',
-        width: 120,
-        height: 120,
+        width: getWidth(size) * 0.75,
+        height: getWidth(size) * 0.75,
         ...mediaQueryFrom('tablet', {
-          width: 160,
-          height: 160
+          width: getWidth(size),
+          height: getWidth(size)
         })
       }
     }
@@ -45,8 +60,8 @@ const ProductCardImage: React.FC<ProductCardImageProps> = ({
               imageUrl || fallbackImageUrl || STATIC_IMAGES.app.noImageAvailable
             }
             alt={''}
-            width={160}
-            height={160}
+            width={getWidth(size)}
+            height={getWidth(size)}
             layout="intrinsic"
             objectFit="contain"
             objectPosition="center"

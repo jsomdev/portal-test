@@ -1,6 +1,6 @@
 import React, { CSSProperties, useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   CartesianGrid,
   Legend,
@@ -21,6 +21,7 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useSystemOfMeasurement } from '@providers/system-of-measurement/systemOfMeasurementContext';
+import { messageIds } from '@services/i18n';
 import { filterProductPerformanceChartAttributes } from '@widgets/product-page/product-performance/productPerformanceHelper';
 
 import {
@@ -31,9 +32,13 @@ import {
 import { getChartConfiguration } from '../general/configuration';
 import { mapFlowRateAttributesWithMultipleConditionsToChartDataList as mapAttributesWithMultipleConditionsToChartDataSeries } from '../general/mapper';
 
-const messages = {
-  noData: 'No chart data available.'
-};
+const messages = defineMessages({
+  noData: {
+    id: messageIds.pages.product.sections.performance.noData,
+    defaultMessage: 'No chart data available.',
+    description: 'Text to display when no data is available'
+  }
+});
 
 interface MultiConditionsPerformanceChartStyles {
   messageBar: IMessageBarStyles;
@@ -50,7 +55,7 @@ export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
   const { palette } = useTheme();
   const { systemOfMeasurement } = useSystemOfMeasurement();
   const intl = useIntl();
-  const { locale } = intl;
+  const { locale, formatMessage } = intl;
 
   const configuration = useMemo((): ChartConfiguration | null => {
     const filteredAttributes = filterProductPerformanceChartAttributes(
@@ -120,7 +125,7 @@ export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
           messageBarType={MessageBarType.info}
           styles={styles.messageBar}
         >
-          {messages.noData}
+          {formatMessage(messages.noData)}
         </MessageBar>
       </Stack.Item>
     );
