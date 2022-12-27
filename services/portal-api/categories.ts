@@ -2,12 +2,12 @@ import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
 
+import { FlaggedEnum } from './flaggedEnum';
+import { Audience } from './models/AudienceFlags';
 import { Category } from './models/Category';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { CategoriesResource } from './resources/CategoriesResource';
-import { FlaggedEnum } from './flaggedEnum';
-import { Audience } from './models/AudienceFlags';
 
 const CATEGORIES_CACHE_PATH = path.resolve('./data-cache/categories.json');
 const categoriesDataCacheManager: DataCacheManager<Category[]> =
@@ -22,9 +22,9 @@ export async function fetchCategoriesForHomePage(
 ): Promise<OdataCollection<Category>> {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,settings,seoPath,audience',
+    selectQuery: 'id,name,description,settings,slug,audience',
     expandQuery:
-      'image($select=url),children($select=id,name,settings,seoPath;$expand=image($select=url);$orderby=sortIndex asc)',
+      'image($select=url,caption),children($select=id,name,settings,slug;$expand=image($select=url,caption);$orderby=sortIndex asc)',
     filterQuery: `parentId eq null and audience has SSCo.DigitalHighway.Portal.Data.Enumerations.Audience'${FlaggedEnum.toString(
       Audience,
       audience
@@ -70,9 +70,9 @@ export async function fetchAllCategories(): Promise<Category[]> {
   }
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,slug,settings,image`,
+    selectQuery: `id,number,name,description,slug,settings,image,parentId`,
     expandQuery:
-      'parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
+      'image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
   };
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions

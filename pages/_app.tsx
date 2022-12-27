@@ -1,6 +1,3 @@
-import '@styles/globals.css';
-import '../public/nprogress.css';
-
 import { useEffect, useMemo } from 'react';
 
 import { flatten } from 'flat';
@@ -10,16 +7,30 @@ import nProgress from 'nprogress';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
 import { MsalProvider } from '@azure/msal-react';
+import { initializeIcons } from '@fluentui/react';
+import { AddressBookProvider } from '@providers/address-book/addressBookProvider';
+import { CartProvider } from '@providers/cart/cartProvider';
+import { ProductBookmarksProvider } from '@providers/product-bookmarks/productBookmarksProvider';
+import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewedProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
 import { msalInstance } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
+import '@styles/globals.css';
+import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
+import { ProductCompareProvider } from '@widgets/compare/productCompareProvider';
+import { MediaContextProvider } from '@widgets/media-queries/media';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
+
+import '../public/nprogress.css';
+
+// InitializeIcons
+initializeIcons();
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
-  const { locale, defaultLocale = 'en' } = router;
+  const { locale, defaultLocale = 'en-US' } = router;
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
     return flatten(getMessages(locale));
   }, [locale]);
@@ -50,15 +61,27 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         defaultLocale={defaultLocale}
         messages={i18nMessages}
       >
-        <AppThemeProvider>
-          <ReactQueryClientProvider>
-            <UserProvider>
-              <SystemOfMeasurementProvider>
-                <Component {...pageProps} />
-              </SystemOfMeasurementProvider>
-            </UserProvider>
-          </ReactQueryClientProvider>
-        </AppThemeProvider>
+        <MediaContextProvider>
+          <AppThemeProvider>
+            <ReactQueryClientProvider>
+              <AddressBookProvider>
+                <UserProvider>
+                  <CartProvider>
+                    <SystemOfMeasurementProvider>
+                      <ProductCompareProvider>
+                        <RecentlyViewedProvider>
+                          <ProductBookmarksProvider>
+                            <Component {...pageProps} />
+                          </ProductBookmarksProvider>
+                        </RecentlyViewedProvider>
+                      </ProductCompareProvider>
+                    </SystemOfMeasurementProvider>
+                  </CartProvider>
+                </UserProvider>
+              </AddressBookProvider>
+            </ReactQueryClientProvider>
+          </AppThemeProvider>
+        </MediaContextProvider>
       </IntlProvider>
     </MsalProvider>
   );

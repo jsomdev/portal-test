@@ -10,6 +10,5 @@ export const FormikChoiceGroup: React.FC<
   }
 > = ({ name, ...props }) => {
   const [input] = useField(name);
-
   return <ChoiceGroup {...input} {...props} name={name} />;
 };

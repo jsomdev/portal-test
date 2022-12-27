@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   IPanelStyles,
+  ISearchBoxStyles,
   IStackStyles,
   Panel,
-  PanelType,
   SearchBox,
   Stack,
   Text,
@@ -12,9 +14,8 @@ import {
 } from '@fluentui/react';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
-import { rem } from '@utilities/rem';
-import { defineMessages, useIntl } from 'react-intl';
 import { messageIds } from '@services/i18n';
+import { rem } from '@utilities/rem';
 
 export interface CheckboxFacetPanelProps {
   isPanelOpen: boolean;
@@ -27,9 +28,14 @@ export interface CheckboxFacetPanelProps {
 export interface CheckboxFacetPanelStyles {
   panel: Partial<IPanelStyles>;
   panelHeader: IStackStyles;
+  searchBox: ISearchBoxStyles;
 }
 
 const messages = defineMessages({
+  ariaClose: {
+    id: messageIds.finder.panel.mobile.ariaClose,
+    defaultMessage: 'Close'
+  },
   inputPlaceholder: {
     id: messageIds.finder.checkboxFacet.panel.placeholder,
     defaultMessage: 'Search',
@@ -46,32 +52,45 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
 }) => {
   const [panelSearchValue, setPanelSearchValue] = useState<string>('');
   const { formatMessage } = useIntl();
-  const { spacing } = useTheme();
+  const { spacing, palette, fonts } = useTheme();
 
   const styles: CheckboxFacetPanelStyles = {
+    searchBox: {
+      root: {
+        width: '100%'
+      },
+      field: {
+        fontSize: fonts.mediumPlus.fontSize
+      }
+    },
     panel: {
       commands: {
+        background: palette.white,
         zIndex: 1
       },
+      contentInner: {
+        background: palette.white
+      },
       scrollableContent: {
-        marginRight: rem(spacing.s1),
-        padding: `0 ${rem(spacing.l1)}`
+        marginRight: spacing.s1,
+        padding: `0 ${spacing.l1}`
       },
       content: {
         padding: 0
       },
       main: {
-        paddingBottom: rem(spacing.l1),
+        background: palette.white,
+        paddingBottom: spacing.l1,
         maxWidth: rem('425px')
       }
     },
 
     panelHeader: {
       root: {
-        paddingBottom: rem(spacing.l1),
-
+        paddingBottom: spacing.l1,
+        background: palette.white,
         width: '100%',
-        paddingLeft: rem(spacing.l1)
+        paddingLeft: spacing.l1
       }
     }
   };
@@ -89,6 +108,7 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
       <Stack tokens={{ childrenGap: spacing.m }} styles={styles.panelHeader}>
         <Text variant="large">{facet.configuration.displayName}</Text>
         <SearchBox
+          styles={styles.searchBox}
           placeholder={formatMessage(messages.inputPlaceholder)}
           onSearch={newValue => setPanelSearchValue(newValue)}
           onChange={e => {
@@ -106,16 +126,13 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
       onDismiss={() => {
         setIsPanelOpen(false);
       }}
-      closeButtonAriaLabel="Close"
-      isFooterAtBottom={true}
-      type={PanelType.custom}
-      customWidth={'100%'}
+      closeButtonAriaLabel={formatMessage(messages.ariaClose)}
       styles={styles.panel}
       onRenderHeader={onRenderPanelHeader}
     >
       {options
         .filter((option: FacetOption) => testSearchInput(option.key))
-        .map((option, i) => {
+        .map(option => {
           return onRenderCheckbox(option);
         })}
     </Panel>

@@ -1,9 +1,10 @@
 import React from 'react';
+
 import {
   IStackProps,
   IStackStyles,
-  mergeStyleSets,
-  Stack
+  Stack,
+  mergeStyleSets
 } from '@fluentui/react';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
@@ -34,5 +35,5 @@ export const ResponsiveStack: React.FC<ResponsiveStackProps> = ({
       })
     }
   };
-  return <Stack styles={mergeStyleSets(stackStyles, styles)} {...stackProps} />;
+  return <Stack {...stackProps} styles={mergeStyleSets(stackStyles, styles)} />;
 };

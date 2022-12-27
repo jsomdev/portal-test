@@ -44,5 +44,12 @@ export enum FacetKey {
   TankMountingOptions = 'TankMountingOptions',
   PressureGroup = 'PressureGroup',
   SprayCoverage = 'SprayCoverage',
-  SprayCoverageDiameter = 'SprayCoverageDiameter'
+  SprayCoverageDiameter = 'SprayCoverageDiameter',
+  MotorVersion = 'MotorVersion',
+  BushingAndORingMaterial = 'BushingAndORingMaterial',
+  FlangeOptions = 'FlangeOptions',
+  InletConnectionThreadType = 'InletConnectionThreadType',
+  NozzleCount = 'NozzleCount',
+  NozzleHub = 'NozzleHub',
+  ModelId = 'ModelId'
 }

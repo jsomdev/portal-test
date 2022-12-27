@@ -1,13 +1,12 @@
 import {
+  Messages,
   defaultLanguage,
   en,
   getMessages,
-  Messages,
   nl,
   supportedLocales
 } from '@services/i18n';
-import { render } from '@testing-library/react';
-import { Head, IHeadProps } from '@widgets/metadata/head';
+
 jest.mock('next/head', () => {
   return {
     __esModule: true,
@@ -61,40 +60,5 @@ describe('I18N Tests', () => {
     expect(actualMessagesEN.pages.docs.i18n.description).toBe(
       expectedMessagesEN.pages.docs.i18n.description
     );
-  });
-
-  it('<Head> renders alternate links correctly', async () => {
-    const pathname: string = 'testing';
-    const title: string = 'test title';
-    const description: string = 'test description';
-    const headProps: IHeadProps = {
-      pathname,
-      title,
-      description
-    };
-    render(<Head {...headProps} />, {
-      container: document.head
-    });
-
-    const links: HTMLLinkElement[] = Array.from(
-      document.getElementsByTagName('link')
-    );
-
-    const alternateLinks: HTMLLinkElement[] = links.filter(
-      link => link.rel === 'alternate'
-    );
-
-    expect(alternateLinks.length).toBe(supportedLocales?.length);
-
-    supportedLocales?.forEach(locale => {
-      expect(links.filter(link => link.hreflang === locale).length).toEqual(1);
-      expect(
-        links.filter(
-          link =>
-            link.href ===
-            `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/${pathname}`
-        )
-      );
-    });
   });
 });

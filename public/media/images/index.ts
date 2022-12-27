@@ -30,6 +30,7 @@ import usFlag from './countries/us.svg';
 import customerNumber from './customerNumber.jpg';
 import defaultCartItem from './defaultCartItem.png';
 import defaultProduct from './defaultProduct.png';
+import hero from './hero.jpg';
 import americanExpressLogo from './icons/amex.svg';
 import maestroCardLogo from './icons/maestro.svg';
 import masterCardLogo from './icons/mastercard.svg';
@@ -51,19 +52,15 @@ import playMovieThumbnail from './play-button-white.png';
 import smallCardVerifiedImage1 from './process_customerverification_1.png';
 import smallCardVerifiedImage2 from './process_customerverification_2.png';
 import smallCardVerifiedImage3 from './process_customerverification_3.png';
+import salesRepHome from './sales-rep-home.jpg';
+import searchToolHome from './search-tool-home.jpg';
 import signInCustomer from './signInCustomer.jpg';
 import signInEmployee from './signInEmployee.jpg';
+import siteIcon from './site-icon.svg';
+import siteLogo from './site-logo.svg';
+import videoChatHome from './video-chat-home.jpg';
 
 export const STATIC_IMAGES = {
-  footer: {
-    mainLogo,
-    mail,
-    instagram,
-    facebook,
-    linkedIn,
-    twitter,
-    youtube
-  },
   app: {
     noImageAvailable,
     smallLogo: defaultCartItem
@@ -73,6 +70,10 @@ export const STATIC_IMAGES = {
     headerLogo:
       'https://www.spray.com/-/media/spray/images/logo-spray-color-global.svg?mh=150&hash=E0DBED5E02C6BCD0F4AC0092A8909090',
     employeeCard: signInEmployee
+  },
+  branding: {
+    siteLogo: siteLogo,
+    siteIcon: siteIcon
   },
   cart: {
     defaultItem: defaultCartItem
@@ -85,6 +86,15 @@ export const STATIC_IMAGES = {
       pdfThumbnail
     }
   },
+  footer: {
+    mainLogo,
+    mail,
+    instagram,
+    facebook,
+    linkedIn,
+    twitter,
+    youtube
+  },
   checkout: {
     paymentIcons: {
       americanExpressLogo,
@@ -94,6 +104,12 @@ export const STATIC_IMAGES = {
     }
   },
   home: {
+    hero,
+    support: {
+      salesRepHome,
+      videoChatHome,
+      searchToolHome
+    },
     highlights: {
       bigCardImage,
       smallCardSalesImage,

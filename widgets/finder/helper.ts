@@ -267,6 +267,8 @@ export function sortFacetOptions(
   const sortIndexB: number = b.configuration.sortIndex || 0;
   return (
     sortIndexA - sortIndexB ||
-    a.formattedValue.toLowerCase().localeCompare(b.formattedValue.toLowerCase())
+    a.formattedValue.localeCompare(b.formattedValue, 'en', {
+      sensitivity: 'base'
+    })
   );
 }

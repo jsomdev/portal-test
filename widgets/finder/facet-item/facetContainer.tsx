@@ -1,14 +1,33 @@
+import React, { useState } from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   FontWeights,
   IButtonStyles,
-  IconButton,
+  IStackStyles,
   IStyle,
+  IconButton,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
-import React from 'react';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+
+const messages = defineMessages({
+  ariaExpand: {
+    id: messageIds.finder.panel.mobile.ariaExpand,
+    description: 'Aria text for the expand facet button',
+    defaultMessage: 'Expand Filter'
+  },
+  ariaCollapse: {
+    id: messageIds.finder.panel.mobile.ariaCollapse,
+    description: 'Aria text for the collapse facet button',
+    defaultMessage: 'Collapse Filter'
+  }
+});
 
 interface FacetContainerProps {
   facetTitle: string;
@@ -18,7 +37,7 @@ interface FacetContainerProps {
 
 interface FacetContainerStyles {
   info?: IButtonStyles;
-  root?: IStyle;
+  root?: IStackStyles;
   title?: IStyle;
   optionsContainer?: IStyle;
 }
@@ -53,13 +72,13 @@ export const DesktopFacetContainer: React.FC<FacetContainerProps> = ({
     },
     title: {
       fontWeight: FontWeights.semibold,
-      margin: `${rem(spacing.s2)} 0`
+      margin: `${spacing.s2} 0`
     }
   };
   return (
     <Stack
       tokens={{
-        padding: `0 ${rem(spacing.l1)} ${rem(spacing.l1)} 0`
+        padding: `0 ${spacing.l1} ${spacing.l1} 0`
       }}
     >
       <Stack.Item>
@@ -87,8 +106,16 @@ export const MobileFacetContainer: React.FC<FacetContainerProps> = ({
   onRenderActions,
   onShowInfo
 }) => {
-  const { spacing } = useTheme();
+  const { formatMessage } = useIntl();
+  const { spacing, semanticColors } = useTheme();
+  const [isExpanded, setIsExpanded] = useState(true);
   const styles: FacetContainerStyles = {
+    root: {
+      root: {
+        borderBottom: `1px solid ${semanticColors.variantBorder}`,
+        padding: `${spacing.l1} ${spacing.m}`
+      }
+    },
     info: {
       rootHovered: {
         background: 'transparent'
@@ -99,31 +126,52 @@ export const MobileFacetContainer: React.FC<FacetContainerProps> = ({
     },
     title: {
       fontWeight: FontWeights.semibold,
-      margin: `${rem(spacing.s2)} 0`
+      margin: `${spacing.s2} 0`
     }
   };
   return (
     <Stack
+      styles={styles.root}
       tokens={{
-        padding: `0 ${rem(spacing.l1)} ${rem(spacing.l1)} 0`
+        padding: `0 ${spacing.l1} ${spacing.l1} 0`,
+        childrenGap: spacing.s1
       }}
     >
       <Stack.Item>
-        <Stack verticalAlign="center" horizontal={true}>
-          <h3>{facetTitle}</h3>
+        <Stack
+          verticalAlign="center"
+          horizontal={true}
+          onClick={() => setIsExpanded(previousState => !previousState)}
+        >
+          <Text as="h3" variant="large">
+            {facetTitle}
+          </Text>
           {onShowInfo && (
             <IconButton
               iconProps={{
                 iconName: 'info'
               }}
               styles={styles.info}
-              onClick={() => onShowInfo && onShowInfo()}
+              onClick={ev => {
+                ev.stopPropagation();
+                onShowInfo && onShowInfo();
+              }}
             />
           )}
+          <Stack grow verticalAlign="center" horizontalAlign="end">
+            <IconButton
+              title={formatMessage(
+                isExpanded ? messages.ariaCollapse : messages.ariaExpand
+              )}
+              iconProps={{
+                iconName: isExpanded ? 'ChevronUp' : 'ChevronDown'
+              }}
+            />
+          </Stack>
           {onRenderActions && onRenderActions()}
         </Stack>
       </Stack.Item>
-      <Stack.Item>{children}</Stack.Item>
+      {isExpanded && <Stack.Item>{children}</Stack.Item>}
     </Stack>
   );
 };

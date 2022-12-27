@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
 import { IStackStyles, Stack, useTheme } from '@fluentui/react';
-import { rem } from '@utilities/rem';
 
 import { Step, StepperContext, StepperContextProps } from './stepperContext';
 
@@ -75,7 +74,7 @@ export const StepperProvider: React.FC<StepperContextProps> = ({
         navigateToStep
       }}
     >
-      <Stack tokens={{ childrenGap: rem(spacing.l1) }} styles={styles}>
+      <Stack tokens={{ childrenGap: spacing.l1 }} styles={styles}>
         {children}
       </Stack>
     </StepperContext.Provider>

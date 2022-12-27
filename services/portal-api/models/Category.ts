@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { AudienceFlags } from './AudienceFlags';
 import type { CatalogEntry } from './CatalogEntry';
 import type { CategorySettingsFlags } from './CategorySettingsFlags';

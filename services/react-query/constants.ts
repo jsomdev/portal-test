@@ -5,13 +5,11 @@ import { ReactQueryKeys } from './types';
  * These have to be unique.
  */
 export const QUERYKEYS: ReactQueryKeys = {
-  orderVerifyProducts: 'orderVerifyProducts',
-  appBookmarkedProducts: 'appBookmarkedProducts',
-  searchVerifyProduct: 'searchVerifyProduct',
-  appBookmarkedProductsSetting: 'appBookmarkedProductsSetting',
   appAudienceSetting: 'appAudienceSetting',
-  appCartItemsOld: 'appCartItemsOld',
+  appBookmarkedProducts: 'appBookmarkedProducts',
+  appBookmarkedProductsSetting: 'appBookmarkedProductsSetting',
   appCartItems: 'appCartItems',
+  appCartItemsOld: 'appCartItemsOld',
   appMainMenu: 'appMainMenu',
   appMe: 'appMe',
   appProductPriceBreak: 'appProductPriceBreak',
@@ -28,9 +26,9 @@ export const QUERYKEYS: ReactQueryKeys = {
   checkoutOrderTaxAmount: 'checkoutOrderTaxAmount',
   checkoutShippingOptions: 'checkoutShippingOptions',
   compareProducts: 'compareProducts',
-  designBase: 'designBase',
   designAccesories: 'designAccesories',
   designAllSpecifications: 'designAllSpecifications',
+  designBase: 'designBase',
   designCadenasIdentifier: 'designCadenasIdentifier',
   designConfigurations: 'designConfigurations',
   designKeySpecifications: 'designKeySpecifications',
@@ -45,20 +43,25 @@ export const QUERYKEYS: ReactQueryKeys = {
   modelResources: 'modelResources',
   orderDetail: 'orderDetail',
   orderLineProducts: 'orderLineProducts',
+  orderVerifyProducts: 'orderVerifyProducts',
   orders: 'orders',
-  quoteRequestDetail: 'quoteRequestDetail',
-  quoteRequestLineProducts: 'quoteRequestLineProducts',
-  quoteRequests: 'quoteRequests',
-  productFinderResults: 'productFinderResults',
   productFinderGridViewItems: 'productFinderGridViewItems',
-  productFinderListViewItems: 'productFinderListViewItems',
   productFinderLiquidsWithRelativeDensity:
     'productFinderLiquidsWithRelativeDensity',
+  productFinderListViewItems: 'productFinderListViewItems',
   productFinderPredictedResults: 'productFinderPredictedResults',
+  productFinderResults: 'productFinderResults',
   productFinderTableHierarchy: 'productFinderTableHierarchy',
   productFinderTableViewDesignsForModel:
     'productFinderTableViewDesignsForModel',
   productFinderTableViewProductListItem:
     'productFinderTableViewProductListItem',
+  quote: 'quote',
+  quoteDetail: 'quoteDetail',
+  quoteRequestDetail: 'quoteRequestDetail',
+  quoteRequestLineProducts: 'quoteRequestLineProducts',
+  quoteRequests: 'quoteRequests',
+  recentOrders: 'recentOrders',
+  searchVerifyProduct: 'searchVerifyProduct',
   seriesResources: 'seriesResources'
 };

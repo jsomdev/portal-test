@@ -1,12 +1,13 @@
 import { createMedia } from '@artsy/fresnel';
 import {
   CreateMediaResults,
-  MediaBreakpointProps,
-  MediaProps as FresnelMediaProps
+  MediaProps as FresnelMediaProps,
+  MediaBreakpointProps
 } from '@artsy/fresnel/dist/Media';
 
 const breakpoints = {
   mobile: 0,
+  largePhone: 425,
   tablet: 1024,
   desktop: 1280
 };

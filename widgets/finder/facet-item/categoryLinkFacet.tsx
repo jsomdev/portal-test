@@ -1,9 +1,9 @@
 import { useContext, useMemo } from 'react';
 
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import { ITextStyles, Stack, Text, useTheme } from '@fluentui/react';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
@@ -11,6 +11,7 @@ import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { messageIds } from '@services/i18n';
 import { FacetOptionFormatter } from '@services/i18n/formatters/facetFormatter';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 
 import {
@@ -46,7 +47,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
   const { formatMessage, locale } = intl;
   const { palette } = useTheme();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
-  const { query, pathname, route, asPath } = useRouter();
+  const { query } = useRouter();
   const visibleOptions: FacetOption[] = useMemo(() => {
     function getFilteredNestedCategoryOptions(
       options: FacetOption[],
@@ -79,7 +80,6 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
           ? nestedChildOptions
           : childOptionsWithResults;
       }
-      return [];
     }
     return getFilteredNestedCategoryOptions(facet.options, categoryId);
   }, [categoryId, facet.options, predictedResults]);
@@ -111,13 +111,16 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
             );
 
             return (
-              <Link
+              <NextLink
                 key={option.key}
+                locale={locale}
                 href={{
-                  pathname,
+                  pathname: pagePaths.category(
+                    option.configuration.seoPath || ''
+                  ),
+
                   query: {
-                    ...query,
-                    categorySlug: [option.configuration.seoPath as string]
+                    ...query
                   }
                 }}
               >
@@ -131,7 +134,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
                     </Text>
                   </Stack.Item>
                 </a>
-              </Link>
+              </NextLink>
             );
           })}
         </Stack>

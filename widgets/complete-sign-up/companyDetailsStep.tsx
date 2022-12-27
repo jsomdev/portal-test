@@ -2,7 +2,6 @@ import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   IComboBoxStyles,
-  IDropdownOption,
   ITextFieldStyles,
   ITextStyles,
   Stack,
@@ -37,12 +36,6 @@ export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
   selectedCustomer,
   onSelectCustomer
 }) => {
-  function getSelectedKey(
-    value: string,
-    options: IDropdownOption[]
-  ): string | undefined {
-    return options.find(option => option.key === value)?.key.toString();
-  }
   // TODO: Conventions to Styling
   const styles: CompanyDetailsStepStyles = {
     title: { root: {} },
@@ -96,7 +89,6 @@ export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
         styles={styles.textField}
       />
       <FormikComboBox
-        getSelectedKey={getSelectedKey}
         {...companyDetailsFormFields.country}
         options={allCountryOptions}
         required={true}

@@ -79,11 +79,16 @@ export const SPRAYPORTALAPPLICATIONID = 'e2def0bf-0225-4b77-b363-08d800aaae12';
 export const SETTINGKEYS: SettingKeys = {
   productBookmarks: 'ProductBookmarks',
   recentlyViewedProducts: 'RecentlyViewedProducts',
-  recentlySearchedQueries: 'RecentlySearchedQueries'
+  recentlySearchedQueries: 'RecentlySearchedQueries',
+  addressBook: 'AddressBook'
 };
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   relativeDropSizeRange: 'RelativeDropSizeRange',
+  atomizingAirFlowRate: 'AtomizingAirFlowRate',
+  fanAirFlowRate: 'FanAirFlowRate',
+  airFlowRate: 'AirFlowRate',
+  liquidPressure: 'LiquidPressure',
   maximumTransverseSprayCoverageWidthHorizontalSpray:
     'MaximumTransverseSprayCoverageWidthHorizontalSpray',
   relativeDropSizeGroup: 'RelativeDropSizeGroup',
@@ -164,6 +169,7 @@ export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   current: 'Current',
   fluidSideSparePartKit: 'FluidSideSparePartKit',
   numberOfInletOpenings: 'NumberOfInletOpenings',
+  specificGravity: 'SpecificGravity',
   nozzleBodyOrTip: 'NozzleBodyOrTip',
   nozzlePrefix: 'NozzlePrefix',
   hasIntregralStrainer: 'HasIntregralStrainer',
@@ -190,4 +196,9 @@ export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
   netWeight: 'NetWeight',
   brand: 'Brand',
   sprayPattern: 'SprayPattern'
+};
+
+export const CATEGORY_IDS = {
+  applications: '99b89989-636a-4869-918a-1cc9ba755944',
+  brands: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b'
 };

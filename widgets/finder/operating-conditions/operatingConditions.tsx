@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import { MarkDownDialog } from '@components/dialogs/markDownDialog';
 import {
   Dialog,
-  IImageStyles,
+  IButtonStyles,
   PrimaryButton,
   Stack,
   Text,
@@ -12,22 +13,24 @@ import {
 } from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { useFinder } from '@providers/finder/finderContext';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { messageIds } from '@services/i18n';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { rem } from '@utilities/rem';
+import { mediaQueryFrom } from '@widgets/media-queries';
 
+import { FacetContainer } from '../facet-item/facetContainer';
 import { OperatingConditionItem } from './operatingConditionItem';
 import {
+  OperatingConditionsValidationResults,
   diffOperatingConditionsFacets,
   validateSprayFinderFacets
 } from './operatingConditionsHelper';
-import { MarkDownDialog } from '@components/dialogs/markDownDialog';
-import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 
-interface SprayFinderFiltersStyles {
-  logo: Partial<IImageStyles>;
+interface OperatingConditionsStyles {
+  applyButton: Partial<IButtonStyles>;
 }
 
 const messages = defineMessages({
@@ -61,7 +64,7 @@ const messages = defineMessages({
   validationRequiredFlowRateGravity: {
     id: messageIds.finder.operatingConditions.validation
       .requiredFlowRateGravity,
-    defaultMessage: 'When you specificy Specific Gravity',
+    defaultMessage: 'When you specify Specific Gravity',
     description:
       'Validation text when liquid flow rate is not filled in and you have a specific gravity specified'
   }
@@ -71,10 +74,8 @@ export const OperatingConditions: React.FC = () => {
   const { spacing } = useTheme();
   const { getAttributeType } = useGlobalData();
   const { formatMessage, locale } = useIntl();
-  const {
-    visibleOperatingConditionsFacets: operatingConditions,
-    applyOperatingConditions
-  } = useFinder();
+  const { visibleOperatingConditionsFacets, applyOperatingConditions } =
+    useFinder();
 
   // AttributeTypeCode to show the information of. If undefined no information will be shown.
   const [showInfoAttributeTypeCode, setShowInfoAttributeTypeCode] = useState<
@@ -85,25 +86,35 @@ export const OperatingConditions: React.FC = () => {
   const [showInputError, setShowInputError] = useState<boolean>(false);
 
   // Operating Conditions that are not immediately persisted to the Finder
-  const [staleOperatingConditions, setStaleOperatingConditions] =
-    useState<{ [key: string]: Facet }>(operatingConditions);
+  const [staleOperatingConditions, setStaleOperatingConditions] = useState<{
+    [key: string]: Facet;
+  }>(visibleOperatingConditionsFacets);
 
   const isModified = useMemo(() => {
     return diffOperatingConditionsFacets(
       Object.values(staleOperatingConditions),
-      Object.values(operatingConditions)
+      Object.values(visibleOperatingConditionsFacets)
     );
-  }, [staleOperatingConditions, operatingConditions]);
+  }, [staleOperatingConditions, visibleOperatingConditionsFacets]);
 
-  const validationResults = useMemo(() => {
-    return validateSprayFinderFacets(Object.values(staleOperatingConditions));
-  }, [staleOperatingConditions]);
+  const validationResults: OperatingConditionsValidationResults =
+    useMemo(() => {
+      return validateSprayFinderFacets(Object.values(staleOperatingConditions));
+    }, [staleOperatingConditions]);
 
   const isValid: boolean = useMemo(() => {
     const isAnyFacetInvalid: boolean =
       !!validationResults.validatedResults.find(value => !value.isValid);
     return !isAnyFacetInvalid && validationResults.validatedTheoriticalFlow;
   }, [validationResults]);
+
+  const onApply = useCallback(() => {
+    if (isValid) {
+      applyOperatingConditions(Object.values(staleOperatingConditions));
+    } else {
+      setShowInputError(true);
+    }
+  }, [isValid, applyOperatingConditions, staleOperatingConditions]);
 
   function getAttributeTypeTitle(
     attributeTypeCode: string | undefined
@@ -127,15 +138,30 @@ export const OperatingConditions: React.FC = () => {
   }
 
   useEffect(() => {
-    setStaleOperatingConditions(operatingConditions);
-  }, [operatingConditions]);
+    // Whenever the actual operatingConditions update, we want to update the stale ones as well.
+    setStaleOperatingConditions(visibleOperatingConditionsFacets);
+  }, [visibleOperatingConditionsFacets]);
+
+  const styles: OperatingConditionsStyles = {
+    applyButton: {
+      root: {
+        flex: 1,
+        height: rem(36),
+        ...mediaQueryFrom('tablet', {
+          height: rem(32),
+          flex: 'none'
+        })
+      }
+    }
+  };
+
   return (
-    <>
+    <FacetContainer facetTitle="Operating Conditions">
       <Stack
         tokens={{
           maxWidth: 340,
-          childrenGap: rem(spacing.s1),
-          padding: `0 ${spacing.l1} 0 0`
+          childrenGap: spacing.s1,
+          padding: `${spacing.s1} ${spacing.m} 0 0`
         }}
       >
         {Object.values(staleOperatingConditions).map(operatingCondition => (
@@ -149,54 +175,40 @@ export const OperatingConditions: React.FC = () => {
               }))
             }
             onShowInfo={() =>
-              setShowInfoAttributeTypeCode(operatingCondition.key)
+              setShowInfoAttributeTypeCode(operatingCondition.attributeTypeCode)
             }
             horizontal={
               operatingCondition.key !== FacetKey.SprayAngle &&
               operatingCondition.key !== FacetKey.LiquidSpecificGravity
             }
-            onEnterPressed={() => {
-              if (isValid && isModified) {
-                applyOperatingConditions(
-                  Object.values(staleOperatingConditions)
-                );
-              }
-            }}
+            onEnterPressed={onApply}
           />
         ))}
         <Stack
           horizontal
           wrap
           tokens={{
-            childrenGap: rem(spacing.s1),
-            padding: `0 0 ${rem(spacing.s1)} 0`
+            childrenGap: spacing.s1,
+            padding: `0 0 ${spacing.s1} 0`
           }}
           verticalAlign="center"
         >
           <PrimaryButton
+            styles={styles.applyButton}
             disabled={!isModified}
             iconProps={{
               iconName: 'Accept'
             }}
-            onClick={ev =>
-              applyOperatingConditions(Object.values(staleOperatingConditions))
-            }
+            onClick={onApply}
           >
             {formatMessage(messages.apply)}
           </PrimaryButton>
-          {/* <DefaultButton
-                 iconProps={{ iconName: 'Undo' }}
-                 disabled={!isModified}
-                 onClick={(ev) => onReset()}
-               >
-                 {messages.reset}
-               </DefaultButton> */}
         </Stack>
       </Stack>
       <Stack.Item>
         <MarkDownDialog
           dialogProps={{
-            onDismiss: ev => setShowInfoAttributeTypeCode(undefined),
+            onDismiss: () => setShowInfoAttributeTypeCode(undefined),
             hidden: !showInfoAttributeTypeCode
           }}
           title={getAttributeTypeTitle(showInfoAttributeTypeCode)}
@@ -217,7 +229,7 @@ export const OperatingConditions: React.FC = () => {
               .filter(result => !result.isValid)
               .map(result => (
                 <Stack.Item key={result.key}>
-                  <Text variant="mediumPlus">
+                  <Text as="h4" variant="large">
                     {/* TODO Make displayname multilingual */}
                     {
                       staleOperatingConditions[result.key].configuration
@@ -225,21 +237,33 @@ export const OperatingConditions: React.FC = () => {
                     }
                   </Text>
                   <ul>
-                    <li>{formatMessage(messages.validationGreaterThanZero)}</li>
+                    <li>
+                      <Text as="p" variant="mediumPlus">
+                        {formatMessage(messages.validationGreaterThanZero)}
+                      </Text>
+                    </li>
                   </ul>
                 </Stack.Item>
               ))}
             {!validationResults.validatedTheoriticalFlow && (
               <Stack.Item>
-                <Text variant="mediumPlus">
+                <Text as="h4" variant="large">
                   {formatMessage(messages.validationRequiredFlowRate)}
                 </Text>
                 <ul>
                   <li>
-                    {formatMessage(messages.validationRequiredFlowRatePressure)}
+                    <Text as="p" variant="mediumPlus">
+                      {formatMessage(
+                        messages.validationRequiredFlowRatePressure
+                      )}
+                    </Text>
                   </li>
                   <li>
-                    {formatMessage(messages.validationRequiredFlowRateGravity)}
+                    <Text as="p" variant="mediumPlus">
+                      {formatMessage(
+                        messages.validationRequiredFlowRateGravity
+                      )}
+                    </Text>
                   </li>
                 </ul>
               </Stack.Item>
@@ -247,6 +271,6 @@ export const OperatingConditions: React.FC = () => {
           </Stack>
         </Dialog>
       </Stack.Item>
-    </>
+    </FacetContainer>
   );
 };

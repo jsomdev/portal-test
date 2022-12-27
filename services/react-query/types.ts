@@ -20,13 +20,13 @@
 export type ReactQueryStatus = 'idle' | 'loading' | 'error' | 'success';
 
 export interface ReactQueryKeys {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
-  searchVerifyProduct: string;
-  orderVerifyProducts: string;
+  appAudienceSetting: string;
   appBookmarkedProducts: string;
   appBookmarkedProductsSetting: string;
-  appCartItemsOld: string;
   appCartItems: string;
+  appCartItemsOld: string;
   appMainMenu: string;
   appMe: string;
   appProductPriceBreak: string;
@@ -34,7 +34,6 @@ export interface ReactQueryKeys {
   appRecentlyViewedProducts: string;
   appRecentlyViewedProductsSetting: string;
   appRecentySearchedSetting: string;
-  appAudienceSetting: string;
   appSearchCategories: string;
   appSearchProducts: string;
   appSiteMenu: string;
@@ -61,17 +60,22 @@ export interface ReactQueryKeys {
   modelResources: string;
   orderDetail: string;
   orderLineProducts: string;
+  orderVerifyProducts: string;
   orders: string;
-  quoteRequests: string;
-  quoteRequestDetail: string;
-  quoteRequestLineProducts: string;
-  productFinderResults: string;
   productFinderGridViewItems: string;
   productFinderLiquidsWithRelativeDensity: string;
   productFinderListViewItems: string;
   productFinderPredictedResults: string;
+  productFinderResults: string;
   productFinderTableHierarchy: string;
   productFinderTableViewDesignsForModel: string;
   productFinderTableViewProductListItem: string;
+  quote: string;
+  quoteDetail: string;
+  quoteRequestDetail: string;
+  quoteRequestLineProducts: string;
+  quoteRequests: string;
+  recentOrders: string;
+  searchVerifyProduct: string;
   seriesResources: string;
 }

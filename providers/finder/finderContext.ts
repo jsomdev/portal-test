@@ -22,6 +22,7 @@ interface FinderContextProps {
   searchQuery: string | undefined;
   products: FacetedSearchProduct[];
   facetedSearchStatus: ReactQueryStatus;
+  isFetching: boolean;
   facetedSearchError: Error | undefined;
   toggleFacetOption: (facetKey: FacetKey, optionKey: string) => void;
   applyOperatingConditions: (operatingConditions: Facet[]) => void;
@@ -41,6 +42,7 @@ interface FinderContextProps {
     operatingCondition: Facet
   ) => Range | number | string | null;
   showFacetInPanel: (facet: Facet) => boolean;
+  isFacetActive: (facetKey: FacetKey) => boolean;
 }
 
 const initialContext: FinderContextProps = {
@@ -52,7 +54,11 @@ const initialContext: FinderContextProps = {
   visibleOperatingConditionsFacets: {},
   facetedSearchError: undefined,
   facetedSearchStatus: 'idle',
+  isFetching: false,
   toggleFacetOption: () => {
+    throw Error('Not implemented');
+  },
+  isFacetActive: () => {
     throw Error('Not implemented');
   },
   applyOperatingConditions: () => {

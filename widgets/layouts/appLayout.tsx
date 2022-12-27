@@ -1,43 +1,67 @@
-import { MenuItem } from '@services/portal-api';
-import { rem } from '@utilities/rem';
-import { AppHeader } from '@widgets/headers/appHeader';
-import { mediaQueryFrom } from '@widgets/media-queries';
-import React from 'react';
-import { IStyle, mergeStyles } from '@fluentui/react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 
-interface AppLayoutStyles {
-  main: IStyle;
-}
+import { MenuItem } from '@services/portal-api';
+import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
+import { MainHeader } from '@widgets/headers/main-header/mainHeader';
+import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
+import { usePageContext } from '@widgets/page/pageContext';
 
 export interface AppLayoutProps {
   siteMenuItems: MenuItem[];
   mainMenuItems: MenuItem[];
 }
+
 /**
  * Layout component for a page.
  */
-export const AppLayout: React.FC<AppLayoutProps> = ({
-  children,
-  siteMenuItems,
-  mainMenuItems
-}) => {
-  const styles: AppLayoutStyles = {
-    main: {
-      maxWidth: '100%',
-      margin: 'auto',
-      verticalAlign: 'fill',
-      paddingTop: rem(80),
-      ...mediaQueryFrom('tablet', {
-        paddingTop: rem(124)
-      })
+export const AppLayout: React.FC = ({ children }) => {
+  const styles = {
+    header: {
+      zIndex: 3
     }
   };
 
   return (
-    <>
-      <AppHeader siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems} />
-      <main className={mergeStyles(styles.main)}>{children}</main>
+    <React.Fragment>
+      <header style={styles.header}>
+        <SiteHeader />
+        <MainHeader />
+        <div id="breadcrumb-portal"></div>
+        <AppOverlay />
+      </header>
+      <main>
+        {children}
+
+        <ComparisonPopup />
+      </main>
       <footer></footer>
-    </>
+    </React.Fragment>
   );
+};
+
+export const AppOverlay: React.FC = () => {
+  const { showPageOverlay } = usePageContext();
+  const [overlayOpacity, setOverlayOpacity] = useState(0);
+
+  useEffect(() => {
+    if (showPageOverlay) {
+      setTimeout(() => setOverlayOpacity(1));
+    } else {
+      setOverlayOpacity(0);
+    }
+  }, [showPageOverlay]);
+
+  const style: CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+    right: 0,
+    display: showPageOverlay ? 'block' : 'none',
+    transition: 'opacity 0.1s ease-in',
+    opacity: overlayOpacity,
+    background: 'rgba(0,0,0,0.15)',
+    bottom: 0
+  };
+  return <div style={style} />;
 };

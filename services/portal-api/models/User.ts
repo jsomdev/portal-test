@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { Account } from './Account';
 import type { CartItem } from './CartItem';
 import type { ContactInfo } from './ContactInfo';

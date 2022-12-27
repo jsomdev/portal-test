@@ -1,8 +1,9 @@
 /* eslint-disable no-case-declarations */
-import { formatCamelCase } from '../../../utilities/formatText';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
+
 import {
-  getRangeFacetUnit,
-  RangeFacetMatchType
+  RangeFacetMatchType,
+  getRangeFacetUnit
 } from '../facets/range-facets/rangeFacetHelper';
 import { Facet } from '../models/facet/facet';
 import { FacetCategory } from '../models/facet/facetCategory';
@@ -70,6 +71,7 @@ export function mapFacetsToExernalFilters(
     .forEach(facet => {
       const type: 'string' | 'number' =
         facet.key === FacetKey.InletConnectionSize ||
+        facet.key === FacetKey.NozzleCount ||
         facet.key === FacetKey.StrainerScreenMeshSize
           ? 'number'
           : 'string';
@@ -126,9 +128,9 @@ function mapSingleSelectFacetToExternalFilter(
   value?: FacetOptionValueType
 ): string {
   const typeQuotes: string = type === 'string' ? `'` : '';
-
+  const textFormatter = new TextFormatter();
   if (value) {
-    return `${formatCamelCase(
+    return `${textFormatter.formatCamelCase(
       facetKey
     )}/any(f: f eq ${typeQuotes}${value.toString()}${typeQuotes})`;
   }
@@ -151,9 +153,10 @@ function mapMultiSelectFacetToExternalFilter(
     filters = values.map(
       value => `${typeQuotes}${value?.toString()}${typeQuotes}`
     );
-    return `${formatCamelCase(facetKey)}/any(f: f in (${filters.join(
-      separator
-    )}))`;
+    const textFormatter = new TextFormatter();
+    return `${textFormatter.formatCamelCase(
+      facetKey
+    )}/any(f: f in (${filters.join(separator)}))`;
   }
 
   throw new Error(
@@ -180,7 +183,8 @@ function mapRangeBetweenFacetToExternalFilters(
   if (!isAnyNumericOptionActive) {
     return [];
   }
-  const facetKey: string = formatCamelCase(facet.key);
+  const textFormatter = new TextFormatter();
+  const facetKey: string = textFormatter.formatCamelCase(facet.key);
   const rangeFacetUnit: UnitOfMeasurement = getRangeFacetUnit(
     facet,
     systemOfMeasurement

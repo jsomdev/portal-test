@@ -85,10 +85,16 @@ export interface SettingKeys {
   productBookmarks: string;
   recentlySearchedQueries: string;
   recentlyViewedProducts: string;
+  addressBook: string;
 }
 
 export interface AttributeTypeCodes {
+  atomizingAirFlowRate: string;
+  fanAirFlowRate: string;
+  airFlowRate: string;
+  specificGravity: string;
   relativeDropSizeRange: string;
+  liquidPressure: string;
   maximumTransverseSprayCoverageWidthHorizontalSpray: string;
   relativeDropSizeGroup: string;
   formula: string;
@@ -193,3 +199,8 @@ export interface AttributeTypeCodes {
   brand: string;
   sprayPattern: string;
 }
+
+export type UserAddress = PostalAddress & {
+  name: string;
+  id: string;
+};

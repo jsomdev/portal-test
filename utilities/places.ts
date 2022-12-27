@@ -1,6 +1,9 @@
 import { IDropdownOption } from '@fluentui/react';
 
-export const allCountryOptions: IDropdownOption[] = [
+export const allCountryOptions: IDropdownOption<{
+  key: string;
+  text: string;
+}>[] = [
   { text: 'Afghanistan', key: 'AF' },
   { text: 'Åland Islands', key: 'AX' },
   { text: 'Albania', key: 'AL' },

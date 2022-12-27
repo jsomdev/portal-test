@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -8,17 +10,21 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-import { defineMessages, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
+import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
+import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
+import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
+import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import { getAudience } from '@services/i18n/helper';
-import { messageIds } from '@services/i18n/ids';
 import {
   AttributeGroup,
   AttributeType,
@@ -32,70 +38,83 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { formatCamelCase } from '@utilities/formatText';
-import { ResultView } from '@widgets/finder/result-view/resultView';
+import {
+  ResultView,
+  ResultViewType
+} from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import { Head } from '@widgets/metadata/head';
+import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import Page from '@widgets/page/page';
+import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
 
-export interface CategoryProps {
+type CategoryProps = {
   category: CategoryModel;
+  initialViewAs: ResultViewType;
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
-}
+} & AppLayoutProps;
 
-const messages = defineMessages({
-  headTitle: {
-    id: messageIds.pages.category.headTitle,
-    description: 'Page metadata title',
-    defaultMessage: 'Welcome'
-  },
-  headDescription: {
-    id: messageIds.pages.category.headDescription,
-    description: 'Page metadata description',
-    defaultMessage: 'Experts in Spray Technology | Spraying Systems Co.'
-  }
-});
-
-const Category: NextPage<CategoryProps & AppLayoutProps> = ({
+const Category: NextPage<CategoryProps> = ({
   category,
   siteMenuItems,
   mainMenuItems,
   attributeTypeGroups,
-  attributeTypes
+  attributeTypes,
+  initialViewAs
 }) => {
   const router = useRouter();
-  const { formatMessage, locale } = useIntl();
+  const { locale } = useIntl();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
     category,
     locale
   );
-
+  const viewAs: ResultViewType = useMemo(() => {
+    if (router.asPath.includes('?')) {
+      return 'list';
+    }
+    return initialViewAs;
+  }, [initialViewAs, router.asPath]);
   return (
-    <GlobalDataProvider
-      category={category}
-      attributeGroups={attributeTypeGroups}
-      attributeTypes={attributeTypes}
+    <Page
+      metaProps={{
+        title: categoryFormatter.formatName(),
+        description: categoryFormatter.formatDescription(),
+        noIndex: false,
+        image: categoryFormatter.formatImageSrc(),
+        imageAlt: categoryFormatter.formatImageCaption()
+      }}
+      i18nProps={{
+        localePaths: getLocalePathsFromMultilingual('categories', category.slug)
+      }}
     >
-      <AppLayout siteMenuItems={siteMenuItems} mainMenuItems={mainMenuItems}>
-        <Head
-          pathname={router.pathname}
-          title={formatMessage(messages.headTitle, {
-            name: categoryFormatter.formatName()
-          })}
-          description={formatMessage(messages.headDescription)}
-        />
-        <FacetsProvider
-          preFilters={{
-            categoryId: category?.id
-          }}
-          initialFacets={getInitialFacetsFromFiles([], router.query)}
-        >
-          <FinderProvider initialData={undefined}>
-            <ResultView category={category} />
-          </FinderProvider>
-        </FacetsProvider>
-      </AppLayout>
-    </GlobalDataProvider>
+      <GlobalDataProvider
+        category={category}
+        attributeGroups={attributeTypeGroups}
+        attributeTypes={attributeTypes}
+        siteMenuItems={siteMenuItems}
+        mainMenuItems={mainMenuItems}
+      >
+        <AppLayout>
+          <FacetsProvider
+            preFilters={{
+              categoryId: category?.id,
+              searchQuery: router.query.query?.toString()
+            }}
+            initialFacets={getInitialFacetsFromFiles([], router.query)}
+          >
+            <FinderProvider initialData={undefined}>
+              <ContentContainerStack>
+                <ResultView
+                  viewAs={viewAs}
+                  category={category}
+                  searchQuery={router.query.query?.toString()}
+                />
+              </ContentContainerStack>
+            </FinderProvider>
+          </FacetsProvider>
+        </AppLayout>
+      </GlobalDataProvider>
+    </Page>
   );
 };
 
@@ -132,90 +151,98 @@ export const getStaticPaths: GetStaticPaths = async (
 
 export const getStaticProps: GetStaticProps = async (
   context
-): Promise<GetStaticPropsResult<CategoryProps & AppLayoutProps>> => {
-  try {
-    const { locale } = context;
+): Promise<GetStaticPropsResult<CategoryProps>> => {
+  const { locale } = context;
 
-    const { categorySlug } = context.params as CategoryParsedUrlQuery;
-    const [
-      categoriesData,
-      siteMenuData,
-      mainMenuData,
-      attributeTypesData
-      // attributeTypeGroupsData
-    ] = await Promise.all([
+  const { categorySlug } = context.params as CategoryParsedUrlQuery;
+
+  const [categoriesData, siteMenuData, mainMenuData, attributeTypesData] =
+    await Promise.all([
       fetchAllCategories(),
       fetchMenuItemsForSiteHeader(getAudience(locale)),
       fetchMenuItemsForMainHeader(getAudience(locale)),
       fetchAllAttributeTypes()
-      // fetchAllAttributeGroups()
     ]);
 
-    const category: CategoryModel | undefined = categoriesData.find(
-      category => {
-        const categoryFormatter: CategoryFormatter = new CategoryFormatter(
-          category,
-          locale
-        );
-        return categoryFormatter.formatSlug() === categorySlug?.[0];
-      }
-    );
-
-    if (category === undefined || category.id === undefined) {
-      return {
-        notFound: true
-      };
-    }
-    const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
-      category.id
-    );
-    const encodedCategoryFilter: string = encodeURIComponent(
-      JSON.stringify([categoryFilter])
-    );
-
-    const initialSearchResults: FacetedSearchOdataCollection =
-      await fetchFacetedSearchResults(
-        encodedCategoryFilter,
-        'null',
-        undefined,
-        10,
-        0
-      );
-
-    const usedAttributeTypeCodes: string[] = Object.keys(
-      initialSearchResults['@search.facets']
-    );
-    const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
-      attributeType =>
-        usedAttributeTypeCodes.includes(
-          formatCamelCase(attributeType.code || '')
-        )
-    );
-
-    const usedFacetCodes: string[] = Object.values(
-      FacetFactory.getFacetsFromFiles([])
-    ).map(facet => formatCamelCase(facet.attributeTypeCode));
-
-    Object.keys(initialSearchResults['@search.facets']).forEach(key => {
-      if (!usedFacetCodes.includes(key)) {
-        delete initialSearchResults['@search.facets'][key];
-      }
-    });
-
-    const props = {
-      attributeTypeGroups: [],
-      attributeTypes: filteredAttributeTypes,
+  const category: CategoryModel | undefined = categoriesData.find(category => {
+    const categoryFormatter: CategoryFormatter = new CategoryFormatter(
       category,
-      siteMenuItems: siteMenuData,
-      mainMenuItems: mainMenuData
-    };
+      locale
+    );
+    return (
+      categoryFormatter.formatSlug().toLowerCase() ===
+      categorySlug?.[0]?.toLowerCase()
+    );
+  });
 
+  if (category === undefined || category.id === undefined) {
     return {
-      props
+      notFound: true
     };
-  } catch (e) {
-    return { notFound: true };
   }
+  const categoryFilter: string | undefined = mapCategoryIdToExternalFilter(
+    category.id
+  );
+  const encodedCategoryFilter: string = encodeURIComponent(
+    JSON.stringify([categoryFilter])
+  );
+
+  const initialSearchResults: FacetedSearchOdataCollection =
+    await fetchFacetedSearchResults(
+      encodedCategoryFilter,
+      'null',
+      undefined,
+      10,
+      0
+    );
+
+  const usedAttributeTypeCodes: string[] = Object.keys(
+    initialSearchResults['@search.facets']
+  );
+  const textFormatter = new TextFormatter();
+  const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
+    attributeType =>
+      [
+        ...usedAttributeTypeCodes,
+        textFormatter.formatCamelCase(liquidFlowRateFacet.attributeTypeCode),
+        textFormatter.formatCamelCase(liquidPressureFacet.attributeTypeCode),
+        textFormatter.formatCamelCase(
+          liquidSpecificGravityFacet.attributeTypeCode
+        ),
+        textFormatter.formatCamelCase(sprayAngleFacet.attributeTypeCode)
+      ].includes(textFormatter.formatCamelCase(attributeType.code || ''))
+  );
+
+  const usedFacetCodes: string[] = Object.values(
+    FacetFactory.getFacetsFromFiles([])
+  ).map(facet => textFormatter.formatCamelCase(facet.attributeTypeCode));
+
+  Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+    if (!usedFacetCodes.includes(key)) {
+      delete initialSearchResults['@search.facets'][key];
+    }
+  });
+
+  const categoryChildren: CategoryModel[] = categoriesData.filter(
+    cat => cat.parentId === category.id
+  );
+
+  const props: CategoryProps = {
+    attributeTypeGroups: [],
+    attributeTypes: filteredAttributeTypes,
+    category: {
+      ...category,
+      children: categoryChildren
+    },
+    initialViewAs: categoryChildren.length ? 'overview' : 'list',
+
+    siteMenuItems: siteMenuData,
+    mainMenuItems: mainMenuData
+  };
+
+  return {
+    props
+  };
 };
 
 export default Category;

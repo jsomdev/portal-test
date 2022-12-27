@@ -46,13 +46,10 @@ export function getInitialOptions(
   facet: Facet,
   facetQueryParam: string | string[] | undefined
 ): FacetOption[] {
-  // If there is no query parameter for the facet, we do not need to do anything and can
-  // return the options
-  if (facetQueryParam === undefined) {
-    return facet.options;
-  }
-
-  const activeQueryValues: string[] = (facetQueryParam as string).split(','); // ['Disc']
+  const activeQueryValues: string[] =
+    typeof facetQueryParam === 'string'
+      ? (facetQueryParam as string).split(',')
+      : []; // ['Disc']
   const currentOptions = facet.options.slice();
   let newFacetOptions: FacetOption[] = [];
 

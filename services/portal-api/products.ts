@@ -111,7 +111,7 @@ export const fetchBaseDesignsByIds = async (
   }
   const productsResource: ProductsResource = new ProductsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: 'id,name,description,number',
+    selectQuery: 'id,name,description,number,slug',
     expandQuery: `image`,
     filterQuery:
       filteredIds.length > 0
@@ -216,23 +216,23 @@ export const fetchSearchedProductsSuggestions = async (
 export const fetchProductPriceBreaksByNumber = async (
   productNumber: string,
   isAuthenticated: boolean,
-  isVerified: boolean,
+  isCustomer: boolean,
   isEmployee: boolean
 ): Promise<PriceBreak[]> => {
-  if (!isAuthenticated || (!isVerified && !isEmployee)) {
+  if (!isAuthenticated || (!isCustomer && !isEmployee)) {
     return [];
   }
 
   const productsResource: ProductsResource = new ProductsResource();
 
-  let priceFunction: string = '/StandardPrice';
+  let priceFunction: string = '/standardPrice';
 
-  if (isVerified) {
-    priceFunction = '/CustomerPrice';
+  if (isCustomer) {
+    priceFunction = '/customerPrice';
   }
   const data: OdataCollection<PriceBreak & OdataEntity> | Response | undefined =
     await productsResource.fetch(
-      `/Products(number='${productNumber}')${priceFunction}`,
+      `/products(number='${productNumber}')${priceFunction}`,
       {},
       {},
       true
@@ -332,14 +332,14 @@ export const fetchBookmarks = async (
 
 /**
  * Function that retrieves all necessary information about Product that are being displayed on the compare page.
- * @param ids guids of Products that are being compared
+ * @param numbers numbers of Products that are being compared
  * @returns Collection of Products
  */
 export async function getDesignsForDetailedCompare(
-  ids: string[]
+  numbers: string[]
 ): Promise<OdataCollection<Product>> {
   try {
-    if (ids.length === 0) {
+    if (numbers.length === 0) {
       return {
         '@odata.context': 'Products with attributes',
         value: []
@@ -349,14 +349,17 @@ export async function getDesignsForDetailedCompare(
     const productsResource: ProductsResource = new ProductsResource();
 
     const queryOptions: Partial<QueryOptions> = {
-      filterQuery: `id in (${ids.join(', ')})`,
-      selectQuery: 'id,name,description,number',
-      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings;$orderby=sortIndex asc)`
+      filterQuery: `${numbers
+        // The + signs in the product number do not get encoded for some strange reason.
+        .map(number => `number eq '${encodeURIComponent(number)}'`)
+        .join(' or ')}`,
+      selectQuery: 'id,name,description,number,slug',
+      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions($orderby=typeCode),sortIndex,value,displays,settings;$orderby=sortIndex asc)`
     };
 
-    // eslint-disable-next-line max-len
     const products: OdataCollection<Product> =
       await productsResource.getEntities(queryOptions);
+
     return products;
   } catch (e) {
     throw new Error('Could not get the product previews');
@@ -367,34 +370,32 @@ export async function getDesignsForDetailedCompare(
  * Function that retrieves information about the Products that need to be statically optimized
  */
 export async function fetchProductsForStaticPaths(): Promise<Product[]> {
-  // const slugs: { Slug: MultilingualString }[] = (slugsJson as any).slugs as {
-  //   Slug: MultilingualString;
-  // }[];
-  // console.log(slugs);
-  // return slugs.map(slug => ({
-  //   slug: slug.Slug
-  // }));
   const productsResource: ProductsResource = new ProductsResource();
 
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,slug`,
-    top: 20
+    top: 0
   };
 
   const data: OdataCollection<Product> | undefined =
     await productsResource.getEntities(queryOptions);
   return data.value;
 }
-
+/**
+ * Async function that retrieves the product with the necessary data to display on the page of a product.
+ * @param slug Product slug (url identifier)
+ * @returns Promise of a Product or null (if product not found)
+ */
 export async function fetchProductForProductPage(
   slug: string
-): Promise<Product> {
+): Promise<Product | null> {
   const productsResource: ProductsResource = new ProductsResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,number,name,description,modelId`,
+    selectQuery: `id,number,name,description,modelId,slug,audience`,
+    // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
     filterQuery: `slug/en eq '${slug}'`,
-    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions,sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,seoPath;$expand=series($select=id,name,seoPath)),accessories($select=id;$expand=accessory($select=id,name,number;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail)`
+    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions($orderby=typeCode asc),sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,slug;$expand=series($select=id,name,slug)),accessories($select=id;$expand=accessory($select=id,name,number,slug;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
   };
 
   const data: OdataCollection<Product> = await productsResource.getEntities(
@@ -402,9 +403,7 @@ export async function fetchProductForProductPage(
   );
 
   if (!data.value[0]) {
-    throw new Error(
-      'Could not find a product for the slug that was passed as parameter'
-    );
+    return null;
   }
   return data.value[0];
 }

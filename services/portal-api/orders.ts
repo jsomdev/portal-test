@@ -39,14 +39,14 @@ export const fetchMyOrders = async (
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: 'number,submittedOn,id,status,totalAmount',
     expandQuery:
-      'lines($select=productName,productNumber,unitAmount,totalAmount,currencyCode,quantity,productId)',
-    includeCount: true,
+      'lines($select=productName,productNumber,unitAmount,totalAmount,currencyCode,quantity,productId;$expand=product($select=id,name,number,attributes;$expand=image))',
     orderbyQuery: 'submittedOn desc',
+    includeCount: true,
     top,
     skip
   };
   const baseResource: BaseResource<Order> = new BaseResource<Order>(
-    '/Me/Account/Orders'
+    '/me/account/orders'
   );
   const orders: OdataCollection<Order> = await baseResource.getEntities(
     queryOptions
@@ -68,7 +68,7 @@ export const fetchMyOrder = async (
   );
   const queryOptions: Partial<QueryOptions> = {
     expandQuery:
-      'lines($expand=product($select=id;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
+      'lines($expand=product($select=id,name,number,slug;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
   };
   const data: Order & OdataEntity = await baseResource.getEntity(
     orderId,

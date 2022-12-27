@@ -43,8 +43,9 @@ export const ActiveFilters: React.FC = () => {
   const {
     clearSearch,
     clearTheoreticalFlow,
-    clearFacetOptions,
     clearAllFacets,
+    clearFacetOptions,
+    toggleFacetOption,
     searchQuery,
     visibleMainFacets,
     visibleOperatingConditionsFacets
@@ -52,7 +53,7 @@ export const ActiveFilters: React.FC = () => {
   const activeFilterChips: ActiveFilterChipProps[] = useMemo(() => {
     const searchFilterChip: ActiveFilterChipProps | undefined = searchQuery
       ? mapSearchQueryToActiveFilterChipProps(
-          intl.formatMessage(messages.searchFilter, { value: searchQuery }),
+          intl.formatMessage(messages.searchFilter, { query: searchQuery }),
           clearSearch
         )
       : undefined;
@@ -71,7 +72,7 @@ export const ActiveFilters: React.FC = () => {
         visibleMainFacets,
         systemOfMeasurement,
         intl,
-        clearFacetOptions
+        toggleFacetOption
       );
 
     return [
@@ -86,6 +87,7 @@ export const ActiveFilters: React.FC = () => {
     intl,
     searchQuery,
     systemOfMeasurement,
+    toggleFacetOption,
     visibleMainFacets,
     visibleOperatingConditionsFacets
   ]);

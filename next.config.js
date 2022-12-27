@@ -19,12 +19,11 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/categorieen/:categorySlug',
-        destination: '/categories/:categorySlug'
-      },
-      {
-        source: '/producten/:productSlug',
-        destination: '/products/:productSlug'
+        /*added a very generic rewrite with no real use,
+        as not having any rewrites breaks some of the expected i18n behavior.
+        https://github.com/vercel/next.js/issues/25019 */
+        source: '/home',
+        destination: '/'
       }
     ];
   },
@@ -33,7 +32,7 @@ module.exports = {
     domains: ['spray.widen.net']
   },
   i18n: {
-    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
     defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE
   }
 };

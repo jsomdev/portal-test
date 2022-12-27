@@ -16,6 +16,7 @@ export interface UserContextProps {
   isRequestForQuoteEnabled: boolean;
   isCheckoutEnabled: boolean;
   isQuoteRequestHistoryEnabled: boolean;
+  isQuoteHistoryEnabled: boolean;
   isOrderHistoryEnabled: boolean;
   showCustomerDetails: boolean;
   isInternalViewEnabled: boolean;
@@ -36,6 +37,7 @@ const initialContextProps: UserContextProps = {
   isRequestForQuoteEnabled: false,
   isCheckoutEnabled: false,
   isQuoteRequestHistoryEnabled: false,
+  isQuoteHistoryEnabled: false,
   isOrderHistoryEnabled: false,
   isInternalViewEnabled: false,
   showCustomerDetails: false,

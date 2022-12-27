@@ -3,8 +3,7 @@ import { UserContactInfoPut } from './base/types';
 import { User } from './models/User';
 
 export const updateUserInfo = async (
-  userInfo: UserContactInfoPut,
-  me: User | undefined
+  userInfo: UserContactInfoPut
 ): Promise<User> => {
   const customUserResource: BaseResource<unknown> = new BaseResource('/me');
   const data: User = await customUserResource.fetch<User>(

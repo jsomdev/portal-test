@@ -1,8 +1,10 @@
 // import { liquidFlowRateRangeFacet } from '../facet-service/facets/range-facets/liquidFlowRateRangeProductFacet';
 // import { liquidPressureRangeFacet } from '../facet-service/facets/range-facets/liquidPressureRangeProductFacet';
 // import { liquidSpecificGravityFacet } from '../facet-service/facets/range-facets/liquidSpecificGravityRangeFacet';
-import { DataCacheManager } from '@services/cache/dataCache';
 import path from 'path';
+
+import { DataCacheManager } from '@services/cache/dataCache';
+
 import { AttributeType } from './models/AttributeType';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';

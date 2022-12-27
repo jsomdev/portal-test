@@ -67,7 +67,7 @@ export const FormStepActions: React.FC<FormStepActionProps> = ({
 
   const setTouchedFields: FormikTouched<unknown> = React.useMemo(() => {
     const fields: { [key: string]: boolean } = {};
-    fieldNamesForCurrentStep.map((field: string, i) => {
+    fieldNamesForCurrentStep.map((field: string) => {
       return (fields[field] = true);
     });
     return fields;

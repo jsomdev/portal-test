@@ -8,15 +8,30 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum ProductTypeFacetOptionKey {
+  AirCap = 'AirCap',
   Body = 'Body',
   Disc = 'Disc',
+  FluidCap = 'FluidCap',
   Nozzle = 'Nozzle',
   NozzleAssembly = 'NozzleAssembly',
+  Setup = 'Setup',
   Tip = 'Tip'
 }
 
 export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
   [
+    {
+      key: ProductTypeFacetOptionKey.AirCap,
+      ...defaultFacetOption,
+      valueId: '5d692122-3b49-48be-bc39-286a4a4922d5',
+      value: 'AirCap',
+      configuration: {
+        displays: [
+          { variation: 'Invariant', unitSymbol: '', value: { en: 'AirCap' } }
+        ],
+        sortIndex: 1
+      }
+    },
     {
       key: ProductTypeFacetOptionKey.Body,
       ...defaultFacetOption,
@@ -26,7 +41,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
         displays: [
           { variation: 'Invariant', unitSymbol: '', value: { en: 'Body' } }
         ],
-        sortIndex: 1
+        sortIndex: 2
       }
     },
     {
@@ -38,7 +53,19 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
         displays: [
           { variation: 'Invariant', unitSymbol: '', value: { en: 'Disc' } }
         ],
-        sortIndex: 2
+        sortIndex: 3
+      }
+    },
+    {
+      key: ProductTypeFacetOptionKey.FluidCap,
+      ...defaultFacetOption,
+      valueId: 'ce45c67e-ce61-47e9-8e79-f8a7fee0e7cb',
+      value: 'FluidCap',
+      configuration: {
+        displays: [
+          { variation: 'Invariant', unitSymbol: '', value: { en: 'FluidCap' } }
+        ],
+        sortIndex: 4
       }
     },
     {
@@ -50,7 +77,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
         displays: [
           { variation: 'Invariant', unitSymbol: '', value: { en: 'Nozzle' } }
         ],
-        sortIndex: 3
+        sortIndex: 5
       }
     },
     {
@@ -66,7 +93,19 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
             value: { en: 'Nozzle Assembly' }
           }
         ],
-        sortIndex: 4
+        sortIndex: 6
+      }
+    },
+    {
+      key: ProductTypeFacetOptionKey.Setup,
+      ...defaultFacetOption,
+      valueId: 'cbdfd12d-4dd6-4680-bbf5-4ce1447872c8',
+      value: 'Setup',
+      configuration: {
+        displays: [
+          { variation: 'Invariant', unitSymbol: '', value: { en: 'Setup' } }
+        ],
+        sortIndex: 7
       }
     },
     {
@@ -78,7 +117,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
         displays: [
           { variation: 'Invariant', unitSymbol: '', value: { en: 'Tip' } }
         ],
-        sortIndex: 5
+        sortIndex: 8
       }
     }
   ];
@@ -94,6 +133,8 @@ export const productTypeFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
+    displayName: '',
+    description: '',
     isFacetingEnabled: true
   },
   options: productTypeFacetOptions

@@ -33,7 +33,30 @@ import { ClientEnvironment } from '@widgets/environment/environment.types';
 import { getCurrentClientEnvironment } from '@widgets/environment/environmentHelpers';
 
 import { UserContext } from './userContext';
-import { rem } from '@utilities/rem';
+
+const messages = defineMessages({
+  loading: {
+    id: messageIds.loading.default,
+    description: 'Default loading text',
+    defaultMessage: 'Loading...'
+  },
+  signingIn: {
+    id: messageIds.loading.user.signingIn,
+    description: 'Loading text while signing in',
+    defaultMessage: 'Signing in...'
+  },
+  signingOut: {
+    id: messageIds.loading.user.signingOut,
+    description: 'Loading text while signing out',
+    defaultMessage: 'Signing out...'
+  },
+  redirecting: {
+    id: messageIds.loading.user.redirecting,
+    description: 'Loading text while redirecting you from somewhere else',
+    defaultMessage: 'Redirecting...'
+  }
+});
+
 /**
  * Context Provider for the current user.
  * It will provide information about the user and functionality to update its information.
@@ -54,34 +77,12 @@ export const UserProvider: React.FC = ({ children }) => {
 
   const { data: me, status: meStatus } = useQuery(
     [QUERYKEYS.appMe, isAuthenticated],
-    () => fetchMe(isAuthenticated),
+    () => fetchMe(),
     {
       keepPreviousData: true,
       enabled: isAuthenticated
     }
   );
-  const messages = defineMessages({
-    loading: {
-      id: messageIds.loading.default,
-      description: 'Default loading text',
-      defaultMessage: 'Loading...'
-    },
-    signingIn: {
-      id: messageIds.loading.user.signingIn,
-      description: 'Loading text while signing in',
-      defaultMessage: 'Signing in...'
-    },
-    signingOut: {
-      id: messageIds.loading.user.signingOut,
-      description: 'Loading text while signing out',
-      defaultMessage: 'Signing out...'
-    },
-    redirecting: {
-      id: messageIds.loading.user.redirecting,
-      description: 'Loading text while redirecting you from somewhere else',
-      defaultMessage: 'Redirecting...'
-    }
-  });
 
   useEffect(() => {
     if (meStatus === 'success' && me?.roles !== undefined) {
@@ -129,6 +130,7 @@ export const UserProvider: React.FC = ({ children }) => {
     }
     return false;
   }, [isRegisteredUser]);
+
   const isCheckoutEnabled: boolean = useMemo(() => {
     if (isCustomer) {
       return true;
@@ -143,18 +145,27 @@ export const UserProvider: React.FC = ({ children }) => {
     return false;
   }, [isRegisteredUser]);
 
+  const isQuoteHistoryEnabled: boolean = useMemo(() => {
+    if (isVerifiedCustomer) {
+      return true;
+    }
+    return false;
+  }, [isVerifiedCustomer]);
+
   const isOrderHistoryEnabled: boolean = useMemo(() => {
     if (isVerifiedCustomer) {
       return true;
     }
     return false;
   }, [isVerifiedCustomer]);
+
   const showCustomerDetails: boolean = useMemo(() => {
     if (isCustomer) {
       return true;
     }
     return false;
   }, [isCustomer]);
+
   const isInternalViewEnabled: boolean = useMemo(() => {
     if (isEmployee) {
       return true;
@@ -223,15 +234,14 @@ export const UserProvider: React.FC = ({ children }) => {
         verticalAlign="center"
         horizontalAlign="center"
         tokens={{
-          childrenGap: rem(spacing.l1),
-          padding: `${rem(spacing.l1)} 0 `
+          childrenGap: spacing.l1,
+          padding: `${spacing.l1} 0 `
         }}
       >
         <LoadingOverlay spinnerText={getInteractionStatusText(inProgress)} />
       </Stack>
     );
   }
-
   return (
     <UserContext.Provider
       value={{
@@ -241,6 +251,7 @@ export const UserProvider: React.FC = ({ children }) => {
         isCheckoutEnabled,
         isOrderHistoryEnabled,
         isQuoteRequestHistoryEnabled,
+        isQuoteHistoryEnabled,
         isRequestForQuoteEnabled,
         isInternalViewEnabled,
         showCustomerDetails,

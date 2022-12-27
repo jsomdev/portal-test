@@ -1,6 +1,7 @@
+//TODO move when old stepper is no longer used
 import React from 'react';
 
-import { getTheme, Stack } from '@fluentui/react';
+import { Stack, getTheme } from '@fluentui/react';
 import { rem } from '@utilities/rem';
 
 import { Step } from './step';

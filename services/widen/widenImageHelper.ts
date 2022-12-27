@@ -87,14 +87,14 @@ const defaultWidenImageOptions: DefaultImageOptions = {
  */
 
 export class WidenImageHelper {
-  static getOptimizedSrc(url: string, preset: WidenImagePreset): string;
-  static getOptimizedSrc(url: string, options: WidenImageOptions): string;
   /**
    * Function that will call the validateUrl method and optimize method,
    * based on the url and configuration that has been passed as parameter.
    * @param url The image src url that needs to be optimized. If not able to optimize the original url will be returned.
    * @param configuration either a WidenImagePreset or custom WidenImageOptions that will be used to build the url search parameters
    */
+  static getOptimizedSrc(url: string, preset: WidenImagePreset): string;
+  static getOptimizedSrc(url: string, options: WidenImageOptions): string;
   public static getOptimizedSrc(
     url: string,
     configuration: WidenImageOptions | WidenImagePreset

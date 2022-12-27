@@ -10,5 +10,5 @@ export enum UrlType {
   TWITTER_FEED = 'TwitterFeed',
   INSTAGRAM_ACCOUNT = 'InstagramAccount',
   LINKED_IN_PAGE = 'LinkedInPage',
-  OTHER = 'Other',
+  OTHER = 'Other'
 }

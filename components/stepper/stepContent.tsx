@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Environment } from '@widgets/environment/environment';
 import { ClientEnvironment } from '@widgets/environment/environment.types';
 
@@ -9,7 +11,7 @@ export const StepContent: React.FC<{
   const { currentIndex } = useStepper();
 
   return (
-    <>
+    <React.Fragment>
       {(children &&
         Array.isArray(children) &&
         (children as JSX.Element[])[currentIndex]) || (
@@ -17,6 +19,6 @@ export const StepContent: React.FC<{
           <div>Please provide a valid step</div>
         </Environment>
       )}
-    </>
+    </React.Fragment>
   );
 };

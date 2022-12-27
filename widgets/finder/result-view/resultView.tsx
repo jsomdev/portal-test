@@ -1,39 +1,50 @@
-import { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { StickyThumbContainer } from '@components/sticky/stickyThumbContainer';
+import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
   IPanelStyles,
   IStackItemStyles,
   IStackStyles,
   Panel,
   PanelType,
-  PrimaryButton,
   Stack,
   Text,
-  TextField,
   useTheme
 } from '@fluentui/react';
 import { useFinder } from '@providers/finder/finderContext';
+import { FINDER_PAGE_SIZE } from '@providers/finder/finderProvider';
 import { messageIds } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
-import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Category } from '@services/portal-api';
+import { scrollToTop } from '@utilities/scrollToTop';
+import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import {
-  WidenImageHelper,
-  WidenImagePreset
-} from '@services/widen/widenImageHelper';
-import { rem } from '@utilities/rem';
-import { PagesHeader } from '@widgets/headers/pageHeader';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+  Mobile,
+  TabletAndDesktop,
+  mediaQueryFrom
+} from '@widgets/media-queries';
 
 import { FinderPanel } from '../panel/finderPanel';
+import { QuickFilter } from '../quick-filter/quickFilter';
 import { ActiveFilters } from './activeFilters';
-import { FilterResultsButton, ResultsHeader } from './resultsHeader';
+import { FilterResultsButton } from './filterResultsButton';
+import { ProductListView } from './list-view/listView';
+import { ProductResultOverview } from './overview/productResultOverview';
+import { ProductResultOverviewItem } from './overview/productResultOverview.types';
+import { mapCategoriesToProductResultOverviewItems } from './overview/productResultOverviewHelper';
+import { ResultViewPagination } from './product-result-view-pagination/resultViewPagination';
+import { getTotalPages } from './product-result-view-pagination/resultViewPaginationHelper';
+import { ResultsHeader } from './resultsHeader';
 
+export type ResultViewType = 'list' | 'overview';
 interface ResultViewProps {
-  category: Category;
+  category?: Category;
+  searchQuery?: string;
+  viewAs: ResultViewType;
 }
 
 interface ResultViewStyles {
@@ -41,6 +52,7 @@ interface ResultViewStyles {
   sidePanelContainer?: IStackItemStyles;
   mainContainer?: IStackItemStyles;
   panel?: Partial<IPanelStyles>;
+  stickyContainer: IStackStyles;
 }
 
 const messages = defineMessages({
@@ -49,9 +61,19 @@ const messages = defineMessages({
     description: 'Title for the category result view',
     defaultMessage: 'Category'
   },
-  titleWithSearch: {
-    id: messageIds.pages.category.titleWithSearch,
+  titleWithSearchAndCategory: {
+    id: messageIds.pages.category.titleWithSearchAndCategory,
     description: 'Title for the category result view with a search query',
+    defaultMessage: ''
+  },
+  titleWithOnlySearch: {
+    id: messageIds.pages.category.titleWithOnlySearch,
+    description: 'Title for the result view with a search query',
+    defaultMessage: ''
+  },
+  titleWithoutSearchOrCategory: {
+    id: messageIds.pages.category.titleWithoutSearchOrCategory,
+    description: 'Title for the result view without a search query or category',
     defaultMessage: ''
   },
   panelTitle: {
@@ -76,45 +98,149 @@ const messages = defineMessages({
   }
 });
 
-export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
+export const ResultView: React.FC<ResultViewProps> = ({
+  category,
+  viewAs,
+  searchQuery
+}) => {
   const [isFiltersPanelOpen, setIsFiltersPanelOpen] = useState<boolean>(false);
-  const { spacing } = useTheme();
-  const { locale } = useIntl();
+  const { spacing, palette, semanticColors } = useTheme();
+  const { locale, formatMessage } = useIntl();
   const { productCount, modelCount } = useFinder();
-  const { formatMessage } = useIntl();
+  const router = useRouter();
+  const page = useMemo(() => {
+    const pageValue: number = Number(router.query.page || '1');
+    const isValidPage =
+      pageValue > 0 &&
+      pageValue <= getTotalPages(productCount || 0, FINDER_PAGE_SIZE);
+    return isValidPage ? pageValue : 1;
+  }, [productCount, router.query.page]);
 
-  const categoryFormatter = new CategoryFormatter(category, locale);
+  function updatePage(newPage: number): void {
+    router.query.page = newPage >= 1 ? newPage.toString() : '1';
+    router.push(router, undefined, { shallow: true });
+  }
+  const categoryFormatter = useMemo(() => {
+    return new CategoryFormatter(category, locale);
+  }, [category, locale]);
+  const title = useMemo(() => {
+    if (searchQuery) {
+      return category
+        ? formatMessage(messages.titleWithSearchAndCategory, {
+            name: categoryFormatter.formatName(),
+            searchQuery: searchQuery
+          })
+        : formatMessage(messages.titleWithOnlySearch, {
+            searchQuery: searchQuery
+          });
+    }
+
+    if (category) {
+      return formatMessage(messages.title, {
+        name: categoryFormatter.formatName()
+      });
+    }
+
+    return formatMessage(messages.titleWithoutSearchOrCategory);
+  }, [searchQuery, formatMessage, categoryFormatter, category]);
+  const overviewItems: ProductResultOverviewItem[] = useMemo(() => {
+    if (viewAs == 'overview') {
+      return mapCategoriesToProductResultOverviewItems(
+        category?.children || [],
+        locale
+      );
+    }
+    return [];
+  }, [category?.children, locale, viewAs]);
 
   const styles: ResultViewStyles = {
+    panel: {
+      content: {
+        background: palette.white,
+        padding: 0
+      },
+      contentInner: {
+        background: palette.white
+      },
+      commands: {
+        padding: 0,
+        position: 'sticky'
+      },
+      navigation: {
+        height: 80,
+        background: palette.white,
+        padding: spacing.m,
+        borderBottom: `1px solid ${semanticColors.variantBorder}`
+      },
+      header: {
+        padding: 0,
+        margin: 'auto'
+      },
+      subComponentStyles: {
+        closeButton: {
+          root: {
+            margin: 'auto'
+          }
+        }
+      }
+    },
+
     sidePanelContainer: {
       root: {
-        flex: 2,
-        paddingLeft: rem(spacing.l1),
-        paddingRight: rem(spacing.m)
+        width: 360,
+        paddingLeft: spacing.l1,
+        paddingRight: spacing.m
       }
     },
     mainContainer: {
       root: {
-        paddingLeft: rem(spacing.m),
-        paddingRight: rem(spacing.m),
-        flex: 6
+        paddingLeft: spacing.m,
+        paddingRight: spacing.m,
+        width: '100%',
+        ...mediaQueryFrom('tablet', {
+          width: 'calc(100% - 360px)'
+        })
+      }
+    },
+    stickyContainer: {
+      root: {
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        background: palette.white
       }
     }
   };
   return (
-    <Stack
-      horizontal
-      tokens={{ padding: `${rem(spacing.l2)} 0 ${rem(spacing.l1)} 0` }}
-    >
+    <Stack horizontal tokens={{ padding: `${spacing.l2} 0 ${spacing.l1} 0` }}>
       <Mobile>
         <Panel
+          type={PanelType.smallFluid}
           isOpen={isFiltersPanelOpen}
           onDismiss={() => setIsFiltersPanelOpen(false)}
-          type={PanelType.smallFluid}
-          styles={styles.panel}
-          headerText={formatMessage(messages.panelTitle)}
-          closeButtonAriaLabel={formatMessage(messages.ariaClose)}
+          hasCloseButton={true}
           isFooterAtBottom={true}
+          onRenderHeader={() => (
+            <Stack.Item
+              align="center"
+              styles={{ root: { flex: 1, justifySelf: 'center' } }}
+            >
+              <Text
+                variant="xxLarge"
+                as="h1"
+                styles={{ root: { lineHeight: '2rem' } }}
+              >
+                {/* This is temp text */}
+                <span>Spray</span>
+                <span style={{ color: palette.themePrimary }}>
+                  {/* This is temp text */}
+                  Finder
+                </span>
+              </Text>
+            </Stack.Item>
+          )}
           onRenderFooterContent={() => (
             <Stack>
               <FilterResultsButton
@@ -125,6 +251,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
               />
             </Stack>
           )}
+          styles={styles.panel}
         >
           <FinderPanel />
         </Panel>
@@ -135,13 +262,13 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
         </Stack.Item>
       </TabletAndDesktop>
       <Stack.Item styles={styles.mainContainer}>
-        <Stack tokens={{ childrenGap: `${rem(spacing.m)} 0` }}>
+        <Stack tokens={{ childrenGap: `${spacing.m} 0` }}>
           <PagesHeader
-            title={formatMessage(messages.title, {
-              name: categoryFormatter.formatName()
-            })}
+            title={title}
             description={categoryFormatter.formatDescription()}
           />
+
+          {viewAs === 'list' && <QuickFilter category={category} />}
           <ResultsHeader
             onClickFilter={() => setIsFiltersPanelOpen(true)}
             filterButtonText={formatMessage(messages.filterResults, {
@@ -150,93 +277,43 @@ export const ResultView: React.FC<ResultViewProps> = ({ category }) => {
             productCount={productCount || 0}
             modelCount={modelCount || 0}
           />
-          <ActiveFilters />
-          <TempListView />
+          {viewAs === 'list' && (
+            <>
+              <ActiveFilters />
+              <ProductListView />
+              <ResultViewPagination
+                totalItems={productCount || 0}
+                currentPage={page}
+                pageSize={FINDER_PAGE_SIZE}
+                onPageChange={newPage => {
+                  scrollToTop('body');
+                  updatePage(newPage);
+                }}
+              />
+              <TrustFactors />
+            </>
+          )}
+
+          {viewAs === 'overview' && category && (
+            <>
+              <ProductResultOverview
+                category={category}
+                categoryItems={overviewItems}
+              />
+            </>
+          )}
+          <Mobile>
+            <StickyThumbContainer>
+              <FilterResultsButton
+                onClick={() => setIsFiltersPanelOpen(true)}
+                text={formatMessage(messages.filterResults, {
+                  productCount: productCount || 0
+                })}
+              />
+            </StickyThumbContainer>
+          </Mobile>
         </Stack>
       </Stack.Item>
-    </Stack>
-  );
-};
-
-export const TempListView: React.FC = () => {
-  const { products } = useFinder();
-  const { palette } = useTheme();
-  const { locale } = useIntl();
-  return (
-    <Stack horizontal wrap>
-      {products.slice(0, 20).map(product => {
-        const productFormatter = new ProductFormatter(product, locale);
-        return (
-          <Stack.Item
-            styles={{
-              root: {
-                padding: rem(8),
-                width: 320
-              }
-            }}
-            key={product.number}
-          >
-            <Stack
-              horizontalAlign="stretch"
-              styles={{
-                root: {
-                  position: 'relative',
-                  border: `2px solid ${palette.neutralLight}`,
-                  borderRadius: 8
-                }
-              }}
-              tokens={{ padding: 16, childrenGap: 8 }}
-            >
-              <Stack.Item align="center">
-                <Image
-                  layout="fixed"
-                  height={140}
-                  width={140}
-                  src={
-                    WidenImageHelper.getOptimizedSrc(
-                      product.image?.url || '',
-                      WidenImagePreset.Medium
-                    ) || ''
-                  }
-                  alt={productFormatter.formatImageCaption()}
-                />
-              </Stack.Item>
-              <Text as="h2" variant="xLarge">
-                {product.number}
-              </Text>
-              <Text
-                as="p"
-                variant="large"
-                styles={{
-                  root: {
-                    maxWidth: 200,
-                    minHeight: 70,
-                    marginBottom: 16
-                  }
-                }}
-              >
-                {productFormatter.formatName()}
-              </Text>
-              <Stack horizontal tokens={{ childrenGap: 4 }}>
-                <TextField
-                  height={36}
-                  styles={{ root: { width: 60 }, fieldGroup: { height: 36 } }}
-                  type="number"
-                  placeholder="1"
-                />
-                <Stack.Item grow>
-                  <PrimaryButton
-                    styles={{ root: { width: '100%', height: 36 } }}
-                    iconProps={{ iconName: 'ShoppingCart' }}
-                  >
-                    Add To Cart
-                  </PrimaryButton>
-                </Stack.Item>
-              </Stack>
-            </Stack>
-          </Stack.Item>
-        );
-      })}
     </Stack>
   );
 };

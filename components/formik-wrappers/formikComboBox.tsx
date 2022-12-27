@@ -1,26 +1,29 @@
 import React from 'react';
 
 import { useField, useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
 
+import formatError from '@components/formik-wrappers/formatError';
 import {
   ComboBox,
   DirectionalHint,
   IComboBox,
   IComboBoxStyles,
+  IDropdownOption,
   Stack,
   useTheme
 } from '@fluentui/react';
+import { rem } from '@utilities/rem';
 
 import { FormikComboBoxProps } from './formikWrappers.types';
 import { useFormikWrapperStyles } from './useFormikWrapperStyles';
-import { rem } from '@utilities/rem';
 
 export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
   name,
   validationProps,
-  getSelectedKey: getKey,
   ...props
 }) => {
+  const intl = useIntl();
   const [input, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const { palette } = useTheme();
@@ -43,6 +46,14 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
     }
   };
 
+  function getSelectedKey(value: string, options: IDropdownOption[]) {
+    return (
+      options.find(option => option.key === value)?.key.toString() ||
+      props.defaultSelectedKey ||
+      null
+    );
+  }
+
   const { mergedStyles } = useFormikWrapperStyles<Partial<IComboBoxStyles>>(
     name,
     props.styles,
@@ -56,22 +67,26 @@ export const FormikComboBox: React.FC<FormikComboBoxProps> = ({
         {...input}
         {...props}
         componentRef={comboBoxRef}
-        allowFreeform={true}
+        allowFreeform={
+          props.allowFreeform === undefined ? true : props.allowFreeform
+        }
         calloutProps={{
           directionalHintFixed: true,
           directionalHint: DirectionalHint.bottomRightEdge
         }}
         onClick={onOpenClick}
-        selectedKey={getKey?.(input.value, props.options)}
-        errorMessage={meta.touched && meta.error ? meta.error : undefined}
-        onChange={(e, option) => {
-          setFieldValue(name, option?.key, true);
+        selectedKey={getSelectedKey(input.value, props.options)}
+        errorMessage={formatError(intl, meta, input.name)}
+        onChange={(e, option, index, value) => {
+          if (props.onChange) {
+            return props.onChange(e, option, index, value);
+          }
+          return setFieldValue(name, option?.key || null, true);
         }}
         styles={mergedStyles}
         onBlur={() => {
           setFieldTouched(name, true, false);
         }}
-        //autofill={{ name: input.name } as any}
       />
     </Stack>
   );

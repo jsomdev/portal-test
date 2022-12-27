@@ -2,28 +2,16 @@ import React from 'react';
 
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
 import { useIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
-import { Head } from 'widgets/metadata/head';
 
+import { NextLink } from '@components/link/nextLink';
 import { getMarkdownByFileName } from '@docs/data';
 import { messageIds, supportedLocales } from '@services/i18n';
 
 interface I18NProps {
   markdown: string;
 }
-
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<I18NProps>
-> => {
-  const markdown = getMarkdownByFileName('i18n', ['content']);
-  return {
-    props: {
-      markdown: markdown.content
-    }
-  };
-};
 
 const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
   const { formatMessage } = useIntl();
@@ -45,7 +33,7 @@ const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
       </p>
       <h3>Supported Locales</h3>
       {supportedLocales?.map(supportedLocale => (
-        <Link
+        <NextLink
           key={supportedLocale}
           href={pathname}
           locale={supportedLocale}
@@ -55,12 +43,11 @@ const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
             className={supportedLocale === locale ? 'active' : ''}
             rel="canonical"
           >
-            {' '}
             {supportedLocale}
           </a>
-        </Link>
+        </NextLink>
       ))}
-      <style jsx>{`
+      {/* <style jsx>{`
         .container {
           padding: 2em;
         }
@@ -75,30 +62,31 @@ const I18NExamples: React.FC<Pick<I18NProps, 'markdown'>> = () => {
           color: orange;
           border-color: orange;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 };
 
 const I18N: NextPage<I18NProps> = (props: I18NProps) => {
-  const { formatMessage } = useIntl();
-  const { pathname } = useRouter();
-
   return (
-    <>
-      <Head
-        pathname={pathname}
-        title={formatMessage({ id: messageIds.pages.docs.i18n.title })}
-        description={formatMessage({
-          id: messageIds.pages.docs.i18n.description
-        })}
-      />
+    <React.Fragment>
       <ReactMarkdown className={'reactMarkdown'}>
         {props.markdown}
       </ReactMarkdown>
       <I18NExamples {...props} />
-    </>
+    </React.Fragment>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<I18NProps>
+> => {
+  const markdown = getMarkdownByFileName('i18n', ['content']);
+  return {
+    props: {
+      markdown: markdown.content
+    }
+  };
 };
 
 export default I18N;

@@ -29,7 +29,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._1_5,
       ...defaultFacetOption,
       valueId: '',
-      value: '1.5',
+      value: 1.5,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 1.5 },
@@ -42,7 +42,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._3,
       ...defaultFacetOption,
       valueId: '',
-      value: '3',
+      value: 3,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 3 },
@@ -56,7 +56,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._3_3,
       ...defaultFacetOption,
       valueId: '',
-      value: '3.3',
+      value: 3.3,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 3.3 },
@@ -69,7 +69,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._3_9,
       ...defaultFacetOption,
       valueId: '',
-      value: '3.9',
+      value: 3.9,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 3.9 },
@@ -82,7 +82,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._4,
       ...defaultFacetOption,
       valueId: '',
-      value: '4',
+      value: 4,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 4 },
@@ -95,7 +95,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._4_1,
       ...defaultFacetOption,
       valueId: '',
-      value: '4.1',
+      value: 4.1,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 4.1 },
@@ -108,7 +108,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._4_9,
       ...defaultFacetOption,
       valueId: '',
-      value: '4.9',
+      value: 4.9,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 4.9 },
@@ -121,7 +121,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._5_7,
       ...defaultFacetOption,
       valueId: '',
-      value: '5.7',
+      value: 5.7,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 5.7 },
@@ -134,7 +134,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._5_9,
       ...defaultFacetOption,
       valueId: '',
-      value: '5.9',
+      value: 5.9,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 5.9 },
@@ -147,7 +147,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._6,
       ...defaultFacetOption,
       valueId: '',
-      value: '6',
+      value: 6,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 6 },
@@ -160,7 +160,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._6_6,
       ...defaultFacetOption,
       valueId: '',
-      value: '6.6',
+      value: 6.6,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 6.6 },
@@ -173,7 +173,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._7_4,
       ...defaultFacetOption,
       valueId: '',
-      value: '7.4',
+      value: 7.4,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 7.4 },
@@ -186,7 +186,7 @@ export const shaftLengthFacetOptions: FacetOption<ShaftLengthFacetOptionKey>[] =
       key: ShaftLengthFacetOptionKey._8_2,
       ...defaultFacetOption,
       valueId: '',
-      value: '8.2',
+      value: 8.2,
       configuration: {
         displays: [
           { variation: 'Us', unitSymbol: 'ft', value: 8.2 },

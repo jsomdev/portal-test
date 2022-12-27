@@ -1,14 +1,12 @@
-import { useCallback, useContext, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { useFacets } from '@providers/facets/facetsContext';
-import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
-import { productSeriesFacet } from '@services/facet-service/facets/series';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
@@ -19,13 +17,14 @@ import {
   UnitOfMeasurement
 } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { RangeFacetOptionKey } from '@services/facet-service/models/range-facets/rangeFacetOptionKey';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
   FacetedSearchFacetResult,
   FacetedSearchOdataCollection
 } from '@services/portal-api/faceted-search/types';
 import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import { QUERYKEYS } from '@services/react-query/constants';
-import { formatCamelCase } from '@utilities/formatText';
+import { getTotalPages } from '@widgets/finder/result-view/product-result-view-pagination/resultViewPaginationHelper';
 
 import { FinderContext } from './finderContext';
 import { FinderQueryHelper } from './finderQueryHelper';
@@ -39,13 +38,21 @@ interface FinderProviderProps {
  * Results: Products
  * @param initialData to cache inside the queryClient
  */
+
+export const FINDER_PAGE_SIZE = 10;
+const textFormatter = new TextFormatter();
 export const FinderProvider: React.FC<FinderProviderProps> = ({
-  children,
-  initialData
+  children
+  // TODO: initialData may be used. Don't want to remove just yet
+  // initialData
 }) => {
   const { query, pathname, push } = useRouter();
-  const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
-  const queryClient = useQueryClient();
+
+  // TODO: initialData may be used. Don't want to remove just yet
+  // const queryClient = useQueryClient();
+  const [productCount, setProductCount] = useState<number | undefined>(
+    undefined
+  );
   const {
     storeFacets,
     mainFacets,
@@ -55,41 +62,52 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     preFilters
   } = useFacets();
 
+  const page = useMemo(() => {
+    const pageValue: number = Number(query.page || '1');
+    const isValidPage: boolean =
+      pageValue > 0 &&
+      pageValue <= getTotalPages(productCount || 0, FINDER_PAGE_SIZE);
+    return isValidPage ? pageValue : 1;
+  }, [productCount, query.page]);
+
   // QueryResult for the FacetedSearch api call
   // Dependencies are the @filters and @operatingConditions parameter calculated in the FacetsContext,
   // and the searchQuery that has been passed as prefilter
   const {
     data: facetedSearchResults,
     status: facetedSearchStatus,
-    error: facetedSearchError
+    error: facetedSearchError,
+    isFetching
   } = useQuery(
     [
       QUERYKEYS.productFinderResults,
       combinedFiltersApiParameter,
       preFilters.searchQuery,
-      combinedOperatingConditionsApiParameter
+      combinedOperatingConditionsApiParameter,
+      page
     ],
     () =>
       fetchFacetedSearchResults(
         combinedFiltersApiParameter,
         combinedOperatingConditionsApiParameter,
         preFilters.searchQuery,
-        10,
-        0
+        FINDER_PAGE_SIZE,
+        FINDER_PAGE_SIZE * (page - 1)
       ),
     {
+      onSuccess: data => setProductCount(data['@odata.count']),
       keepPreviousData: true
     }
   );
 
   /**
-   * Funciton that returns all FacetedSearchFacetResults for the facet
+   * Function that returns all FacetedSearchFacetResults for the facet
    */
   const getFacetResult = useCallback(
     (facet: Facet) => {
       const results: FacetedSearchFacetResult[] | undefined =
         facetedSearchResults?.['@search.facets']?.[
-          formatCamelCase(facet.attributeTypeCode)
+          textFormatter.formatCamelCase(facet.attributeTypeCode)
         ];
       return results;
     },
@@ -223,32 +241,21 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     (facet: Facet) => {
       const isHiddenByConfiguration: boolean =
         !!facet.configuration.hideInProductFinderPanel;
+
+      if (isHiddenByConfiguration) {
+        return false;
+      }
       let isHiddenByHierarchy: boolean = false;
 
-      if (
-        facet.key === FacetKey.ProductSeries ||
-        facet.key === FacetKey.ProductModel
-      ) {
+      if (facet.key === FacetKey.ModelId) {
         const subCategoriesForCurrentCategory: number =
           categoryIdFacet.options.find(
             option => option.valueId === preFilters.categoryId
           )?.children?.length || 0;
-
-        if (facet.key === FacetKey.ProductSeries) {
-          isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
-        } else {
-          const productSeriesFacetResults:
-            | FacetedSearchFacetResult[]
-            | undefined = getFacetResult(productSeriesFacet as Facet);
-          const isSeriesActive = isFacetActive(productSeriesFacet.key);
-          const isModelsActive = isFacetActive(productSeriesFacet.key);
-          isHiddenByHierarchy = productSeriesFacetResults?.length
-            ? productSeriesFacetResults.length > 1
-            : !isSeriesActive && !isModelsActive;
-        }
+        isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
       }
 
-      if (isHiddenByConfiguration || isHiddenByHierarchy) {
+      if (isHiddenByHierarchy) {
         return false;
       }
 
@@ -258,12 +265,15 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
       const isFacetWithMoreThan1Result: boolean = !!(
         facetResults && facetResults.length > 1
       );
+      if (isFacetWithMoreThan1Result) {
+        return true;
+      }
       const isActiveCheckboxFacet: boolean =
         facet.configuration.controlType === FacetControlType.Checkbox
           ? isFacetActive(facet.key)
           : false;
 
-      return isFacetWithMoreThan1Result || isActiveCheckboxFacet;
+      return isActiveCheckboxFacet;
     },
     [getFacetResult, isFacetActive, preFilters.categoryId]
   );
@@ -376,7 +386,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         return null;
     }
   }
-
+  // TODO: May be implemented later on
   // useEffect(() => {
   //   // Manually set the initial data for the category without any additional filters
   //   if (preFilters.categoryId) {
@@ -410,6 +420,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     <FinderContext.Provider
       value={{
         showFacetInPanel,
+        isFacetActive,
         visibleMainFacets,
         visibleOperatingConditionsFacets,
         applyOperatingConditions,
@@ -426,6 +437,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         getOperatingConditionValue,
         facetedSearchError: facetedSearchError as Error | undefined,
         facetedSearchStatus,
+        isFetching,
         searchQuery: preFilters.searchQuery,
         products: facetedSearchResults?.value || []
       }}

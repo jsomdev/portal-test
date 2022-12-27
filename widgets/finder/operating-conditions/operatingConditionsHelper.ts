@@ -11,6 +11,14 @@ import {
 } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { RangeFacetOptionKey } from '@services/facet-service/models/range-facets/rangeFacetOptionKey';
 
+export type OperatingConditionsValidationResults = {
+  validatedResults: {
+    key: FacetKey;
+    isValid: boolean;
+  }[];
+  validatedTheoriticalFlow: boolean;
+};
+
 export function diffOperatingConditionsFacets(
   facets: Facet<
     | FacetKey.LiquidFlowRate
@@ -126,13 +134,7 @@ export function validateSprayFinderFacets(
     | FacetKey.LiquidPressure
     | FacetKey.SprayAngle
   >[]
-): {
-  validatedResults: {
-    key: FacetKey;
-    isValid: boolean;
-  }[];
-  validatedTheoriticalFlow: boolean;
-} {
+): OperatingConditionsValidationResults {
   const validatedResults: {
     key: FacetKey;
     isValid: boolean;
@@ -155,6 +157,7 @@ export function validateSprayFinderFacets(
   });
 
   const isTheoriticalFlowRateValid: boolean = validateTheoriticalFlow(facets);
+
   return {
     validatedResults,
     validatedTheoriticalFlow: isTheoriticalFlowRateValid
