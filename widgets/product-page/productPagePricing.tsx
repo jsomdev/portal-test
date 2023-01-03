@@ -5,13 +5,10 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useIsAuthenticated } from '@azure/msal-react';
 import { FontWeights, Stack, useTheme } from '@fluentui/react';
 import { CartContext } from '@providers/cart/cartContext';
-import { combineCartItemsInformation } from '@providers/cart/cartHelper';
-import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 import { AddToCartButton } from '@widgets/add-to-cart-button/addToCartButton';
-import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { PriceBreaksSummary } from '@widgets/pricing/priceBreakSummary';
@@ -78,7 +75,7 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
 }) => {
   const isAuthenticated = useIsAuthenticated();
   const { spacing, fonts } = useTheme();
-  const { getQuantity, add } = useContext(CartContext);
+  const { getQuantity } = useContext(CartContext);
   const { formatMessage, formatNumber } = useIntl();
   const {
     status: priceBreaksStatus,
@@ -88,9 +85,7 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
     priceBreaks
   } = useProductPricing(product.number || '');
   const [addToCartButtonQuantity, setAddToCartButtonQuantity] = useState(1);
-  const [lastAddedBaseCartItem, setLastAddedBaseCartItem] = useState<
-    BaseCartItem | undefined
-  >(undefined);
+
   const tooltipText: string | undefined = useMemo(() => {
     if (!isAuthenticated) {
       return formatMessage(messages.priceTooltipNotAuthenticated);
@@ -100,33 +95,6 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
     }
     return undefined;
   }, [formatMessage, getBasePrice, isAuthenticated]);
-
-  const handleAddToCart = useCallback(
-    (quantityToAdd: number) => {
-      if (product.number) {
-        setLastAddedBaseCartItem(
-          add(product.id || null, product.number, quantityToAdd, product.name)
-        );
-      }
-    },
-    [add, product.id, product.name, product.number]
-  );
-
-  const combineLastAddedBaseCartItemToCartItem = useCallback(() => {
-    if (!lastAddedBaseCartItem || !product) {
-      return [];
-    }
-    return combineCartItemsInformation(
-      [lastAddedBaseCartItem],
-      [product],
-      [
-        {
-          productNumber: product.number || '',
-          priceBreaks: []
-        }
-      ]
-    );
-  }, [lastAddedBaseCartItem, product]);
 
   const cartQuantity: number | undefined = useMemo(() => {
     return getQuantity(product.number || '');
@@ -180,9 +148,8 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
         />
         {product.number && (
           <AddToCartButton
-            productNumber={product.number}
+            product={product}
             onQuantityChanged={setAddToCartButtonQuantity}
-            onAddToCartClicked={handleAddToCart}
           />
         )}
       </Stack>
@@ -245,9 +212,8 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
                     flexShrink: 0
                   }
                 }}
-                productNumber={product.number}
+                product={product}
                 onQuantityChanged={setAddToCartButtonQuantity}
-                onAddToCartClicked={handleAddToCart}
               />
             )}
           </Stack.Item>
@@ -257,12 +223,6 @@ export const ProductPagePricing: React.FC<ProductPagePricingProps> = ({
         priceBreaks={priceBreaks}
         quantity={cartQuantity + addToCartButtonQuantity}
       />
-      {product && lastAddedBaseCartItem && (
-        <CartItemAddedDialog
-          lastAddedItems={combineLastAddedBaseCartItemToCartItem()}
-          setLastAddedItems={setLastAddedBaseCartItem}
-        />
-      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -17,13 +17,16 @@ import {
   MIN_CART_QUANTITY
 } from '@providers/cart/cartConstants';
 import { CartContext } from '@providers/cart/cartContext';
+import { combineCartItemsInformation } from '@providers/cart/cartHelper';
+import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
+import { Product } from '@services/portal-api';
+import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 interface AddToCartButtonProps {
-  productNumber: string;
+  product: Product;
   onQuantityChanged: (newQuantity: number) => void;
-  onAddToCartClicked: (quantity: number) => void;
   spinButtonStyles?: Partial<ISpinButtonStyles>;
   addButtonStyles?: Partial<IButtonStyles>;
 }
@@ -45,21 +48,40 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   onQuantityChanged,
   spinButtonStyles,
   addButtonStyles,
-  onAddToCartClicked,
-  productNumber
+  product
 }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const { spacing, fonts } = useTheme();
-  const { getQuantity } = useContext(CartContext);
+  const { getQuantity, add } = useContext(CartContext);
   const { formatMessage } = useIntl();
 
   const cartQuantity: number | undefined = useMemo(() => {
-    return getQuantity(productNumber || '');
-  }, [getQuantity, productNumber]);
+    return getQuantity(product.number || '');
+  }, [getQuantity, product]);
 
   const maxQuantityToAdd = useMemo(() => {
     return MAX_CART_QUANTITY - (cartQuantity || 0);
   }, [cartQuantity]);
+
+  const [lastAddedBaseCartItem, setLastAddedBaseCartItem] = useState<
+    BaseCartItem | undefined
+  >(undefined);
+
+  const lastAddedCartItem = useMemo(() => {
+    if (!lastAddedBaseCartItem || !product) {
+      return [];
+    }
+    return combineCartItemsInformation(
+      [lastAddedBaseCartItem],
+      [product],
+      [
+        {
+          productNumber: product.number || '',
+          priceBreaks: []
+        }
+      ]
+    );
+  }, [lastAddedBaseCartItem, product]);
 
   function handleIncrement() {
     if (quantity + 1 > maxQuantityToAdd) {
@@ -91,13 +113,16 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   }
 
   function handleAddToCart() {
-    if (productNumber) {
+    if (product.number) {
       let quantityToAdd = quantity;
       if (quantity > maxQuantityToAdd) {
         quantityToAdd = maxQuantityToAdd;
       }
-      onAddToCartClicked(quantityToAdd);
       setQuantity(MIN_CART_QUANTITY);
+
+      setLastAddedBaseCartItem(
+        add(product.id || null, product.number, quantityToAdd, product.name)
+      );
     } else {
       console.warn(
         'Products can only be added to the cart using their product number'
@@ -148,33 +173,41 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({
     }
   };
   return (
-    <Stack horizontal tokens={{ childrenGap: spacing.s2 }}>
-      <SpinButton
-        value={`${quantity}`}
-        styles={mergeStyleSets(styles.spinButton, spinButtonStyles)}
-        inputProps={{
-          onChange: ev => {
-            handleValidate((ev.currentTarget as HTMLInputElement).value);
-          }
-        }}
-        onIncrement={() => {
-          handleIncrement();
-        }}
-        onDecrement={() => {
-          handleDecrement();
-        }}
-        onValidate={(value: string) => {
-          handleValidate(value);
-        }}
-      />
-      <PrimaryButton
-        text={formatMessage(messages.addToCart)}
-        styles={mergeStyleSets(styles.addToCartButton, addButtonStyles)}
-        iconProps={{ iconName: 'ShoppingCart' }}
-        onClick={() => {
-          handleAddToCart();
-        }}
-      />
-    </Stack>
+    <>
+      {product.number && lastAddedBaseCartItem && (
+        <CartItemAddedDialog
+          lastAddedItems={lastAddedCartItem}
+          setLastAddedItems={setLastAddedBaseCartItem}
+        />
+      )}
+      <Stack horizontal tokens={{ childrenGap: spacing.s2 }}>
+        <SpinButton
+          value={`${quantity}`}
+          styles={mergeStyleSets(styles.spinButton, spinButtonStyles)}
+          inputProps={{
+            onChange: ev => {
+              handleValidate((ev.currentTarget as HTMLInputElement).value);
+            }
+          }}
+          onIncrement={() => {
+            handleIncrement();
+          }}
+          onDecrement={() => {
+            handleDecrement();
+          }}
+          onValidate={(value: string) => {
+            handleValidate(value);
+          }}
+        />
+        <PrimaryButton
+          text={formatMessage(messages.addToCart)}
+          styles={mergeStyleSets(styles.addToCartButton, addButtonStyles)}
+          iconProps={{ iconName: 'ShoppingCart' }}
+          onClick={() => {
+            handleAddToCart();
+          }}
+        />
+      </Stack>
+    </>
   );
 };

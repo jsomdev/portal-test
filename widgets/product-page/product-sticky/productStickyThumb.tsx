@@ -36,19 +36,9 @@ export const ProductStickyThumb: React.FC<ProductStickyThumbProps> = ({
   const [lastAddedBaseCartItem, setLastAddedBaseCartItem] = useState<
     BaseCartItem | undefined
   >(undefined);
-  const { add } = useCart();
   const { fonts } = useTheme();
   const isMobileTablet = useBetweenMobileAndTablet();
-  const handleAddToCart = useCallback(
-    (quantityToAdd: number) => {
-      if (product?.number) {
-        setLastAddedBaseCartItem(
-          add(product.id || null, product.number, quantityToAdd, product.name)
-        );
-      }
-    },
-    [add, product]
-  );
+
   const combineLastAddedBaseCartItemToCartItem = useCallback(() => {
     if (!lastAddedBaseCartItem || !product) {
       return [];
@@ -104,9 +94,8 @@ export const ProductStickyThumb: React.FC<ProductStickyThumbProps> = ({
       <AddToCartButton
         spinButtonStyles={styles.spinButton}
         addButtonStyles={styles.addToCartButton}
-        productNumber={product.number}
+        product={product}
         onQuantityChanged={() => null}
-        onAddToCartClicked={handleAddToCart}
       />
       {product && lastAddedBaseCartItem && (
         <CartItemAddedDialog
