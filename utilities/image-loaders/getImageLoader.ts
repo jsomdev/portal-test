@@ -8,11 +8,9 @@ const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
   try {
     urlObject = new URL(src);
   } catch {
-    console.log('invalid url', src);
-  }
-
-  if (!urlObject) {
-    return src;
+    throw new Error(
+      `Invalid image URL in widenImageLoader: "${src}". In case you want to use a local fallback image, don't use the widenImageLoader for that image, as it's not coming from widen.`
+    );
   }
 
   const searchParams: URLSearchParams = new URLSearchParams(

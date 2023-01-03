@@ -25,10 +25,8 @@ function getWidth(size: ProductCardImageSize): number {
   switch (size) {
     case 'small':
       return 60;
-      break;
     default:
       return 160;
-      break;
   }
 }
 

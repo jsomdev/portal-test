@@ -5,7 +5,6 @@ import Image from 'next/image';
 
 import { NextLink } from '@components/link/nextLink';
 import { IStackStyles, Stack } from '@fluentui/react';
-import { STATIC_IMAGES } from '@public/media/images';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { ModelCardViewModel } from '@widgets/model-card-parts/modelCardViewModel';
@@ -20,8 +19,7 @@ type ModelCardImageStyles = {
 
 export const ModelCardImage: React.FC<ModelCardImageProps> = ({
   url,
-  imageUrl,
-  fallbackImageUrl
+  imageUrl
 }) => {
   const styles: ModelCardImageStyles = {
     root: {
@@ -37,22 +35,20 @@ export const ModelCardImage: React.FC<ModelCardImageProps> = ({
       }
     }
   };
-  const src =
-    imageUrl || fallbackImageUrl || STATIC_IMAGES.app.noImageAvailable;
 
   return (
     <Stack styles={styles.root}>
       <NextLink href={url}>
         <a>
           <Image
-            src={src}
+            src={imageUrl}
             alt={''}
             width={120}
             height={120}
             layout="intrinsic"
             objectFit="contain"
             objectPosition="center"
-            loader={getImageLoader(src)}
+            loader={getImageLoader(imageUrl)}
           />
         </a>
       </NextLink>
