@@ -18,7 +18,7 @@ import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/pr
 import { OrderLine } from '@services/portal-api';
 import { QuoteLine } from '@services/portal-api/models/QuoteLine';
 import { QuoteRequestLine } from '@services/portal-api/models/QuoteRequestLine';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import {
   mediaQueryFrom,
   useBetweenMobileAndTablet,
@@ -204,6 +204,8 @@ const AccountProductLine: React.FC<AccountProductLineProps> = ({
     }
   };
 
+  const src =
+    productLine?.product?.image?.url || STATIC_IMAGES.cart.defaultItem.src;
   return (
     <Stack
       key={productLine.id}
@@ -223,17 +225,14 @@ const AccountProductLine: React.FC<AccountProductLineProps> = ({
             <Stack styles={styles.accountProductLineImageContainer}>
               <Image
                 priority
-                src={
-                  productLine?.product?.image?.url ||
-                  STATIC_IMAGES.cart.defaultItem.src
-                }
+                src={src}
                 alt={productFormatter.formatImageCaption()}
                 width={isTabletOrDesktop ? 120 : 70}
                 height={isTabletOrDesktop ? 90 : 70}
                 layout="fill"
                 objectFit="contain"
                 objectPosition={'center'}
-                loader={widenImageLoader}
+                loader={getImageLoader(src)}
               />
             </Stack>
             <Stack tokens={{ childrenGap: spacing.s1 }}>

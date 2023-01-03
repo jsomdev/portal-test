@@ -1,4 +1,7 @@
-import { ImageLoader } from 'next/dist/client/image';
+import { ImageLoader, ImageProps } from 'next/dist/client/image';
+import { StaticImageData } from 'next/image';
+
+import { WidenImageHelper } from '@services/widen/widenImageHelper';
 
 const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
   let urlObject: URL | undefined;
@@ -35,4 +38,14 @@ const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
   return optimizedUrl;
 };
 
-export default widenImageLoader;
+export function getImageLoader(
+  url: ImageProps['src']
+): ImageLoader | undefined {
+  if (typeof url !== 'string') {
+    return undefined;
+  }
+  if (WidenImageHelper.validateUrl(url)) {
+    return widenImageLoader;
+  }
+  return undefined;
+}

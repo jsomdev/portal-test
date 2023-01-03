@@ -8,7 +8,7 @@ import {
   Stack,
   useTheme
 } from '@fluentui/react';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 
 type CategoryCardSize = 'small' | 'large';
 
@@ -90,7 +90,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
               - image with a white background can not be cropped and should be fully visible, as parts of the product will be cut off when cropped  */
             }
             objectPosition="center"
-            loader={widenImageLoader}
+            loader={getImageLoader(imageSrc)}
           />
           <Stack
             styles={styles.linkContainer}

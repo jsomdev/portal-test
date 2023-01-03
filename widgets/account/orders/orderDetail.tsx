@@ -21,7 +21,7 @@ import {
 } from '@fluentui/react';
 import { CartItem } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
@@ -342,7 +342,7 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
                         width={isTabletOrDesktop ? 120 : 70}
                         height={isTabletOrDesktop ? 90 : 70}
                         objectFit="contain"
-                        loader={widenImageLoader}
+                        loader={getImageLoader(line.imageUrl)}
                       />
                     </a>
                   </NextLink>

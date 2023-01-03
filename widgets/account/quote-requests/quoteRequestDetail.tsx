@@ -23,8 +23,7 @@ import {
 import { messageIds } from '@services/i18n';
 import { fetchMyQuoteRequest } from '@services/portal-api/quoteRequests';
 import { QUERYKEYS } from '@services/react-query/constants';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
-import { rem } from '@utilities/rem';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
 
 import { OrderLineViewModel } from '../orders/orders.types';
@@ -252,7 +251,7 @@ export const QuoteRequestDetail: React.FC<QuoteRequestDetailProps> = ({
                         width={isTabletOrDesktop ? 120 : 70}
                         height={isTabletOrDesktop ? 90 : 70}
                         objectFit="contain"
-                        loader={widenImageLoader}
+                        loader={getImageLoader(line.imageUrl)}
                       />
                     </a>
                   </NextLink>

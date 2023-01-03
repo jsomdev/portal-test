@@ -11,7 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { Category } from '@services/portal-api';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 import { HomeCategoryItem, mapCategoryToHomeCategoryItem } from '../helper';
@@ -108,7 +108,7 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
                     alt={categoryItem.imageAlt}
                     src={categoryItem.imageSrc}
                     objectFit="cover"
-                    loader={widenImageLoader}
+                    loader={getImageLoader(categoryItem.imageSrc)}
                     objectPosition="center"
                   />
                   <Stack

@@ -30,7 +30,7 @@ import {
   fetchFacetedSearchResults
 } from '@services/portal-api/finder';
 import { QUERYKEYS } from '@services/react-query/constants';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { useDebounce } from '@utilities/useDebounce';
@@ -488,56 +488,57 @@ const SearchBar: React.FC = () => {
                   </Text>
                   {productSearchSuggestions
                     ?.slice(0, SUGGESTIONS_COUNT)
-                    .map(item => (
-                      <NextLink key={item.id} href={item.url}>
-                        <Stack
-                          horizontal
-                          verticalAlign="center"
-                          styles={styles.linkText}
-                          tokens={{
-                            childrenGap: spacing.s1,
-                            padding: `0 ${spacing.s1}`
-                          }}
-                          onClick={() => {
-                            setShowContextualMenu(false);
-                            setIsBoxFocused(false);
-                          }}
-                        >
-                          <Image
-                            height={80}
-                            style={{
-                              borderRadius: effects.roundedCorner2
+                    .map(item => {
+                      const src =
+                        item.imageUrl || STATIC_IMAGES.app.noImageAvailable;
+                      return (
+                        <NextLink key={item.id} href={item.url}>
+                          <Stack
+                            horizontal
+                            verticalAlign="center"
+                            styles={styles.linkText}
+                            tokens={{
+                              childrenGap: spacing.s1,
+                              padding: `0 ${spacing.s1}`
                             }}
-                            objectFit="contain"
-                            objectPosition="center"
-                            width={80}
-                            alt={item.number}
-                            src={
-                              item.imageUrl ||
-                              STATIC_IMAGES.app.noImageAvailable
-                            }
-                            loader={widenImageLoader}
-                          />
-
-                          <Stack tokens={{ childrenGap: spacing.s2 }}>
-                            <ProductCardTitleLink
-                              size="small"
-                              number={item.number}
-                              name={item.name}
-                              url={item.url}
-                            />
-                            <ProductListItemPricing
-                              hideAddToCart={true}
-                              hidePriceBreaks={true}
-                              product={{
-                                id: item.id,
-                                number: item.number
+                            onClick={() => {
+                              setShowContextualMenu(false);
+                              setIsBoxFocused(false);
+                            }}
+                          >
+                            <Image
+                              height={80}
+                              style={{
+                                borderRadius: effects.roundedCorner2
                               }}
+                              objectFit="contain"
+                              objectPosition="center"
+                              width={80}
+                              alt={item.number}
+                              src={src}
+                              loader={getImageLoader(src)}
                             />
+
+                            <Stack tokens={{ childrenGap: spacing.s2 }}>
+                              <ProductCardTitleLink
+                                size="small"
+                                number={item.number}
+                                name={item.name}
+                                url={item.url}
+                              />
+                              <ProductListItemPricing
+                                hideAddToCart={true}
+                                hidePriceBreaks={true}
+                                product={{
+                                  id: item.id,
+                                  number: item.number
+                                }}
+                              />
+                            </Stack>
                           </Stack>
-                        </Stack>
-                      </NextLink>
-                    ))}
+                        </NextLink>
+                      );
+                    })}
                 </Stack>
               )}
             </Stack>

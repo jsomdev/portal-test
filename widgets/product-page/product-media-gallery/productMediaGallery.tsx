@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { CSSProperties, useMemo, useState } from 'react';
+import React, { CSSProperties, useMemo, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -24,12 +24,8 @@ import {
 import { useProductPage } from '@providers/product-page/productPageContext';
 import { useSystemOfMeasurement } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { STATIC_IMAGES } from '@public/media/images';
-import {
-  WidenImageHelper,
-  WidenImagePreset
-} from '@services/widen/widenImageHelper';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 import { AppErrorBoundary } from '@widgets/error-boundaries/appErrorBoundary';
 import { useTabletAndDesktop } from '@widgets/media-queries';
@@ -329,7 +325,7 @@ export const ProductMediaGallerySlide: React.FC<
           alt={item.alt}
           objectPosition="center"
           objectFit="contain"
-          loader={widenImageLoader}
+          loader={getImageLoader(item.src)}
         />
         <Stack.Item styles={imageStyles.tooltip}>
           <ProductImageDisclaimerTooltip />
@@ -409,12 +405,24 @@ interface ProductMediaGalleryThumbnailStyles {
   overlay: IStackStyles;
   overlayText: ITextStyles;
 }
+
 type ProductMediaGalleryThumbnailProps = ProductMediaGalleryItem & {
   onClick: () => void;
   numberOverlay?: number | undefined;
   isSelected: boolean;
   index: number;
 };
+
+function optimizeBackgroundSrc(src: string | undefined, width: number) {
+  if (!src) {
+    return undefined;
+  }
+  const imageLoader = getImageLoader(src);
+  if (imageLoader) {
+    return imageLoader({ src, width, quality: 75 });
+  }
+  return src;
+}
 
 export const ProductMediaGalleryThumbnail: React.FC<
   ProductMediaGalleryThumbnailProps
@@ -481,14 +489,22 @@ export const ProductMediaGalleryThumbnail: React.FC<
         }`,
         backgroundImage:
           type === 'video'
-            ? `url('${STATIC_IMAGES.product.display.playMovieThumbnail.src}'), url('${thumbnailSrc}') `
-            : `url('${
-                thumbnailSrc ||
-                WidenImageHelper.getOptimizedSrc(
-                  src,
-                  WidenImagePreset.ExtraSmall
-                )
-              }') `,
+            ? `url('${
+                STATIC_IMAGES.product.display.playMovieThumbnail.src
+              }'), url('${optimizeBackgroundSrc(thumbnailSrc, 80)}') `
+            : `url('${optimizeBackgroundSrc(thumbnailSrc || src, 80)}') `,
+        '@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)':
+          {
+            backgroundImage:
+              type === 'video'
+                ? `url('${
+                    STATIC_IMAGES.product.display.playMovieThumbnail.src
+                  }'), url('${optimizeBackgroundSrc(
+                    thumbnailSrc || src,
+                    160
+                  )}') `
+                : `url('${optimizeBackgroundSrc(thumbnailSrc || src, 160)}') `
+          },
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'transparent',

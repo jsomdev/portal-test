@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { Product } from '@services/portal-api';
-import widenImageLoader from '@utilities/image-loaders/widenImageLoader';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { usePageScroll } from '@utilities/scrollToTop';
 import { MAIN_HEADER_HEIGHT } from '@widgets/headers/main-header/mainHeader';
 import { SITE_HEADER_HEIGHT } from '@widgets/headers/site-header/siteHeader';
@@ -97,6 +97,8 @@ export const ProductStickyHeader: React.FC<ProductStickyHeaderProps> = ({
     }
   };
 
+  const imageSrc = productFormatter.formatImageHref();
+
   return (
     <ContentContainerStack
       outerStackProps={{
@@ -115,12 +117,12 @@ export const ProductStickyHeader: React.FC<ProductStickyHeaderProps> = ({
         <Stack.Item>
           <Image
             alt={productFormatter.formatImageCaption()}
-            src={productFormatter.formatImageHref()}
+            src={imageSrc}
             objectFit="contain"
             objectPosition="center"
             height={50}
             width={50}
-            loader={widenImageLoader}
+            loader={getImageLoader(imageSrc)}
           />
         </Stack.Item>
         <Stack.Item styles={styles.titleWrapper}>

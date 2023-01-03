@@ -134,7 +134,7 @@ export class WidenImageHelper {
    * (This is currently basic validation, may need to change)
    * @param url original image url
    */
-  private static validateUrl(url: string): boolean {
+  public static validateUrl(url: string): boolean {
     // URL has to start with https://spray.widen.net/content
     const expectedBaseUrl: string = 'https://spray.widen.net/content';
     // URL has to be shared for web purposes --> /web
