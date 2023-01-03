@@ -203,12 +203,6 @@ const DesktopMainHeader: React.FC = () => {
           }}
           verticalAlign="center"
         >
-          <SiteHeaderButton
-            title={intl.formatMessage(messages.accessPadAriaLabel)}
-            iconProps={{
-              iconName: 'FavoriteList'
-            }}
-          />
           <NextLink href={pagePaths.cart}>
             <a>
               <SiteHeaderButton
