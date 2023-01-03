@@ -70,8 +70,15 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
     if ((cadenasIdentifier || downloads.length) && !isModel) {
       filteredSections.push(productSections.downloadsSection);
     }
+
     if (performanceAttributes && !isModel) {
-      filteredSections.push(productSections.performanceSection);
+      if (
+        performanceAttributes.airFlowRateAttributes.length > 1 ||
+        performanceAttributes.liquidFlowRateAttributes.length > 1 ||
+        performanceAttributes.sprayAngleAttributes.length > 1
+      ) {
+        filteredSections.push(productSections.performanceSection);
+      }
     }
     if (attributes.length && !isModel) {
       filteredSections.push(productSections.specificationsSection);
