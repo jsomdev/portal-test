@@ -536,6 +536,20 @@ type IRequestForQuoteMessages = {
   title: string;
 };
 
+type INotFoundMessages = {
+  title: string;
+  header: string;
+  explanation: string;
+  redirection: string;
+  homepageLink: string;
+  pageTypes: {
+    product: string;
+    model: string;
+    category: string;
+    defaultPage: string;
+  };
+};
+
 type ICheckoutMessages = {
   title: string;
   orderSuccess: string;
@@ -846,6 +860,7 @@ export type Messages = {
     cart: ICartMessages;
     checkout: ICheckoutMessages;
     requestForQuote: IRequestForQuoteMessages;
+    notFound: INotFoundMessages;
   };
   summary: {
     details: string;

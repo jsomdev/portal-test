@@ -783,6 +783,20 @@ export const en: Messages = {
             'Please check if your credit card information was entered correctly.'
         }
       }
+    },
+    notFound: {
+      title: 'Not Found',
+      header: 'This page could not be found',
+      explanation: '{pageType} you are looking for could not be found.',
+      redirection:
+        'If you are lost, please use our search bar in the top menu, or return to the {homepageLink}',
+      homepageLink: 'homepage',
+      pageTypes: {
+        product: 'The product',
+        model: 'The product model',
+        category: 'The product category',
+        defaultPage: 'The page'
+      }
     }
   },
   loading: {

@@ -801,6 +801,21 @@ export const nl: Messages = {
             'Controleer of uw creditcardgegevens correct zijn ingevoerd.'
         }
       }
+    },
+    notFound: {
+      title: 'Pagina niet gevonden',
+      header: 'Pagina niet gevonden',
+      explanation:
+        '{pageType} die u probeert te bereiken kon niet gevonden worden.',
+      redirection:
+        'Als je verdwaald bent, gebruik dan onze zoekbalk in het hoofdmenu, of ga terug naar de {homepageLink}.',
+      homepageLink: 'homepage',
+      pageTypes: {
+        product: 'Het product',
+        model: 'Het product model',
+        category: 'De product categorie',
+        defaultPage: 'De pagina'
+      }
     }
   },
   loading: {

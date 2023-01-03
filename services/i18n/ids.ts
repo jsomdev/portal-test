@@ -826,6 +826,19 @@ export const messageIds: Messages = {
           description: 'pages.checkout.errors.todo.description'
         }
       }
+    },
+    notFound: {
+      title: 'pages.notFound.title',
+      header: 'pages.notFound.header',
+      explanation: 'pages.notFound.explanation',
+      redirection: 'pages.notFound.redirection',
+      homepageLink: 'pages.notFound.homepageLink',
+      pageTypes: {
+        product: 'pages.notFound.pageTypes.product',
+        model: 'pages.notFound.pageTypes.model',
+        category: 'pages.notFound.pageTypes.category',
+        defaultPage: 'pages.notFound.pageTypes.defaultPage'
+      }
     }
   },
   loading: {
