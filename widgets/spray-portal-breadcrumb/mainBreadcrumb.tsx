@@ -2,22 +2,35 @@ import React, { FC } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   Breadcrumb,
   FontWeights,
+  IBreadcrumbItem,
+  IBreadcrumbStyles,
+  IButtonStyles,
+  IStackStyles,
   IconButton,
   Stack,
   useTheme
 } from '@fluentui/react';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { messageIds } from '@services/i18n';
+import pagePaths from '@utilities/pagePaths';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
 
-import {
-  MainBreadcrumbProps,
-  MainBreadcrumbStyles
-} from './mainBreadcrumb.types';
+type MainBreadcrumbProps = {
+  items: IBreadcrumbItem[];
+};
+
+type MainBreadcrumbStyles = {
+  breadcrumb?: Partial<IBreadcrumbStyles>;
+  root?: Partial<IStackStyles>;
+  homeIconButton: Partial<IButtonStyles>;
+  systemOfMeasurementButton: Partial<IButtonStyles>;
+};
 
 const messages = defineMessages({
   systemOfMeasurementMetric: {
@@ -42,18 +55,40 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
   const { systemOfMeasurement, changeSystemOfMeasurement } = React.useContext(
     SystemOfMeasurementContext
   );
+  const isTabletAndDesktop = useTabletAndDesktop();
+  const maxDisplayedItems = isTabletAndDesktop ? 4 : 1;
   const styles: MainBreadcrumbStyles = {
     root: {
       root: {
         width: '100%',
-        margin: 'auto'
+        margin: `${spacing.m} 0 ${spacing.l2}`
+      }
+    },
+    systemOfMeasurementButton: {
+      root: {
+        fontSize: fonts.mediumPlus.fontSize
+      }
+    },
+    homeIconButton: {
+      rootHovered: {
+        backgroundColor: 'transparent'
+      },
+      root: {
+        height: 36
+      },
+      icon: {
+        lineHeight: 14,
+        fontSize: fonts.mediumPlus.fontSize,
+        color: palette.themePrimary
+      },
+      iconHovered: {
+        color: palette.accent
       }
     },
     breadcrumb: {
       root: {
         width: '100%',
-        marginTop: spacing.s1,
-        marginBottom: spacing.s1
+        margin: 'auto'
       },
       list: {
         padding: 0
@@ -63,7 +98,10 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
           ':last-child.ms-Breadcrumb-item': {
             fontSize: fonts.medium.fontSize,
             fontWeight: FontWeights.regular,
-            padding: 0
+            padding: 0,
+            ...mediaQueryFrom('tablet', {
+              fontSize: fonts.mediumPlus.fontSize
+            })
           }
         }
       },
@@ -79,6 +117,9 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
         color: '#3F6074',
         borderBottom: 'none',
         paddingLeft: 0,
+        ...mediaQueryFrom('tablet', {
+          fontSize: fonts.mediumPlus.fontSize
+        }),
         selectors: {
           '&:hover': {
             textDecoration: 'underline',
@@ -107,27 +148,20 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
         <Stack.Item grow>
           <Breadcrumb
             items={items}
+            maxDisplayedItems={maxDisplayedItems}
             styles={styles.breadcrumb}
             onRenderItem={(props, defaultRender) => {
               if (props?.key === 'home') {
                 return (
-                  <IconButton
-                    styles={{
-                      rootHovered: {
-                        backgroundColor: 'transparent'
-                      },
-                      icon: {
-                        color: '#3F6074'
-                      },
-                      iconHovered: {
-                        color: '#3F6074'
-                      }
-                    }}
-                    iconProps={{
-                      iconName: 'Home'
-                    }}
-                    href={props.href}
-                  />
+                  <NextLink href={pagePaths.home} passHref>
+                    <IconButton
+                      styles={styles.homeIconButton}
+                      iconProps={{
+                        iconName: 'Home'
+                      }}
+                      href={props.href}
+                    />
+                  </NextLink>
                 );
               }
               return (defaultRender && defaultRender(props)) || null;
@@ -138,6 +172,7 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
           text={formatMessage(messages.units, {
             system: translatedSystemOfMeasurement
           })}
+          styles={styles.systemOfMeasurementButton}
           onClick={() =>
             changeSystemOfMeasurement(
               systemOfMeasurement === 'Metric' ? 'US' : 'Metric'

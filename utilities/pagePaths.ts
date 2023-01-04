@@ -1,8 +1,8 @@
-import { Url } from 'url';
+import { UrlObject } from 'url';
 
 const pagePaths = {
   home: '/',
-  search: (query?: string): Partial<Url> | string => {
+  search: (query?: string): UrlObject | string => {
     const pathname: string = '/search';
     if (query) {
       return {
@@ -27,7 +27,7 @@ const pagePaths = {
   orders: (
     id?: string | undefined,
     showConfirmation = false
-  ): Partial<Url> | string => {
+  ): UrlObject | string => {
     const pathname: string = '/account/orders';
     if (showConfirmation && id) {
       return {
@@ -52,7 +52,7 @@ const pagePaths = {
   quoteRequests: (
     id?: string | undefined,
     showConfirmation: boolean = false
-  ): Partial<Url> | string => {
+  ): UrlObject | string => {
     const pathname: string = '/account/quote-requests';
     if (showConfirmation && id) {
       return {
@@ -73,7 +73,7 @@ const pagePaths = {
     }
     return pathname;
   },
-  quotes: (id?: string | undefined): Partial<Url> | string => {
+  quotes: (id?: string | undefined): UrlObject | string => {
     const pathname: string = '/account/quotes';
     if (id) {
       return {
@@ -85,7 +85,7 @@ const pagePaths = {
     }
     return pathname;
   },
-  addressBook: (id?: string | undefined): Partial<Url> | string => {
+  addressBook: (id?: string | undefined): UrlObject | string => {
     const pathname: string = '/account/info-and-preferences/address-book';
     if (id) {
       return {

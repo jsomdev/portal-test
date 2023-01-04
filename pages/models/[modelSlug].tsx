@@ -33,6 +33,7 @@ import { fetchAllSeries } from '@services/portal-api/series';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { generateProductStructuredData } from '@utilities/structuredData';
+import { ModelBreadcrumb } from '@widgets/breadcrumbs/model-breadcrumb/modelBreadcrumb';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
@@ -119,18 +120,13 @@ const Models: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <ModelBreadcrumb model={model} />
           <ProductPageProvider
             hasAlternativeModels={!!alternativeModels.length}
             isModel={true}
             product={model}
           >
-            <ContentContainerStack
-              outerStackProps={{
-                tokens: {
-                  padding: `${spacing.l2} 0 ${spacing.l1} 0`
-                }
-              }}
-            >
+            <ContentContainerStack>
               <PagesHeader title={modelFormatter.formatTitle()} />
               <ProductTopSection isModel={true} />
               {model.id !== UnspecifiedModelId && (

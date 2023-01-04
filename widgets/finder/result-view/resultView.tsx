@@ -188,7 +188,6 @@ export const ResultView: React.FC<ResultViewProps> = ({
     sidePanelContainer: {
       root: {
         width: 360,
-        paddingLeft: spacing.l1,
         paddingRight: spacing.m
       }
     },
@@ -214,7 +213,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
     }
   };
   return (
-    <Stack horizontal tokens={{ padding: `${spacing.l2} 0 ${spacing.l1} 0` }}>
+    <Stack horizontal tokens={{ padding: `0 0 ${spacing.l1} 0` }}>
       <Mobile>
         <Panel
           type={PanelType.smallFluid}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
+import { Url } from 'url';
 
 import { NextLink } from '@components/link/nextLink';
 import {
@@ -432,10 +433,11 @@ const SearchBar: React.FC = () => {
                       styles={styles.linkText}
                       onClick={() => onSearch(item.query)}
                     >
-                      <a
-                        href={pagePaths.search(item.query).toString()}
-                        dangerouslySetInnerHTML={{ __html: item.htmlText }}
-                      />
+                      <NextLink href={pagePaths.search(item.query)} passHref>
+                        <a
+                          dangerouslySetInnerHTML={{ __html: item.htmlText }}
+                        />
+                      </NextLink>
                     </Text>
                   ))}
                 </Stack>
@@ -451,18 +453,20 @@ const SearchBar: React.FC = () => {
                   <Text styles={styles.sectionTitle}>
                     {formatMessage(messages.recentSearches)}
                   </Text>
-                  {recentSearches?.map(recentSearch => (
-                    <Text
-                      as="a"
-                      key={recentSearch}
-                      styles={styles.linkText}
-                      onClick={() => onSearch(recentSearch)}
-                    >
-                      <a href={pagePaths.search(recentSearch).toString()}>
-                        {recentSearch}
-                      </a>
-                    </Text>
-                  ))}
+                  {recentSearches?.map(recentSearch => {
+                    return (
+                      <Text
+                        as="a"
+                        key={recentSearch}
+                        styles={styles.linkText}
+                        onClick={() => onSearch(recentSearch)}
+                      >
+                        <NextLink href={pagePaths.search(recentSearch)}>
+                          {recentSearch}
+                        </NextLink>
+                      </Text>
+                    );
+                  })}
                 </Stack>
               )}
               {showNoResults && (

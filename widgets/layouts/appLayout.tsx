@@ -26,12 +26,10 @@ export const AppLayout: React.FC = ({ children }) => {
       <header style={styles.header}>
         <SiteHeader />
         <MainHeader />
-        <div id="breadcrumb-portal"></div>
         <AppOverlay />
       </header>
       <main>
         {children}
-
         <ComparisonPopup />
       </main>
       <footer></footer>

@@ -2,7 +2,10 @@ import React from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
+import { IBreadcrumbItem } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
+import { rem } from '@utilities/rem';
+import { homeBreadcrumb } from '@widgets/breadcrumbs/breadcrumbHelpers';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 
 const messages = defineMessages({
@@ -25,17 +28,14 @@ const messages = defineMessages({
  */
 export const CartBreadcrumb: React.FC = () => {
   const { formatMessage } = useIntl();
-  const breadCrumbItems = [
+  const breadCrumbItems: IBreadcrumbItem[] = [
     {
-      key: 'home',
-      text: formatMessage(messages.home),
-      isCurrentItem: false,
-      href: '/'
+      ...homeBreadcrumb
     },
     {
       key: 'cart',
       text: formatMessage(messages.cart),
-      href: '/cart',
+      href: '',
       isCurrentItem: true
     }
   ];

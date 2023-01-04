@@ -20,14 +20,12 @@ import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
-import { CheckoutBreadcrumb } from '@widgets/checkout/checkout-breadcrumb/checkoutBreadcrumb';
 import { CheckoutForm } from '@widgets/checkout/checkoutForm';
 import { CheckoutProvider } from '@widgets/checkout/checkoutProvider/checkoutProvider';
 import { useCreateOrder } from '@widgets/checkout/create-order/useCreateOrder';
 import { CheckoutErrorBox } from '@widgets/checkout/shared/checkoutErrorBox';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
-import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 const messages = defineMessages({
   title: {
@@ -175,9 +173,6 @@ export const Checkout: React.FC = () => {
       <StackItem>
         <PagesHeader title={formatMessage(messages.title)} />
       </StackItem>
-      <BreadcrumbPortal>
-        <CheckoutBreadcrumb />
-      </BreadcrumbPortal>
       {/* When there is an error submitting the form */}
       {error && <CheckoutErrorBox error={error} />}
       {/* When the user is not currently logging in and is not authenticated */}

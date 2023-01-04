@@ -14,6 +14,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { SearchBreadcrumb } from '@widgets/breadcrumbs/search-breadcrumb/searchBreadcrumb';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
@@ -50,7 +51,7 @@ const Search: NextPage<SearchProps> = ({
   attributeTypes
 }) => {
   const { formatMessage } = useIntl();
-  const { query } = useRouter();
+  const { query, asPath } = useRouter();
 
   return (
     <Page
@@ -72,6 +73,18 @@ const Search: NextPage<SearchProps> = ({
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <SearchBreadcrumb
+            lastSearch={
+              query.query
+                ? {
+                    text: formatMessage(messages.title, {
+                      searchQuery: query.query?.toString()
+                    }),
+                    url: asPath
+                  }
+                : undefined
+            }
+          />
           <FacetsProvider
             preFilters={{
               searchQuery: query.query?.toString() || ''

@@ -18,13 +18,11 @@ import { customerLoginRequest } from '@services/authentication/authenticationCon
 import { messageIds } from '@services/i18n';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
-import BreadcrumbPortal from '@widgets/spray-portal-breadcrumb/breadcrumbPortal';
 
 import { useCart } from '../../providers/cart/cartContext';
 import { useMe } from '../../providers/user/userContext';
 import { RequestForQuoteProvider } from './providers/requestForQuoteProvider';
 import { useCreateQuoteRequest } from './providers/useCreateQuoteRequest';
-import { RequestForQuoteBreadcrumb } from './requestForQuoteBreadcrumb';
 import { RequestForQuoteErrorMessage } from './requestForQuoteError';
 import { RequestForQuoteForm } from './requestForQuoteForm';
 
@@ -177,9 +175,7 @@ export const RequestForQuote: React.FC = () => {
       <StackItem>
         <PagesHeader title={formatMessage(messages.title)} />
       </StackItem>
-      <BreadcrumbPortal>
-        <RequestForQuoteBreadcrumb />
-      </BreadcrumbPortal>
+
       {/* When there is an error submitting the form */}
       {createRequestStatus === 'error' && <RequestForQuoteErrorMessage />}
       {/* When the user is not currently logging in and is not authenticated */}

@@ -20,6 +20,7 @@ import { AppLayout } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
 import { RequestForQuote } from '@widgets/request-for-quote/requestForQuote';
+import { RequestForQuoteBreadcrumb } from '@widgets/request-for-quote/requestForQuoteBreadcrumb';
 
 const messages = defineMessages({
   title: {
@@ -50,6 +51,7 @@ const RequestForQuotePage: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <RequestForQuoteBreadcrumb />
           <RequestForQuote />
         </AppLayout>
       </GlobalDataProvider>

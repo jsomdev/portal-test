@@ -3,6 +3,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 
 import { messageIds } from '@services/i18n';
+import { homeBreadcrumb } from '@widgets/breadcrumbs/breadcrumbHelpers';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 
 /**
@@ -14,10 +15,7 @@ export const CheckoutBreadcrumb: React.FC = () => {
   const { formatMessage } = useIntl();
   const breadCrumbItems = [
     {
-      key: 'home',
-      text: formatMessage({ id: messageIds.pages.home.headTitle }),
-      isCurrentItem: false,
-      href: '/'
+      ...homeBreadcrumb
     },
     {
       key: 'cart',

@@ -16,6 +16,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import Cart from '@widgets/cart/cart';
+import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
@@ -50,6 +51,7 @@ const CartPage: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <CartBreadcrumb />
           <Cart title={title} />
         </AppLayout>
       </GlobalDataProvider>

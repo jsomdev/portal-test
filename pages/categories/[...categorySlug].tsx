@@ -38,6 +38,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { CategoriesBreadcrumb } from '@widgets/breadcrumbs/categories-breadcrumb/categoriesBreadcrumb';
 import {
   ResultView,
   ResultViewType
@@ -95,9 +96,10 @@ const Category: NextPage<CategoryProps> = ({
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <CategoriesBreadcrumb category={category} />
           <FacetsProvider
             preFilters={{
-              categoryId: category?.id,
+              categoryId: category.id,
               searchQuery: router.query.query?.toString()
             }}
             initialFacets={getInitialFacetsFromFiles([], router.query)}

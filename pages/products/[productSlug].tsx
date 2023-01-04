@@ -35,6 +35,7 @@ import { fetchAllModels } from '@services/portal-api/models';
 import { fetchProductForProductPage } from '@services/portal-api/products';
 import { fetchAllSeries } from '@services/portal-api/series';
 import { generateProductStructuredData } from '@utilities/structuredData';
+import { ProductBreadcrumb } from '@widgets/breadcrumbs/product-breadcrumb/productBreadcrumb';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
@@ -82,7 +83,6 @@ const Products: NextPage<
 }) => {
   const { locale } = useRouter();
   const { registerView } = useRecentlyViewedProducts();
-  const { spacing } = useTheme();
   const productFormatter = new ProductFormatter(product, locale);
 
   useEffect(() => {
@@ -108,18 +108,13 @@ const Products: NextPage<
         mainMenuItems={mainMenuItems}
       >
         <AppLayout>
+          <ProductBreadcrumb product={product} model={model} />
           <ProductPageProvider product={product}>
             <ProductStickyHeader product={product} />
             <Mobile>
               <ProductStickyThumb product={product} />
             </Mobile>
-            <ContentContainerStack
-              outerStackProps={{
-                tokens: {
-                  padding: `${spacing.l2} 0 ${spacing.l1} 0`
-                }
-              }}
-            >
+            <ContentContainerStack>
               <Stack horizontal>
                 <PagesHeader title={productFormatter.formatTitle()} />
                 <ProductBookmarkButton productId={product.id} />

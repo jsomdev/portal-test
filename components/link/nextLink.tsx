@@ -2,10 +2,10 @@ import React from 'react';
 
 import { LinkProps } from 'next/dist/client/link';
 import Link from 'next/link';
-import { Url } from 'url';
+import { UrlObject } from 'url';
 
 export const NextLink: React.FC<
-  Omit<LinkProps, 'href'> & { href: string | null | undefined | Partial<Url> }
+  Omit<LinkProps, 'href'> & { href: string | null | undefined | UrlObject }
 > = ({ children, ...props }) => {
   if (props.href) {
     const linkProps = props as LinkProps;
