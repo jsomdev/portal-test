@@ -312,6 +312,7 @@ type IAccountMessages = {
     };
     infoAndPreferences: {
       title: string;
+      overviewLink: string;
       sections: {
         profileInformation: {
           title: string;
@@ -386,6 +387,10 @@ type IAccountMessages = {
           description: string;
           privacySettingsLink: string;
           settingsLink: string;
+        };
+        measurementSettings: {
+          title: string;
+          description: string;
         };
       };
     };

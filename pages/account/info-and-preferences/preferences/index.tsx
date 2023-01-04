@@ -12,7 +12,9 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
+import { Preferences } from '@widgets/account/preferences/preferences';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
@@ -21,10 +23,15 @@ const messages = defineMessages({
       .preferences.title,
     description: 'Preferences page title',
     defaultMessage: 'Preferences'
+  },
+  returnLink: {
+    id: messageIds.pages.account.sections.infoAndPreferences.overviewLink,
+    description: 'Address book page return link',
+    defaultMessage: 'Return to Info & Preferences'
   }
 });
 
-const Preferences: NextPage<
+const PreferencesPage: NextPage<
   Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
 > = ({ siteMenuItems, mainMenuItems }) => {
   const { formatMessage } = useIntl();
@@ -34,8 +41,14 @@ const Preferences: NextPage<
       mainMenuItems={mainMenuItems}
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
-      localePaths={getLocalePaths('account/info-and-preferences/preferences')}
-    ></AccountPage>
+      localePaths={getLocalePaths(pagePaths.preferences)}
+      breadCrumbItem={{
+        link: pagePaths.infoAndPreferences,
+        text: formatMessage(messages.returnLink)
+      }}
+    >
+      <Preferences />
+    </AccountPage>
   );
 };
 
@@ -60,4 +73,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Preferences;
+export default PreferencesPage;

@@ -9,18 +9,28 @@ import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   Callout,
+  FontWeights,
   IButtonStyles,
+  ICalloutContentStyles,
+  IIconStyles,
   IStackItemStyles,
   IStackStyles,
+  ITextStyles,
+  Icon,
   Stack,
   Text,
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
+import {
+  getAccountNavigationMenuItemClassName,
+  getAccountNavigationMenuItems
+} from '@widgets/account/accountNavigationMenu.helper';
 import CartCountButtonIcon from '@widgets/cart/cartCountButtonIcon';
 import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
 
@@ -50,12 +60,6 @@ const messages = defineMessages({
   }
 });
 
-interface MainHeaderStyles {
-  mainMenuContainer?: IStackItemStyles;
-  root: IStackStyles;
-  headerButton?: IButtonStyles;
-}
-
 export const MAIN_HEADER_HEIGHT = 46;
 export const MainHeader: React.FC = () => {
   return (
@@ -73,34 +77,47 @@ export const MainHeader: React.FC = () => {
 const MobileMainHeader: React.FC = () => {
   const { palette } = useTheme();
 
-  const styles: MainHeaderStyles = {
+  const styles: IStackStyles = {
     root: {
-      root: {
-        height: MAIN_HEADER_HEIGHT,
-        transition: '0.3s all ease',
-        backgroundColor: palette.neutralLighter
-      }
+      height: MAIN_HEADER_HEIGHT,
+      transition: '0.3s all ease',
+      backgroundColor: palette.neutralLighter
     }
   };
   return (
-    <Stack verticalAlign="center" styles={styles.root}>
+    <Stack verticalAlign="center" styles={styles}>
       <HeaderSearchBar />
     </Stack>
   );
 };
 
+interface DesktopMainHeaderStyles {
+  mainMenuContainer: IStackItemStyles;
+  root: IStackStyles;
+  headerButton: IButtonStyles;
+  linkTextContainer: IStackStyles;
+  linkText: ITextStyles;
+  callout: Partial<ICalloutContentStyles>;
+  menuIconAuthenticated: IIconStyles;
+  cartButton: IButtonStyles;
+  userButton: IButtonStyles;
+}
+
+const ACTIVE_LINK_CLASSNAME = 'active-link';
+
 const DesktopMainHeader: React.FC = () => {
   const [activeMenuItem, setActiveMenuItem] = useState<
     MenuItemViewModel | undefined
   >();
-
   const intl = useIntl();
-  const { asPath, push } = useRouter();
+  const { asPath } = useRouter();
   const { instance, inProgress } = useMsal();
   const { mainMenuItems } = useGlobalData();
-  const { spacing, palette, effects } = useTheme();
-
+  const { spacing, palette, effects, fonts } = useTheme();
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const { me } = useMe();
   const isAuthenticated = useIsAuthenticated();
+  const router = useRouter();
 
   const menuItems: MenuItemViewModel[] = useMemo(() => {
     return mapMenuItemsToMenuItemViewModel(
@@ -119,11 +136,15 @@ const DesktopMainHeader: React.FC = () => {
     setActiveMenuItem(undefined);
   }, [asPath]);
 
-  const styles: MainHeaderStyles = {
+  const accountMenuItems: MenuItemViewModel[] = useMemo(() => {
+    return getAccountNavigationMenuItems(intl, me, instance);
+  }, [intl, instance, me]);
+
+  const styles: DesktopMainHeaderStyles = {
     root: {
       root: {
         height: MAIN_HEADER_HEIGHT,
-        transition: '0.3s all ease',
+        transition: '0.3s background-color ease',
         backgroundColor: palette.neutralLighter
       }
     },
@@ -142,7 +163,7 @@ const DesktopMainHeader: React.FC = () => {
         ':before, &.active::before': {
           content: "''",
           position: 'absolute',
-          bottom: 0,
+          bottom: '-1px',
           left: '50%',
           width: '75%',
           height: '2px',
@@ -155,6 +176,53 @@ const DesktopMainHeader: React.FC = () => {
           width: '100%',
           backgroundColor: palette.themeSecondary
         }
+      }
+    },
+    linkTextContainer: {
+      root: {
+        width: '100%',
+        textAlign: 'left',
+        padding: `${spacing.s1} ${spacing.l2}`,
+        '&:hover': {
+          color: palette.themePrimary
+        }
+      }
+    },
+    callout: {
+      root: {
+        boxShadow: effects.elevation4
+      },
+      calloutMain: {
+        padding: `${spacing.m} 0`
+      }
+    },
+    menuIconAuthenticated: {
+      root: {
+        color: 'green',
+        position: 'absolute',
+        top: 0,
+        right: '-6px',
+        fontSize: fonts.large.fontSize
+      }
+    },
+    linkText: {
+      root: {
+        color: 'inherit',
+        [`&.${ACTIVE_LINK_CLASSNAME}`]: {
+          fontWeight: FontWeights.semibold
+        }
+      }
+    },
+    cartButton: {
+      root: {
+        height: rem(MAIN_HEADER_HEIGHT)
+      }
+    },
+    userButton: {
+      root: {
+        height: rem(MAIN_HEADER_HEIGHT),
+        transition: '0.3s background-color ease',
+        backgroundColor: showUserMenu ? palette.white : 'transparent'
       }
     }
   };
@@ -203,6 +271,70 @@ const DesktopMainHeader: React.FC = () => {
           }}
           verticalAlign="center"
         >
+          {inProgress === InteractionStatus.None && (
+            <Stack>
+              <SiteHeaderButton
+                id="desktop-user-menu-button"
+                title={intl.formatMessage(messages.userAriaLabel)}
+                type="actionButton"
+                iconProps={{
+                  iconName: 'Contact'
+                }}
+                styles={styles.userButton}
+                onClick={() => {
+                  if (!showUserMenu) {
+                    return isAuthenticated ? setShowUserMenu(true) : signIn();
+                  }
+                  return setShowUserMenu(false);
+                }}
+              >
+                {isAuthenticated && (
+                  <Icon
+                    iconName="StatusCircleCheckmark"
+                    styles={styles.menuIconAuthenticated}
+                  />
+                )}
+              </SiteHeaderButton>
+              {showUserMenu && (
+                <Callout
+                  role="dialog"
+                  target={`#desktop-user-menu-button`}
+                  onDismiss={() => setShowUserMenu(false)}
+                  setInitialFocus
+                  isBeakVisible={false}
+                  styles={styles.callout}
+                >
+                  <Stack tokens={{ childrenGap: spacing.s1 }}>
+                    {accountMenuItems.map(link => {
+                      return (
+                        <NextLink key={link.id} href={link.href} passHref>
+                          <a>
+                            <ActionButton
+                              styles={styles.linkTextContainer}
+                              onClick={() => {
+                                link.onClick && link.onClick();
+                              }}
+                            >
+                              <Text
+                                className={getAccountNavigationMenuItemClassName(
+                                  link.href,
+                                  router.pathname,
+                                  ACTIVE_LINK_CLASSNAME
+                                )}
+                                styles={styles.linkText}
+                              >
+                                {link.text}
+                              </Text>
+                            </ActionButton>
+                          </a>
+                        </NextLink>
+                      );
+                    })}
+                  </Stack>
+                </Callout>
+              )}
+            </Stack>
+          )}
           <NextLink href={pagePaths.cart}>
             <a>
               <SiteHeaderButton
@@ -211,22 +343,10 @@ const DesktopMainHeader: React.FC = () => {
                   iconName: 'ShoppingCart'
                 }}
                 onRenderMenuIcon={() => <CartCountButtonIcon />}
+                styles={styles.cartButton}
               />
             </a>
           </NextLink>
-          {inProgress === InteractionStatus.None && (
-            <SiteHeaderButton
-              title={intl.formatMessage(messages.userAriaLabel)}
-              type="actionButton"
-              iconProps={{
-                iconName: 'Contact'
-              }}
-              // TODO temporary functionality until the desktop 'user menu' is implemented
-              onClick={() =>
-                isAuthenticated ? push(pagePaths.accountOverview) : signIn()
-              }
-            />
-          )}
         </Stack>
       </Stack>
 

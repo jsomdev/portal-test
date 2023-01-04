@@ -16,6 +16,7 @@ export const ProductSpecifications: React.FC = () => {
   const { systemOfMeasurement } = useSystemOfMeasurement();
   const intl = useIntl();
   const { locale } = intl;
+
   const productSpecificationGroups = useMemo(() => {
     return mapAttributesToProductSpecificationGroups(
       attributes,

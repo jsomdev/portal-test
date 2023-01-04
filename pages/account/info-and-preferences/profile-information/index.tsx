@@ -14,7 +14,7 @@ import {
 } from '@services/portal-api/menuItems';
 import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
-import { ProfileInformation } from '@widgets/account/info-and-preferences/profileInformation';
+import { ProfileInformation } from '@widgets/account/profile-information/profileInformation';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
 const messages = defineMessages({
@@ -23,6 +23,11 @@ const messages = defineMessages({
       .profileInformation.title,
     description: 'Profile information page title',
     defaultMessage: 'Profile information'
+  },
+  returnLink: {
+    id: messageIds.pages.account.sections.infoAndPreferences.overviewLink,
+    description: 'Address book page return link',
+    defaultMessage: 'Return to Info & Preferences'
   }
 });
 
@@ -37,6 +42,10 @@ const ProfileInformationPage: NextPage<
       siteMenuItems={siteMenuItems}
       pageTitle={formatMessage(messages.title)}
       localePaths={getLocalePaths(pagePaths.profileInformation)}
+      breadCrumbItem={{
+        link: pagePaths.infoAndPreferences,
+        text: formatMessage(messages.returnLink)
+      }}
     >
       <ProfileInformation />
     </AccountPage>

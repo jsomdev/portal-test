@@ -17,6 +17,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
+import { rem } from '@utilities/rem';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 const messages = defineMessages({
@@ -144,7 +145,7 @@ function getInfoAndPreferencesAccountSection(
       title: formatMessage(messages.addressBookTitle),
       links: [
         {
-          href: pagePaths.addressBook().toString(),
+          href: pagePaths.addressBook,
           text: formatMessage(messages.addressBook)
         }
       ]
@@ -173,7 +174,7 @@ function getInfoAndPreferencesAccountSection(
 }
 
 export const InfoAndPreferences: React.FC = () => {
-  const { spacing, semanticColors, effects, palette } = useTheme();
+  const { spacing, semanticColors, effects, palette, fonts } = useTheme();
   const intl = useIntl();
 
   const sections: InfoAndPreferencesSectionViewModel[] = useMemo(() => {
@@ -201,9 +202,9 @@ export const InfoAndPreferences: React.FC = () => {
     },
     iconStyles: {
       root: {
-        fontSize: FontSizes.size24,
+        fontSize: fonts.xxLarge.fontSize,
         ...mediaQueryFrom('tablet', {
-          fontSize: FontSizes.size32
+          fontSize: rem(32)
         })
       }
     },

@@ -450,7 +450,13 @@ export const en: Messages = {
         },
         infoAndPreferences: {
           title: 'Info & Preferences',
+          overviewLink: 'Return to overview page',
           sections: {
+            measurementSettings: {
+              description:
+                'You can manage your measurement settings here. Toggle between metric and imperial units.',
+              title: 'Measurement settings'
+            },
             profileInformation: {
               title: 'Profile Information',
               description:

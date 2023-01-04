@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
-import { Url } from 'url';
 
 import { NextLink } from '@components/link/nextLink';
 import {

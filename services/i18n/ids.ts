@@ -438,7 +438,15 @@ export const messageIds: Messages = {
         },
         infoAndPreferences: {
           title: 'pages.account.sections.infoAndPreferences.title',
+          overviewLink:
+            'pages.account.sections.infoAndPreferences.overviewLink',
           sections: {
+            measurementSettings: {
+              title:
+                'pages.account.sections.infoAndPreferences.sections.measurementSettings.title',
+              description:
+                'pages.account.sections.infoAndPreferences.sections.measurementSettings.description'
+            },
             profileInformation: {
               title:
                 'pages.account.sections.infoAndPreferences.sections.profileInformation.title',

@@ -20,6 +20,7 @@ import { msalInstance } from '@services/authentication/authenticationConfigurati
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
+import { rem } from '@utilities/rem';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
 import { AccountOverviewTags } from '../shared/accountOverviewTags';
@@ -65,7 +66,7 @@ interface IProfileInformationStyles {
 
 export const ProfileInformation: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { semanticColors, effects, spacing, palette } = useTheme();
+  const { semanticColors, effects, spacing, palette, fonts } = useTheme();
   const { me } = useMe();
   const claims = useClaims();
   const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
@@ -104,15 +105,15 @@ export const ProfileInformation: React.FC = () => {
     },
     iconStyles: {
       root: {
-        fontSize: FontSizes.size24,
+        fontSize: fonts.xxLarge.fontSize,
         ...mediaQueryFrom('tablet', {
-          fontSize: FontSizes.size32
+          fontSize: rem(32)
         })
       }
     },
     sectionTitle: {
       root: {
-        fontSize: FontSizes.size16
+        ...fonts.large
       }
     },
     headerText: {

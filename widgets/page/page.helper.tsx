@@ -11,7 +11,6 @@ export const getPathWithLocale = (
   defaultLocale: string,
   localePaths: LocalePaths
 ): UrlObject => {
-  console.log('WARD0', localePaths, locale);
   const path = localePaths[locale];
   if (locale === defaultLocale) {
     if (typeof path === 'string') {

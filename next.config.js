@@ -24,6 +24,10 @@ module.exports = {
         https://github.com/vercel/next.js/issues/25019 */
         source: '/home',
         destination: '/'
+      },
+      {
+        source: '/account',
+        destination: '/account/overview'
       }
     ];
   },

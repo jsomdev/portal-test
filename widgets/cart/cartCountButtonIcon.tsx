@@ -8,7 +8,7 @@ const CartCountButtonIcon: React.FC = () => {
   const { baseItems } = useCart();
 
   const pillCountStyles: Partial<ITextStyles> = {
-    root: { position: 'absolute', top: '-1px', right: '-4px' }
+    root: { position: 'absolute', top: '2px', right: '-4px' }
   };
 
   const count = useMemo(

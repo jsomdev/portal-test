@@ -459,7 +459,13 @@ export const nl: Messages = {
         },
         infoAndPreferences: {
           title: 'Info & Voorkeuren',
+          overviewLink: 'Terug naar de overzicht pagina',
           sections: {
+            measurementSettings: {
+              title: 'Meetinstellingen beheren',
+              description:
+                'U kunt hier uw meetinstellingen beheren. Schakel tussen metrische en imperiale eenheden.'
+            },
             profileInformation: {
               title: 'Profiel Informatie',
               description:

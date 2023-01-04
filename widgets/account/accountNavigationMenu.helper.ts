@@ -229,3 +229,21 @@ export function getAccountSideNavigationLinkGroupItems(
     }
   ];
 }
+
+/**
+ * Returns the class name or undefined for an account navigation menu item.
+ * @param {string} linkPath - The path of the menu item link.
+ * @param {string} routerPathname - the pathname from the NextJS router object.
+ * @param {string} activeClassName - The class name to return if the menu item is active.
+ * @returns {string} - The class name or undefined for each menu item.
+ */
+export function getAccountNavigationMenuItemClassName(
+  linkPath: string | undefined,
+  routerPathname: string,
+  activeClassName: string
+): string | undefined {
+  if (linkPath && routerPathname.includes(linkPath)) {
+    return activeClassName;
+  }
+  return undefined;
+}

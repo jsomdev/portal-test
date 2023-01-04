@@ -19,10 +19,12 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
-import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 
-import { getAccountSideNavigationLinkGroupItems } from './accountNavigationMenu.helper';
+import {
+  getAccountNavigationMenuItemClassName,
+  getAccountSideNavigationLinkGroupItems
+} from './accountNavigationMenu.helper';
 
 interface AccountSideNavigationStyles {
   instanceButton: IButtonStyles;
@@ -44,30 +46,17 @@ const messages = defineMessages({
   }
 });
 
+const ACTIVE_LINK_CLASSNAME = 'active-link';
+
 /**
  * This component renders the account menu on the desktop verion of the account pages
  */
 export const AccountSideNavigation: React.FC = () => {
-  const ACTIVE_LINK = 'active-link';
   const { spacing, palette } = useTheme();
   const intl = useIntl();
   const { instance } = useMsal();
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
-
-  function getActiveClassName(path: string): string {
-    if (router.pathname === path) {
-      return ACTIVE_LINK;
-    }
-    // set active state for info and preferences pages
-    if (
-      path.includes(pagePaths.infoAndPreferences) &&
-      router.pathname.includes(pagePaths.infoAndPreferences)
-    ) {
-      return ACTIVE_LINK;
-    }
-    return '';
-  }
 
   const accountNavigationGroups: INavLinkGroup[] = useMemo(() => {
     return getAccountSideNavigationLinkGroupItems(intl, isAuthenticated);
@@ -116,7 +105,11 @@ export const AccountSideNavigation: React.FC = () => {
                 <a>
                   <Stack
                     styles={styles.linkTextContainer}
-                    className={getActiveClassName(link.url)}
+                    className={getAccountNavigationMenuItemClassName(
+                      link.url,
+                      router.pathname,
+                      ACTIVE_LINK_CLASSNAME
+                    )}
                   >
                     <Text styles={styles.linkText}>{link.name}</Text>
                   </Stack>

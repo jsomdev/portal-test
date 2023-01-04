@@ -242,7 +242,7 @@ export const Overview: React.FC = () => {
         </Stack.Item>
 
         <Stack>
-          <NextLink href={pagePaths.addressBook()} passHref>
+          <NextLink href={pagePaths.addressBook} passHref>
             <a>
               <ActionButton
                 iconProps={{ iconName: 'ChevronRight' }}

@@ -43,7 +43,7 @@ const pagePaths = {
       }
     };
   },
-  accountOverview: '/account',
+  accountOverview: '/account/overview',
   quoteRequests: '/account/quote-requests',
   quoteRequestDetail: (
     id: string,
@@ -76,18 +76,7 @@ const pagePaths = {
       }
     };
   },
-  addressBook: (id?: string | undefined): UrlObject | string => {
-    const pathname: string = '/account/info-and-preferences/address-book';
-    if (id) {
-      return {
-        pathname,
-        query: {
-          id: id
-        }
-      };
-    }
-    return pathname;
-  },
+  addressBook: '/account/info-and-preferences/address-book',
   preferences: '/account/info-and-preferences/preferences'
 };
 
