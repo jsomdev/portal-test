@@ -62,7 +62,8 @@ export const messageIds: Messages = {
     },
     quotedPrice: 'pricing.quotedPrice',
     addToCart: 'pricing.addToCart',
-    unitPriceSuffix: 'pricing.unitPriceSuffix'
+    unitPriceSuffix: 'pricing.unitPriceSuffix',
+    priceBreakQuantityInfo: 'pricing.priceBreakQuantityInfo'
   },
 
   bookmarks: {

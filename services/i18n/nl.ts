@@ -64,7 +64,9 @@ export const nl: Messages = {
     },
     quotedPrice: 'Prijs op aanvraag',
     unitPriceSuffix: '/ per stuk',
-    addToCart: 'Toevoegen'
+    addToCart: 'Toevoegen',
+    priceBreakQuantityInfo:
+      'Toevoegen van {quantityDisplay} {quantity, plural, one {stuk} other {stuks}} aan uw winkelwagen zal u op een totaal van {projectedQuantityDisplay} {projectedQuantity, plural, one {stuk} other {stuks}} brengen.'
   },
   finder: {
     compare: 'Vergelijk',

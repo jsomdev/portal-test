@@ -59,7 +59,9 @@ export const en: Messages = {
     },
     quotedPrice: 'Quoted Price',
     addToCart: 'Add to cart',
-    unitPriceSuffix: '/ each'
+    unitPriceSuffix: '/ each',
+    priceBreakQuantityInfo:
+      'Adding {quantityDisplay} {quantity, plural, one {item} other {items}} to your cart will bring you to a total of {projectedQuantityDisplay} {projectedQuantity, plural, one {item} other {items}.}'
   },
   finder: {
     compare: 'Compare',

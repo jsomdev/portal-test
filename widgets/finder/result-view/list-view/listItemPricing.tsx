@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -18,6 +18,7 @@ import { Product } from '@services/portal-api';
 import { AddToCartButton } from '@widgets/add-to-cart-button/addToCartButton';
 import { PriceLabel } from '@widgets/pricing/price-label/priceLabel';
 import { PriceBreakList } from '@widgets/pricing/pricebreak-list/priceBreakList';
+import { PriceBreakListHeader } from '@widgets/pricing/pricebreak-list/priceBreakListHeader';
 import { useProductPricing } from '@widgets/pricing/useProductPrice';
 
 interface ProductListItemPricingProps {
@@ -216,9 +217,18 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                       isBeakVisible={true}
                     >
                       <Stack
-                        tokens={{ childrenGap: spacing.l1 }}
+                        tokens={{ childrenGap: spacing.s1 }}
                         styles={styles.callout}
                       >
+                        {addToCartButtonQuantity !==
+                          cartQuantity + addToCartButtonQuantity && (
+                          <Stack.Item>
+                            <PriceBreakListHeader
+                              cartQuantity={cartQuantity}
+                              quantity={addToCartButtonQuantity}
+                            />
+                          </Stack.Item>
+                        )}
                         <Stack.Item>
                           <PriceBreakList
                             priceBreaks={priceBreaks}

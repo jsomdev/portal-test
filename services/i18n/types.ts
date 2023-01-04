@@ -189,6 +189,7 @@ type IPricingMessages = {
   unitPriceSuffix: string;
   // TODO: move to cart;
   addToCart: string;
+  priceBreakQuantityInfo: string;
 };
 
 type ILoadingUserMessages = {
