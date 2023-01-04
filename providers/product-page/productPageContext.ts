@@ -21,6 +21,8 @@ export interface ProductPageContextProps {
         sprayAngleAttributes: Attribute[];
         liquidFlowRateAttributes: Attribute[];
         airFlowRateAttributes: Attribute[];
+        atomizingAirFlowRateAttributes: Attribute[];
+        fanAirFlowRateAttributes: Attribute[];
       }
     | undefined;
   sections: ProductSection[];

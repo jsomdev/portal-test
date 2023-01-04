@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import {
+  ActionButton,
   IPanelStyles,
   IStackStyles,
   IconButton,
@@ -76,8 +77,12 @@ export const ActiveProductConfiguration: React.FC = () => {
     cardContainer: {
       root: {
         marginBottom: spacing.l1,
-        borderRadius: effects.roundedCorner2,
-        border: `1px solid ${semanticColors.variantBorder}`
+        borderRadius: effects.roundedCorner4,
+        border: `1px solid ${semanticColors.variantBorder}`,
+        '&:hover': {
+          border: `1px solid ${semanticColors.variantBorderHovered}`,
+          cursor: 'pointer'
+        }
       }
     },
     panel: {
@@ -113,12 +118,17 @@ export const ActiveProductConfiguration: React.FC = () => {
   };
   return (
     <Stack.Item>
-      <ProductSubsectionHeader title={formatMessage(messages.title)} />
+      <ProductSubsectionHeader title={formatMessage(messages.title)}>
+        <IconButton
+          onClick={() => setShowConfigurationsPanel(true)}
+          iconProps={{ iconName: 'Settings' }}
+        />
+      </ProductSubsectionHeader>
       <Stack
-        tokens={{ padding: spacing.m }}
-        horizontal
+        tokens={{ padding: spacing.m, childrenGap: spacing.s1 }}
         verticalAlign="center"
         horizontalAlign="space-between"
+        onClick={() => setShowConfigurationsPanel(true)}
         styles={styles.cardContainer}
       >
         <Stack.Item>
@@ -139,11 +149,8 @@ export const ActiveProductConfiguration: React.FC = () => {
             </div>
           ))}
         </Stack.Item>
-        <IconButton
-          onClick={() => setShowConfigurationsPanel(true)}
-          iconProps={{ iconName: 'ChevronRight' }}
-        />
       </Stack>
+
       <Panel
         type={PanelType.custom}
         customWidth={rem(600)}
@@ -151,6 +158,7 @@ export const ActiveProductConfiguration: React.FC = () => {
         isOpen={showConfigurationsPanel}
         onDismiss={() => setShowConfigurationsPanel(false)}
         hasCloseButton={true}
+        isLightDismiss
         headerText={formatMessage(messages.title)}
         closeButtonAriaLabel={formatMessage(messages.ariaClose)}
         isFooterAtBottom={true}

@@ -112,6 +112,60 @@ export const ProductPerformance: React.FC = () => {
           </Stack>
         </Stack.Item>
       )}
+      {performanceAttributes.atomizingAirFlowRateAttributes.length > 1 && (
+        <Stack.Item styles={styles.container}>
+          <Stack>
+            <ProductSubsectionHeader
+              title={formatTitle(
+                getAttributeType(ATTRIBUTETYPECODES.atomizingAirFlowRate),
+                locale
+              )}
+            />
+            {performanceAttributes.atomizingAirFlowRateAttributes?.[0]
+              .conditions?.length === 2 ? (
+              <MultiConditionsPerformanceChart
+                attributes={
+                  performanceAttributes.atomizingAirFlowRateAttributes
+                }
+                attributeTypeCode={ATTRIBUTETYPECODES.atomizingAirFlowRate}
+              />
+            ) : (
+              <PerformanceChart
+                attributes={
+                  performanceAttributes.atomizingAirFlowRateAttributes || []
+                }
+                attributeTypeCode={ATTRIBUTETYPECODES.atomizingAirFlowRate}
+              />
+            )}
+          </Stack>
+        </Stack.Item>
+      )}
+      {performanceAttributes.fanAirFlowRateAttributes.length > 1 && (
+        <Stack.Item styles={styles.container}>
+          <Stack>
+            <ProductSubsectionHeader
+              title={formatTitle(
+                getAttributeType(ATTRIBUTETYPECODES.fanAirFlowRate),
+                locale
+              )}
+            />
+            {performanceAttributes.fanAirFlowRateAttributes?.[0].conditions
+              ?.length === 2 ? (
+              <MultiConditionsPerformanceChart
+                attributes={performanceAttributes.fanAirFlowRateAttributes}
+                attributeTypeCode={ATTRIBUTETYPECODES.fanAirFlowRate}
+              />
+            ) : (
+              <PerformanceChart
+                attributes={
+                  performanceAttributes.fanAirFlowRateAttributes || []
+                }
+                attributeTypeCode={ATTRIBUTETYPECODES.fanAirFlowRate}
+              />
+            )}
+          </Stack>
+        </Stack.Item>
+      )}
     </Stack>
   );
 };

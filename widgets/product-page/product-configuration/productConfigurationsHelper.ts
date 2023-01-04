@@ -41,7 +41,7 @@ export function mapOptionsToProductConfigurationItems(
     return {
       title: attributeTypeFormatter.formatName(),
       text: variantFormatter.formatDisplayValue(),
-      options: mapVariantsToDropdownOptions(
+      options: mapVariantsToProductConfigurationItemOptions(
         option.variants || [],
         productNumber,
         intl,
@@ -53,26 +53,52 @@ export function mapOptionsToProductConfigurationItems(
   return items;
 }
 
-function mapVariantsToDropdownOptions(
+function mapVariantsToProductConfigurationItemOptions(
   variants: Variant[],
   productNumber: string | undefined,
   intl: IntlShape,
   systemOfMeasurement: SystemOfMeasurement,
   locale: string = ENVIRONMENT_VARIABLES.defaultLocale
 ): ProductConfigurationItemOption[] {
-  return variants.map(variant => {
-    const variantFormatter: VariantFormatter = new VariantFormatter(
-      variant,
-      intl,
-      systemOfMeasurement,
-      locale
-    );
-    const option: ProductConfigurationItemOption = {
-      key: variant.productNumber || '',
-      text: variantFormatter.formatDisplayValue(),
-      selected: productNumber === variant.productNumber,
-      href: variantFormatter.formatHref()
-    };
-    return option;
-  });
+  return variants
+    .sort((a, b) => {
+      if (a.sortIndex && b.sortIndex) {
+        return a.sortIndex - b.sortIndex;
+      }
+      const variantAFormatter = new VariantFormatter(
+        a,
+        intl,
+        systemOfMeasurement,
+        locale
+      );
+      const variantBFormatter = new VariantFormatter(
+        b,
+        intl,
+        systemOfMeasurement,
+        locale
+      );
+      return (
+        (a.sortIndex || 0) - (b.sortIndex || 0) ||
+        variantAFormatter
+          .formatDisplayValue()
+          .localeCompare(variantBFormatter.formatDisplayValue(), locale, {
+            sensitivity: 'base'
+          })
+      );
+    })
+    .map(variant => {
+      const variantFormatter: VariantFormatter = new VariantFormatter(
+        variant,
+        intl,
+        systemOfMeasurement,
+        locale
+      );
+      const option: ProductConfigurationItemOption = {
+        key: variant.productNumber || '',
+        text: variantFormatter.formatDisplayValue(),
+        selected: productNumber === variant.productNumber,
+        href: variantFormatter.formatHref()
+      };
+      return option;
+    });
 }

@@ -73,9 +73,9 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
 
     if (performanceAttributes && !isModel) {
       if (
-        performanceAttributes.airFlowRateAttributes.length > 1 ||
-        performanceAttributes.liquidFlowRateAttributes.length > 1 ||
-        performanceAttributes.sprayAngleAttributes.length > 1
+        Object.values(performanceAttributes).find(
+          attributes => attributes.length > 1
+        )
       ) {
         filteredSections.push(productSections.performanceSection);
       }
@@ -148,6 +148,8 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
         sprayAngleAttributes: Attribute[];
         liquidFlowRateAttributes: Attribute[];
         airFlowRateAttributes: Attribute[];
+        atomizingAirFlowRateAttributes: Attribute[];
+        fanAirFlowRateAttributes: Attribute[];
       }
     | undefined {
     const sprayAngleAttributes: Attribute[] = allAttributes.filter(
@@ -160,15 +162,27 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
       attribute => attribute.typeCode === ATTRIBUTETYPECODES.airFlowRate
     );
 
+    const atomizingAirFlowRateAttributes: Attribute[] = allAttributes.filter(
+      attribute =>
+        attribute.typeCode === ATTRIBUTETYPECODES.atomizingAirFlowRate
+    );
+    const fanAirFlowRateAttributes: Attribute[] = allAttributes.filter(
+      attribute => attribute.typeCode === ATTRIBUTETYPECODES.fanAirFlowRate
+    );
+
     if (
       sprayAngleAttributes.length ||
       liquidFlowRateAttributes.length ||
-      airFlowRateAttributes.length
+      airFlowRateAttributes.length ||
+      fanAirFlowRateAttributes.length ||
+      atomizingAirFlowRateAttributes.length
     ) {
       return {
         sprayAngleAttributes,
         liquidFlowRateAttributes,
-        airFlowRateAttributes
+        airFlowRateAttributes,
+        fanAirFlowRateAttributes,
+        atomizingAirFlowRateAttributes
       };
     }
     return undefined;
