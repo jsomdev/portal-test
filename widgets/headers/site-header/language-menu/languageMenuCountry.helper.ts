@@ -1,3 +1,5 @@
+import url from 'url';
+
 import { STATIC_IMAGES } from '@public/media/images';
 import { Country, supportedLocales, supportedRegions } from '@services/i18n';
 import {
@@ -5,6 +7,7 @@ import {
   LanguageWithPath,
   RegionWithPaths
 } from '@widgets/headers/site-header/language-menu/languageMenu.types';
+import { getPathWithLocale } from '@widgets/page/page.helper';
 import { LocalePaths } from '@widgets/page/page.types';
 
 export function getCountryImage(code: string): string | undefined {
@@ -36,17 +39,17 @@ const mapToCountryWithPaths = (
     code: country.code,
     languages: country.languages.map<LanguageWithPath>(language => {
       const locale = language.code + '-' + country.code.toUpperCase();
-      const path =
-        locale &&
-        localePaths &&
-        defaultLocale &&
-        `/${localePaths[locale] ? localePaths[locale] : ''}`;
-
+      const path = getPathWithLocale(locale, defaultLocale, localePaths);
       return {
         name: language.name,
         code: language.code,
         locale: locale,
-        path: path
+        path: url.format(
+          Object.assign(
+            new URL(path.pathname || '/', process.env.NEXT_PUBLIC_BASE_URL),
+            path
+          )
+        )
       };
     })
   };

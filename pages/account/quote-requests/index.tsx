@@ -55,7 +55,7 @@ const QuoteRequests: NextPage<
     : formatMessage(messages.quoteRequestsTitle);
 
   const localePaths = getLocalePaths(
-    pagePaths.quoteRequests(query.id).toString()
+    query.id ? pagePaths.quoteRequestDetail(query.id) : pagePaths.quoteRequests
   );
 
   return (
@@ -67,7 +67,7 @@ const QuoteRequests: NextPage<
       breadCrumbItem={
         query.id
           ? {
-              link: pagePaths.quoteRequests()?.toString(),
+              link: pagePaths.quoteRequests,
               text: formatMessage(messages.viewAll)
             }
           : undefined

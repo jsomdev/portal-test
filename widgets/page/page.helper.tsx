@@ -1,3 +1,6 @@
+import { UrlObject } from 'url';
+import * as url from 'url';
+
 import { supportedLocales } from '@services/i18n';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { MultilingualString } from '@services/portal-api';
@@ -7,11 +10,34 @@ export const getPathWithLocale = (
   locale: string,
   defaultLocale: string,
   localePaths: LocalePaths
-): string => {
+): UrlObject => {
+  console.log('WARD0', localePaths, locale);
+  const path = localePaths[locale];
   if (locale === defaultLocale) {
-    return `/${localePaths[locale]}`;
+    if (typeof path === 'string') {
+      return {
+        pathname: path
+      };
+    }
+    return path;
   }
-  return `/${locale}${localePaths[locale] ? '/' + localePaths[locale] : ''}`;
+  if (typeof path === 'string') {
+    return {
+      pathname: `/${locale}${path.startsWith('/') ? '' : '/'}${path}`
+    };
+  }
+
+  if (!path) {
+    return {
+      pathname: `/${locale}`
+    };
+  }
+  return {
+    ...path,
+    pathname: `/${locale}${path.pathname?.startsWith('/') ? '' : '/'}${
+      path.pathname
+    }`
+  };
 };
 
 export const getCanonicalUrl = (
@@ -19,11 +45,13 @@ export const getCanonicalUrl = (
   defaultLocale: string,
   localePaths: LocalePaths
 ): string => {
-  return `${process.env.NEXT_PUBLIC_BASE_URL}${getPathWithLocale(
-    currentLocale,
-    defaultLocale,
-    localePaths
-  )}`;
+  const path = getPathWithLocale(currentLocale, defaultLocale, localePaths);
+  return url.format(
+    Object.assign(
+      new URL(path.pathname || '/', process.env.NEXT_PUBLIC_BASE_URL),
+      path
+    )
+  );
 };
 
 export const getAlternateLinks = (
@@ -40,7 +68,7 @@ export const getAlternateLinks = (
     });
 };
 
-export const getLocalePaths = (path: string): LocalePaths => {
+export const getLocalePaths = (path: string | UrlObject): LocalePaths => {
   return (
     supportedLocales?.reduce<LocalePaths>((acc, locale) => {
       acc[locale] = path;

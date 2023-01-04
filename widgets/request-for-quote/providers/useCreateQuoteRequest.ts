@@ -31,7 +31,9 @@ export const useCreateQuoteRequest = (
   });
 
   function handleRedirect(quoteRequest: QuoteRequest) {
-    push(pagePaths.quoteRequests(quoteRequest.id, true));
+    if (quoteRequest.id) {
+      push(pagePaths.quoteRequestDetail(quoteRequest.id, true));
+    }
   }
 
   return {

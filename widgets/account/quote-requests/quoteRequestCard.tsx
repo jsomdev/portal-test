@@ -142,24 +142,29 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
           <AccountCardProductLines
             compactView={compactView}
             lines={quoteRequest.lines}
-            href={pagePaths.quoteRequests(quoteRequest.id).toString()}
+            href={pagePaths.quoteRequests}
           />
         )}
-        <Stack
-          horizontal
-          tokens={{ childrenGap: spacing.l2 }}
-          styles={styles.actionsContainer}
-        >
-          <NextLink href={pagePaths.quoteRequests(quoteRequest.id)} passHref>
-            <a>
-              <ActionButton
-                text={formatMessage(messages.viewQuoteRequest)}
-                menuIconProps={{ iconName: 'chevronRight' }}
-                styles={styles.button}
-              />
-            </a>
-          </NextLink>
-        </Stack>
+        {quoteRequest.id && (
+          <Stack
+            horizontal
+            tokens={{ childrenGap: spacing.l2 }}
+            styles={styles.actionsContainer}
+          >
+            <NextLink
+              href={pagePaths.quoteRequestDetail(quoteRequest.id)}
+              passHref
+            >
+              <a>
+                <ActionButton
+                  text={formatMessage(messages.viewQuoteRequest)}
+                  menuIconProps={{ iconName: 'chevronRight' }}
+                  styles={styles.button}
+                />
+              </a>
+            </NextLink>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

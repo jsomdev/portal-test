@@ -55,7 +55,7 @@ const Orders: NextPage<
     : formatMessage(messages.ordersTitle);
 
   const localePaths = getLocalePaths(
-    pagePaths.quoteRequests(query.id).toString()
+    query.id ? pagePaths.orderDetail(query.id) : pagePaths.orders
   );
 
   return (
@@ -67,7 +67,7 @@ const Orders: NextPage<
       breadCrumbItem={
         query.id
           ? {
-              link: pagePaths.orders()?.toString(),
+              link: pagePaths.orders,
               text: formatMessage(messages.viewAll)
             }
           : undefined

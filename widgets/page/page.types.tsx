@@ -1,5 +1,7 @@
+import { UrlObject } from 'url';
+
 export type LocalePaths = {
-  [Property: string]: string;
+  [Property: string]: string | UrlObject;
 };
 
 export type PageMetaProps = {

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import Image from 'next/image';
+import { Url, UrlObject } from 'url';
 
 import { NextLink } from '@components/link/nextLink';
 import {
@@ -28,7 +29,7 @@ import {
 
 interface AccountCardProductLinesProps {
   lines: OrderLine[] | QuoteRequestLine[] | QuoteLine[];
-  href: string;
+  href: UrlObject | string;
   compactView: boolean;
 }
 
@@ -167,7 +168,7 @@ interface AccountProductLineStyles {
 
 interface AccountProductLineProps {
   productLine: QuoteRequestLine | OrderLine | QuoteLine;
-  href: string;
+  href: UrlObject | string;
 }
 
 const AccountProductLine: React.FC<AccountProductLineProps> = ({

@@ -24,12 +24,10 @@ const pagePaths = {
   profileInformation: '/account/info-and-preferences/profile-information',
   infoAndPreferences: '/account/info-and-preferences',
   requestForQuote: '/cart/request-for-quote',
-  orders: (
-    id?: string | undefined,
-    showConfirmation = false
-  ): UrlObject | string => {
+  orders: '/account/orders',
+  orderDetail: (id: string, showConfirmation = false): UrlObject => {
     const pathname: string = '/account/orders';
-    if (showConfirmation && id) {
+    if (showConfirmation) {
       return {
         pathname,
         query: {
@@ -38,23 +36,21 @@ const pagePaths = {
         }
       };
     }
-    if (id) {
-      return {
-        pathname,
-        query: {
-          id: id
-        }
-      };
-    }
-    return pathname;
+    return {
+      pathname,
+      query: {
+        id: id
+      }
+    };
   },
   accountOverview: '/account',
-  quoteRequests: (
-    id?: string | undefined,
+  quoteRequests: '/account/quote-requests',
+  quoteRequestDetail: (
+    id: string,
     showConfirmation: boolean = false
-  ): UrlObject | string => {
+  ): UrlObject => {
     const pathname: string = '/account/quote-requests';
-    if (showConfirmation && id) {
+    if (showConfirmation) {
       return {
         pathname,
         query: {
@@ -63,27 +59,22 @@ const pagePaths = {
         }
       };
     }
-    if (id) {
-      return {
-        pathname,
-        query: {
-          id: id
-        }
-      };
-    }
-    return pathname;
+    return {
+      pathname,
+      query: {
+        id: id
+      }
+    };
   },
-  quotes: (id?: string | undefined): UrlObject | string => {
+  quotes: '/account/quotes',
+  quoteDetail: (id: string): UrlObject => {
     const pathname: string = '/account/quotes';
-    if (id) {
-      return {
-        pathname,
-        query: {
-          id: id
-        }
-      };
-    }
-    return pathname;
+    return {
+      pathname,
+      query: {
+        id: id
+      }
+    };
   },
   addressBook: (id?: string | undefined): UrlObject | string => {
     const pathname: string = '/account/info-and-preferences/address-book';

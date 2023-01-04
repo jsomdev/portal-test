@@ -191,7 +191,7 @@ export const Overview: React.FC = () => {
             </Stack>
           </Stack.Item>
           <Stack>
-            <NextLink href={pagePaths.orders()} passHref>
+            <NextLink href={pagePaths.orders} passHref>
               <a>
                 <ActionButton
                   iconProps={{ iconName: 'ChevronRight' }}

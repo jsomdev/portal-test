@@ -152,27 +152,29 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
       >
         <QuoteCardTopSection quote={quote} />
         {quote.id && quote.lines?.length && (
-          <AccountCardProductLines
-            compactView={compactView}
-            lines={quote.lines}
-            href={pagePaths.quotes(quote.id).toString()}
-          />
+          <>
+            <AccountCardProductLines
+              compactView={compactView}
+              lines={quote.lines}
+              href={pagePaths.quoteDetail(quote.id)}
+            />
+            <Stack
+              horizontal
+              tokens={{ childrenGap: spacing.l2 }}
+              styles={styles.actionsContainer}
+            >
+              <NextLink href={pagePaths.quoteDetail(quote.id)} passHref>
+                <a>
+                  <ActionButton
+                    text={formatMessage(messages.viewQuote)}
+                    menuIconProps={{ iconName: 'chevronRight' }}
+                    styles={styles.button}
+                  />
+                </a>
+              </NextLink>
+            </Stack>
+          </>
         )}
-        <Stack
-          horizontal
-          tokens={{ childrenGap: spacing.l2 }}
-          styles={styles.actionsContainer}
-        >
-          <NextLink href={pagePaths.quotes(quote.id)} passHref>
-            <a>
-              <ActionButton
-                text={formatMessage(messages.viewQuote)}
-                menuIconProps={{ iconName: 'chevronRight' }}
-                styles={styles.button}
-              />
-            </a>
-          </NextLink>
-        </Stack>
       </Stack>
     </Stack>
   );

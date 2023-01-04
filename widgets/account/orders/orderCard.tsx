@@ -153,25 +153,26 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
           <AccountCardProductLines
             compactView={compactView}
             lines={order.lines}
-            href={pagePaths.orders(order.id).toString()}
+            href={pagePaths.orderDetail(order.id)}
           />
         )}
-
-        <Stack
-          horizontal
-          tokens={{ childrenGap: spacing.l2 }}
-          styles={styles.actionsContainer}
-        >
-          <NextLink href={pagePaths.orders(order.id)} passHref>
-            <a>
-              <ActionButton
-                text={formatMessage(messages.viewOrder)}
-                menuIconProps={{ iconName: 'chevronRight' }}
-                styles={styles.button}
-              />
-            </a>
-          </NextLink>
-        </Stack>
+        {order.id && order.lines?.length && (
+          <Stack
+            horizontal
+            tokens={{ childrenGap: spacing.l2 }}
+            styles={styles.actionsContainer}
+          >
+            <NextLink href={pagePaths.orderDetail(order.id)} passHref>
+              <a>
+                <ActionButton
+                  text={formatMessage(messages.viewOrder)}
+                  menuIconProps={{ iconName: 'chevronRight' }}
+                  styles={styles.button}
+                />
+              </a>
+            </NextLink>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
