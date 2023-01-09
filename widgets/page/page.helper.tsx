@@ -6,7 +6,7 @@ import { MultilingualStringFormatter } from '@services/i18n/formatters/multiling
 import { MultilingualString } from '@services/portal-api';
 import { LocalePaths } from '@widgets/page/page.types';
 
-export const getPathWithLocale = (
+const getPathWithLocale = (
   locale: string,
   defaultLocale: string,
   localePaths: LocalePaths
@@ -39,30 +39,40 @@ export const getPathWithLocale = (
   };
 };
 
+export type UrlType = 'relative' | 'absolute';
+
 export const getCanonicalUrl = (
   currentLocale: string,
   defaultLocale: string,
-  localePaths: LocalePaths
+  localePaths: LocalePaths,
+  urlType: UrlType
 ): string => {
   const path = getPathWithLocale(currentLocale, defaultLocale, localePaths);
-  return url.format(
+  const fullUrl = url.format(
     Object.assign(
       new URL(path.pathname || '/', process.env.NEXT_PUBLIC_BASE_URL),
       path
     )
   );
+
+  if (urlType === 'relative') {
+    return fullUrl.replace(process.env.NEXT_PUBLIC_BASE_URL as string, '');
+  }
+
+  return fullUrl;
 };
 
 export const getAlternateLinks = (
   paths: LocalePaths,
-  defaultLocale: string
+  defaultLocale: string,
+  urlType: UrlType
 ): { hrefLang: string; path: string }[] => {
   return (Object.keys(paths) as Array<string>)
     .filter(locale => (supportedLocales || []).includes(locale))
     .map(locale => {
       return {
         hrefLang: locale,
-        path: getCanonicalUrl(locale, defaultLocale, paths)
+        path: getCanonicalUrl(locale, defaultLocale, paths, urlType)
       };
     });
 };

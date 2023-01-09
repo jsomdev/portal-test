@@ -45,12 +45,17 @@ const Page: NextPage<PageProps> = ({ metaProps, i18nProps, children }) => {
 
   const alternateLinks =
     i18nProps.localePaths && defaultLocale
-      ? getAlternateLinks(i18nProps.localePaths, defaultLocale)
+      ? getAlternateLinks(i18nProps.localePaths, defaultLocale, 'absolute')
       : undefined;
 
   const canonicalUrl =
     i18nProps.localePaths && defaultLocale && router.locale
-      ? getCanonicalUrl(router.locale, defaultLocale, i18nProps.localePaths)
+      ? getCanonicalUrl(
+          router.locale,
+          defaultLocale,
+          i18nProps.localePaths,
+          'absolute'
+        )
       : undefined;
 
   return (

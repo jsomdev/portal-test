@@ -1,5 +1,4 @@
 import { Audience } from '@services/portal-api/models/AudienceFlags';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { getSupportedRegionsWithPaths } from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
 
 jest.mock('@services/i18n', () => {
@@ -35,7 +34,7 @@ describe('languageMenu', () => {
                 name: 'English',
                 code: 'en',
                 locale: 'en-US',
-                path: process.env.NEXT_PUBLIC_BASE_URL + '/us-path'
+                path: '/us-path'
               }
             ]
           }
@@ -53,7 +52,7 @@ describe('languageMenu', () => {
                 name: 'Dutch',
                 code: 'nl',
                 locale: 'nl-BE',
-                path: process.env.NEXT_PUBLIC_BASE_URL + '/nl-BE/nl-be-path'
+                path: '/nl-BE/nl-be-path'
               }
             ]
           },
@@ -65,7 +64,7 @@ describe('languageMenu', () => {
                 code: 'de',
                 name: 'German',
                 locale: 'de-DE',
-                path: process.env.NEXT_PUBLIC_BASE_URL + '/de-DE'
+                path: '/de-DE'
               }
             ]
           }
