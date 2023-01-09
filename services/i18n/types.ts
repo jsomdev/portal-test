@@ -779,6 +779,7 @@ type IProductMessages = {
       title: string;
     };
     performance: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       noData: any;
       title: string;
       multiChart: {

@@ -7,7 +7,6 @@ import {
   ISpinButtonStyles,
   useTheme
 } from '@fluentui/react';
-import { useCart } from '@providers/cart/cartContext';
 import { combineCartItemsInformation } from '@providers/cart/cartHelper';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { Product } from '@services/portal-api';

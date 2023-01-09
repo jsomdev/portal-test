@@ -10,7 +10,6 @@ import {
   IStackStyles,
   ITextStyles,
   Icon,
-  Link,
   Stack,
   Text,
   TooltipHost,

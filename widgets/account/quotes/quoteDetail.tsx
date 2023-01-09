@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useQuery } from 'react-query';
 
@@ -25,7 +25,7 @@ export const QuoteDetail: React.FC<QuoteDetailProps> = ({ id }) => {
   const { accountId } = useClaims();
   const { isQuoteHistoryEnabled } = useMe();
 
-  const { data: quote, status: quoteDataStatus } = useQuery(
+  const { status: quoteDataStatus } = useQuery(
     [
       QUERYKEYS.quoteDetail,
       id,

@@ -1,5 +1,4 @@
 import { ImageLoader, ImageProps } from 'next/dist/client/image';
-import { StaticImageData } from 'next/image';
 
 import { WidenImageHelper } from '@services/widen/widenImageHelper';
 

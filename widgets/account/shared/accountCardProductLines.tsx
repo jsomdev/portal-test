@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import Image from 'next/image';
-import { Url, UrlObject } from 'url';
+import { UrlObject } from 'url';
 
 import { NextLink } from '@components/link/nextLink';
 import {

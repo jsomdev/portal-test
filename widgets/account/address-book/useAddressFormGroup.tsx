@@ -9,7 +9,7 @@ import {
   supportedProvinceOptions,
   supportedStateOptions
 } from '@utilities/places';
-import { GenericStepFields, StepFields } from '@widgets/checkout/shared/types';
+import { GenericStepFields } from '@widgets/checkout/shared/types';
 
 import { AddressBookFormData } from './addressBookForm.helper';
 

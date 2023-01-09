@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -6,7 +6,6 @@ import { NextLink } from '@components/link/nextLink';
 import { PillCount } from '@components/pill-count/pillCount';
 import {
   DefaultButton,
-  FontWeights,
   List,
   PrimaryButton,
   Stack,

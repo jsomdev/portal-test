@@ -8,19 +8,12 @@ import {
   IStackStyles,
   ITextStyles,
   IconButton,
-  Image,
-  ImageFit,
   Stack,
-  Text,
   useTheme
 } from '@fluentui/react';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import { Product } from '@services/portal-api';
-import {
-  WidenImageHelper,
-  WidenImagePreset
-} from '@services/widen/widenImageHelper';
 import ProductCardImage from '@widgets/product-card-parts/productCardImage';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 

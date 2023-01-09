@@ -53,7 +53,7 @@ export const CartListUnitPrice: React.FC<CartListUnitPriceProps> = ({
       currencyDisplay: 'narrowSymbol',
       style: 'currency'
     });
-  }, [getUnitPrice, item.quantity, formatNumber, currencyCode]);
+  }, [getUnitPrice, cartQuantity, formatNumber, currencyCode]);
 
   const basePrice: string | undefined = useMemo(() => {
     const price: number | undefined = getBasePrice();

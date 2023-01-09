@@ -14,7 +14,6 @@ import {
   AttributeType,
   Product
 } from '@services/portal-api';
-import { AttributeTypeCodes } from '@services/portal-api/base/types';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { AttributeSettings } from '@services/portal-api/models/AttributeSettingsFlags';
 import { groupArrayByKey } from '@utilities/groupBy';

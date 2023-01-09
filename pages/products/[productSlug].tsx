@@ -15,7 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { ProductBookmarkButton } from '@components/buttons/bookmarkButton';
-import { Stack, useTheme } from '@fluentui/react';
+import { Stack } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';

@@ -1,4 +1,3 @@
-import { TextView } from '@fluentui/react';
 import { FacetedSearchProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { FacetedSearchProduct } from '@services/portal-api/faceted-search/types';
 import { ProductCardViewModel } from '@widgets/product-card-parts/productCardViewModel';

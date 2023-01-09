@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
 
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { Url } from 'url';
 
@@ -9,17 +8,12 @@ import { OdataCollection } from '@services/portal-api/o-data';
 import { getDesignsForDetailedCompare } from '@services/portal-api/products';
 import { QUERYKEYS } from '@services/react-query/constants';
 import pagePaths from '@utilities/pagePaths';
-import {
-  useDesktop,
-  useTablet,
-  useTabletAndDesktop
-} from '@widgets/media-queries';
+import { useDesktop, useTablet } from '@widgets/media-queries';
 
 import { ProductCompareContext } from './productCompareContext';
 
 export const ProductCompareProvider: FC = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const router = useRouter();
   const [productDetailsNumbers, setProductDetailsNumbers] = useState<string[]>(
     []
   );

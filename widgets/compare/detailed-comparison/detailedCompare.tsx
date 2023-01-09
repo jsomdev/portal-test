@@ -30,10 +30,7 @@ import { MultiConditionsPerformanceChart } from '@widgets/charts/performance-cha
 import { PerformanceChart } from '@widgets/charts/performance-chart/performanceChart';
 import { ErrorPage } from '@widgets/error-boundaries/errorPage';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
-import {
-  mediaQueryFrom,
-  useBetweenMobileAndTablet
-} from '@widgets/media-queries';
+import { mediaQueryFrom } from '@widgets/media-queries';
 import { filterProductPerformanceChartAttributes } from '@widgets/product-page/product-performance/productPerformanceHelper';
 
 import { useProductCompare } from '../productCompareContext';

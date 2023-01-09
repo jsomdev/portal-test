@@ -4,7 +4,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { IBreadcrumbItem } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { rem } from '@utilities/rem';
 import { homeBreadcrumb } from '@widgets/breadcrumbs/breadcrumbHelpers';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 

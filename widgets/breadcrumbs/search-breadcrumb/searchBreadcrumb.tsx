@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import { Url } from 'url';
 
 import { IBreadcrumbItem } from '@fluentui/react';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';

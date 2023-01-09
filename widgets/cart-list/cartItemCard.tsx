@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  IStackItemStyles,
-  IStackStyles,
-  Stack,
-  useTheme
-} from '@fluentui/react';
+import { IStackStyles, Stack, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { CartItemViewModel } from '@widgets/cart-list/cartList.types';
 import { CartListQuantity } from '@widgets/cart-list/cartListQuantity';

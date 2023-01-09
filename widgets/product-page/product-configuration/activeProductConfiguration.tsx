@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import {
-  ActionButton,
   IPanelStyles,
   IStackStyles,
   IconButton,
