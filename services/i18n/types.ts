@@ -838,6 +838,7 @@ export type Messages = {
     main: IMainNavigationMessages;
     account: IAccountNavigationMessages;
     locale: ILocaleMessages;
+    footer: FooterMessages;
   };
   searchBar: ISiteSearchBarMessages;
   loading: {
@@ -932,3 +933,113 @@ export type LanguageCode =
   | 'sl'
   | 'es'
   | 'tr';
+
+export interface FooterMessages {
+  siteLinks: {
+    items: {
+      siteMap: string;
+      legalInformation: string;
+      privacyStatement: string;
+      isoSystemAndPolicyStatement: string;
+      REACH: string;
+    };
+  };
+  productCategories: {
+    title: string;
+    items: {
+      productsOverview: string;
+      nozzles: string;
+      sprayGuns: string;
+      tankCleaning: string;
+      sprayControlOptions: string;
+      automatedSpraySystems: string;
+      disinfectionSystems: string;
+      sprayLancesAndHeaders: string;
+      accessories: string;
+      brands: string;
+    };
+  };
+  industries: {
+    title: string;
+    items: {
+      industriesOverview: string;
+      automotive: string;
+      buildingMaterials: string;
+      energy: string;
+      foodAndBeverage: string;
+      pharmaceuticalManufacturing: string;
+      steelAndMetals: string;
+      pulpPaperAndTissue: string;
+      chemicalProcessing: string;
+      otherIndustries: string;
+    };
+  };
+  applications: {
+    title: string;
+    items: {
+      applicationOverview: string;
+      cleaningAndWashing: string;
+      chestCleaning: string;
+      coolingSolids: string;
+      gasCoolingAndConditioning: string;
+      coating: string;
+      dryingAndBlowOff: string;
+      dustControl: string;
+      fireProtection: string;
+      humidification: string;
+      lubrication: string;
+      tankCleaning: string;
+      sprayDrying: string;
+      noxControl: string;
+      sulfurBurning: string;
+    };
+  };
+  services: {
+    title: string;
+    items: {
+      servicesOverview: string;
+      buySprayProducts: string;
+      requestADemo: string;
+      freeFacilityEvaluation: string;
+      sustainabilityAssessment: string;
+      needHelpWithADesign: string;
+      advancedTestingAndModeling: string;
+      servicesForOEMs: string;
+      techSupport: string;
+    };
+  };
+  resources: {
+    title: string;
+    items: {
+      resourcesOverview: string;
+      catalogs: string;
+      technicalLibrary: string;
+      sprayWareCalculatorsAndTools: string;
+      '3dCADModels': string;
+      sprayBasics: string;
+      sprayPatterns: string;
+      sprayOptimization: string;
+      productSupport: string;
+    };
+  };
+  company: {
+    title: string;
+    items: {
+      about: string;
+      sustainability: string;
+      events: string;
+      careers: string;
+      globalWebsites: string;
+      regionalSprayTechnologyCenters: string;
+    };
+  };
+  contact: {
+    title: string;
+    items: {
+      contactUs: string;
+      findALocalRep: string;
+      subscribeToOurNewsletter: string;
+      manageSubscriptions: string;
+    };
+  };
+}

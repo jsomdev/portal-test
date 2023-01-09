@@ -2,10 +2,12 @@ import { CSSProperties, FC } from 'react';
 
 import Image from 'next/image';
 
-import { Stack } from '@fluentui/react';
+import { mergeCss } from '@fluentui/merge-styles';
+import { IStyle } from '@fluentui/merge-styles/lib/IStyle';
+import { Stack, mergeStyleSets, mergeStyles } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 
-import { SocialMediaLink } from './siteFooter.types';
+import { SocialMediaLink } from '../siteFooter.types';
 
 const socialMediaLinks: SocialMediaLink[] = [
   {
@@ -41,25 +43,23 @@ const socialMediaLinks: SocialMediaLink[] = [
 ];
 
 export const SocialMedia: FC = () => {
-  const imageStyle: CSSProperties = {
+  const imageStyle: IStyle = {
     cursor: 'pointer',
-    //color: 'white',
     minWidth: 28,
-    color: 'pink'
+    color: 'pink',
+    '&:hover': {
+      opacity: 0.7
+    }
   };
 
   return (
-    <Stack
-      horizontal
-      tokens={{ childrenGap: 18 }}
-      horizontalAlign="space-around"
-    >
+    <Stack horizontal tokens={{ childrenGap: 18 }} horizontalAlign="start">
       {socialMediaLinks.map((link, i) => {
         return (
           <Stack key={`${link.url}_${i}`} styles={{ root: { minWidth: 24 } }}>
             <Image
               alt={link.alt}
-              style={imageStyle}
+              className={mergeStyles(imageStyle)}
               src={link.imageSrc}
               onClick={() => window.open(link.url)}
             />

@@ -5,6 +5,7 @@ import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPop
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { usePageContext } from '@widgets/page/pageContext';
+import { SiteFooter } from '@widgets/site-footer/siteFooter';
 
 export interface AppLayoutProps {
   siteMenuItems: MenuItem[];
@@ -32,7 +33,9 @@ export const AppLayout: React.FC = ({ children }) => {
         {children}
         <ComparisonPopup />
       </main>
-      <footer></footer>
+      <footer>
+        <SiteFooter />
+      </footer>
     </React.Fragment>
   );
 };

@@ -31,6 +31,115 @@ export const en: Messages = {
     },
     locale: {
       title: 'Selected Country/Region'
+    },
+    footer: {
+      siteLinks: {
+        items: {
+          siteMap: 'Site Map',
+          legalInformation: 'Legal Information',
+          privacyStatement: 'Privacy Statement',
+          isoSystemAndPolicyStatement: 'ISO System and Policy Statement',
+          REACH: 'REACH'
+        }
+      },
+      productCategories: {
+        title: 'Products',
+        items: {
+          productsOverview: 'Products Overview',
+          nozzles: 'Nozzles',
+          sprayGuns: 'Spray Guns',
+          tankCleaning: 'Tank Cleaning',
+          sprayControlOptions: 'Spray Control Options',
+          automatedSpraySystems: 'Automated Spray Systems',
+          disinfectionSystems: 'Disinfection Systems',
+          sprayLancesAndHeaders: 'Spray Lances & Headers',
+          accessories: 'Accessories',
+          brands: 'Brands'
+        }
+      },
+      industries: {
+        title: 'Industries',
+        items: {
+          industriesOverview: 'Industries Overview',
+          automotive: 'Automotive',
+          buildingMaterials: 'Building Materials',
+          energy: 'Energy',
+          foodAndBeverage: 'Food & Beverage',
+          pharmaceuticalManufacturing: 'Pharmaceutical Manufacturing',
+          steelAndMetals: 'Steel & Metals',
+          pulpPaperAndTissue: 'Pulp, Paper & Tissue',
+          chemicalProcessing: 'Chemical Processing',
+          otherIndustries: 'Other Industries'
+        }
+      },
+      applications: {
+        title: 'Applications',
+        items: {
+          applicationOverview: 'Applications Overview',
+          cleaningAndWashing: 'Cleaning & Washing',
+          coolingSolids: 'Cooling Solids',
+          chestCleaning: 'Chest Cleaning',
+          gasCoolingAndConditioning: 'Gas Cooling & Conditioning',
+          coating: 'Coating',
+          dryingAndBlowOff: 'Drying & Blow-off',
+          dustControl: 'Dust Control',
+          fireProtection: 'Fire Protection',
+          humidification: 'Humidification',
+          lubrication: 'Lubrication',
+          tankCleaning: 'Tank Cleaning',
+          sprayDrying: 'Spray Drying',
+          noxControl: 'NOx Control',
+          sulfurBurning: 'Sulfur Burning'
+        }
+      },
+      services: {
+        title: 'Services',
+        items: {
+          servicesOverview: 'Services Overview',
+          buySprayProducts: 'Buy Spray Products',
+          requestADemo: 'Request a Demo',
+          freeFacilityEvaluation: 'Free Facility Evaluation',
+          sustainabilityAssessment: 'Sustainability Assessment',
+          needHelpWithADesign: 'Need Help With a Design?',
+          advancedTestingAndModeling: 'Advanced Testing & Modeling',
+          servicesForOEMs: 'Services for OEMs & Engineering Firms',
+          techSupport: 'Tech Support'
+        }
+      },
+      resources: {
+        title: 'Resources',
+        items: {
+          resourcesOverview: 'Resources Overview',
+          catalogs: 'Catalogs',
+          technicalLibrary: 'Technical Library',
+          sprayWareCalculatorsAndTools: 'SprayWare Calculators & Tools',
+          '3dCADModels': '3D CAD Models',
+          sprayBasics: 'Spraying Basics',
+          sprayPatterns: 'Spray Patterns',
+          sprayOptimization: 'Spray Optimization',
+          productSupport: 'Product Support'
+        }
+      },
+      company: {
+        title: 'Company',
+        items: {
+          about: 'About',
+          sustainability: 'Sustainability',
+          events: 'Events',
+          careers: 'Careers',
+          globalWebsites: 'Global Websites',
+          regionalSprayTechnologyCenters: 'Regional Spray Technology Centers'
+        }
+      },
+      contact: {
+        title: 'Contact',
+        items: {
+          contactUs: 'Contact Us',
+          findALocalRep: 'Find a Local Rep',
+          subscribeToOurNewsletter: 'Subscribe to our Newsletter',
+          manageSubscriptions: 'Manage Subscriptions'
+        }
+      }
     }
   },
   searchBar: {

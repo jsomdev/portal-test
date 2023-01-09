@@ -63,5 +63,6 @@ export const QUERYKEYS: ReactQueryKeys = {
   quoteRequests: 'quoteRequests',
   recentOrders: 'recentOrders',
   searchVerifyProduct: 'searchVerifyProduct',
-  seriesResources: 'seriesResources'
+  seriesResources: 'seriesResources',
+  footerData: 'footerData'
 };

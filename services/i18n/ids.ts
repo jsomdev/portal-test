@@ -31,6 +31,144 @@ export const messageIds: Messages = {
     },
     locale: {
       title: 'navigation.locale.title'
+    },
+    footer: {
+      siteLinks: {
+        items: {
+          siteMap: 'navigation.footer.siteLinks.items.siteMap',
+          legalInformation:
+            'navigation.footer.siteLinks.items.legalInformation',
+          privacyStatement:
+            'navigation.footer.siteLinks.items.privacyStatement',
+          isoSystemAndPolicyStatement:
+            'navigation.footer.siteLinks.items.isoSystemAndPolicyStatement',
+          REACH: 'navigation.footer.siteLinks.items.REACH'
+        }
+      },
+      productCategories: {
+        title: 'navigation.footer.productCategories.title',
+        items: {
+          productsOverview:
+            'navigation.footer.productCategories.items.productsOverview',
+          nozzles: 'navigation.footer.productCategories.items.nozzles',
+          sprayGuns: 'navigation.footer.productCategories.items.sprayGuns',
+          tankCleaning:
+            'navigation.footer.productCategories.items.tankCleaning',
+          sprayControlOptions:
+            'navigation.footer.productCategories.items.sprayControlOptions',
+          automatedSpraySystems:
+            'navigation.footer.productCategories.items.automatedSpraySystems',
+          disinfectionSystems:
+            'navigation.footer.productCategories.items.disinfectionSystems',
+          sprayLancesAndHeaders:
+            'navigation.footer.productCategories.items.sprayLancesAndHeaders',
+          accessories: 'navigation.footer.productCategories.items.accessories',
+          brands: 'navigation.footer.productCategories.items.brands'
+        }
+      },
+      industries: {
+        title: 'navigation.footer.industries.title',
+        items: {
+          industriesOverview:
+            'navigation.footer.industries.items.industriesOverview',
+          automotive: 'navigation.footer.industries.items.automotive',
+          buildingMaterials:
+            'navigation.footer.industries.items.buildingMaterials',
+          energy: 'navigation.footer.industries.items.energy',
+          foodAndBeverage: 'navigation.footer.industries.items.foodAndBeverage',
+          pharmaceuticalManufacturing:
+            'navigation.footer.industries.items.pharmaceuticalManufacturing',
+          steelAndMetals: 'navigation.footer.industries.items.steelAndMetals',
+          pulpPaperAndTissue:
+            'navigation.footer.industries.items.pulpPaperAndTissue',
+          chemicalProcessing:
+            'navigation.footer.industries.items.chemicalProcessing',
+          otherIndustries: 'navigation.footer.industries.items.otherIndustries'
+        }
+      },
+      applications: {
+        title: 'navigation.footer.applications.title',
+        items: {
+          applicationOverview:
+            'navigation.footer.applications.items.applicationOverview',
+          cleaningAndWashing:
+            'navigation.footer.applications.items.cleaningAndWashing',
+          coolingSolids: 'navigation.footer.applications.items.coolingSolids',
+          chestCleaning: 'navigation.footer.applications.items.chestCleaning',
+          gasCoolingAndConditioning:
+            'navigation.footer.applications.items.gasCoolingAndConditioning',
+          coating: 'navigation.footer.applications.items.coating',
+          dryingAndBlowOff:
+            'navigation.footer.applications.items.dryingAndBlowOff',
+          dustControl: 'navigation.footer.applications.items.dustControl',
+          fireProtection: 'navigation.footer.applications.items.fireProtection',
+          humidification: 'navigation.footer.applications.items.humidification',
+          lubrication: 'navigation.footer.applications.items.lubrication',
+          tankCleaning: 'navigation.footer.applications.items.tankCleaning',
+          sprayDrying: 'navigation.footer.applications.items.sprayDrying',
+          noxControl: 'navigation.footer.applications.items.noxControl',
+          sulfurBurning: 'navigation.footer.applications.items.sulfurBurning'
+        }
+      },
+      services: {
+        title: 'navigation.footer.services.title',
+        items: {
+          servicesOverview: 'navigation.footer.services.items.servicesOverview',
+          buySprayProducts: 'navigation.footer.services.items.buySprayProducts',
+          requestADemo: 'navigation.footer.services.items.requestADemo',
+          freeFacilityEvaluation:
+            'navigation.footer.services.items.freeFacilityEvaluation',
+          sustainabilityAssessment:
+            'navigation.footer.services.items.sustainabilityAssessment',
+          needHelpWithADesign:
+            'navigation.footer.services.items.needHelpWithADesign',
+          advancedTestingAndModeling:
+            'navigation.footer.services.items.advancedTestingAndModeling',
+          servicesForOEMs: 'navigation.footer.services.items.servicesForOEMs',
+          techSupport: 'navigation.footer.services.items.techSupport'
+        }
+      },
+      resources: {
+        title: 'navigation.footer.resources.title',
+        items: {
+          resourcesOverview:
+            'navigation.footer.resources.items.resourcesOverview',
+          catalogs: 'navigation.footer.resources.items.catalogs',
+          technicalLibrary:
+            'navigation.footer.resources.items.technicalLibrary',
+          sprayWareCalculatorsAndTools:
+            'navigation.footer.resources.items.sprayWareCalculatorsAndTools',
+          '3dCADModels': 'navigation.footer.resources.items.3dCADModels',
+          sprayBasics: 'navigation.footer.resources.items.sprayBasics',
+          sprayPatterns: 'navigation.footer.resources.items.sprayPatterns',
+          sprayOptimization:
+            'navigation.footer.resources.items.sprayOptimization',
+          productSupport: 'navigation.footer.resources.items.productSupport'
+        }
+      },
+      company: {
+        title: 'navigation.footer.company.title',
+        items: {
+          about: 'navigation.footer.company.items.about',
+          sustainability: 'navigation.footer.company.items.sustainability',
+          events: 'navigation.footer.company.items.events',
+          careers: 'navigation.footer.company.items.careers',
+          globalWebsites: 'navigation.footer.company.items.globalWebsites',
+          regionalSprayTechnologyCenters:
+            'navigation.footer.company.items.regionalSprayTechnologyCenters'
+        }
+      },
+      contact: {
+        title: 'navigation.footer.contact.title',
+        items: {
+          contactUs: 'navigation.footer.contact.items.contactUs',
+          findALocalRep: 'navigation.footer.contact.items.findALocalRep',
+          subscribeToOurNewsletter:
+            'navigation.footer.contact.items.subscribeToOurNewsletter',
+          manageSubscriptions:
+            'navigation.footer.contact.items.manageSubscriptions'
+        }
+      }
     }
   },
   comparisonPopup: {

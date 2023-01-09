@@ -1,17 +1,14 @@
-import { IStackItemStyles, IStackStyles, ITextStyles } from '@fluentui/react';
+import { FooterData } from '@widgets/site-footer/footerData';
 
-export type SiteFooterStyles = {
-  footer: IStackStyles;
-  footerContainer: IStackStyles;
-  buildContainer: IStackStyles;
-  footerInfo: IStackStyles;
-  footerMenu: IStackStyles;
-  footerMenuItem: IStackItemStyles;
-  text: ITextStyles;
+export type FooterColumnFields = {
+  titleMessageId: string | null;
+  items: FooterItem[];
 };
 
+export type FooterColumns = Record<keyof FooterData, FooterColumnFields>;
+
 export type FooterItem = {
-  text: string;
+  labelMessageId: string;
   url: string;
 };
 

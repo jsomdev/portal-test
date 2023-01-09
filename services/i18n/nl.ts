@@ -31,6 +31,116 @@ export const nl: Messages = {
     },
     locale: {
       title: 'Geselecteerd land/regio'
+    },
+    footer: {
+      siteLinks: {
+        items: {
+          siteMap: 'Site Map',
+          legalInformation: 'Wettelijke informatie',
+          privacyStatement: 'Privacyverklaring',
+          isoSystemAndPolicyStatement: 'ISO-systeem en beleidsverklaring',
+          REACH: 'REACH'
+        }
+      },
+      productCategories: {
+        title: 'Producten',
+        items: {
+          productsOverview: 'Producten Overzicht',
+          nozzles: 'Sproeikoppen',
+          sprayGuns: 'Sproeipistolen',
+          tankCleaning: 'Tank Reiniging',
+          sprayControlOptions: 'Sproeiregeling Opties',
+          automatedSpraySystems: 'Geautomatiseerde sproeisystemen',
+          disinfectionSystems: 'Ontsmettingssystemen',
+          sprayLancesAndHeaders: 'Sproeilansen en headers',
+          accessories: 'Accessoires',
+          brands: 'Merken'
+        }
+      },
+      industries: {
+        title: 'Industriën',
+        items: {
+          industriesOverview: 'Overzicht industriën',
+          automotive: 'Automotive',
+          buildingMaterials: 'Bouwmaterialen',
+          energy: 'Energie',
+          foodAndBeverage: 'Eten & Drinken',
+          pharmaceuticalManufacturing: 'Farmaceutische Productie',
+          steelAndMetals: 'Staal & metalen',
+          pulpPaperAndTissue: 'Pulp, papier & weefsel',
+          chemicalProcessing: 'Chemische verwerking',
+          otherIndustries: 'Andere industriën'
+        }
+      },
+      applications: {
+        title: 'Toepassingen',
+        items: {
+          applicationOverview: 'Toepassingen Overzicht',
+          cleaningAndWashing: 'Schoonmaken & Wassen',
+          chestCleaning: 'Kisten schoonmaken',
+          coolingSolids: 'Koelen van vaste stoffen',
+          gasCoolingAndConditioning: 'Gas Koeling & Conditionering',
+          coating: 'Coating',
+          dryingAndBlowOff: 'Drogen & Afblazen',
+          dustControl: 'Stofbeheersing',
+          fireProtection: 'Brandbeveiliging',
+          humidification: 'Bevochtiging',
+          lubrication: 'Smering',
+          tankCleaning: 'Tank Reiniging',
+          sprayDrying: 'Sproeidrogen',
+          noxControl: 'NOx-regeling',
+          sulfurBurning: 'Zwavelverbranding'
+        }
+      },
+      services: {
+        title: 'Diensten',
+        items: {
+          servicesOverview: 'Diensten Overzicht',
+          buySprayProducts: 'Spray producten kopen',
+          requestADemo: 'Een demo aanvragen',
+          freeFacilityEvaluation: 'Gratis evaluatie van de installaties',
+          sustainabilityAssessment: 'Duurzaamheidsbeoordeling',
+          needHelpWithADesign: 'Geavanceerd testen en modelleren',
+          advancedTestingAndModeling: 'Geavanceerd testen en modelleren',
+          servicesForOEMs: "Diensten voor OEM's en ingenieursbureaus",
+          techSupport: 'Technische Ondersteuning'
+        }
+      },
+      resources: {
+        title: 'Bronnen',
+        items: {
+          resourcesOverview: 'Bronnen Overzicht',
+          catalogs: 'Catalogi',
+          technicalLibrary: 'Technische Bibliotheek',
+          sprayWareCalculatorsAndTools: 'SprayWare Rekenmachines & Gereedschap',
+          '3dCADModels': '3D CAD Modellen',
+          sprayBasics: 'Grondbeginselen van het sproeien',
+          sprayPatterns: 'Sproeipatronen',
+          sprayOptimization: 'Optimalisatie van de nevel',
+          productSupport: 'Product Support'
+        }
+      },
+      company: {
+        title: 'Bedrijf',
+        items: {
+          about: 'Over',
+          sustainability: 'Duurzaamheid',
+          events: 'Evenementen',
+          careers: 'Carriëres',
+          globalWebsites: 'Websites wereldwijd',
+          regionalSprayTechnologyCenters:
+            'Regionale Centra voor Sproeitechnologie'
+        }
+      },
+      contact: {
+        title: 'Contact',
+        items: {
+          contactUs: 'Contacteer Ons',
+          findALocalRep: 'Zoek een plaatselijke vertegenwoordiger',
+          subscribeToOurNewsletter: 'Abonneer u op onze Nieuwsbrief',
+          manageSubscriptions: 'Abonnementen beheren'
+        }
+      }
     }
   },
   comparisonPopup: {

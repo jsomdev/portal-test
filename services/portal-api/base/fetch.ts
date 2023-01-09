@@ -13,7 +13,7 @@ import { QueryOptions } from '../o-data/queryOptions';
 import { ErpApiError } from './erpApiError';
 import { ODataQueryHelper } from './queryHelper';
 
-async function handleResponse<T>(
+export async function handleResponse<T>(
   response: Response,
   method: string,
   shouldParseToJson: boolean
