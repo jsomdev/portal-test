@@ -120,7 +120,7 @@ export const useClaims = (): ClaimsHook => {
           ? employeeLoginRequest
           : customerLoginRequest;
 
-        instance.acquireTokenRedirect({
+        await instance.acquireTokenRedirect({
           account: accounts?.[0],
           ...loginRequest
         });
