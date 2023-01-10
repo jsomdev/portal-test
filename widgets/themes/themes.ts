@@ -47,31 +47,39 @@ export const appTheme: PartialTheme = {
     medium: {
       fontSize: rem(FontSizes.medium),
       color: '#222',
-      lineHeight: '1.35rem'
+      lineHeight: '1.25em'
     },
     mediumPlus: {
-      fontSize: rem(FontSizes.mediumPlus)
+      fontSize: rem(FontSizes.mediumPlus),
+      lineHeight: '1.25em'
     },
     large: {
-      fontSize: rem(FontSizes.large)
+      fontSize: rem(FontSizes.large),
+      lineHeight: '1.25em'
     },
     superLarge: {
-      fontSize: rem(FontSizes.superLarge)
+      fontSize: rem(FontSizes.superLarge),
+      lineHeight: '1.25em'
     },
     xLarge: {
-      fontSize: rem(FontSizes.xLarge)
+      fontSize: rem(FontSizes.xLarge),
+      lineHeight: '1.25em'
     },
     xLargePlus: {
-      fontSize: rem(FontSizes.xLargePlus)
+      fontSize: rem(FontSizes.xLargePlus),
+      lineHeight: '1.25em'
     },
     xxLarge: {
-      fontSize: rem(FontSizes.xxLarge)
+      fontSize: rem(FontSizes.xxLarge),
+      lineHeight: '1.25em'
     },
     xxLargePlus: {
-      fontSize: rem(FontSizes.xxLargePlus)
+      fontSize: rem(FontSizes.xxLargePlus),
+      lineHeight: '1.25em'
     },
     mega: {
-      fontSize: rem(FontSizes.mega)
+      fontSize: rem(FontSizes.mega),
+      lineHeight: '1.25em'
     }
   },
   spacing: {

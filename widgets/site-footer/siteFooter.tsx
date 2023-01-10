@@ -7,7 +7,6 @@ import { useQuery } from 'react-query';
 import {
   IStackItemStyles,
   IStackStyles,
-  IStyle,
   ITextStyles,
   Stack,
   useTheme
@@ -56,9 +55,7 @@ export const SiteFooter: FC = () => {
     },
     footerMenuItem: {
       root: {
-        flex: 1,
         minWidth: '200px',
-        maxWidth: '200px',
         width: '200px',
         padding: '0 20px 40px 0'
       }

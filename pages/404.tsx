@@ -122,9 +122,8 @@ const Custom404: NextPage<Custom404Props> = ({
     },
     header: {
       root: {
+        ...fonts.xxLarge,
         textAlign: 'center',
-        fontSize: fonts.xxLarge.fontSize,
-        textTransform: 'uppercase',
         padding: spacing.l1,
         fontWeight: FontWeights.semilight
       }
@@ -153,7 +152,7 @@ const Custom404: NextPage<Custom404Props> = ({
             horizontalAlign="center"
             grow
             tokens={{
-              padding: spacing.l2,
+              padding: '15vh 0',
               childrenGap: spacing.l1
             }}
             styles={styles.root}
