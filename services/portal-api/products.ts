@@ -1,3 +1,5 @@
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
+
 import { PriceBreak } from './base/types';
 import { FlaggedEnum } from './flaggedEnum';
 import { Attribute } from './models/Attribute';
@@ -354,7 +356,7 @@ export async function getDesignsForDetailedCompare(
         .map(number => `number eq '${encodeURIComponent(number)}'`)
         .join(' or ')}`,
       selectQuery: 'id,name,description,number,slug',
-      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions($orderby=typeCode),sortIndex,value,displays,settings;$orderby=sortIndex asc)`
+      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings)`
     };
 
     const products: OdataCollection<Product> =
@@ -387,23 +389,50 @@ export async function fetchProductsForStaticPaths(): Promise<Product[]> {
  * @returns Promise of a Product or null (if product not found)
  */
 export async function fetchProductForProductPage(
-  slug: string
+  slug: string,
+  locale: string | undefined
 ): Promise<Product | null> {
   const productsResource: ProductsResource = new ProductsResource();
-
+  function optimize(product: Product): Product {
+    return {
+      ...product,
+      name: MultilingualStringHelper.strip(product.name, locale),
+      description: MultilingualStringHelper.strip(product.description, locale)
+    };
+  }
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,number,name,description,modelId,slug,audience`,
     // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
-    filterQuery: `slug/en eq '${slug}'`,
-    expandQuery: `identifiers,attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions($orderby=typeCode asc),sortIndex,id),options($orderby=typeCode asc),image,model($select=id,seriesId,number,slug;$expand=series($select=id,name,slug)),accessories($select=id;$expand=accessory($select=id,name,number,slug;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
+    filterQuery: `code eq '${slug}'`,
+    expandQuery: `identifiers($select=type,value),image($select=audience,thumbnail,type,url),accessories($select=accessory;$expand=accessory($select=name,number,slug;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
   };
-
-  const data: OdataCollection<Product> = await productsResource.getEntities(
-    queryOptions
-  );
-
-  if (!data.value[0]) {
+  const queryOptionsAttributes: Partial<QueryOptions> = {
+    selectQuery: 'id',
+    filterQuery: `code eq '${slug}'`,
+    expandQuery: `attributes($select=typeCode,groupCode,unitSymbol,settings,value,groupCode,displays,conditions($orderby=typeCode asc),sortIndex,id)`
+  };
+  const queryOptionsOptions: Partial<QueryOptions> = {
+    selectQuery: 'id',
+    filterQuery: `code eq '${slug}'`,
+    expandQuery: `options($orderby=typeCode asc)`
+  };
+  const getAttributes = async () =>
+    productsResource.getEntities(queryOptionsAttributes);
+  const getProductData = async () => productsResource.getEntities(queryOptions);
+  const getOptions = async () =>
+    productsResource.getEntities(queryOptionsOptions);
+  const [attributesData, productData, optionsData] = await Promise.all([
+    getAttributes(),
+    getProductData(),
+    getOptions()
+  ]);
+  const data: Product = {
+    ...productData.value[0],
+    attributes: attributesData.value[0].attributes,
+    options: optionsData.value[0].options
+  };
+  if (!data) {
     return null;
   }
-  return data.value[0];
+  return optimize(data);
 }

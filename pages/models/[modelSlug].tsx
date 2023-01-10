@@ -1,3 +1,4 @@
+// Import Swiper styles
 import {
   GetStaticPaths,
   GetStaticPathsContext,
@@ -8,7 +9,6 @@ import {
 } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { defineMessages, useIntl } from 'react-intl';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -18,18 +18,16 @@ import { GlobalDataContextProps } from '@providers/global-data/globalDataContext
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
 import { modelIdFacet } from '@services/facet-service/facets/modelId';
-import { getAudience, messageIds } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
-import { Model, Series } from '@services/portal-api';
-import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
+import { AttributeType, Model } from '@services/portal-api';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
-import { fetchAllSeries } from '@services/portal-api/series';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { generateProductStructuredData } from '@utilities/structuredData';
@@ -49,7 +47,6 @@ import { ProductTopSection } from '@widgets/product-page/product-top-section/pro
 export interface ModelsProps {
   model: Model;
   alternativeModels: Model[];
-  series: Series | undefined;
 }
 
 const messages = defineMessages({
@@ -68,19 +65,13 @@ const Models: NextPage<
     Partial<
       Pick<
         GlobalDataContextProps,
-        | 'attributeGroups'
-        | 'conditionTypes'
-        | 'attributeTypes'
-        | 'mainMenuItems'
-        | 'siteMenuItems'
+        'attributeTypes' | 'mainMenuItems' | 'siteMenuItems'
       >
     >
 > = ({
   model,
   alternativeModels,
-  attributeGroups,
   attributeTypes,
-  conditionTypes,
   siteMenuItems,
   mainMenuItems
 }) => {
@@ -113,9 +104,7 @@ const Models: NextPage<
       }}
     >
       <GlobalDataProvider
-        attributeGroups={attributeGroups}
         attributeTypes={attributeTypes}
-        conditionTypes={conditionTypes}
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}
       >
@@ -185,8 +174,7 @@ interface ModelsParsedUrlQuery extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths = async (
   context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult<ModelsParsedUrlQuery>> => {
-  // const productsData = await fetchProductsForStaticPaths();
-  const modelsData: Model[] = await fetchAllModels();
+  const modelsData: Model[] = await fetchAllModels(undefined);
 
   const localizedPaths = (context.locales || []).map(locale => {
     const pathForLocale: {
@@ -219,7 +207,6 @@ export const getStaticProps: GetStaticProps = async (
           GlobalDataContextProps,
           | 'attributeGroups'
           | 'attributeTypes'
-          | 'conditionTypes'
           | 'mainMenuItems'
           | 'siteMenuItems'
         >
@@ -229,21 +216,13 @@ export const getStaticProps: GetStaticProps = async (
   const { locale } = context;
   const { modelSlug } = context.params as ModelsParsedUrlQuery;
 
-  const [
-    seriesData,
-    modelsData,
-    siteMenuData,
-    mainMenuData,
-    attributeTypesData,
-    attributeTypeGroupsData
-  ] = await Promise.all([
-    fetchAllSeries(),
-    fetchAllModels(),
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale)),
-    fetchAllAttributeTypes(),
-    fetchAllAttributeGroups()
-  ]);
+  const [modelsData, siteMenuData, mainMenuData, attributeTypesData] =
+    await Promise.all([
+      fetchAllModels(locale),
+      fetchMenuItemsForSiteHeader(locale),
+      fetchMenuItemsForMainHeader(locale),
+      fetchAllAttributeTypes(locale)
+    ]);
 
   const multilingualStringFormatter: MultilingualStringFormatter =
     new MultilingualStringFormatter(locale);
@@ -258,24 +237,31 @@ export const getStaticProps: GetStaticProps = async (
     };
   }
 
-  const series: Series | undefined = seriesData.find(
-    series => series.id === model.seriesId
-  );
+  const alternativeModels: Model[] = modelsData
+    .filter(
+      possibleModel =>
+        possibleModel.seriesId === model.seriesId &&
+        model.id !== possibleModel.id
+    )
+    .map(model => ({
+      image: model.image,
+      name: model.name,
+      number: model.number,
+      slug: model.slug
+    }));
 
-  const alternativeModels: Model[] = modelsData.filter(
-    possibleModel =>
-      series &&
-      possibleModel.seriesId === series.id &&
-      model.id !== possibleModel.id
+  const relevantAttributeTypeCodes: string[] =
+    model.attributes?.map(attribute => attribute.typeCode || '') || [];
+  const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
+    attributeType =>
+      relevantAttributeTypeCodes.includes(attributeType.code || '')
   );
 
   return {
     props: {
       model: model,
       alternativeModels,
-      series: series,
-      attributeGroups: attributeTypeGroupsData,
-      attributeTypes: attributeTypesData,
+      attributeTypes: filteredAttributeTypes,
       siteMenuItems: siteMenuData || [],
       mainMenuItems: mainMenuData || []
     }

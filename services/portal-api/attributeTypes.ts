@@ -1,9 +1,7 @@
-// import { liquidFlowRateRangeFacet } from '../facet-service/facets/range-facets/liquidFlowRateRangeProductFacet';
-// import { liquidPressureRangeFacet } from '../facet-service/facets/range-facets/liquidPressureRangeProductFacet';
-// import { liquidSpecificGravityFacet } from '../facet-service/facets/range-facets/liquidSpecificGravityRangeFacet';
 import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { AttributeType } from './models/AttributeType';
 import { OdataCollection } from './o-data/oData';
@@ -19,68 +17,38 @@ const attributeTypesDataCacheManager: DataCacheManager<AttributeType[]> =
     ATTRIBUTE_TYPES_CACHE_PATH
   );
 
-const sprayFinderAttributeTypes: AttributeType[] = [
-  // {
-  //   code: liquidFlowRateRangeFacet.key,
-  //   name: {
-  //     en: liquidFlowRateRangeFacet.configuration.displayName?.toString() || '',
-  //   },
-  //   description: {
-  //     en: liquidFlowRateRangeFacet.configuration.description?.toString() || '',
-  //   },
-  // },
-  // {
-  //   code: liquidPressureRangeFacet.key,
-  //   name: {
-  //     en: liquidPressureRangeFacet.configuration.displayName?.toString() || '',
-  //   },
-  //   description: {
-  //     en: liquidPressureRangeFacet.configuration.description?.toString() || '',
-  //   },
-  // },
-  // {
-  //   code: liquidSpecificGravityFacet.key,
-  //   name: {
-  //     en:
-  //       liquidSpecificGravityFacet.configuration.displayName?.toString() || '',
-  //   },
-  //   description: {
-  //     en:
-  //       liquidSpecificGravityFacet.configuration.description?.toString() || '',
-  //   },
-  // },
-  // {
-  //   code: liquidFlowRateRangeFacet.key,
-  //   name: {
-  //     en: liquidFlowRateRangeFacet.configuration.displayName?.toString() || '',
-  //   },
-  //   description: {
-  //     en: liquidFlowRateRangeFacet.configuration.description?.toString() || '',
-  //   },
-  // },
-];
 /**
  * Function that retrieves information about the AttributeTypes that need to be globally available
  * @returns Array of AttributeTypes that will be referenced throughout the application  (e.g Product Specification Name --> Attribute Type)
  */
-export async function fetchAllAttributeTypes(): Promise<AttributeType[]> {
+export async function fetchAllAttributeTypes(
+  locale: string | undefined
+): Promise<AttributeType[]> {
   const cachedData: AttributeType[] | undefined =
     await attributeTypesDataCacheManager.get();
+
+  function optimize(attributeTypes: AttributeType[]): AttributeType[] {
+    return attributeTypes.map(attributeType => ({
+      ...attributeType,
+      name: MultilingualStringHelper.strip(attributeType.name, locale),
+      description: MultilingualStringHelper.strip(
+        attributeType.description,
+        locale
+      )
+    }));
+  }
   if (cachedData) {
-    return cachedData;
+    return optimize(cachedData);
   }
   const attributeTypesResource: AttributeTypesResource =
     new AttributeTypesResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,name,description,code,sortIndex`
+    selectQuery: `name,description,code`
   };
 
   const data: OdataCollection<AttributeType> =
     await attributeTypesResource.getEntities(queryOptions);
-  attributeTypesDataCacheManager.set([
-    ...data.value,
-    ...sprayFinderAttributeTypes
-  ]);
-  return [...data.value, ...sprayFinderAttributeTypes];
+  attributeTypesDataCacheManager.set(data.value);
+  return optimize(data.value);
 }

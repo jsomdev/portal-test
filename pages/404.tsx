@@ -14,7 +14,7 @@ import {
 } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { getAudience, messageIds } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -207,8 +207,8 @@ export const getStaticProps: GetStaticProps = async (
   const { locale } = context;
 
   const [siteMenuData, mainMenuData] = await Promise.all([
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale))
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale)
   ]);
 
   return {

@@ -10,7 +10,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
-import { getAudience, messageIds } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -26,6 +26,7 @@ const messages = defineMessages({
     description: 'Quotes page title',
     defaultMessage: 'Quotes'
   },
+
   quoteTitle: {
     id: messageIds.pages.account.sections.quote.title,
     description: 'Quote page title',
@@ -80,8 +81,8 @@ export const getStaticProps: GetStaticProps = async (
 > => {
   const { locale } = context;
   const [siteMenuData, mainMenuData] = await Promise.all([
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale))
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale)
   ]);
 
   return {

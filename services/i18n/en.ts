@@ -291,7 +291,8 @@ export const en: Messages = {
       title: 'Quote request'
     },
     product: {
-      imageDisclaimer: 'pages.product.imageDisclaimer',
+      imageDisclaimer:
+        'Images are representative. Products may differ in material or configuration.',
       sections: {
         top: {
           configurations: {

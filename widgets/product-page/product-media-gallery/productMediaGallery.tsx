@@ -314,6 +314,9 @@ export const ProductMediaGallerySlide: React.FC<
   };
 
   if (item.type === 'image') {
+    const isFallback: boolean =
+      item.src ===
+      `https://spray.widen.net/content/p8mwdittdw/web/SSCo_Brands_icon.jpeg`;
     return (
       <>
         <Image
@@ -327,9 +330,11 @@ export const ProductMediaGallerySlide: React.FC<
           objectFit="contain"
           loader={getImageLoader(item.src)}
         />
-        <Stack.Item styles={imageStyles.tooltip}>
-          <ProductImageDisclaimerTooltip />
-        </Stack.Item>
+        {!isFallback && (
+          <Stack.Item styles={imageStyles.tooltip}>
+            <ProductImageDisclaimerTooltip />
+          </Stack.Item>
+        )}
       </>
     );
   }

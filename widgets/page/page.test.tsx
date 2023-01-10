@@ -7,7 +7,8 @@ import {
 import { LocalePaths } from '@widgets/page/page.types';
 
 jest.mock('@services/i18n', () => ({
-  supportedLocales: ['nl-BE', 'de-DE', 'en-US', 'fr-FR']
+  supportedLocales: ['nl-BE', 'de-DE', 'en-US', 'fr-FR'],
+  defaultLanguage: 'en'
 }));
 
 describe('Page helper tests', () => {

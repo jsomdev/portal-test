@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { FlaggedEnum } from './flaggedEnum';
 import { Attribute } from './models/Attribute';
@@ -19,15 +20,24 @@ const modelsCacheDataManager: DataCacheManager<Model[]> = new DataCacheManager<
  * Function that retrieves information about the Models with all their relevant information
  * @returns Collection of Models that will be referenced throughout the application  (e.g Alternative Models, Model information)
  */
-export async function fetchAllModels(): Promise<Model[]> {
+export async function fetchAllModels(
+  locale: string | undefined
+): Promise<Model[]> {
   const cachedData: Model[] | undefined = await modelsCacheDataManager.get();
+  function optimize(models: Model[]): Model[] {
+    return models.map(model => ({
+      ...model,
+      name: MultilingualStringHelper.strip(model.name, locale),
+      description: MultilingualStringHelper.strip(model.description, locale)
+    }));
+  }
   if (cachedData) {
-    return cachedData;
+    return optimize(cachedData);
   }
   const modelsResource: ModelsResource = new ModelsResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,name,seriesId,number,description,seoPath,slug`,
+    selectQuery: `id,name,seriesId,number,description,slug`,
     expandQuery: `image($select=id,url,thumbnail),resources($select=id,type,variation,caption,url,thumbnail),attributes($select=typeCode,value,settings,conditions,displays,sortIndex,id;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
       AttributeSettings,
       AttributeSettings.DisplayOnProductCharacteristics
@@ -38,7 +48,7 @@ export async function fetchAllModels(): Promise<Model[]> {
     queryOptions
   );
   await modelsCacheDataManager.set(data.value);
-  return data.value;
+  return optimize(data.value);
 }
 
 /**

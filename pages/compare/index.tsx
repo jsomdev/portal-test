@@ -8,7 +8,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { getAudience, messageIds } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllConditionTypes } from '@services/portal-api/conditionTypes';
@@ -102,11 +102,11 @@ export const getStaticProps: GetStaticProps = async (
     attributeTypesData,
     conditionTypesData
   ] = await Promise.all([
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale)),
-    fetchAllAttributeGroups(),
-    fetchAllAttributeTypes(),
-    fetchAllConditionTypes()
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale),
+    fetchAllAttributeGroups(locale),
+    fetchAllAttributeTypes(locale),
+    fetchAllConditionTypes(locale)
   ]);
 
   return {

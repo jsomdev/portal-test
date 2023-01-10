@@ -10,12 +10,10 @@ import { getAudience, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import { CATEGORY_IDS } from '@services/portal-api/constants';
-import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { rem } from '@utilities/rem';
 import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
@@ -174,22 +172,14 @@ export const getStaticProps: GetStaticProps = async (
 > => {
   const { locale } = context;
   const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
-    fetchCategoriesForHomePage(getAudience(locale)),
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale))
+    fetchCategoriesForHomePage(getAudience(locale), locale),
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale)
   ]);
 
   return {
     props: {
-      categories:
-        categoriesData?.value.filter(category => {
-          const audience = FlaggedEnum.create<Audience>(
-            Audience,
-            category.audience || ''
-          );
-          const currentAudience = getAudience(locale);
-          return audience & currentAudience;
-        }) || [],
+      categories: categoriesData,
       siteMenuItems: siteMenuData || [],
       mainMenuItems: mainMenuData || []
     }

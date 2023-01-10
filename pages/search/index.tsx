@@ -7,8 +7,7 @@ import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { messageIds } from '@services/i18n';
-import { getAudience } from '@services/i18n/helper';
-import { AttributeGroup, AttributeType } from '@services/portal-api';
+import { AttributeType } from '@services/portal-api';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
   fetchMenuItemsForMainHeader,
@@ -23,7 +22,6 @@ import { getLocalePaths } from '@widgets/page/page.helper';
 
 type SearchProps = {
   attributeTypes: AttributeType[];
-  attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
 
 const messages = defineMessages({
@@ -47,12 +45,10 @@ const messages = defineMessages({
 const Search: NextPage<SearchProps> = ({
   siteMenuItems,
   mainMenuItems,
-  attributeTypeGroups,
   attributeTypes
 }) => {
   const { formatMessage } = useIntl();
   const { query, asPath } = useRouter();
-
   return (
     <Page
       metaProps={{
@@ -67,7 +63,6 @@ const Search: NextPage<SearchProps> = ({
       }}
     >
       <GlobalDataProvider
-        attributeGroups={attributeTypeGroups}
         attributeTypes={attributeTypes}
         siteMenuItems={siteMenuItems}
         mainMenuItems={mainMenuItems}
@@ -112,13 +107,12 @@ export const getStaticProps: GetStaticProps = async (
   const { locale } = context;
 
   const [siteMenuData, mainMenuData, attributeTypesData] = await Promise.all([
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale)),
-    fetchAllAttributeTypes()
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale),
+    fetchAllAttributeTypes(locale)
   ]);
 
   const props: SearchProps = {
-    attributeTypeGroups: [],
     attributeTypes: attributeTypesData,
     siteMenuItems: siteMenuData,
     mainMenuItems: mainMenuData

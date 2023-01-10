@@ -298,7 +298,8 @@ export const nl: Messages = {
       headTitle: 'Search {searchQuery}'
     },
     product: {
-      imageDisclaimer: 'pages.product.imageDisclaimer',
+      imageDisclaimer:
+        'Afbeeldingen zijn representatief. Ze kunnen afwijken van hun materiaal en configuratie.',
       sections: {
         top: {
           configurations: {
@@ -360,8 +361,8 @@ export const nl: Messages = {
       }
     },
     home: {
-      headTitle: 'Experten in Sproeitechnologie',
-      headDescription: 'pages.home.headDescription',
+      headTitle: 'Welkom',
+      headDescription: 'Experten in sproeitechnologie',
       sections: {
         support: {
           title: 'Need help finding the product you need?',

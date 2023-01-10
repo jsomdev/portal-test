@@ -100,6 +100,6 @@ export const useTabletAndDesktop = (): boolean =>
 
 export const useDesktop = (): boolean =>
   useMediaQuery({
-    match: 'at',
+    match: 'greaterThanOrEqual',
     breakpoint: 'desktop'
   }).isMatch;

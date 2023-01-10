@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { ConditionType } from './models/ConditionType';
 import { OdataCollection, QueryOptions } from './o-data';
@@ -18,21 +19,30 @@ const conditionTypesDataCacheManager: DataCacheManager<ConditionType[]> =
  * Function that retrieves information about the ConditionTypes that need to be globally available
  * @returns Array of ConditionTypes that will be referenced throughout the application  (e.g Product Specification Name --> Condition Type)
  */
-export async function fetchAllConditionTypes(): Promise<ConditionType[]> {
+export async function fetchAllConditionTypes(
+  locale: string | undefined
+): Promise<ConditionType[]> {
   const cachedData: ConditionType[] | undefined =
     await conditionTypesDataCacheManager.get();
+
+  function optimize(conditionTypes: ConditionType[]): ConditionType[] {
+    return conditionTypes.map(conditionType => ({
+      ...conditionType,
+      name: MultilingualStringHelper.strip(conditionType.name, locale)
+    }));
+  }
   if (cachedData) {
-    return cachedData;
+    return optimize(cachedData);
   }
   const conditionTypesResource: ConditionTypesResource =
     new ConditionTypesResource();
 
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,code,name,sortIndex,unitSymbol`
+    selectQuery: `code,name,unitSymbol`
   };
 
   const data: OdataCollection<ConditionType> =
     await conditionTypesResource.getEntities(queryOptions);
   conditionTypesDataCacheManager.set(data.value);
-  return data.value;
+  return optimize(data.value);
 }

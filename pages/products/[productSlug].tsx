@@ -1,3 +1,4 @@
+// Import Swiper styles
 import { useEffect } from 'react';
 
 import {
@@ -10,7 +11,6 @@ import {
 } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -20,10 +20,15 @@ import { GlobalDataContextProps } from '@providers/global-data/globalDataContext
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
 import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
-import { getAudience } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
-import { Model, Product, Series } from '@services/portal-api';
+import {
+  AttributeGroup,
+  AttributeType,
+  ConditionType,
+  Model,
+  Product
+} from '@services/portal-api';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllConditionTypes } from '@services/portal-api/conditionTypes';
@@ -32,8 +37,10 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
-import { fetchProductForProductPage } from '@services/portal-api/products';
-import { fetchAllSeries } from '@services/portal-api/series';
+import {
+  fetchProductForProductPage,
+  fetchProductsForStaticPaths
+} from '@services/portal-api/products';
 import { generateProductStructuredData } from '@utilities/structuredData';
 import { ProductBreadcrumb } from '@widgets/breadcrumbs/product-breadcrumb/productBreadcrumb';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
@@ -56,7 +63,6 @@ import { ProductSubHeader } from '@widgets/product-page/productSubHeader';
 
 export interface ProductsProps {
   product: Product;
-  series: Series | undefined;
   model: Model | undefined;
 }
 
@@ -84,7 +90,6 @@ const Products: NextPage<
   const { locale } = useRouter();
   const { registerView } = useRecentlyViewedProducts();
   const productFormatter = new ProductFormatter(product, locale);
-
   useEffect(() => {
     registerView({ id: product.id, lastViewedOn: new Date() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -200,7 +205,6 @@ export const getStaticProps: GetStaticProps = async (
 
   const [
     productData,
-    seriesData,
     modelsData,
     siteMenuData,
     mainMenuData,
@@ -208,14 +212,13 @@ export const getStaticProps: GetStaticProps = async (
     attributeTypeGroupsData,
     conditionTypesData
   ] = await Promise.all([
-    fetchProductForProductPage(productSlug),
-    fetchAllSeries(),
-    fetchAllModels(),
-    fetchMenuItemsForSiteHeader(getAudience(locale)),
-    fetchMenuItemsForMainHeader(getAudience(locale)),
-    fetchAllAttributeTypes(),
-    fetchAllAttributeGroups(),
-    fetchAllConditionTypes()
+    fetchProductForProductPage(productSlug, locale),
+    fetchAllModels(locale),
+    fetchMenuItemsForSiteHeader(locale),
+    fetchMenuItemsForMainHeader(locale),
+    fetchAllAttributeTypes(locale),
+    fetchAllAttributeGroups(locale),
+    fetchAllConditionTypes(locale)
   ]);
 
   if (!productData) {
@@ -224,23 +227,48 @@ export const getStaticProps: GetStaticProps = async (
     };
   }
 
-  const series: Series | undefined = seriesData.find(
-    series => series.id === productData.model?.seriesId
-  );
   const model: Model | undefined = modelsData.find(
     model => model.id === productData.modelId
   );
 
+  const relevantAttributeTypeCodes: string[] =
+    productData.attributes?.map(attribute => attribute.typeCode || '') || [];
+  const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
+    attributeType =>
+      relevantAttributeTypeCodes.includes(attributeType.code || '')
+  );
+
+  const relevantAttributeGroupCodes: string[] =
+    productData.attributes?.map(attribute => attribute.groupCode || '') || [];
+  const filteredAttributeGroups: AttributeGroup[] =
+    attributeTypeGroupsData.filter(attributeGroup =>
+      relevantAttributeGroupCodes.includes(attributeGroup.code || '')
+    );
+
+  const relevantConditionTypeCodes: string[] =
+    productData.attributes
+      ?.map(
+        attribute =>
+          attribute.conditions?.map(condition => condition.typeCode || '') || []
+      )
+      ?.flat() || [];
+  const filteredConditionTypes: ConditionType[] = conditionTypesData.filter(
+    conditionType =>
+      relevantConditionTypeCodes.includes(conditionType.code || '')
+  );
   return {
     props: {
       product: productData,
-      series: series,
-      model: model,
-      attributeGroups: attributeTypeGroupsData,
-      attributeTypes: attributeTypesData,
+      model: {
+        name: model?.name,
+        slug: model?.slug,
+        number: model?.number
+      },
+      attributeGroups: filteredAttributeGroups,
+      attributeTypes: filteredAttributeTypes,
       siteMenuItems: siteMenuData || [],
       mainMenuItems: mainMenuData || [],
-      conditionTypes: conditionTypesData
+      conditionTypes: filteredConditionTypes
     }
   };
 };

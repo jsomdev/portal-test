@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { FlaggedEnum } from './flaggedEnum';
 import { Audience } from './models/AudienceFlags';
@@ -18,8 +19,9 @@ const categoriesDataCacheManager: DataCacheManager<Category[]> =
  * @returns Collection of Categories that are displayed on the homepage
  */
 export async function fetchCategoriesForHomePage(
-  audience: Audience
-): Promise<OdataCollection<Category>> {
+  audience: Audience,
+  locale: string | undefined
+): Promise<Category[]> {
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: 'id,name,description,settings,slug,audience',
@@ -31,9 +33,24 @@ export async function fetchCategoriesForHomePage(
     )}'`,
     orderbyQuery: 'sortIndex asc'
   };
-  const data = await categoriesResource.getEntities(queryOptions);
 
-  return data;
+  const data = await categoriesResource.getEntities(queryOptions);
+  const optimizedData: Category[] = data.value.map(category => {
+    return {
+      ...category,
+      name: MultilingualStringHelper.strip(category.name, locale),
+      description: MultilingualStringHelper.strip(category.description, locale),
+      slug: MultilingualStringHelper.strip(category.slug, locale) || undefined,
+      children: category.children?.map(child => ({
+        ...child,
+        slug:
+          MultilingualStringHelper.strip(category.slug, locale) || undefined,
+        name: MultilingualStringHelper.strip(child.name, locale)
+      }))
+    };
+  });
+
+  return optimizedData;
 }
 
 /**
@@ -62,21 +79,62 @@ export const fetchSearchedCategoriesSuggestions = async (
  * Function that will retrieve all Categories with their relevant information included.
  * @returns Array of Categories that will be referenced throughout the pages (e.g. BreadCrumbs, Title & Description, Navigation)
  */
-export async function fetchAllCategories(): Promise<Category[]> {
+export async function fetchAllCategories(
+  locale: string | undefined
+): Promise<Category[]> {
   const cachedData: Category[] | undefined =
     await categoriesDataCacheManager.get();
+
+  function optimize(categories: Category[]) {
+    return categories.map(category => {
+      return {
+        ...category,
+        name: MultilingualStringHelper.strip(category.name, locale),
+        description: MultilingualStringHelper.strip(
+          category.description,
+          locale
+        ),
+        parent: category.parent
+          ? {
+              ...category.parent,
+              slug:
+                MultilingualStringHelper.strip(category.parent.slug, locale) ||
+                undefined,
+              name: MultilingualStringHelper.strip(
+                category.parent.name,
+                locale
+              ),
+              parent: category.parent.parent
+                ? {
+                    ...category.parent.parent,
+                    slug:
+                      MultilingualStringHelper.strip(
+                        category.parent.slug,
+                        locale
+                      ) || undefined,
+                    name: MultilingualStringHelper.strip(
+                      category.parent.name,
+                      locale
+                    )
+                  }
+                : null
+            }
+          : null
+      };
+    });
+  }
   if (cachedData) {
-    return cachedData;
+    return optimize(cachedData);
   }
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,number,name,description,slug,settings,image,parentId`,
     expandQuery:
-      'image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug;$expand=parent($select=id,settings,name,seoPath)))&$format=application/json;odata.metadata=none'
+      'image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug))&$format=application/json;odata.metadata=none'
   };
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions
   );
   categoriesDataCacheManager.set(data.value);
-  return data.value;
+  return optimize(data.value);
 }

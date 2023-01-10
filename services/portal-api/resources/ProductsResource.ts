@@ -33,14 +33,16 @@ export class ProductsResource extends BaseResource<Product> {
       skip
     };
     const queryOptionsString: string =
-      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions)
-        .concat(urlEncodedFilters ? `&${urlEncodedFilters}` : '')
-        .concat(
-          `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
-        );
+      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions);
+    const combinedQueryOptionsString: string = queryOptionsString
+      .concat(queryOptionsString ? '&' : '?')
+      .concat(urlEncodedFilters ? `${urlEncodedFilters}` : '')
+      .concat(
+        `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
+      );
     const resourcePath = this.getFacetedSearchResourcePath(encodedQuery);
 
-    return this.fetch(resourcePath, queryOptionsString, {});
+    return this.fetch(resourcePath, combinedQueryOptionsString, {});
   }
   async find(
     queryOptions: Partial<QueryOptions>,

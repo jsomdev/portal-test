@@ -24,7 +24,6 @@ import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/spr
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
-import { getAudience } from '@services/i18n/helper';
 import {
   AttributeGroup,
   AttributeType,
@@ -127,7 +126,7 @@ interface CategoryParsedUrlQuery extends ParsedUrlQuery {
 export const getStaticPaths: GetStaticPaths = async (
   context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult<CategoryParsedUrlQuery>> => {
-  const categoriesData: CategoryModel[] = await fetchAllCategories();
+  const categoriesData: CategoryModel[] = await fetchAllCategories(undefined);
 
   const localizedPaths = (context.locales || []).map(locale => {
     const pathForLocale: {
@@ -160,10 +159,10 @@ export const getStaticProps: GetStaticProps = async (
 
   const [categoriesData, siteMenuData, mainMenuData, attributeTypesData] =
     await Promise.all([
-      fetchAllCategories(),
-      fetchMenuItemsForSiteHeader(getAudience(locale)),
-      fetchMenuItemsForMainHeader(getAudience(locale)),
-      fetchAllAttributeTypes()
+      fetchAllCategories(locale),
+      fetchMenuItemsForSiteHeader(locale),
+      fetchMenuItemsForMainHeader(locale),
+      fetchAllAttributeTypes(locale)
     ]);
 
   const category: CategoryModel | undefined = categoriesData.find(category => {
