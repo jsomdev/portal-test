@@ -28,6 +28,10 @@ module.exports = {
       {
         source: '/account',
         destination: '/account/overview'
+      },
+      {
+        source: '/frontend-api/:path*',
+        destination: '/api/:path*'
       }
     ];
   },

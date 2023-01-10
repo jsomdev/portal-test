@@ -3,10 +3,10 @@ import { User } from '@services/portal-api/models/User';
 
 export class UserFormatter {
   private user: Partial<User> | undefined;
-  private accountInfo: Partial<AccountInfo> | null;
+  private accountInfo: Partial<AccountInfo> | null | undefined;
   constructor(
     user: Partial<User> | undefined,
-    accountInfo: Partial<AccountInfo> | null
+    accountInfo: Partial<AccountInfo> | null | undefined
   ) {
     this.user = user;
     this.accountInfo = accountInfo;

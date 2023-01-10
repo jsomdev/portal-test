@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import { flatten } from 'flat';
 import type { AppProps } from 'next/app';
@@ -14,7 +14,7 @@ import { ProductBookmarksProvider } from '@providers/product-bookmarks/productBo
 import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewedProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
-import { msalInstance } from '@services/authentication/authenticationConfiguration';
+import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
@@ -26,6 +26,14 @@ import '../public/nprogress.css';
 
 // InitializeIcons
 initializeIcons();
+
+const ClientSideMsalProvider: React.FC = ({ children }) => {
+  const msalInstance = getMsalInstance();
+  if (msalInstance) {
+    return <MsalProvider instance={msalInstance}>{children}</MsalProvider>;
+  }
+  return <>{children}</>;
+};
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
@@ -54,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [router]);
 
   return (
-    <MsalProvider instance={msalInstance}>
+    <ClientSideMsalProvider>
       <IntlProvider
         locale={locale || defaultLocale}
         defaultLocale={defaultLocale}
@@ -82,7 +90,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           </AppThemeProvider>
         </MediaContextProvider>
       </IntlProvider>
-    </MsalProvider>
+    </ClientSideMsalProvider>
   );
 }
 export default MyApp;

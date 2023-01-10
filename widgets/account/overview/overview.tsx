@@ -17,7 +17,7 @@ import {
 } from '@fluentui/react';
 import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { useMe } from '@providers/user/userContext';
-import { msalInstance } from '@services/authentication/authenticationConfiguration';
+import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
@@ -83,7 +83,8 @@ export const Overview: React.FC = () => {
   const { spacing, effects, palette } = useTheme();
   const intl = useIntl();
   const { formatMessage } = intl;
-  const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
+  const account: AccountInfo | undefined =
+    getMsalInstance()?.getAllAccounts()[0];
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
   const claims = useClaims();

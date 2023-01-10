@@ -3,7 +3,7 @@ import { AuthenticationResult } from '@azure/msal-common';
 import {
   customerLoginRequest,
   employeeLoginRequest,
-  msalInstance
+  getMsalInstance
 } from '@services/authentication/authenticationConfiguration';
 import { ExtendedClaims } from '@services/authentication/claims';
 
@@ -50,7 +50,8 @@ export const digitalHighWayFetch = async <T>(
   shouldParseToJson = true
 ): Promise<T | Response> => {
   let defaultHeaders = {};
-  const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
+  const account: AccountInfo | undefined =
+    getMsalInstance()?.getAllAccounts()[0];
   let authenticationResult: AuthenticationResult | undefined = undefined;
   if (account) {
     const tfp:
@@ -63,14 +64,14 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
-      authenticationResult = await msalInstance.acquireTokenSilent({
+      authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
         account
       });
     } catch (e) {
       console.log('Failed the acquire token silently. Will logout the user');
 
-      msalInstance.logoutRedirect({
+      getMsalInstance()?.logoutRedirect({
         ...loginRequest,
         account
       });

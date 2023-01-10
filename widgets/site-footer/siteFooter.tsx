@@ -84,7 +84,9 @@ export const SiteFooter: FC = () => {
   const { data: footerData, status } = useQuery(
     [QUERYKEYS.footerData, locale],
     async () => {
-      const response: Response = await fetch(`/api/footer?locale=${locale}`);
+      const response: Response = await fetch(
+        `/frontend-api/footer?locale=${locale}`
+      );
       const result: FooterColumns = (await handleResponse<FooterColumns>(
         response,
         'GET',

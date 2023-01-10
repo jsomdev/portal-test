@@ -31,6 +31,22 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/*
+            The single-page react application registered a /service-work.js, that should be unregistered once we release(d) the nextjs version of the site.
+            After a while in production, this script could be removed
+           */}
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+              if(window.localStorage && navigator.serviceWorker){
+                if(window.localStorage.getItem('cleared-old-serviceworker') !== 'true'){
+                  window.localStorage.setItem('cleared-old-serviceworker', 'true');
+                  navigator.serviceWorker.register('service-worker.js').then(function(r){r.unregister()});
+                }
+              }`
+            }}
+          />
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/favicon192.png" />
           <style

@@ -19,7 +19,7 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
-import { msalInstance } from '@services/authentication/authenticationConfiguration';
+import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
@@ -105,7 +105,8 @@ const MobileSiteHeader: React.FC = () => {
   const { me } = useMe();
   const { formatMessage } = intl;
   const [showPanel, setShowPanel] = useState<'app' | 'user' | undefined>();
-  const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
+  const account: AccountInfo | undefined =
+    getMsalInstance()?.getAllAccounts()[0];
   const claims = useClaims();
 
   const panelHeaderText: string = useMemo(() => {
