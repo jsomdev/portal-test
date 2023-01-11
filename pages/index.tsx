@@ -1,6 +1,7 @@
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { useIsAuthenticated } from '@azure/msal-react';
 import { IStackStyles, mergeStyleSets, useTheme } from '@fluentui/react';
 import {
   GlobalDataProvider,
@@ -63,6 +64,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
 }) => {
   const { formatMessage } = useIntl();
   const { palette } = useTheme();
+  const isAuthenticated = useIsAuthenticated();
 
   const styles: HomeStyles = {
     sectionContainer: {
@@ -103,9 +105,15 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       >
         <AppLayout>
           <Hero />
-          <TabletAndDesktop>
-            <SignIn />
-          </TabletAndDesktop>
+          {!isAuthenticated && (
+            <ContentContainerStack
+              outerStackProps={{
+                styles: styles.sectionContainer
+              }}
+            >
+              <SignIn />
+            </ContentContainerStack>
+          )}
           <ContentContainerStack
             outerStackProps={{
               styles: mergeStyleSets(
@@ -152,7 +160,12 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
             />
           </ContentContainerStack>
           <ContentContainerStack
-            outerStackProps={{ styles: styles.sectionContainer }}
+            outerStackProps={{
+              styles: mergeStyleSets(
+                styles.catalogContainer.outerContainer,
+                styles.sectionContainer
+              )
+            }}
           >
             <Support />
           </ContentContainerStack>

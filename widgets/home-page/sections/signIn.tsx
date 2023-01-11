@@ -20,9 +20,11 @@ import {
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import { TabletAndDesktop, mediaQueryFrom } from '@widgets/media-queries';
 
 interface SignUpStyles {
   stepsContainer: IStackItemStyles;
+  title: ITextStyles;
   stepContainer: IStackItemStyles;
   step: IStackItemStyles;
   stepIndex: ITextStyles;
@@ -86,9 +88,9 @@ export const SignIn: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
   const { instance } = useMsal();
-  const STEP_WIDTH = 320;
+  const STEP_WIDTH = 324;
   const STEP_INDEX_WIDTH = 64;
-  const STEP_PADDING = 16;
+  const STEP_PADDING = 32;
 
   const styles: SignUpStyles = {
     stepsContainer: { root: { minWidth: '50%', padding: 24 } },
@@ -97,6 +99,11 @@ export const SignIn: React.FC = () => {
         position: 'relative',
         width: STEP_WIDTH,
         padding: STEP_PADDING
+      }
+    },
+    title: {
+      root: {
+        textAlign: 'center'
       }
     },
     step: {
@@ -124,7 +131,13 @@ export const SignIn: React.FC = () => {
       }
     },
     callToAction: {
-      root: { height: 40 },
+      root: {
+        height: 48,
+        marginTop: spacing.l2,
+        ...mediaQueryFrom('tablet', {
+          marginTop: 0
+        })
+      },
       label: {
         fontSize: fonts.mediumPlus.fontSize
       }
@@ -145,11 +158,11 @@ export const SignIn: React.FC = () => {
     return null;
   }
   return (
-    <ContentContainerStack>
-      <Stack horizontalAlign="center" tokens={{ padding: spacing.l2 }}>
-        <Text as="h2" variant="xxLargePlus">
-          <FormattedMessage {...messages.signUpTitle} />
-        </Text>
+    <Stack horizontalAlign="center" tokens={{ padding: spacing.l2 }}>
+      <Text as="h2" variant="xxLargePlus" styles={styles.title}>
+        <FormattedMessage {...messages.signUpTitle} />
+      </Text>
+      <TabletAndDesktop>
         <Stack.Item styles={styles.stepsContainer}>
           <Stack horizontal horizontalAlign="center">
             {signUpSteps.map((item, index) => (
@@ -179,15 +192,15 @@ export const SignIn: React.FC = () => {
             ))}
           </Stack>
         </Stack.Item>
-        <Stack.Item>
-          <PrimaryButton
-            styles={styles.callToAction}
-            onClick={() => instance.loginRedirect(customerLoginRequest)}
-          >
-            {formatMessage(messages.signUpCallToAction)}
-          </PrimaryButton>
-        </Stack.Item>
-      </Stack>
-    </ContentContainerStack>
+      </TabletAndDesktop>
+      <Stack.Item>
+        <PrimaryButton
+          styles={styles.callToAction}
+          onClick={() => instance.loginRedirect(customerLoginRequest)}
+        >
+          {formatMessage(messages.signUpCallToAction)}
+        </PrimaryButton>
+      </Stack.Item>
+    </Stack>
   );
 };

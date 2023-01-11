@@ -404,7 +404,7 @@ export async function fetchProductForProductPage(
     selectQuery: `id,number,name,description,modelId,slug,audience`,
     // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
     filterQuery: `code eq '${slug}'`,
-    expandQuery: `identifiers($select=type,value),image($select=audience,thumbnail,type,url)`
+    expandQuery: `identifiers($select=type,value),image($select=id,audience,thumbnail,type,url)`
   };
   const queryOptionsAttributes: Partial<QueryOptions> = {
     selectQuery: 'id',

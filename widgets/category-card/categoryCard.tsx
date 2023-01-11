@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {
   ActionButton,
   IButtonStyles,
+  IStackItemStyles,
   IStackStyles,
   Stack,
   useTheme
@@ -24,15 +25,16 @@ interface CategoryCardStyles {
   container: IStackStyles;
   linkContainer: IStackStyles;
   button: Partial<IButtonStyles>;
+  imageContainer: IStackItemStyles;
 }
 
-function getWidth(size: CategoryCardSize): number {
+function getHeight(size: CategoryCardSize): number {
   switch (size) {
     case 'small':
-      return 216;
+      return 180;
 
     default:
-      return 268;
+      return 224;
   }
 }
 
@@ -47,7 +49,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
   const styles: CategoryCardStyles = {
     container: {
       root: {
-        width: getWidth(size),
         background: palette.white,
         borderRadius: 7,
         img: {
@@ -61,6 +62,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         height: 65,
         width: '100%',
         borderTop: `1px solid ${palette.neutralLight}`
+      }
+    },
+    imageContainer: {
+      root: {
+        position: 'relative',
+        width: '100%',
+        height: getHeight(size)
       }
     },
     button: {
@@ -77,21 +85,21 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
     <Link passHref href={href}>
       <a>
         <Stack styles={styles.container}>
-          <Image
-            layout="fixed"
-            width={getWidth(size)}
-            height={getWidth(size) * 0.7}
-            alt={imageAlt}
-            src={imageSrc}
-            objectFit={
-              imageSrc.indexOf('?crop=true') > -1 ? 'cover' : 'contain'
-              /* Legacy behavior:
+          <Stack.Item styles={styles.imageContainer}>
+            <Image
+              layout="fill"
+              alt={imageAlt}
+              src={imageSrc}
+              objectFit={
+                imageSrc.indexOf('?crop=true') > -1 ? 'cover' : 'contain'
+                /* Legacy behavior:
               - images with a non-white background can be cropped, you can identify these by the url that has a querystring "?crop=true"
               - image with a white background can not be cropped and should be fully visible, as parts of the product will be cut off when cropped  */
-            }
-            objectPosition="center"
-            loader={getImageLoader(imageSrc)}
-          />
+              }
+              objectPosition="center"
+              loader={getImageLoader(imageSrc)}
+            />
+          </Stack.Item>
           <Stack
             styles={styles.linkContainer}
             horizontalAlign="center"

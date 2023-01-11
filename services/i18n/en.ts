@@ -363,7 +363,7 @@ export const en: Messages = {
           searchToolAction: 'Start searching',
           localRepTitle: 'Find a local representative',
           localRepDescription:
-            'Your local representative can help you if you are not finding what you are looking for',
+            'Your local representative can help if you are not finding what you are looking for',
           localRepAction: 'Get in contact',
           onlineChatTitle: 'Online support',
           onlineChatDescription:
@@ -381,14 +381,14 @@ export const en: Messages = {
           callToAction: 'Sign in',
           steps: {
             first: {
-              title: 'New user?',
+              title: 'New portal user?',
               description:
-                'You can create an account linked to your company and complete your contact details'
+                "No problem! Create an account in a minute. Click 'Sign up now' on the Sign in page."
             },
             second: {
               title: 'Start shopping',
               description:
-                'Browse our products and add the ones you need to your cart. Your cart will be linked to your customer account'
+                'Browse our products and add the ones you need to your cart. Your cart is automatically linked to your customer account.'
             },
             third: {
               title: 'Order products',
