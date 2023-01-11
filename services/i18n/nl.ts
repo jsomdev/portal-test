@@ -293,7 +293,7 @@ export const nl: Messages = {
     },
 
     search: {
-      title: `Search results for: '{searchQuery}'`,
+      title: `Search results for: ''{searchQuery}''`,
       headDescription: 'Experts in Spray Technology',
       headTitle: 'Search {searchQuery}'
     },

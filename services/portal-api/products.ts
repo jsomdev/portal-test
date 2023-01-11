@@ -404,7 +404,7 @@ export async function fetchProductForProductPage(
     selectQuery: `id,number,name,description,modelId,slug,audience`,
     // 20/10/2022, assumption made by Jan & Francis that product slugs will always have the same english version
     filterQuery: `code eq '${slug}'`,
-    expandQuery: `identifiers($select=type,value),image($select=audience,thumbnail,type,url),accessories($select=accessory;$expand=accessory($select=name,number,slug;$expand=image($select=url))),resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
+    expandQuery: `identifiers($select=type,value),image($select=audience,thumbnail,type,url)`
   };
   const queryOptionsAttributes: Partial<QueryOptions> = {
     selectQuery: 'id',
@@ -416,23 +416,49 @@ export async function fetchProductForProductPage(
     filterQuery: `code eq '${slug}'`,
     expandQuery: `options($orderby=typeCode asc)`
   };
+  const queryOptionsAccessories: Partial<QueryOptions> = {
+    selectQuery: 'id',
+    filterQuery: `code eq '${slug}'`,
+    expandQuery: `accessories($select=accessory;$expand=accessory($select=name,number,slug;$expand=image($select=url)))`
+  };
+  const queryOptionsResources: Partial<QueryOptions> = {
+    selectQuery: 'id',
+    filterQuery: `code eq '${slug}'`,
+    expandQuery: `resources($select=id,type,variation,caption,url,thumbnail;$orderby=type)`
+  };
   const getAttributes = async () =>
     productsResource.getEntities(queryOptionsAttributes);
   const getProductData = async () => productsResource.getEntities(queryOptions);
   const getOptions = async () =>
     productsResource.getEntities(queryOptionsOptions);
-  const [attributesData, productData, optionsData] = await Promise.all([
+  const getResources = async () =>
+    productsResource.getEntities(queryOptionsResources);
+  const getAccessories = async () =>
+    productsResource.getEntities(queryOptionsAccessories);
+  const [
+    attributesData,
+    productData,
+    optionsData,
+    resourcesData,
+    accessoriesData
+  ] = await Promise.all([
     getAttributes(),
     getProductData(),
-    getOptions()
+    getOptions(),
+    getResources(),
+    getAccessories()
   ]);
-  const data: Product = {
-    ...productData.value[0],
-    attributes: attributesData.value[0].attributes,
-    options: optionsData.value[0].options
-  };
-  if (!data) {
+
+  if (!productData.value[0]) {
     return null;
   }
+  const data: Product = {
+    ...productData.value[0],
+    attributes: attributesData.value[0]?.attributes,
+    options: optionsData.value[0]?.options,
+    resources: resourcesData.value[0]?.resources,
+    accessories: accessoriesData.value[0]?.accessories
+  };
+
   return optimize(data);
 }

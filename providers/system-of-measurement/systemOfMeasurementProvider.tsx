@@ -24,11 +24,22 @@ export const SystemOfMeasurementProvider: FC = ({ children }) => {
   };
 
   useEffect(() => {
-    setSystemOfMeasurement(
-      localStorage.getItem(
-        LOCALSTORAGEKEYS.systemOfMeasurement
-      ) as SystemOfMeasurement
+    const valueInLocalStorage: string | null = localStorage.getItem(
+      LOCALSTORAGEKEYS.systemOfMeasurement
     );
+
+    if (
+      valueInLocalStorage === null ||
+      !['US', 'Metric'].includes(valueInLocalStorage)
+    ) {
+      changeSystemOfMeasurement('US');
+    } else {
+      setSystemOfMeasurement(
+        localStorage.getItem(
+          LOCALSTORAGEKEYS.systemOfMeasurement
+        ) as SystemOfMeasurement
+      );
+    }
   }, []);
 
   return (

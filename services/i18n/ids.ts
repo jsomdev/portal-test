@@ -255,9 +255,10 @@ export const messageIds: Messages = {
       },
       liquidType: {
         customValue: {
-          title: 'finder.operatingConditions.customValue.title',
-          placeholder: 'finder.operatingConditions.customValue.placeholder',
-          suffix: 'finder.operatingConditions.customValue.suffix'
+          title: 'finder.operatingConditions.liquidType.customValue.title',
+          placeholder:
+            'finder.operatingConditions.liquidType.customValue.placeholder',
+          suffix: 'finder.operatingConditions.liquidType.customValue.suffix'
         }
       }
     },

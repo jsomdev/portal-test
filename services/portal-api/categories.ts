@@ -3,6 +3,7 @@ import path from 'path';
 import { DataCacheManager } from '@services/cache/dataCache';
 import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
+import { getAudience } from '..';
 import { FlaggedEnum } from './flaggedEnum';
 import { Audience } from './models/AudienceFlags';
 import { Category } from './models/Category';
@@ -19,9 +20,9 @@ const categoriesDataCacheManager: DataCacheManager<Category[]> =
  * @returns Collection of Categories that are displayed on the homepage
  */
 export async function fetchCategoriesForHomePage(
-  audience: Audience,
   locale: string | undefined
 ): Promise<Category[]> {
+  const audience = getAudience(locale);
   const categoriesResource: CategoriesResource = new CategoriesResource();
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: 'id,name,description,settings,slug,audience',
@@ -43,8 +44,7 @@ export async function fetchCategoriesForHomePage(
       slug: MultilingualStringHelper.strip(category.slug, locale) || undefined,
       children: category.children?.map(child => ({
         ...child,
-        slug:
-          MultilingualStringHelper.strip(category.slug, locale) || undefined,
+        slug: MultilingualStringHelper.strip(child.slug, locale) || undefined,
         name: MultilingualStringHelper.strip(child.name, locale)
       }))
     };

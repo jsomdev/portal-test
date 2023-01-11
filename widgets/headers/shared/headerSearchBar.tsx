@@ -250,6 +250,13 @@ const SearchBar: React.FC = () => {
     ev.target.blur();
   }
 
+  function onKeyUp(ev: React.KeyboardEvent<HTMLInputElement>): void {
+    console.log(ev.key);
+    if (ev.key === 'Enter') {
+      ev.currentTarget.blur();
+    }
+  }
+
   function onSearch(newValue: string) {
     // Need to make sure the overlay + menu disappears
     setShowContextualMenu(false);
@@ -289,7 +296,10 @@ const SearchBar: React.FC = () => {
   const styles: SearchBarStyles = {
     linkText: {
       root: {
-        cursor: 'pointer'
+        cursor: 'pointer',
+        '&:hover': {
+          color: palette.accent
+        }
       }
     },
     noReults: {
@@ -384,6 +394,7 @@ const SearchBar: React.FC = () => {
         onChange={onSearchBarChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyUp={onKeyUp}
         onSearch={onSearch}
         onClickCapture={onClickCapture}
         role="search"
@@ -427,7 +438,6 @@ const SearchBar: React.FC = () => {
                     debouncedSearchBoxInput
                   ).map(item => (
                     <Text
-                      as="a"
                       key={item.query}
                       styles={styles.linkText}
                       onClick={() => onSearch(item.query)}
@@ -455,7 +465,6 @@ const SearchBar: React.FC = () => {
                   {recentSearches?.map(recentSearch => {
                     return (
                       <Text
-                        as="a"
                         key={recentSearch}
                         styles={styles.linkText}
                         onClick={() => onSearch(recentSearch)}

@@ -172,7 +172,7 @@ export const getStaticProps: GetStaticProps = async (
 > => {
   const { locale } = context;
   const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
-    fetchCategoriesForHomePage(getAudience(locale), locale),
+    fetchCategoriesForHomePage(locale),
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)
   ]);
