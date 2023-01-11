@@ -7,57 +7,57 @@ import { FacetSelectType } from '../models/facet/facetSelectType';
 import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
-export enum SprayAngleCatalogCodeFacetOptionKey {
-  Narrow = 'Narrow',
-  Standard = 'Standard',
-  Wide = 'Wide'
+export enum FlowExponentFacetOptionKey {
+  _0_44 = '_0_44',
+  _0_46 = '_0_46',
+  _0_5_ = '_0_5_'
 }
 
-export const sprayAngleCatalogCodeFacetOptions: FacetOption<SprayAngleCatalogCodeFacetOptionKey>[] =
+export const flowExponentFacetOptions: FacetOption<FlowExponentFacetOptionKey>[] =
   [
     {
-      key: SprayAngleCatalogCodeFacetOptionKey.Narrow,
+      key: FlowExponentFacetOptionKey._0_44,
       ...defaultFacetOption,
-      valueId: '529e559e-f836-4746-9b98-5f1850e2b759',
-      value: 'Narrow',
+      valueId: '',
+      value: 0.44,
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'Narrow' }
+            value: 0.44
           }
         ],
         sortIndex: 1
       }
     },
     {
-      key: SprayAngleCatalogCodeFacetOptionKey.Standard,
+      key: FlowExponentFacetOptionKey._0_46,
       ...defaultFacetOption,
-      valueId: '93f82313-7bae-40fd-98f9-8077153c97b6',
-      value: 'Standard',
+      valueId: '',
+      value: 0.46,
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'Standard' }
+            value: 0.46
           }
         ],
         sortIndex: 2
       }
     },
     {
-      key: SprayAngleCatalogCodeFacetOptionKey.Wide,
+      key: FlowExponentFacetOptionKey._0_5_,
       ...defaultFacetOption,
-      valueId: 'd3c0083f-9632-4506-bd67-1da282a9d5b0',
-      value: 'Wide',
+      valueId: '',
+      value: 0.5,
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'Wide' }
+            value: 0.5
           }
         ],
         sortIndex: 3
@@ -65,18 +65,18 @@ export const sprayAngleCatalogCodeFacetOptions: FacetOption<SprayAngleCatalogCod
     }
   ];
 
-export const sprayAngleCatalogCodeFacet: Facet<
-  SprayAngleCatalogCodeFacetOptionKey,
-  FacetOption<SprayAngleCatalogCodeFacetOptionKey>
+export const flowExponentFacet: Facet<
+  FlowExponentFacetOptionKey,
+  FacetOption<FlowExponentFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.SprayAngleCatalogCode,
-  attributeTypeCode: 'SprayAngleCatalogCode',
+  key: FacetKey.FlowExponent,
+  attributeTypeCode: 'FlowExponent',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true
   },
-  options: sprayAngleCatalogCodeFacetOptions
+  options: flowExponentFacetOptions
 };

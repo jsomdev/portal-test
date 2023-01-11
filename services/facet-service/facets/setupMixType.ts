@@ -7,40 +7,40 @@ import { FacetSelectType } from '../models/facet/facetSelectType';
 import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
-export enum StrainerScreenMeshSizeFacetOptionKey {
-  _100______ = '_100______',
-  _50______ = '_50______'
+export enum SetupMixTypeFacetOptionKey {
+  ExternalMix = 'ExternalMix',
+  InternalMix = 'InternalMix'
 }
 
-export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshSizeFacetOptionKey>[] =
+export const setupMixTypeFacetOptions: FacetOption<SetupMixTypeFacetOptionKey>[] =
   [
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._100______,
+      key: SetupMixTypeFacetOptionKey.ExternalMix,
       ...defaultFacetOption,
-      valueId: '',
-      value: 100,
+      valueId: 'de113887-9a51-4931-a90d-c47d35cd4576',
+      value: 'ExternalMix',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: 100
+            value: { en: 'External Mix' }
           }
         ],
         sortIndex: 1
       }
     },
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._50______,
+      key: SetupMixTypeFacetOptionKey.InternalMix,
       ...defaultFacetOption,
-      valueId: '',
-      value: 50,
+      valueId: '1f3af9d0-2bd4-4f34-a28f-4fdc39ab8464',
+      value: 'InternalMix',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: 50
+            value: { en: 'Internal Mix' }
           }
         ],
         sortIndex: 2
@@ -48,18 +48,18 @@ export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshS
     }
   ];
 
-export const strainerScreenMeshSizeFacet: Facet<
-  StrainerScreenMeshSizeFacetOptionKey,
-  FacetOption<StrainerScreenMeshSizeFacetOptionKey>
+export const setupMixTypeFacet: Facet<
+  SetupMixTypeFacetOptionKey,
+  FacetOption<SetupMixTypeFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.StrainerScreenMeshSize,
-  attributeTypeCode: 'StrainerScreenMeshSize',
+  key: FacetKey.SetupMixType,
+  attributeTypeCode: 'SetupMixType',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
     isFacetingEnabled: true
   },
-  options: strainerScreenMeshSizeFacetOptions
+  options: setupMixTypeFacetOptions
 };

@@ -27,7 +27,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'AirCap',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'AirCap' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'AirCap' }
+          }
         ],
         sortIndex: 1
       }
@@ -39,7 +43,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'Body',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Body' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Body' }
+          }
         ],
         sortIndex: 2
       }
@@ -51,7 +59,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'Disc',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Disc' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Disc' }
+          }
         ],
         sortIndex: 3
       }
@@ -63,7 +75,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'FluidCap',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'FluidCap' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'FluidCap' }
+          }
         ],
         sortIndex: 4
       }
@@ -75,7 +91,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'Nozzle',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Nozzle' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Nozzle' }
+          }
         ],
         sortIndex: 5
       }
@@ -103,7 +123,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'Setup',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Setup' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Setup' }
+          }
         ],
         sortIndex: 7
       }
@@ -115,7 +139,11 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
       value: 'Tip',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Tip' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Tip' }
+          }
         ],
         sortIndex: 8
       }
@@ -133,8 +161,6 @@ export const productTypeFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: productTypeFacetOptions

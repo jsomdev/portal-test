@@ -116,8 +116,6 @@ export const bushingAndORingMaterialFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: bushingAndORingMaterialFacetOptions

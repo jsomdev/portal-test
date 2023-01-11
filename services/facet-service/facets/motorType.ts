@@ -20,7 +20,11 @@ export const motorTypeFacetOptions: FacetOption<MotorTypeFacetOptionKey>[] = [
     value: 'Air_motor',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Air motor' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Air motor' }
+        }
       ],
       sortIndex: 1
     }

@@ -9,16 +9,20 @@ import { defaultFacetOption } from './defaultFacetOption';
 
 export enum SprayCoverageFacetOptionKey {
   _120down = '_120down',
-  _180 = '_180',
+  _180____ = '_180____',
+  _180countercurrent = '_180countercurrent',
   _180down = '_180down',
+  _180inflowdirection = '_180inflowdirection',
   _180up = '_180up',
   _240down = '_240down',
   _260down = '_260down',
   _260up = '_260up',
+  _270countercurrent = '_270countercurrent',
   _270down = '_270down',
+  _270inflowdirection = '_270inflowdirection',
   _270up = '_270up',
   _2x175 = '_2x175',
-  _360 = '_360',
+  _360___ = '_360___',
   _360andcustomsprayangles = '_360andcustomsprayangles',
   _360Smallsprayheadwithsmallclearanceonlywith3SF = '_360Smallsprayheadwithsmallclearanceonlywith3SF',
   _360Standard = '_360Standard',
@@ -35,21 +39,45 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '120° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '120° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '120° down' }
+          }
         ],
         sortIndex: 1
       }
     },
     {
-      key: SprayCoverageFacetOptionKey._180,
+      key: SprayCoverageFacetOptionKey._180____,
       ...defaultFacetOption,
       valueId: 'f93ccc8c-9afe-4862-8798-a7429fb6dc3f',
       value: '180°',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '180°' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '180°' }
+          }
         ],
         sortIndex: 2
+      }
+    },
+    {
+      key: SprayCoverageFacetOptionKey._180countercurrent,
+      ...defaultFacetOption,
+      valueId: '5a217bdb-f86b-47a6-bfcf-ce843bf4be52',
+      value: '180° counter current',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '180° counter current' }
+          }
+        ],
+        sortIndex: 3
       }
     },
     {
@@ -59,9 +87,29 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '180° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '180° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '180° down' }
+          }
         ],
-        sortIndex: 3
+        sortIndex: 4
+      }
+    },
+    {
+      key: SprayCoverageFacetOptionKey._180inflowdirection,
+      ...defaultFacetOption,
+      valueId: 'f906736f-bcba-42cf-8c75-572ba06a75d1',
+      value: '180° in flow direction',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '180° in flow direction' }
+          }
+        ],
+        sortIndex: 5
       }
     },
     {
@@ -71,9 +119,13 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '180° up',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '180° up' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '180° up' }
+          }
         ],
-        sortIndex: 4
+        sortIndex: 6
       }
     },
     {
@@ -83,9 +135,13 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '240° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '240° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '240° down' }
+          }
         ],
-        sortIndex: 5
+        sortIndex: 7
       }
     },
     {
@@ -95,9 +151,13 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '260° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '260° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '260° down' }
+          }
         ],
-        sortIndex: 6
+        sortIndex: 8
       }
     },
     {
@@ -107,9 +167,29 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '260° up',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '260° up' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '260° up' }
+          }
         ],
-        sortIndex: 7
+        sortIndex: 9
+      }
+    },
+    {
+      key: SprayCoverageFacetOptionKey._270countercurrent,
+      ...defaultFacetOption,
+      valueId: 'fc68d78b-8c95-44f7-9913-fe0d2541299e',
+      value: '270° counter current',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '270° counter current' }
+          }
+        ],
+        sortIndex: 10
       }
     },
     {
@@ -119,9 +199,29 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '270° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '270° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '270° down' }
+          }
         ],
-        sortIndex: 8
+        sortIndex: 11
+      }
+    },
+    {
+      key: SprayCoverageFacetOptionKey._270inflowdirection,
+      ...defaultFacetOption,
+      valueId: '02b92c96-d349-4993-a559-722a3051e39e',
+      value: '270° in flow direction',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '270° in flow direction' }
+          }
+        ],
+        sortIndex: 12
       }
     },
     {
@@ -131,9 +231,13 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '270° up',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '270° up' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '270° up' }
+          }
         ],
-        sortIndex: 9
+        sortIndex: 13
       }
     },
     {
@@ -143,21 +247,29 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '2x175°',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '2x175°' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '2x175°' }
+          }
         ],
-        sortIndex: 10
+        sortIndex: 14
       }
     },
     {
-      key: SprayCoverageFacetOptionKey._360,
+      key: SprayCoverageFacetOptionKey._360___,
       ...defaultFacetOption,
       valueId: '67b0a079-5064-42c1-99a2-9271038d26b8',
       value: '360°',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '360°' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '360°' }
+          }
         ],
-        sortIndex: 11
+        sortIndex: 15
       }
     },
     {
@@ -173,7 +285,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
             value: { en: '360° and custom spray angles' }
           }
         ],
-        sortIndex: 12
+        sortIndex: 16
       }
     },
     {
@@ -191,7 +303,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
             }
           }
         ],
-        sortIndex: 13
+        sortIndex: 17
       }
     },
     {
@@ -207,7 +319,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
             value: { en: '360°, Standard' }
           }
         ],
-        sortIndex: 14
+        sortIndex: 18
       }
     },
     {
@@ -217,9 +329,13 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       value: '65° down',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: '65° down' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '65° down' }
+          }
         ],
-        sortIndex: 15
+        sortIndex: 19
       }
     },
     {
@@ -235,7 +351,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
             value: { en: 'Side Spray' }
           }
         ],
-        sortIndex: 16
+        sortIndex: 20
       }
     }
   ];

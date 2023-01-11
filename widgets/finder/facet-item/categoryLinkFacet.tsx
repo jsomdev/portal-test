@@ -98,45 +98,45 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
             childrenGap: rem(2)
           }}
         >
-          {visibleOptions.map(option => {
-            const facetOptionFormatter = new FacetOptionFormatter(
-              option,
-              getPredictedCountForOption(
-                predictedResults || [],
-                option.valueId
-              ),
-              intl,
-              systemOfMeasurement,
-              locale
-            );
+          {visibleOptions.map(
+            (option: FacetOption<never, { slug?: string }>) => {
+              const facetOptionFormatter = new FacetOptionFormatter(
+                option,
+                getPredictedCountForOption(
+                  predictedResults || [],
+                  option.valueId
+                ),
+                intl,
+                systemOfMeasurement,
+                locale
+              );
 
-            return (
-              <NextLink
-                key={option.key}
-                locale={locale}
-                href={{
-                  pathname: pagePaths.category(
-                    option.configuration.seoPath || ''
-                  ),
+              return (
+                <NextLink
+                  key={option.key}
+                  locale={locale}
+                  href={{
+                    pathname: pagePaths.category(option.slug || ''),
 
-                  query: {
-                    ...query
-                  }
-                }}
-              >
-                <a>
-                  <Stack.Item>
-                    <Text variant="mediumPlus">
-                      {facetOptionFormatter.formatDisplayValue()}
-                    </Text>
-                    <Text variant="mediumPlus" styles={styles.resultLabel}>
-                      {facetOptionFormatter.formatPredictedResult()}
-                    </Text>
-                  </Stack.Item>
-                </a>
-              </NextLink>
-            );
-          })}
+                    query: {
+                      ...query
+                    }
+                  }}
+                >
+                  <a>
+                    <Stack.Item>
+                      <Text variant="mediumPlus">
+                        {facetOptionFormatter.formatDisplayValue()}
+                      </Text>
+                      <Text variant="mediumPlus" styles={styles.resultLabel}>
+                        {facetOptionFormatter.formatPredictedResult()}
+                      </Text>
+                    </Stack.Item>
+                  </a>
+                </NextLink>
+              );
+            }
+          )}
         </Stack>
       </FacetContainer>
     );

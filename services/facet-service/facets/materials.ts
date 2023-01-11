@@ -98,7 +98,6 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
       sortIndex: 4
     }
   },
-
   {
     key: MaterialsFacetOptionKey.A4P,
     ...defaultFacetOption,
@@ -115,7 +114,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 6
+      sortIndex: 5
     }
   },
   {
@@ -125,9 +124,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'Aluminum',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Aluminum' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Aluminum' }
+        }
       ],
-      sortIndex: 7
+      sortIndex: 6
     }
   },
   {
@@ -137,9 +140,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'Brass',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Brass' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Brass' }
+        }
       ],
-      sortIndex: 8
+      sortIndex: 7
     }
   },
   {
@@ -149,9 +156,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'CastIron',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Cast Iron' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Cast Iron' }
+        }
       ],
-      sortIndex: 9
+      sortIndex: 8
     }
   },
   {
@@ -167,7 +178,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Ductile Iron' }
         }
       ],
-      sortIndex: 10
+      sortIndex: 9
     }
   },
   {
@@ -183,7 +194,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Hardened Stainless Steel' }
         }
       ],
-      sortIndex: 11
+      sortIndex: 10
     }
   },
   {
@@ -193,9 +204,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'MildSteel',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Mild Steel' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Mild Steel' }
+        }
       ],
-      sortIndex: 12
+      sortIndex: 11
     }
   },
   {
@@ -211,7 +226,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Nickel-Plated Brass' }
         }
       ],
-      sortIndex: 13
+      sortIndex: 12
     }
   },
   {
@@ -227,7 +242,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Nickel-Plated Steel' }
         }
       ],
-      sortIndex: 14
+      sortIndex: 13
     }
   },
   {
@@ -237,9 +252,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'Nylon',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Nylon' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Nylon' }
+        }
       ],
-      sortIndex: 15
+      sortIndex: 14
     }
   },
   {
@@ -255,7 +274,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Polypropylene' }
         }
       ],
-      sortIndex: 16
+      sortIndex: 15
     }
   },
   {
@@ -271,7 +290,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Polyvinyl Chloride' }
         }
       ],
-      sortIndex: 17
+      sortIndex: 16
     }
   },
   {
@@ -281,9 +300,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'ProMax',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Pro Max' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Pro Max' }
+        }
       ],
-      sortIndex: 18
+      sortIndex: 17
     }
   },
   {
@@ -293,9 +316,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'PTFE',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'PTFE' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'PTFE' }
+        }
       ],
-      sortIndex: 19
+      sortIndex: 18
     }
   },
   {
@@ -305,9 +332,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'PVDF',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'PVDF' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'PVDF' }
+        }
       ],
-      sortIndex: 20
+      sortIndex: 19
     }
   },
   {
@@ -317,9 +348,13 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
     value: 'Sapphire',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'Sapphire' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'Sapphire' }
+        }
       ],
-      sortIndex: 21
+      sortIndex: 20
     }
   },
   {
@@ -335,7 +370,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Stainless Steel' }
         }
       ],
-      sortIndex: 22
+      sortIndex: 21
     }
   },
   {
@@ -351,7 +386,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Tungsten Carbide' }
         }
       ],
-      sortIndex: 23
+      sortIndex: 22
     }
   },
   {
@@ -367,7 +402,7 @@ export const materialsFacetOptions: FacetOption<MaterialsFacetOptionKey>[] = [
           value: { en: 'Zinc-Plated Steel' }
         }
       ],
-      sortIndex: 24
+      sortIndex: 23
     }
   }
 ];
@@ -383,8 +418,6 @@ export const materialsFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: 'Category',
-    description: 'Category',
     isFacetingEnabled: true
   },
   options: materialsFacetOptions

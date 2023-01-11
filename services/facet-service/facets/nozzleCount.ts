@@ -8,52 +8,76 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum NozzleCountFacetOptionKey {
-  _2 = '_2',
-  _3 = '_3',
-  _4 = '_4',
-  _6 = '_6'
+  _2______ = '_2______',
+  _3______ = '_3______',
+  _4______ = '_4______',
+  _6______ = '_6______'
 }
 
 export const nozzleCountFacetOptions: FacetOption<NozzleCountFacetOptionKey>[] =
   [
     {
-      key: NozzleCountFacetOptionKey._2,
+      key: NozzleCountFacetOptionKey._2______,
       ...defaultFacetOption,
       valueId: '',
       value: 2,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 2 }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 2
+          }
+        ],
         sortIndex: 1
       }
     },
     {
-      key: NozzleCountFacetOptionKey._3,
+      key: NozzleCountFacetOptionKey._3______,
       ...defaultFacetOption,
       valueId: '',
       value: 3,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 3 }],
-        sortIndex: 4
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 3
+          }
+        ],
+        sortIndex: 2
       }
     },
     {
-      key: NozzleCountFacetOptionKey._4,
+      key: NozzleCountFacetOptionKey._4______,
       ...defaultFacetOption,
       valueId: '',
       value: 4,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 4 }],
-        sortIndex: 5
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 4
+          }
+        ],
+        sortIndex: 3
       }
     },
     {
-      key: NozzleCountFacetOptionKey._6,
+      key: NozzleCountFacetOptionKey._6______,
       ...defaultFacetOption,
       valueId: '',
       value: 6,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 6 }],
-        sortIndex: 7
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 6
+          }
+        ],
+        sortIndex: 4
       }
     }
   ];
@@ -69,8 +93,6 @@ export const nozzleCountFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: nozzleCountFacetOptions

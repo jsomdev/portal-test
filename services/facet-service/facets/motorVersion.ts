@@ -14,7 +14,6 @@ export enum MotorVersionFacetOptionKey {
   E_ = 'E_',
   EA = 'EA',
   EP = 'EP',
-  EP_ = 'EP_',
   ER = 'ER',
   ES = 'ES',
   ET = 'ET',
@@ -132,24 +131,6 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
       }
     },
     {
-      key: MotorVersionFacetOptionKey.EP_,
-      ...defaultFacetOption,
-      valueId: 'c3899bd8-e846-4ab7-aa85-29065f87345f',
-      value: 'EP',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: {
-              en: 'Electric Motor, 120V, NEMA 4, 4x, 7 & 9 for Water Tight and EX Proof'
-            }
-          }
-        ],
-        sortIndex: 7
-      }
-    },
-    {
       key: MotorVersionFacetOptionKey.ER,
       ...defaultFacetOption,
       valueId: '9fb62e56-931f-46ec-9718-a4972508694c',
@@ -165,7 +146,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 8
+        sortIndex: 7
       }
     },
     {
@@ -184,7 +165,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 9
+        sortIndex: 8
       }
     },
     {
@@ -203,7 +184,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 10
+        sortIndex: 9
       }
     },
     {
@@ -222,7 +203,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 11
+        sortIndex: 10
       }
     },
     {
@@ -241,7 +222,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 12
+        sortIndex: 11
       }
     }
   ];
@@ -257,8 +238,6 @@ export const motorVersionFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: motorVersionFacetOptions

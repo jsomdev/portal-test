@@ -11,11 +11,9 @@ export enum TankMountingOptionsFacetOptionKey {
   VerticalDownward45Upward45Downward = 'VerticalDownward45Upward45Downward',
   VerticalDownwardHorizontal45Downward = 'VerticalDownwardHorizontal45Downward',
   VerticalDownwardVerticalUpward = 'VerticalDownwardVerticalUpward',
-  VerticalDownwardVerticalUpward_ = 'VerticalDownwardVerticalUpward_',
   VerticalDownwardVerticalUpward45Upward45Downward = 'VerticalDownwardVerticalUpward45Upward45Downward',
   VerticalDownwardVerticalUpwardHorizontal = 'VerticalDownwardVerticalUpwardHorizontal',
-  VerticalDownwardVerticalUpwardHorizontal45Upward45Downward = 'VerticalDownwardVerticalUpwardHorizontal45Upward45Downward',
-  VerticalUpward = 'VerticalUpward'
+  VerticalDownwardVerticalUpwardHorizontal45Upward45Downward = 'VerticalDownwardVerticalUpwardHorizontal45Upward45Downward'
 }
 
 export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFacetOptionKey>[] =
@@ -52,9 +50,8 @@ export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFac
         sortIndex: 2
       }
     },
-
     {
-      key: TankMountingOptionsFacetOptionKey.VerticalDownwardVerticalUpward_,
+      key: TankMountingOptionsFacetOptionKey.VerticalDownwardVerticalUpward,
       ...defaultFacetOption,
       valueId: '',
       value: 'Vertical/Downward, Vertical/Upward',
@@ -66,7 +63,7 @@ export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFac
             value: { en: 'Vertical/Downward, Vertical/Upward' }
           }
         ],
-        sortIndex: 4
+        sortIndex: 3
       }
     },
     {
@@ -84,7 +81,7 @@ export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFac
             }
           }
         ],
-        sortIndex: 5
+        sortIndex: 4
       }
     },
     {
@@ -100,7 +97,7 @@ export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFac
             value: { en: 'Vertical/Downward, Vertical/Upward, Horizontal' }
           }
         ],
-        sortIndex: 6
+        sortIndex: 5
       }
     },
     {
@@ -119,23 +116,7 @@ export const tankMountingOptionsFacetOptions: FacetOption<TankMountingOptionsFac
             }
           }
         ],
-        sortIndex: 7
-      }
-    },
-    {
-      key: TankMountingOptionsFacetOptionKey.VerticalUpward,
-      ...defaultFacetOption,
-      valueId: '',
-      value: 'Vertical/Upward',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: { en: 'Vertical/Upward' }
-          }
-        ],
-        sortIndex: 8
+        sortIndex: 6
       }
     }
   ];

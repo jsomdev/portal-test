@@ -71,7 +71,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'FlatJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'FlatJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'FlatJet®' }
+        }
       ],
       sortIndex: 3
     }
@@ -83,7 +87,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'FloodJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'FloodJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'FloodJet®' }
+        }
       ],
       sortIndex: 4
     }
@@ -95,7 +103,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'FogJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'FogJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'FogJet®' }
+        }
       ],
       sortIndex: 5
     }
@@ -107,7 +119,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'FullJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'FullJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'FullJet®' }
+        }
       ],
       sortIndex: 6
     }
@@ -119,7 +135,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'GunJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'GunJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'GunJet®' }
+        }
       ],
       sortIndex: 7
     }
@@ -211,7 +231,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'QuickJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'QuickJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'QuickJet®' }
+        }
       ],
       sortIndex: 13
     }
@@ -239,7 +263,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'SpiralJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'SpiralJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'SpiralJet®' }
+        }
       ],
       sortIndex: 15
     }
@@ -251,7 +279,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'TankJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'TankJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'TankJet®' }
+        }
       ],
       sortIndex: 16
     }
@@ -263,7 +295,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'UniJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'UniJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'UniJet®' }
+        }
       ],
       sortIndex: 17
     }
@@ -275,7 +311,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'VeeJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'VeeJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'VeeJet®' }
+        }
       ],
       sortIndex: 18
     }
@@ -287,7 +327,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'WashJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'WashJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'WashJet®' }
+        }
       ],
       sortIndex: 19
     }
@@ -299,7 +343,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'WhirlJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'WhirlJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'WhirlJet®' }
+        }
       ],
       sortIndex: 20
     }
@@ -311,7 +359,11 @@ export const brandFacetOptions: FacetOption<BrandFacetOptionKey>[] = [
     value: 'WindJet',
     configuration: {
       displays: [
-        { variation: 'Invariant', unitSymbol: '', value: { en: 'WindJet®' } }
+        {
+          variation: 'Invariant',
+          unitSymbol: '',
+          value: { en: 'WindJet®' }
+        }
       ],
       sortIndex: 21
     }

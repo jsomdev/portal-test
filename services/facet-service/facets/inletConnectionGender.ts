@@ -21,7 +21,11 @@ export const inletConnectionGenderFacetOptions: FacetOption<InletConnectionGende
       value: 'Female',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Female' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Female' }
+          }
         ],
         sortIndex: 1
       }
@@ -33,7 +37,11 @@ export const inletConnectionGenderFacetOptions: FacetOption<InletConnectionGende
       value: 'Male',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Male' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Male' }
+          }
         ],
         sortIndex: 2
       }

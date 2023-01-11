@@ -8,23 +8,33 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum InletConnectionTypeFacetOptionKey {
+  _12_NTP_Inner_Thread = '_12_NTP_Inner_Thread',
+  _38_NTP_Inner_Thread = '_38_NTP_Inner_Thread',
+  B12_BSPT_Inner_Thread = 'B12_BSPT_Inner_Thread',
+  B38_BSPT_Inner_Thread = 'B38_BSPT_Inner_Thread',
   Flange = 'Flange',
+  G38_ISO228_Inner_Thread = 'G38_ISO228_Inner_Thread',
   HoseBarb = 'HoseBarb',
   QuickConnect = 'QuickConnect',
+  Rp38EN102261_Inner_Thread = 'Rp38EN102261_Inner_Thread',
+  SanitaryCIP122 = 'SanitaryCIP122',
   SanitaryCIP182 = 'SanitaryCIP182',
+  SanitaryCIP190 = 'SanitaryCIP190',
+  SanitaryCIP191 = 'SanitaryCIP191',
   SanitaryCIP192 = 'SanitaryCIP192',
   SanitaryCIP252 = 'SanitaryCIP252',
   SanitaryCIP257 = 'SanitaryCIP257',
   SlipCollarPinConnection = 'SlipCollarPinConnection',
-  Slipfit = 'Slipfit',
   Threaded_FemaleBSPT = 'Threaded_FemaleBSPT',
   Threaded_FemaleBSPTMountingLugs = 'Threaded_FemaleBSPTMountingLugs',
   Threaded_FemaleNPS = 'Threaded_FemaleNPS',
   Threaded_FemaleNPT = 'Threaded_FemaleNPT',
   Threaded_FemaleNPTMountingLugs = 'Threaded_FemaleNPTMountingLugs',
+  Threaded_MaleBSPP = 'Threaded_MaleBSPP',
   Threaded_MaleBSPT = 'Threaded_MaleBSPT',
   Threaded_MaleNPS = 'Threaded_MaleNPS',
   Threaded_MaleNPT = 'Threaded_MaleNPT',
+  Threaded1220JIC = 'Threaded1220JIC',
   ThreadedFemaleBSPTQuickConnect = 'ThreadedFemaleBSPTQuickConnect',
   ThreadedFemaleBSPTQuickDisconnectMale = 'ThreadedFemaleBSPTQuickDisconnectMale',
   ThreadedFemaleNPTHoseThreadMaleNST = 'ThreadedFemaleNPTHoseThreadMaleNST',
@@ -33,11 +43,76 @@ export enum InletConnectionTypeFacetOptionKey {
   ThreadedMaleBSPTQuickConnect = 'ThreadedMaleBSPTQuickConnect',
   ThreadedMaleNPTQuickConnect = 'ThreadedMaleNPTQuickConnect',
   Tube = 'Tube',
+  W19 = 'W19',
   Welded = 'Welded'
 }
 
 export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFacetOptionKey>[] =
   [
+    {
+      key: InletConnectionTypeFacetOptionKey._12_NTP_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: '1de29874-a035-4e3a-9590-acfd31fb197b',
+      value: '1/2_NTP_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '1/2 NTP Inner Thread' }
+          }
+        ],
+        sortIndex: 1
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey._38_NTP_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: 'd6fce0b8-8792-4ee2-a986-df66bb774cc7',
+      value: '3/8_NTP_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '3/8 NTP Inner Thread' }
+          }
+        ],
+        sortIndex: 2
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.B12_BSPT_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: '9b34ccb4-f367-4bd9-97df-9306bd8a3602',
+      value: 'B1/2_BSPT_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '1/2 BSPT Inner Thread' }
+          }
+        ],
+        sortIndex: 3
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.B38_BSPT_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: 'bb4fd054-748a-4a48-8994-50f368a41e29',
+      value: 'B3/8_BSPT_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '3/8 BSPT Inner Thread' }
+          }
+        ],
+        sortIndex: 4
+      }
+    },
     {
       key: InletConnectionTypeFacetOptionKey.Flange,
       ...defaultFacetOption,
@@ -45,9 +120,29 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
       value: 'Flange',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Flange' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Flange' }
+          }
         ],
-        sortIndex: 1
+        sortIndex: 5
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.G38_ISO228_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: 'ecba0990-59b5-4bbe-ac2b-b6cdfbd3232a',
+      value: 'G3/8_ISO228_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'G3/8 ISO228 Inner Thread' }
+          }
+        ],
+        sortIndex: 6
       }
     },
     {
@@ -57,9 +152,13 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
       value: 'HoseBarb',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Hose Barb' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Hose Barb' }
+          }
         ],
-        sortIndex: 2
+        sortIndex: 7
       }
     },
     {
@@ -75,7 +174,39 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Quick-connect' }
           }
         ],
-        sortIndex: 3
+        sortIndex: 8
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.Rp38EN102261_Inner_Thread,
+      ...defaultFacetOption,
+      valueId: '4c271624-c8c6-459f-a62e-f87765ccf78a',
+      value: 'Rp3/8EN10226-1_Inner_Thread',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Rp3/8 EN10226-1 Inner Thread' }
+          }
+        ],
+        sortIndex: 9
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.SanitaryCIP122,
+      ...defaultFacetOption,
+      valueId: '8a42e3dd-16d0-4ade-9698-e327d09a756f',
+      value: 'SanitaryCIP122',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Sanitary (CIP 122)' }
+          }
+        ],
+        sortIndex: 10
       }
     },
     {
@@ -91,7 +222,39 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Sanitary (CIP 182)' }
           }
         ],
-        sortIndex: 4
+        sortIndex: 11
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.SanitaryCIP190,
+      ...defaultFacetOption,
+      valueId: 'ae597b06-e4eb-4278-85a6-01a72023b5ab',
+      value: 'SanitaryCIP190',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Sanitary (CIP 190)' }
+          }
+        ],
+        sortIndex: 12
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.SanitaryCIP191,
+      ...defaultFacetOption,
+      valueId: '540bc83b-b1d3-47ac-bb78-351fcdb8d7ad',
+      value: 'SanitaryCIP191',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Sanitary (CIP 191)' }
+          }
+        ],
+        sortIndex: 13
       }
     },
     {
@@ -107,7 +270,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Sanitary (CIP 192)' }
           }
         ],
-        sortIndex: 5
+        sortIndex: 14
       }
     },
     {
@@ -123,7 +286,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Sanitary (CIP 252)' }
           }
         ],
-        sortIndex: 6
+        sortIndex: 15
       }
     },
     {
@@ -139,7 +302,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Sanitary (CIP 257)' }
           }
         ],
-        sortIndex: 7
+        sortIndex: 16
       }
     },
     {
@@ -155,19 +318,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Slip Collar Pin Connection' }
           }
         ],
-        sortIndex: 8
-      }
-    },
-    {
-      key: InletConnectionTypeFacetOptionKey.Slipfit,
-      ...defaultFacetOption,
-      valueId: '7c06f160-e5d7-4849-a837-34a14baa0a23',
-      value: 'Slipfit',
-      configuration: {
-        displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Slip-fit' } }
-        ],
-        sortIndex: 9
+        sortIndex: 17
       }
     },
     {
@@ -183,7 +334,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female BSPT)' }
           }
         ],
-        sortIndex: 10
+        sortIndex: 18
       }
     },
     {
@@ -199,7 +350,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female BSPT) + Mounting Lugs' }
           }
         ],
-        sortIndex: 11
+        sortIndex: 19
       }
     },
     {
@@ -215,7 +366,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPS)' }
           }
         ],
-        sortIndex: 12
+        sortIndex: 20
       }
     },
     {
@@ -231,7 +382,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPT)' }
           }
         ],
-        sortIndex: 13
+        sortIndex: 21
       }
     },
     {
@@ -247,7 +398,23 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPT) + Mounting Lugs' }
           }
         ],
-        sortIndex: 14
+        sortIndex: 22
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.Threaded_MaleBSPP,
+      ...defaultFacetOption,
+      valueId: '77169f60-9fa0-43db-91b1-d2fccd61ca3d',
+      value: 'Threaded.MaleBSPP',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Threaded (Male BSPP)' }
+          }
+        ],
+        sortIndex: 23
       }
     },
     {
@@ -263,7 +430,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Male BSPT)' }
           }
         ],
-        sortIndex: 15
+        sortIndex: 24
       }
     },
     {
@@ -279,7 +446,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Male NPS)' }
           }
         ],
-        sortIndex: 16
+        sortIndex: 25
       }
     },
     {
@@ -295,7 +462,23 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Male NPT)' }
           }
         ],
-        sortIndex: 17
+        sortIndex: 26
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.Threaded1220JIC,
+      ...defaultFacetOption,
+      valueId: '8b633c93-2c91-41a1-89b4-1e00b9a70f17',
+      value: 'Threaded1/2-20JIC)',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Threaded (1/2-20 JIC)' }
+          }
+        ],
+        sortIndex: 27
       }
     },
     {
@@ -311,7 +494,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female BSPT) + Quick-Connect' }
           }
         ],
-        sortIndex: 18
+        sortIndex: 28
       }
     },
     {
@@ -327,7 +510,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female BSPT) + Quick-Disconnect (Male)' }
           }
         ],
-        sortIndex: 19
+        sortIndex: 29
       }
     },
     {
@@ -343,7 +526,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPT) + Hose Thread (Male NST)' }
           }
         ],
-        sortIndex: 20
+        sortIndex: 30
       }
     },
     {
@@ -359,7 +542,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPT) + Quick-Connect' }
           }
         ],
-        sortIndex: 21
+        sortIndex: 31
       }
     },
     {
@@ -375,7 +558,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Female NPT) + Quick-Disconnect (Male)' }
           }
         ],
-        sortIndex: 22
+        sortIndex: 32
       }
     },
     {
@@ -391,7 +574,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Male BSPT) + Quick-Connect' }
           }
         ],
-        sortIndex: 23
+        sortIndex: 33
       }
     },
     {
@@ -407,7 +590,7 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
             value: { en: 'Threaded (Male NPT) + Quick-Connect' }
           }
         ],
-        sortIndex: 24
+        sortIndex: 34
       }
     },
     {
@@ -417,9 +600,31 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
       value: 'Tube',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Tube' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Tube' }
+          }
         ],
-        sortIndex: 25
+        sortIndex: 35
+      }
+    },
+    {
+      key: InletConnectionTypeFacetOptionKey.W19,
+      ...defaultFacetOption,
+      valueId: '849d53b1-a9b5-4ebf-9b90-a289cc44fe96',
+      value: 'W19',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: {
+              en: 'Welding adapter diameter 19,2 mm without cotter pin bore'
+            }
+          }
+        ],
+        sortIndex: 36
       }
     },
     {
@@ -429,9 +634,13 @@ export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFac
       value: 'Welded',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Welded' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Welded' }
+          }
         ],
-        sortIndex: 26
+        sortIndex: 37
       }
     }
   ];

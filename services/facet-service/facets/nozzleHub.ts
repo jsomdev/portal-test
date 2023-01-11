@@ -52,7 +52,7 @@ export const nozzleHubFacetOptions: FacetOption<NozzleHubFacetOptionKey>[] = [
     key: NozzleHubFacetOptionKey._360Coveragefor18NPTTip,
     ...defaultFacetOption,
     valueId: '',
-    value: '360° Coverage, for 1/8&quot; NPT Tip',
+    value: '360° Coverage, for 1/8" NPT Tip',
     configuration: {
       displays: [
         {
@@ -68,7 +68,7 @@ export const nozzleHubFacetOptions: FacetOption<NozzleHubFacetOptionKey>[] = [
     key: NozzleHubFacetOptionKey._360CoverageforWorWDTip,
     ...defaultFacetOption,
     valueId: '',
-    value: '360° Coverage, for W or WD Tip', // 360° Coverage, for W or WD Tip
+    value: '360° Coverage, for W or WD Tip',
     configuration: {
       displays: [
         {
@@ -109,8 +109,6 @@ export const nozzleHubFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: nozzleHubFacetOptions

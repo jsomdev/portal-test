@@ -27,13 +27,13 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
       key: SprayPatternFacetOptionKey._360CircularSpray,
       ...defaultFacetOption,
       valueId: 'd0041671-f979-4245-8dda-23971b4bb3e4',
-      value: '360&#176;CircularSpray',
+      value: '360°CircularSpray',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '360&#176; Circular Spray' }
+            value: { en: '360° Circular Spray' }
           }
         ],
         sortIndex: 1
@@ -78,7 +78,11 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
       value: 'FlatFan',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Flat Fan' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Flat Fan' }
+          }
         ],
         sortIndex: 4
       }
@@ -208,8 +212,6 @@ export const sprayPatternFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: 'Category',
-    description: 'Category',
     isFacetingEnabled: true
   },
   options: sprayPatternFacetOptions

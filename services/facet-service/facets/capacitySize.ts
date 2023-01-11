@@ -35,8 +35,11 @@ export enum CapacitySizeFacetOptionKey {
   _0021 = '_0021',
   _0023 = '_0023',
   _0025 = '_0025',
+  _0027 = '_0027',
   _0033 = '_0033',
+  _0037 = '_0037',
   _0039 = '_0039',
+  _0046 = '_0046',
   _0050 = '_0050',
   _0067 = '_0067',
   _0077 = '_0077',
@@ -124,8 +127,6 @@ export enum CapacitySizeFacetOptionKey {
   _14W = '_14W',
   _14WSQ = '_14WSQ',
   _15 = '_15',
-  _15_ = '_15_',
-  _15__ = '_15__',
   _150 = '_150',
   _1500 = '_1500',
   _15045 = '_15045',
@@ -208,6 +209,7 @@ export enum CapacitySizeFacetOptionKey {
   _20W = '_20W',
   _20WSQ = '_20WSQ',
   _21 = '_21',
+  _21_ = '_21_',
   _210 = '_210',
   _210_ = '_210_',
   _210W = '_210W',
@@ -225,8 +227,6 @@ export enum CapacitySizeFacetOptionKey {
   _230SQ = '_230SQ',
   _23W = '_23W',
   _24 = '_24',
-  _24_ = '_24_',
-  _24__ = '_24__',
   _240 = '_240',
   _2400 = '_2400',
   _24W = '_24W',
@@ -310,8 +310,6 @@ export enum CapacitySizeFacetOptionKey {
   _315W = '_315W',
   _32 = '_32',
   _32_ = '_32_',
-  _32__ = '_32__',
-  _32___ = '_32___',
   _320 = '_320',
   _320_ = '_320_',
   _320W = '_320W',
@@ -341,8 +339,6 @@ export enum CapacitySizeFacetOptionKey {
   _4_2 = '_4_2',
   _4_3W = '_4_3W',
   _4_5 = '_4_5',
-  _4_5_ = '_4_5_',
-  _4_5__ = '_4_5__',
   _4_8 = '_4_8',
   _4_8SQ = '_4_8SQ',
   _4_9VL = '_4_9VL',
@@ -372,6 +368,7 @@ export enum CapacitySizeFacetOptionKey {
   _4545 = '_4545',
   _45W = '_45W',
   _45WSQ = '_45WSQ',
+  _46 = '_46',
   _470 = '_470',
   _47W = '_47W',
   _48 = '_48',
@@ -420,8 +417,6 @@ export enum CapacitySizeFacetOptionKey {
   _590SQ = '_590SQ',
   _5W = '_5W',
   _6 = '_6',
-  _6_ = '_6_',
-  _6__ = '_6__',
   _6_1 = '_6_1',
   _6_5 = '_6_5',
   _6_5VL = '_6_5VL',
@@ -469,10 +464,9 @@ export enum CapacitySizeFacetOptionKey {
   _8SQ = '_8SQ',
   _8W = '_8W',
   _9 = '_9',
-  _9_ = '_9_',
-  _9__ = '_9__',
   _9_2VL = '_9_2VL',
   _9_5 = '_9_5',
+  _9_9 = '_9_9',
   _90_ = '_90_',
   _900 = '_900',
   _950SQ = '_950SQ',
@@ -560,7 +554,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.25' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.25'
+          }
+        ],
         sortIndex: 1
       }
     },
@@ -570,7 +570,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.30',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.30' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.30'
+          }
+        ],
         sortIndex: 2
       }
     },
@@ -580,7 +586,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.37',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.37' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.37'
+          }
+        ],
         sortIndex: 3
       }
     },
@@ -590,7 +602,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.40',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.40' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.40'
+          }
+        ],
         sortIndex: 4
       }
     },
@@ -600,7 +618,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.5'
+          }
+        ],
         sortIndex: 5
       }
     },
@@ -610,7 +634,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.50',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.50' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.50'
+          }
+        ],
         sortIndex: 6
       }
     },
@@ -620,7 +650,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.60',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.60' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.60'
+          }
+        ],
         sortIndex: 7
       }
     },
@@ -630,7 +666,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.75',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.75' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.75'
+          }
+        ],
         sortIndex: 8
       }
     },
@@ -640,7 +682,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.80',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.80' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.80'
+          }
+        ],
         sortIndex: 9
       }
     },
@@ -650,7 +698,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '.90',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '.90' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '.90'
+          }
+        ],
         sortIndex: 10
       }
     },
@@ -660,7 +714,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.1',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.1' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.1'
+          }
+        ],
         sortIndex: 11
       }
     },
@@ -670,7 +730,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.25' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.25'
+          }
+        ],
         sortIndex: 12
       }
     },
@@ -680,7 +746,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.3',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.3' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.3'
+          }
+        ],
         sortIndex: 13
       }
     },
@@ -690,7 +762,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.4',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.4' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.4'
+          }
+        ],
         sortIndex: 14
       }
     },
@@ -700,7 +778,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.5'
+          }
+        ],
         sortIndex: 15
       }
     },
@@ -711,7 +795,11 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: '0.5-0.5W',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: '0.5-0.5W' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.5-0.5W'
+          }
         ],
         sortIndex: 16
       }
@@ -722,7 +810,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.54',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.54' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.54'
+          }
+        ],
         sortIndex: 17
       }
     },
@@ -732,7 +826,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.6',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.6' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.6'
+          }
+        ],
         sortIndex: 18
       }
     },
@@ -742,7 +842,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.7',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.7' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.7'
+          }
+        ],
         sortIndex: 19
       }
     },
@@ -752,7 +858,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0.75',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0.75' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0.75'
+          }
+        ],
         sortIndex: 20
       }
     },
@@ -762,7 +874,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0009',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0009' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0009'
+          }
+        ],
         sortIndex: 21
       }
     },
@@ -772,7 +890,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0012',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0012' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0012'
+          }
+        ],
         sortIndex: 22
       }
     },
@@ -782,7 +906,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0017',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0017' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0017'
+          }
+        ],
         sortIndex: 23
       }
     },
@@ -792,7 +922,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0019',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0019' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0019'
+          }
+        ],
         sortIndex: 24
       }
     },
@@ -802,7 +938,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0021',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0021' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0021'
+          }
+        ],
         sortIndex: 25
       }
     },
@@ -812,7 +954,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0023',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0023' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0023'
+          }
+        ],
         sortIndex: 26
       }
     },
@@ -822,8 +970,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0025',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0025' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0025'
+          }
+        ],
         sortIndex: 27
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._0027,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '0027',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.5 gpm @ 40 psi'
+          }
+        ],
+        sortIndex: 28
       }
     },
     {
@@ -832,8 +1002,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0033',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0033' }],
-        sortIndex: 28
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0033'
+          }
+        ],
+        sortIndex: 29
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._0037,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '0037',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '9.9 gpm @ 40 psi'
+          }
+        ],
+        sortIndex: 30
       }
     },
     {
@@ -842,8 +1034,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0039',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0039' }],
-        sortIndex: 29
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0039'
+          }
+        ],
+        sortIndex: 31
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._0046,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '0046',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '13.6 gpm @ 40 psi'
+          }
+        ],
+        sortIndex: 32
       }
     },
     {
@@ -852,8 +1066,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0050',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0050' }],
-        sortIndex: 30
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0050'
+          }
+        ],
+        sortIndex: 33
       }
     },
     {
@@ -862,8 +1082,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0067',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0067' }],
-        sortIndex: 31
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0067'
+          }
+        ],
+        sortIndex: 34
       }
     },
     {
@@ -872,8 +1098,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0077',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0077' }],
-        sortIndex: 32
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0077'
+          }
+        ],
+        sortIndex: 35
       }
     },
     {
@@ -882,8 +1114,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '01',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '01' }],
-        sortIndex: 33
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '01'
+          }
+        ],
+        sortIndex: 36
       }
     },
     {
@@ -892,8 +1130,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0116',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0116' }],
-        sortIndex: 34
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0116'
+          }
+        ],
+        sortIndex: 37
       }
     },
     {
@@ -902,8 +1146,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '015',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '015' }],
-        sortIndex: 35
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '015'
+          }
+        ],
+        sortIndex: 38
       }
     },
     {
@@ -912,8 +1162,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0154',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0154' }],
-        sortIndex: 36
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0154'
+          }
+        ],
+        sortIndex: 39
       }
     },
     {
@@ -922,8 +1178,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '02',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '02' }],
-        sortIndex: 37
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '02'
+          }
+        ],
+        sortIndex: 40
       }
     },
     {
@@ -932,8 +1194,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0231',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0231' }],
-        sortIndex: 38
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0231'
+          }
+        ],
+        sortIndex: 41
       }
     },
     {
@@ -942,8 +1210,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '025',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '025' }],
-        sortIndex: 39
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '025'
+          }
+        ],
+        sortIndex: 42
       }
     },
     {
@@ -952,8 +1226,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '03',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '03' }],
-        sortIndex: 40
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '03'
+          }
+        ],
+        sortIndex: 43
       }
     },
     {
@@ -962,8 +1242,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0308',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0308' }],
-        sortIndex: 41
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0308'
+          }
+        ],
+        sortIndex: 44
       }
     },
     {
@@ -972,8 +1258,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '035',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '035' }],
-        sortIndex: 42
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '035'
+          }
+        ],
+        sortIndex: 45
       }
     },
     {
@@ -982,8 +1274,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0385',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0385' }],
-        sortIndex: 43
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0385'
+          }
+        ],
+        sortIndex: 46
       }
     },
     {
@@ -992,8 +1290,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '04',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '04' }],
-        sortIndex: 44
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '04'
+          }
+        ],
+        sortIndex: 47
       }
     },
     {
@@ -1002,8 +1306,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '045',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '045' }],
-        sortIndex: 45
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '045'
+          }
+        ],
+        sortIndex: 48
       }
     },
     {
@@ -1012,8 +1322,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0462',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0462' }],
-        sortIndex: 46
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0462'
+          }
+        ],
+        sortIndex: 49
       }
     },
     {
@@ -1022,8 +1338,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '05',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '05' }],
-        sortIndex: 47
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '05'
+          }
+        ],
+        sortIndex: 50
       }
     },
     {
@@ -1032,8 +1354,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '055',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '055' }],
-        sortIndex: 48
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '055'
+          }
+        ],
+        sortIndex: 51
       }
     },
     {
@@ -1042,8 +1370,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '06',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '06' }],
-        sortIndex: 49
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '06'
+          }
+        ],
+        sortIndex: 52
       }
     },
     {
@@ -1052,8 +1386,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0616',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0616' }],
-        sortIndex: 50
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0616'
+          }
+        ],
+        sortIndex: 53
       }
     },
     {
@@ -1062,8 +1402,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '065',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '065' }],
-        sortIndex: 51
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '065'
+          }
+        ],
+        sortIndex: 54
       }
     },
     {
@@ -1072,8 +1418,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '07',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '07' }],
-        sortIndex: 52
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '07'
+          }
+        ],
+        sortIndex: 55
       }
     },
     {
@@ -1082,8 +1434,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '075',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '075' }],
-        sortIndex: 53
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '075'
+          }
+        ],
+        sortIndex: 56
       }
     },
     {
@@ -1092,8 +1450,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0770',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0770' }],
-        sortIndex: 54
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0770'
+          }
+        ],
+        sortIndex: 57
       }
     },
     {
@@ -1102,8 +1466,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '08',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '08' }],
-        sortIndex: 55
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '08'
+          }
+        ],
+        sortIndex: 58
       }
     },
     {
@@ -1112,8 +1482,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '085',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '085' }],
-        sortIndex: 56
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '085'
+          }
+        ],
+        sortIndex: 59
       }
     },
     {
@@ -1122,8 +1498,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '09',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '09' }],
-        sortIndex: 57
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '09'
+          }
+        ],
+        sortIndex: 60
       }
     },
     {
@@ -1132,8 +1514,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '0924',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '0924' }],
-        sortIndex: 58
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '0924'
+          }
+        ],
+        sortIndex: 61
       }
     },
     {
@@ -1142,8 +1530,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '095',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '095' }],
-        sortIndex: 59
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '095'
+          }
+        ],
+        sortIndex: 62
       }
     },
     {
@@ -1152,8 +1546,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1' }],
-        sortIndex: 60
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1'
+          }
+        ],
+        sortIndex: 63
       }
     },
     {
@@ -1162,8 +1562,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1.25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1.25' }],
-        sortIndex: 61
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1.25'
+          }
+        ],
+        sortIndex: 64
       }
     },
     {
@@ -1172,8 +1578,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1.3',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1.3' }],
-        sortIndex: 62
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1.3'
+          }
+        ],
+        sortIndex: 65
       }
     },
     {
@@ -1182,8 +1594,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1.5' }],
-        sortIndex: 63
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1.5'
+          }
+        ],
+        sortIndex: 66
       }
     },
     {
@@ -1192,8 +1610,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1.5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1.5W' }],
-        sortIndex: 64
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1.5W'
+          }
+        ],
+        sortIndex: 67
       }
     },
     {
@@ -1202,8 +1626,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1.8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1.8' }],
-        sortIndex: 65
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1.8'
+          }
+        ],
+        sortIndex: 68
       }
     },
     {
@@ -1212,8 +1642,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10' }],
-        sortIndex: 66
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10'
+          }
+        ],
+        sortIndex: 69
       }
     },
     {
@@ -1222,8 +1658,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '100',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '100' }],
-        sortIndex: 67
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '100'
+          }
+        ],
+        sortIndex: 70
       }
     },
     {
@@ -1232,8 +1674,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1000',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1000' }],
-        sortIndex: 68
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1000'
+          }
+        ],
+        sortIndex: 71
       }
     },
     {
@@ -1242,8 +1690,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '100-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '100-45' }],
-        sortIndex: 69
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '100-45'
+          }
+        ],
+        sortIndex: 72
       }
     },
     {
@@ -1252,8 +1706,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-10W' }],
-        sortIndex: 70
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-10W'
+          }
+        ],
+        sortIndex: 73
       }
     },
     {
@@ -1262,8 +1722,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-15' }],
-        sortIndex: 71
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-15'
+          }
+        ],
+        sortIndex: 74
       }
     },
     {
@@ -1272,8 +1738,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-15W' }],
-        sortIndex: 72
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-15W'
+          }
+        ],
+        sortIndex: 75
       }
     },
     {
@@ -1282,8 +1754,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-2',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-2' }],
-        sortIndex: 73
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-2'
+          }
+        ],
+        sortIndex: 76
       }
     },
     {
@@ -1292,8 +1770,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-20' }],
-        sortIndex: 74
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-20'
+          }
+        ],
+        sortIndex: 77
       }
     },
     {
@@ -1302,8 +1786,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-20W' }],
-        sortIndex: 75
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-20W'
+          }
+        ],
+        sortIndex: 78
       }
     },
     {
@@ -1312,8 +1802,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-30W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-30W' }],
-        sortIndex: 76
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-30W'
+          }
+        ],
+        sortIndex: 79
       }
     },
     {
@@ -1322,8 +1818,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-45' }],
-        sortIndex: 77
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-45'
+          }
+        ],
+        sortIndex: 80
       }
     },
     {
@@ -1332,8 +1834,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-5' }],
-        sortIndex: 78
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-5'
+          }
+        ],
+        sortIndex: 81
       }
     },
     {
@@ -1342,8 +1850,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-5W' }],
-        sortIndex: 79
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-5W'
+          }
+        ],
+        sortIndex: 82
       }
     },
     {
@@ -1352,8 +1866,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '106SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '106SQ' }],
-        sortIndex: 80
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '106SQ'
+          }
+        ],
+        sortIndex: 83
       }
     },
     {
@@ -1363,9 +1883,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: '1070WSQ',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: '1070WSQ' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1070WSQ'
+          }
         ],
-        sortIndex: 81
+        sortIndex: 84
       }
     },
     {
@@ -1374,8 +1898,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-8' }],
-        sortIndex: 82
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-8'
+          }
+        ],
+        sortIndex: 85
       }
     },
     {
@@ -1384,8 +1914,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10-8W' }],
-        sortIndex: 83
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10-8W'
+          }
+        ],
+        sortIndex: 86
       }
     },
     {
@@ -1394,8 +1930,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10SQ' }],
-        sortIndex: 84
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10SQ'
+          }
+        ],
+        sortIndex: 87
       }
     },
     {
@@ -1404,8 +1946,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '10W' }],
-        sortIndex: 85
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '10W'
+          }
+        ],
+        sortIndex: 88
       }
     },
     {
@@ -1414,8 +1962,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '11',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '11' }],
-        sortIndex: 86
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '11'
+          }
+        ],
+        sortIndex: 89
       }
     },
     {
@@ -1424,8 +1978,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '110',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '110' }],
-        sortIndex: 87
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '110'
+          }
+        ],
+        sortIndex: 90
       }
     },
     {
@@ -1434,8 +1994,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1100',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1100' }],
-        sortIndex: 88
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1100'
+          }
+        ],
+        sortIndex: 91
       }
     },
     {
@@ -1444,8 +2010,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1-10W' }],
-        sortIndex: 89
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1-10W'
+          }
+        ],
+        sortIndex: 92
       }
     },
     {
@@ -1454,8 +2026,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '115',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '115' }],
-        sortIndex: 90
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '115'
+          }
+        ],
+        sortIndex: 93
       }
     },
     {
@@ -1464,8 +2042,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1-15W' }],
-        sortIndex: 91
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1-15W'
+          }
+        ],
+        sortIndex: 94
       }
     },
     {
@@ -1474,8 +2058,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '11W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '11W' }],
-        sortIndex: 92
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '11W'
+          }
+        ],
+        sortIndex: 95
       }
     },
     {
@@ -1484,8 +2074,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1-1W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1-1W' }],
-        sortIndex: 93
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1-1W'
+          }
+        ],
+        sortIndex: 96
       }
     },
     {
@@ -1494,8 +2090,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '12',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '12' }],
-        sortIndex: 94
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '12'
+          }
+        ],
+        sortIndex: 97
       }
     },
     {
@@ -1504,8 +2106,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '12.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '12.5' }],
-        sortIndex: 95
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '12.5'
+          }
+        ],
+        sortIndex: 98
       }
     },
     {
@@ -1514,8 +2122,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '120',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '120' }],
-        sortIndex: 96
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '120'
+          }
+        ],
+        sortIndex: 99
       }
     },
     {
@@ -1524,8 +2138,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1200',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1200' }],
-        sortIndex: 97
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1200'
+          }
+        ],
+        sortIndex: 100
       }
     },
     {
@@ -1534,8 +2154,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '120-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '120-45' }],
-        sortIndex: 98
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '120-45'
+          }
+        ],
+        sortIndex: 101
       }
     },
     {
@@ -1544,8 +2170,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '12-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '12-45' }],
-        sortIndex: 99
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '12-45'
+          }
+        ],
+        sortIndex: 102
       }
     },
     {
@@ -1554,8 +2186,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '125',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '125' }],
-        sortIndex: 100
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '125'
+          }
+        ],
+        sortIndex: 103
       }
     },
     {
@@ -1564,8 +2202,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '12SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '12SQ' }],
-        sortIndex: 101
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '12SQ'
+          }
+        ],
+        sortIndex: 104
       }
     },
     {
@@ -1574,8 +2218,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '12W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '12W' }],
-        sortIndex: 102
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '12W'
+          }
+        ],
+        sortIndex: 105
       }
     },
     {
@@ -1584,25 +2234,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '13',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '13' }],
-        sortIndex: 103
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '13'
+          }
+        ],
+        sortIndex: 106
       }
     },
     {
       key: CapacitySizeFacetOptionKey._13_6,
       ...defaultFacetOption,
       valueId: '',
-      value: '-13.6',
+      value: '13.6',
       configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '51.5 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '13.6 gpm @ 40 psi' }
+            value: '13.6'
+          }
         ],
-        sortIndex: 104
+        sortIndex: 107
       }
     },
     {
@@ -1611,8 +2266,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1300',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1300' }],
-        sortIndex: 105
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1300'
+          }
+        ],
+        sortIndex: 108
       }
     },
     {
@@ -1621,8 +2282,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '130WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '130WSQ' }],
-        sortIndex: 106
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '130WSQ'
+          }
+        ],
+        sortIndex: 109
       }
     },
     {
@@ -1631,8 +2298,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '135',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '135' }],
-        sortIndex: 107
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '135'
+          }
+        ],
+        sortIndex: 110
       }
     },
     {
@@ -1641,8 +2314,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '14',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '14' }],
-        sortIndex: 108
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '14'
+          }
+        ],
+        sortIndex: 111
       }
     },
     {
@@ -1651,8 +2330,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '14.5SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '14.5SQ' }],
-        sortIndex: 109
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '14.5SQ'
+          }
+        ],
+        sortIndex: 112
       }
     },
     {
@@ -1661,8 +2346,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '140',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '140' }],
-        sortIndex: 110
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '140'
+          }
+        ],
+        sortIndex: 113
       }
     },
     {
@@ -1671,8 +2362,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1400',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1400' }],
-        sortIndex: 111
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1400'
+          }
+        ],
+        sortIndex: 114
       }
     },
     {
@@ -1681,8 +2378,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '140-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '140-45' }],
-        sortIndex: 112
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '140-45'
+          }
+        ],
+        sortIndex: 115
       }
     },
     {
@@ -1691,8 +2394,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '14-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '14-45' }],
-        sortIndex: 113
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '14-45'
+          }
+        ],
+        sortIndex: 116
       }
     },
     {
@@ -1701,8 +2410,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '14W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '14W' }],
-        sortIndex: 114
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '14W'
+          }
+        ],
+        sortIndex: 117
       }
     },
     {
@@ -1711,8 +2426,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '14WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '14WSQ' }],
-        sortIndex: 115
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '14WSQ'
+          }
+        ],
+        sortIndex: 118
       }
     },
     {
@@ -1721,26 +2442,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15' }],
-        sortIndex: 116
-      }
-    },
-
-    {
-      key: CapacitySizeFacetOptionKey._15__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-15',
-      configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '56.8 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '15 gpm @ 40 psi' }
+            value: '15'
+          }
         ],
-        sortIndex: 118
+        sortIndex: 119
       }
     },
     {
@@ -1749,8 +2458,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '150',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '150' }],
-        sortIndex: 119
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '150'
+          }
+        ],
+        sortIndex: 120
       }
     },
     {
@@ -1759,8 +2474,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1500' }],
-        sortIndex: 120
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1500'
+          }
+        ],
+        sortIndex: 121
       }
     },
     {
@@ -1769,8 +2490,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '150-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '150-45' }],
-        sortIndex: 121
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '150-45'
+          }
+        ],
+        sortIndex: 122
       }
     },
     {
@@ -1779,8 +2506,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1507',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1507' }],
-        sortIndex: 122
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1507'
+          }
+        ],
+        sortIndex: 123
       }
     },
     {
@@ -1789,8 +2522,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-10' }],
-        sortIndex: 123
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-10'
+          }
+        ],
+        sortIndex: 124
       }
     },
     {
@@ -1799,8 +2538,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-10W' }],
-        sortIndex: 124
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-10W'
+          }
+        ],
+        sortIndex: 125
       }
     },
     {
@@ -1809,8 +2554,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '151150',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '151150' }],
-        sortIndex: 125
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '151150'
+          }
+        ],
+        sortIndex: 126
       }
     },
     {
@@ -1819,8 +2570,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1514',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1514' }],
-        sortIndex: 126
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1514'
+          }
+        ],
+        sortIndex: 127
       }
     },
     {
@@ -1829,8 +2586,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15150',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15150' }],
-        sortIndex: 127
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15150'
+          }
+        ],
+        sortIndex: 128
       }
     },
     {
@@ -1839,8 +2602,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-15W' }],
-        sortIndex: 128
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-15W'
+          }
+        ],
+        sortIndex: 129
       }
     },
     {
@@ -1850,9 +2619,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: '15-15W*',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: '15-15W*' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-15W*'
+          }
         ],
-        sortIndex: 129
+        sortIndex: 130
       }
     },
     {
@@ -1861,8 +2634,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '151750',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '151750' }],
-        sortIndex: 130
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '151750'
+          }
+        ],
+        sortIndex: 131
       }
     },
     {
@@ -1871,8 +2650,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-20' }],
-        sortIndex: 131
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-20'
+          }
+        ],
+        sortIndex: 132
       }
     },
     {
@@ -1881,8 +2666,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-20W' }],
-        sortIndex: 132
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-20W'
+          }
+        ],
+        sortIndex: 133
       }
     },
     {
@@ -1891,8 +2682,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '152500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '152500' }],
-        sortIndex: 133
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '152500'
+          }
+        ],
+        sortIndex: 134
       }
     },
     {
@@ -1901,8 +2698,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-25W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-25W' }],
-        sortIndex: 134
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-25W'
+          }
+        ],
+        sortIndex: 135
       }
     },
     {
@@ -1911,8 +2714,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15280',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15280' }],
-        sortIndex: 135
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15280'
+          }
+        ],
+        sortIndex: 136
       }
     },
     {
@@ -1921,8 +2730,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1530',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1530' }],
-        sortIndex: 136
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1530'
+          }
+        ],
+        sortIndex: 137
       }
     },
     {
@@ -1931,8 +2746,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-30W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-30W' }],
-        sortIndex: 137
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-30W'
+          }
+        ],
+        sortIndex: 138
       }
     },
     {
@@ -1941,8 +2762,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15430',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15430' }],
-        sortIndex: 138
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15430'
+          }
+        ],
+        sortIndex: 139
       }
     },
     {
@@ -1951,8 +2778,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '154500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '154500' }],
-        sortIndex: 139
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '154500'
+          }
+        ],
+        sortIndex: 140
       }
     },
     {
@@ -1961,8 +2794,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-5' }],
-        sortIndex: 140
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-5'
+          }
+        ],
+        sortIndex: 141
       }
     },
     {
@@ -1971,8 +2810,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1550',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1550' }],
-        sortIndex: 141
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1550'
+          }
+        ],
+        sortIndex: 142
       }
     },
     {
@@ -1981,8 +2826,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-5W' }],
-        sortIndex: 142
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-5W'
+          }
+        ],
+        sortIndex: 143
       }
     },
     {
@@ -1991,8 +2842,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15630',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15630' }],
-        sortIndex: 143
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15630'
+          }
+        ],
+        sortIndex: 144
       }
     },
     {
@@ -2001,8 +2858,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '157000',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '157000' }],
-        sortIndex: 144
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '157000'
+          }
+        ],
+        sortIndex: 145
       }
     },
     {
@@ -2011,8 +2874,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-8' }],
-        sortIndex: 145
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-8'
+          }
+        ],
+        sortIndex: 146
       }
     },
     {
@@ -2021,8 +2890,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '15-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '15-8W' }],
-        sortIndex: 146
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '15-8W'
+          }
+        ],
+        sortIndex: 147
       }
     },
     {
@@ -2031,8 +2906,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1590',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1590' }],
-        sortIndex: 147
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1590'
+          }
+        ],
+        sortIndex: 148
       }
     },
     {
@@ -2041,8 +2922,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1-5W' }],
-        sortIndex: 148
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1-5W'
+          }
+        ],
+        sortIndex: 149
       }
     },
     {
@@ -2051,8 +2938,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '16',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '16' }],
-        sortIndex: 149
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '16'
+          }
+        ],
+        sortIndex: 150
       }
     },
     {
@@ -2061,8 +2954,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '160',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '160' }],
-        sortIndex: 150
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '160'
+          }
+        ],
+        sortIndex: 151
       }
     },
     {
@@ -2071,8 +2970,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1600',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1600' }],
-        sortIndex: 151
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1600'
+          }
+        ],
+        sortIndex: 152
       }
     },
     {
@@ -2081,8 +2986,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '164',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '164' }],
-        sortIndex: 152
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '164'
+          }
+        ],
+        sortIndex: 153
       }
     },
     {
@@ -2091,8 +3002,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '16-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '16-45' }],
-        sortIndex: 153
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '16-45'
+          }
+        ],
+        sortIndex: 154
       }
     },
     {
@@ -2101,8 +3018,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '165',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '165' }],
-        sortIndex: 154
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '165'
+          }
+        ],
+        sortIndex: 155
       }
     },
     {
@@ -2111,8 +3034,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '16W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '16W' }],
-        sortIndex: 155
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '16W'
+          }
+        ],
+        sortIndex: 156
       }
     },
     {
@@ -2121,8 +3050,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '17',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '17' }],
-        sortIndex: 156
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '17'
+          }
+        ],
+        sortIndex: 157
       }
     },
     {
@@ -2131,8 +3066,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '170',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '170' }],
-        sortIndex: 157
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '170'
+          }
+        ],
+        sortIndex: 158
       }
     },
     {
@@ -2141,8 +3082,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1700',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1700' }],
-        sortIndex: 158
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1700'
+          }
+        ],
+        sortIndex: 159
       }
     },
     {
@@ -2151,8 +3098,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '175',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '175' }],
-        sortIndex: 159
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '175'
+          }
+        ],
+        sortIndex: 160
       }
     },
     {
@@ -2161,8 +3114,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '175-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '175-45' }],
-        sortIndex: 160
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '175-45'
+          }
+        ],
+        sortIndex: 161
       }
     },
     {
@@ -2171,8 +3130,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '177SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '177SQ' }],
-        sortIndex: 161
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '177SQ'
+          }
+        ],
+        sortIndex: 162
       }
     },
     {
@@ -2181,8 +3146,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1780',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1780' }],
-        sortIndex: 162
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1780'
+          }
+        ],
+        sortIndex: 163
       }
     },
     {
@@ -2191,8 +3162,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '17W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '17W' }],
-        sortIndex: 163
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '17W'
+          }
+        ],
+        sortIndex: 164
       }
     },
     {
@@ -2201,8 +3178,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '17WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '17WSQ' }],
-        sortIndex: 164
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '17WSQ'
+          }
+        ],
+        sortIndex: 165
       }
     },
     {
@@ -2211,8 +3194,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '18',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '18' }],
-        sortIndex: 165
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '18'
+          }
+        ],
+        sortIndex: 166
       }
     },
     {
@@ -2221,8 +3210,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '180',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '180' }],
-        sortIndex: 166
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '180'
+          }
+        ],
+        sortIndex: 167
       }
     },
     {
@@ -2231,8 +3226,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '1800',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '1800' }],
-        sortIndex: 167
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '1800'
+          }
+        ],
+        sortIndex: 168
       }
     },
     {
@@ -2241,8 +3242,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '188W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '188W' }],
-        sortIndex: 168
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '188W'
+          }
+        ],
+        sortIndex: 169
       }
     },
     {
@@ -2251,8 +3258,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '18SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '18SQ' }],
-        sortIndex: 169
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '18SQ'
+          }
+        ],
+        sortIndex: 170
       }
     },
     {
@@ -2261,8 +3274,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '19',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '19' }],
-        sortIndex: 170
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '19'
+          }
+        ],
+        sortIndex: 171
       }
     },
     {
@@ -2271,8 +3290,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '190',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '190' }],
-        sortIndex: 171
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '190'
+          }
+        ],
+        sortIndex: 172
       }
     },
     {
@@ -2281,8 +3306,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '190WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '190WSQ' }],
-        sortIndex: 172
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '190WSQ'
+          }
+        ],
+        sortIndex: 173
       }
     },
     {
@@ -2291,8 +3322,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2' }],
-        sortIndex: 173
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2'
+          }
+        ],
+        sortIndex: 174
       }
     },
     {
@@ -2301,8 +3338,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2.5' }],
-        sortIndex: 174
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2.5'
+          }
+        ],
+        sortIndex: 175
       }
     },
     {
@@ -2311,8 +3354,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2.8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2.8W' }],
-        sortIndex: 175
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2.8W'
+          }
+        ],
+        sortIndex: 176
       }
     },
     {
@@ -2321,8 +3370,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20' }],
-        sortIndex: 176
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20'
+          }
+        ],
+        sortIndex: 177
       }
     },
     {
@@ -2331,8 +3386,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-0.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-0.5' }],
-        sortIndex: 177
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-0.5'
+          }
+        ],
+        sortIndex: 178
       }
     },
     {
@@ -2341,8 +3402,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '200',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '200' }],
-        sortIndex: 178
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '200'
+          }
+        ],
+        sortIndex: 179
       }
     },
     {
@@ -2351,8 +3418,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2000',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2000' }],
-        sortIndex: 179
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2000'
+          }
+        ],
+        sortIndex: 180
       }
     },
     {
@@ -2361,8 +3434,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '200-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '200-45' }],
-        sortIndex: 180
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '200-45'
+          }
+        ],
+        sortIndex: 181
       }
     },
     {
@@ -2371,8 +3450,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-10' }],
-        sortIndex: 181
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-10'
+          }
+        ],
+        sortIndex: 182
       }
     },
     {
@@ -2381,8 +3466,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-10W' }],
-        sortIndex: 182
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-10W'
+          }
+        ],
+        sortIndex: 183
       }
     },
     {
@@ -2391,8 +3482,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-15' }],
-        sortIndex: 183
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-15'
+          }
+        ],
+        sortIndex: 184
       }
     },
     {
@@ -2401,8 +3498,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-15W' }],
-        sortIndex: 184
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-15W'
+          }
+        ],
+        sortIndex: 185
       }
     },
     {
@@ -2411,8 +3514,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-20W' }],
-        sortIndex: 185
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-20W'
+          }
+        ],
+        sortIndex: 186
       }
     },
     {
@@ -2421,8 +3530,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-25' }],
-        sortIndex: 186
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-25'
+          }
+        ],
+        sortIndex: 187
       }
     },
     {
@@ -2431,8 +3546,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-25W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-25W' }],
-        sortIndex: 187
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-25W'
+          }
+        ],
+        sortIndex: 188
       }
     },
     {
@@ -2441,8 +3562,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-30W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-30W' }],
-        sortIndex: 188
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-30W'
+          }
+        ],
+        sortIndex: 189
       }
     },
     {
@@ -2451,8 +3578,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-40',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-40' }],
-        sortIndex: 189
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-40'
+          }
+        ],
+        sortIndex: 190
       }
     },
     {
@@ -2461,8 +3594,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-40W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-40W' }],
-        sortIndex: 190
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-40W'
+          }
+        ],
+        sortIndex: 191
       }
     },
     {
@@ -2471,8 +3610,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-45' }],
-        sortIndex: 191
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-45'
+          }
+        ],
+        sortIndex: 192
       }
     },
     {
@@ -2481,8 +3626,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-5' }],
-        sortIndex: 192
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-5'
+          }
+        ],
+        sortIndex: 193
       }
     },
     {
@@ -2491,8 +3642,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-50',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-50' }],
-        sortIndex: 193
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-50'
+          }
+        ],
+        sortIndex: 194
       }
     },
     {
@@ -2501,8 +3658,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-50W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-50W' }],
-        sortIndex: 194
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-50W'
+          }
+        ],
+        sortIndex: 195
       }
     },
     {
@@ -2511,8 +3674,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-60',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-60' }],
-        sortIndex: 195
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-60'
+          }
+        ],
+        sortIndex: 196
       }
     },
     {
@@ -2521,8 +3690,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-8' }],
-        sortIndex: 196
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-8'
+          }
+        ],
+        sortIndex: 197
       }
     },
     {
@@ -2531,8 +3706,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20-8W' }],
-        sortIndex: 197
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20-8W'
+          }
+        ],
+        sortIndex: 198
       }
     },
     {
@@ -2541,8 +3722,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20W' }],
-        sortIndex: 198
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20W'
+          }
+        ],
+        sortIndex: 199
       }
     },
     {
@@ -2551,26 +3738,46 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '20WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '20WSQ' }],
-        sortIndex: 199
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '20WSQ'
+          }
+        ],
+        sortIndex: 200
       }
     },
     {
       key: CapacitySizeFacetOptionKey._21,
       ...defaultFacetOption,
       valueId: '',
-      value: '-21',
+      value: '21',
       configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '79.5 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '21 gpm @ 40 psi' },
-          { variation: 'Invariant', unitSymbol: '', value: '2-1' }
+            value: '21'
+          }
         ],
-        sortIndex: 200
+        sortIndex: 201
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._21_,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '2-1',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-1'
+          }
+        ],
+        sortIndex: 202
       }
     },
     {
@@ -2579,8 +3786,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '210',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '210' }],
-        sortIndex: 201
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '210'
+          }
+        ],
+        sortIndex: 203
       }
     },
     {
@@ -2589,8 +3802,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-10' }],
-        sortIndex: 202
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-10'
+          }
+        ],
+        sortIndex: 204
       }
     },
     {
@@ -2599,8 +3818,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-10W' }],
-        sortIndex: 203
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-10W'
+          }
+        ],
+        sortIndex: 205
       }
     },
     {
@@ -2609,8 +3834,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-15' }],
-        sortIndex: 204
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-15'
+          }
+        ],
+        sortIndex: 206
       }
     },
     {
@@ -2619,8 +3850,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-15W' }],
-        sortIndex: 205
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-15W'
+          }
+        ],
+        sortIndex: 207
       }
     },
     {
@@ -2629,8 +3866,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '22',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '22' }],
-        sortIndex: 206
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '22'
+          }
+        ],
+        sortIndex: 208
       }
     },
     {
@@ -2639,8 +3882,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '220',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '220' }],
-        sortIndex: 207
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '220'
+          }
+        ],
+        sortIndex: 209
       }
     },
     {
@@ -2649,8 +3898,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-20' }],
-        sortIndex: 208
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-20'
+          }
+        ],
+        sortIndex: 210
       }
     },
     {
@@ -2659,8 +3914,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2200',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2200' }],
-        sortIndex: 209
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2200'
+          }
+        ],
+        sortIndex: 211
       }
     },
     {
@@ -2669,8 +3930,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-20W' }],
-        sortIndex: 210
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-20W'
+          }
+        ],
+        sortIndex: 212
       }
     },
     {
@@ -2679,8 +3946,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '225',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '225' }],
-        sortIndex: 211
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '225'
+          }
+        ],
+        sortIndex: 213
       }
     },
     {
@@ -2689,8 +3962,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '225-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '225-45' }],
-        sortIndex: 212
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '225-45'
+          }
+        ],
+        sortIndex: 214
       }
     },
     {
@@ -2699,8 +3978,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '23' }],
-        sortIndex: 213
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '23'
+          }
+        ],
+        sortIndex: 215
       }
     },
     {
@@ -2709,8 +3994,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-3',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-3' }],
-        sortIndex: 214
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-3'
+          }
+        ],
+        sortIndex: 216
       }
     },
     {
@@ -2719,8 +4010,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '230SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '230SQ' }],
-        sortIndex: 215
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '230SQ'
+          }
+        ],
+        sortIndex: 217
       }
     },
     {
@@ -2729,8 +4026,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-3W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-3W' }],
-        sortIndex: 216
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-3W'
+          }
+        ],
+        sortIndex: 218
       }
     },
     {
@@ -2739,23 +4042,11 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '24',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '24' }],
-        sortIndex: 217
-      }
-    },
-
-    {
-      key: CapacitySizeFacetOptionKey._24__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-24',
-      configuration: {
         displays: [
-          { variation: 'Us', unitSymbol: '', value: '24 gpm @ 40 psi' },
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '90.8 l/min @ 2.76 bar'
+            value: '24'
           }
         ],
         sortIndex: 219
@@ -2767,7 +4058,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '240',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '240' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '240'
+          }
+        ],
         sortIndex: 220
       }
     },
@@ -2777,7 +4074,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2400',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2400' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2400'
+          }
+        ],
         sortIndex: 221
       }
     },
@@ -2787,7 +4090,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '24W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '24W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '24W'
+          }
+        ],
         sortIndex: 222
       }
     },
@@ -2797,7 +4106,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '24WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '24WSQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '24WSQ'
+          }
+        ],
         sortIndex: 223
       }
     },
@@ -2807,7 +4122,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25'
+          }
+        ],
         sortIndex: 224
       }
     },
@@ -2817,7 +4138,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-5'
+          }
+        ],
         sortIndex: 225
       }
     },
@@ -2827,7 +4154,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '250',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '250' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '250'
+          }
+        ],
         sortIndex: 226
       }
     },
@@ -2837,7 +4170,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '250-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '250-45' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '250-45'
+          }
+        ],
         sortIndex: 227
       }
     },
@@ -2847,7 +4186,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-10' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-10'
+          }
+        ],
         sortIndex: 228
       }
     },
@@ -2857,7 +4202,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-10W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-10W'
+          }
+        ],
         sortIndex: 229
       }
     },
@@ -2867,7 +4218,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-15' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-15'
+          }
+        ],
         sortIndex: 230
       }
     },
@@ -2877,7 +4234,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-15W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-15W'
+          }
+        ],
         sortIndex: 231
       }
     },
@@ -2887,7 +4250,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-20' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-20'
+          }
+        ],
         sortIndex: 232
       }
     },
@@ -2897,7 +4266,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-20W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-20W'
+          }
+        ],
         sortIndex: 233
       }
     },
@@ -2907,7 +4282,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-25W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-25W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-25W'
+          }
+        ],
         sortIndex: 234
       }
     },
@@ -2917,7 +4298,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-30W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-30W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-30W'
+          }
+        ],
         sortIndex: 235
       }
     },
@@ -2927,7 +4314,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-40',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-40' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-40'
+          }
+        ],
         sortIndex: 236
       }
     },
@@ -2937,7 +4330,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-40W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-40W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-40W'
+          }
+        ],
         sortIndex: 237
       }
     },
@@ -2947,7 +4346,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-50',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-50' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-50'
+          }
+        ],
         sortIndex: 238
       }
     },
@@ -2957,7 +4362,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-50W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-50W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-50W'
+          }
+        ],
         sortIndex: 239
       }
     },
@@ -2967,7 +4378,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2560',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2560' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2560'
+          }
+        ],
         sortIndex: 240
       }
     },
@@ -2977,7 +4394,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-60',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-60' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-60'
+          }
+        ],
         sortIndex: 241
       }
     },
@@ -2987,7 +4410,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-8' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-8'
+          }
+        ],
         sortIndex: 242
       }
     },
@@ -2997,7 +4426,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '25-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '25-8W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '25-8W'
+          }
+        ],
         sortIndex: 243
       }
     },
@@ -3007,7 +4442,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-5W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-5W'
+          }
+        ],
         sortIndex: 244
       }
     },
@@ -3017,7 +4458,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '26',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '26' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '26'
+          }
+        ],
         sortIndex: 245
       }
     },
@@ -3027,7 +4474,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '260',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '260' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '260'
+          }
+        ],
         sortIndex: 246
       }
     },
@@ -3037,7 +4490,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '27',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '27' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '27'
+          }
+        ],
         sortIndex: 247
       }
     },
@@ -3047,7 +4506,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '27.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '27.5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '27.5'
+          }
+        ],
         sortIndex: 248
       }
     },
@@ -3057,7 +4522,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '275',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '275' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '275'
+          }
+        ],
         sortIndex: 249
       }
     },
@@ -3067,7 +4538,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '27W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '27W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '27W'
+          }
+        ],
         sortIndex: 250
       }
     },
@@ -3077,7 +4554,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '27WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '27WSQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '27WSQ'
+          }
+        ],
         sortIndex: 251
       }
     },
@@ -3087,7 +4570,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '28',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '28' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '28'
+          }
+        ],
         sortIndex: 252
       }
     },
@@ -3097,7 +4586,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-8' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-8'
+          }
+        ],
         sortIndex: 253
       }
     },
@@ -3107,7 +4602,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '280',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '280' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '280'
+          }
+        ],
         sortIndex: 254
       }
     },
@@ -3117,7 +4618,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2-8W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2-8W'
+          }
+        ],
         sortIndex: 255
       }
     },
@@ -3127,7 +4634,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '29',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '29' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '29'
+          }
+        ],
         sortIndex: 256
       }
     },
@@ -3137,7 +4650,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '290SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '290SQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '290SQ'
+          }
+        ],
         sortIndex: 257
       }
     },
@@ -3147,7 +4666,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '290WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '290WSQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '290WSQ'
+          }
+        ],
         sortIndex: 258
       }
     },
@@ -3157,7 +4682,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2980SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2980SQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2980SQ'
+          }
+        ],
         sortIndex: 259
       }
     },
@@ -3167,7 +4698,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '29SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '29SQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '29SQ'
+          }
+        ],
         sortIndex: 260
       }
     },
@@ -3177,7 +4714,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '2W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '2W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '2W'
+          }
+        ],
         sortIndex: 261
       }
     },
@@ -3187,7 +4730,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3'
+          }
+        ],
         sortIndex: 262
       }
     },
@@ -3195,15 +4744,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       key: CapacitySizeFacetOptionKey._3_2,
       ...defaultFacetOption,
       valueId: '',
-      value: '-3.2',
+      value: '3.2',
       configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '12.1 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '3.2 gpm @ 40 psi' }
+            value: '3.2'
+          }
         ],
         sortIndex: 263
       }
@@ -3214,7 +4762,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3.4',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3.4' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3.4'
+          }
+        ],
         sortIndex: 264
       }
     },
@@ -3224,7 +4778,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3.5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3.5'
+          }
+        ],
         sortIndex: 265
       }
     },
@@ -3234,7 +4794,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3.6SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3.6SQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3.6SQ'
+          }
+        ],
         sortIndex: 266
       }
     },
@@ -3244,7 +4810,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3.9',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3.9' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3.9'
+          }
+        ],
         sortIndex: 267
       }
     },
@@ -3254,7 +4826,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30'
+          }
+        ],
         sortIndex: 268
       }
     },
@@ -3264,7 +4842,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30*',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30*' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30*'
+          }
+        ],
         sortIndex: 269
       }
     },
@@ -3274,7 +4858,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '300',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '300' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '300'
+          }
+        ],
         sortIndex: 270
       }
     },
@@ -3284,7 +4874,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3001.4',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3001.4' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3001.4'
+          }
+        ],
         sortIndex: 271
       }
     },
@@ -3294,7 +4890,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3002.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3002.5' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3002.5'
+          }
+        ],
         sortIndex: 272
       }
     },
@@ -3304,7 +4906,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3004',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3004' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3004'
+          }
+        ],
         sortIndex: 273
       }
     },
@@ -3314,7 +4922,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3007',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3007' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3007'
+          }
+        ],
         sortIndex: 274
       }
     },
@@ -3324,7 +4938,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3009',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3009' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3009'
+          }
+        ],
         sortIndex: 275
       }
     },
@@ -3334,7 +4954,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30100',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30100' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30100'
+          }
+        ],
         sortIndex: 276
       }
     },
@@ -3344,7 +4970,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '301000',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '301000' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '301000'
+          }
+        ],
         sortIndex: 277
       }
     },
@@ -3354,7 +4986,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '301100',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '301100' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '301100'
+          }
+        ],
         sortIndex: 278
       }
     },
@@ -3364,7 +5002,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '301200',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '301200' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '301200'
+          }
+        ],
         sortIndex: 279
       }
     },
@@ -3374,7 +5018,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3014',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3014' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3014'
+          }
+        ],
         sortIndex: 280
       }
     },
@@ -3384,7 +5034,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30150',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30150' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30150'
+          }
+        ],
         sortIndex: 281
       }
     },
@@ -3394,7 +5050,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30200',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30200' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30200'
+          }
+        ],
         sortIndex: 282
       }
     },
@@ -3404,7 +5066,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30250',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30250' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30250'
+          }
+        ],
         sortIndex: 283
       }
     },
@@ -3414,7 +5082,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3030',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3030' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3030'
+          }
+        ],
         sortIndex: 284
       }
     },
@@ -3424,7 +5098,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30300',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30300' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30300'
+          }
+        ],
         sortIndex: 285
       }
     },
@@ -3434,7 +5114,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30350',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30350' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30350'
+          }
+        ],
         sortIndex: 286
       }
     },
@@ -3444,7 +5130,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30400',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30400' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30400'
+          }
+        ],
         sortIndex: 287
       }
     },
@@ -3454,7 +5146,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30-45' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30-45'
+          }
+        ],
         sortIndex: 288
       }
     },
@@ -3464,7 +5162,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3050',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3050' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3050'
+          }
+        ],
         sortIndex: 289
       }
     },
@@ -3474,7 +5178,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30500' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30500'
+          }
+        ],
         sortIndex: 290
       }
     },
@@ -3484,7 +5194,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30600',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30600' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30600'
+          }
+        ],
         sortIndex: 291
       }
     },
@@ -3494,7 +5210,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3070',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3070' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3070'
+          }
+        ],
         sortIndex: 292
       }
     },
@@ -3504,7 +5226,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30700',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30700' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30700'
+          }
+        ],
         sortIndex: 293
       }
     },
@@ -3514,7 +5242,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30W'
+          }
+        ],
         sortIndex: 294
       }
     },
@@ -3524,7 +5258,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '30WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '30WSQ' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '30WSQ'
+          }
+        ],
         sortIndex: 295
       }
     },
@@ -3534,7 +5274,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '31',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '31' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '31'
+          }
+        ],
         sortIndex: 296
       }
     },
@@ -3544,7 +5290,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-10' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-10'
+          }
+        ],
         sortIndex: 297
       }
     },
@@ -3554,7 +5306,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-10W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-10W'
+          }
+        ],
         sortIndex: 298
       }
     },
@@ -3564,7 +5322,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-15' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-15'
+          }
+        ],
         sortIndex: 299
       }
     },
@@ -3574,7 +5338,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-15W' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-15W'
+          }
+        ],
         sortIndex: 300
       }
     },
@@ -3584,36 +5354,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '32',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '32' }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '32'
+          }
+        ],
         sortIndex: 301
       }
     },
-
     {
-      key: CapacitySizeFacetOptionKey._32__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-32',
-      configuration: {
-        displays: [
-          {
-            variation: 'Metric',
-            unitSymbol: '',
-            value: '121 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '32 gpm @ 40 psi' }
-        ],
-        sortIndex: 303
-      }
-    },
-    {
-      key: CapacitySizeFacetOptionKey._32___,
+      key: CapacitySizeFacetOptionKey._32_,
       ...defaultFacetOption,
       valueId: '',
       value: '3-2',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-2' }],
-        sortIndex: 304
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-2'
+          }
+        ],
+        sortIndex: 302
       }
     },
     {
@@ -3622,8 +5386,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '320',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '320' }],
-        sortIndex: 305
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '320'
+          }
+        ],
+        sortIndex: 303
       }
     },
     {
@@ -3632,8 +5402,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-20' }],
-        sortIndex: 306
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-20'
+          }
+        ],
+        sortIndex: 304
       }
     },
     {
@@ -3642,8 +5418,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-20W' }],
-        sortIndex: 307
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-20W'
+          }
+        ],
+        sortIndex: 305
       }
     },
     {
@@ -3652,8 +5434,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-2W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-2W' }],
-        sortIndex: 308
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-2W'
+          }
+        ],
+        sortIndex: 306
       }
     },
     {
@@ -3662,8 +5450,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '33',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '33' }],
-        sortIndex: 309
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '33'
+          }
+        ],
+        sortIndex: 307
       }
     },
     {
@@ -3672,8 +5466,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '330',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '330' }],
-        sortIndex: 310
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '330'
+          }
+        ],
+        sortIndex: 308
       }
     },
     {
@@ -3682,8 +5482,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3360',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3360' }],
-        sortIndex: 311
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3360'
+          }
+        ],
+        sortIndex: 309
       }
     },
     {
@@ -3692,8 +5498,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-3W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-3W' }],
-        sortIndex: 312
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-3W'
+          }
+        ],
+        sortIndex: 310
       }
     },
     {
@@ -3702,8 +5514,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '340',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '340' }],
-        sortIndex: 313
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '340'
+          }
+        ],
+        sortIndex: 311
       }
     },
     {
@@ -3712,8 +5530,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '35' }],
-        sortIndex: 314
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '35'
+          }
+        ],
+        sortIndex: 312
       }
     },
     {
@@ -3722,8 +5546,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-5' }],
-        sortIndex: 315
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-5'
+          }
+        ],
+        sortIndex: 313
       }
     },
     {
@@ -3732,8 +5562,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '350',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '350' }],
-        sortIndex: 316
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '350'
+          }
+        ],
+        sortIndex: 314
       }
     },
     {
@@ -3742,8 +5578,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3500' }],
-        sortIndex: 317
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3500'
+          }
+        ],
+        sortIndex: 315
       }
     },
     {
@@ -3752,8 +5594,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '35-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '35-45' }],
-        sortIndex: 318
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '35-45'
+          }
+        ],
+        sortIndex: 316
       }
     },
     {
@@ -3762,8 +5610,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '35W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '35W' }],
-        sortIndex: 319
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '35W'
+          }
+        ],
+        sortIndex: 317
       }
     },
     {
@@ -3772,8 +5626,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-5W' }],
-        sortIndex: 320
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-5W'
+          }
+        ],
+        sortIndex: 318
       }
     },
     {
@@ -3782,8 +5642,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '35WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '35WSQ' }],
-        sortIndex: 321
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '35WSQ'
+          }
+        ],
+        sortIndex: 319
       }
     },
     {
@@ -3792,8 +5658,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '360',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '360' }],
-        sortIndex: 322
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '360'
+          }
+        ],
+        sortIndex: 320
       }
     },
     {
@@ -3802,8 +5674,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '360SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '360SQ' }],
-        sortIndex: 323
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '360SQ'
+          }
+        ],
+        sortIndex: 321
       }
     },
     {
@@ -3812,8 +5690,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '36SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '36SQ' }],
-        sortIndex: 324
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '36SQ'
+          }
+        ],
+        sortIndex: 322
       }
     },
     {
@@ -3822,8 +5706,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-8' }],
-        sortIndex: 325
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-8'
+          }
+        ],
+        sortIndex: 323
       }
     },
     {
@@ -3832,8 +5722,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '380',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '380' }],
-        sortIndex: 326
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '380'
+          }
+        ],
+        sortIndex: 324
       }
     },
     {
@@ -3842,8 +5738,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3-8W' }],
-        sortIndex: 327
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3-8W'
+          }
+        ],
+        sortIndex: 325
       }
     },
     {
@@ -3852,8 +5754,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '3W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '3W' }],
-        sortIndex: 328
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '3W'
+          }
+        ],
+        sortIndex: 326
       }
     },
     {
@@ -3862,8 +5770,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4' }],
-        sortIndex: 329
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4'
+          }
+        ],
+        sortIndex: 327
       }
     },
     {
@@ -3872,8 +5786,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.1',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.1' }],
-        sortIndex: 330
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.1'
+          }
+        ],
+        sortIndex: 328
       }
     },
     {
@@ -3882,8 +5802,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.2',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.2' }],
-        sortIndex: 331
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.2'
+          }
+        ],
+        sortIndex: 329
       }
     },
     {
@@ -3892,8 +5818,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.3W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.3W' }],
-        sortIndex: 332
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.3W'
+          }
+        ],
+        sortIndex: 330
       }
     },
     {
@@ -3902,26 +5834,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.5' }],
-        sortIndex: 333
-      }
-    },
-
-    {
-      key: CapacitySizeFacetOptionKey._4_5__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-4.5',
-      configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '17.0 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '4.5 gpm @ 40 psi' }
+            value: '4.5'
+          }
         ],
-        sortIndex: 335
+        sortIndex: 331
       }
     },
     {
@@ -3930,8 +5850,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.8' }],
-        sortIndex: 336
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.8'
+          }
+        ],
+        sortIndex: 332
       }
     },
     {
@@ -3940,8 +5866,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.8SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.8SQ' }],
-        sortIndex: 337
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.8SQ'
+          }
+        ],
+        sortIndex: 333
       }
     },
     {
@@ -3950,8 +5882,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4.9VL',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4.9VL' }],
-        sortIndex: 338
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4.9VL'
+          }
+        ],
+        sortIndex: 334
       }
     },
     {
@@ -3960,8 +5898,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40' }],
-        sortIndex: 339
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40'
+          }
+        ],
+        sortIndex: 335
       }
     },
     {
@@ -3970,8 +5914,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '400',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '400' }],
-        sortIndex: 340
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '400'
+          }
+        ],
+        sortIndex: 336
       }
     },
     {
@@ -3980,8 +5930,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-10' }],
-        sortIndex: 341
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-10'
+          }
+        ],
+        sortIndex: 337
       }
     },
     {
@@ -3990,8 +5946,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-10W' }],
-        sortIndex: 342
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-10W'
+          }
+        ],
+        sortIndex: 338
       }
     },
     {
@@ -4000,8 +5962,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-15' }],
-        sortIndex: 343
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-15'
+          }
+        ],
+        sortIndex: 339
       }
     },
     {
@@ -4010,8 +5978,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-15W' }],
-        sortIndex: 344
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-15W'
+          }
+        ],
+        sortIndex: 340
       }
     },
     {
@@ -4020,8 +5994,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-20' }],
-        sortIndex: 345
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-20'
+          }
+        ],
+        sortIndex: 341
       }
     },
     {
@@ -4030,8 +6010,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-20W' }],
-        sortIndex: 346
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-20W'
+          }
+        ],
+        sortIndex: 342
       }
     },
     {
@@ -4040,8 +6026,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-25' }],
-        sortIndex: 347
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-25'
+          }
+        ],
+        sortIndex: 343
       }
     },
     {
@@ -4050,8 +6042,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-25W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-25W' }],
-        sortIndex: 348
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-25W'
+          }
+        ],
+        sortIndex: 344
       }
     },
     {
@@ -4060,8 +6058,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-40W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-40W' }],
-        sortIndex: 349
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-40W'
+          }
+        ],
+        sortIndex: 345
       }
     },
     {
@@ -4070,8 +6074,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-45' }],
-        sortIndex: 350
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-45'
+          }
+        ],
+        sortIndex: 346
       }
     },
     {
@@ -4080,8 +6090,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-50',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-50' }],
-        sortIndex: 351
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-50'
+          }
+        ],
+        sortIndex: 347
       }
     },
     {
@@ -4091,9 +6107,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: '40-50.1',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: '40-50.1' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-50.1'
+          }
         ],
-        sortIndex: 352
+        sortIndex: 348
       }
     },
     {
@@ -4102,8 +6122,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-50W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-50W' }],
-        sortIndex: 353
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-50W'
+          }
+        ],
+        sortIndex: 349
       }
     },
     {
@@ -4112,8 +6138,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-60',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-60' }],
-        sortIndex: 354
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-60'
+          }
+        ],
+        sortIndex: 350
       }
     },
     {
@@ -4122,8 +6154,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40-8' }],
-        sortIndex: 355
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40-8'
+          }
+        ],
+        sortIndex: 351
       }
     },
     {
@@ -4132,8 +6170,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40W' }],
-        sortIndex: 356
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40W'
+          }
+        ],
+        sortIndex: 352
       }
     },
     {
@@ -4142,8 +6186,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '40WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '40WSQ' }],
-        sortIndex: 357
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '40WSQ'
+          }
+        ],
+        sortIndex: 353
       }
     },
     {
@@ -4152,8 +6202,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '42',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '42' }],
-        sortIndex: 358
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '42'
+          }
+        ],
+        sortIndex: 354
       }
     },
     {
@@ -4162,8 +6218,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '440-65',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '440-65' }],
-        sortIndex: 359
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '440-65'
+          }
+        ],
+        sortIndex: 355
       }
     },
     {
@@ -4172,8 +6234,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '45' }],
-        sortIndex: 360
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '45'
+          }
+        ],
+        sortIndex: 356
       }
     },
     {
@@ -4182,8 +6250,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '450',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '450' }],
-        sortIndex: 361
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '450'
+          }
+        ],
+        sortIndex: 357
       }
     },
     {
@@ -4192,8 +6266,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '45-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '45-45' }],
-        sortIndex: 362
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '45-45'
+          }
+        ],
+        sortIndex: 358
       }
     },
     {
@@ -4202,8 +6282,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '45W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '45W' }],
-        sortIndex: 363
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '45W'
+          }
+        ],
+        sortIndex: 359
       }
     },
     {
@@ -4212,8 +6298,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '45WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '45WSQ' }],
-        sortIndex: 364
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '45WSQ'
+          }
+        ],
+        sortIndex: 360
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._46,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '46',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '46'
+          }
+        ],
+        sortIndex: 361
       }
     },
     {
@@ -4222,8 +6330,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '470',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '470' }],
-        sortIndex: 365
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '470'
+          }
+        ],
+        sortIndex: 362
       }
     },
     {
@@ -4232,8 +6346,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '47W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '47W' }],
-        sortIndex: 366
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '47W'
+          }
+        ],
+        sortIndex: 363
       }
     },
     {
@@ -4242,8 +6362,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '48',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '48' }],
-        sortIndex: 367
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '48'
+          }
+        ],
+        sortIndex: 364
       }
     },
     {
@@ -4252,8 +6378,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '480',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '480' }],
-        sortIndex: 368
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '480'
+          }
+        ],
+        sortIndex: 365
       }
     },
     {
@@ -4262,8 +6394,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '480SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '480SQ' }],
-        sortIndex: 369
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '480SQ'
+          }
+        ],
+        sortIndex: 366
       }
     },
     {
@@ -4272,8 +6410,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '490SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '490SQ' }],
-        sortIndex: 370
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '490SQ'
+          }
+        ],
+        sortIndex: 367
       }
     },
     {
@@ -4282,8 +6426,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '4W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '4W' }],
-        sortIndex: 371
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '4W'
+          }
+        ],
+        sortIndex: 368
       }
     },
     {
@@ -4292,8 +6442,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5' }],
-        sortIndex: 372
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5'
+          }
+        ],
+        sortIndex: 369
       }
     },
     {
@@ -4302,8 +6458,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5.6W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5.6W' }],
-        sortIndex: 373
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5.6W'
+          }
+        ],
+        sortIndex: 370
       }
     },
     {
@@ -4312,8 +6474,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5.8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5.8' }],
-        sortIndex: 374
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5.8'
+          }
+        ],
+        sortIndex: 371
       }
     },
     {
@@ -4322,8 +6490,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50' }],
-        sortIndex: 375
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50'
+          }
+        ],
+        sortIndex: 372
       }
     },
     {
@@ -4332,8 +6506,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50*',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50*' }],
-        sortIndex: 376
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50*'
+          }
+        ],
+        sortIndex: 373
       }
     },
     {
@@ -4342,8 +6522,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '500',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '500' }],
-        sortIndex: 377
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '500'
+          }
+        ],
+        sortIndex: 374
       }
     },
     {
@@ -4352,8 +6538,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50-45' }],
-        sortIndex: 378
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50-45'
+          }
+        ],
+        sortIndex: 375
       }
     },
     {
@@ -4363,9 +6555,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: '50-50.3',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: '50-50.3' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50-50.3'
+          }
         ],
-        sortIndex: 379
+        sortIndex: 376
       }
     },
     {
@@ -4374,8 +6570,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50-50W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50-50W' }],
-        sortIndex: 380
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50-50W'
+          }
+        ],
+        sortIndex: 377
       }
     },
     {
@@ -4384,8 +6586,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50SQ' }],
-        sortIndex: 381
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50SQ'
+          }
+        ],
+        sortIndex: 378
       }
     },
     {
@@ -4394,8 +6602,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50W' }],
-        sortIndex: 382
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50W'
+          }
+        ],
+        sortIndex: 379
       }
     },
     {
@@ -4404,8 +6618,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '50WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '50WSQ' }],
-        sortIndex: 383
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '50WSQ'
+          }
+        ],
+        sortIndex: 380
       }
     },
     {
@@ -4414,8 +6634,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '51',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '51' }],
-        sortIndex: 384
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '51'
+          }
+        ],
+        sortIndex: 381
       }
     },
     {
@@ -4424,8 +6650,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-10' }],
-        sortIndex: 385
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-10'
+          }
+        ],
+        sortIndex: 382
       }
     },
     {
@@ -4434,8 +6666,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-10W' }],
-        sortIndex: 386
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-10W'
+          }
+        ],
+        sortIndex: 383
       }
     },
     {
@@ -4444,8 +6682,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-15' }],
-        sortIndex: 387
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-15'
+          }
+        ],
+        sortIndex: 384
       }
     },
     {
@@ -4454,8 +6698,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-15W' }],
-        sortIndex: 388
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-15W'
+          }
+        ],
+        sortIndex: 385
       }
     },
     {
@@ -4464,8 +6714,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-2',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-2' }],
-        sortIndex: 389
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-2'
+          }
+        ],
+        sortIndex: 386
       }
     },
     {
@@ -4474,8 +6730,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-20' }],
-        sortIndex: 390
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-20'
+          }
+        ],
+        sortIndex: 387
       }
     },
     {
@@ -4484,8 +6746,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-20W' }],
-        sortIndex: 391
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-20W'
+          }
+        ],
+        sortIndex: 388
       }
     },
     {
@@ -4494,8 +6762,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5250',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5250' }],
-        sortIndex: 392
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5250'
+          }
+        ],
+        sortIndex: 389
       }
     },
     {
@@ -4504,8 +6778,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '53',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '53' }],
-        sortIndex: 393
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '53'
+          }
+        ],
+        sortIndex: 390
       }
     },
     {
@@ -4514,8 +6794,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-3',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-3' }],
-        sortIndex: 394
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-3'
+          }
+        ],
+        sortIndex: 391
       }
     },
     {
@@ -4524,8 +6810,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-3W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-3W' }],
-        sortIndex: 395
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-3W'
+          }
+        ],
+        sortIndex: 392
       }
     },
     {
@@ -4534,8 +6826,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '550',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '550' }],
-        sortIndex: 396
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '550'
+          }
+        ],
+        sortIndex: 393
       }
     },
     {
@@ -4544,8 +6842,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '550-65',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '550-65' }],
-        sortIndex: 397
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '550-65'
+          }
+        ],
+        sortIndex: 394
       }
     },
     {
@@ -4554,8 +6858,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '55-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '55-45' }],
-        sortIndex: 398
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '55-45'
+          }
+        ],
+        sortIndex: 395
       }
     },
     {
@@ -4564,8 +6874,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-5W' }],
-        sortIndex: 399
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-5W'
+          }
+        ],
+        sortIndex: 396
       }
     },
     {
@@ -4574,8 +6890,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '56' }],
-        sortIndex: 400
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '56'
+          }
+        ],
+        sortIndex: 397
       }
     },
     {
@@ -4584,8 +6906,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '560',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '560' }],
-        sortIndex: 401
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '560'
+          }
+        ],
+        sortIndex: 398
       }
     },
     {
@@ -4594,8 +6922,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '560WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '560WSQ' }],
-        sortIndex: 402
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '560WSQ'
+          }
+        ],
+        sortIndex: 399
       }
     },
     {
@@ -4604,8 +6938,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5690SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5690SQ' }],
-        sortIndex: 403
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5690SQ'
+          }
+        ],
+        sortIndex: 400
       }
     },
     {
@@ -4614,8 +6954,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '57',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '57' }],
-        sortIndex: 404
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '57'
+          }
+        ],
+        sortIndex: 401
       }
     },
     {
@@ -4624,8 +6970,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '570',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '570' }],
-        sortIndex: 405
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '570'
+          }
+        ],
+        sortIndex: 402
       }
     },
     {
@@ -4634,8 +6986,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '58',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '58' }],
-        sortIndex: 406
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '58'
+          }
+        ],
+        sortIndex: 403
       }
     },
     {
@@ -4644,8 +7002,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-8' }],
-        sortIndex: 407
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-8'
+          }
+        ],
+        sortIndex: 404
       }
     },
     {
@@ -4654,8 +7018,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '580',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '580' }],
-        sortIndex: 408
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '580'
+          }
+        ],
+        sortIndex: 405
       }
     },
     {
@@ -4664,8 +7034,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5-8W' }],
-        sortIndex: 409
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5-8W'
+          }
+        ],
+        sortIndex: 406
       }
     },
     {
@@ -4674,8 +7050,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '590SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '590SQ' }],
-        sortIndex: 410
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '590SQ'
+          }
+        ],
+        sortIndex: 407
       }
     },
     {
@@ -4684,8 +7066,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '5W' }],
-        sortIndex: 411
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '5W'
+          }
+        ],
+        sortIndex: 408
       }
     },
     {
@@ -4694,26 +7082,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6' }],
-        sortIndex: 412
-      }
-    },
-
-    {
-      key: CapacitySizeFacetOptionKey._6__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-6',
-      configuration: {
         displays: [
-          { variation: 'Us', unitSymbol: '', value: '6 gpm @ 40 psi' },
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '22.7 l/min @ 2.76 bar'
+            value: '6'
           }
         ],
-        sortIndex: 414
+        sortIndex: 409
       }
     },
     {
@@ -4722,8 +7098,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6.1',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6.1' }],
-        sortIndex: 415
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '6.1'
+          }
+        ],
+        sortIndex: 410
       }
     },
     {
@@ -4732,8 +7114,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6.5' }],
-        sortIndex: 416
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '6.5'
+          }
+        ],
+        sortIndex: 411
       }
     },
     {
@@ -4742,8 +7130,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6.5VL',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6.5VL' }],
-        sortIndex: 417
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '6.5VL'
+          }
+        ],
+        sortIndex: 412
       }
     },
     {
@@ -4752,8 +7146,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '60',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '60' }],
-        sortIndex: 418
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '60'
+          }
+        ],
+        sortIndex: 413
       }
     },
     {
@@ -4762,8 +7162,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '60*',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '60*' }],
-        sortIndex: 419
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '60*'
+          }
+        ],
+        sortIndex: 414
       }
     },
     {
@@ -4772,8 +7178,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '600',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '600' }],
-        sortIndex: 420
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '600'
+          }
+        ],
+        sortIndex: 415
       }
     },
     {
@@ -4782,8 +7194,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '625',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '625' }],
-        sortIndex: 421
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '625'
+          }
+        ],
+        sortIndex: 416
       }
     },
     {
@@ -4792,8 +7210,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '625-65',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '625-65' }],
-        sortIndex: 422
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '625-65'
+          }
+        ],
+        sortIndex: 417
       }
     },
     {
@@ -4802,8 +7226,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '64',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '64' }],
-        sortIndex: 423
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '64'
+          }
+        ],
+        sortIndex: 418
       }
     },
     {
@@ -4812,8 +7242,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '640',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '640' }],
-        sortIndex: 424
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '640'
+          }
+        ],
+        sortIndex: 419
       }
     },
     {
@@ -4822,8 +7258,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '650',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '650' }],
-        sortIndex: 425
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '650'
+          }
+        ],
+        sortIndex: 420
       }
     },
     {
@@ -4832,8 +7274,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6SQ' }],
-        sortIndex: 426
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '6SQ'
+          }
+        ],
+        sortIndex: 421
       }
     },
     {
@@ -4842,8 +7290,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '6W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '6W' }],
-        sortIndex: 427
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '6W'
+          }
+        ],
+        sortIndex: 422
       }
     },
     {
@@ -4852,8 +7306,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '7',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '7' }],
-        sortIndex: 428
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '7'
+          }
+        ],
+        sortIndex: 423
       }
     },
     {
@@ -4862,8 +7322,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '7.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '7.5' }],
-        sortIndex: 429
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '7.5'
+          }
+        ],
+        sortIndex: 424
       }
     },
     {
@@ -4872,8 +7338,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '70',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '70' }],
-        sortIndex: 430
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '70'
+          }
+        ],
+        sortIndex: 425
       }
     },
     {
@@ -4882,8 +7354,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '700',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '700' }],
-        sortIndex: 431
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '700'
+          }
+        ],
+        sortIndex: 426
       }
     },
     {
@@ -4892,8 +7370,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '70-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '70-45' }],
-        sortIndex: 432
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '70-45'
+          }
+        ],
+        sortIndex: 427
       }
     },
     {
@@ -4902,8 +7386,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '70W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '70W' }],
-        sortIndex: 433
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '70W'
+          }
+        ],
+        sortIndex: 428
       }
     },
     {
@@ -4912,8 +7402,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '71WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '71WSQ' }],
-        sortIndex: 434
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '71WSQ'
+          }
+        ],
+        sortIndex: 429
       }
     },
     {
@@ -4922,8 +7418,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '72',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '72' }],
-        sortIndex: 435
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '72'
+          }
+        ],
+        sortIndex: 430
       }
     },
     {
@@ -4932,8 +7434,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '750',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '750' }],
-        sortIndex: 436
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '750'
+          }
+        ],
+        sortIndex: 431
       }
     },
     {
@@ -4942,8 +7450,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8' }],
-        sortIndex: 437
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8'
+          }
+        ],
+        sortIndex: 432
       }
     },
     {
@@ -4952,8 +7466,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8.1VL',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8.1VL' }],
-        sortIndex: 438
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8.1VL'
+          }
+        ],
+        sortIndex: 433
       }
     },
     {
@@ -4962,8 +7482,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8.5' }],
-        sortIndex: 439
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8.5'
+          }
+        ],
+        sortIndex: 434
       }
     },
     {
@@ -4972,8 +7498,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '80',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '80' }],
-        sortIndex: 440
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '80'
+          }
+        ],
+        sortIndex: 435
       }
     },
     {
@@ -4982,8 +7514,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '800',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '800' }],
-        sortIndex: 441
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '800'
+          }
+        ],
+        sortIndex: 436
       }
     },
     {
@@ -4992,8 +7530,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-10',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-10' }],
-        sortIndex: 442
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-10'
+          }
+        ],
+        sortIndex: 437
       }
     },
     {
@@ -5002,8 +7546,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-10W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-10W' }],
-        sortIndex: 443
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-10W'
+          }
+        ],
+        sortIndex: 438
       }
     },
     {
@@ -5012,8 +7562,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-15',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-15' }],
-        sortIndex: 444
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-15'
+          }
+        ],
+        sortIndex: 439
       }
     },
     {
@@ -5022,8 +7578,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-15W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-15W' }],
-        sortIndex: 445
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-15W'
+          }
+        ],
+        sortIndex: 440
       }
     },
     {
@@ -5032,8 +7594,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '82',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '82' }],
-        sortIndex: 446
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '82'
+          }
+        ],
+        sortIndex: 441
       }
     },
     {
@@ -5042,8 +7610,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '820',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '820' }],
-        sortIndex: 447
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '820'
+          }
+        ],
+        sortIndex: 442
       }
     },
     {
@@ -5052,8 +7626,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-20',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-20' }],
-        sortIndex: 448
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-20'
+          }
+        ],
+        sortIndex: 443
       }
     },
     {
@@ -5062,8 +7642,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-20W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-20W' }],
-        sortIndex: 449
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-20W'
+          }
+        ],
+        sortIndex: 444
       }
     },
     {
@@ -5072,8 +7658,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-25W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-25W' }],
-        sortIndex: 450
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-25W'
+          }
+        ],
+        sortIndex: 445
       }
     },
     {
@@ -5082,8 +7674,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '830WSQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '830WSQ' }],
-        sortIndex: 451
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '830WSQ'
+          }
+        ],
+        sortIndex: 446
       }
     },
     {
@@ -5092,8 +7690,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '84',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '84' }],
-        sortIndex: 452
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '84'
+          }
+        ],
+        sortIndex: 447
       }
     },
     {
@@ -5102,8 +7706,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '85',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '85' }],
-        sortIndex: 453
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '85'
+          }
+        ],
+        sortIndex: 448
       }
     },
     {
@@ -5112,8 +7722,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-5' }],
-        sortIndex: 454
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-5'
+          }
+        ],
+        sortIndex: 449
       }
     },
     {
@@ -5122,8 +7738,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '850',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '850' }],
-        sortIndex: 455
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '850'
+          }
+        ],
+        sortIndex: 450
       }
     },
     {
@@ -5132,8 +7754,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '85-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '85-45' }],
-        sortIndex: 456
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '85-45'
+          }
+        ],
+        sortIndex: 451
       }
     },
     {
@@ -5142,8 +7770,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-5W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-5W' }],
-        sortIndex: 457
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-5W'
+          }
+        ],
+        sortIndex: 452
       }
     },
     {
@@ -5152,8 +7786,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8-8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8-8W' }],
-        sortIndex: 458
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8-8W'
+          }
+        ],
+        sortIndex: 453
       }
     },
     {
@@ -5162,8 +7802,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8SQ' }],
-        sortIndex: 459
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8SQ'
+          }
+        ],
+        sortIndex: 454
       }
     },
     {
@@ -5172,8 +7818,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '8W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '8W' }],
-        sortIndex: 460
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '8W'
+          }
+        ],
+        sortIndex: 455
       }
     },
     {
@@ -5182,26 +7834,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '9',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '9' }],
-        sortIndex: 461
-      }
-    },
-
-    {
-      key: CapacitySizeFacetOptionKey._9__,
-      ...defaultFacetOption,
-      valueId: '',
-      value: '-9',
-      configuration: {
         displays: [
           {
-            variation: 'Metric',
+            variation: 'Invariant',
             unitSymbol: '',
-            value: '34.1 l/min @ 2.76 bar'
-          },
-          { variation: 'Us', unitSymbol: '', value: '9 gpm @ 40 psi' }
+            value: '9'
+          }
         ],
-        sortIndex: 463
+        sortIndex: 456
       }
     },
     {
@@ -5210,8 +7850,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '9.2VL',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '9.2VL' }],
-        sortIndex: 464
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '9.2VL'
+          }
+        ],
+        sortIndex: 457
       }
     },
     {
@@ -5220,8 +7866,30 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '9.5',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '9.5' }],
-        sortIndex: 465
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '9.5'
+          }
+        ],
+        sortIndex: 458
+      }
+    },
+    {
+      key: CapacitySizeFacetOptionKey._9_9,
+      ...defaultFacetOption,
+      valueId: '',
+      value: '9.9',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '9.9'
+          }
+        ],
+        sortIndex: 459
       }
     },
     {
@@ -5230,8 +7898,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '90',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '90' }],
-        sortIndex: 466
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '90'
+          }
+        ],
+        sortIndex: 460
       }
     },
     {
@@ -5240,8 +7914,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '900',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '900' }],
-        sortIndex: 467
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '900'
+          }
+        ],
+        sortIndex: 461
       }
     },
     {
@@ -5250,8 +7930,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '950SQ',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '950SQ' }],
-        sortIndex: 468
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '950SQ'
+          }
+        ],
+        sortIndex: 462
       }
     },
     {
@@ -5260,8 +7946,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '95W',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '95W' }],
-        sortIndex: 469
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '95W'
+          }
+        ],
+        sortIndex: 463
       }
     },
     {
@@ -5270,8 +7962,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: '960',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: '960' }],
-        sortIndex: 470
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: '960'
+          }
+        ],
+        sortIndex: 464
       }
     },
     {
@@ -5281,9 +7979,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-13',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-13' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-13'
+          }
         ],
-        sortIndex: 471
+        sortIndex: 465
       }
     },
     {
@@ -5293,9 +7995,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-23',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-23' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-23'
+          }
         ],
-        sortIndex: 472
+        sortIndex: 466
       }
     },
     {
@@ -5305,9 +8011,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-25',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-25' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-25'
+          }
         ],
-        sortIndex: 473
+        sortIndex: 467
       }
     },
     {
@@ -5317,9 +8027,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-31',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-31' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-31'
+          }
         ],
-        sortIndex: 474
+        sortIndex: 468
       }
     },
     {
@@ -5329,9 +8043,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-33',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-33' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-33'
+          }
         ],
-        sortIndex: 475
+        sortIndex: 469
       }
     },
     {
@@ -5341,9 +8059,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-35',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-35' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-35'
+          }
         ],
-        sortIndex: 476
+        sortIndex: 470
       }
     },
     {
@@ -5353,9 +8075,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-45',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-45' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-45'
+          }
         ],
-        sortIndex: 477
+        sortIndex: 471
       }
     },
     {
@@ -5365,9 +8091,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-46',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-46' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-46'
+          }
         ],
-        sortIndex: 478
+        sortIndex: 472
       }
     },
     {
@@ -5377,9 +8107,13 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       value: 'D1.5-56',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: 'D1.5-56' }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1.5-56'
+          }
         ],
-        sortIndex: 479
+        sortIndex: 473
       }
     },
     {
@@ -5388,8 +8122,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D10-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D10-25' }],
-        sortIndex: 480
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D10-25'
+          }
+        ],
+        sortIndex: 474
       }
     },
     {
@@ -5398,8 +8138,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D10-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D10-45' }],
-        sortIndex: 481
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D10-45'
+          }
+        ],
+        sortIndex: 475
       }
     },
     {
@@ -5408,8 +8154,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D10-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D10-46' }],
-        sortIndex: 482
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D10-46'
+          }
+        ],
+        sortIndex: 476
       }
     },
     {
@@ -5418,8 +8170,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D10-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D10-56' }],
-        sortIndex: 483
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D10-56'
+          }
+        ],
+        sortIndex: 477
       }
     },
     {
@@ -5428,8 +8186,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-13',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-13' }],
-        sortIndex: 484
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-13'
+          }
+        ],
+        sortIndex: 478
       }
     },
     {
@@ -5438,8 +8202,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D12-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D12-25' }],
-        sortIndex: 485
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D12-25'
+          }
+        ],
+        sortIndex: 479
       }
     },
     {
@@ -5448,8 +8218,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-23' }],
-        sortIndex: 486
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-23'
+          }
+        ],
+        sortIndex: 480
       }
     },
     {
@@ -5458,8 +8234,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D12-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D12-45' }],
-        sortIndex: 487
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D12-45'
+          }
+        ],
+        sortIndex: 481
       }
     },
     {
@@ -5468,8 +8250,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-25' }],
-        sortIndex: 488
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-25'
+          }
+        ],
+        sortIndex: 482
       }
     },
     {
@@ -5478,8 +8266,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-31',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-31' }],
-        sortIndex: 489
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-31'
+          }
+        ],
+        sortIndex: 483
       }
     },
     {
@@ -5488,8 +8282,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-33',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-33' }],
-        sortIndex: 490
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-33'
+          }
+        ],
+        sortIndex: 484
       }
     },
     {
@@ -5498,8 +8298,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-35' }],
-        sortIndex: 491
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-35'
+          }
+        ],
+        sortIndex: 485
       }
     },
     {
@@ -5508,8 +8314,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D14-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D14-25' }],
-        sortIndex: 492
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D14-25'
+          }
+        ],
+        sortIndex: 486
       }
     },
     {
@@ -5518,8 +8330,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D14-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D14-45' }],
-        sortIndex: 493
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D14-45'
+          }
+        ],
+        sortIndex: 487
       }
     },
     {
@@ -5528,8 +8346,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-45' }],
-        sortIndex: 494
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-45'
+          }
+        ],
+        sortIndex: 488
       }
     },
     {
@@ -5538,8 +8362,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-46' }],
-        sortIndex: 495
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-46'
+          }
+        ],
+        sortIndex: 489
       }
     },
     {
@@ -5548,8 +8378,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D1-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D1-56' }],
-        sortIndex: 496
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D1-56'
+          }
+        ],
+        sortIndex: 490
       }
     },
     {
@@ -5558,8 +8394,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D16-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D16-45' }],
-        sortIndex: 497
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D16-45'
+          }
+        ],
+        sortIndex: 491
       }
     },
     {
@@ -5568,8 +8410,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-13',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-13' }],
-        sortIndex: 498
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-13'
+          }
+        ],
+        sortIndex: 492
       }
     },
     {
@@ -5578,8 +8426,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-23' }],
-        sortIndex: 499
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-23'
+          }
+        ],
+        sortIndex: 493
       }
     },
     {
@@ -5588,8 +8442,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-25' }],
-        sortIndex: 500
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-25'
+          }
+        ],
+        sortIndex: 494
       }
     },
     {
@@ -5598,8 +8458,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-31',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-31' }],
-        sortIndex: 501
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-31'
+          }
+        ],
+        sortIndex: 495
       }
     },
     {
@@ -5608,8 +8474,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-33',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-33' }],
-        sortIndex: 502
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-33'
+          }
+        ],
+        sortIndex: 496
       }
     },
     {
@@ -5618,8 +8490,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-35' }],
-        sortIndex: 503
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-35'
+          }
+        ],
+        sortIndex: 497
       }
     },
     {
@@ -5628,8 +8506,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-45' }],
-        sortIndex: 504
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-45'
+          }
+        ],
+        sortIndex: 498
       }
     },
     {
@@ -5638,8 +8522,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-46' }],
-        sortIndex: 505
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-46'
+          }
+        ],
+        sortIndex: 499
       }
     },
     {
@@ -5648,8 +8538,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D2-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D2-56' }],
-        sortIndex: 506
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D2-56'
+          }
+        ],
+        sortIndex: 500
       }
     },
     {
@@ -5658,8 +8554,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-13',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-13' }],
-        sortIndex: 507
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-13'
+          }
+        ],
+        sortIndex: 501
       }
     },
     {
@@ -5668,8 +8570,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-23' }],
-        sortIndex: 508
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-23'
+          }
+        ],
+        sortIndex: 502
       }
     },
     {
@@ -5678,8 +8586,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-25' }],
-        sortIndex: 509
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-25'
+          }
+        ],
+        sortIndex: 503
       }
     },
     {
@@ -5688,8 +8602,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-31',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-31' }],
-        sortIndex: 510
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-31'
+          }
+        ],
+        sortIndex: 504
       }
     },
     {
@@ -5698,8 +8618,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-33',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-33' }],
-        sortIndex: 511
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-33'
+          }
+        ],
+        sortIndex: 505
       }
     },
     {
@@ -5708,8 +8634,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-35' }],
-        sortIndex: 512
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-35'
+          }
+        ],
+        sortIndex: 506
       }
     },
     {
@@ -5718,8 +8650,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-45' }],
-        sortIndex: 513
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-45'
+          }
+        ],
+        sortIndex: 507
       }
     },
     {
@@ -5728,8 +8666,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-46' }],
-        sortIndex: 514
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-46'
+          }
+        ],
+        sortIndex: 508
       }
     },
     {
@@ -5738,8 +8682,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D3-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D3-56' }],
-        sortIndex: 515
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D3-56'
+          }
+        ],
+        sortIndex: 509
       }
     },
     {
@@ -5748,8 +8698,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-13',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-13' }],
-        sortIndex: 516
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-13'
+          }
+        ],
+        sortIndex: 510
       }
     },
     {
@@ -5758,8 +8714,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-23' }],
-        sortIndex: 517
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-23'
+          }
+        ],
+        sortIndex: 511
       }
     },
     {
@@ -5768,8 +8730,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-25' }],
-        sortIndex: 518
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-25'
+          }
+        ],
+        sortIndex: 512
       }
     },
     {
@@ -5778,8 +8746,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-33',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-33' }],
-        sortIndex: 519
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-33'
+          }
+        ],
+        sortIndex: 513
       }
     },
     {
@@ -5788,8 +8762,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-35' }],
-        sortIndex: 520
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-35'
+          }
+        ],
+        sortIndex: 514
       }
     },
     {
@@ -5798,8 +8778,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-45' }],
-        sortIndex: 521
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-45'
+          }
+        ],
+        sortIndex: 515
       }
     },
     {
@@ -5808,8 +8794,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-46' }],
-        sortIndex: 522
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-46'
+          }
+        ],
+        sortIndex: 516
       }
     },
     {
@@ -5818,8 +8810,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D4-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D4-56' }],
-        sortIndex: 523
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D4-56'
+          }
+        ],
+        sortIndex: 517
       }
     },
     {
@@ -5828,8 +8826,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-23' }],
-        sortIndex: 524
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-23'
+          }
+        ],
+        sortIndex: 518
       }
     },
     {
@@ -5838,8 +8842,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-25' }],
-        sortIndex: 525
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-25'
+          }
+        ],
+        sortIndex: 519
       }
     },
     {
@@ -5848,8 +8858,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-35',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-35' }],
-        sortIndex: 526
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-35'
+          }
+        ],
+        sortIndex: 520
       }
     },
     {
@@ -5858,8 +8874,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-45' }],
-        sortIndex: 527
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-45'
+          }
+        ],
+        sortIndex: 521
       }
     },
     {
@@ -5868,8 +8890,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-46' }],
-        sortIndex: 528
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-46'
+          }
+        ],
+        sortIndex: 522
       }
     },
     {
@@ -5878,8 +8906,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D5-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D5-56' }],
-        sortIndex: 529
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D5-56'
+          }
+        ],
+        sortIndex: 523
       }
     },
     {
@@ -5888,8 +8922,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D6-23',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D6-23' }],
-        sortIndex: 530
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D6-23'
+          }
+        ],
+        sortIndex: 524
       }
     },
     {
@@ -5898,8 +8938,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D6-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D6-25' }],
-        sortIndex: 531
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D6-25'
+          }
+        ],
+        sortIndex: 525
       }
     },
     {
@@ -5908,8 +8954,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D6-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D6-45' }],
-        sortIndex: 532
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D6-45'
+          }
+        ],
+        sortIndex: 526
       }
     },
     {
@@ -5918,8 +8970,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D6-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D6-46' }],
-        sortIndex: 533
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D6-46'
+          }
+        ],
+        sortIndex: 527
       }
     },
     {
@@ -5928,8 +8986,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D6-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D6-56' }],
-        sortIndex: 534
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D6-56'
+          }
+        ],
+        sortIndex: 528
       }
     },
     {
@@ -5938,8 +9002,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D7-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D7-25' }],
-        sortIndex: 535
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D7-25'
+          }
+        ],
+        sortIndex: 529
       }
     },
     {
@@ -5948,8 +9018,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D7-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D7-45' }],
-        sortIndex: 536
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D7-45'
+          }
+        ],
+        sortIndex: 530
       }
     },
     {
@@ -5958,8 +9034,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D7-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D7-46' }],
-        sortIndex: 537
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D7-46'
+          }
+        ],
+        sortIndex: 531
       }
     },
     {
@@ -5968,8 +9050,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D7-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D7-56' }],
-        sortIndex: 538
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D7-56'
+          }
+        ],
+        sortIndex: 532
       }
     },
     {
@@ -5978,8 +9066,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D8-25',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D8-25' }],
-        sortIndex: 539
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D8-25'
+          }
+        ],
+        sortIndex: 533
       }
     },
     {
@@ -5988,8 +9082,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D8-45',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D8-45' }],
-        sortIndex: 540
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D8-45'
+          }
+        ],
+        sortIndex: 534
       }
     },
     {
@@ -5998,8 +9098,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D8-46',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D8-46' }],
-        sortIndex: 541
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D8-46'
+          }
+        ],
+        sortIndex: 535
       }
     },
     {
@@ -6008,8 +9114,14 @@ export const capacitySizeFacetOptions: FacetOption<CapacitySizeFacetOptionKey>[]
       valueId: '',
       value: 'D8-56',
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 'D8-56' }],
-        sortIndex: 542
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 'D8-56'
+          }
+        ],
+        sortIndex: 536
       }
     }
   ];

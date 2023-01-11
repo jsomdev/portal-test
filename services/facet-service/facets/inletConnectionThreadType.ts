@@ -22,12 +22,15 @@ export const inletConnectionThreadTypeFacetOptions: FacetOption<InletConnectionT
       value: 'BSPT',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'BSPT' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'BSPT' }
+          }
         ],
         sortIndex: 1
       }
     },
-
     {
       key: InletConnectionThreadTypeFacetOptionKey.NPS,
       ...defaultFacetOption,
@@ -35,9 +38,13 @@ export const inletConnectionThreadTypeFacetOptions: FacetOption<InletConnectionT
       value: 'NPS',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'NPS' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'NPS' }
+          }
         ],
-        sortIndex: 3
+        sortIndex: 2
       }
     },
     {
@@ -47,9 +54,13 @@ export const inletConnectionThreadTypeFacetOptions: FacetOption<InletConnectionT
       value: 'NPT',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'NPT' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'NPT' }
+          }
         ],
-        sortIndex: 4
+        sortIndex: 3
       }
     }
   ];
@@ -65,8 +76,6 @@ export const inletConnectionThreadTypeFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: inletConnectionThreadTypeFacetOptions

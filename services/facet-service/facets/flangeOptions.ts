@@ -179,7 +179,6 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
         sortIndex: 8
       }
     },
-
     {
       key: FlangeOptionsFacetOptionKey._3PAJ,
       ...defaultFacetOption,
@@ -193,7 +192,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: 'Three Prong Flange, Adjustable' }
           }
         ],
-        sortIndex: 10
+        sortIndex: 9
       }
     },
     {
@@ -209,7 +208,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "3' ASME, 150# Raised Face Flange" }
           }
         ],
-        sortIndex: 11
+        sortIndex: 10
       }
     },
     {
@@ -225,7 +224,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "3' ASME, 300# Raised Face Flange, Adjustable" }
           }
         ],
-        sortIndex: 12
+        sortIndex: 11
       }
     },
     {
@@ -241,7 +240,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "3' ASME, 150# Raised Face Flange, Adjustable" }
           }
         ],
-        sortIndex: 13
+        sortIndex: 12
       }
     },
     {
@@ -257,7 +256,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "3' Sanitary Tri-Clover Flange" }
           }
         ],
-        sortIndex: 14
+        sortIndex: 13
       }
     },
     {
@@ -273,7 +272,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "3' Sanitary Tri-Clover Flange, Adjustable" }
           }
         ],
-        sortIndex: 15
+        sortIndex: 14
       }
     },
     {
@@ -289,7 +288,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "4' ASME, 150# Raised Face Flange" }
           }
         ],
-        sortIndex: 16
+        sortIndex: 15
       }
     },
     {
@@ -305,7 +304,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "4' ASME, 300# Raised Face Flange, Adjustable" }
           }
         ],
-        sortIndex: 17
+        sortIndex: 16
       }
     },
     {
@@ -323,7 +322,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 18
+        sortIndex: 17
       }
     },
     {
@@ -339,7 +338,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "4' ASME, 150# Raised Face Flange, Adjustable" }
           }
         ],
-        sortIndex: 19
+        sortIndex: 18
       }
     },
     {
@@ -357,7 +356,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 20
+        sortIndex: 19
       }
     },
     {
@@ -373,7 +372,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "4' Sanitary Tri-Clover Flange" }
           }
         ],
-        sortIndex: 21
+        sortIndex: 20
       }
     },
     {
@@ -389,7 +388,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "4' Sanitary Tri-Clover Flange, Adjustable" }
           }
         ],
-        sortIndex: 22
+        sortIndex: 21
       }
     },
     {
@@ -407,7 +406,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 23
+        sortIndex: 22
       }
     },
     {
@@ -423,7 +422,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "6' ASME, 150# Raised Face Flange" }
           }
         ],
-        sortIndex: 24
+        sortIndex: 23
       }
     },
     {
@@ -441,7 +440,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 25
+        sortIndex: 24
       }
     },
     {
@@ -457,7 +456,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "6' ASME, 150# Raised Face Flange, Adjustable" }
           }
         ],
-        sortIndex: 26
+        sortIndex: 25
       }
     },
     {
@@ -475,7 +474,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 27
+        sortIndex: 26
       }
     },
     {
@@ -491,7 +490,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "6' Sanitary Tri-Clover Flange" }
           }
         ],
-        sortIndex: 28
+        sortIndex: 27
       }
     },
     {
@@ -507,7 +506,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "6' Sanitary Tri-Clover Flange, Adjustable" }
           }
         ],
-        sortIndex: 29
+        sortIndex: 28
       }
     },
     {
@@ -525,7 +524,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 30
+        sortIndex: 29
       }
     },
     {
@@ -541,7 +540,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: '80mm DIN, PN10 Raised Face Flange, Adjustable' }
           }
         ],
-        sortIndex: 31
+        sortIndex: 30
       }
     },
     {
@@ -557,7 +556,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: "8' Sanitary Tri-Clover Flange, Adjustable" }
           }
         ],
-        sortIndex: 32
+        sortIndex: 31
       }
     },
     {
@@ -573,7 +572,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: 'ASME Raised Face Flange' }
           }
         ],
-        sortIndex: 33
+        sortIndex: 32
       }
     },
     {
@@ -591,7 +590,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 34
+        sortIndex: 33
       }
     },
     {
@@ -607,7 +606,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: '125mm DIN, PN6 Raised Face Flange' }
           }
         ],
-        sortIndex: 35
+        sortIndex: 34
       }
     },
     {
@@ -617,9 +616,13 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
       value: 'JIS',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'JIS' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'JIS' }
+          }
         ],
-        sortIndex: 36
+        sortIndex: 35
       }
     },
     {
@@ -638,7 +641,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 37
+        sortIndex: 36
       }
     },
     {
@@ -657,7 +660,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 38
+        sortIndex: 37
       }
     },
     {
@@ -676,7 +679,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             }
           }
         ],
-        sortIndex: 39
+        sortIndex: 38
       }
     },
     {
@@ -692,7 +695,7 @@ export const flangeOptionsFacetOptions: FacetOption<FlangeOptionsFacetOptionKey>
             value: { en: 'Sanitary Tri-Clamp' }
           }
         ],
-        sortIndex: 40
+        sortIndex: 39
       }
     }
   ];
@@ -708,8 +711,6 @@ export const flangeOptionsFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: '',
-    description: '',
     isFacetingEnabled: true
   },
   options: flangeOptionsFacetOptions
