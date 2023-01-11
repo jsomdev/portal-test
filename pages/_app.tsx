@@ -15,6 +15,7 @@ import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewe
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
+import { Consent } from '@services/consent/consent';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
@@ -62,35 +63,38 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [router]);
 
   return (
-    <ClientSideMsalProvider>
-      <IntlProvider
-        locale={locale || defaultLocale}
-        defaultLocale={defaultLocale}
-        messages={i18nMessages}
-      >
-        <MediaContextProvider>
-          <AppThemeProvider>
-            <ReactQueryClientProvider>
-              <AddressBookProvider>
-                <UserProvider>
-                  <CartProvider>
-                    <SystemOfMeasurementProvider>
-                      <ProductCompareProvider>
-                        <RecentlyViewedProvider>
-                          <ProductBookmarksProvider>
-                            <Component {...pageProps} />
-                          </ProductBookmarksProvider>
-                        </RecentlyViewedProvider>
-                      </ProductCompareProvider>
-                    </SystemOfMeasurementProvider>
-                  </CartProvider>
-                </UserProvider>
-              </AddressBookProvider>
-            </ReactQueryClientProvider>
-          </AppThemeProvider>
-        </MediaContextProvider>
-      </IntlProvider>
-    </ClientSideMsalProvider>
+    <>
+      <Consent />
+      <ClientSideMsalProvider>
+        <IntlProvider
+          locale={locale || defaultLocale}
+          defaultLocale={defaultLocale}
+          messages={i18nMessages}
+        >
+          <MediaContextProvider>
+            <AppThemeProvider>
+              <ReactQueryClientProvider>
+                <AddressBookProvider>
+                  <UserProvider>
+                    <CartProvider>
+                      <SystemOfMeasurementProvider>
+                        <ProductCompareProvider>
+                          <RecentlyViewedProvider>
+                            <ProductBookmarksProvider>
+                              <Component {...pageProps} />
+                            </ProductBookmarksProvider>
+                          </RecentlyViewedProvider>
+                        </ProductCompareProvider>
+                      </SystemOfMeasurementProvider>
+                    </CartProvider>
+                  </UserProvider>
+                </AddressBookProvider>
+              </ReactQueryClientProvider>
+            </AppThemeProvider>
+          </MediaContextProvider>
+        </IntlProvider>
+      </ClientSideMsalProvider>
+    </>
   );
 }
 export default MyApp;
