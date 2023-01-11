@@ -365,19 +365,19 @@ export const nl: Messages = {
       headDescription: 'Experten in sproeitechnologie',
       sections: {
         support: {
-          title: 'Need help finding the product you need?',
-          searchToolTitle: 'Try the search tool',
+          title: 'Moeite met het vinden van een product?',
+          searchToolTitle: 'Probeer de zoekhulp!',
           searchToolDescription:
-            'Find a product based on its part number, name and more',
-          searchToolAction: 'Start searching',
-          localRepTitle: 'Find a local representative',
+            'Vind een product aan de hand van de naam, nummer of andere',
+          searchToolAction: 'Start met zoeken',
+          localRepTitle: 'Vind een lokale vertegenwoordiger',
           localRepDescription:
-            'Your local representative can help you if you are not finding what you are looking for',
-          localRepAction: 'Get in contact',
+            'Uw lokale vertegenwoordiger kan u helpen bij het zoeken naar een productoplossing',
+          localRepAction: 'Neem contact op',
           onlineChatTitle: 'Online support',
           onlineChatDescription:
-            'Want to speak with someone before you dive into our big product range?',
-          onlineChatAction: 'Schedule a meeting'
+            'Wil je met iemand spreken voor je duikt in ons grote productaanbod?',
+          onlineChatAction: 'Boek een meeting'
         },
         signUp: {
           title: 'Meld u aan voor de beste koopervaring',

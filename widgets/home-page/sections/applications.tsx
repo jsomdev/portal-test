@@ -5,6 +5,7 @@ import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
   IButtonStyles,
+  IStackItemStyles,
   IStackStyles,
   Stack,
   Text,
@@ -24,11 +25,13 @@ interface ApplicationsStyles {
   root: IStackStyles;
   itemsContainer: IStackStyles;
   itemContainer: IStackStyles;
+  imageContainer: IStackItemStyles;
+  subItemContainer: IStackItemStyles;
   linkContainer: IStackStyles;
   button: Partial<IButtonStyles>;
 }
 
-const width: number = 268;
+const height: number = 224;
 
 export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const { locale } = useIntl();
@@ -39,7 +42,6 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
   const styles: ApplicationsStyles = {
     itemContainer: {
       root: {
-        width: width,
         background: palette.white,
         borderRadius: 7,
         border: `1px solid ${palette.neutralLight}`,
@@ -58,14 +60,43 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         color: palette.neutralLight
       }
     },
-    itemsContainer: {},
+    imageContainer: {
+      root: {
+        position: 'relative',
+        width: '100%',
+        height: height
+      }
+    },
+    subItemContainer: {
+      root: {
+        width: `calc(100% - ${spacing.m})`,
+        ...mediaQueryFrom('largePhone', {
+          width: `calc(50% - ${spacing.m})`
+        }),
+        ...mediaQueryFrom('tablet', {
+          width: `calc(25% - ${spacing.m})`
+        }),
+        ...mediaQueryFrom('desktop', {
+          width: `calc(20% - ${spacing.m})`
+        })
+      }
+    },
+    itemsContainer: {
+      root: { width: '100%' },
+      inner: {
+        flexFlow: 'column wrap',
+        ...mediaQueryFrom('largePhone', {
+          flexFlow: 'row wrap'
+        })
+      }
+    },
     linkContainer: {
       root: {
         height: 65,
         background: palette.themeDark,
         borderBottomLeftRadius: 7,
         borderBottomRightRadius: 7,
-        width: width,
+        width: '100%',
         borderTop: `1px solid ${palette.neutralLight}`
       }
     },
@@ -88,29 +119,35 @@ export const Applications: React.FC<ApplicationsProps> = ({ category }) => {
         {categoryItem.name}
       </Text>
       <Stack
-        horizontal
         wrap
         tokens={{
           padding: `${spacing.m} 0`,
-          childrenGap: spacing.s1
+          childrenGap: spacing.m
         }}
         styles={styles.itemsContainer}
       >
         {categoryItem.children?.map(categoryItem => (
-          <Stack.Item key={categoryItem.id}>
+          <Stack.Item key={categoryItem.id} styles={styles.subItemContainer}>
             <NextLink passHref href={categoryItem.href}>
               <a>
                 <Stack styles={styles.itemContainer}>
-                  <Image
-                    layout="fixed"
-                    width={268}
-                    height={width * 0.7}
-                    alt={categoryItem.imageAlt}
-                    src={categoryItem.imageSrc}
-                    objectFit="cover"
-                    loader={getImageLoader(categoryItem.imageSrc)}
-                    objectPosition="center"
-                  />
+                  <Stack.Item styles={styles.imageContainer}>
+                    <Image
+                      layout="fill"
+                      alt={categoryItem.imageAlt}
+                      src={categoryItem.imageSrc}
+                      objectFit={
+                        categoryItem.imageSrc.indexOf('?crop=true') > -1
+                          ? 'cover'
+                          : 'contain'
+                        /* Legacy behavior:
+                    - images with a non-white background can be cropped, you can identify these by the url that has a querystring "?crop=true"
+                    - image with a white background can not be cropped and should be fully visible, as parts of the product will be cut off when cropped  */
+                      }
+                      loader={getImageLoader(categoryItem.imageSrc)}
+                      objectPosition="center"
+                    />
+                  </Stack.Item>
                   <Stack
                     styles={styles.linkContainer}
                     horizontalAlign="center"

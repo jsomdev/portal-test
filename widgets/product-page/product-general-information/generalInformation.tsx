@@ -163,7 +163,6 @@ export const ProductGeneralInformation: React.FC = () => {
         )}
       </Stack>
       <Stack.Item styles={styles.rightContainer}>
-        <Stack>{systemOfMeasurement}</Stack>
         <Stack>
           {!!keyAttributes?.length && keySpecificationsGroup && (
             <Stack>

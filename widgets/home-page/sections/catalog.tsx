@@ -4,6 +4,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
 import {
+  IStackItemStyles,
   IStackStyles,
   ITextStyles,
   Stack,
@@ -28,6 +29,7 @@ interface CatalogStyles {
   itemTitle: ITextStyles;
   itemDescription: ITextStyles;
   subItemsContainer: IStackStyles;
+  subItemContainer: IStackItemStyles;
 }
 
 const messages = defineMessages({
@@ -81,7 +83,27 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
       }
     },
     subItemsContainer: {
-      root: { width: '100%' }
+      root: { width: '100%' },
+      inner: {
+        flexFlow: 'column wrap',
+        ...mediaQueryFrom('largePhone', {
+          flexFlow: 'row wrap'
+        })
+      }
+    },
+    subItemContainer: {
+      root: {
+        width: `calc(100% - ${spacing.m})`,
+        ...mediaQueryFrom('largePhone', {
+          width: `calc(50% - ${spacing.m})`
+        }),
+        ...mediaQueryFrom('tablet', {
+          width: `calc(25% - ${spacing.m})`
+        }),
+        ...mediaQueryFrom('desktop', {
+          width: `calc(20% - ${spacing.m})`
+        })
+      }
     }
   };
   return (
@@ -117,16 +139,18 @@ export const Catalog: React.FC<CatalogProps> = ({ categories }) => {
             </NextLink>
 
             <Stack
-              horizontal
               tokens={{
                 padding: `${spacing.l1} 0`,
-                childrenGap: spacing.s1
+                childrenGap: spacing.m
               }}
               styles={styles.subItemsContainer}
               wrap
             >
               {categoryItem.children.map(childCategoryItem => (
-                <Stack.Item key={childCategoryItem.id}>
+                <Stack.Item
+                  key={childCategoryItem.id}
+                  styles={styles.subItemContainer}
+                >
                   <CategoryCard {...childCategoryItem} />
                 </Stack.Item>
               ))}

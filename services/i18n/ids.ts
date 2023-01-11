@@ -993,7 +993,7 @@ export const messageIds: Messages = {
     default: 'loading.default',
     user: {
       signingIn: 'loading.user.signingIn',
-      signingOut: 'loading.user.signingIn',
+      signingOut: 'loading.user.signingOut',
       redirecting: 'loading.user.redirecting'
     }
   },
