@@ -1,4 +1,4 @@
-import { IntlShape, defineMessages } from 'react-intl';
+import { IntlShape, MessageDescriptor, defineMessages } from 'react-intl';
 
 import { IPublicClientApplication } from '@azure/msal-browser';
 import { INavLinkGroup } from '@fluentui/react';
@@ -116,51 +116,49 @@ export function getAppNavigationAccountMenuItems(
 
 /**
  * This function will return menu items used on the account menu accessed through the site-header on mobile
- * @param intl intl shape used to format the message
- * @param me Used to determine if a sign in button or sign out will be returned
- * @param instance the msal instance used for the login / logout redirect
+ * @param isAuthenticated Boolean that indicates whether a user is signed in or not.
+ * @param onLogin Function callback when sign in is clicked
+ * @param onLogout Function callback when sign out is clicked
+ * @param onFormatText Function callback that takes a MessageDescriptor object parameter and returns the formatted text.
  * @returns MenuItemViewModel[]
  */
 export function getAccountNavigationMenuItems(
-  intl: IntlShape,
-  me: User | undefined,
-  instance: IPublicClientApplication
+  isAuthenticated: boolean,
+  onLogin: () => void,
+  onLogout: () => void,
+  onFormatText: (message: MessageDescriptor) => string
 ): MenuItemViewModel[] {
-  const { formatMessage } = intl;
-
-  if (me) {
+  if (isAuthenticated) {
     return [
       {
         href: pagePaths.accountOverview,
-        text: formatMessage(messages.overview),
+        text: onFormatText(messages.overview),
         id: 'account'
       },
       {
         href: pagePaths.orders,
-        text: formatMessage(messages.orders),
+        text: onFormatText(messages.orders),
         id: 'account-orders'
       },
       {
         href: pagePaths.quotes,
-        text: formatMessage(messages.quotes),
+        text: onFormatText(messages.quotes),
         id: 'account-quotes'
       },
       {
         href: pagePaths.quoteRequests,
-        text: formatMessage(messages.quoteRequests),
+        text: onFormatText(messages.quoteRequests),
         id: 'account-quote-requests'
       },
       {
         href: pagePaths.infoAndPreferences,
-        text: formatMessage(messages.infoAndPreferences),
+        text: onFormatText(messages.infoAndPreferences),
         id: 'account-info-and-preferences'
       },
       {
         href: '#',
-        text: formatMessage(messages.signOut),
-        onClick: () => {
-          return instance.logoutRedirect(customerLoginRequest);
-        },
+        text: onFormatText(messages.signOut),
+        onClick: onLogout,
         id: 'account-sign-out'
       }
     ];
@@ -168,10 +166,8 @@ export function getAccountNavigationMenuItems(
   return [
     {
       href: '#',
-      text: formatMessage(messages.signIn),
-      onClick: () => {
-        instance.loginRedirect(customerLoginRequest);
-      },
+      text: onFormatText(messages.signIn),
+      onClick: onLogin,
       id: 'account-sign-in'
     }
   ];

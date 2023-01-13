@@ -5475,8 +5475,8 @@ export const modelIdFacet: Facet<
   FacetOption<ModelIdFacetOptionKey>
 > = {
   ...defaultFacet,
-  key: FacetKey.Model,
-  attributeTypeCode: 'Model',
+  key: FacetKey.ModelId,
+  attributeTypeCode: 'ModelId',
   configuration: {
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,

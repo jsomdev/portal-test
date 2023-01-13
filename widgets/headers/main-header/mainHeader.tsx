@@ -23,7 +23,11 @@ import {
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
-import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
+import {
+  customerLoginRequest,
+  employeeLoginRequest
+} from '@services/authentication/authenticationConfiguration';
+import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
@@ -110,12 +114,14 @@ const DesktopMainHeader: React.FC = () => {
     MenuItemViewModel | undefined
   >();
   const intl = useIntl();
+  const { formatMessage } = intl;
   const { asPath } = useRouter();
   const { instance, inProgress } = useMsal();
+
   const { mainMenuItems } = useGlobalData();
   const { spacing, palette, effects, fonts } = useTheme();
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const { me } = useMe();
+  const { isEmployee } = useClaims();
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
 
@@ -128,17 +134,19 @@ const DesktopMainHeader: React.FC = () => {
     );
   }, [mainMenuItems, intl]);
 
-  function signIn() {
-    instance.loginRedirect(customerLoginRequest);
-  }
-
   useEffect(() => {
     setActiveMenuItem(undefined);
   }, [asPath]);
 
   const accountMenuItems: MenuItemViewModel[] = useMemo(() => {
-    return getAccountNavigationMenuItems(intl, me, instance);
-  }, [intl, instance, me]);
+    const request = isEmployee ? employeeLoginRequest : customerLoginRequest;
+    return getAccountNavigationMenuItems(
+      isAuthenticated,
+      () => instance.loginRedirect(request),
+      () => instance.logoutRedirect(request),
+      message => formatMessage(message)
+    );
+  }, [instance, isEmployee, isAuthenticated, formatMessage]);
 
   const styles: DesktopMainHeaderStyles = {
     root: {
@@ -282,10 +290,7 @@ const DesktopMainHeader: React.FC = () => {
                 }}
                 styles={styles.userButton}
                 onClick={() => {
-                  if (!showUserMenu) {
-                    return isAuthenticated ? setShowUserMenu(true) : signIn();
-                  }
-                  return setShowUserMenu(false);
+                  setShowUserMenu(currentState => !currentState);
                 }}
               >
                 {isAuthenticated && (

@@ -2,8 +2,12 @@ import React from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
-import { useMsal } from '@azure/msal-react';
-import { useMe } from '@providers/user/userContext';
+import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import {
+  customerLoginRequest,
+  employeeLoginRequest
+} from '@services/authentication/authenticationConfiguration';
+import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import MultiMenu from '@widgets/headers/site-header/multi-menu/multiMenu';
 import { MultiMenuConfiguration } from '@widgets/headers/site-header/multi-menu/multiMenu.types';
@@ -28,15 +32,21 @@ type AccountNavigationMenuProps = {
 export const AccountNavigationMenu: React.FC<AccountNavigationMenuProps> = ({
   onDismiss
 }) => {
-  const intl = useIntl();
-  const { me } = useMe();
+  const { formatMessage } = useIntl();
   const { instance } = useMsal();
-
+  const isAuthenticated = useIsAuthenticated();
+  const { isEmployee } = useClaims();
+  const request = isEmployee ? employeeLoginRequest : customerLoginRequest;
   const configuration: MultiMenuConfiguration = {
     accountMenu: {
-      backButtonText: intl.formatMessage(messages.menuReset),
+      backButtonText: formatMessage(messages.menuReset),
       hideOtherMenusWhenActive: true,
-      items: getAccountNavigationMenuItems(intl, me, instance)
+      items: getAccountNavigationMenuItems(
+        isAuthenticated,
+        () => instance.loginRedirect(request),
+        () => instance.logoutRedirect(request),
+        formatMessage
+      )
     }
   };
 
