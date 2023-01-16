@@ -31,6 +31,14 @@ export function mapAutoCompleteStringsToViewModel(
     return [];
   }
   return values.slice(0, count).map(value => {
+    // If the value does not include the full match. The whole value will be rendered in bold
+    if (!value.toLowerCase().includes(match.toLowerCase())) {
+      return {
+        htmlText: `<strong>${value}</strong>`,
+        query: value
+      };
+    }
+
     const matchStartIndex = value.toUpperCase().indexOf(match.toUpperCase());
     const matchEndIndex =
       value.toUpperCase().indexOf(match.toUpperCase()) + match.length;
