@@ -3,13 +3,13 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   IChoiceGroupOption,
   IChoiceGroupOptionProps,
   IRenderFunction,
   IStackStyles,
   ITextFieldStyles,
-  MessageBar,
   MessageBarType,
   Stack,
   useTheme
@@ -77,9 +77,9 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
           verticalAlign="center"
           styles={styles.container}
         >
-          <MessageBar messageBarType={MessageBarType.info}>
+          <PortalMessageBar messageBarType={MessageBarType.info}>
             {formatMessage(messages.info)}
-          </MessageBar>
+          </PortalMessageBar>
           <FormikTextField
             {...fields.referenceNumber}
             required={true}

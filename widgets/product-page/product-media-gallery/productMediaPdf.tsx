@@ -3,11 +3,11 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { Document } from 'react-pdf';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ISpinnerStyles,
   IStackStyles,
   IconButton,
-  MessageBar,
   MessageBarType,
   Spinner,
   SpinnerSize,
@@ -206,7 +206,9 @@ export const ProductMediaPdf: React.FC<ProductMediaPdfProps> = ({
   function renderErrorMessage(text: string): JSX.Element {
     return (
       <Stack styles={styles.errorMessage}>
-        <MessageBar messageBarType={MessageBarType.error}>{text}</MessageBar>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
+          {text}
+        </PortalMessageBar>
       </Stack>
     );
   }

@@ -2,13 +2,13 @@ import React from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ActionButton,
   FontWeights,
   IButtonStyles,
   IStackStyles,
   ITextStyles,
-  MessageBar,
   MessageBarType,
   Stack,
   Text,
@@ -74,8 +74,7 @@ export const RequestForQuoteErrorMessage: React.FC = () => {
   };
 
   return (
-    <MessageBar
-      styles={{ root: { marginTop: spacing.l2 } }}
+    <PortalMessageBar
       actions={
         <Stack
           styles={styles.actions}
@@ -117,6 +116,6 @@ export const RequestForQuoteErrorMessage: React.FC = () => {
           <Text>{formatMessage(messages.description)}</Text>
         </Stack.Item>
       </Stack>
-    </MessageBar>
+    </PortalMessageBar>
   );
 };

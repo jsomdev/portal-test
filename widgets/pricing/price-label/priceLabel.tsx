@@ -3,6 +3,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ActionButton,
   DirectionalHint,
@@ -11,7 +12,6 @@ import {
   ITooltipHostStyles,
   Icon,
   Label,
-  MessageBar,
   MessageBarType,
   Shimmer,
   ShimmerElementType,
@@ -146,9 +146,9 @@ export const PriceLabel: React.FC<PriceLabelProps> = ({
     return (
       <Stack>
         <Stack.Item>
-          <MessageBar messageBarType={MessageBarType.error}>
+          <PortalMessageBar messageBarType={MessageBarType.error}>
             <Text>{formatMessage(messages.error)}</Text>
-          </MessageBar>
+          </PortalMessageBar>
         </Stack.Item>
       </Stack>
     );

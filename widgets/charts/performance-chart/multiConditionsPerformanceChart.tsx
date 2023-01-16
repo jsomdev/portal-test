@@ -12,9 +12,9 @@ import {
   YAxis
 } from 'recharts';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
-  IMessageBarStyles,
-  MessageBar,
+  IStackItemStyles,
   MessageBarType,
   Stack,
   useTheme
@@ -41,7 +41,7 @@ const messages = defineMessages({
 });
 
 interface MultiConditionsPerformanceChartStyles {
-  messageBar: IMessageBarStyles;
+  messageBarContainer: IStackItemStyles;
   tooltipWrapper: CSSProperties;
 }
 export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
@@ -52,7 +52,7 @@ export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
 }) => {
   const { getAttributeType, getConditionType } = useGlobalData();
 
-  const { palette } = useTheme();
+  const { palette, spacing } = useTheme();
   const { systemOfMeasurement } = useSystemOfMeasurement();
   const intl = useIntl();
   const { locale, formatMessage } = intl;
@@ -85,9 +85,9 @@ export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
     tooltipWrapper: {
       outline: 'none'
     },
-    messageBar: {
+    messageBarContainer: {
       root: {
-        marginTop: '15px'
+        marginTop: spacing.l1
       }
     }
   };
@@ -120,13 +120,10 @@ export const MultiConditionsPerformanceChart: React.FC<ChartProps> = ({
 
   if (configuration === null) {
     return (
-      <Stack.Item>
-        <MessageBar
-          messageBarType={MessageBarType.info}
-          styles={styles.messageBar}
-        >
+      <Stack.Item styles={styles.messageBarContainer}>
+        <PortalMessageBar messageBarType={MessageBarType.info}>
           {formatMessage(messages.noData)}
-        </MessageBar>
+        </PortalMessageBar>
       </Stack.Item>
     );
   }

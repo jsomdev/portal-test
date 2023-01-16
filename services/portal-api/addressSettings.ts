@@ -17,21 +17,25 @@ import { QueryOptions } from './o-data/queryOptions';
 export const fetchAddressBookSetting = async (
   isAuthenticated: boolean
 ): Promise<Setting | undefined> => {
-  if (!isAuthenticated) {
-    return undefined;
-  }
-  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/me/settings'
-  );
-  const queryOptions: Partial<QueryOptions> = {
-    filterQuery: `key eq '${SETTINGKEYS.addressBook}'`
-  };
-  const settings = await settingsResource.getEntities(queryOptions);
+  try {
+    if (!isAuthenticated) {
+      return undefined;
+    }
+    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+      '/me/settings'
+    );
+    const queryOptions: Partial<QueryOptions> = {
+      filterQuery: `key eq '${SETTINGKEYS.addressBook}'`
+    };
+    const settings = await settingsResource.getEntities(queryOptions);
 
-  if (settings.value.length > 1) {
-    console.warn('Unexpectedly found more than 1 address book setting.');
+    if (settings.value.length > 1) {
+      console.warn('Unexpectedly found more than 1 address book setting.');
+    }
+    return settings.value[0];
+  } catch (error) {
+    console.error(error);
   }
-  return settings.value[0];
 };
 
 export const addAddressToAddressBookSetting = async (
@@ -41,55 +45,59 @@ export const addAddressToAddressBookSetting = async (
   setDefaultShipping: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  if (!isAuthenticated) {
-    return undefined;
-  }
+  try {
+    if (!isAuthenticated) {
+      return undefined;
+    }
 
-  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/me/settings'
-  );
+    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+      '/me/settings'
+    );
 
-  if (!setting) {
-    setting = await fetchAddressBookSetting(isAuthenticated);
-  }
+    if (!setting) {
+      setting = await fetchAddressBookSetting(isAuthenticated);
+    }
 
-  if (setting?.id) {
-    return settingsResource.putEntity(
-      setting.id,
-      JSON.stringify({
-        ...setting,
+    if (setting?.id) {
+      return settingsResource.putEntity(
+        setting.id,
+        JSON.stringify({
+          ...setting,
+          value: {
+            addresses: mergeAddressBookAddress(
+              address,
+              setting?.value?.addresses
+            ),
+            defaultBillingAddressId: setDefault
+              ? address.id
+              : setting?.value?.defaultBillingAddressId,
+            defaultShippingAddressId: setDefaultShipping
+              ? address.id
+              : setting?.value?.defaultShippingAddressId
+          } as AddressBookSettingValue
+        })
+      );
+    } else {
+      setting = {
+        key: SETTINGKEYS.addressBook,
         value: {
-          addresses: mergeAddressBookAddress(
-            address,
-            setting?.value?.addresses
-          ),
+          addresses: [address],
           defaultBillingAddressId: setDefault
             ? address.id
             : setting?.value?.defaultBillingAddressId,
           defaultShippingAddressId: setDefaultShipping
             ? address.id
             : setting?.value?.defaultShippingAddressId
-        } as AddressBookSettingValue
-      })
-    );
-  } else {
-    setting = {
-      key: SETTINGKEYS.addressBook,
-      value: {
-        addresses: [address],
-        defaultBillingAddressId: setDefault
-          ? address.id
-          : setting?.value?.defaultBillingAddressId,
-        defaultShippingAddressId: setDefaultShipping
-          ? address.id
-          : setting?.value?.defaultShippingAddressId
-      } as Json
-    } as Setting;
-    return settingsResource.postEntity(
-      JSON.stringify({
-        ...setting
-      })
-    );
+        } as Json
+      } as Setting;
+      return settingsResource.postEntity(
+        JSON.stringify({
+          ...setting
+        })
+      );
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -99,32 +107,36 @@ export const setAddressDefaultInAddressBookSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  if (!isAuthenticated) {
-    return undefined;
-  }
+  try {
+    if (!isAuthenticated) {
+      return undefined;
+    }
 
-  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/me/settings'
-  );
-
-  if (!setting) {
-    setting = await fetchAddressBookSetting(isAuthenticated);
-  }
-
-  if (setting?.id) {
-    return settingsResource.putEntity(
-      setting.id,
-      JSON.stringify({
-        ...setting,
-        value: {
-          addresses: [...(setting?.value?.addresses || [])],
-          defaultBillingAddressId: billingAddressId,
-          defaultShippingAddressId: shippingAddressId
-        }
-      })
+    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+      '/me/settings'
     );
+
+    if (!setting) {
+      setting = await fetchAddressBookSetting(isAuthenticated);
+    }
+
+    if (setting?.id) {
+      return settingsResource.putEntity(
+        setting.id,
+        JSON.stringify({
+          ...setting,
+          value: {
+            addresses: [...(setting?.value?.addresses || [])],
+            defaultBillingAddressId: billingAddressId,
+            defaultShippingAddressId: shippingAddressId
+          }
+        })
+      );
+    }
+    return undefined;
+  } catch (error) {
+    console.error(error);
   }
-  return undefined;
 };
 
 /**
@@ -138,33 +150,37 @@ export const removeAddressFromAddressBookSetting = async (
   isAuthenticated: boolean,
   setting?: Setting
 ): Promise<Setting | undefined> => {
-  if (!isAuthenticated) {
-    return undefined;
-  }
+  try {
+    if (!isAuthenticated) {
+      return undefined;
+    }
 
-  const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/me/settings'
-  );
-
-  if (!setting) {
-    setting = await fetchAddressBookSetting(isAuthenticated);
-  }
-
-  if (setting?.id) {
-    return settingsResource.putEntity(
-      setting.id,
-      JSON.stringify({
-        ...setting,
-        value: {
-          addresses: removeUserAddressFromArray(
-            addressId,
-            setting?.value?.addresses || []
-          ),
-          defaultBillingAddressId: setting?.value?.defaultBillingAddressId,
-          defaultShippingAddressId: setting?.value?.defaultShippingAddressId
-        }
-      })
+    const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
+      '/me/settings'
     );
+
+    if (!setting) {
+      setting = await fetchAddressBookSetting(isAuthenticated);
+    }
+
+    if (setting?.id) {
+      return settingsResource.putEntity(
+        setting.id,
+        JSON.stringify({
+          ...setting,
+          value: {
+            addresses: removeUserAddressFromArray(
+              addressId,
+              setting?.value?.addresses || []
+            ),
+            defaultBillingAddressId: setting?.value?.defaultBillingAddressId,
+            defaultShippingAddressId: setting?.value?.defaultShippingAddressId
+          }
+        })
+      );
+    }
+    return undefined;
+  } catch (error) {
+    console.error(error);
   }
-  return undefined;
 };

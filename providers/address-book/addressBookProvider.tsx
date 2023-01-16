@@ -271,7 +271,7 @@ export const AddressBookProvider: React.FC = ({ children }) => {
         // return the 'previous' value
         return previousValue;
       },
-      // Always refetch after error or success:
+      //Always refetch after error or success:
       onSettled: () => {
         queryClient.invalidateQueries([
           QUERYKEYS.addressBookSetting,

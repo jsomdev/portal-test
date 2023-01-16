@@ -501,14 +501,32 @@ export const nl: Messages = {
           deleteConfirmation: 'Bent u zeker dat u dit adres wilt verwijderen?',
           deleteButtonText: 'Verwijder',
           cancelButtonText: 'Annuleer',
-          addAddressButtonText: 'Voeg een adres toe'
+          addAddressButtonText: 'Voeg een adres toe',
+          createAddressError:
+            'Er is een fout opgetreden bij het aanmaken van het adres. Probeer het opnieuw.',
+          updateAddressError:
+            'Er is een fout opgetreden bij het updaten van het adres. Probeer het opnieuw.',
+          noAddresses: 'Er zijn geen adressen gevonden. Voeg een adres toe.',
+          removeAddressError:
+            'Er is een fout opgetreden bij het verwijderen van het adres. Probeer het opnieuw.',
+          addAddressSuccess: 'Het adres is succesvol toegevoegd.'
         }
       },
       quotes: {
         numberHeader: 'Offertenummer:',
         quoteDateHeader: 'Offerte aangemaakt op:',
         totalHeader: 'Totaalprijs:',
-        viewQuote: 'Bekijk offerte'
+        viewQuote: 'Bekijk offerte',
+        detailsHeader: 'Adres- en contactgegevens',
+        viewAll: 'Bekijk alle offertes',
+        viewAllLines:
+          '{number, plural,=0 {Geen aanvullende producten} one {Toon 1 product meer} other {Toon {number} meer producten}}',
+        customerInfoHeader: 'Klant informatie',
+        detailPageError:
+          'Er is een fout opgetreden bij het laden van de offerte.',
+        overviewEmpty: 'Er zijn geen offertes gevonden.',
+        overviewError:
+          'Er is een fout opgetreden bij het laden van de offertes.'
       },
       orders: {
         statusHeader: 'Status:',
@@ -531,8 +549,13 @@ export const nl: Messages = {
         shippingCosts: 'Verzendkosten',
         taxHeader: 'VAT',
         confirmationTitle: 'Bedankt! Uw bestelling is succesvol ingediend.',
+        detailPageError:
+          'Er is een fout opgetreden bij het plaatsen van uw bestelling.',
         confirmationText:
-          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.'
+          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.',
+        overviewEmpty: 'Er zijn geen bestellingen gevonden.',
+        overviewError:
+          'Er is een fout opgetreden bij het laden van de bestellingen.'
       },
       quoteRequests: {
         requestDateHeader: 'Aangevraagd op:',
@@ -547,7 +570,12 @@ export const nl: Messages = {
         confirmationTitle: 'Bedankt! Uw oferteaanvraag is succesvol ingediend',
         detailsHeader: 'Adres- en contact gegevens',
         addressHeader: 'Klant details',
-        commentsHeader: 'Comments'
+        commentsHeader: 'Comments',
+        detailPageError:
+          'Er is een fout opgetreden bij het plaatsen van uw offerteaanvraag.',
+        overviewEmpty: 'Er zijn geen offerteaanvragen gevonden.',
+        overviewError:
+          'Er is een fout opgetreden bij het laden van de offerteaanvragen.'
       },
       sections: {
         orders: {
@@ -583,6 +611,9 @@ export const nl: Messages = {
                 'Wijzig uw inloggegevens of persoonlijke gegevens, zoals uw telefoonnummer.',
               viewInfoLink: 'Persoonlijke info bekijken',
               changePasswordLink: 'Verander wachtwoord',
+              successMessage: 'Uw profiel is succesvol bijgewerkt.',
+              errorMessage:
+                'Er is een fout opgetreden bij het bijwerken van uw profiel.',
               panel: {
                 title: 'Profiel Informatie',
                 ariaClose: 'Sluiten',

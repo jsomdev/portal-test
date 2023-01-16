@@ -2,7 +2,15 @@ import React, { useContext, useMemo, useState } from 'react';
 
 import { useIntl } from 'react-intl';
 
-import { DefaultButton, Stack, Text, useTheme } from '@fluentui/react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { LoadingSpinner } from '@components/spinners/loadingSpinner';
+import {
+  DefaultButton,
+  MessageBarType,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { AddressBookContext } from '@providers/address-book/addressBookContext';
 import { sortAddressBook } from '@providers/address-book/addressBookHelper';
@@ -29,6 +37,26 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.addressBook.addAddressButtonText,
     defaultMessage: 'Add address',
     description: 'Add address button text'
+  },
+  noAddresses: {
+    id: messageIds.pages.account.overview.addressBook.noAddresses,
+    defaultMessage: 'No addresses found.',
+    description: 'No addresses found warning text'
+  },
+  updateAddressError: {
+    id: messageIds.pages.account.overview.addressBook.updateAddressError,
+    defaultMessage: 'An error occurred while updating the address.',
+    description: 'Error message when updating an address fails'
+  },
+  removeAddressError: {
+    id: messageIds.pages.account.overview.addressBook.removeAddressError,
+    defaultMessage: 'An error occurred while removing the address.',
+    description: 'Error message when removing an address fails'
+  },
+  addressSuccess: {
+    id: messageIds.pages.account.overview.addressBook.addAddressSuccess,
+    defaultMessage: 'Address successfully updated.',
+    description: 'Success message when updating an address'
   }
 });
 
@@ -45,7 +73,10 @@ export const AddressBook: React.FC = () => {
     updateDefaultShippingAddress,
     removeAddress,
     billingAddress,
-    shippingAddress
+    shippingAddress,
+    removeAddressError,
+    setDefaultAddressError,
+    addressBookStatus
   } = useContext(AddressBookContext);
 
   const mappedAddresses: AddressViewModel[] | undefined = useMemo(() => {
@@ -63,6 +94,10 @@ export const AddressBook: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addresses]);
 
+  if (addressBookStatus === 'loading') {
+    return <LoadingSpinner />;
+  }
+
   return (
     <Stack>
       <Stack tokens={{ childrenGap: spacing.m }}>
@@ -74,6 +109,24 @@ export const AddressBook: React.FC = () => {
             onClick={() => setEditAddress('new')}
           />
         </Stack.Item>
+
+        {!mappedAddresses?.length && addressBookStatus === 'success' && (
+          <PortalMessageBar messageBarType={MessageBarType.warning}>
+            <Text>{formatMessage(messages.noAddresses)}</Text>
+          </PortalMessageBar>
+        )}
+
+        {removeAddressError && (
+          <PortalMessageBar messageBarType={MessageBarType.error}>
+            <Text>{formatMessage(messages.removeAddressError)}</Text>
+          </PortalMessageBar>
+        )}
+
+        {setDefaultAddressError && (
+          <PortalMessageBar messageBarType={MessageBarType.error}>
+            <Text>{formatMessage(messages.updateAddressError)}</Text>
+          </PortalMessageBar>
+        )}
 
         {mappedAddresses?.map(address => (
           <AddressBookAddress

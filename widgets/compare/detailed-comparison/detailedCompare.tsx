@@ -3,6 +3,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   FontSizes,
@@ -13,7 +14,6 @@ import {
   IStackStyles,
   IToggleStyles,
   IconButton,
-  MessageBar,
   MessageBarType,
   Stack,
   Text,
@@ -264,9 +264,9 @@ export const DetailedCompare: React.FC = () => {
   if (!products.length && productsDetailsStatus === 'success') {
     return (
       <Stack tokens={{ childrenGap: spacing.s1, padding: `${spacing.l1} 0` }}>
-        <MessageBar messageBarType={MessageBarType.info}>
+        <PortalMessageBar messageBarType={MessageBarType.info}>
           {formatMessage(messages.noResults)}
-        </MessageBar>
+        </PortalMessageBar>
       </Stack>
     );
   }

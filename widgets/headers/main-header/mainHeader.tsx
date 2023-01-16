@@ -22,7 +22,6 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
-import { useMe } from '@providers/user/userContext';
 import {
   customerLoginRequest,
   employeeLoginRequest

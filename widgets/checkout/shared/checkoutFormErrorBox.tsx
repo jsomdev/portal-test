@@ -3,10 +3,10 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   IMessageBarStyles,
   IStackItemStyles,
-  MessageBar,
   MessageBarButton,
   MessageBarType,
   Stack,
@@ -82,7 +82,7 @@ export const CheckoutFormErrorBox: React.FC = () => {
       {(orderTaxAmountStatus === 'success' && orderTaxAmount === undefined) ||
       orderTaxAmountStatus === 'error' ? (
         <Stack.Item styles={styles.messageBarWrapper}>
-          <MessageBar
+          <PortalMessageBar
             styles={styles.messageBar}
             messageBarType={MessageBarType.error}
           >
@@ -109,14 +109,14 @@ export const CheckoutFormErrorBox: React.FC = () => {
                 </MessageBarButton>
               </Stack.Item>
             </Stack>
-          </MessageBar>
+          </PortalMessageBar>
         </Stack.Item>
       ) : null}
       {(shippingCostData?.length === 0 &&
         shippingCostDataStatus === 'success') ||
       shippingCostDataStatus === 'error' ? (
         <Stack.Item styles={styles.messageBarWrapper}>
-          <MessageBar
+          <PortalMessageBar
             styles={styles.messageBar}
             messageBarType={MessageBarType.error}
           >
@@ -141,7 +141,7 @@ export const CheckoutFormErrorBox: React.FC = () => {
                 </MessageBarButton>
               </Stack.Item>
             </Stack>
-          </MessageBar>
+          </PortalMessageBar>
         </Stack.Item>
       ) : null}
     </Stack>

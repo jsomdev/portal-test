@@ -4,13 +4,13 @@ import { useRouter } from 'next/dist/client/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated } from '@azure/msal-react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   DefaultButton,
   IStackItemStyles,
   IStackStyles,
   Link,
-  MessageBar,
   MessageBarType,
   PrimaryButton,
   Stack,
@@ -141,7 +141,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
               <Stack>
                 {isAuthenticated && !!cookieBaseItems.length && (
                   <Stack styles={styles.mergeCartContainer}>
-                    <MessageBar
+                    <PortalMessageBar
                       isMultiline={true}
                       actions={
                         <Stack horizontal wrap>
@@ -166,7 +166,7 @@ const Cart: React.FC<CartProps> = ({ title }) => {
                           {formatMessage(messages.viewProducts)}
                         </Link>
                       </Text>
-                    </MessageBar>
+                    </PortalMessageBar>
                   </Stack>
                 )}
                 <Stack.Item>

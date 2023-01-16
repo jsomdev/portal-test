@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { MessageBar, MessageBarType, Stack } from '@fluentui/react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { MessageBarType, Stack } from '@fluentui/react';
 
 export const errorMessages = {
   defaultErrorMessage:
@@ -25,12 +26,12 @@ export class AppErrorBoundary extends React.Component<AppErrorBoundaryProps> {
     if (this.state.hasError) {
       return (
         <Stack>
-          <MessageBar messageBarType={MessageBarType.error}>
+          <PortalMessageBar messageBarType={MessageBarType.error}>
             {errorMessages.defaultErrorMessage}
-          </MessageBar>
-          <MessageBar messageBarType={MessageBarType.error}>
+          </PortalMessageBar>
+          <PortalMessageBar messageBarType={MessageBarType.error}>
             {this.state.errorMessage}
-          </MessageBar>
+          </PortalMessageBar>
         </Stack>
       );
     }

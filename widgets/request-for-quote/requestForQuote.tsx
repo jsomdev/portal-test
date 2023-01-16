@@ -4,10 +4,10 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   Link as FluentUILink,
-  MessageBar,
   MessageBarType,
   Stack,
   StackItem,
@@ -151,7 +151,7 @@ export const RequestForQuote: React.FC = () => {
 
   if (!isAuthenticated && inProgress === InteractionStatus.None) {
     return (
-      <MessageBar messageBarType={MessageBarType.warning}>
+      <PortalMessageBar messageBarType={MessageBarType.warning}>
         {formatMessage(messages.needsSignIn, {
           signInText: (
             <FluentUILink
@@ -161,7 +161,7 @@ export const RequestForQuote: React.FC = () => {
             </FluentUILink>
           )
         })}
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 
@@ -180,25 +180,25 @@ export const RequestForQuote: React.FC = () => {
       {createRequestStatus === 'error' && <RequestForQuoteErrorMessage />}
       {/* When the user is not currently logging in and is not authenticated */}
       {!isAuthenticated && inProgress === InteractionStatus.None && (
-        <MessageBar messageBarType={MessageBarType.warning}>
+        <PortalMessageBar messageBarType={MessageBarType.warning}>
           <Text>{formatMessage(messages.signInText)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {/* When fetching the persisted cart from the /me endpoint returns an error */}
       {meStatus === 'error' && (
-        <MessageBar messageBarType={MessageBarType.error}>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingCartFailed)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {cartInfoStatus === 'error' && (
-        <MessageBar messageBarType={MessageBarType.error}>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingCartProductInformation)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {createRequestStatus === 'success' && (
-        <MessageBar messageBarType={MessageBarType.success}>
+        <PortalMessageBar messageBarType={MessageBarType.success}>
           <Text>{formatMessage(messages.requestSuccess)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
 
       {!!quoteItems?.length && (

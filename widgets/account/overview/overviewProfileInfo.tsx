@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
+import { NextLink } from '@components/link/nextLink';
 import {
   FontSizes,
   IButtonStyles,
@@ -15,6 +17,7 @@ import {
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
 import { User } from '@services/portal-api';
+import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 
 const messages = defineMessages({
@@ -97,10 +100,14 @@ export const OverviewProfileInfo: React.FC<OverviewProfileInfoProps> = ({
             <Text variant="mediumPlus">{formattedName}</Text>
           </Stack>
           <Stack>
-            <IconButton
-              styles={styles.editButton}
-              iconProps={{ iconName: 'EditContact' }}
-            />
+            <NextLink href={pagePaths.profileInformation} passHref>
+              <a>
+                <IconButton
+                  styles={styles.editButton}
+                  iconProps={{ iconName: 'EditContact' }}
+                />
+              </a>
+            </NextLink>
           </Stack>
         </Stack>
         <Stack tokens={{ childrenGap: spacing.s1 }} grow>

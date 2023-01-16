@@ -248,6 +248,11 @@ type IAccountMessages = {
       deleteButtonText: string;
       cancelButtonText: string;
       addAddressButtonText: string;
+      updateAddressError: string;
+      createAddressError: string;
+      noAddresses: string;
+      removeAddressError: string;
+      addAddressSuccess: string;
     };
   };
   orders: {
@@ -271,6 +276,9 @@ type IAccountMessages = {
     commentsHeader: string;
     confirmationTitle: string;
     confirmationText: string;
+    detailPageError: string;
+    overviewError: string;
+    overviewEmpty: string;
   };
   quoteRequests: {
     requestDateHeader: string;
@@ -284,12 +292,22 @@ type IAccountMessages = {
     detailsHeader: string;
     commentsHeader: string;
     addressHeader: string;
+    detailPageError: string;
+    overviewError: string;
+    overviewEmpty: string;
   };
   quotes: {
     quoteDateHeader: string;
     viewQuote: string;
     totalHeader: string;
     numberHeader: string;
+    viewAll: string;
+    viewAllLines: string;
+    detailsHeader: string;
+    customerInfoHeader: string;
+    detailPageError: string;
+    overviewError: string;
+    overviewEmpty: string;
   };
   sections: {
     orders: {
@@ -319,6 +337,8 @@ type IAccountMessages = {
           description: string;
           viewInfoLink: string;
           changePasswordLink: string;
+          successMessage: string;
+          errorMessage: string;
           panel: {
             title: string;
             ariaClose: string;

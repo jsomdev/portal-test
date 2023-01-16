@@ -1,17 +1,15 @@
 import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
+import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
-import {
-  ISpinnerStyles,
-  Spinner,
-  SpinnerSize,
-  Stack,
-  useTheme
-} from '@fluentui/react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { LoadingSpinner } from '@components/spinners/loadingSpinner';
+import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
+import { messageIds } from '@services/i18n';
 import { fetchMyQuotes } from '@services/portal-api/quotes';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
@@ -19,14 +17,24 @@ import { ResultViewPagination } from '@widgets/finder/result-view/product-result
 
 import { QuoteCard } from './quoteCard';
 
-interface QuotesOverviewStyles {
-  spinner: ISpinnerStyles;
-}
+const messages = defineMessages({
+  error: {
+    id: messageIds.pages.account.quotes.overviewError,
+    description: 'Error message when quote overview page fails to load',
+    defaultMessage: 'Something went wrong'
+  },
+  noData: {
+    id: messageIds.pages.account.quotes.overviewEmpty,
+    description: 'Message when there are no quotes',
+    defaultMessage: 'You do not have any quotes'
+  }
+});
 
 export const QuotesOverview: React.FC = () => {
   const PAGE_SIZE = 10;
-  const { spacing, fonts, palette } = useTheme();
+  const { spacing } = useTheme();
   const isAuthenticated = useIsAuthenticated();
+  const { formatMessage } = useIntl();
   const { isQuoteHistoryEnabled } = useMe();
   const router = useRouter();
 
@@ -67,51 +75,48 @@ export const QuotesOverview: React.FC = () => {
     );
   }
 
-  const styles: QuotesOverviewStyles = {
-    spinner: {
-      label: {
-        ...fonts.mediumPlus,
-        color: palette.themeDark
-      }
-    }
-  };
+  if (quotesStatus === 'error') {
+    return (
+      <PortalMessageBar messageBarType={MessageBarType.error}>
+        <Text>{formatMessage(messages.error)}</Text>
+      </PortalMessageBar>
+    );
+  }
 
   if (quotesStatus === 'loading') {
+    return <LoadingSpinner />;
+  }
+
+  if (!quotes || !quotes?.value || quotes?.value.length === 0) {
     return (
-      <Stack
-        verticalAlign="center"
-        horizontalAlign="center"
-        tokens={{ childrenGap: spacing.l1, padding: `${spacing.l1} 0 ` }}
-      >
-        <Spinner styles={styles.spinner} size={SpinnerSize.large} />
-      </Stack>
+      <PortalMessageBar messageBarType={MessageBarType.warning}>
+        <Text>{formatMessage(messages.noData)}</Text>
+      </PortalMessageBar>
     );
   }
 
   return (
     <Stack>
-      {quotesStatus === 'success' && quotes?.value.length && (
-        <Stack tokens={{ childrenGap: spacing.m }}>
-          <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
-              {quotes.value.map(quote => {
-                return (
-                  <QuoteCard compactView={false} key={quote.id} quote={quote} />
-                );
-              })}
-            </Stack>
-          </Stack.Item>
-          <ResultViewPagination
-            totalItems={quotesCount}
-            currentPage={page}
-            pageSize={PAGE_SIZE}
-            onPageChange={newPage => {
-              scrollToTop('body');
-              updatePage(newPage);
-            }}
-          />
-        </Stack>
-      )}
+      <Stack tokens={{ childrenGap: spacing.m }}>
+        <Stack.Item>
+          <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
+            {quotes.value.map(quote => {
+              return (
+                <QuoteCard compactView={false} key={quote.id} quote={quote} />
+              );
+            })}
+          </Stack>
+        </Stack.Item>
+        <ResultViewPagination
+          totalItems={quotesCount}
+          currentPage={page}
+          pageSize={PAGE_SIZE}
+          onPageChange={newPage => {
+            scrollToTop('body');
+            updatePage(newPage);
+          }}
+        />
+      </Stack>
     </Stack>
   );
 };

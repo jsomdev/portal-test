@@ -150,11 +150,11 @@ function getInfoAndPreferencesAccountSection(
         }
       ]
     },
-    {
-      iconName: 'Suitcase',
-      description: formatMessage(messages.companyInformationDescription),
-      title: formatMessage(messages.companyInformationTitle)
-    },
+    // {
+    //   iconName: 'Suitcase',
+    //   description: formatMessage(messages.companyInformationDescription),
+    //   title: formatMessage(messages.companyInformationTitle)
+    // },
     {
       iconName: 'Equalizer',
       description: formatMessage(messages.preferencesDescription),

@@ -7,7 +7,7 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
-import { getAudience, messageIds } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import { CATEGORY_IDS } from '@services/portal-api/constants';
@@ -26,7 +26,6 @@ import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack, {
   ContentContainerStyles
 } from '@widgets/layouts/contentContainerStack';
-import { TabletAndDesktop } from '@widgets/media-queries';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
 

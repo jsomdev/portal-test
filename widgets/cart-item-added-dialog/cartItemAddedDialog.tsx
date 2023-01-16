@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   DefaultButton,
   IButtonStyles,
@@ -10,7 +11,6 @@ import {
   IStackItemStyles,
   IconButton,
   List,
-  MessageBar,
   MessageBarType,
   Modal,
   PrimaryButton,
@@ -158,12 +158,12 @@ const CartItemAddedDialog: React.FC<CartListConfirmationProps> = ({
                 tokens={{ padding: `${spacing.s1} 0`, childrenGap: spacing.s2 }}
               >
                 {warningMessages?.map(warningMessage => (
-                  <MessageBar
+                  <PortalMessageBar
                     messageBarType={MessageBarType.warning}
                     key={warningMessage}
                   >
                     {warningMessage}
-                  </MessageBar>
+                  </PortalMessageBar>
                 ))}
               </Stack>
             </Stack.Item>

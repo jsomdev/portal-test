@@ -12,7 +12,8 @@ import {
   YAxis
 } from 'recharts';
 
-import { MessageBar, MessageBarType, Stack, useTheme } from '@fluentui/react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { MessageBarType, Stack, useTheme } from '@fluentui/react';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { messageIds } from '@services/i18n';
@@ -89,9 +90,9 @@ export const PerformanceChart: React.FC<ChartProps> = ({
     tooltipWrapper: {
       outline: 'none'
     },
-    messageBar: {
+    messageBarContainer: {
       root: {
-        marginTop: '15px'
+        marginTop: spacing.l1
       }
     }
   };
@@ -114,13 +115,10 @@ export const PerformanceChart: React.FC<ChartProps> = ({
 
   if (configuration === null) {
     return (
-      <Stack.Item>
-        <MessageBar
-          messageBarType={MessageBarType.info}
-          styles={styles.messageBar}
-        >
+      <Stack.Item styles={styles.messageBarContainer}>
+        <PortalMessageBar messageBarType={MessageBarType.info}>
           {formatMessage(messages.noData)}
-        </MessageBar>
+        </PortalMessageBar>
       </Stack.Item>
     );
   }

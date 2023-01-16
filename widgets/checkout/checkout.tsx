@@ -5,10 +5,10 @@ import { defineMessages, useIntl } from 'react-intl';
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import { NextLink } from '@components/link/nextLink';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   Link as FluentUILink,
-  MessageBar,
   MessageBarType,
   Stack,
   StackItem,
@@ -141,7 +141,7 @@ export const Checkout: React.FC = () => {
   }
   if (!isAuthenticated && inProgress === InteractionStatus.None) {
     return (
-      <MessageBar messageBarType={MessageBarType.warning}>
+      <PortalMessageBar messageBarType={MessageBarType.warning}>
         {formatMessage(messages.needsSignIn, {
           signInText: (
             <FluentUILink
@@ -151,15 +151,15 @@ export const Checkout: React.FC = () => {
             </FluentUILink>
           )
         })}
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 
   if (!isCheckoutEnabled) {
     return (
-      <MessageBar messageBarType={MessageBarType.warning}>
+      <PortalMessageBar messageBarType={MessageBarType.warning}>
         <Text>{formatMessage(messages.unauthorized)}</Text>
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 
@@ -177,36 +177,36 @@ export const Checkout: React.FC = () => {
       {error && <CheckoutErrorBox error={error} />}
       {/* When the user is not currently logging in and is not authenticated */}
       {!isAuthenticated && inProgress === InteractionStatus.None && (
-        <MessageBar messageBarType={MessageBarType.warning}>
+        <PortalMessageBar messageBarType={MessageBarType.warning}>
           <Text>{formatMessage(messages.signInText)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {/* When fetching the persisted cart from the /me endpoint returns an error */}
       {meStatus === 'error' && (
-        <MessageBar messageBarType={MessageBarType.error}>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingCartFailed)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {cartInfoStatus === 'error' && (
-        <MessageBar messageBarType={MessageBarType.error}>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingProductInfoFailed)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {createOrderStatus === 'success' && (
-        <MessageBar messageBarType={MessageBarType.success}>
+        <PortalMessageBar messageBarType={MessageBarType.success}>
           <Text>{formatMessage(messages.orderSuccess)}</Text>
-        </MessageBar>
+        </PortalMessageBar>
       )}
       {checkoutItems?.length === 0 && (
         <Stack.Item>
-          <MessageBar messageBarType={MessageBarType.blocked}>
+          <PortalMessageBar messageBarType={MessageBarType.blocked}>
             <Text>{messages.noItems}</Text>
             <NextLink href={pagePaths.cart}>
               <a>
                 <Text>{formatMessage(messages.noItemsLink)}</Text>
               </a>
             </NextLink>
-          </MessageBar>
+          </PortalMessageBar>
         </Stack.Item>
       )}
       {!!checkoutItems?.length && (

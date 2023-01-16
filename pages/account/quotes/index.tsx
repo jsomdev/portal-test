@@ -17,6 +17,7 @@ import {
 } from '@services/portal-api/menuItems';
 import pagePaths from '@utilities/pagePaths';
 import { AccountPage } from '@widgets/account/accountPage';
+import { QuoteDetail } from '@widgets/account/quotes/quoteDetail';
 import { QuotesOverview } from '@widgets/account/quotes/quotesOverview';
 import { getLocalePaths } from '@widgets/page/page.helper';
 
@@ -31,6 +32,11 @@ const messages = defineMessages({
     id: messageIds.pages.account.sections.quote.title,
     description: 'Quote page title',
     defaultMessage: 'Quote'
+  },
+  viewAll: {
+    id: messageIds.pages.account.quotes.viewAll,
+    description: 'View all quote link text',
+    defaultMessage: 'View all quotes'
   }
 });
 
@@ -60,10 +66,20 @@ const Quotes: NextPage<
       siteMenuItems={siteMenuItems}
       pageTitle={router.isReady ? title : ''}
       localePaths={localePaths}
+      breadCrumbItem={
+        query.id
+          ? {
+              link: pagePaths.quotes,
+              text: formatMessage(messages.viewAll)
+            }
+          : undefined
+      }
     >
       {router.isReady ? (
         query.id ? (
-          <Stack>{query.id}</Stack>
+          <Stack>
+            <QuoteDetail id={query.id} />
+          </Stack>
         ) : (
           <QuotesOverview />
         )

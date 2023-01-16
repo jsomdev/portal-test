@@ -2,12 +2,11 @@ import React from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   IDetailsListStyles,
-  IMessageBarStyles,
   ISpinnerStyles,
   List,
-  MessageBar,
   MessageBarType,
   Spinner,
   SpinnerSize,
@@ -39,7 +38,6 @@ const messages = defineMessages({
 });
 
 interface CartListStyles {
-  messageBar: IMessageBarStyles;
   detailsList: Partial<IDetailsListStyles>;
   spinner: ISpinnerStyles;
 }
@@ -66,11 +64,6 @@ export const CartList: React.FC<CartListProps> = ({
   const { hasPricing } = useMe();
 
   const styles: CartListStyles = {
-    messageBar: {
-      root: {
-        marginTop: spacing.m
-      }
-    },
     detailsList: {
       contentWrapper: {
         selectors: {
@@ -107,9 +100,9 @@ export const CartList: React.FC<CartListProps> = ({
 
   if (status === 'error') {
     return (
-      <MessageBar messageBarType={MessageBarType.error}>
+      <PortalMessageBar messageBarType={MessageBarType.error}>
         {messages.cartError}
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 
@@ -131,20 +124,17 @@ export const CartList: React.FC<CartListProps> = ({
 
   if (items?.length === 0) {
     return (
-      <MessageBar styles={styles.messageBar}>
+      <PortalMessageBar messageBarType={MessageBarType.info}>
         {formatMessage(messages.emptyCart)}
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 
   if (items === undefined) {
     return (
-      <MessageBar
-        styles={styles.messageBar}
-        messageBarType={MessageBarType.error}
-      >
+      <PortalMessageBar messageBarType={MessageBarType.error}>
         {formatMessage(messages.cartError)}
-      </MessageBar>
+      </PortalMessageBar>
     );
   }
 

@@ -331,7 +331,10 @@ export function mapOrderToOrderViewModel(
   palette: IPalette,
   validationData?: ValidationData | undefined,
   validationStatus?: ReactQueryStatus
-): OrderViewModel {
+): OrderViewModel | undefined {
+  if (order === undefined) {
+    return undefined;
+  }
   // Currency code is from the order, but if it is not present, USD is used as fallback
   const currencyCode: string = order?.currencyCode || 'USD';
 

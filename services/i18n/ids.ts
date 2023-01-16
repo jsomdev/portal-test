@@ -512,7 +512,16 @@ export const messageIds: Messages = {
           deleteButtonText:
             'pages.account.overview.addressBook.deleteButtonText',
           addAddressButtonText:
-            'pages.account.overview.addressBook.addAddressButtonText'
+            'pages.account.overview.addressBook.addAddressButtonText',
+          updateAddressError:
+            'pages.account.overview.addressBook.updateAddressError',
+          createAddressError:
+            'pages.account.overview.addressBook.createAddressError',
+          noAddresses: 'pages.account.overview.addressBook.noAddresses',
+          removeAddressError:
+            'pages.account.overview.addressBook.removeAddressError',
+          addAddressSuccess:
+            'pages.account.overview.addressBook.addAddressSuccess'
         }
       },
       orders: {
@@ -535,7 +544,10 @@ export const messageIds: Messages = {
         taxHeader: 'pages.account.orders.taxHeader',
         commentsHeader: 'pages.account.orders.commentsHeader',
         confirmationText: 'pages.account.orders.confirmationText',
-        confirmationTitle: 'pages.account.orders.confirmationTitle'
+        confirmationTitle: 'pages.account.orders.confirmationTitle',
+        detailPageError: 'pages.account.orders.detailPageError',
+        overviewEmpty: 'pages.account.orders.overviewEmpty',
+        overviewError: 'pages.account.orders.overviewError'
       },
       quoteRequests: {
         requestDateHeader: 'pages.account.quoteRequests.requestDateHeader',
@@ -548,13 +560,23 @@ export const messageIds: Messages = {
         confirmationTitle: 'pages.account.quoteRequests.confirmationTitle',
         detailsHeader: 'pages.account.quoteRequests.detailsHeader',
         addressHeader: 'pages.account.quoteRequests.addressHeader',
-        commentsHeader: 'pages.account.quoteRequests.commentsHeader'
+        commentsHeader: 'pages.account.quoteRequests.commentsHeader',
+        detailPageError: 'pages.account.quoteRequests.detailPageError',
+        overviewEmpty: 'pages.account.quoteRequests.overviewEmpty',
+        overviewError: 'pages.account.quoteRequests.overviewError'
       },
       quotes: {
         numberHeader: 'pages.account.quotes.numberHeader',
         quoteDateHeader: 'pages.account.quotes.quoteDateHeader',
         totalHeader: 'pages.account.quotes.totalHeader',
-        viewQuote: 'pages.account.quotes.viewQuote'
+        viewQuote: 'pages.account.quotes.viewQuote',
+        viewAll: 'pages.account.quotes.viewAll',
+        viewAllLines: 'pages.account.quotes.viewAllLines',
+        detailsHeader: 'pages.account.quotes.detailsHeader',
+        customerInfoHeader: 'pages.account.quotes.customerInfoHeader',
+        detailPageError: 'pages.account.quotes.detailPageError',
+        overviewEmpty: 'pages.account.quotes.overviewEmpty',
+        overviewError: 'pages.account.quotes.overviewError'
       },
       sections: {
         orders: {
@@ -604,7 +626,11 @@ export const messageIds: Messages = {
                 cancel:
                   'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.cancel',
                 save: 'pages.account.sections.infoAndPreferences.sections.profileInformation.panel.save'
-              }
+              },
+              successMessage:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.successMessage',
+              errorMessage:
+                'pages.account.sections.infoAndPreferences.sections.profileInformation.errorMessage'
             },
             addressBook: {
               title:

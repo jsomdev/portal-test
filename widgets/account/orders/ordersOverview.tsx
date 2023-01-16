@@ -1,18 +1,16 @@
 import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
+import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
-import {
-  ISpinnerStyles,
-  Spinner,
-  SpinnerSize,
-  Stack,
-  useTheme
-} from '@fluentui/react';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { LoadingSpinner } from '@components/spinners/loadingSpinner';
+import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
+import { messageIds } from '@services/i18n';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
@@ -20,15 +18,25 @@ import { ResultViewPagination } from '@widgets/finder/result-view/product-result
 
 import { OrderCard } from './orderCard';
 
-interface OrdersOverviewStyles {
-  spinner: ISpinnerStyles;
-}
+const messages = defineMessages({
+  error: {
+    id: messageIds.pages.account.orders.overviewError,
+    description: 'Error message when orders overview page fails to load',
+    defaultMessage: 'Something went wrong'
+  },
+  noData: {
+    id: messageIds.pages.account.orders.overviewEmpty,
+    description: 'Message when there are no orders',
+    defaultMessage: 'You do not have any orders'
+  }
+});
 
 const PAGE_SIZE = 10;
 export const OrdersOverview: React.FC = () => {
-  const { spacing, fonts, palette } = useTheme();
+  const { spacing } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
+  const { formatMessage } = useIntl();
   const { isOrderHistoryEnabled } = useMe();
   const router = useRouter();
 
@@ -70,24 +78,23 @@ export const OrdersOverview: React.FC = () => {
     );
   }
 
-  const styles: OrdersOverviewStyles = {
-    spinner: {
-      label: {
-        ...fonts.mediumPlus,
-        color: palette.themeDark
-      }
-    }
-  };
+  if (ordersStatus === 'error') {
+    return (
+      <PortalMessageBar messageBarType={MessageBarType.error}>
+        <Text>{formatMessage(messages.error)}</Text>
+      </PortalMessageBar>
+    );
+  }
 
   if (ordersStatus === 'loading') {
+    return <LoadingSpinner />;
+  }
+
+  if (!orders || !orders?.value || orders?.value.length === 0) {
     return (
-      <Stack
-        verticalAlign="center"
-        horizontalAlign="center"
-        tokens={{ childrenGap: spacing.l1, padding: `${spacing.l1} 0 ` }}
-      >
-        <Spinner styles={styles.spinner} size={SpinnerSize.large} />
-      </Stack>
+      <PortalMessageBar messageBarType={MessageBarType.warning}>
+        <Text>{formatMessage(messages.noData)}</Text>
+      </PortalMessageBar>
     );
   }
 

@@ -20,7 +20,7 @@ import { mapOrderToOrderViewModel } from './orderHelper';
 import { OrderViewModel } from './orders.types';
 
 interface OrderHookProps {
-  orderViewModel: OrderViewModel;
+  order: OrderViewModel | undefined;
   orderData: Order | undefined;
   orderDataStatus: ReactQueryStatus;
   reorder: (items: BaseCartItem[]) => BaseCartItem[];
@@ -50,6 +50,7 @@ export const useOrder = (orderId: string): OrderHookProps => {
     () =>
       fetchMyOrder(orderId, isAuthenticated, isOrderHistoryEnabled, accountId),
     {
+      enabled: !!isAuthenticated,
       retry: 3,
       retryDelay: () => 500
     }
@@ -99,7 +100,7 @@ export const useOrder = (orderId: string): OrderHookProps => {
     () => validateProductNumbers(orderProductNumbers)
   );
 
-  const orderViewModel: OrderViewModel = useMemo(() => {
+  const orderViewModel: OrderViewModel | undefined = useMemo(() => {
     return mapOrderToOrderViewModel(
       orderData,
       intl,
@@ -110,7 +111,7 @@ export const useOrder = (orderId: string): OrderHookProps => {
   }, [intl, orderData, palette, validationData, validationStatus]);
 
   return {
-    orderViewModel,
+    order: orderViewModel,
     orderData,
     orderDataStatus,
     reorder

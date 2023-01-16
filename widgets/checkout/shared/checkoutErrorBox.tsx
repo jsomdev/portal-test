@@ -2,14 +2,13 @@ import React, { useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ActionButton,
   FontWeights,
   IButtonStyles,
-  IMessageBarStyles,
   IStackStyles,
   ITextStyles,
-  MessageBar,
   MessageBarType,
   Stack,
   Text,
@@ -25,7 +24,7 @@ interface CheckoutErrorBoxStyles {
   title: ITextStyles;
   actionButton: IButtonStyles;
   actions: IStackStyles;
-  messageBar: IMessageBarStyles;
+  messageBarContainer: IStackStyles;
 }
 
 interface CheckoutErrorBoxProps {
@@ -157,7 +156,7 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
         borderTop: `1px solid ${palette.neutralLight}`
       }
     },
-    messageBar: {
+    messageBarContainer: {
       root: { marginTop: spacing.l2 }
     }
   };
@@ -241,56 +240,57 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
   }, [error, formatMessage]);
 
   return (
-    <MessageBar
-      styles={styles.messageBar}
-      actions={
-        <Stack
-          styles={styles.actions}
-          horizontalAlign="space-between"
-          horizontal
-          verticalAlign="center"
-          tokens={{ childrenGap: spacing.m }}
-        >
-          <ActionButton
-            iconProps={{ iconName: 'ChatInviteFriend' }}
-            text={formatMessage(messages.chatWithUs)}
-            styles={styles.actionButton}
-            onRenderText={props => (
-              <div
-                dangerouslySetInnerHTML={
-                  {
-                    __html: `<a onclick="SnapEngage.startLink()">${props?.text}</>`
-                  } /*TODO handle chat function*/
-                }
-              ></div>
-            )}
-          />
-          <ActionButton
-            iconProps={{ iconName: 'EditMail' }}
-            styles={styles.actionButton}
-            href={formatMessage(messages.mailTo)}
+    <Stack styles={styles.messageBarContainer}>
+      <PortalMessageBar
+        actions={
+          <Stack
+            styles={styles.actions}
+            horizontalAlign="space-between"
+            horizontal
+            verticalAlign="center"
+            tokens={{ childrenGap: spacing.m }}
           >
-            {messages.send}
-          </ActionButton>
-        </Stack>
-      }
-      messageBarType={MessageBarType.error}
-    >
-      <Stack tokens={{ childrenGap: spacing.s1 }}>
-        <Stack.Item>
-          <Text styles={styles.title} variant="mediumPlus">
-            {title}
-          </Text>
-        </Stack.Item>
-        <Stack.Item>
-          <Text>{description}</Text>
-        </Stack.Item>
-        {!!subText && (
+            <ActionButton
+              iconProps={{ iconName: 'ChatInviteFriend' }}
+              text={formatMessage(messages.chatWithUs)}
+              styles={styles.actionButton}
+              onRenderText={props => (
+                <div
+                  dangerouslySetInnerHTML={
+                    {
+                      __html: `<a onclick="SnapEngage.startLink()">${props?.text}</>`
+                    } /*TODO handle chat function*/
+                  }
+                ></div>
+              )}
+            />
+            <ActionButton
+              iconProps={{ iconName: 'EditMail' }}
+              styles={styles.actionButton}
+              href={formatMessage(messages.mailTo)}
+            >
+              {messages.send}
+            </ActionButton>
+          </Stack>
+        }
+        messageBarType={MessageBarType.error}
+      >
+        <Stack tokens={{ childrenGap: spacing.s1 }}>
           <Stack.Item>
-            <Text>{subText}</Text>
+            <Text styles={styles.title} variant="mediumPlus">
+              {title}
+            </Text>
           </Stack.Item>
-        )}
-      </Stack>
-    </MessageBar>
+          <Stack.Item>
+            <Text>{description}</Text>
+          </Stack.Item>
+          {!!subText && (
+            <Stack.Item>
+              <Text>{subText}</Text>
+            </Stack.Item>
+          )}
+        </Stack>
+      </PortalMessageBar>
+    </Stack>
   );
 };

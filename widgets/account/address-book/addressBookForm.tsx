@@ -1,17 +1,26 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 
 import { Form, Formik } from 'formik';
 import { Guid } from 'guid-typescript';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   DefaultButton,
   IButtonStyles,
   IPanelStyles,
+  MessageBarType,
   Panel,
   PanelType,
   PrimaryButton,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { AddressBookContext } from '@providers/address-book/addressBookContext';
@@ -70,6 +79,11 @@ const messages = defineMessages({
       .addressBook.panel.save,
     defaultMessage: 'Submit',
     description: 'Address book panel save'
+  },
+  createAddressError: {
+    id: messageIds.pages.account.overview.addressBook.createAddressError,
+    defaultMessage: 'An error occurred while creating the address.',
+    description: 'Error message when creating an address fails'
   }
 });
 
@@ -78,9 +92,29 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
   setEditAddress
 }) => {
   const { spacing, palette, semanticColors } = useTheme();
-  const { getAddress, createOrUpdateAddress, billingAddress, shippingAddress } =
-    useContext(AddressBookContext);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const {
+    getAddress,
+    createOrUpdateAddress,
+    billingAddress,
+    shippingAddress,
+    createOrUpdateAddressError,
+    createOrUpdateAddressStatus
+  } = useContext(AddressBookContext);
   const { formatMessage } = useIntl();
+
+  //an effect that sets and clears a timeout to show the error message
+  useEffect(() => {
+    if (createOrUpdateAddressError) {
+      setShowErrorMessage(true);
+    }
+    const timeout = setTimeout(() => {
+      setShowErrorMessage(false);
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [createOrUpdateAddressError]);
 
   const defaultAndPrefilledValues = useMemo(() => {
     const addressId = editAddress === 'new' ? undefined : editAddress;
@@ -124,11 +158,17 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
         },
         setAsDefaultBilling: formValues.setAsBilling,
         setAsDefaultShipping: formValues.setAsShipping
-      }).catch(error => {
-        console.error(error);
-      });
+      })
+        .then(value => {
+          if (value) {
+            setEditAddress(undefined);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
-    [createOrUpdateAddress]
+    [createOrUpdateAddress, setEditAddress]
   );
 
   const styles: AddressBookFormStyles = {
@@ -197,16 +237,20 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
             values,
             editAddress !== 'new' && editAddress ? editAddress : undefined
           );
-          setEditAddress(undefined);
         }}
       >
         <Form noValidate>
-          <Stack.Item tokens={{ padding: spacing.l1 }}>
+          <Stack tokens={{ padding: spacing.l1, childrenGap: spacing.m }}>
+            {showErrorMessage && (
+              <PortalMessageBar messageBarType={MessageBarType.error}>
+                <Text>{formatMessage(messages.createAddressError)}</Text>
+              </PortalMessageBar>
+            )}
             <AddressBookFormGroup
               isDefaultBilling={billingAddress?.id === editAddress}
               isDefaultShipping={shippingAddress?.id === editAddress}
             />
-          </Stack.Item>
+          </Stack>
           <Stack
             horizontal
             horizontalAlign="space-between"
@@ -216,11 +260,13 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
               onClick={() => {
                 setEditAddress(undefined);
               }}
+              disabled={createOrUpdateAddressStatus === 'loading'}
               text={formatMessage(messages.cancel)}
               styles={styles.actionButton}
             />
             <PrimaryButton
               type="submit"
+              disabled={createOrUpdateAddressStatus === 'loading'}
               text={formatMessage(messages.save)}
               styles={styles.actionButton}
             />

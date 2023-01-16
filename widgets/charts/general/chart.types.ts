@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { IMessageBarStyles, IStackStyles } from '@fluentui/react';
+import { IStackItemStyles, IStackStyles } from '@fluentui/react';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { Attribute } from '@services/portal-api';
 
@@ -38,5 +38,5 @@ export type ChartDataSeries = {
 export interface ChartStyles {
   tooltip: IStackStyles;
   tooltipWrapper: CSSProperties;
-  messageBar: IMessageBarStyles;
+  messageBarContainer: IStackItemStyles;
 }

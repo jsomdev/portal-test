@@ -4,6 +4,7 @@ import { useField } from 'formik';
 import { useIntl } from 'react-intl';
 
 import formatError from '@components/formik-wrappers/formatError';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   Checkbox,
   ICheckStyles,
@@ -40,9 +41,9 @@ export const FormikCheckbox: React.FC<ICheckboxProps & { name: string }> = ({
       </Stack.Item>
       {errorMessage ? (
         <Stack.Item>
-          <MessageBar messageBarType={MessageBarType.warning}>
+          <PortalMessageBar messageBarType={MessageBarType.warning}>
             {errorMessage}
-          </MessageBar>
+          </PortalMessageBar>
         </Stack.Item>
       ) : null}
     </Stack>

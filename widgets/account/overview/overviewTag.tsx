@@ -50,7 +50,7 @@ export const OverviewTag: React.FC<OverviewTagProps> = ({
       verticalAlign="center"
       horizontal
     >
-      <Icon iconName="skypecheck" {...iconProps} styles={styles.icon} />
+      <Icon iconName="tag" {...iconProps} styles={styles.icon} />
       <Text variant="medium">{text}</Text>
     </Stack>
   );

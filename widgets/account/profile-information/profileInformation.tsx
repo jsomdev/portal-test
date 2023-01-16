@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { AccountInfo } from '@azure/msal-browser';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   FontSizes,
   IButtonStyles,
@@ -11,6 +12,7 @@ import {
   ITextStyles,
   Icon,
   IconButton,
+  MessageBarType,
   Stack,
   Text,
   useTheme
@@ -51,6 +53,18 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.profileInformation.emailHeader,
     description: 'Header text for email',
     defaultMessage: 'Email'
+  },
+  successMessage: {
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.successMessage,
+    description: 'Success message for form',
+    defaultMessage: 'Your information was updated successfully'
+  },
+  errorMessage: {
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.errorMessage,
+    description: 'Error message for form',
+    defaultMessage: 'Your information was not updated. Please try again.'
   }
 });
 
@@ -67,7 +81,7 @@ interface IProfileInformationStyles {
 export const ProfileInformation: React.FC = () => {
   const { formatMessage } = useIntl();
   const { semanticColors, effects, spacing, palette, fonts } = useTheme();
-  const { me } = useMe();
+  const { me, createContactDetailsRequestStatus } = useMe();
   const claims = useClaims();
   const account: AccountInfo | undefined =
     getMsalInstance()?.getAllAccounts()[0];
@@ -141,88 +155,104 @@ export const ProfileInformation: React.FC = () => {
   }
 
   return (
-    <Stack styles={styles.cardContainer} horizontal>
-      <Stack styles={styles.iconContainer} verticalAlign="center">
-        <Icon styles={styles.iconStyles} iconName="Contact" />
-      </Stack>
-      <Stack grow tokens={{ childrenGap: spacing.l2 }}>
-        <Stack
-          horizontal
-          tokens={{ childrenGap: spacing.m }}
-          verticalAlign="center"
-          horizontalAlign="space-between"
-        >
-          <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
-            <Text styles={styles.sectionTitle} as="h3">
-              {formatMessage(messages.title)}
-            </Text>
-            <AccountOverviewTags />
-          </Stack>
-          <Stack>
-            <IconButton
-              styles={styles.editButton}
-              iconProps={{ iconName: 'Edit' }}
-              onClick={() => {
-                setShowEditInformation(true);
-              }}
-            />
-          </Stack>
+    <Stack tokens={{ childrenGap: spacing.m }}>
+      {createContactDetailsRequestStatus === 'success' && (
+        <Stack>
+          <PortalMessageBar messageBarType={MessageBarType.success}>
+            <Text>{formatMessage(messages.successMessage)}</Text>
+          </PortalMessageBar>
         </Stack>
-        <Stack tokens={{ childrenGap: spacing.l2 }} wrap horizontal>
+      )}
+      {createContactDetailsRequestStatus === 'error' && (
+        <Stack>
+          <PortalMessageBar messageBarType={MessageBarType.error}>
+            <Text>{formatMessage(messages.errorMessage)}</Text>
+          </PortalMessageBar>
+        </Stack>
+      )}
+      <Stack styles={styles.cardContainer} horizontal>
+        <Stack styles={styles.iconContainer} verticalAlign="center">
+          <Icon styles={styles.iconStyles} iconName="Contact" />
+        </Stack>
+        <Stack grow tokens={{ childrenGap: spacing.l2 }}>
           <Stack
-            styles={styles.infoContainter}
-            tokens={{ childrenGap: spacing.s1 }}
-            grow
+            horizontal
+            tokens={{ childrenGap: spacing.m }}
+            verticalAlign="center"
+            horizontalAlign="space-between"
           >
-            <Stack tokens={{ childrenGap: spacing.s1 }}>
-              <Text styles={styles.headerText}>
-                {formatMessage(messages.nameHeader)}
+            <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
+              <Text styles={styles.sectionTitle} as="h3">
+                {formatMessage(messages.title)}
               </Text>
-              <Text variant="mediumPlus">{name}</Text>
+              <AccountOverviewTags />
+            </Stack>
+            <Stack>
+              <IconButton
+                styles={styles.editButton}
+                iconProps={{ iconName: 'Edit' }}
+                onClick={() => {
+                  setShowEditInformation(true);
+                }}
+              />
             </Stack>
           </Stack>
-          <Stack
-            styles={styles.infoContainter}
-            tokens={{ childrenGap: spacing.s1 }}
-            grow
-          >
-            <Text styles={styles.headerText}>
-              {formatMessage(messages.jobHeader)}
-            </Text>
-            <Text variant="mediumPlus">{me.contactInfo.jobTitle}</Text>
-          </Stack>
-          <Stack
-            styles={styles.infoContainter}
-            tokens={{ childrenGap: spacing.s1 }}
-            grow
-          >
-            <Text styles={styles.headerText}>
-              {formatMessage(messages.phoneHeader)}
-            </Text>
-            <Text variant="mediumPlus">{me.contactInfo.phoneNumber}</Text>
-          </Stack>
-          <Stack
-            styles={styles.infoContainter}
-            tokens={{ childrenGap: spacing.s1 }}
-            grow
-          >
-            <Text styles={styles.headerText}>
-              {formatMessage(messages.emailHeader)}
-            </Text>
-            {me.contactInfo.emailAddresses?.map(email => {
-              return (
-                <Text variant="mediumPlus" key={email}>
-                  {email}
+          <Stack tokens={{ childrenGap: spacing.l2 }} wrap horizontal>
+            <Stack
+              styles={styles.infoContainter}
+              tokens={{ childrenGap: spacing.s1 }}
+              grow
+            >
+              <Stack tokens={{ childrenGap: spacing.s1 }}>
+                <Text styles={styles.headerText}>
+                  {formatMessage(messages.nameHeader)}
                 </Text>
-              );
-            })}
+                <Text variant="mediumPlus">{name}</Text>
+              </Stack>
+            </Stack>
+            <Stack
+              styles={styles.infoContainter}
+              tokens={{ childrenGap: spacing.s1 }}
+              grow
+            >
+              <Text styles={styles.headerText}>
+                {formatMessage(messages.jobHeader)}
+              </Text>
+              <Text variant="mediumPlus">{me.contactInfo.jobTitle}</Text>
+            </Stack>
+            <Stack
+              styles={styles.infoContainter}
+              tokens={{ childrenGap: spacing.s1 }}
+              grow
+            >
+              <Text styles={styles.headerText}>
+                {formatMessage(messages.phoneHeader)}
+              </Text>
+              <Text variant="mediumPlus">{me.contactInfo.phoneNumber}</Text>
+            </Stack>
+            <Stack
+              styles={styles.infoContainter}
+              tokens={{ childrenGap: spacing.s1 }}
+              grow
+            >
+              <Text styles={styles.headerText}>
+                {formatMessage(messages.emailHeader)}
+              </Text>
+              {me.contactInfo.emailAddresses?.map(email => {
+                return (
+                  <Text variant="mediumPlus" key={email}>
+                    {email}
+                  </Text>
+                );
+              })}
+            </Stack>
           </Stack>
         </Stack>
+        <ProfileInformationForm
+          showEditInformation={showEditInformation}
+          setShowEditInformation={setShowEditInformation}
+        />
       </Stack>
-      <ProfileInformationForm
-        showEditInformation={showEditInformation}
-        setShowEditInformation={setShowEditInformation}
-      />
     </Stack>
   );
 };

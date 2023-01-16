@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import {
   DefaultButton,
@@ -12,7 +13,6 @@ import {
   IMessageBarStyles,
   IStackStyles,
   ITextStyles,
-  MessageBar,
   MessageBarType,
   PrimaryButton,
   Stack,
@@ -22,7 +22,6 @@ import {
 import { CartItem } from '@providers/cart/cartContext';
 import { messageIds } from '@services/i18n';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
-import { rem } from '@utilities/rem';
 import CartItemAddedDialog from '@widgets/cart-item-added-dialog/cartItemAddedDialog';
 import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
 
@@ -54,7 +53,11 @@ const messages = defineMessages({
     description: 'Button text to show all order lines',
     defaultMessage: 'Show all'
   },
-
+  error: {
+    id: messageIds.pages.account.orders.detailPageError,
+    description: 'Error message when order cannot be loaded',
+    defaultMessage: 'Something went wrong while loading the order'
+  },
   reorderSingle: {
     id: messageIds.pages.account.orders.reorderSingle,
     description: 'Reorder button text',
@@ -100,15 +103,10 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
 }) => {
   const { spacing, palette, semanticColors, effects, fonts } = useTheme();
   const MAX_ITEMS = 3;
-  const {
-    orderViewModel: order,
-    orderDataStatus,
-    reorder,
-    orderData
-  } = useOrder(id);
+  const { order: order, orderDataStatus, reorder, orderData } = useOrder(id);
   const [lastAddedItems, setLastAddedItems] = React.useState<
     CartItem[] | undefined
-  >(undefined);
+  >();
   const isTabletOrDesktop = useTabletAndDesktop();
 
   const intl = useIntl();
@@ -134,7 +132,7 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
     if (displayAllLines) {
       return false;
     }
-    if (!order.lines.length) {
+    if (!order?.lines.length) {
       return false;
     }
     return true;
@@ -223,9 +221,24 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
     return <LoadingSpinner />;
   }
 
-  //TODO Add error handling and error page
   if (orderDataStatus === 'error') {
-    return <Stack>Error loading order</Stack>;
+    return (
+      <Stack>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.error)}</Text>
+        </PortalMessageBar>
+      </Stack>
+    );
+  }
+
+  if (order === undefined) {
+    return (
+      <Stack>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.error)}</Text>
+        </PortalMessageBar>
+      </Stack>
+    );
   }
 
   return (
@@ -367,7 +380,7 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
                     <Text styles={styles.prefixText}>{line.unitAmount}</Text>
                   </Stack>
                 )}
-                {order.totalAmount && (
+                {line.totalAmount && (
                   <Stack>
                     <Text styles={styles.lineTotal}>{line.totalAmount}</Text>
                   </Stack>
@@ -421,7 +434,6 @@ const OrderConfirmationCard: React.FC = () => {
   const styles: OrderConfirmationCardStyles = {
     messageBar: {
       root: {
-        marginBottom: rem(spacing.l1),
         padding: spacing.m
       }
     },
@@ -438,7 +450,7 @@ const OrderConfirmationCard: React.FC = () => {
     }
   };
   return (
-    <MessageBar
+    <PortalMessageBar
       styles={styles.messageBar}
       messageBarType={MessageBarType.success}
     >
@@ -452,6 +464,6 @@ const OrderConfirmationCard: React.FC = () => {
           <Text>{formatMessage(messages.confirmationText)}</Text>
         </Stack.Item>
       </Stack>
-    </MessageBar>
+    </PortalMessageBar>
   );
 };

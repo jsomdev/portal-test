@@ -177,10 +177,7 @@ export const UserProvider: React.FC = ({ children }) => {
     console.error(error);
   }
 
-  const {
-    mutateAsync: createContactDetailsRequest,
-    status: createContactDetailsRequestStatus
-  } = useMutation(
+  const createContactDetailsRequest = useMutation(
     (formValues: ContactDetailsFormValues) =>
       updateContactDetails(
         mapContactDetailsFieldsToContactDetailsPut(formValues)
@@ -194,6 +191,9 @@ export const UserProvider: React.FC = ({ children }) => {
             ...data
           }
         });
+      },
+      onSettled: () => {
+        setTimeout(() => createContactDetailsRequest.reset(), 5000);
       }
     }
   );
@@ -256,8 +256,8 @@ export const UserProvider: React.FC = ({ children }) => {
         isInternalViewEnabled,
         showCustomerDetails,
         createVerificationRequest,
-        createContactDetailsRequest,
-        createContactDetailsRequestStatus,
+        createContactDetailsRequest: createContactDetailsRequest.mutateAsync,
+        createContactDetailsRequestStatus: createContactDetailsRequest.status,
         createVerificationRequestStatus
       }}
     >

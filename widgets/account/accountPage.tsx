@@ -5,12 +5,12 @@ import { defineMessages, useIntl } from 'react-intl';
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import { NextLink } from '@components/link/nextLink';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ActionButton,
   IButtonStyles,
   IMessageBarStyles,
   IStackStyles,
-  MessageBar,
   MessageBarType,
   Stack,
   Text,
@@ -155,14 +155,14 @@ export const AccountPage: React.FC<AccountPageProps> = ({
                   </Stack>
                 )}
                 {!isAuthenticated && (
-                  <MessageBar
+                  <PortalMessageBar
                     messageBarType={MessageBarType.warning}
                     styles={styles.signInPrompt}
                   >
                     <Stack>
                       <Text>{formatMessage(messages.signInPrompt)}</Text>
                     </Stack>
-                  </MessageBar>
+                  </PortalMessageBar>
                 )}
               </Stack>
             )}

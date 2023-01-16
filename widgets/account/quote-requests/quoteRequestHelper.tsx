@@ -8,9 +8,12 @@ import { mapAddressToAddressViewModel } from '../shared/accountAddress.helper';
 import { QuoteRequestViewModel } from './quoteRequests.types';
 
 export function mapQuoteRequestToQuoteRequestViewModel(
-  quoteRequest: QuoteRequest,
+  quoteRequest: QuoteRequest | undefined,
   intl: IntlShape
-): QuoteRequestViewModel {
+): QuoteRequestViewModel | undefined {
+  if (quoteRequest === undefined) {
+    return undefined;
+  }
   const date: string | undefined =
     (quoteRequest?.submittedOn &&
       intl.formatDate(new Date(quoteRequest?.submittedOn), {

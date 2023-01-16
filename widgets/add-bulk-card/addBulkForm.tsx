@@ -5,11 +5,11 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useMutation } from 'react-query';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ActionButton,
   DefaultButton,
   IconButton,
-  MessageBar,
   MessageBarType,
   Stack
 } from '@fluentui/react';
@@ -232,30 +232,30 @@ export const AddBulkToCartForm: React.FC = () => {
               validProductNumbers.length &&
               invalidProductNumbers.length === 0 && (
                 <Stack.Item>
-                  <MessageBar messageBarType={MessageBarType.success}>
+                  <PortalMessageBar messageBarType={MessageBarType.success}>
                     {formatMessage(messages.bulkAllCompleteMessage)}
-                  </MessageBar>
+                  </PortalMessageBar>
                 </Stack.Item>
               )}
             {validateBulk.status === 'success' &&
               validProductNumbers.length &&
               invalidProductNumbers.length > 0 && (
                 <Stack.Item>
-                  <MessageBar messageBarType={MessageBarType.success}>
+                  <PortalMessageBar messageBarType={MessageBarType.success}>
                     {formatMessage(messages.bulkPartialCompleteMessage, {
                       productNumbers: validProductNumbers.join(', ')
                     })}
-                  </MessageBar>
+                  </PortalMessageBar>
                 </Stack.Item>
               )}
             {validateBulk.status === 'success' &&
               invalidProductNumbers.length && (
                 <Stack.Item>
-                  <MessageBar messageBarType={MessageBarType.error}>
+                  <PortalMessageBar messageBarType={MessageBarType.error}>
                     {formatMessage(messages.bulkFailMessage, {
                       productNumbers: invalidProductNumbers.join(', ')
                     })}
-                  </MessageBar>
+                  </PortalMessageBar>
                 </Stack.Item>
               )}
           </Stack>

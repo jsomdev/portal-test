@@ -2,10 +2,9 @@ import React, { useMemo, useState } from 'react';
 
 import Image from 'next/image';
 import { defineMessages, useIntl } from 'react-intl';
-import { useQuery } from 'react-query';
 
-import { useIsAuthenticated } from '@azure/msal-react';
 import { NextLink } from '@components/link/nextLink';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import {
   DefaultButton,
@@ -14,22 +13,18 @@ import {
   IMessageBarStyles,
   IStackStyles,
   ITextStyles,
-  MessageBar,
   MessageBarType,
   Stack,
   Text,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
-import { fetchMyQuoteRequest } from '@services/portal-api/quoteRequests';
-import { QUERYKEYS } from '@services/react-query/constants';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
 
 import { OrderLineViewModel } from '../orders/orders.types';
 import { QuoteRequestDetailInfoSection } from './quoteRequestDetailInfoSection';
-import { mapQuoteRequestToQuoteRequestViewModel } from './quoteRequestHelper';
-import { QuoteRequestViewModel } from './quoteRequests.types';
+import { useQuoteRequest } from './useQuoteRequest';
 
 const messages = defineMessages({
   dateHeader: {
@@ -51,6 +46,11 @@ const messages = defineMessages({
     id: messageIds.pages.account.quoteRequests.confirmationText,
     description: 'quote request card confirmation text',
     defaultMessage: 'Your quote request has been placed'
+  },
+  error: {
+    id: messageIds.pages.account.quoteRequests.detailPageError,
+    description: 'Error message when quote request detail page fails to load',
+    defaultMessage: 'Something went wrong'
   }
 });
 
@@ -73,30 +73,13 @@ export const QuoteRequestDetail: React.FC<QuoteRequestDetailProps> = ({
   showConfirmation
 }) => {
   const { spacing, palette, semanticColors, effects } = useTheme();
-  const isAuthenticated = useIsAuthenticated();
   const MAX_ITEMS = 3;
   const isTabletOrDesktop = useTabletAndDesktop();
   const [displayAllLines, setDisplayAllLines] = useState(false);
   const intl = useIntl();
   const { formatMessage } = intl;
-  const [quoteRequest, setQuoteRequest] = useState<
-    QuoteRequestViewModel | undefined
-  >(undefined);
+  const { quoteRequest, quoteRequestStatus } = useQuoteRequest(id);
 
-  const { status: quoteRequestStatus } = useQuery(
-    [QUERYKEYS.quoteRequestDetail, id, isAuthenticated],
-    () => fetchMyQuoteRequest(id, isAuthenticated),
-    {
-      enabled: !!isAuthenticated,
-      retry: 3,
-      retryDelay: () => 500,
-      onSuccess(data): void {
-        return setQuoteRequest(
-          data ? mapQuoteRequestToQuoteRequestViewModel(data, intl) : undefined
-        );
-      }
-    }
-  );
   const visibleLines: OrderLineViewModel[] | undefined = useMemo(() => {
     if (
       quoteRequest?.lines?.length &&
@@ -178,8 +161,24 @@ export const QuoteRequestDetail: React.FC<QuoteRequestDetailProps> = ({
     return <LoadingSpinner />;
   }
 
-  if (quoteRequestStatus === 'error' || !quoteRequest) {
-    return <Stack>Error loading quote request</Stack>;
+  if (quoteRequestStatus === 'error') {
+    return (
+      <Stack>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.error)}</Text>
+        </PortalMessageBar>
+      </Stack>
+    );
+  }
+
+  if (quoteRequest === undefined) {
+    return (
+      <Stack>
+        <PortalMessageBar messageBarType={MessageBarType.error}>
+          <Text>{formatMessage(messages.error)}</Text>
+        </PortalMessageBar>
+      </Stack>
+    );
   }
 
   return (
@@ -305,7 +304,6 @@ const QuoteRequestConfirmationCard: React.FC = () => {
   const styles: QuoteRequestConfirmationCardStyles = {
     messageBar: {
       root: {
-        marginBottom: spacing.l1,
         padding: spacing.m
       }
     },
@@ -322,7 +320,7 @@ const QuoteRequestConfirmationCard: React.FC = () => {
     }
   };
   return (
-    <MessageBar
+    <PortalMessageBar
       styles={styles.messageBar}
       messageBarType={MessageBarType.success}
     >
@@ -336,6 +334,6 @@ const QuoteRequestConfirmationCard: React.FC = () => {
           <Text>{formatMessage(messages.confirmationText)}</Text>
         </Stack.Item>
       </Stack>
-    </MessageBar>
+    </PortalMessageBar>
   );
 };

@@ -19,7 +19,7 @@ export async function fetchMyQuotes(
     selectQuery:
       'id,name,number,contactInfo,submittedOn,totalAmount,currencyCode',
     expandQuery:
-      'lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,name,number;$expand=image($select=url)))',
+      'notes,lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,name,number,slug;$expand=image($select=url)))',
     orderbyQuery: 'submittedOn desc',
     top,
     skip
@@ -45,7 +45,7 @@ export async function fetchMyQuote(
       selectQuery:
         'id,name,number,contactInfo,submittedOn,emailAddresses,address,totalAmount,currencyCode',
       expandQuery:
-        'lines($select=productId,productName,quantity,unitAmount,totalAmount,productNumber,currencyCode;$expand=product($select=id;$expand=image($select=url)))'
+        'notes,lines($select=productId,productName,quantity,unitAmount,totalAmount,productNumber,currencyCode;$expand=product($select=id,slug;$expand=image($select=url)))'
     }
   );
   return data;

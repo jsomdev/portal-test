@@ -1,10 +1,9 @@
-import { CSSProperties, FC } from 'react';
+import { FC } from 'react';
 
 import Image from 'next/image';
 
-import { mergeCss } from '@fluentui/merge-styles';
 import { IStyle } from '@fluentui/merge-styles/lib/IStyle';
-import { Stack, mergeStyleSets, mergeStyles } from '@fluentui/react';
+import { Stack, mergeStyles } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 
 import { SocialMediaLink } from '../siteFooter.types';

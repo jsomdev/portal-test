@@ -490,7 +490,16 @@ export const en: Messages = {
           deleteConfirmation: 'Are you sure you want to delete this address?',
           deleteButtonText: 'Delete',
           cancelButtonText: 'Cancel',
-          addAddressButtonText: 'Add new address'
+          addAddressButtonText: 'Add new address',
+          updateAddressError:
+            'There was a problem updating your address. Please try again.',
+          createAddressError:
+            'Your address could not be created at this time. Please try again.',
+          noAddresses:
+            'No addresses were found. Please add an address or refresh the page.',
+          removeAddressError:
+            'There was a problem removing your address. Please try again.',
+          addAddressSuccess: 'Your address was successfully added.'
         }
       },
       orders: {
@@ -512,11 +521,14 @@ export const en: Messages = {
         totalProducts: 'Total products',
         shippingCosts: 'Shipping costs',
         taxHeader: 'Tax',
+        detailPageError: 'An error occurred while loading your order details.',
         commentsHeader: 'Comments',
         confirmationText:
           'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
         confirmationTitle:
-          'Thank you! Your order has been submitted successfully.'
+          'Thank you! Your order has been submitted successfully.',
+        overviewEmpty: 'You do not have any orders yet.',
+        overviewError: 'An error occurred while loading your orders.'
       },
       quoteRequests: {
         requestDateHeader: 'Requested on:',
@@ -531,13 +543,24 @@ export const en: Messages = {
         confirmationTitle: 'Thank you! Your quote request has been submitted.',
         detailsHeader: 'Contact and shipping information',
         addressHeader: 'Customer details',
-        commentsHeader: 'Comments'
+        commentsHeader: 'Comments',
+        detailPageError: 'An error occurred while loading your quote request.',
+        overviewEmpty: 'You do not have any quote requests yet.',
+        overviewError: 'An error occurred while loading your quote requests.'
       },
       quotes: {
         numberHeader: 'Quote number:',
         quoteDateHeader: 'Quote created on:',
         totalHeader: 'Total price:',
-        viewQuote: 'View quote'
+        viewQuote: 'View quote',
+        detailsHeader: 'Contact and shipping information',
+        viewAll: 'View all quotes',
+        viewAllLines:
+          '{number, plural,=0 {No additional products} one {Show 1 more product} other {Show {number} more products}}',
+        customerInfoHeader: 'Customer details',
+        detailPageError: 'An error occurred while loading your quote details.',
+        overviewEmpty: 'You do not have any quotes yet.',
+        overviewError: 'An error occurred while loading your quotes.'
       },
       sections: {
         orders: {
@@ -573,6 +596,9 @@ export const en: Messages = {
                 'Change your login details or personal information, such as your phone number.',
               changePasswordLink: 'Change password',
               viewInfoLink: 'View personal information',
+              successMessage:
+                'Your profile information was successfully updated.',
+              errorMessage: 'There was a problem updating your profile.',
               panel: {
                 title: 'Edit information',
                 ariaClose: 'close',
