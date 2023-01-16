@@ -220,7 +220,7 @@ const SupportCard: React.FC<SupportCardProps> = ({
         maxWidth: rem(280),
         ...fonts.large,
         textAlign: 'center',
-        color: palette.neutralSecondary,
+        color: palette.neutralDark,
         ...mediaQueryFrom('tablet', {
           ...fonts.xLarge
         })

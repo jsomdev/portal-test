@@ -98,7 +98,8 @@ export function mapResourcesToProductMediaGalleryItems(
       resource.type === ResourceType.CASE_STUDY ||
       resource.type === ResourceType.PRODUCT_BULLETIN ||
       resource.type === ResourceType.CATALOG_DETAIL ||
-      resource.type === ResourceType.CATALOG
+      resource.type === ResourceType.CATALOG ||
+      resource.type === ResourceType.DATA_SHEET
   );
 
   pdfs.forEach(pdf => {

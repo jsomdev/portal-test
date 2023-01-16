@@ -49,6 +49,17 @@ const messages = defineMessages({
     description: 'Aria label for the navigation menu',
     defaultMessage: 'Navigation menu'
   },
+  cartAriaLabel: {
+    id: messageIds.navigation.main.cartAriaLabel,
+    defaultMessage: 'Shopping Cart',
+    description: 'Aria label for cart button'
+  },
+
+  userAriaLabel: {
+    id: messageIds.navigation.main.userAriaLabel,
+    defaultMessage: 'User Menu',
+    description: 'Aria label for user button'
+  },
   welcome: {
     id: messageIds.pages.account.overview.welcome,
     description: 'Text to welcome user',
@@ -215,6 +226,7 @@ const MobileSiteHeader: React.FC = () => {
           tokens={{ childrenGap: spacing.s2 }}
         >
           <SiteHeaderButton
+            title={intl.formatMessage(messages.cartAriaLabel)}
             onRenderMenuIcon={() => <CartCountButtonIcon />}
             onClick={() => {
               push(pagePaths.cart);
@@ -224,6 +236,7 @@ const MobileSiteHeader: React.FC = () => {
             }}
           />
           <SiteHeaderButton
+            title={intl.formatMessage(messages.userAriaLabel)}
             onClick={() => {
               setShowPanel('user');
             }}

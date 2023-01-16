@@ -16,7 +16,8 @@
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
     "format": "prettier -write -config .prettierrc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "analyze": "cross-env ANALYZE='true' next build"
   },
   "lint-staged": {
     "*": [
@@ -30,6 +31,7 @@
     "@azure/msal-browser": "^2.18.0",
     "@azure/msal-react": "^1.1.0",
     "@fluentui/react": "^8.87.1",
+    "@next/bundle-analyzer": "^13.1.2",
     "@types/react-pdf": "^5.7.2",
     "card-validator": "^8.1.1",
     "flat": "^5.0.2",

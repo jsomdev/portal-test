@@ -109,11 +109,11 @@ export async function fetchAllCategories(
                     ...category.parent.parent,
                     slug:
                       MultilingualStringHelper.strip(
-                        category.parent.slug,
+                        category.parent.parent.slug,
                         locale
                       ) || undefined,
                     name: MultilingualStringHelper.strip(
-                      category.parent.name,
+                      category.parent.parent.name,
                       locale
                     )
                   }

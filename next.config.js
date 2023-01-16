@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
+
+const nextConfig = {
+  productionBrowserSourceMaps: true,
+
   async redirects() {
     return process.env.Node_ENV === 'production'
       ? [
@@ -44,3 +51,5 @@ module.exports = {
     defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE
   }
 };
+
+module.exports = withBundleAnalyzer(nextConfig);
