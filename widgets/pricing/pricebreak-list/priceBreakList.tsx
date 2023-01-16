@@ -122,14 +122,13 @@ export const PriceBreakList: React.FC<PriceBreakListProps> = ({
       item.minimumQuantity === highestPriceBreak?.minimumQuantity
         ? `${item?.minimumQuantity}+`
         : `${item?.minimumQuantity} - ${item?.maximumQuantity}`;
-    const priceText: string =
-      item.price === 0
-        ? formatMessage(messages.quotedPrice)
-        : formatNumber(item.price, {
-            currency: item.currencyCode,
-            currencyDisplay: 'narrowSymbol',
-            style: 'currency'
-          });
+    const priceText: string = !item.price
+      ? formatMessage(messages.quotedPrice)
+      : formatNumber(item.price, {
+          currency: item.currencyCode,
+          currencyDisplay: 'narrowSymbol',
+          style: 'currency'
+        });
     return (
       <Stack horizontal wrap={false}>
         <Stack.Item styles={styles.row}>
