@@ -285,6 +285,15 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     return Object.values(mainFacets).filter(facet => showFacetInPanel(facet));
   }, [mainFacets, showFacetInPanel]);
 
+  const modelCount: number | undefined = useMemo(() => {
+    if (isFacetActive(FacetKey.ModelId)) {
+      return FinderQueryHelper.getValuesForKeyInUrlQuery(
+        FacetKey.ModelId,
+        query
+      )?.split(',').length;
+    }
+    return facetedSearchResults?.['@search.facets']?.modelId?.length;
+  }, [facetedSearchResults, isFacetActive, query]);
   /**
    * Function that will return the value of the matchtype for an operating condition facet.
    * @param operatingCondition Facet to get the matchtype for
@@ -430,7 +439,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         clearTheoreticalFlow,
         clearFacetOptions,
         productCount: facetedSearchResults?.['@odata.count'],
-        modelCount: facetedSearchResults?.['@search.facets']?.modelId?.length,
+        modelCount,
         getFacetResult,
         getOperatingConditionUnit,
         getOperatingConditionMatchType,
