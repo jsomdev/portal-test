@@ -66,19 +66,15 @@ export const CompleteSignUp: React.FC = () => {
   } = useMe();
 
   const { data: matchedCustomersResponse, status: matchEmailToCustomerStatus } =
-    useQuery(
-      [QUERYKEYS.matchEmailToCustomer, me?.contactInfo?.emailAddresses?.[0]],
-      () => matchEmailToCustomer(me?.contactInfo?.emailAddresses?.[0]),
-      {
-        enabled: !!me?.contactInfo?.emailAddresses?.[0],
-        onSuccess: (matchCustomersResponse: MatchCustomersResponse) => {
-          setMatchedCustomers(matchCustomersResponse.customers);
-          if (matchCustomersResponse.customers.length === 1) {
-            setSelectedMatchedCustomer(matchCustomersResponse.customers[0]);
-          }
+    useQuery([QUERYKEYS.matchEmailToCustomer], () => matchEmailToCustomer(), {
+      enabled: !!me?.contactInfo?.emailAddresses?.[0],
+      onSuccess: (matchCustomersResponse: MatchCustomersResponse) => {
+        setMatchedCustomers(matchCustomersResponse.customers);
+        if (matchCustomersResponse.customers.length === 1) {
+          setSelectedMatchedCustomer(matchCustomersResponse.customers[0]);
         }
       }
-    );
+    });
 
   // NOTE: Only the Data that is retrieved from the /me and matchEmailToCustomer function is a dependency here!
   //       Changing the selectedMatchedCustomer or disabling the matchedCustomers SHOULD NOT AFFECT this!

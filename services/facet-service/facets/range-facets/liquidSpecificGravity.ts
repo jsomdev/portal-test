@@ -11,7 +11,7 @@ import { RangeFacetMatchType } from './rangeFacetHelper';
 import { rangeFacetOptions } from './rangeOptions';
 
 const defaultUnit: UnitOfMeasurement = {
-  symbol: '',
+  symbol: 'sg',
   isBase: true,
   system: 'common',
   fromDefault: value => value,

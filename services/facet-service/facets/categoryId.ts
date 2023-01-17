@@ -2512,8 +2512,6 @@ export const categoryIdFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Link,
     selectType: FacetSelectType.MultiSelect,
-    displayName: 'Category',
-    description: 'Category',
     isFacetingEnabled: true
   },
   options: categoryIdFacetOptions

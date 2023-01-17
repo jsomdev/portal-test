@@ -126,11 +126,11 @@ const SearchBar: React.FC = () => {
   const { togglePageOverlay } = usePageContext();
   const { spacing, palette, semanticColors, fonts, effects } = useTheme();
   const { locale, formatMessage } = useIntl();
-  const { push } = useRouter();
+  const { push, query } = useRouter();
   const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
   const searchBoxRef = useRef<HTMLDivElement>(null);
   const [searchBoxInput, setSearchBoxInput] = useState<string | undefined>(
-    undefined
+    query.query as string | undefined
   );
   const [isBoxFocused, setIsBoxFocused] = useState(false);
   const [showContextualMenu, setShowContextualMenu] = useState(false);
@@ -251,7 +251,6 @@ const SearchBar: React.FC = () => {
   }
 
   function onKeyUp(ev: React.KeyboardEvent<HTMLInputElement>): void {
-    console.log(ev.key);
     if (ev.key === 'Enter') {
       ev.currentTarget.blur();
     }
@@ -292,6 +291,10 @@ const SearchBar: React.FC = () => {
       togglePageOverlay(false);
     }
   }, [isBoxFocused, showContextualMenu, togglePageOverlay]);
+
+  useEffect(() => {
+    setSearchBoxInput(query.query as string | undefined);
+  }, [query.query]);
 
   const styles: SearchBarStyles = {
     linkText: {
@@ -387,7 +390,6 @@ const SearchBar: React.FC = () => {
   return (
     <>
       <SearchBox
-        placeholder={formatMessage(messages.searchPlaceholder)}
         value={searchBoxInput}
         ref={searchBoxRef}
         styles={styles.searchBox}

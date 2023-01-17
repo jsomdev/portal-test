@@ -21,10 +21,8 @@ import { liquidSpecificGravityFacet } from '../facets/range-facets/liquidSpecifi
 import { sprayAngleFacet } from '../facets/range-facets/sprayAngle';
 import { relativeDropSizeGroupFacet } from '../facets/relativeDropSizeGroup';
 import { setupTypeFacet } from '../facets/setupType';
-import { shaftLengthFacet } from '../facets/shaftLength';
 import { sprayAngleCatalogCodeFacet } from '../facets/sprayAngleCatalogCode';
 import { sprayCoverageFacet } from '../facets/sprayCoverage';
-import { sprayCoverageDiameterFacet } from '../facets/sprayCoverageDiameter';
 import { sprayPatternFacet } from '../facets/sprayPattern';
 import { strainerScreenMeshSizeFacet } from '../facets/strainerScreenMeshSize';
 import { tankMountingOptionsFacet } from '../facets/tankMountingOptions';
@@ -62,9 +60,7 @@ export class FacetFactory {
       relativeDropSizeGroupFacet as Facet,
       motorTypeFacet as Facet,
       pressureGroupFacet as Facet,
-      shaftLengthFacet as Facet,
       sprayCoverageFacet as Facet,
-      sprayCoverageDiameterFacet as Facet,
       tankMountingOptionsFacet as Facet,
       nozzleCountFacet as Facet,
       nozzleHubFacet as Facet,
