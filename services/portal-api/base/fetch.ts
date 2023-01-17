@@ -71,7 +71,7 @@ export const digitalHighWayFetch = async <T>(
     } catch (e) {
       console.log('Failed the acquire token silently. Will logout the user');
 
-      getMsalInstance()?.logoutRedirect({
+      getMsalInstance()?.ssoSilent({
         ...loginRequest,
         account
       });

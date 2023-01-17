@@ -384,7 +384,7 @@ export const nl: Messages = {
           callToAction: 'Aanmelden',
           steps: {
             first: {
-              title: 'Nieuwe gebruiker?',
+              title: 'Is SprayFinder nieuw voor u?',
               description:
                 'Maak een account aan die gelinkt is aan uw bedrijf en voltooi vervolgens uw profiel'
             },
@@ -402,10 +402,11 @@ export const nl: Messages = {
         },
         hero: {
           imageAlt: 'Hero afbeelding',
-          title: 'Kies voor Kwaliteit',
+          title: 'Vind de juiste spuitmondstukken',
           description:
-            'Gepaard met een uitstekende klantendienst, De digitale catalogus van Spraying Systems Co. helpt u met het vinden, vergelijken en aankopen van producten dat uw bedrijf nodig heeft.',
-          callToAction: 'Aan de slag'
+            'De digitale catalogus van Spraying Systems Co. helpt u bij het vinden, vergelijken en aanschaffen van de spuitmondstukken die u nodig heeft. Bekijk ons volledige productassortiment, inclusief hydraulische spuitmondstukken, luchtatomiserende spuitmondstukken, tankreinigingsapparatuur en spuitpistolen.',
+          callToAction: 'Aan de slag',
+          reorder: 'Bestel opnieuw!'
         },
         catalog: {
           title: 'Onze Catalogus',

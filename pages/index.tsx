@@ -68,8 +68,8 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   const styles: HomeStyles = {
     sectionContainer: {
       root: {
-        paddingTop: rem(60),
-        paddingBottom: rem(60)
+        paddingTop: rem(30),
+        paddingBottom: rem(30)
       }
     },
     catalogContainer: {

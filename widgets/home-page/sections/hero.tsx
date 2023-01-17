@@ -5,6 +5,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';
 import {
+  DefaultButton,
   FontWeights,
   IButtonStyles,
   IStackItemStyles,
@@ -15,6 +16,7 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { useMe } from '@providers/user/userContext';
 import { STATIC_IMAGES } from '@public/media/images';
 import { messageIds } from '@services/i18n/ids';
 import pagePaths from '@utilities/pagePaths';
@@ -41,27 +43,33 @@ const messages = defineMessages({
   heroTitle: {
     id: messageIds.pages.home.sections.hero.title,
     description: 'Header text for the homepage hero',
-    defaultMessage: 'Choose quality nozzles'
+    defaultMessage: 'Find the Right Spray Nozzles'
   },
   heroDescription: {
     id: messageIds.pages.home.sections.hero.description,
     description: 'Header text for the homepage hero',
-    defaultMessage: `Paired with excellent customer service, Spraying Systems Co.'s digital catalog helps you find, compare and purchase the products your company needs.`
+    defaultMessage: `Spraying Systems Co.'s digital catalog helps you find, compare and purchase the spray nozzles you need. Shop our full product range, including hydraulic spray nozzles, air atomizing nozzles, tank cleaning equipment and spray guns.`
   },
   heroCallToAction: {
     id: messageIds.pages.home.sections.hero.callToAction,
     description: 'Call to action text for the homepage hero',
     defaultMessage: 'Get Started Now'
+  },
+  reorder: {
+    id: messageIds.pages.home.sections.hero.reorder,
+    description: 'Call to action text for the reorder functionality',
+    defaultMessage: 'Reorder'
   }
 });
 
 export const Hero: React.FC = () => {
   const { formatMessage } = useIntl();
+  const { isOrderHistoryEnabled } = useMe();
   const { spacing, fonts, palette } = useTheme();
   const styles: HeroStyles = {
     root: {
       root: {
-        height: 480,
+        height: 400,
         position: 'relative'
       }
     },
@@ -82,7 +90,7 @@ export const Hero: React.FC = () => {
     content: {
       root: {
         ...mediaQueryFrom('tablet', {
-          maxWidth: rem(480)
+          maxWidth: rem(560)
         })
       }
     },
@@ -92,7 +100,7 @@ export const Hero: React.FC = () => {
         background: 'rgba(0,0,0,0.4)',
         padding: spacing.m,
         ...mediaQueryFrom('tablet', {
-          maxWidth: rem(480),
+          maxWidth: rem(560),
           padding: 0,
           background: 'transparent'
         })
@@ -129,18 +137,31 @@ export const Hero: React.FC = () => {
         <Stack.Item styles={styles.contentContainer}>
           <Stack styles={styles.content}>
             <Text as="h1" variant="xxLargePlus" styles={styles.header}>
-              <FormattedMessage {...messages.heroTitle} />
+              <FormattedMessage
+                {...messages.heroTitle}
+                values={{ linebreak: <br /> }}
+              />
             </Text>
             <Text as="p" variant="large" styles={styles.description}>
               <FormattedMessage {...messages.heroDescription} />
             </Text>
             <Stack.Item tokens={{ padding: `${spacing.m} 0 0` }}>
-              <NextLink href={pagePaths.search()}>
-                <PrimaryButton
-                  text={formatMessage(messages.heroCallToAction)}
-                  styles={styles.callToAction}
-                />
-              </NextLink>
+              <Stack horizontal tokens={{ childrenGap: spacing.l1 }}>
+                <NextLink href={pagePaths.search()}>
+                  <PrimaryButton
+                    text={formatMessage(messages.heroCallToAction)}
+                    styles={styles.callToAction}
+                  />
+                </NextLink>
+                {isOrderHistoryEnabled && (
+                  <NextLink href={pagePaths.orders}>
+                    <DefaultButton
+                      text={formatMessage(messages.reorder)}
+                      styles={styles.callToAction}
+                    />
+                  </NextLink>
+                )}
+              </Stack>
             </Stack.Item>
           </Stack>
         </Stack.Item>

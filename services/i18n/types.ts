@@ -440,6 +440,7 @@ type IHomeMessages = INextHeadMessages & {
       title: string;
       description: string;
       callToAction: string;
+      reorder: string;
     };
     catalog: {
       items: {

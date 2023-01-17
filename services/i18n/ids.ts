@@ -427,7 +427,8 @@ export const messageIds: Messages = {
           imageAlt: 'pages.home.sections.hero.imageAlt',
           title: 'pages.home.sections.hero.title',
           description: 'pages.home.sections.hero.description',
-          callToAction: 'pages.home.sections.hero.callToAction'
+          callToAction: 'pages.home.sections.hero.callToAction',
+          reorder: 'pages.home.sections.hero.reorder'
         },
         catalog: {
           title: 'pages.home.sections.catalog.title',

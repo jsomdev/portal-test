@@ -109,7 +109,7 @@ export const Support: React.FC = () => {
     };
     const onlineChatCard: SupportCardProps = {
       title: formatMessage(messages.onlineChatTitle),
-      href: 'https://www.spray.com/contact/contact-us',
+      href: 'https://outlook.office365.com/owa/calendar/SprayingSystemsCo5@sprayingsystems.onmicrosoft.com/bookings/',
       onClick: () => null,
       description: formatMessage(messages.onlineChatDescription),
       action: formatMessage(messages.onlineChatAction),

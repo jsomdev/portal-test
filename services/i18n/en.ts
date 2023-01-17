@@ -372,16 +372,17 @@ export const en: Messages = {
         },
         hero: {
           imageAlt: 'Hero image',
-          title: 'Choose Quality Nozzles',
-          description: `Paired with excellent customer service, Spraying Systems Co.'s digital catalog helps you find, compare and purchase the products your company needs.`,
-          callToAction: `Start browsing`
+          title: 'Find the Right {linebreak} Spray Nozzles',
+          description: `Spraying Systems Co.'s digital catalog helps you find, compare and purchase the spray nozzles you need. Shop our full product range, including hydraulic spray nozzles, air atomizing nozzles, tank cleaning equipment and spray guns.`,
+          callToAction: `Start browsing`,
+          reorder: `Reorder now!`
         },
         signUp: {
           title: 'Sign in for the best experience',
           callToAction: 'Sign in',
           steps: {
             first: {
-              title: 'New portal user?',
+              title: 'New to SprayFinder?',
               description:
                 "No problem! Create an account in a minute. Click 'Sign up now' on the Sign in page."
             },
