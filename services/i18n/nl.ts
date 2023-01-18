@@ -402,9 +402,9 @@ export const nl: Messages = {
         },
         hero: {
           imageAlt: 'Hero afbeelding',
-          title: 'Vind de juiste spuitmondstukken',
+          title: 'Vind de juiste sproeikoppen',
           description:
-            'De digitale catalogus van Spraying Systems Co. helpt u bij het vinden, vergelijken en aanschaffen van de spuitmondstukken die u nodig heeft. Bekijk ons volledige productassortiment, inclusief hydraulische spuitmondstukken, luchtatomiserende spuitmondstukken, tankreinigingsapparatuur en spuitpistolen.',
+            'De digitale catalogus van Spraying Systems Co. helpt u bij het vinden, vergelijken en aanschaffen van de sproeikoppen die u nodig heeft. Bekijk ons volledige productassortiment, inclusief hydraulische sproeiers, luchtatomiserende sproeiers, tankreinigingsapparatuur en spuitpistolen.',
           callToAction: 'Aan de slag',
           reorder: 'Bestel opnieuw!'
         },

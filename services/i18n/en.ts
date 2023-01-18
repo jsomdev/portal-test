@@ -373,7 +373,7 @@ export const en: Messages = {
         hero: {
           imageAlt: 'Hero image',
           title: 'Find the Right {linebreak} Spray Nozzles',
-          description: `Spraying Systems Co.'s digital catalog helps you find, compare and purchase the spray nozzles you need. Shop our full product range, including hydraulic spray nozzles, air atomizing nozzles, tank cleaning equipment and spray guns.`,
+          description: `Spraying Systems Co.'s digital catalog helps you find, compare and purchase the spray nozzles you need. Shop our full product range, including hydraulic nozzles, air atomizing nozzles, tank cleaning equipment and spray guns.`,
           callToAction: `Start browsing`,
           reorder: `Reorder now!`
         },
