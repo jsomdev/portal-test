@@ -3,10 +3,36 @@ import { OrderPost } from './base/types';
 import { Order } from './models/Order';
 import { OdataCollection, OdataEntity, QueryOptions } from './o-data';
 
+export const createFile = async (file: File): Promise<{ id: string }> => {
+  const formData = new FormData();
+  formData.append('file', file);
+  const fileUploadResource: BaseResource<unknown> = new BaseResource(
+    '/Me/Resources'
+  );
+
+  const data: { id: string } = await fileUploadResource.fetch(
+    '/Me/Resources',
+    {},
+    {
+      method: 'POST',
+      body: formData
+    }
+  );
+  return data;
+};
+
 export const createOrder = async (order: OrderPost): Promise<Order> => {
   const customOrderResource: BaseResource<unknown> = new BaseResource(
     '/me/cart/checkout?$expand=lines'
   );
+
+  let fileId: { id: string } | undefined = undefined;
+
+  if (order.referenceDocumentFile) {
+    fileId = await createFile(order.referenceDocumentFile);
+  }
+
+  delete order.referenceDocumentFile;
 
   const data: Order = await customOrderResource.fetch<Order>(
     '/me/cart/checkout?$expand=lines',
@@ -16,7 +42,10 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(order)
+      body: JSON.stringify({
+        ...order,
+        purchaseOrderDocumentId: fileId?.id || undefined
+      })
     }
   );
   return data;

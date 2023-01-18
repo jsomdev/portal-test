@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta charset="UTF-8" />
+          <meta charSet="UTF-8" />
           {/*
             The single-page react application registered a /service-work.js, that should be unregistered once we release(d) the nextjs version of the site.
             After a while in production, this script could be removed

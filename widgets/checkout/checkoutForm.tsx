@@ -126,7 +126,6 @@ export const CheckoutForm: React.FC<{
         billingState: address.region || '',
         billingPostalCode: address.postalCode || '',
         paymentMethod,
-        referenceNumber: '',
         shippingAddressAsBillingAddress: shippingAsBilling ? 'yes' : 'no',
         shippingContactAsBillingContact: 'yes',
         billingCompany: ''

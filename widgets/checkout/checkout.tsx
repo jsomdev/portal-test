@@ -200,7 +200,7 @@ export const Checkout: React.FC = () => {
       {checkoutItems?.length === 0 && (
         <Stack.Item>
           <PortalMessageBar messageBarType={MessageBarType.blocked}>
-            <Text>{messages.noItems}</Text>
+            <Text>{formatMessage(messages.noItems)}</Text>
             <NextLink href={pagePaths.cart}>
               <a>
                 <Text>{formatMessage(messages.noItemsLink)}</Text>

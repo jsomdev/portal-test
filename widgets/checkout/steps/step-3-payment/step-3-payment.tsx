@@ -14,7 +14,9 @@ import {
   validation
 } from '@widgets/checkout/steps/step-3-payment/step-3-payment.helper';
 
-export type Step3FormData = InferType<typeof validation>;
+export type Step3FormData = InferType<typeof validation> & {
+  referenceDocumentFile: File | undefined;
+};
 
 const defaultValues: Step3FormData = {
   paymentMethod: '',
@@ -36,7 +38,9 @@ const defaultValues: Step3FormData = {
   billingState: '',
   billingCountry: '',
   billingPostalCode: '',
-  referenceNumber: ''
+  referenceNumber: '',
+  referenceDocumentFile: undefined,
+  referenceDocument: ''
 };
 
 export type Step3Props = {
@@ -52,6 +56,7 @@ export const Step3Payment: React.FC<Step3Props> = ({ values, formRef }) => {
   const { spacing } = useTheme();
   const intl = useIntl();
   const fields = getFields(intl);
+
   return (
     <Formik<Step3FormData>
       innerRef={formRef}

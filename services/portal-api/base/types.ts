@@ -20,6 +20,7 @@ export interface OrderPost {
   shippingContactInfo: ContactInfo;
   billingContactInfo: ContactInfo;
   paymentMethod: string;
+  referenceDocumentFile?: File | undefined;
   referenceNumber?: string;
 }
 

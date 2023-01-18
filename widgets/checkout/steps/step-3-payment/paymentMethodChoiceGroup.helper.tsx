@@ -31,6 +31,8 @@ export function getPaymentMethodOptions(
       | 'creditCardCVV'
       | 'creditCardExpiration'
       | 'referenceNumber'
+      | 'referenceDocument'
+      | 'referenceDocumentFile'
     >
   >,
   intl: IntlShape

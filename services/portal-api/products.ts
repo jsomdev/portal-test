@@ -234,7 +234,7 @@ export const fetchProductPriceBreaksByNumber = async (
   }
   const data: OdataCollection<PriceBreak & OdataEntity> | Response | undefined =
     await productsResource.fetch(
-      `/products(number='${productNumber}')${priceFunction}`,
+      `/products(number=@number)${priceFunction}?@number='${productNumber}'`,
       {},
       {},
       true

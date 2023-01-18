@@ -21,6 +21,8 @@ type PaymentMethodChoiceGroupProps = {
     | 'creditCardCVV'
     | 'creditCardExpiration'
     | 'referenceNumber'
+    | 'referenceDocument'
+    | 'referenceDocumentFile'
   >;
 };
 
@@ -58,7 +60,8 @@ export const PaymentMethodChoiceGroup: React.FC<
           width: '100%'
         },
         '.ms-ChoiceField-input': {
-          cursor: 'pointer'
+          cursor: 'pointer',
+          position: 'relative'
         }
       }
     }

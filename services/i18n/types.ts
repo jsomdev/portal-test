@@ -673,6 +673,7 @@ type ICheckoutMessages = {
       billingCountry: string;
       billingPostalCode: string;
       referenceNumber: string;
+      referenceDocument: string;
     };
   };
   summary: {

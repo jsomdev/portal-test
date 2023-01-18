@@ -16,11 +16,10 @@ export async function fetchMyQuotes(
   );
   const data: OdataCollection<Quote> = await requestResource.getEntities({
     includeCount: true,
-    selectQuery:
-      'id,name,number,contactInfo,submittedOn,totalAmount,currencyCode',
+    selectQuery: 'id,name,number,contactInfo,totalAmount,currencyCode',
     expandQuery:
       'notes,lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,name,number,slug;$expand=image($select=url)))',
-    orderbyQuery: 'submittedOn desc',
+    //orderbyQuery: 'createdOn desc',
     top,
     skip
   });
@@ -43,7 +42,7 @@ export async function fetchMyQuote(
 
     {
       selectQuery:
-        'id,name,number,contactInfo,submittedOn,emailAddresses,address,totalAmount,currencyCode',
+        'id,name,number,contactInfo,emailAddresses,address,totalAmount,currencyCode',
       expandQuery:
         'notes,lines($select=productId,productName,quantity,unitAmount,totalAmount,productNumber,currencyCode;$expand=product($select=id,slug;$expand=image($select=url)))'
     }

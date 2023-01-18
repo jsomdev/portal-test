@@ -269,7 +269,7 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
               styles={styles.actionButton}
               href={formatMessage(messages.mailTo)}
             >
-              {messages.send}
+              {formatMessage(messages.send)}
             </ActionButton>
           </Stack>
         }

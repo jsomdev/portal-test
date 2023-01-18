@@ -912,7 +912,8 @@ export const messageIds: Messages = {
           billingState: 'pages.checkout.payment.fields.billingState',
           billingCountry: 'pages.checkout.payment.fields.billingCountry',
           billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode',
-          referenceNumber: 'pages.checkout.payment.fields.referenceNumber'
+          referenceNumber: 'pages.checkout.payment.fields.referenceNumber',
+          referenceDocument: 'pages.checkout.payment.fields.referenceDocument'
         }
       },
       summary: {
