@@ -64,14 +64,18 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
+      const forceRefresh = account.idTokenClaims?.exp
+        ? new Date(account.idTokenClaims?.exp + 1000) < new Date()
+        : true;
       authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
+        forceRefresh,
         account
       });
     } catch (e) {
       console.log('Failed the acquire token silently. Will logout the user');
 
-      getMsalInstance()?.ssoSilent({
+      getMsalInstance()?.logoutRedirect({
         ...loginRequest,
         account
       });

@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import {
@@ -74,9 +75,10 @@ export const AddressBook: React.FC = () => {
     removeAddress,
     billingAddress,
     shippingAddress,
+    addressBookStatus,
+    addressBookError,
     removeAddressError,
-    setDefaultAddressError,
-    addressBookStatus
+    setDefaultAddressError
   } = useContext(AddressBookContext);
 
   const mappedAddresses: AddressViewModel[] | undefined = useMemo(() => {
@@ -96,6 +98,10 @@ export const AddressBook: React.FC = () => {
 
   if (addressBookStatus === 'loading') {
     return <LoadingSpinner />;
+  }
+
+  if (addressBookStatus === 'error') {
+    return <ErrorMessage error={addressBookError} logError={true} />;
   }
 
   return (

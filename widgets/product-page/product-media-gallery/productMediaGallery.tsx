@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
 import { ProductImageDisclaimerTooltip } from '@components/tooltips/productImageDisclaimerTooltip';
 import {
   IButtonStyles,
@@ -27,7 +28,6 @@ import { STATIC_IMAGES } from '@public/media/images';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
-import { AppErrorBoundary } from '@widgets/error-boundaries/appErrorBoundary';
 import { useTabletAndDesktop } from '@widgets/media-queries';
 
 import { ProductSubsectionHeader } from '../product-sections/productSubSectionHeader';
@@ -389,7 +389,7 @@ export const ProductMediaGallerySlide: React.FC<
 
   if (item.type === 'pdf') {
     return (
-      <AppErrorBoundary boundary="pdf page">
+      <AppErrorBoundary>
         <ProductMediaPdf
           key={item.id}
           modal={mode === 'modal'}

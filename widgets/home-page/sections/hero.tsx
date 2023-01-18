@@ -129,6 +129,7 @@ export const Hero: React.FC = () => {
       }
     }
   };
+
   return (
     <Stack verticalAlign="center" styles={styles.root}>
       <Stack.Item styles={styles.imageContainer}>

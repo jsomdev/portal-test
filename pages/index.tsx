@@ -178,8 +178,7 @@ export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<
   GetStaticPropsResult<
-    HomeProps &
-      Partial<Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>>
+    HomeProps & Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>
   >
 > => {
   const { locale } = context;

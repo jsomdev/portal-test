@@ -7,13 +7,16 @@ import nProgress from 'nprogress';
 import { IntlProvider, MessageFormatElement } from 'react-intl';
 
 import { MsalProvider } from '@azure/msal-react';
+import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
 import { initializeIcons } from '@fluentui/react';
+import { AppInsightsContext } from '@microsoft/applicationinsights-react-js';
 import { AddressBookProvider } from '@providers/address-book/addressBookProvider';
 import { CartProvider } from '@providers/cart/cartProvider';
 import { ProductBookmarksProvider } from '@providers/product-bookmarks/productBookmarksProvider';
 import { RecentlyViewedProvider } from '@providers/recently-viewed/recentlyViewedProvider';
 import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/systemOfMeasurementProvider';
 import { UserProvider } from '@providers/user/userProvider';
+import { appInsightsReactPlugin } from '@services/application-insights/applicationInsights';
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
 import { Consent } from '@services/consent/consent';
 import { getMessages } from '@services/i18n/helper';
@@ -25,7 +28,6 @@ import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
 import '../public/nprogress.css';
 
-// InitializeIcons
 initializeIcons();
 
 const ClientSideMsalProvider: React.FC = ({ children }) => {
@@ -44,6 +46,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [locale]);
 
   useEffect(() => {
+    //used in /docs/errors to test application level error
+    if (router.query['appError']) {
+      throw new Error('Something went wrong');
+    }
     const handleStart = () => {
       nProgress.start();
     };
@@ -63,38 +69,40 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [router]);
 
   return (
-    <>
-      <Consent />
-      <ClientSideMsalProvider>
-        <IntlProvider
-          locale={locale || defaultLocale}
-          defaultLocale={defaultLocale}
-          messages={i18nMessages}
-        >
-          <MediaContextProvider>
-            <AppThemeProvider>
-              <ReactQueryClientProvider>
-                <AddressBookProvider>
-                  <UserProvider>
-                    <CartProvider>
-                      <SystemOfMeasurementProvider>
-                        <ProductCompareProvider>
-                          <RecentlyViewedProvider>
-                            <ProductBookmarksProvider>
-                              <Component {...pageProps} />
-                            </ProductBookmarksProvider>
-                          </RecentlyViewedProvider>
-                        </ProductCompareProvider>
-                      </SystemOfMeasurementProvider>
-                    </CartProvider>
-                  </UserProvider>
-                </AddressBookProvider>
-              </ReactQueryClientProvider>
-            </AppThemeProvider>
-          </MediaContextProvider>
-        </IntlProvider>
-      </ClientSideMsalProvider>
-    </>
+    <AppInsightsContext.Provider value={appInsightsReactPlugin}>
+      <AppErrorBoundary>
+        <Consent />
+        <ClientSideMsalProvider>
+          <IntlProvider
+            locale={locale || defaultLocale}
+            defaultLocale={defaultLocale}
+            messages={i18nMessages}
+          >
+            <MediaContextProvider>
+              <AppThemeProvider>
+                <ReactQueryClientProvider>
+                  <AddressBookProvider>
+                    <UserProvider>
+                      <CartProvider>
+                        <SystemOfMeasurementProvider>
+                          <ProductCompareProvider>
+                            <RecentlyViewedProvider>
+                              <ProductBookmarksProvider>
+                                <Component {...pageProps} />
+                              </ProductBookmarksProvider>
+                            </RecentlyViewedProvider>
+                          </ProductCompareProvider>
+                        </SystemOfMeasurementProvider>
+                      </CartProvider>
+                    </UserProvider>
+                  </AddressBookProvider>
+                </ReactQueryClientProvider>
+              </AppThemeProvider>
+            </MediaContextProvider>
+          </IntlProvider>
+        </ClientSideMsalProvider>
+      </AppErrorBoundary>
+    </AppInsightsContext.Provider>
   );
 }
 export default MyApp;

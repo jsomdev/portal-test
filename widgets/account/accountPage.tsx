@@ -4,6 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
 import { NextLink } from '@components/link/nextLink';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
@@ -151,7 +152,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
                         {pageTitle}
                       </Text>
                     </Stack.Item>
-                    {children}
+                    <AppErrorBoundary>{children}</AppErrorBoundary>
                   </Stack>
                 )}
                 {!isAuthenticated && (

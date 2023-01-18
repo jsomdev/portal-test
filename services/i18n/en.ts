@@ -349,6 +349,10 @@ export const en: Messages = {
             openLink: 'Open link ({index})'
           }
         }
+      },
+      errors: {
+        searchError:
+          'There was a problem retrieving the products you are looking for. Please try again later.'
       }
     },
     home: {
@@ -942,6 +946,11 @@ export const en: Messages = {
         category: 'The product category',
         defaultPage: 'The page'
       }
+    },
+    error: {
+      title: '500 – Internal Server Error',
+      headerLine1: 'Oops!',
+      headerLine2: 'Something unexpected happened.'
     }
   },
   loading: {

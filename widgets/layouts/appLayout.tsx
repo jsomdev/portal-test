@@ -1,5 +1,6 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 
+import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
 import { MenuItem } from '@services/portal-api';
 import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
@@ -21,7 +22,6 @@ export const AppLayout: React.FC = ({ children }) => {
       zIndex: 3
     }
   };
-
   return (
     <React.Fragment>
       <header style={styles.header}>
@@ -30,7 +30,7 @@ export const AppLayout: React.FC = ({ children }) => {
         <AppOverlay />
       </header>
       <main>
-        {children}
+        <AppErrorBoundary>{children}</AppErrorBoundary>
         <ComparisonPopup />
       </main>
       <footer>

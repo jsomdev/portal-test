@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   FontSizes,
@@ -28,7 +29,6 @@ import { ATTRIBUTETYPECODES } from '@services/portal-api/constants';
 import { rem } from '@utilities/rem';
 import { MultiConditionsPerformanceChart } from '@widgets/charts/performance-chart/multiConditionsPerformanceChart';
 import { PerformanceChart } from '@widgets/charts/performance-chart/performanceChart';
-import { ErrorPage } from '@widgets/error-boundaries/errorPage';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { mediaQueryFrom } from '@widgets/media-queries';
 import { filterProductPerformanceChartAttributes } from '@widgets/product-page/product-performance/productPerformanceHelper';
@@ -86,6 +86,11 @@ const messages = defineMessages({
   specifications: {
     id: messageIds.pages.product.sections.specifications.title,
     defaultMessage: 'Product Specifications'
+  },
+  searchError: {
+    id: messageIds.pages.product.errors.searchError,
+    defaultMessage:
+      'There was a problem retrieving the products you are looking for. Please try again later.'
   }
 });
 
@@ -256,9 +261,15 @@ export const DetailedCompare: React.FC = () => {
       <LoadingOverlay spinnerText={formatMessage(messages.loadingCompare)} />
     );
   }
-
   if (productsDetailsStatus === 'error') {
-    return <ErrorPage error={productsDetailsError as Error} page={'compare'} />;
+    return (
+      <ErrorMessage
+        error={productsDetailsError}
+        logError={true}
+        message={formatMessage(messages.searchError)}
+        showHomepageLink={true}
+      />
+    );
   }
 
   if (!products.length && productsDetailsStatus === 'success') {
