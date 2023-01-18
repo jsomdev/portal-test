@@ -147,7 +147,13 @@ export const validation = yup.object({
       is: 'no',
       then: yup.string().required()
     }),
-  referenceNumber: yup.string(),
+  referenceNumber: yup
+    .string()
+    .label(messageIds.pages.checkout.payment.fields.referenceNumber)
+    .when('paymentMethod', {
+      is: PaymentMethod.PURCHASE_ORDER,
+      then: yup.string().trim().required()
+    }),
   referenceDocument: yup.string(),
   referenceDocumentFile: yup.mixed()
 });

@@ -7,6 +7,7 @@ import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   DefaultButton,
+  FontWeights,
   IButtonStyles,
   IChoiceGroupOption,
   IChoiceGroupOptionProps,
@@ -14,9 +15,11 @@ import {
   IRenderFunction,
   IStackStyles,
   ITextFieldStyles,
+  Icon,
   Label,
   MessageBarType,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
@@ -119,39 +122,65 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
           <FormikTextField
             {...fields.referenceNumber}
             styles={styles.textField}
+            required
           />
-          <Field
-            {...fields.referenceDocument}
-            type="file"
-            id="purchaseOrderFileUpload"
-            onChange={async (event: React.ChangeEvent<HTMLInputElement>) => {
-              setFieldValue(
-                fields.referenceDocumentFile.name,
-                event?.currentTarget?.files?.[0]
-              );
-            }}
-            style={styles.inputField}
-          />
-          <Stack
-            horizontal
-            verticalAlign="center"
-            styles={{ root: { maxWidth: 350 } }}
-          >
-            <Label
-              styles={styles.uploadLabel}
-              htmlFor="purchaseOrderFileUpload"
+          <Stack>
+            <Label>{fields.referenceDocumentFile.label}</Label>
+            <Field
+              {...fields.referenceDocument}
+              type="file"
+              id="purchaseOrderFileUpload"
+              onChange={async (event: React.ChangeEvent<HTMLInputElement>) => {
+                setFieldValue(
+                  fields.referenceDocumentFile.name,
+                  event?.currentTarget?.files?.[0]
+                );
+              }}
+              style={styles.inputField}
+            />
+            <Stack
+              horizontal
+              verticalAlign="center"
+              styles={{ root: { maxWidth: 350 } }}
             >
-              {values.referenceDocumentFile?.name || 'Upload a PO document'}
-            </Label>
-            {values.referenceDocumentFile?.name && (
-              <DefaultButton
-                iconProps={{ iconName: 'Cancel' }}
-                styles={styles.removeButton}
-                onClick={() => {
-                  setFieldValue(fields.referenceDocumentFile.name, undefined);
-                }}
-              />
-            )}
+              <Label
+                styles={styles.uploadLabel}
+                htmlFor="purchaseOrderFileUpload"
+              >
+                <Stack
+                  horizontal
+                  tokens={{ childrenGap: spacing.s1 }}
+                  verticalAlign="center"
+                  horizontalAlign="center"
+                >
+                  <Icon
+                    iconName={
+                      values.referenceDocumentFile?.name
+                        ? 'FolderHorizontal'
+                        : 'CloudUpload'
+                    }
+                    styles={{
+                      root: {
+                        fontSize: 18
+                      }
+                    }}
+                  />
+                  <Text styles={{ root: { fontWeight: FontWeights.regular } }}>
+                    {values.referenceDocumentFile?.name ||
+                      'Upload a PO document'}
+                  </Text>
+                </Stack>
+              </Label>
+              {values.referenceDocumentFile?.name && (
+                <DefaultButton
+                  iconProps={{ iconName: 'Cancel' }}
+                  styles={styles.removeButton}
+                  onClick={() => {
+                    setFieldValue(fields.referenceDocumentFile.name, undefined);
+                  }}
+                />
+              )}
+            </Stack>
           </Stack>
         </Stack>
       )}
