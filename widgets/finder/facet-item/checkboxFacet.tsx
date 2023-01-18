@@ -261,7 +261,9 @@ export const CheckboxFacet: React.FC<CheckboxFacetProps> = ({
 
   return (
     <FacetContainer
-      onShowInfo={attributeType ? () => setShowFacetDialog(true) : undefined}
+      onShowInfo={
+        attributeType?.description ? () => setShowFacetDialog(true) : undefined
+      }
       facetTitle={facetFormatter.formatTitle()}
     >
       <MarkDownDialog

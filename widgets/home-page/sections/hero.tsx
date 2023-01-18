@@ -69,17 +69,26 @@ export const Hero: React.FC = () => {
   const styles: HeroStyles = {
     root: {
       root: {
-        height: 400,
+        ...mediaQueryFrom('largePhone', {
+          minHeight: 400
+        }),
         position: 'relative'
       }
     },
     header: {
       root: {
         marginBottom: spacing.s1,
-        fontSize: rem(56),
+        fontSize: rem(32),
+        ...mediaQueryFrom('largePhone', {
+          fontSize: rem(40)
+        }),
+        ...mediaQueryFrom('tablet', {
+          fontSize: rem(56)
+        }),
         lineHeight: '100%',
         fontWeight: FontWeights.bold,
-        color: palette.white
+        color: palette.white,
+        overflowWrap: 'break-word'
       }
     },
     description: {

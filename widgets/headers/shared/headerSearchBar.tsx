@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -92,18 +98,25 @@ const DesktopSearchBar: React.FC<{
   renderChildren: boolean;
 }> = ({ className, renderChildren }) => {
   const { spacing } = useTheme();
-
+  const { query } = useRouter();
   return (
     <Stack grow tokens={{ padding: `0 ${spacing.l1}` }} className={className}>
-      {renderChildren && <SearchBar />}
+      {renderChildren && (
+        <SearchBar
+          initialSearchInput={(query.query || undefined) as string | undefined}
+        />
+      )}
     </Stack>
   );
 };
 
 const MobileSearchBar: React.FC = () => {
+  const { query } = useRouter();
   return (
     <Stack tokens={{ padding: `0 ${rem(12)}` }}>
-      <SearchBar />
+      <SearchBar
+        initialSearchInput={(query.query || undefined) as string | undefined}
+      />
     </Stack>
   );
 };
@@ -122,15 +135,18 @@ interface SearchBarStyles {
   >;
 }
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
+  initialSearchInput
+}) => {
   const { togglePageOverlay } = usePageContext();
   const { spacing, palette, semanticColors, fonts, effects } = useTheme();
   const { locale, formatMessage } = useIntl();
-  const { push, query } = useRouter();
+  const { push } = useRouter();
   const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
   const searchBoxRef = useRef<HTMLDivElement>(null);
+
   const [searchBoxInput, setSearchBoxInput] = useState<string | undefined>(
-    query.query as string | undefined
+    initialSearchInput || ''
   );
   const [isBoxFocused, setIsBoxFocused] = useState(false);
   const [showContextualMenu, setShowContextualMenu] = useState(false);
@@ -143,6 +159,11 @@ const SearchBar: React.FC = () => {
     600
   );
 
+  useEffect(() => {
+    if (initialSearchInput) {
+      setSearchBoxInput(initialSearchInput);
+    }
+  }, [initialSearchInput]);
   const {
     data: suggestionsData,
     status: suggestionsStatus,
@@ -234,7 +255,7 @@ const SearchBar: React.FC = () => {
   }
 
   function onClear() {
-    setSearchBoxInput(undefined);
+    setSearchBoxInput('');
   }
 
   function onBlur() {
@@ -246,7 +267,7 @@ const SearchBar: React.FC = () => {
   }
 
   function onEscape(ev: React.ChangeEvent<HTMLDivElement>): void {
-    setSearchBoxInput(undefined);
+    setSearchBoxInput('');
     ev.target.blur();
   }
 
@@ -260,6 +281,7 @@ const SearchBar: React.FC = () => {
     // Need to make sure the overlay + menu disappears
     setShowContextualMenu(false);
     setIsBoxFocused(false);
+    setSearchBoxInput(newValue);
 
     // Filter out the newValue from the recentSearches
     const currentRecentSearches =
@@ -291,10 +313,6 @@ const SearchBar: React.FC = () => {
       togglePageOverlay(false);
     }
   }, [isBoxFocused, showContextualMenu, togglePageOverlay]);
-
-  useEffect(() => {
-    setSearchBoxInput(query.query as string | undefined);
-  }, [query.query]);
 
   const styles: SearchBarStyles = {
     linkText: {
@@ -390,6 +408,7 @@ const SearchBar: React.FC = () => {
   return (
     <>
       <SearchBox
+        placeholder={formatMessage(messages.searchPlaceholder)}
         value={searchBoxInput}
         ref={searchBoxRef}
         styles={styles.searchBox}
