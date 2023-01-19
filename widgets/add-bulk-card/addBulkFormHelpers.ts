@@ -1,7 +1,7 @@
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { Product } from '@services/portal-api';
-import { BaseResource } from '@services/portal-api/base/baseResource';
-import { OdataCollection } from '@services/portal-api/o-data';
+import { OdataCollection, QueryOptions } from '@services/portal-api/o-data';
+import { ProductsResource } from '@services/portal-api/resources/ProductsResource';
 
 import { AddBulkFormValues } from './addBulkCard.types';
 
@@ -75,16 +75,18 @@ export async function validateProductNumbers(
     };
   }
 
-  // Verify all added products
-  const verifyProductsResource: BaseResource<
-    Pick<Product, 'id' | 'number' | 'name'>
-  > = new BaseResource(
-    `/products/verify(numbers=[${filteredProductNumbers
+  const productsResource: ProductsResource = new ProductsResource();
+
+  const queryOptions: Partial<QueryOptions> = {
+    selectQuery: 'id,number,name',
+    filterQuery: `number in (${filteredProductNumbers
       .map(productNumber => `'${productNumber}'`)
-      .join(',')}])`
-  );
+      .join(',')})`
+  };
+
+  // Verify all added products
   const verifiedProducts: OdataCollection<Product> =
-    await verifyProductsResource.getEntities({});
+    await productsResource.getEntities(queryOptions);
 
   // The valid product numbers are the ones that are found within the result value of the api call
   const validProductNumbers: string[] = filteredProductNumbers.filter(

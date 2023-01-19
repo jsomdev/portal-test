@@ -101,7 +101,7 @@ export const CartList: React.FC<CartListProps> = ({
   if (status === 'error') {
     return (
       <PortalMessageBar messageBarType={MessageBarType.error}>
-        {messages.cartError}
+        {formatMessage(messages.cartError)}
       </PortalMessageBar>
     );
   }

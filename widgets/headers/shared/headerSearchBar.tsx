@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -14,13 +8,10 @@ import { useQuery } from 'react-query';
 
 import { NextLink } from '@components/link/nextLink';
 import {
-  ContextualMenu,
-  ICalloutContentStyleProps,
-  ICalloutContentStyles,
   IProgressIndicatorStyles,
   ISearchBoxStyles,
+  IStackItemStyles,
   IStackStyles,
-  IStyleFunctionOrObject,
   ITextStyles,
   ProgressIndicator,
   SearchBox,
@@ -39,10 +30,14 @@ import { QUERYKEYS } from '@services/react-query/constants';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
+import useOnClickOutside from '@utilities/useClickOutside';
 import { useDebounce } from '@utilities/useDebounce';
-import { useWindowSize } from '@utilities/useWindowSize';
 import { ProductListItemPricing } from '@widgets/finder/result-view/list-view/listItemPricing';
-import { Mobile, TabletAndDesktop } from '@widgets/media-queries';
+import {
+  Mobile,
+  TabletAndDesktop,
+  mediaQueryFrom
+} from '@widgets/media-queries';
 import { usePageContext } from '@widgets/page/pageContext';
 import ProductCardTitleLink from '@widgets/product-card-parts/productCardTitleLink';
 
@@ -125,31 +120,36 @@ interface SearchBarStyles {
   searchBox: ISearchBoxStyles;
   sectionTitle: ITextStyles;
   sectionContainer: IStackStyles;
+  menu: IStackItemStyles;
   noReults: ITextStyles;
   linkText: ITextStyles;
-  listContainer: IStackStyles;
   progressIndicator: Partial<IProgressIndicatorStyles>;
-  callout: IStyleFunctionOrObject<
-    ICalloutContentStyleProps,
-    ICalloutContentStyles
-  >;
 }
 
 const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
   initialSearchInput
 }) => {
-  const { togglePageOverlay } = usePageContext();
-  const { spacing, palette, semanticColors, fonts, effects } = useTheme();
-  const { locale, formatMessage } = useIntl();
-  const { push } = useRouter();
-  const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
-  const searchBoxRef = useRef<HTMLDivElement>(null);
-
+  const [showMenu, setShowMenu] = useState(false);
   const [searchBoxInput, setSearchBoxInput] = useState<string | undefined>(
     initialSearchInput || ''
   );
-  const [isBoxFocused, setIsBoxFocused] = useState(false);
-  const [showContextualMenu, setShowContextualMenu] = useState(false);
+  const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
+  const { spacing, palette, semanticColors, fonts, effects } = useTheme();
+  const { locale, formatMessage } = useIntl();
+  const { push } = useRouter();
+  /**
+   * # Refs
+   * rootRef: Ref object including the searchbox itself and the menu component.
+   * searchbox: Ref object for the searchbox.
+   * menuRef: Ref object for the menu with the suggestions and recent searches.
+   */
+  const { ref: rootRef } = useOnClickOutside<HTMLDivElement>(onHideMenu);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const searchBoxRef = useRef<HTMLDivElement>(null);
+
+  // We want to toggle the PageOverlay when the menu is shown
+  const { togglePageOverlay } = usePageContext();
+
   const recentSearches: string[] | null | undefined = useMemo(
     () => cookies[COOKIESKEYS.recentSearches],
     [cookies]
@@ -159,11 +159,6 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     600
   );
 
-  useEffect(() => {
-    if (initialSearchInput) {
-      setSearchBoxInput(initialSearchInput);
-    }
-  }, [initialSearchInput]);
   const {
     data: suggestionsData,
     status: suggestionsStatus,
@@ -182,7 +177,9 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
           SUGGESTIONS_COUNT,
           0
         ),
-        fetchAutoCompleteSearch(debouncedSearchBoxInput || undefined)
+        fetchAutoCompleteSearch(
+          encodeURIComponent(debouncedSearchBoxInput || '')
+        )
       ]);
 
       return {
@@ -239,6 +236,10 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     ]
   );
 
+  function onHideMenu() {
+    setShowMenu(false);
+  }
+
   function onSearchBarChange(
     ev: React.ChangeEvent<HTMLInputElement> | undefined,
     newValue: string | undefined
@@ -246,29 +247,21 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     setSearchBoxInput(newValue || '');
   }
 
-  function onHideContextualMenu() {
-    setShowContextualMenu(false);
-  }
-
   function onFocus() {
-    setIsBoxFocused(true);
+    setShowMenu(true);
   }
 
   function onClear() {
     setSearchBoxInput('');
   }
 
-  function onBlur() {
-    setIsBoxFocused(false);
-  }
-
   function onClickCapture() {
-    setShowContextualMenu(true);
+    setShowMenu(true);
   }
 
-  function onEscape(ev: React.ChangeEvent<HTMLDivElement>): void {
+  function onEscape(): void {
     setSearchBoxInput('');
-    ev.target.blur();
+    onHideMenu();
   }
 
   function onKeyUp(ev: React.KeyboardEvent<HTMLInputElement>): void {
@@ -279,8 +272,7 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
 
   function onSearch(newValue: string) {
     // Need to make sure the overlay + menu disappears
-    setShowContextualMenu(false);
-    setIsBoxFocused(false);
+    setShowMenu(false);
     setSearchBoxInput(newValue);
 
     // Filter out the newValue from the recentSearches
@@ -303,24 +295,59 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     });
   }
 
-  // This will trigger rerenders when we resize
-  useWindowSize();
+  useEffect(() => {
+    setSearchBoxInput(initialSearchInput || '');
+  }, [initialSearchInput]);
 
   useEffect(() => {
-    if (isBoxFocused || showContextualMenu) {
+    if (showMenu) {
       togglePageOverlay(true);
     } else {
       togglePageOverlay(false);
     }
-  }, [isBoxFocused, showContextualMenu, togglePageOverlay]);
+  }, [showMenu, togglePageOverlay]);
 
   const styles: SearchBarStyles = {
+    menu: {
+      root: {
+        borderRadius: 0,
+        boxShadow: '0px 4px 8px rgba(0,0,0,0.2)',
+        borderTop:
+          suggestionsStatus !== 'loading' && !isFetching
+            ? `2px solid ${semanticColors.variantBorder}`
+            : 0,
+        borderBottomLeftRadius: 4,
+        borderBottomRightRadius: 4,
+        display: showMenu ? 'flex' : 'none',
+        flexDirection: 'column',
+        background: 'white',
+        zIndex: 3,
+        overflow: 'auto',
+        position: 'absolute',
+        left: 0,
+        top: 32,
+        right: 0,
+        margin: 'auto',
+        width: '100%',
+        maxWidth: rem(560),
+        maxHeight: '60vh'
+      }
+    },
     linkText: {
       root: {
         cursor: 'pointer',
+        ...fonts.mediumPlus,
+        paddingTop: spacing.s1,
+        paddingBottom: spacing.s1,
+        display: 'flex',
         '&:hover': {
           color: palette.accent
-        }
+        },
+        ...mediaQueryFrom('tablet', {
+          ...fonts.medium,
+          paddingTop: spacing.s2,
+          paddingBottom: spacing.s2
+        })
       }
     },
     noReults: {
@@ -345,28 +372,7 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         height: 2
       }
     },
-    listContainer: {
-      root: {
-        maxHeight: '60vh',
-        borderTop:
-          suggestionsStatus !== 'loading' && !isFetching
-            ? `2px solid ${semanticColors.variantBorder}`
-            : 0,
-        width: '100%'
-      }
-    },
-    callout: {
-      root: {
-        boxShadow: 'none'
-      },
-      calloutMain: {
-        width: searchBoxRef.current?.clientWidth,
-        borderRadius: 0,
-        boxShadow: '0px 4px 8px rgba(0,0,0,0.2)',
-        borderBottomLeftRadius: 4,
-        borderBottomRightRadius: 4
-      }
-    },
+
     searchBox: {
       clearButton: {
         margin: rem(2)
@@ -377,19 +383,15 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
       root: {
         margin: 'auto',
         width: '100%',
+        maxWidth: rem(560),
         fontSize: fonts.mediumPlus.fontSize,
         position: 'relative',
         zIndex: 4,
         padding: 0,
-        maxWidth: rem(560),
-        border: showContextualMenu
-          ? 'none'
-          : `1px solid ${semanticColors.variantBorder}`,
+        border: showMenu ? 'none' : `1px solid ${semanticColors.variantBorder}`,
         borderRadius: effects.roundedCorner4,
-        borderBottomLeftRadius: showContextualMenu ? 0 : effects.roundedCorner4,
-        borderBottomRightRadius: showContextualMenu
-          ? 0
-          : effects.roundedCorner4,
+        borderBottomLeftRadius: showMenu ? 0 : effects.roundedCorner4,
+        borderBottomRightRadius: showMenu ? 0 : effects.roundedCorner4,
         '&.is-active': {
           border: 'none',
           borderBottomLeftRadius: 0,
@@ -406,7 +408,16 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
   };
 
   return (
-    <>
+    <Stack
+      root={{
+        ref: rootRef
+      }}
+      styles={{
+        root: {
+          position: 'relative'
+        }
+      }}
+    >
       <SearchBox
         placeholder={formatMessage(messages.searchPlaceholder)}
         value={searchBoxInput}
@@ -414,172 +425,159 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         styles={styles.searchBox}
         onChange={onSearchBarChange}
         onFocus={onFocus}
-        onBlur={onBlur}
         onKeyUp={onKeyUp}
         onSearch={onSearch}
         onClickCapture={onClickCapture}
         role="search"
         id="header-search-box"
+        clearButtonProps={{}}
         autoComplete="off"
         onClear={onClear}
         onEscape={onEscape}
       />
-      <ContextualMenu
-        items={[{ key: 'Default' }]}
-        hidden={!showContextualMenu && !isBoxFocused}
-        shouldUpdateWhenHidden={true}
-        isBeakVisible={false}
-        gapSpace={0}
-        target={searchBoxRef}
-        useTargetWidth={true}
-        shouldFocusOnMount={false}
-        onRestoreFocus={() => null}
-        calloutProps={{
-          styles: styles.callout
-        }}
-        styles={{
-          container: {}
-        }}
-        onRenderMenuList={() => {
-          return (
-            <Stack styles={styles.listContainer}>
-              {showLoadingIndicator && (
-                <ProgressIndicator styles={styles.progressIndicator} />
-              )}
-              {showAutoComplete && (
-                <Stack
-                  styles={styles.sectionContainer}
-                  tokens={{
-                    childrenGap: spacing.s1,
-                    padding: `${spacing.s1} ${spacing.s1} ${spacing.s1}`
-                  }}
+      {showMenu && (
+        <Stack.Item
+          className="list-scroll"
+          role={'menu'}
+          tabIndex={0}
+          root={{
+            ref: menuRef
+          }}
+          styles={styles.menu}
+        >
+          {showLoadingIndicator && (
+            <ProgressIndicator styles={styles.progressIndicator} />
+          )}
+          {showAutoComplete && (
+            <Stack
+              styles={styles.sectionContainer}
+              tokens={{
+                padding: `${spacing.s1} ${spacing.s1} ${spacing.s1}`
+              }}
+            >
+              {mapAutoCompleteStringsToViewModel(
+                suggestionsData?.autoComplete?.value,
+                debouncedSearchBoxInput
+              ).map(item => (
+                <Text
+                  tabIndex={-1}
+                  role={'menuitem'}
+                  key={item.query}
+                  styles={styles.linkText}
+                  onClick={() => onSearch(item.query)}
                 >
-                  {mapAutoCompleteStringsToViewModel(
-                    suggestionsData?.autoComplete?.value,
-                    debouncedSearchBoxInput
-                  ).map(item => (
-                    <Text
-                      key={item.query}
-                      styles={styles.linkText}
-                      onClick={() => onSearch(item.query)}
-                    >
-                      <NextLink href={pagePaths.search(item.query)} passHref>
-                        <a
-                          dangerouslySetInnerHTML={{ __html: item.htmlText }}
-                        />
-                      </NextLink>
-                    </Text>
-                  ))}
-                </Stack>
-              )}
-              {showRecentSearches && (
-                <Stack
-                  styles={styles.sectionContainer}
-                  tokens={{
-                    childrenGap: spacing.s1,
-                    padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
-                  }}
-                >
-                  <Text styles={styles.sectionTitle}>
-                    {formatMessage(messages.recentSearches)}
-                  </Text>
-                  {recentSearches?.map(recentSearch => {
-                    return (
-                      <Text
-                        key={recentSearch}
-                        styles={styles.linkText}
-                        onClick={() => onSearch(recentSearch)}
-                      >
-                        <NextLink href={pagePaths.search(recentSearch)}>
-                          {recentSearch}
-                        </NextLink>
-                      </Text>
-                    );
-                  })}
-                </Stack>
-              )}
-              {showNoResults && (
-                <Stack.Item
-                  tokens={{
-                    padding: spacing.s1
-                  }}
-                >
-                  <Text variant="mediumPlus" styles={styles.noReults}>
-                    {formatMessage(messages.noResults)}
-                  </Text>
-                </Stack.Item>
-              )}
-              {showSuggestedProducts && (
-                <Stack
-                  tokens={{
-                    childrenGap: spacing.m,
-                    padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
-                  }}
-                >
-                  <Text styles={styles.sectionTitle}>
-                    {formatMessage(messages.suggestedProducts)}
-                  </Text>
-                  {productSearchSuggestions
-                    ?.slice(0, SUGGESTIONS_COUNT)
-                    .map(item => {
-                      const src =
-                        item.imageUrl || STATIC_IMAGES.app.noImageAvailable;
-                      return (
-                        <NextLink key={item.id} href={item.url}>
-                          <Stack
-                            horizontal
-                            verticalAlign="center"
-                            styles={styles.linkText}
-                            tokens={{
-                              childrenGap: spacing.s1,
-                              padding: `0 ${spacing.s1}`
-                            }}
-                            onClick={() => {
-                              setShowContextualMenu(false);
-                              setIsBoxFocused(false);
-                            }}
-                          >
-                            <Image
-                              height={80}
-                              style={{
-                                borderRadius: effects.roundedCorner2
-                              }}
-                              objectFit="contain"
-                              objectPosition="center"
-                              width={80}
-                              alt={item.number}
-                              src={src}
-                              loader={getImageLoader(src)}
-                            />
-
-                            <Stack tokens={{ childrenGap: spacing.s2 }}>
-                              <ProductCardTitleLink
-                                size="small"
-                                number={item.number}
-                                name={item.name}
-                                url={item.url}
-                              />
-                              <ProductListItemPricing
-                                hideAddToCart={true}
-                                hidePriceBreaks={true}
-                                product={{
-                                  id: item.id,
-                                  number: item.number
-                                }}
-                              />
-                            </Stack>
-                          </Stack>
-                        </NextLink>
-                      );
-                    })}
-                </Stack>
-              )}
+                  <NextLink href={pagePaths.search(item.query)}>
+                    <a dangerouslySetInnerHTML={{ __html: item.htmlText }} />
+                  </NextLink>
+                </Text>
+              ))}
             </Stack>
-          );
-        }}
-        onItemClick={onHideContextualMenu}
-        onDismiss={onHideContextualMenu}
-      />
-    </>
+          )}
+          {showRecentSearches && (
+            <Stack
+              styles={styles.sectionContainer}
+              tokens={{
+                padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
+              }}
+            >
+              <Text styles={styles.sectionTitle}>
+                {formatMessage(messages.recentSearches)}
+              </Text>
+              {recentSearches?.map(recentSearch => {
+                return (
+                  <Text
+                    key={recentSearch}
+                    role={'menuitem'}
+                    tabIndex={-1}
+                    styles={styles.linkText}
+                    onClick={() => onSearch(recentSearch)}
+                  >
+                    <NextLink href={pagePaths.search(recentSearch)}>
+                      {recentSearch}
+                    </NextLink>
+                  </Text>
+                );
+              })}
+            </Stack>
+          )}
+          {showNoResults && (
+            <Stack.Item
+              tokens={{
+                padding: spacing.s1
+              }}
+            >
+              <Text variant="mediumPlus" styles={styles.noReults}>
+                {formatMessage(messages.noResults)}
+              </Text>
+            </Stack.Item>
+          )}
+          {showSuggestedProducts && (
+            <Stack
+              tokens={{
+                childrenGap: spacing.m,
+                padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
+              }}
+            >
+              <Text styles={styles.sectionTitle}>
+                {formatMessage(messages.suggestedProducts)}
+              </Text>
+              {productSearchSuggestions
+                ?.slice(0, SUGGESTIONS_COUNT)
+                .map(item => {
+                  const src =
+                    item.imageUrl || STATIC_IMAGES.app.noImageAvailable;
+                  return (
+                    <NextLink key={item.id} href={item.url}>
+                      <Stack
+                        role={'menuitem'}
+                        horizontal
+                        verticalAlign="center"
+                        styles={styles.linkText}
+                        tokens={{
+                          childrenGap: spacing.s1,
+                          padding: `0 ${spacing.s1}`
+                        }}
+                        onClick={() => {
+                          setShowMenu(false);
+                        }}
+                      >
+                        <Image
+                          height={80}
+                          style={{
+                            borderRadius: effects.roundedCorner2
+                          }}
+                          objectFit="contain"
+                          objectPosition="center"
+                          width={80}
+                          alt={item.number}
+                          src={src}
+                          loader={getImageLoader(src)}
+                        />
+
+                        <Stack tokens={{ childrenGap: spacing.s2 }}>
+                          <ProductCardTitleLink
+                            size="small"
+                            number={item.number}
+                            name={item.name}
+                            url={item.url}
+                          />
+                          <ProductListItemPricing
+                            hideAddToCart={true}
+                            hidePriceBreaks={true}
+                            product={{
+                              id: item.id,
+                              number: item.number
+                            }}
+                          />
+                        </Stack>
+                      </Stack>
+                    </NextLink>
+                  );
+                })}
+            </Stack>
+          )}
+        </Stack.Item>
+      )}
+    </Stack>
   );
 };

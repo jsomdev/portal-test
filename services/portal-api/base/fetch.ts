@@ -72,13 +72,20 @@ export const digitalHighWayFetch = async <T>(
         forceRefresh,
         account
       });
-    } catch (e) {
-      console.log('Failed the acquire token silently. Will logout the user');
+    } catch (e: unknown) {
+      console.error('Failed the acquire token silently. Will logout the user');
 
-      getMsalInstance()?.logoutRedirect({
-        ...loginRequest,
-        account
-      });
+      if ((e as any)?.errorMessage?.includes('AADB2C90077')) {
+        getMsalInstance()?.acquireTokenRedirect({
+          ...loginRequest,
+          account
+        });
+      } else {
+        getMsalInstance()?.logoutRedirect({
+          ...loginRequest,
+          account
+        });
+      }
     }
   }
 
