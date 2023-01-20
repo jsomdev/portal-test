@@ -204,13 +204,13 @@ type INextHeadMessages = {
 };
 
 type IAccountMessages = {
-  signOut: string;
-  signInPrompt: string;
+  signOut: string; //
+  signInPrompt: string; //
   overview: {
-    title: string;
-    subTitle: string;
-    welcome: string;
-    link: string;
+    title: string; //
+    subTitle: string; //
+    welcome: string; //
+    link: string; //
     orders: {
       title: string;
       viewAllText: string;
@@ -619,6 +619,7 @@ type ICheckoutMessages = {
       firstName: string;
       name: string;
       company: string;
+      jobTitle: string;
       companyPlaceholder: string;
       country: string;
       countryPlaceholder: string;

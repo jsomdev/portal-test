@@ -3,8 +3,8 @@ import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { ErrorMessage } from '@components/errors/errorMessage';
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingOverlay } from '@components/overlays/loadingOverlay';
 import {
   FontSizes,

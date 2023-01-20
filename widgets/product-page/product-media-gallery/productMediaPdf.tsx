@@ -262,7 +262,19 @@ export const ProductMediaPdf: React.FC<ProductMediaPdfProps> = ({
               />
             </TooltipHost>
           </Stack.Item>
-          {/* TODO: add open in new tab */}
+          <Stack.Item>
+            <TooltipHost
+              content={formatMessage(messages.openNew)}
+              calloutProps={{ gapSpace: 14 }}
+            >
+              <IconButton
+                iconProps={{ iconName: 'OpenInNewTab' }}
+                onClick={() => {
+                  window.open(item.src, '_blank');
+                }}
+              />
+            </TooltipHost>
+          </Stack.Item>
         </Stack>
       )}
       <Stack className="list-scroll" styles={styles.documentWrapper}>

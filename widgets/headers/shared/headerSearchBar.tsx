@@ -259,11 +259,6 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     setShowMenu(true);
   }
 
-  function onEscape(): void {
-    setSearchBoxInput('');
-    onHideMenu();
-  }
-
   function onKeyUp(ev: React.KeyboardEvent<HTMLInputElement>): void {
     if (ev.key === 'Enter') {
       ev.currentTarget.blur();
@@ -339,6 +334,7 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         ...fonts.mediumPlus,
         paddingTop: spacing.s1,
         paddingBottom: spacing.s1,
+        wordBreak: 'break-all',
         display: 'flex',
         '&:hover': {
           color: palette.accent
@@ -433,7 +429,6 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         clearButtonProps={{}}
         autoComplete="off"
         onClear={onClear}
-        onEscape={onEscape}
       />
       {showMenu && (
         <Stack.Item

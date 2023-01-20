@@ -9,11 +9,20 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { NextLink } from '@components/link/nextLink';
-import { ActionButton, IStackStyles, Stack, useTheme } from '@fluentui/react';
+import {
+  ActionButton,
+  IStackStyles,
+  ITextStyles,
+  Stack,
+  Text,
+  useTheme
+} from '@fluentui/react';
 import { useFinder } from '@providers/finder/finderContext';
+import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useSystemOfMeasurement } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
+import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { Category } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 
@@ -31,17 +40,19 @@ interface QuickFiltersStyles {
   swiper: CSSProperties;
   nextButtonBackground: CSSProperties;
   previousButtonBackground: CSSProperties;
+  quickFilterTitle: ITextStyles;
 }
 
 const NAVIGATION_FAILSAFE_WIDTH: string = rem(32);
 
 export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
-  const { visibleMainFacets, getFacetResult } = useFinder();
+  const { visibleMainFacets, getFacetResult, isFetching } = useFinder();
 
   const intl = useIntl();
   const { systemOfMeasurement } = useSystemOfMeasurement();
   const { locale } = intl;
   const { palette, spacing } = useTheme();
+  const { getAttributeType } = useGlobalData();
   const { query } = useRouter();
 
   const quickFilterFacet: Facet | undefined = useMemo(() => {
@@ -87,6 +98,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         return mapFacetOptionsToQuickFilterItem(
           quickFilterOptions,
           quickFilterFacet.key,
+          quickFilterFacet.attributeTypeCode,
           query,
           intl,
           systemOfMeasurement,
@@ -127,33 +139,49 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
       cursor: 'default',
       background: 'transparent'
     },
+    quickFilterTitle: {
+      root: {
+        color: palette.themeDark
+      }
+    },
     swiper: {
       '--swiper-navigation-color': palette.accent,
       '--swiper-navigation-size': rem(26)
     } as CSSProperties
   };
+  if (isFetching) {
+    return null;
+  }
 
   if (quickFilterItems.length <= 1) {
     return null;
-  } else {
-    return (
-      <Stack tokens={{ childrenGap: spacing.s1 }}>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={16}
-          style={styles.swiper}
-          navigation={true}
-          slidesPerView="auto"
-        >
-          <div style={styles.previousButtonBackground} />
-          {quickFilterItems.map(item => (
-            <SwiperSlide key={item.text}>
-              <QuickFilterCard item={item} />
-            </SwiperSlide>
-          ))}
-          <div style={styles.nextButtonBackground} />
-        </Swiper>
-        <style>{`
+  }
+  const attributeTypeFormatter = new AttributeTypeFormatter(
+    getAttributeType(quickFilterItems[0].facetAttributeTypeCode),
+    locale
+  );
+
+  return (
+    <Stack tokens={{ childrenGap: spacing.s1 }}>
+      <Text variant="mediumPlus" styles={styles.quickFilterTitle}>
+        {attributeTypeFormatter.formatName()}
+      </Text>
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={16}
+        style={styles.swiper}
+        navigation={true}
+        slidesPerView="auto"
+      >
+        <div style={styles.previousButtonBackground} />
+        {quickFilterItems.map(item => (
+          <SwiperSlide key={item.text}>
+            <QuickFilterCard item={item} />
+          </SwiperSlide>
+        ))}
+        <div style={styles.nextButtonBackground} />
+      </Swiper>
+      <style>{`
         .swiper {
           width: 100%;
         }
@@ -162,9 +190,8 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
           }
     
         `}</style>
-      </Stack>
-    );
-  }
+    </Stack>
+  );
 };
 
 interface QuickFilterCardProps {

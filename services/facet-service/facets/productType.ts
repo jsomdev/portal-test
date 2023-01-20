@@ -30,7 +30,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'AirCap' }
+            value: { en: 'Air Cap' }
           }
         ],
         sortIndex: 1
@@ -78,7 +78,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'FluidCap' }
+            value: { en: 'Fluid Cap' }
           }
         ],
         sortIndex: 4
@@ -126,7 +126,7 @@ export const productTypeFacetOptions: FacetOption<ProductTypeFacetOptionKey>[] =
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: 'Setup' }
+            value: { en: 'Set-up' }
           }
         ],
         sortIndex: 7

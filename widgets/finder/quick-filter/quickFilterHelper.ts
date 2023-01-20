@@ -6,6 +6,7 @@ import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetU
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { FacetOptionFormatter } from '@services/i18n/formatters/facetFormatter';
 import { Category } from '@services/portal-api';
+import { ATTRIBUTETYPECODES } from '@services/portal-api/constants';
 
 import { QuickFilterItem } from './quickFilter.types';
 
@@ -19,6 +20,7 @@ export function mapCategoriesToQuickFilterItems(
       locale
     );
     return {
+      facetAttributeTypeCode: ATTRIBUTETYPECODES.categoryId,
       query: {
         categorySlug: [categoryFormatter.formatSlug()]
       },
@@ -33,6 +35,7 @@ export function mapCategoriesToQuickFilterItems(
 export function mapFacetOptionsToQuickFilterItem(
   facetOptions: FacetOption[],
   facetKey: FacetKey,
+  facetAttributeTypeCode: string,
   query: Record<string, string | string[] | undefined>,
   intl: IntlShape,
   systemOfMeasurement: SystemOfMeasurement,
@@ -55,6 +58,7 @@ export function mapFacetOptionsToQuickFilterItem(
           locale
         );
       return {
+        facetAttributeTypeCode,
         query:
           facetKey === FacetKey.CategoryId
             ? { categorySlug: [facetOption.configuration.seoPath || ''] }

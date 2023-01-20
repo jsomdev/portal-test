@@ -123,12 +123,15 @@ const ActiveFilterChip: React.FC<ActiveFilterChipProps> = props => {
     },
     root: {
       border: 0,
+      height: 'auto',
+      minHeight: 32,
       background: palette.neutralLighter
     },
     rootHovered: {
       background: palette.neutralLight
     },
     label: {
+      wordBreak: 'break-all',
       fontWeight: FontWeights.regular
     }
   };

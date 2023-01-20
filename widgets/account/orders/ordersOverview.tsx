@@ -11,8 +11,6 @@ import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
-import { Order } from '@services/portal-api';
-import { OdataCollection } from '@services/portal-api/o-data';
 import { messageIds } from '@services/i18n';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';

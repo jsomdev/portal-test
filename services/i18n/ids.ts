@@ -838,6 +838,7 @@ export const messageIds: Messages = {
           firstName: 'pages.checkout.details.fields.firstName',
           name: 'pages.checkout.details.fields.name',
           company: 'pages.checkout.details.fields.company',
+          jobTitle: 'pages.checkout.details.fields.jobTitle',
           companyPlaceholder:
             'pages.checkout.details.fields.companyPlaceholder',
           country: 'pages.checkout.details.fields.country',

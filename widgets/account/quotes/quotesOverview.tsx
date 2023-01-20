@@ -81,7 +81,13 @@ export const QuotesOverview: React.FC = () => {
   }
 
   if (quotesStatus === 'error') {
-    return <ErrorMessage error={error as Error | undefined} logError message={formatMessage(messages.error)} />;
+    return (
+      <ErrorMessage
+        error={error as Error | undefined}
+        logError
+        message={formatMessage(messages.error)}
+      />
+    );
   }
 
   if (quotesStatus === 'loading') {

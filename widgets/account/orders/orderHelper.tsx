@@ -180,7 +180,10 @@ export function getPaymentMethodText(
   if (paymentMethod === PaymentMethod.PURCHASE_ORDER) {
     return intl.formatMessage(messages.purchaseOrder);
   }
-  return intl.formatMessage(messages.creditCard);
+  if (paymentMethod === PaymentMethod.CREDIT_CARD) {
+    return intl.formatMessage(messages.creditCard);
+  }
+  return '';
 }
 
 /**

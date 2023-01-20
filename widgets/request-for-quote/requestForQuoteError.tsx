@@ -48,7 +48,7 @@ const messages = defineMessages({
     id: messageIds.pages.checkout.errors.subText,
     description: 'Description of the error message on a request for quote page',
     defaultMessage:
-      'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.'
+      'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-957-7729.'
   }
 });
 

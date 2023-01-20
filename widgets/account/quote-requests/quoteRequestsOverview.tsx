@@ -85,7 +85,11 @@ export const QuoteRequestsOverview: React.FC = () => {
 
   if (quoteRequestsStatus === 'error') {
     return (
-        <ErrorMessage error={quoteRequestsError as Error | undefined} logError message={formatMessage(messages.error)} />
+      <ErrorMessage
+        error={quoteRequestsError as Error | undefined}
+        logError
+        message={formatMessage(messages.error)}
+      />
     );
   }
 

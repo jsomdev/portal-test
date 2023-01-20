@@ -59,7 +59,7 @@ const messages = defineMessages({
   subText: {
     id: messageIds.pages.checkout.errors.subText,
     defaultMessage:
-      'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.'
+      'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-957-7729.'
   },
   cardDeclined: {
     id: messageIds.pages.checkout.errors.cardDeclined.title,
@@ -269,7 +269,7 @@ export const CheckoutErrorBox: React.FC<CheckoutErrorBoxProps> = ({
               styles={styles.actionButton}
               href={formatMessage(messages.mailTo)}
             >
-              {messages.send}
+              {formatMessage(messages.send)}
             </ActionButton>
           </Stack>
         }

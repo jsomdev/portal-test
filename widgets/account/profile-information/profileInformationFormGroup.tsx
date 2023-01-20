@@ -24,7 +24,7 @@ export const ProfileInformationFormGroup: React.FC = () => {
     <Stack tokens={{ childrenGap: spacing.l1 }} grow>
       <FormikTextField {...fields.firstName} required={true} />
       <FormikTextField {...fields.name} required={true} />
-      <FormikTextField {...fields.company} required={true} />
+      <FormikTextField {...fields.jobTitle} required={true} />
       <FormikTextField {...fields.email} required={true} />
       <FormikTextField {...fields.phone} required={true} />
     </Stack>
