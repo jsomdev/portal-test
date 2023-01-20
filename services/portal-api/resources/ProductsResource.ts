@@ -39,6 +39,11 @@ export class ProductsResource extends BaseResource<Product> {
       .concat(urlEncodedFilters ? `${urlEncodedFilters}` : '')
       .concat(
         `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
+      )
+      .concat(
+        encodedQuery
+          ? `&@query='${ProductsResource.escapeSearchQuery(encodedQuery)}'`
+          : ''
       );
     const resourcePath = this.getFacetedSearchResourcePath(encodedQuery);
 
@@ -68,14 +73,14 @@ export class ProductsResource extends BaseResource<Product> {
   private getFacetedSearchResourcePath(urlEncodedQuery?: string) {
     return `${this.getResourcePath()}/facetedSearch${
       urlEncodedQuery
-        ? `(query='${ProductsResource.escapeSearchQuery(
-            urlEncodedQuery
-          )}',operatingConditions=@operatingConditions,filters=@filters)`
+        ? `(query=@query,operatingConditions=@operatingConditions,filters=@filters)`
         : '(query=null,operatingConditions=@operatingConditions,filters=@filters)'
     }`;
   }
   private getAutoCompleteResourcePath(urlEncodedQuery: string) {
-    return `${this.getResourcePath()}/autoComplete(query='${urlEncodedQuery}')`;
+    return `${this.getResourcePath()}/autoComplete(query=@query)?@query='${ProductsResource.escapeSearchQuery(
+      urlEncodedQuery
+    )}'`;
   }
 
   private getFindResourcePath(urlEncodedQuery?: string): string {

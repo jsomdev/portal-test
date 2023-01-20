@@ -384,6 +384,9 @@ export const messageIds: Messages = {
         alternativeModels: {
           title: 'pages.product.sections.alternativeModels.title'
         }
+      },
+      errors: {
+        searchError: 'pages.product.errors.searchError'
       }
     },
     home: {
@@ -1015,6 +1018,11 @@ export const messageIds: Messages = {
         category: 'pages.notFound.pageTypes.category',
         defaultPage: 'pages.notFound.pageTypes.defaultPage'
       }
+    },
+    error: {
+      title: 'pages.error.title',
+      headerLine1: 'pages.error.headerLine1',
+      headerLine2: 'pages.error.headerLine2'
     }
   },
   loading: {

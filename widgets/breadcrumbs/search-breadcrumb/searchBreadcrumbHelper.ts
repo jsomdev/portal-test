@@ -18,7 +18,8 @@ export function getSearchBreadcrumbItems(
     url: UrlObject | string,
     event: React.MouseEvent<HTMLElement, MouseEvent> | undefined
   ) => void,
-  intl: IntlShape
+  intl: IntlShape,
+  tabletAndDesktop: boolean
 ): IBreadcrumbItem[] {
   const breadCrumbItems: IBreadcrumbItem[] = [];
   // 1. Add the root breadcrumb to the array
@@ -41,7 +42,7 @@ export function getSearchBreadcrumbItems(
   });
 
   // 2. Add the last search as current item
-  if (lastSearch !== undefined) {
+  if (lastSearch !== undefined && tabletAndDesktop) {
     breadCrumbItems.push({
       key: lastSearch.text,
       text: lastSearch.text,

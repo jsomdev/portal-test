@@ -1,5 +1,7 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
+import { IStackItemStyles, Stack } from '@fluentui/react';
 import { MenuItem } from '@services/portal-api';
 import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPopup';
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
@@ -21,7 +23,6 @@ export const AppLayout: React.FC = ({ children }) => {
       zIndex: 3
     }
   };
-
   return (
     <React.Fragment>
       <header style={styles.header}>
@@ -30,7 +31,7 @@ export const AppLayout: React.FC = ({ children }) => {
         <AppOverlay />
       </header>
       <main>
-        {children}
+        <AppErrorBoundary>{children}</AppErrorBoundary>
         <ComparisonPopup />
       </main>
       <footer>
@@ -52,17 +53,24 @@ export const AppOverlay: React.FC = () => {
     }
   }, [showPageOverlay]);
 
-  const style: CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-    right: 0,
-    display: showPageOverlay ? 'block' : 'none',
-    transition: 'opacity 0.1s ease-in',
-    opacity: overlayOpacity,
-    background: 'rgba(0,0,0,0.15)',
-    bottom: 0
+  const style: IStackItemStyles = {
+    root: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      zIndex: 1,
+      right: 0,
+      display: showPageOverlay ? 'block' : 'none',
+      transition: 'opacity 0.1s ease-in',
+      pointerEvents: 'none',
+      '&:first-child': {
+        pointerEvents: 'auto'
+      },
+      content: '',
+      opacity: overlayOpacity,
+      background: 'rgba(0,0,0,0.15)',
+      bottom: 0
+    }
   };
-  return <div style={style} />;
+  return <Stack styles={style} />;
 };

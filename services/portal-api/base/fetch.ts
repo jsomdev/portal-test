@@ -64,17 +64,28 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
+      const forceRefresh = account.idTokenClaims?.exp
+        ? new Date(account.idTokenClaims?.exp + 1000) < new Date()
+        : true;
       authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
+        forceRefresh,
         account
       });
-    } catch (e) {
-      console.log('Failed the acquire token silently. Will logout the user');
+    } catch (e: unknown) {
+      console.error('Failed the acquire token silently. Will logout the user');
 
-      getMsalInstance()?.ssoSilent({
-        ...loginRequest,
-        account
-      });
+      if ((e as any)?.errorMessage?.includes('AADB2C90077')) {
+        getMsalInstance()?.acquireTokenRedirect({
+          ...loginRequest,
+          account
+        });
+      } else {
+        getMsalInstance()?.logoutRedirect({
+          ...loginRequest,
+          account
+        });
+      }
     }
   }
 

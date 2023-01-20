@@ -5,6 +5,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
@@ -48,7 +49,11 @@ export const QuoteRequestsOverview: React.FC = () => {
     return Number(pageParam);
   }, [router.query.page]);
 
-  const { data: quoteRequests, status: quoteRequestsStatus } = useQuery(
+  const {
+    data: quoteRequests,
+    status: quoteRequestsStatus,
+    error: quoteRequestsError
+  } = useQuery(
     [
       QUERYKEYS.quoteRequests,
       page,
@@ -80,9 +85,11 @@ export const QuoteRequestsOverview: React.FC = () => {
 
   if (quoteRequestsStatus === 'error') {
     return (
-      <PortalMessageBar messageBarType={MessageBarType.error}>
-        <Text>{formatMessage(messages.error)}</Text>
-      </PortalMessageBar>
+      <ErrorMessage
+        error={quoteRequestsError as Error | undefined}
+        logError
+        message={formatMessage(messages.error)}
+      />
     );
   }
 

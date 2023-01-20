@@ -19,7 +19,11 @@ import { SystemOfMeasurementContext } from '@providers/system-of-measurement/sys
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
-import { mediaQueryFrom, useTabletAndDesktop } from '@widgets/media-queries';
+import {
+  mediaQueryFrom,
+  useMobile,
+  useTabletAndDesktop
+} from '@widgets/media-queries';
 
 type MainBreadcrumbProps = {
   items: IBreadcrumbItem[];
@@ -56,7 +60,8 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
     SystemOfMeasurementContext
   );
   const isTabletAndDesktop = useTabletAndDesktop();
-  const maxDisplayedItems = isTabletAndDesktop ? 4 : 1;
+  const isMobile = useMobile();
+  const maxDisplayedItems = isTabletAndDesktop ? 4 : isMobile ? 0 : 1;
   const styles: MainBreadcrumbStyles = {
     root: {
       root: {
@@ -88,14 +93,15 @@ export const MainBreadcrumb: FC<MainBreadcrumbProps> = ({ items }) => {
     breadcrumb: {
       root: {
         width: '100%',
+        overflow: 'hidden',
         margin: 'auto'
       },
       list: {
         padding: 0
       },
-      item: {
+      listItem: {
         selectors: {
-          ':last-child.ms-Breadcrumb-item': {
+          ':last-child.ms-Breadcrumb-listItem .ms-Breadcrumb-item': {
             fontSize: fonts.medium.fontSize,
             fontWeight: FontWeights.regular,
             padding: 0,

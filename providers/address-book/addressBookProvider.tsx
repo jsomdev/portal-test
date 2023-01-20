@@ -32,7 +32,11 @@ export const AddressBookProvider: React.FC = ({ children }) => {
     UserAddress | undefined
   >();
 
-  const { data: addressBookSetting, status: addressBookStatus } = useQuery(
+  const {
+    data: addressBookSetting,
+    status: addressBookStatus,
+    error: addressBookError
+  } = useQuery(
     [QUERYKEYS.addressBookSetting, isAuthenticated],
     () => fetchAddressBookSetting(isAuthenticated),
     {
@@ -329,6 +333,7 @@ export const AddressBookProvider: React.FC = ({ children }) => {
         getAddress,
         addresses,
         addressBookStatus,
+        addressBookError: (addressBookError || null) as Error | null,
         billingAddress,
         shippingAddress
       }}

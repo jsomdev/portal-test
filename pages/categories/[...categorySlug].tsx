@@ -79,7 +79,6 @@ const Category: NextPage<CategoryProps> = ({
       metaProps={{
         title: categoryFormatter.formatName(),
         description: categoryFormatter.formatDescription(),
-        noIndex: false,
         image: categoryFormatter.formatImageSrc(),
         imageAlt: categoryFormatter.formatImageCaption()
       }}

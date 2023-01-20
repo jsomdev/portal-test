@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
+import { ErrorMessage } from '@components/errors/errorMessage';
 import {
   IStackItemStyles,
   IStackStyles,
@@ -78,23 +79,28 @@ export const SiteFooter: FC = () => {
     }
   };
 
-  const { data: footerData, status } = useQuery(
-    [QUERYKEYS.footerData, locale],
-    async () => {
-      const response: Response = await fetch(
-        `/frontend-api/footer?locale=${locale}`
-      );
-      const result: FooterColumns = (await handleResponse<FooterColumns>(
-        response,
-        'GET',
-        true
-      )) as FooterColumns;
-      return result;
-    }
-  );
+  const {
+    data: footerData,
+    status,
+    error
+  } = useQuery([QUERYKEYS.footerData, locale], async () => {
+    const response: Response = await fetch(
+      `/frontend-api/footer?locale=${locale}`
+    );
+    const result: FooterColumns = (await handleResponse<FooterColumns>(
+      response,
+      'GET',
+      true
+    )) as FooterColumns;
+    return result;
+  });
 
   if (status === 'loading' || footerData === undefined) {
     return null;
+  }
+
+  if (status === 'error') {
+    return <ErrorMessage error={error as Error | undefined} logError silent />;
   }
 
   return (

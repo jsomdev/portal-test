@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { StickyThumbContainer } from '@components/sticky/stickyThumbContainer';
 import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
@@ -95,6 +96,12 @@ const messages = defineMessages({
     id: messageIds.finder.resultsHeader.actions.filter,
     description: 'Button text for the filter results button',
     defaultMessage: 'Filter products'
+  },
+  searchErrorMessage: {
+    id: messageIds.pages.product.errors.searchError,
+    description: 'Error message when the search fails',
+    defaultMessage:
+      'There was a problem retrieving the products you are looking for. Please try again later.'
   }
 });
 
@@ -106,7 +113,8 @@ export const ResultView: React.FC<ResultViewProps> = ({
   const [isFiltersPanelOpen, setIsFiltersPanelOpen] = useState<boolean>(false);
   const { spacing, palette, semanticColors } = useTheme();
   const { locale, formatMessage } = useIntl();
-  const { productCount, modelCount } = useFinder();
+  const { productCount, modelCount, facetedSearchStatus, facetedSearchError } =
+    useFinder();
   const router = useRouter();
   const page = useMemo(() => {
     const pageValue: number = Number(router.query.page || '1');
@@ -212,6 +220,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
       }
     }
   };
+
   return (
     <Stack horizontal tokens={{ padding: `0 0 ${spacing.l1} 0` }}>
       <Mobile>
@@ -276,7 +285,8 @@ export const ResultView: React.FC<ResultViewProps> = ({
             productCount={productCount || 0}
             modelCount={modelCount || 0}
           />
-          {viewAs === 'list' && (
+
+          {facetedSearchStatus !== 'error' && viewAs === 'list' && (
             <>
               <ActiveFilters />
               <ProductListView />
@@ -293,13 +303,22 @@ export const ResultView: React.FC<ResultViewProps> = ({
             </>
           )}
 
-          {viewAs === 'overview' && category && (
-            <>
-              <ProductResultOverview
-                category={category}
-                categoryItems={overviewItems}
-              />
-            </>
+          {facetedSearchStatus !== 'error' &&
+            viewAs === 'overview' &&
+            category && (
+              <>
+                <ProductResultOverview
+                  category={category}
+                  categoryItems={overviewItems}
+                />
+              </>
+            )}
+          {facetedSearchStatus === 'error' && (
+            <ErrorMessage
+              error={facetedSearchError}
+              logError={true}
+              message={formatMessage(messages.searchErrorMessage)}
+            />
           )}
           <Mobile>
             <StickyThumbContainer>

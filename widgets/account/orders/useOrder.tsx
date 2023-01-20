@@ -24,6 +24,7 @@ interface OrderHookProps {
   orderData: Order | undefined;
   orderDataStatus: ReactQueryStatus;
   reorder: (items: BaseCartItem[]) => BaseCartItem[];
+  orderDataError: Error | undefined;
 }
 
 /**
@@ -39,7 +40,11 @@ export const useOrder = (orderId: string): OrderHookProps => {
   const { isOrderHistoryEnabled } = useMe();
   const intl = useIntl();
 
-  const { data: orderData, status: orderDataStatus } = useQuery(
+  const {
+    data: orderData,
+    status: orderDataStatus,
+    error: orderDataError
+  } = useQuery(
     [
       QUERYKEYS.orderDetail,
       orderId,
@@ -114,6 +119,7 @@ export const useOrder = (orderId: string): OrderHookProps => {
     order: orderViewModel,
     orderData,
     orderDataStatus,
-    reorder
+    reorder,
+    orderDataError: orderDataError as Error | undefined
   };
 };

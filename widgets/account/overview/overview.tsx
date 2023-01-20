@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 
 import { AccountInfo } from '@azure/msal-browser';
 import { useIsAuthenticated } from '@azure/msal-react';
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
@@ -90,7 +91,12 @@ export const Overview: React.FC = () => {
   const claims = useClaims();
   const { me, isOrderHistoryEnabled, showCustomerDetails } = useMe();
 
-  const { billingAddress, shippingAddress } = useContext(AddressBookContext);
+  const {
+    billingAddress,
+    shippingAddress,
+    addressBookError,
+    addressBookStatus
+  } = useContext(AddressBookContext);
 
   // Write a yup object to validate the address
 
@@ -222,7 +228,9 @@ export const Overview: React.FC = () => {
             {formatMessage(messages.addressBookTitle)}
           </Text>
         </Stack.Item>
-
+        {addressBookStatus === 'error' && (
+          <ErrorMessage error={addressBookError} logError={true} />
+        )}
         <Stack.Item>
           <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
             {formattedBillingAddress && (

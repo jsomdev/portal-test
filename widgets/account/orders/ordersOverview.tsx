@@ -5,12 +5,15 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
 import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
+import { Order } from '@services/portal-api';
+import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
@@ -47,8 +50,11 @@ export const OrdersOverview: React.FC = () => {
     }
     return Number(pageParam);
   }, [router.query.page]);
-
-  const { data: orders, status: ordersStatus } = useQuery(
+  const {
+    data: orders,
+    status: ordersStatus,
+    error
+  } = useQuery(
     [QUERYKEYS.orders, page, isAuthenticated, accountId, isOrderHistoryEnabled],
     () =>
       fetchMyOrders(
@@ -78,14 +84,6 @@ export const OrdersOverview: React.FC = () => {
     );
   }
 
-  if (ordersStatus === 'error') {
-    return (
-      <PortalMessageBar messageBarType={MessageBarType.error}>
-        <Text>{formatMessage(messages.error)}</Text>
-      </PortalMessageBar>
-    );
-  }
-
   if (ordersStatus === 'loading') {
     return <LoadingSpinner />;
   }
@@ -96,6 +94,10 @@ export const OrdersOverview: React.FC = () => {
         <Text>{formatMessage(messages.noData)}</Text>
       </PortalMessageBar>
     );
+  }
+
+  if (ordersStatus === 'error') {
+    return <ErrorMessage error={error as Error | undefined} logError={true} />;
   }
 
   return (

@@ -577,6 +577,12 @@ type INotFoundMessages = {
   };
 };
 
+type IErrorMessages = {
+  title: string;
+  headerLine1: string;
+  headerLine2: string;
+};
+
 type ICheckoutMessages = {
   title: string;
   orderSuccess: string;
@@ -831,6 +837,9 @@ type IProductMessages = {
       title: string;
     };
   };
+  errors: {
+    searchError: string;
+  };
 };
 
 type IModelMessages = INextHeadMessages & {
@@ -890,6 +899,7 @@ export type Messages = {
     checkout: ICheckoutMessages;
     requestForQuote: IRequestForQuoteMessages;
     notFound: INotFoundMessages;
+    error: IErrorMessages;
   };
   summary: {
     details: string;

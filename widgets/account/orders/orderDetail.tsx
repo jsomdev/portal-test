@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { ErrorMessage } from '@components/errors/errorMessage';
 import { NextLink } from '@components/link/nextLink';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import { LoadingSpinner } from '@components/spinners/loadingSpinner';
@@ -103,7 +104,13 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
 }) => {
   const { spacing, palette, semanticColors, effects, fonts } = useTheme();
   const MAX_ITEMS = 3;
-  const { order: order, orderDataStatus, reorder, orderData } = useOrder(id);
+  const {
+    order: order,
+    orderDataStatus,
+    orderDataError,
+    reorder,
+    orderData
+  } = useOrder(id);
   const [lastAddedItems, setLastAddedItems] = React.useState<
     CartItem[] | undefined
   >();
@@ -221,23 +228,13 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
     return <LoadingSpinner />;
   }
 
-  if (orderDataStatus === 'error') {
+  if (orderDataStatus === 'error' || order === undefined) {
     return (
-      <Stack>
-        <PortalMessageBar messageBarType={MessageBarType.error}>
-          <Text>{formatMessage(messages.error)}</Text>
-        </PortalMessageBar>
-      </Stack>
-    );
-  }
-
-  if (order === undefined) {
-    return (
-      <Stack>
-        <PortalMessageBar messageBarType={MessageBarType.error}>
-          <Text>{formatMessage(messages.error)}</Text>
-        </PortalMessageBar>
-      </Stack>
+      <ErrorMessage
+        error={orderDataError}
+        logError
+        message={formatMessage(messages.error)}
+      />
     );
   }
 

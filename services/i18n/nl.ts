@@ -358,6 +358,10 @@ export const nl: Messages = {
             openLink: 'Open link ({index})'
           }
         }
+      },
+      errors: {
+        searchError:
+          'Er is een probleem opgetreden bij het ophalen van de producten die u zoekt.  Probeer later opnieuw.'
       }
     },
     home: {
@@ -968,6 +972,11 @@ export const nl: Messages = {
         category: 'De product categorie',
         defaultPage: 'De pagina'
       }
+    },
+    error: {
+      title: '500 – Interne Serverfout',
+      headerLine1: 'Oep!.',
+      headerLine2: 'Er deed zich een fout voor.'
     }
   },
   loading: {

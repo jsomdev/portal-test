@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
 import { IBreadcrumbItem } from '@fluentui/react';
+import { useTabletAndDesktop } from '@widgets/media-queries';
 import { MainBreadcrumb } from '@widgets/spray-portal-breadcrumb/mainBreadcrumb';
 
 import { LastSearch } from '../breadcrumbHelpers';
@@ -19,6 +20,7 @@ export interface SearchBreadcrumbProps {
  */
 export const SearchBreadcrumb: React.FC<SearchBreadcrumbProps> = props => {
   const { push } = useRouter();
+  const tabletAndDesktop = useTabletAndDesktop();
   const intl = useIntl();
   const breadcrumbItems: IBreadcrumbItem[] = useMemo(() => {
     return getSearchBreadcrumbItems(
@@ -27,9 +29,10 @@ export const SearchBreadcrumb: React.FC<SearchBreadcrumbProps> = props => {
         event?.preventDefault();
         push(url);
       },
-      intl
+      intl,
+      tabletAndDesktop
     );
-  }, [intl, props.lastSearch, push]);
+  }, [intl, props.lastSearch, push, tabletAndDesktop]);
 
   return <MainBreadcrumb items={breadcrumbItems} />;
 };

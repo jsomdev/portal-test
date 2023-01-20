@@ -36,6 +36,7 @@ export interface AddressBookContextProps {
   // Default billing and shipping addresses
   billingAddress: UserAddress | undefined;
   shippingAddress: UserAddress | undefined;
+  addressBookError: Error | null;
 }
 
 const initialContextProps: AddressBookContextProps = {
@@ -63,7 +64,8 @@ const initialContextProps: AddressBookContextProps = {
   addresses: undefined,
   addressBookStatus: 'idle',
   billingAddress: undefined,
-  shippingAddress: undefined
+  shippingAddress: undefined,
+  addressBookError: null
 };
 
 export const AddressBookContext =

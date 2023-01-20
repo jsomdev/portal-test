@@ -9,7 +9,6 @@ import {
   Checkbox,
   ICheckStyles,
   ICheckboxProps,
-  MessageBar,
   MessageBarType,
   Stack,
   useTheme
