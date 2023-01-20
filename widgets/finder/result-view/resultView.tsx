@@ -184,6 +184,9 @@ export const ResultView: React.FC<ResultViewProps> = ({
         padding: 0,
         margin: 'auto'
       },
+      footer: {
+        background: palette.white
+      },
       subComponentStyles: {
         closeButton: {
           root: {

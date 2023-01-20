@@ -60,7 +60,7 @@ export function getCategoryBreadcrumbItemsRecursively(
 }
 
 export const homeBreadcrumb: IBreadcrumbItem = {
-  text: 'Spray.portal.com',
+  text: 'portal.spray.com',
   key: 'home',
   href: pagePaths.home,
   isCurrentItem: false
