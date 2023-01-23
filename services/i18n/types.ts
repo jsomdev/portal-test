@@ -1074,4 +1074,5 @@ export interface FooterMessages {
       manageSubscriptions: string;
     };
   };
+  buildVersion: string;
 }

@@ -24,7 +24,6 @@ import { FooterColumns } from '@widgets/site-footer/siteFooter.types';
 
 type SiteFooterStyles = {
   footer: IStackStyles;
-  buildContainer: IStackStyles;
   footerInfo: IStackStyles;
   footerMenu: IStackStyles;
   footerMenuItem: IStackItemStyles;
@@ -33,7 +32,7 @@ type SiteFooterStyles = {
 };
 
 export const SiteFooter: FC = () => {
-  const { semanticColors, palette } = useTheme();
+  const { semanticColors } = useTheme();
   const { locale } = useRouter();
   const styles: SiteFooterStyles = {
     footer: {
@@ -59,14 +58,6 @@ export const SiteFooter: FC = () => {
         minWidth: '200px',
         width: '200px',
         padding: '0 20px 40px 0'
-      }
-    },
-    buildContainer: {
-      root: {
-        ' span': {
-          opacity: 0.7,
-          color: palette.neutralLight
-        }
       }
     },
     footerMenu: {
@@ -157,18 +148,6 @@ export const SiteFooter: FC = () => {
               </Stack.Item>
             </Stack>
           </Stack>
-          {/*TODO https://dev.azure.com/itssco/SSCo/_workitems/edit/14967 include build info in footer <Stack.Item>
-        <Stack horizontal styles={styles.buildContainer} verticalAlign="center">
-          <Text variant="xSmall">{messages.build}</Text>
-          <Text variant="xSmall">
-            <FormattedDate
-              timeStyle="short"
-              dateStyle="short"
-              value={new Date(packageJson.buildDate)}
-            />
-          </Text>
-        </Stack>
-      </Stack.Item>*/}
         </Stack>
       </TabletAndDesktop>
     </>

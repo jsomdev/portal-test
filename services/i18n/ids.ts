@@ -168,7 +168,8 @@ export const messageIds: Messages = {
           manageSubscriptions:
             'navigation.footer.contact.items.manageSubscriptions'
         }
-      }
+      },
+      buildVersion: 'navigation.footer.buildVersion'
     }
   },
   comparisonPopup: {

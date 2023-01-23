@@ -7,6 +7,7 @@ import { ComparisonPopup } from '@widgets/compare/comparison-popup/comparisonPop
 import { MainHeader } from '@widgets/headers/main-header/mainHeader';
 import { SiteHeader } from '@widgets/headers/site-header/siteHeader';
 import { usePageContext } from '@widgets/page/pageContext';
+import { BuildInfo } from '@widgets/site-footer/buildInfo';
 import { SiteFooter } from '@widgets/site-footer/siteFooter';
 
 export interface AppLayoutProps {
@@ -36,6 +37,7 @@ export const AppLayout: React.FC = ({ children }) => {
       </main>
       <footer>
         <SiteFooter />
+        <BuildInfo />
       </footer>
     </React.Fragment>
   );

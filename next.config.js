@@ -27,7 +27,7 @@ const nextConfig = {
     return [
       {
         /*added a very generic rewrite with no real use,
-        as not having any rewrites breaks some of the expected i18n behavior.
+        as not having any rewrites breaks some expected i18n behavior.
         https://github.com/vercel/next.js/issues/25019 */
         source: '/home',
         destination: '/'
@@ -49,6 +49,15 @@ const nextConfig = {
   i18n: {
     locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
     defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE
+  },
+  webpack: (config, { webpack, buildId }) => {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NEXT_BUILD_DATE': JSON.stringify(new Date().toISOString()),
+        'process.env.NEXT_BUILD_ID': JSON.stringify(buildId)
+      })
+    );
+    return config;
   }
 };
 

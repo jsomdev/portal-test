@@ -140,7 +140,8 @@ export const nl: Messages = {
           subscribeToOurNewsletter: 'Abonneer u op onze Nieuwsbrief',
           manageSubscriptions: 'Abonnementen beheren'
         }
-      }
+      },
+      buildVersion: 'Build Versie'
     }
   },
   comparisonPopup: {

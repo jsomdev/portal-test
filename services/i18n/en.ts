@@ -139,7 +139,8 @@ export const en: Messages = {
           subscribeToOurNewsletter: 'Subscribe to our Newsletter',
           manageSubscriptions: 'Manage Subscriptions'
         }
-      }
+      },
+      buildVersion: 'Build Version'
     }
   },
   searchBar: {
