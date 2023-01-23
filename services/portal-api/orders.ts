@@ -9,11 +9,11 @@ export const createFile = async (file: File): Promise<Resource> => {
   formData.append('file', file);
 
   const fileUploadResource: BaseResource<unknown> = new BaseResource(
-    '/Me/Resources'
+    '/me/resources'
   );
 
   const data: Resource = await fileUploadResource.fetch(
-    '/Me/Resources',
+    '/me/resources',
     {},
     {
       method: 'POST',
@@ -45,7 +45,7 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
       body: JSON.stringify({
         ...order,
         purchaseOrderDocumentId: file?.id || null,
-        purchaseOrderDocumentFile: null
+        referenceDocumentFile: null
       })
     }
   );
