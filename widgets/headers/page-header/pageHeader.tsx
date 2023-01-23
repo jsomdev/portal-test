@@ -18,7 +18,8 @@ export const PagesHeader: FC<PageHeaderProps> = ({
   const { spacing, palette } = useTheme();
   const styles: PagesHeaderStyles = {
     title: {
-      color: palette.themeDarker
+      color: palette.themeDarker,
+      wordBreak: 'break-all'
     },
     description: {}
   };

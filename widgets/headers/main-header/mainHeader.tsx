@@ -200,7 +200,8 @@ const DesktopMainHeader: React.FC = () => {
         boxShadow: effects.elevation4
       },
       calloutMain: {
-        padding: `${spacing.m} 0`
+        padding: `${spacing.m} 0`,
+        borderRadius: `0 0 ${effects.roundedCorner4} ${effects.roundedCorner4}`
       }
     },
     menuIconAuthenticated: {
@@ -367,7 +368,10 @@ const DesktopMainHeader: React.FC = () => {
           styles={{
             root: {
               width: '100%',
-              boxShadow: effects.elevation8
+              left: `0 !important`
+            },
+            calloutMain: {
+              borderRadius: `0 0 ${effects.roundedCorner4} ${effects.roundedCorner4}`
             }
           }}
         >

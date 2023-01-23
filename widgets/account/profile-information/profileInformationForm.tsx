@@ -74,7 +74,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
       return {
         firstName: me?.contactInfo?.firstName || '',
         name: me?.contactInfo?.lastName || '',
-        company: me?.contactInfo?.jobTitle || '',
+        jobTitle: me?.contactInfo?.jobTitle || '',
         phone: me?.contactInfo?.phoneNumber || '',
         email: me?.contactInfo?.emailAddresses?.[0] || ''
       };
@@ -90,7 +90,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
       firstName: values.firstName,
       lastName: values.name,
       phone: values.phone,
-      jobTitle: values.company
+      jobTitle: values.jobTitle
     });
   }
 

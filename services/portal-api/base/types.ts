@@ -90,6 +90,7 @@ export interface SettingKeys {
 }
 
 export interface AttributeTypeCodes {
+  categoryId: string;
   atomizingAirFlowRate: string;
   fanAirFlowRate: string;
   airFlowRate: string;

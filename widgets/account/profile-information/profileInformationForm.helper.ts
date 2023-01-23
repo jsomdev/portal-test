@@ -18,9 +18,9 @@ export const validation = yup.object({
   email: emailValidation(),
   name: lastNameValidation(),
   firstName: firstNameValidation(),
-  company: yup
+  jobTitle: yup
     .string()
-    .label(messageIds.pages.checkout.details.fields.company)
+    .label(messageIds.pages.checkout.details.fields.jobTitle)
     .required(),
   phone: phoneValidation()
 });
@@ -43,9 +43,9 @@ const messages = defineMessages({
     id: fieldMessageIds.name,
     defaultMessage: 'Name'
   },
-  company: {
-    id: fieldMessageIds.company,
-    defaultMessage: 'Company'
+  jobTitle: {
+    id: fieldMessageIds.jobTitle,
+    defaultMessage: 'Job Title'
   },
   companyPlaceholder: {
     id: fieldMessageIds.companyPlaceholder,
@@ -77,10 +77,9 @@ export const getFields = (
       label: formatMessage(messages.name),
       name: 'name'
     },
-    company: {
-      label: formatMessage(messages.company),
-      placeholder: formatMessage(messages.companyPlaceholder),
-      name: 'company'
+    jobTitle: {
+      label: formatMessage(messages.jobTitle),
+      name: 'jobTitle'
     },
     phone: {
       label: formatMessage(messages.phone),

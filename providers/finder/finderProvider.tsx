@@ -90,7 +90,9 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
       fetchFacetedSearchResults(
         combinedFiltersApiParameter,
         combinedOperatingConditionsApiParameter,
-        preFilters.searchQuery,
+        preFilters.searchQuery
+          ? encodeURIComponent(preFilters.searchQuery)
+          : undefined,
         FINDER_PAGE_SIZE,
         FINDER_PAGE_SIZE * (page - 1)
       ),

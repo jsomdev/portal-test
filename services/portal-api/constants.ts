@@ -84,6 +84,7 @@ export const SETTINGKEYS: SettingKeys = {
 };
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {
+  categoryId: 'CategoryId',
   relativeDropSizeRange: 'RelativeDropSizeRange',
   atomizingAirFlowRate: 'AtomizingAirFlowRate',
   fanAirFlowRate: 'FanAirFlowRate',

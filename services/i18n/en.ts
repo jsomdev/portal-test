@@ -185,7 +185,7 @@ export const en: Messages = {
     checkboxFacet: {
       actions: {
         more: 'More',
-        less: 'Minder'
+        less: 'Less'
       },
       panel: {
         placeholder: 'Search'
@@ -529,7 +529,7 @@ export const en: Messages = {
         detailPageError: 'An error occurred while loading your order details.',
         commentsHeader: 'Comments',
         confirmationText:
-          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-957-7729.',
         confirmationTitle:
           'Thank you! Your order has been submitted successfully.',
         overviewEmpty: 'You do not have any orders yet.',
@@ -544,7 +544,7 @@ export const en: Messages = {
         viewAllLines:
           '{number, plural,=0 {No additional products} one {Show 1 more product} other {Show {number} more products}}',
         confirmationText:
-          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-957-7729.',
         confirmationTitle: 'Thank you! Your quote request has been submitted.',
         detailsHeader: 'Contact and shipping information',
         addressHeader: 'Customer details',
@@ -778,6 +778,7 @@ export const en: Messages = {
           firstName: 'First Name',
           name: 'Last Name',
           company: 'Company Name',
+          jobTitle: 'Job Title',
           companyPlaceholder: 'Name of organization',
           country: 'Country',
           countryPlaceholder: 'Select an option',
@@ -889,7 +890,7 @@ export const en: Messages = {
         mailTo: 'mailto:webteam@spray.com?subject=Checkout / RFQ failed',
         send: 'Send us your feedback',
         subText:
-          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-9577729.',
+          'Feel free to contact customer support if you have any questions. A customer service representative is standing by at 1-800-957-7729.',
         default: {
           title:
             'Something unexpected happened! Please contact customer support.'

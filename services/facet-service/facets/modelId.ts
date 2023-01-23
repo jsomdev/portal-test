@@ -302,9 +302,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/2J Air Atomizing Air Caps (1/2J Air Atomizing Air Caps)'
-          }
+          value: { en: '1/2J Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 0,
@@ -322,9 +320,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/2J Air Atomizing Assemblies (1/2J Air Atomizing Assemblies)'
-          }
+          value: { en: '1/2J Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 1,
@@ -342,9 +338,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/2J Air Atomizing Bodies (1/2J Air Atomizing Bodies)'
-          }
+          value: { en: '1/2J Air Atomizing Bodies' }
         }
       ],
       sortIndex: 2,
@@ -362,9 +356,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/2J Air Atomizing Fluid Caps (1/2J Air Atomizing Fluid Caps)'
-          }
+          value: { en: '1/2J Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 3,
@@ -382,9 +374,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/2J Air Atomizing Setups (1/2J Air Atomizing Setups)'
-          }
+          value: { en: '1/2J Air Atomizing Setups' }
         }
       ],
       sortIndex: 4,
@@ -402,9 +392,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/4J Air Atomizing Air Caps (1/4J Air Atomizing Air Caps)'
-          }
+          value: { en: '1/4J Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 5,
@@ -422,9 +410,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/4J Air Atomizing Assemblies (1/4J Air Atomizing Assemblies)'
-          }
+          value: { en: '1/4J Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 6,
@@ -442,9 +428,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/4J Air Atomizing Bodies (1/4J Air Atomizing Bodies)'
-          }
+          value: { en: '1/4J Air Atomizing Bodies' }
         }
       ],
       sortIndex: 7,
@@ -462,9 +446,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/4J Air Atomizing Fluid Caps (1/4J Air Atomizing Fluid Caps)'
-          }
+          value: { en: '1/4J Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 8,
@@ -482,9 +464,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/4J Air Atomizing Setups (1/4J Air Atomizing Setups)'
-          }
+          value: { en: '1/4J Air Atomizing Setups' }
         }
       ],
       sortIndex: 9,
@@ -502,9 +482,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8J Air Atomizing Assemblies (1/8J Air Atomizing Assemblies)'
-          }
+          value: { en: '1/8J Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 10,
@@ -522,9 +500,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8J Air Atomizing Bodies (1/8J Air Atomizing Bodies)'
-          }
+          value: { en: '1/8J Air Atomizing Bodies' }
         }
       ],
       sortIndex: 11,
@@ -542,9 +518,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8JJ Air Atomizing Air Caps (1/8JJ Air Atomizing Air Caps)'
-          }
+          value: { en: '1/8JJ Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 12,
@@ -562,9 +536,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8JJ Air Atomizing Assemblies (1/8JJ Air Atomizing Assemblies)'
-          }
+          value: { en: '1/8JJ Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 13,
@@ -582,9 +554,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8JJ Air Atomizing Bodies (1/8JJ Air Atomizing Bodies)'
-          }
+          value: { en: '1/8JJ Air Atomizing Bodies' }
         }
       ],
       sortIndex: 14,
@@ -602,9 +572,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8JJ Air Atomizing Fluid Caps (1/8JJ Air Atomizing Fluid Caps)'
-          }
+          value: { en: '1/8JJ Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 15,
@@ -622,9 +590,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1/8JJ Air Atomizing Setups (1/8JJ Air Atomizing Setups)'
-          }
+          value: { en: '1/8JJ Air Atomizing Setups' }
         }
       ],
       sortIndex: 16,
@@ -642,9 +608,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1J Air Atomizing Air Caps (1J Air Atomizing Air Caps)'
-          }
+          value: { en: '1J Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 17,
@@ -662,9 +626,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1J Air Atomizing Assemblies (1J Air Atomizing Assemblies)'
-          }
+          value: { en: '1J Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 18,
@@ -682,7 +644,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: '1J Air Atomizing Bodies (1J Air Atomizing Bodies)' }
+          value: { en: '1J Air Atomizing Bodies' }
         }
       ],
       sortIndex: 19,
@@ -700,9 +662,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: '1J Air Atomizing Fluid Caps (1J Air Atomizing Fluid Caps)'
-          }
+          value: { en: '1J Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 20,
@@ -720,7 +680,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: '1J Air Atomizing Setups (1J Air Atomizing Setups)' }
+          value: { en: '1J Air Atomizing Setups' }
         }
       ],
       sortIndex: 21,
@@ -738,12 +698,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Adjustable Ball Fitting (36275)',
-            de: 'Verstellbarer Kugelverschluss (36275)',
-            fr: 'Raccord \u00E0 bille r\u00E9glable (36275)',
-            nl: 'Verstelbare kogelfitting (36275)'
-          }
+          value: { en: '36275', de: '36275', fr: '36275', nl: '36275' }
         }
       ],
       sortIndex: 22,
@@ -761,9 +716,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/2\u0022 Inlet and Self-Contained Air Cylinder (10536-1/2J)'
-          }
+          value: { en: '10536-1/2J' }
         }
       ],
       sortIndex: 23,
@@ -781,9 +734,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet (1/4JAU)'
-          }
+          value: { en: '1/4JAU' }
         }
       ],
       sortIndex: 24,
@@ -801,9 +752,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet and Clean-Out Needle (1/4JAUCO)'
-          }
+          value: { en: '1/4JAUCO' }
         }
       ],
       sortIndex: 25,
@@ -821,9 +770,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet and Lockring for  Atomizing Air Adjustment, Plate-Mounted (19330-1/4JAUPM)'
-          }
+          value: { en: '19330-1/4JAUPM' }
         }
       ],
       sortIndex: 26,
@@ -841,9 +788,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet and Self-Contained Air Cylinder (10535-1/4J)'
-          }
+          value: { en: '10535-1/4J' }
         }
       ],
       sortIndex: 27,
@@ -861,9 +806,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet and Single Air Inlet for Cylinder and Atomizing Air, for Large Fluid Caps (13242-1/4JAU)'
-          }
+          value: { en: '13242-1/4JAU' }
         }
       ],
       sortIndex: 28,
@@ -881,9 +824,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Clean-Out Needle and Metering Knob (1/4JAUMCO)'
-          }
+          value: { en: '1/4JAUMCO' }
         }
       ],
       sortIndex: 29,
@@ -901,9 +842,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Clean-Out Needle and Metering Knob, Plate-Mounted (1/4JAUPMCO)'
-          }
+          value: { en: '1/4JAUPMCO' }
         }
       ],
       sortIndex: 30,
@@ -921,9 +860,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, for Largest Fluid Caps (10880-1/4JAU)'
-          }
+          value: { en: '10880-1/4JAU' }
         }
       ],
       sortIndex: 31,
@@ -941,9 +878,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Knurled Head Shut-Off Screw (7310-1/4JAU)'
-          }
+          value: { en: '7310-1/4JAU' }
         }
       ],
       sortIndex: 32,
@@ -961,9 +896,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Plate-Mounted (1/4JAUPM)'
-          }
+          value: { en: '1/4JAUPM' }
         }
       ],
       sortIndex: 33,
@@ -981,9 +914,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Single Air Inlet for Cylinder and Atomizing Air (6218-1/4JAU)'
-          }
+          value: { en: '6218-1/4JAU' }
         }
       ],
       sortIndex: 34,
@@ -1001,9 +932,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Single Air Inlet for Cylinder and Atomizing Air, Manual Shut-Off (6083-1/4JAU)'
-          }
+          value: { en: '6083-1/4JAU' }
         }
       ],
       sortIndex: 35,
@@ -1021,9 +950,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/4\u0022 Inlet, Variable Spray and Modular Construction (1/4VMAU)'
-          }
+          value: { en: '1/4VMAU' }
         }
       ],
       sortIndex: 36,
@@ -1041,9 +968,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet (1/8JJAU)'
-          }
+          value: { en: '1/8JJAU' }
         }
       ],
       sortIndex: 37,
@@ -1061,9 +986,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet and Extension up to 18\u0022 (17690-1/8JJAU)'
-          }
+          value: { en: '17690-1/8JJAU' }
         }
       ],
       sortIndex: 38,
@@ -1081,9 +1004,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet and Extension, Sprays at 45\u00B0 or 90\u00B0 Angle from Nozzle Body (49660-1/8JJAU)'
-          }
+          value: { en: '49660-1/8JJAU' }
         }
       ],
       sortIndex: 39,
@@ -1101,9 +1022,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet and Knurled Head Shut-Off Screw (14700-1/8JJAU)'
-          }
+          value: { en: '14700-1/8JJAU' }
         }
       ],
       sortIndex: 40,
@@ -1121,9 +1040,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Clean-Out Needle and Metering Knob (1/8JJAUMCO)'
-          }
+          value: { en: '1/8JJAUMCO' }
         }
       ],
       sortIndex: 41,
@@ -1141,9 +1058,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Compact Block Design (D55500-JAU)'
-          }
+          value: { en: 'D55500-JAU' }
         }
       ],
       sortIndex: 42,
@@ -1161,9 +1076,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, for use with 1/4J Spray Set-Ups (38499-1/8JJAU)'
-          }
+          value: { en: '38499-1/8JJAU' }
         }
       ],
       sortIndex: 43,
@@ -1181,9 +1094,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Single Air Inlet for Cylinder and Atomizing Air (14675-1/8JJAU)'
-          }
+          value: { en: '14675-1/8JJAU' }
         }
       ],
       sortIndex: 44,
@@ -1201,9 +1112,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Single Air Inlet for Cylinder and Atomizing Air, Sprays at 45\u00B0 Angle from Nozzle Body (16883-1/8JJAU)'
-          }
+          value: { en: '16883-1/8JJAU' }
         }
       ],
       sortIndex: 45,
@@ -1221,9 +1130,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Smallest Automatic Nozzle Available (72100-1/8JJAU)'
-          }
+          value: { en: '72100-1/8JJAU' }
         }
       ],
       sortIndex: 46,
@@ -1241,9 +1148,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Sprays at 45\u00B0 Angle from Nozzle Inlet Axis (16860-1/8JJAU)'
-          }
+          value: { en: '16860-1/8JJAU' }
         }
       ],
       sortIndex: 47,
@@ -1261,9 +1166,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with 1/8\u0022 Inlet, Variable Spray (1/8VAU)'
-          }
+          value: { en: '1/8VAU' }
         }
       ],
       sortIndex: 48,
@@ -1281,9 +1184,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with Metering Knob for Air Adjustment, 316 Stainless Steel Sanitary Nozzle Body (VX82)'
-          }
+          value: { en: 'VX82' }
         }
       ],
       sortIndex: 49,
@@ -1301,9 +1202,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle with Metering Knob for Air Adjustment, Stainless Steel and Anodized Aluminum Construction (VX72)'
-          }
+          value: { en: 'VX72' }
         }
       ],
       sortIndex: 50,
@@ -1321,9 +1220,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle, 316 Stainless Steel Sanitary Nozzle Body (VX80)'
-          }
+          value: { en: 'VX80' }
         }
       ],
       sortIndex: 51,
@@ -1341,9 +1238,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Air Atomizing Nozzle, Stainless Steel and Anodized Aluminum Construction (VX70)'
-          }
+          value: { en: 'VX70' }
         }
       ],
       sortIndex: 52,
@@ -1361,9 +1256,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with 1/8\u0022 Inlet, Flow up to 0.42 gpm and Compact Block Design (D55500-JAUH0)'
-          }
+          value: { en: 'D55500-JAUH0' }
         }
       ],
       sortIndex: 53,
@@ -1381,9 +1274,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with 1/8\u0022 Inlet, Flow up to 1.5 gpm and Compact Block Design (D55500-JAUH1)'
-          }
+          value: { en: 'D55500-JAUH1' }
         }
       ],
       sortIndex: 54,
@@ -1401,9 +1292,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.3 gpm (1/8JJAUH)'
-          }
+          value: { en: '1/8JJAUH' }
         }
       ],
       sortIndex: 55,
@@ -1421,9 +1310,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.6 gpm and Rear Knob for Locking Clean-Out Needle in Place (AA24AUA)'
-          }
+          value: { en: 'AA24AUA' }
         }
       ],
       sortIndex: 56,
@@ -1441,9 +1328,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.6 gpm and Rear Knob for Locking Clean-Out Needle in Place and Recirculating Inlets (AA24AUA-8395)'
-          }
+          value: { en: 'AA24AUA-8395' }
         }
       ],
       sortIndex: 57,
@@ -1461,9 +1346,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.6 gpm and Rear Knob for Locking Clean-Out Needle in Place, Extensions up to 36\u0022 (AA24AUA-8980)'
-          }
+          value: { en: 'AA24AUA-8980' }
         }
       ],
       sortIndex: 58,
@@ -1481,9 +1364,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.6 gpm and Rear Knob for Locking Clean-Out Needle in Place, Lightweight Aluminum Body (AA24AUA-20190)'
-          }
+          value: { en: 'AA24AUA-20190' }
         }
       ],
       sortIndex: 59,
@@ -1501,9 +1382,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 0.8 gpm (1/4JAUH)'
-          }
+          value: { en: '1/4JAUH' }
         }
       ],
       sortIndex: 60,
@@ -1521,9 +1400,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 2 gpm and Adjusting Screw for Shut-Off Needle (AA22AUH-SS-14799)'
-          }
+          value: { en: 'AA22AUH-SS-14799' }
         }
       ],
       sortIndex: 61,
@@ -1541,9 +1418,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 2 gpm and Extensions up to 36\u0022 (AA22AUH-7676)'
-          }
+          value: { en: 'AA22AUH-7676' }
         }
       ],
       sortIndex: 62,
@@ -1561,9 +1436,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 5 gpm (AA22AUH)'
-          }
+          value: { en: 'AA22AUH' }
         }
       ],
       sortIndex: 63,
@@ -1581,9 +1454,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Air-Actuated Hydraulic Nozzle with Flow up to 5 gpm and Recirculating Inlets (AA22AUH-SS-11024)'
-          }
+          value: { en: 'AA22AUH-SS-11024' }
         }
       ],
       sortIndex: 64,
@@ -1601,12 +1472,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'DeflectoJet\u00AE Deflected Hollow Cone Nozzles - Wide Angle Spray (8686)',
-            de: 'DeflectoJet\u00AE Deflected Hohlkegeld\u00FCsen - Weitwinkelspray (8686)',
-            fr: 'DeflectoJet\u00AE Buses \u00E0 c\u00F4ne creux d\u00E9vi\u00E9 - Spray grand angle (8686)',
-            nl: 'DeflectoJet\u00AE Afgebogen Holle Conus Nozzles - Groothoek Spray (8686)'
-          }
+          value: { en: '8686', de: '8686', fr: '8686', nl: '8686' }
         }
       ],
       sortIndex: 65,
@@ -1624,7 +1490,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Diaphragm-Type Pressure Relief Valve (8460)' }
+          value: { en: '8460' }
         }
       ],
       sortIndex: 66,
@@ -1643,10 +1509,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'DistriboJet\u00AE Full Cone Nozzles - Extra Large Free Passage (R, RR, RF)',
-            de: 'DistriboJet\u00AE Full Cone D\u00FCsen - extra gro\u00DFer freier Durchgang (R, RR, RF)',
-            fr: 'DistriboJet\u00AE Full Cone Nozzles - Extra Large Free Passage (R, RR, RF)',
-            nl: 'DistriboJet\u00AE Full Cone Nozzles - Extra grote vrije doorgang (R, RR, RF)'
+            en: 'R, RR, RF',
+            de: 'R, RR, RF',
+            fr: 'R, RR, RF',
+            nl: 'R, RR, RF'
           }
         }
       ],
@@ -1665,9 +1531,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Air Atomizing Nozzle with Flow up to 0.16 gpm (uses JJ Set-Ups),Max Speed 10,000 cpm (AA10000JJAU)'
-          }
+          value: { en: 'AA10000JJAU' }
         }
       ],
       sortIndex: 68,
@@ -1685,9 +1549,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Air Atomizing Nozzle with Flow up to 0.42 gpm (uses JJ Set-Ups), Quick Change Fluid Module and Max Speed 2,000 cpm (AA28JJAU-49815)'
-          }
+          value: { en: 'AA28JJAU-49815' }
         }
       ],
       sortIndex: 69,
@@ -1705,9 +1567,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Air Atomizing Nozzle with Flow up to 0.75 gpm (uses J Set-Ups), Max Speed 1,000 cpm (AA29JAUCO)'
-          }
+          value: { en: 'AA29JAUCO' }
         }
       ],
       sortIndex: 70,
@@ -1725,9 +1585,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Air Atomizing Nozzle with Flow up to 0.75 gpm (uses J Set-Ups), Max Speed 5,000 cpm (AA10000JAU-10)'
-          }
+          value: { en: 'AA10000JAU-10' }
         }
       ],
       sortIndex: 71,
@@ -1745,9 +1603,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm and Max Speed 5,000 cpm (AA250AUH)'
-          }
+          value: { en: 'AA250AUH' }
         }
       ],
       sortIndex: 72,
@@ -1765,9 +1621,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Electrically-Actuated Hydraulic Nozzle with Flow up to 1.1 gpm, Max Speed 1,500 cpm and Max Pressure 2000 psi (AA26AUH)'
-          }
+          value: { en: 'AA26AUH' }
         }
       ],
       sortIndex: 73,
@@ -1785,12 +1639,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FlatJet\u00AE Deflected Flat Spray Nozzles - Narrow Angle Spray - High Impact (P)',
-            de: 'FlatJet\u00AE Deflected Flat Spray D\u00FCsen - Narrow Angle Spray - High Impact (P)',
-            fr: 'Buses de pulv\u00E9risation plates d\u00E9vi\u00E9es FlatJet\u00AE - Pulv\u00E9risation \u00E0 angle \u00E9troit - Impact \u00E9lev\u00E9 (P)',
-            nl: 'FlatJet\u00AE afgebogen platte sproeikoppen - narrow angle spray - high impact (P)'
-          }
+          value: { en: 'P', de: 'P', fr: 'P', nl: 'P' }
         }
       ],
       sortIndex: 74,
@@ -1808,12 +1657,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FloodJet\u00AE Deflected Flat Spray Nozzle Systems - Wide Angle Spray - Tapered Edge (TEK)',
-            de: 'FloodJet\u00AE Deflected Flat Spray D\u00FCsensysteme - Weitwinkelspray - Konische Kante (TEK)',
-            fr: 'Syst\u00E8mes de buse de pulv\u00E9risation plate d\u00E9vi\u00E9e FloodJet\u00AE - Pulv\u00E9risation grand angle - Bord conique (TEK)',
-            nl: 'FloodJet\u00AE afgebogen platte sproeikopsystemen - groothoekspray - taps toelopende rand (TEK)'
-          }
+          value: { en: 'TEK', de: 'TEK', fr: 'TEK', nl: 'TEK' }
         }
       ],
       sortIndex: 75,
@@ -1831,12 +1675,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FloodJet\u00AE Deflected Flat Spray Nozzles - Wide Angle Spray (K)',
-            de: 'FloodJet\u00AE Deflected Flat Spray D\u00FCsen - Weitwinkelspray (K)',
-            fr: 'Buses de pulv\u00E9risation plates d\u00E9vi\u00E9es FloodJet\u00AE - Spray grand angle (K)',
-            nl: 'FloodJet\u00AE afgebogen platte sproeikoppen - groothoekspray (K)'
-          }
+          value: { en: 'K', de: 'K', fr: 'K', nl: 'K' }
         }
       ],
       sortIndex: 76,
@@ -1854,12 +1693,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FogJet\u00AE Fine Spray Nozzles - Narrow Angle (FF)',
-            de: 'FogJet\u00AE Feinspr\u00FChd\u00FCsen - Enger Winkel (FF)',
-            fr: 'Buses fogJet\u00AE Fine Spray - Angle \u00E9troit (FF)',
-            nl: 'FogJet\u00AE Fine Spray Nozzles - Smalle hoek (FF)'
-          }
+          value: { en: 'FF', de: 'FF', fr: 'FF', nl: 'FF' }
         }
       ],
       sortIndex: 77,
@@ -1877,12 +1711,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FogJet\u00AE Wide Angle Fine Spray Nozzles - Cluster Type - Lower Flow (7N)',
-            de: 'FogJet\u00AE Weitwinkel-Feinspr\u00FChd\u00FCsen - Clustertyp - Geringerer Durchfluss (7N)',
-            fr: 'Buses de pulv\u00E9risation fine grand angle FogJet\u00AE - Type de grappe - D\u00E9bit inf\u00E9rieur (7N)',
-            nl: 'FogJet\u00AE Groothoek Fijne Sproeikoppen - Cluster Type - Lower Flow (7N)'
-          }
+          value: { en: '7N', de: '7N', fr: '7N', nl: '7N' }
         }
       ],
       sortIndex: 78,
@@ -1900,12 +1729,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FogJet\u00AE Wide Fine Spray Nozzles - Cluster Type (7G)',
-            de: 'FogJet\u00AE Wide Feinspr\u00FChd\u00FCsen - Cluster-Typ (7G)',
-            fr: 'Buses de pulv\u00E9risation fine larges FogJet\u00AE - Type de cluster (7G)',
-            nl: 'FogJet\u00AE Wide Fine Spray Nozzles - Cluster type (7G)'
-          }
+          value: { en: '7G', de: '7G', fr: '7G', nl: '7G' }
         }
       ],
       sortIndex: 79,
@@ -1923,12 +1747,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - 15\u00B0 Spray Angle - One-piece Design (H-15)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - 15\u00B0 Spr\u00FChwinkel - Einteiliges Design (H-15)',
-            fr: 'Buses FullJet\u00AE Full Cone - Angle de pulv\u00E9risation de 15 \u00B0 - Conception monobloc (H-15)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - 15\u00B0 sproeihoek - ontwerp uit \u00E9\u00E9n stuk (H-15)'
-          }
+          value: { en: 'H-15', de: 'H-15', fr: 'H-15', nl: 'H-15' }
         }
       ],
       sortIndex: 80,
@@ -1947,10 +1766,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - 15\u00B0 Spray Angle - Removable Cap/Vane (G-15, GG-15)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - 15\u00B0 Spr\u00FChwinkel - Abnehmbare Kappe/Fl\u00FCgel (G-15, GG-15)',
-            fr: 'Buses FullJet\u00AE Full Cone - Angle de pulv\u00E9risation de 15 \u00B0 - Capuchon / palette amovible (G-15, GG-15)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - 15\u00B0 Spuithoek - Verwijderbare Cap/Vane (G-15, GG-15)'
+            en: 'G-15, GG-15',
+            de: 'G-15, GG-15',
+            fr: 'G-15, GG-15',
+            nl: 'G-15, GG-15'
           }
         }
       ],
@@ -1969,12 +1788,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - 30\u00B0 Spray Angle - One-piece Design (HH-30)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - 30\u00B0 Spr\u00FChwinkel - Einteiliges Design (HH-30)',
-            fr: '\u00AE Buses Full Cone FullJet - Angle de pulv\u00E9risation de 30 \u00B0 - Conception monobloc (HH-30)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - 30\u00B0 sproeihoek - ontwerp uit \u00E9\u00E9n stuk (HH-30)'
-          }
+          value: { en: 'HH-30', de: 'HH-30', fr: 'HH-30', nl: 'HH-30' }
         }
       ],
       sortIndex: 82,
@@ -1993,10 +1807,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - 30\u00B0 Spray Angle - Removable Cap/Vane (G-30, GG-30)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - 30\u00B0 Spr\u00FChwinkel - Abnehmbare Kappe/Fl\u00FCgel (G-30, GG-30)',
-            fr: '\u00AE Buses Full Cone FullJet - Angle de pulv\u00E9risation de 30 \u00B0 - Capuchon / palette amovible (G-30, GG-30)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - 30\u00B0 Spuithoek - Verwijderbare Cap/Vane (G-30, GG-30)'
+            en: 'G-30, GG-30',
+            de: 'G-30, GG-30',
+            fr: 'G-30, GG-30',
+            nl: 'G-30, GG-30'
           }
         }
       ],
@@ -2015,12 +1829,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Cast - Flanged (HF)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - gegossen - Flansch (HF)',
-            fr: '\u00AE Buses FullJet Full Cone - Cast - \u00C0 bride (HF)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Gegoten - Flens (HF)'
-          }
+          value: { en: 'HF', de: 'HF', fr: 'HF', nl: 'HF' }
         }
       ],
       sortIndex: 84,
@@ -2039,10 +1848,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Maximum Free Passage (HMFP, HHMFP)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Maximale Freipassage (HMFP, HHMFP)',
-            fr: '\u00AE Buses Full Cone FullJet - Passage libre maximal (HMFP, HHMFP)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Maximale vrije doorgang (HMFP, HHMFP)'
+            en: 'HMFP, HHMFP',
+            de: 'HMFP, HHMFP',
+            fr: 'HMFP, HHMFP',
+            nl: 'HMFP, HHMFP'
           }
         }
       ],
@@ -2061,12 +1870,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - One-piece Design (H, HH)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Einteiliges Design (H, HH)',
-            fr: '\u00AE Buses FullJet Full Cone - Conception monobloc (H, HH)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Ontwerp uit \u00E9\u00E9n stuk (H, HH)'
-          }
+          value: { en: 'H, HH', de: 'H, HH', fr: 'H, HH', nl: 'H, HH' }
         }
       ],
       sortIndex: 86,
@@ -2085,10 +1889,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Oval Spray - Removable Cap/Vane (G-VL, GG-VL)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Oval Spray - Abnehmbare Kappe/Fl\u00FCgel (G-VL, GG-VL)',
-            fr: '\u00AE Buses Full Cone FullJet - Spray ovale - Capuchon/palette amovible (G-VL, GG-VL)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Oval Spray - Verwijderbare Cap/Vane (G-VL, GG-VL)'
+            en: 'G-VL, GG-VL',
+            de: 'G-VL, GG-VL',
+            fr: 'G-VL, GG-VL',
+            nl: 'G-VL, GG-VL'
           }
         }
       ],
@@ -2107,9 +1911,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Plastic - One-piece Design (27500, 27500-R)'
-          }
+          value: { en: '27500, 27500-R' }
         }
       ],
       sortIndex: 88,
@@ -2127,9 +1929,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Plastic - One-piece Design - Standard Angle (D-HH)'
-          }
+          value: { en: 'D-HH' }
         }
       ],
       sortIndex: 89,
@@ -2147,12 +1947,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - PVDF (HH-KY)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - PVDF (HH-KY)',
-            fr: 'Buses FullJet\u00AE Full Cone - PVDF (HH-KY)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - PVDF (HH-KY)'
-          }
+          value: { en: 'HH-KY', de: 'HH-KY', fr: 'HH-KY', nl: 'HH-KY' }
         }
       ],
       sortIndex: 90,
@@ -2170,12 +1965,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Removable Cap/Vane (G, GG)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Abnehmbare Kappe/Fl\u00FCgel (G, GG)',
-            fr: '\u00AE Buses Full Cone FullJet - Capuchon/Palette amovible (G, GG)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Verwijderbare dop/schoepen (G, GG)'
-          }
+          value: { en: 'G, GG', de: 'G, GG', fr: 'G, GG', nl: 'G, GG' }
         }
       ],
       sortIndex: 91,
@@ -2193,12 +1983,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Right Angle Type (GA, GGA)',
-            de: 'FullJet\u00AE Vollkegeld\u00FCsen - rechtwinkliger Typ (GA, GGA)',
-            fr: '\u00AE Buses Full Cone FullJet - Type \u00E0 angle droit (GA, GGA)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Haaks type (GA, GGA)'
-          }
+          value: { en: 'GA, GGA', de: 'GA, GGA', fr: 'GA, GGA', nl: 'GA, GGA' }
         }
       ],
       sortIndex: 92,
@@ -2217,10 +2002,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Right Angle Type - Vaneless design (GANV, GGANV)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Rechtwinkliger Typ - Vaneless Design (GANV, GGANV)',
-            fr: 'Buses FullJet\u00AE Full Cone - Type \u00E0 angle droit - Conception sans palettes (GANV, GGANV)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Haaks type - Vaneless ontwerp (GANV, GGANV)'
+            en: 'GANV, GGANV',
+            de: 'GANV, GGANV',
+            fr: 'GANV, GGANV',
+            nl: 'GANV, GGANV'
           }
         }
       ],
@@ -2240,10 +2025,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Right Angle Type - Wide Angle Spray (GA-W, GGA-W)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Rechtwinkliger Typ - Weitwinkelspray (GA-W, GGA-W)',
-            fr: 'Buses FullJet\u00AE Full Cone - Type \u00E0 angle droit - Spray grand angle (GA-W, GGA-W)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Right Angle Type - Groothoek Spray (GA-W, GGA-W)'
+            en: 'GA-W, GGA-W',
+            de: 'GA-W, GGA-W',
+            fr: 'GA-W, GGA-W',
+            nl: 'GA-W, GGA-W'
           }
         }
       ],
@@ -2263,10 +2048,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Square Spray - One-piece Design (H-SQ, HH-SQ)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Square Spray - Einteiliges Design (H-SQ, HH-SQ)',
-            fr: '\u00AE Buses FullJet Full Cone - Spray carr\u00E9 - Conception monobloc (H-SQ, HH-SQ)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Square Spray - Design uit \u00E9\u00E9n stuk (H-SQ, HH-SQ)'
+            en: 'H-SQ, HH-SQ',
+            de: 'H-SQ, HH-SQ',
+            fr: 'H-SQ, HH-SQ',
+            nl: 'H-SQ, HH-SQ'
           }
         }
       ],
@@ -2286,10 +2071,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Square Spray - Removable Cap/Vane (G-SQ, GG-SQ)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Square Spray - Abnehmbare Kappe/Fl\u00FCgel (G-SQ, GG-SQ)',
-            fr: '\u00AE Buses Full Cone FullJet - Spray carr\u00E9 - Capuchon/palette amovible (G-SQ, GG-SQ)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Square Spray - Verwijderbare Cap/Vane (G-SQ, GG-SQ)'
+            en: 'G-SQ, GG-SQ',
+            de: 'G-SQ, GG-SQ',
+            fr: 'G-SQ, GG-SQ',
+            nl: 'G-SQ, GG-SQ'
           }
         }
       ],
@@ -2308,12 +2093,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Wall-Mount - One-piece Design (HD)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Wandhalterung - Einteiliges Design (HD)',
-            fr: '\u00AE Buses FullJet Full Cone - Montage mural - Conception monobloc (HD)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Wandmontage - Design uit \u00E9\u00E9n stuk (HD)'
-          }
+          value: { en: 'HD', de: 'HD', fr: 'HD', nl: 'HD' }
         }
       ],
       sortIndex: 97,
@@ -2331,12 +2111,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Wall-Mount - Removable Cap/Vane (GD, GGD)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Wandhalterung - Abnehmbare Kappe/Fl\u00FCgel (GD, GGD)',
-            fr: '\u00AE Buses Full Cone FullJet - Montage mural - Capuchon/palette amovible (GD, GGD)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Wandmontage - Afneembare dop/schoepen (GD, GGD)'
-          }
+          value: { en: 'GD, GGD', de: 'GD, GGD', fr: 'GD, GGD', nl: 'GD, GGD' }
         }
       ],
       sortIndex: 98,
@@ -2355,10 +2130,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Wide Angle Spray - One-piece Design (H-W, HH-W)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Weitwinkelspray - Einteiliges Design (H-W, HH-W)',
-            fr: '\u00AE Buses FullJet Full Cone - Spray grand angle - Conception monobloc (H-W, HH-W)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Groothoek spray - Design uit \u00E9\u00E9n stuk (H-W, HH-W)'
+            en: 'H-W, HH-W',
+            de: 'H-W, HH-W',
+            fr: 'H-W, HH-W',
+            nl: 'H-W, HH-W'
           }
         }
       ],
@@ -2378,10 +2153,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Wide Angle Spray - Removable Cap/Vane (G-W, GG-W)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Weitwinkelspray - Abnehmbare Kappe/Fl\u00FCgel (G-W, GG-W)',
-            fr: 'Buses FullJet\u00AE Full Cone - Spray grand angle - Capuchon amovible / Palette (G-W, GG-W)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Groothoek Spray - Verwijderbare Cap/Vane (G-W, GG-W)'
+            en: 'G-W, GG-W',
+            de: 'G-W, GG-W',
+            fr: 'G-W, GG-W',
+            nl: 'G-W, GG-W'
           }
         }
       ],
@@ -2401,10 +2176,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'FullJet\u00AE Full Cone Nozzles - Wide Angle Square Spray (H-WSQ, HH-WSQ)',
-            de: 'FullJet\u00AE Full Cone D\u00FCsen - Weitwinkel-Vierkantspray (H-WSQ, HH-WSQ)',
-            fr: 'Buses FullJet\u00AE Full Cone - Spray carr\u00E9 grand angle (H-WSQ, HH-WSQ)',
-            nl: 'FullJet\u00AE Full Cone Nozzles - Groothoek Vierkante Spray (H-WSQ, HH-WSQ)'
+            en: 'H-WSQ, HH-WSQ',
+            de: 'H-WSQ, HH-WSQ',
+            fr: 'H-WSQ, HH-WSQ',
+            nl: 'H-WSQ, HH-WSQ'
           }
         }
       ],
@@ -2423,9 +2198,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 1500 psi (AA30A)'
-          }
+          value: { en: 'AA30A' }
         }
       ],
       sortIndex: 102,
@@ -2443,9 +2216,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 2500 psi (AA60)'
-          }
+          value: { en: 'AA60' }
         }
       ],
       sortIndex: 103,
@@ -2463,9 +2234,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 3000 psi (AA80)'
-          }
+          value: { en: 'AA80' }
         }
       ],
       sortIndex: 104,
@@ -2483,9 +2252,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 4000 psi (PW4000A)'
-          }
+          value: { en: 'PW4000A' }
         }
       ],
       sortIndex: 105,
@@ -2503,9 +2270,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 4000 psi, with Swivel (PW4000AS)'
-          }
+          value: { en: 'PW4000AS' }
         }
       ],
       sortIndex: 106,
@@ -2523,9 +2288,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE High Pressure Spray Gun, Max Pressure 5000 psi (AA70)'
-          }
+          value: { en: 'AA70' }
         }
       ],
       sortIndex: 107,
@@ -2543,9 +2306,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun with Rubber Cover, Max Pressure 150 psi, Capacity 10 to 22 gpm (CU150A)'
-          }
+          value: { en: 'CU150A' }
         }
       ],
       sortIndex: 108,
@@ -2563,9 +2324,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun with Trigger-Activated Variable Spray Pattern, Max Pressure 250 psi, Capacity 10 gpm (AA30-20940)'
-          }
+          value: { en: 'AA30-20940' }
         }
       ],
       sortIndex: 109,
@@ -2583,9 +2342,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun with Trigger-Activated Variable Spray Pattern, Max Pressure 250 psi, Capacity 16 gpm (AA60-21580)'
-          }
+          value: { en: 'AA60-21580' }
         }
       ],
       sortIndex: 110,
@@ -2603,9 +2360,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun, Impact Resistant, Max Pressure 200 psi, Capacity 15 gpm (AA43LC)'
-          }
+          value: { en: 'AA43LC' }
         }
       ],
       sortIndex: 111,
@@ -2623,9 +2378,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun, Max Pressure 200 psi (AA30L)'
-          }
+          value: { en: 'AA30L' }
         }
       ],
       sortIndex: 112,
@@ -2643,9 +2396,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Low Pressure Spray Gun, Max Pressure 75 psi, Adjustable Metering Assembly, Capacity 1 to 16 ml per dose (23624-30L)'
-          }
+          value: { en: '23624-30L' }
         }
       ],
       sortIndex: 113,
@@ -2663,9 +2414,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun, Impact Resistant, Max Pressure 600 psi, Capacity 12 gpm (36533-60)'
-          }
+          value: { en: '36533-60' }
         }
       ],
       sortIndex: 114,
@@ -2683,9 +2432,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun, Impact Resistant, Max Pressure 800 psi, Capacity 15 gpm (AA43HC)'
-          }
+          value: { en: 'AA43HC' }
         }
       ],
       sortIndex: 115,
@@ -2703,9 +2450,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun, Max Pressure 1000 psi (AA23H)'
-          }
+          value: { en: 'AA23H' }
         }
       ],
       sortIndex: 116,
@@ -2723,9 +2468,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun, Max Pressure 250 psi (AA23L)'
-          }
+          value: { en: 'AA23L' }
         }
       ],
       sortIndex: 117,
@@ -2743,9 +2486,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'GunJet\u00AE Medium Pressure Spray Gun, Max Pressure 250 psi,  For use with Adhesives (AA23L-45885)'
-          }
+          value: { en: 'AA23L-45885' }
         }
       ],
       sortIndex: 118,
@@ -2763,12 +2504,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'High Impact SolidJet D55606 (D55606)',
-            de: 'SolidJet D55606 mit hoher Schlagz\u00E4higkeit (D55606)',
-            fr: 'SolidJet D55606 \u00E0 fort impact (D55606)',
-            nl: 'High Impact SolidJet D55606 (D55606)'
-          }
+          value: { en: 'D55606', de: 'D55606', fr: 'D55606', nl: 'D55606' }
         }
       ],
       sortIndex: 119,
@@ -2786,12 +2522,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Hydraulic Fine Spray Nozzles - Integral Strainer (LN, LNN)',
-            de: 'Hydraulische Feinspr\u00FChd\u00FCsen - Integralsieb (LN, LNN)',
-            fr: 'Buses hydrauliques de pulv\u00E9risation fine - Cr\u00E9pine int\u00E9grale (LN, LNN)',
-            nl: 'Hydraulische fijne sproeikoppen - Ge\u00EFntegreerde zeef (LN, LNN)'
-          }
+          value: { en: 'LN, LNN', de: 'LN, LNN', fr: 'LN, LNN', nl: 'LN, LNN' }
         }
       ],
       sortIndex: 120,
@@ -2810,10 +2541,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Hydraulic Fine Spray Nozzles - Integral Strainer - Wall Mount (LND, LNND)',
-            de: 'Hydraulische Feinspr\u00FChd\u00FCsen - Integralsieb - Wandhalterung (LND, LNND)',
-            fr: 'Buses hydrauliques de pulv\u00E9risation fine - Cr\u00E9pine int\u00E9grale - Support mural (LND, LNND)',
-            nl: 'Hydraulische fijne sproeikoppen - Ge\u00EFntegreerde zeef - Wandmontage (LND, LNND)'
+            en: 'LND, LNND',
+            de: 'LND, LNND',
+            fr: 'LND, LNND',
+            nl: 'LND, LNND'
           }
         }
       ],
@@ -2832,12 +2563,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Hydraulic Fine Spray Nozzles - One-piece design (N, NN)',
-            de: 'Hydraulische Feinspr\u00FChd\u00FCsen - Einteilige Ausf\u00FChrung (N, NN)',
-            fr: 'Buses hydrauliques de pulv\u00E9risation fine - Conception monobloc (N, NN)',
-            nl: 'Hydraulische fijne sproeikoppen - ontwerp uit \u00E9\u00E9n stuk (N, NN)'
-          }
+          value: { en: 'N, NN', de: 'N, NN', fr: 'N, NN', nl: 'N, NN' }
         }
       ],
       sortIndex: 122,
@@ -2855,12 +2581,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Hydraulic Fine Spray Nozzles - Two-piece design (M)',
-            de: 'Hydraulische Feinspr\u00FChd\u00FCsen - Zweiteilige Ausf\u00FChrung (M)',
-            fr: 'Buses hydrauliques de pulv\u00E9risation fine - Conception en deux parties (M)',
-            nl: 'Hydraulische fijne sproeikoppen - tweedelig ontwerp (M)'
-          }
+          value: { en: 'M', de: 'M', fr: 'M', nl: 'M' }
         }
       ],
       sortIndex: 123,
@@ -2879,10 +2600,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Hydraulic Fine Spray Nozzles - Wide Angle Spray (N-W, NN-W, LN-W, LNN-W)',
-            de: 'Hydraulische Feinspr\u00FChd\u00FCsen - Weitwinkelspray (N-W, NN-W, LN-W, LNN-W)',
-            fr: 'Buses hydrauliques de pulv\u00E9risation fine - Spray grand angle (N-W, NN-W, LN-W, LNN-W)',
-            nl: 'Hydraulische fijne sproeikoppen - Groothoekspray (N-W, NN-W, LN-W, LNN-W)'
+            en: 'N-W, NN-W, LN-W, LNN-W',
+            de: 'N-W, NN-W, LN-W, LNN-W',
+            fr: 'N-W, NN-W, LN-W, LNN-W',
+            nl: 'N-W, NN-W, LN-W, LNN-W'
           }
         }
       ],
@@ -2901,9 +2622,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Low Pressure Trigger Valve with 1/4\u0022 (F) Outlet, Max Pressure 250 psi, Capacity 2 gpm (6104)'
-          }
+          value: { en: '6104' }
         }
       ],
       sortIndex: 125,
@@ -2921,9 +2640,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Low Pressure Trigger Valve with 1/4\u0022 (F) Outlet, Max Pressure 250 psi, Extra Long Trigger, Capacity 2 gpm (6590)'
-          }
+          value: { en: '6590' }
         }
       ],
       sortIndex: 126,
@@ -2941,9 +2658,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Low Pressure Trigger Valve with 1/4\u0022 or 3/8\u0022 (F) Outlet, Max Pressure 150 psi, Capacity 7 gpm (AA36)'
-          }
+          value: { en: 'AA36' }
         }
       ],
       sortIndex: 127,
@@ -2961,9 +2676,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Low Pressure Trigger Valve with 11/16-16 UniJet\u00AE THD Outlet, Max Pressure 250 psi, Capacity 2 gpm (4688)'
-          }
+          value: { en: '4688' }
         }
       ],
       sortIndex: 128,
@@ -2981,9 +2694,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Low Pressure Trigger Valve with 11/16-16 UniJet\u00AE THD Outlet, Max Pressure 250 psi, Extra Long Trigger, Capacity 2 gpm (6466)'
-          }
+          value: { en: '6466' }
         }
       ],
       sortIndex: 129,
@@ -3001,12 +2712,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Medium Pressure Trigger Valve (AA31)',
-            de: 'Mitteldruck-Absperrventil (AA31)',
-            fr: 'Vanne de d\u00E9clenchement de moyenne pression (AA31)',
-            nl: 'Triggerklep met gemiddelde druk (AA31)'
-          }
+          value: { en: 'AA31', de: 'AA31', fr: 'AA31', nl: 'AA31' }
         }
       ],
       sortIndex: 130,
@@ -3025,10 +2731,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'MeterJet\u00AE Low Pressure Trigger Valve (23623-31-1/4F)',
-            de: 'MeterJet\u00AE Niederdruck-Ausl\u00F6seventil (23623-31-1/4F)',
-            fr: 'Vanne de d\u00E9clenchement basse pression MeterJet\u00AE (23623-31-1/4F)',
-            nl: 'MeterJet\u00AE lagedruk triggerklep (23623-31-1/4F)'
+            en: '23623-31-1/4F',
+            de: '23623-31-1/4F',
+            fr: '23623-31-1/4F',
+            nl: '23623-31-1/4F'
           }
         }
       ],
@@ -3047,12 +2753,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Mini ProMax\u00AE Quick VeeJet\u00AE Flat Spray Nozzle Systems - Low Flow (QMVV)',
-            de: 'Mini ProMax\u00AE Quick VeeJet\u00AE Flachspr\u00FChd\u00FCsensysteme - Low Flow (QMVV)',
-            fr: 'Syst\u00E8mes de buse de pulv\u00E9risation plate Mini ProMax\u00AE Quick VeeJet\u00AE - Faible d\u00E9bit (QMVV)',
-            nl: 'Mini ProMax\u00AE Quick VeeJet\u00AE platte sproeikopsystemen - Laag debiet (QMVV)'
-          }
+          value: { en: 'QMVV', de: 'QMVV', fr: 'QMVV', nl: 'QMVV' }
         }
       ],
       sortIndex: 132,
@@ -3070,12 +2771,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Mini Quick FloodJet\u00AE Flat Spray Nozzle Systems - Wide Angle Spray (QSTK)',
-            de: 'Mini Quick FloodJet\u00AE Flachspr\u00FChd\u00FCsensysteme - Weitwinkelspray (QSTK)',
-            fr: 'Mini syst\u00E8mes de buse de pulv\u00E9risation plate FloodJet\u00AE rapide - Spray grand angle (QSTK)',
-            nl: 'Mini Quick FloodJet\u00AE platte sproeikopsystemen - groothoekspray (QSTK)'
-          }
+          value: { en: 'QSTK', de: 'QSTK', fr: 'QSTK', nl: 'QSTK' }
         }
       ],
       sortIndex: 133,
@@ -3093,9 +2789,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Mini Quick VeeJet\u00AE Nozzle Systems - Low Flow (QSVV)'
-          }
+          value: { en: 'QSVV' }
         }
       ],
       sortIndex: 134,
@@ -3113,7 +2807,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Piston-Type Pressure Relief Valve (6815)' }
+          value: { en: '6815' }
         }
       ],
       sortIndex: 135,
@@ -3131,9 +2825,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Piston-Type Pressure Relief Valve with Guide Vane to Reduce Turbulence (6815G)'
-          }
+          value: { en: '6815G' }
         }
       ],
       sortIndex: 136,
@@ -3151,9 +2843,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Piston-Type Pressure Relief Valve with Removable Valve Bonnet (AA110)'
-          }
+          value: { en: 'AA110' }
         }
       ],
       sortIndex: 137,
@@ -3171,9 +2861,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Piston-Type Pressure Relief Valve, EPDM O-ring and 302SS Spring (23120)'
-          }
+          value: { en: '23120' }
         }
       ],
       sortIndex: 138,
@@ -3191,9 +2879,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Piston-Type Pressure Relief Valve, FKM O-ring and 316SS Spring (23120A)'
-          }
+          value: { en: '23120A' }
         }
       ],
       sortIndex: 139,
@@ -3211,12 +2897,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect Nozzle Systems (QPHA)',
-            de: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect D\u00FCsensysteme (QPHA)',
-            fr: 'Syst\u00E8mes de buse ProMax\u00AE Quick FullJet\u00AE Quick-Connect (QPHA)',
-            nl: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect Nozzle Systemen (QPHA)'
-          }
+          value: { en: 'QPHA', de: 'QPHA', fr: 'QPHA', nl: 'QPHA' }
         }
       ],
       sortIndex: 140,
@@ -3234,12 +2915,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect Nozzle Systems - Wide Angle Spray (QPHA-W)',
-            de: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect D\u00FCsensysteme - Weitwinkelspray (QPHA-W)',
-            fr: 'Syst\u00E8mes de buse ProMax\u00AE Quick FullJet\u00AE Quick-Connect - Spray grand angle (QPHA-W)',
-            nl: 'ProMax\u00AE Quick FullJet\u00AE Quick-Connect Nozzle Systemen - Groothoek Spray (QPHA-W)'
-          }
+          value: { en: 'QPHA-W', de: 'QPHA-W', fr: 'QPHA-W', nl: 'QPHA-W' }
         }
       ],
       sortIndex: 141,
@@ -3257,12 +2933,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'ProMax\u00AE Quick VeeJet\u00AE Flat Spray Nozzle Systems - Medium Flow (QPTA)',
-            de: 'ProMax\u00AE Quick VeeJet\u00AE Flachspr\u00FChd\u00FCsensysteme - Mittlerer Durchfluss (QPTA)',
-            fr: 'Syst\u00E8mes de buse de pulv\u00E9risation plate ProMax\u00AE Quick VeeJet\u00AE - D\u00E9bit moyen (QPTA)',
-            nl: 'ProMax\u00AE Quick VeeJet\u00AE platte sproeikopsystemen - Medium Flow (QPTA)'
-          }
+          value: { en: 'QPTA', de: 'QPTA', fr: 'QPTA', nl: 'QPTA' }
         }
       ],
       sortIndex: 142,
@@ -3281,10 +2952,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'ProMax\u00AE QuickJet\u00AE Quick-Connect Nozzle Bodies (QPPA, QPPM)',
-            de: 'ProMax\u00AE QuickJet Quick-Connect\u00AE D\u00FCsenk\u00F6rper (QPPA, QPPM)',
-            fr: 'Corps de buse ProMax\u00AE QuickJet\u00AE Quick-Connect (QPPA, QPPM)',
-            nl: 'ProMax\u00AE QuickJet\u00AE Quick-Connect nozzlebehuizingen (QPPA, QPPM)'
+            en: 'QPPA, QPPM',
+            de: 'QPPA, QPPM',
+            fr: 'QPPA, QPPM',
+            nl: 'QPPA, QPPM'
           }
         }
       ],
@@ -3303,9 +2974,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm and Max Speed 15,000 cpm, For Use in Zone 1 Hazardous Areas (AA10000AUH-03-Z1)'
-          }
+          value: { en: 'AA10000AUH-03-Z1' }
         }
       ],
       sortIndex: 144,
@@ -3323,9 +2992,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm, Max Speed 15,000 cpm (AA10000AUH-03)'
-          }
+          value: { en: 'AA10000AUH-03' }
         }
       ],
       sortIndex: 145,
@@ -3343,9 +3010,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm, Max Speed 15,000 cpm and Jacketed Design for Temperature Control (AA10000AUH-72440-1/4)'
-          }
+          value: { en: 'AA10000AUH-72440-1/4' }
         }
       ],
       sortIndex: 146,
@@ -3363,9 +3028,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm, Max Speed 15,000 cpm and Self-Aligning Dovetail Spray Tips (AA10000AUH-104210)'
-          }
+          value: { en: 'AA10000AUH-104210' }
         }
       ],
       sortIndex: 147,
@@ -3383,9 +3046,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm, Max Speed 15,000 cpm, Self-Aligning Dovetail Spray Tips and Liquid Recirculation (AA10000AUH-104215)'
-          }
+          value: { en: 'AA10000AUH-104215' }
         }
       ],
       sortIndex: 148,
@@ -3403,9 +3064,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 0.47 gpm, Max Speed 15,000 cpm, Self-Aligning Dovetail Spray Tips and Side Liquid Inlet for Low Profile Mounting (AA10000AUH-104214)'
-          }
+          value: { en: 'AA10000AUH-104214' }
         }
       ],
       sortIndex: 149,
@@ -3423,9 +3082,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Electrically-Actuated Hydraulic Nozzle with Flow up to 1.6 gpm and Max Speed 5,000 cpm (AA10000AUH-10)'
-          }
+          value: { en: 'AA10000AUH-10' }
         }
       ],
       sortIndex: 150,
@@ -3443,9 +3100,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'PulsaJet\u00AE Mini Electrically-Actuated Hydraulic Nozzle, Compact Design (AA10000AUH-0050)'
-          }
+          value: { en: 'AA10000AUH-0050' }
         }
       ],
       sortIndex: 151,
@@ -3463,9 +3118,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'QMJ Air Atomizing Air Caps (QMJ Air Atomizing Air Caps)'
-          }
+          value: { en: 'QMJ Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 152,
@@ -3483,9 +3136,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'QMJ Air Atomizing Assemblies (QMJ Air Atomizing Assemblies)'
-          }
+          value: { en: 'QMJ Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 153,
@@ -3503,7 +3154,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'QMJ Air Atomizing Bodies (QMJ Air Atomizing Bodies)' }
+          value: { en: 'QMJ Air Atomizing Bodies' }
         }
       ],
       sortIndex: 154,
@@ -3521,9 +3172,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'QMJ Air Atomizing Fluid Caps (QMJ Air Atomizing Fluid Caps)'
-          }
+          value: { en: 'QMJ Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 155,
@@ -3541,7 +3190,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'QMJ Air Atomizing Setups (QMJ Air Atomizing Setups)' }
+          value: { en: 'QMJ Air Atomizing Setups' }
         }
       ],
       sortIndex: 156,
@@ -3559,12 +3208,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Quick FloodJet\u00AE Deflected Flat Spray Nozzle Systems - Wide Angle Spray (QTKA)',
-            de: 'Schnelle FloodJet\u00AE umgelenkte Flachspr\u00FChd\u00FCsensysteme - Weitwinkelspray (QTKA)',
-            fr: 'Syst\u00E8mes de buse de pulv\u00E9risation plate d\u00E9vi\u00E9e par FloodJet\u00AE rapide - Spray grand angle (QTKA)',
-            nl: 'Snelle FloodJet\u00AE afgebogen platte sproeikopsystemen - groothoekspray (QTKA)'
-          }
+          value: { en: 'QTKA', de: 'QTKA', fr: 'QTKA', nl: 'QTKA' }
         }
       ],
       sortIndex: 157,
@@ -3583,10 +3227,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - 15\u00B0 Spray Angle - Removable Cap/Vane (QGA-15, QLGA-15)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - 15\u00B0 Spr\u00FChwinkel - Abnehmbare Kappe/Fl\u00FCgel (QGA-15, QLGA-15)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Angle de pulv\u00E9risation de 15 \u00B0 - Capuchon / palette amovible (QGA-15, QLGA-15)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle-systemen - 15\u00B0 spuithoek - Verwijderbare dop/schoepen (QGA-15, QLGA-15)'
+            en: 'QGA-15, QLGA-15',
+            de: 'QGA-15, QLGA-15',
+            fr: 'QGA-15, QLGA-15',
+            nl: 'QGA-15, QLGA-15'
           }
         }
       ],
@@ -3606,10 +3250,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - 30\u00B0 Spray Angle - Removable Cap/Vane (QGA-30, QLGA-30)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - 30\u00B0 Spr\u00FChwinkel - Abnehmbare Kappe/Fl\u00FCgel (QGA-30, QLGA-30)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Angle de pulv\u00E9risation de 30 \u00B0 - Capuchon / palette amovible (QGA-30, QLGA-30)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle-systemen - 30 \u00B0 spuithoek - verwijderbare dop / schoepen (QGA-30, QLGA-30)'
+            en: 'QGA-30, QLGA-30',
+            de: 'QGA-30, QLGA-30',
+            fr: 'QGA-30, QLGA-30',
+            nl: 'QGA-30, QLGA-30'
           }
         }
       ],
@@ -3629,10 +3273,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - Non-removable Vane (QHA, QLHA)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - Nicht abnehmbarer Fl\u00FCgel (QHA, QLHA)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Palette non amovible (QHA, QLHA)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle Systemen - Niet-verwijderbare Schoepen (QHA, QLHA)'
+            en: 'QHA, QLHA',
+            de: 'QHA, QLHA',
+            fr: 'QHA, QLHA',
+            nl: 'QHA, QLHA'
           }
         }
       ],
@@ -3652,10 +3296,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - Removable Cap/Vane (QGA, QLGA)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - Abnehmbare Kappe/Fl\u00FCgelrad (QGA, QLGA)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Capuchon/palette amovible (QGA, QLGA)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle Systemen - Verwijderbare Dop/Schoepen (QGA, QLGA)'
+            en: 'QGA, QLGA',
+            de: 'QGA, QLGA',
+            fr: 'QGA, QLGA',
+            nl: 'QGA, QLGA'
           }
         }
       ],
@@ -3675,10 +3319,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - Wide Angle Spray - Non-removable Vane (QHA-W, QLHA-W)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - Weitwinkelspray - Nicht abnehmbarer Fl\u00FCgel (QHA-W, QLHA-W)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Spray grand angle - Palette non amovible (QHA-W, QLHA-W)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle Systems - Groothoekspray - Niet-verwijderbare Schoepen (QHA-W, QLHA-W)'
+            en: 'QHA-W, QLHA-W',
+            de: 'QHA-W, QLHA-W',
+            fr: 'QHA-W, QLHA-W',
+            nl: 'QHA-W, QLHA-W'
           }
         }
       ],
@@ -3698,10 +3342,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Quick FullJet\u00AE Full Cone Nozzle Systems - Wide Angle Spray - Removable Cap/Vane (QGA-W, QLGA-W)',
-            de: 'Quick FullJet\u00AE Full Cone D\u00FCsensysteme - Weitwinkelspray - Abnehmbare Kappe/Fl\u00FCgel (QGA-W, QLGA-W)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet Quick FullJet\u00AE - Spray grand angle - Capuchon / palette amovible (QGA-W, QLGA-W)',
-            nl: 'Snelle FullJet\u00AE Full Cone Nozzle Systems - Groothoek spray - Verwijderbare Cap /Vane (QGA-W, QLGA-W)'
+            en: 'QGA-W, QLGA-W',
+            de: 'QGA-W, QLGA-W',
+            fr: 'QGA-W, QLGA-W',
+            nl: 'QGA-W, QLGA-W'
           }
         }
       ],
@@ -3720,7 +3364,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Quick VeeJet\u00AE Nozzle Systems (QUA, QLUA, QVVA)' }
+          value: { en: 'QUA, QLUA, QVVA' }
         }
       ],
       sortIndex: 164,
@@ -3739,10 +3383,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'QuickJet\u00AE Quick-Connect Nozzle Bodies (QJA, QJJA)',
-            de: 'QuickJet Quick-Connect\u00AE D\u00FCsenk\u00F6rper (QJA, QJJA)',
-            fr: 'Corps de buse QuickJet\u00AE Quick-Connect (QJA, QJJA)',
-            nl: 'QuickJet\u00AE Quick-Connect nozzlebehuizingen (QJA, QJJA)'
+            en: 'QJA, QJJA',
+            de: 'QJA, QJJA',
+            fr: 'QJA, QJJA',
+            nl: 'QJA, QJJA'
           }
         }
       ],
@@ -3762,10 +3406,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'QuickJet\u00AE Quick-Connect Nozzle Bodies - Large Capacity (QJLA, QJJLA)',
-            de: 'QuickJet Quick-Connect\u00AE D\u00FCsenk\u00F6rper - Gro\u00DFe Kapazit\u00E4t (QJLA, QJJLA)',
-            fr: 'Corps de buse QuickJet\u00AE Quick-Connect - Grande capacit\u00E9 (QJLA, QJJLA)',
-            nl: 'QuickJet\u00AE Quick-Connect nozzlebehuizingen - grote capaciteit (QJLA, QJJLA)'
+            en: 'QJLA, QJJLA',
+            de: 'QJLA, QJJLA',
+            fr: 'QJLA, QJJLA',
+            nl: 'QJLA, QJJLA'
           }
         }
       ],
@@ -3784,12 +3428,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'QuickJet\u00AE Quick-Connect Nozzle Bodies - Miniature (QJJS)',
-            de: 'QuickJet Quick-Connect\u00AE D\u00FCsenk\u00F6rper - Miniatur (QJJS)',
-            fr: 'Corps de buse QuickJet\u00AE Quick-Connect - Miniature (QJJS)',
-            nl: 'QuickJet\u00AE Quick-Connect nozzlebehuizingen - Miniatuur (QJJS)'
-          }
+          value: { en: 'QJJS', de: 'QJJS', fr: 'QJJS', nl: 'QJJS' }
         }
       ],
       sortIndex: 167,
@@ -3807,12 +3446,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Rotating Tank Cleaning Nozzle, ATEX Certified D27500 (D27500)',
-            de: 'Drehbare Tankreinigungsd\u00FCse, ATEX-zertifiziert D27500 (D27500)',
-            fr: 'Buse de nettoyage de r\u00E9servoir rotative, certifi\u00E9e ATEX D27500 (D27500)',
-            nl: 'Roterende tankreinigingsmondstuk, ATEX-gecertificeerd D27500 (D27500)'
-          }
+          value: { en: 'D27500', de: 'D27500', fr: 'D27500', nl: 'D27500' }
         }
       ],
       sortIndex: 168,
@@ -3830,12 +3464,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'SpiralJet\u00AE Full Cone Nozzles - Spiral Type - Extra Large Free Passage (HHSJX)',
-            de: 'SpiralJet\u00AE Vollkegeld\u00FCsen - Spiraltyp - extra gro\u00DFer freier Durchgang (HHSJX)',
-            fr: 'Buses SpiralJet\u00AE Full Cone - Type Spiral - Extra Large Free Passage (HHSJX)',
-            nl: 'SpiralJet\u00AE Full Cone Nozzles - Spiral Type - Extra Grote Vrije Doorgang (HHSJX)'
-          }
+          value: { en: 'HHSJX', de: 'HHSJX', fr: 'HHSJX', nl: 'HHSJX' }
         }
       ],
       sortIndex: 169,
@@ -3853,12 +3482,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'SpiralJet\u00AE Full Cone Nozzles - Spiral Type - Large Free Passage (HHSJ)',
-            de: 'SpiralJet\u00AE Vollkegeld\u00FCsen - Spiraltyp - Gro\u00DFer freier Durchgang (HHSJ)',
-            fr: 'Buses SpiralJet\u00AE Full Cone - Type Spiral - Grand passage libre (HHSJ)',
-            nl: 'SpiralJet\u00AE Full Cone Nozzles - Spiral Type - Grote Vrije Doorgang (HHSJ)'
-          }
+          value: { en: 'HHSJ', de: 'HHSJ', fr: 'HHSJ', nl: 'HHSJ' }
         }
       ],
       sortIndex: 170,
@@ -3876,12 +3500,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'SpiralJet\u00AE Hollow Cone Nozzles - Spiral Type - Extra Large Free Passage (BSJ)',
-            de: 'SpiralJet\u00AE Hohlkegeld\u00FCsen - Spiraltyp - extra gro\u00DFer freier Durchgang (BSJ)',
-            fr: 'Buses \u00E0 c\u00F4ne creux SpiralJet\u00AE - Type spirale - Tr\u00E8s grand passage libre (BSJ)',
-            nl: 'SpiralJet\u00AE Holle Kegel Nozzles - Spiral Type - Extra Grote Vrije Doorgang (BSJ)'
-          }
+          value: { en: 'BSJ', de: 'BSJ', fr: 'BSJ', nl: 'BSJ' }
         }
       ],
       sortIndex: 171,
@@ -3899,9 +3518,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Split-Eyelet Connector for Pipe Sizes 2-1/2\u0022 and larger (15475)'
-          }
+          value: { en: '15475' }
         }
       ],
       sortIndex: 172,
@@ -3919,9 +3536,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Split-Eyelet Connector for Pipe Sizes from 1-1/4\u0022 to 2\u0022 (8370)'
-          }
+          value: { en: '8370' }
         }
       ],
       sortIndex: 173,
@@ -3939,9 +3554,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Split-Eyelet Connector for Pipe Sizes up to 1\u0022 (7521)'
-          }
+          value: { en: '7521' }
         }
       ],
       sortIndex: 174,
@@ -3959,9 +3572,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE 14 Fluid-Driven Turbine Tank Cleaner, Tanks up to 12 ft. (TJ14)'
-          }
+          value: { en: 'TJ14' }
         }
       ],
       sortIndex: 175,
@@ -3979,9 +3590,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE 19 Fluid-Driven Turbine Tank Cleaner, Tanks up to 12 ft. (TJ19)'
-          }
+          value: { en: 'TJ19' }
         }
       ],
       sortIndex: 176,
@@ -3999,9 +3608,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE 9-A Fluid-Driven Reactionary Force Tank Cleaning Nozzles, Tanks up to 6 ft. (TJ9-A)'
-          }
+          value: { en: 'TJ9-A' }
         }
       ],
       sortIndex: 177,
@@ -4019,9 +3626,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE 9-B, 9-C Fluid-Driven Reactionary Force Tank Cleaning Nozzles, Tanks up to 16 ft. (TJ9-B, TJ9-C)'
-          }
+          value: { en: 'TJ9-B, TJ9-C' }
         }
       ],
       sortIndex: 178,
@@ -4039,9 +3644,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Constant Speed Tank Cleaning Nozzle, Tanks up to 16 ft., 360\u00B0 Spray Coverage (D26984)'
-          }
+          value: { en: 'D26984' }
         }
       ],
       sortIndex: 179,
@@ -4059,9 +3662,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Constant Speed Tank Cleaning Nozzle, Tanks up to 16 ft., 360\u00B0 Spray Coverage, Sanitary Design (D41800E)'
-          }
+          value: { en: 'D41800E' }
         }
       ],
       sortIndex: 180,
@@ -4079,9 +3680,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Constant Speed Tank Cleaning Nozzle, Tanks up to 16 ft., 65\u00B0 to 260\u00B0 Spray Coverage (D40159)'
-          }
+          value: { en: 'D40159' }
         }
       ],
       sortIndex: 181,
@@ -4099,9 +3698,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 10 ft., ATEX Certified (optional) (D41892)'
-          }
+          value: { en: 'D41892' }
         }
       ],
       sortIndex: 182,
@@ -4119,9 +3716,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 3 ft., 180\u00B0 or 360\u00B0 Spray Coverage, PTFE (30473)'
-          }
+          value: { en: '30473' }
         }
       ],
       sortIndex: 183,
@@ -4139,9 +3734,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 3 ft., 360\u00B0 or Side Spray Coverage (23240)'
-          }
+          value: { en: '23240' }
         }
       ],
       sortIndex: 184,
@@ -4159,9 +3752,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 5 ft. (21400A)'
-          }
+          value: { en: '21400A' }
         }
       ],
       sortIndex: 185,
@@ -4179,9 +3770,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 5 ft., 180\u00B0 Spray Coverage (Up or Down) (D26564)'
-          }
+          value: { en: 'D26564' }
         }
       ],
       sortIndex: 186,
@@ -4199,9 +3788,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, Tanks up to 6.5 ft., Fits Very Small Tank Openings (D41990)'
-          }
+          value: { en: 'D41990' }
         }
       ],
       sortIndex: 187,
@@ -4219,9 +3806,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzle, up to 10 ft. (18250A)'
-          }
+          value: { en: '18250A' }
         }
       ],
       sortIndex: 188,
@@ -4239,9 +3824,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Reactionary Force Tank Cleaning Nozzles, Tanks up to 18 ft., Sanitary Design, PTFE (28500, 28500-R)'
-          }
+          value: { en: '28500, 28500-R' }
         }
       ],
       sortIndex: 189,
@@ -4259,9 +3842,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 100 ft., 360\u00B0 Spray Coverage (TJ360)'
-          }
+          value: { en: 'TJ360' }
         }
       ],
       sortIndex: 190,
@@ -4279,9 +3860,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 25 ft., 360\u00B0 Spray Coverage, Sanitary Design (TJ78M)'
-          }
+          value: { en: 'TJ78M' }
         }
       ],
       sortIndex: 191,
@@ -4299,9 +3878,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 30 ft., 360\u00B0 Spray Coverage (TJ75, TJ75H)'
-          }
+          value: { en: 'TJ75, TJ75H' }
         }
       ],
       sortIndex: 192,
@@ -4319,9 +3896,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 40 ft., 360\u00B0 Spray Coverage (TJ65, TJ65HT)'
-          }
+          value: { en: 'TJ65, TJ65HT' }
         }
       ],
       sortIndex: 193,
@@ -4339,9 +3914,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 45 ft., 360\u00B0 Spray Coverage, Sanitary Design (TJ78, TJ78D)'
-          }
+          value: { en: 'TJ78, TJ78D' }
         }
       ],
       sortIndex: 194,
@@ -4359,9 +3932,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 50 ft., 360\u00B0 Spray Coverage (TJ80, TJ80H)'
-          }
+          value: { en: 'TJ80, TJ80H' }
         }
       ],
       sortIndex: 195,
@@ -4379,9 +3950,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaner, Tanks up to 80 ft., 180\u00B0 Downward Spray Coverage (TJ180)'
-          }
+          value: { en: 'TJ180' }
         }
       ],
       sortIndex: 196,
@@ -4399,12 +3968,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Fluid-Driven Turbine Tank Cleaning Nozzle (TJ16)',
-            de: 'TankJet\u00AE Fluid-angetriebene Turbinentank-Reinigungsd\u00FCse (TJ16)',
-            fr: 'Buse de nettoyage de r\u00E9servoir de turbine \u00E0 entra\u00EEnement fluide TankJet\u00AE (TJ16)',
-            nl: 'TankJet\u00AE vloeistofaangedreven turbinetankreinigingsmondstuk (TJ16)'
-          }
+          value: { en: 'TJ16', de: 'TJ16', fr: 'TJ16', nl: 'TJ16' }
         }
       ],
       sortIndex: 197,
@@ -4422,9 +3986,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE High Pressure Motor-Driven Tank Cleaner, Tanks up to 30 ft., 360\u00B0 spray coverage (YMD3)'
-          }
+          value: { en: 'YMD3' }
         }
       ],
       sortIndex: 198,
@@ -4442,9 +4004,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Motor-Driven Tank Cleaner, Tanks up to 100 ft., 360\u00B0 spray coverage (AA290)'
-          }
+          value: { en: 'AA290' }
         }
       ],
       sortIndex: 199,
@@ -4462,9 +4022,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Motor-Driven Tank Cleaner, Tanks up to 16 ft., 360\u00B0 spray coverage (AA090)'
-          }
+          value: { en: 'AA090' }
         }
       ],
       sortIndex: 200,
@@ -4482,9 +4040,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Motor-Driven Tank Cleaner, Tanks up to 40 ft., 360\u00B0 spray coverage (AA190)'
-          }
+          value: { en: 'AA190' }
         }
       ],
       sortIndex: 201,
@@ -4502,9 +4058,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Pressure-Activated CleanUp Nozzle (D55567)'
-          }
+          value: { en: 'D55567' }
         }
       ],
       sortIndex: 202,
@@ -4522,9 +4076,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Stationary Tank Cleaning Nozzle, Tanks up to 10 ft. (6353, 6353-MFP)'
-          }
+          value: { en: '6353, 6353-MFP' }
         }
       ],
       sortIndex: 203,
@@ -4542,9 +4094,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Stationary Tank Cleaning Nozzle, Tanks up to 20 ft. (12900)'
-          }
+          value: { en: '12900' }
         }
       ],
       sortIndex: 204,
@@ -4562,9 +4112,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'TankJet\u00AE Stationary Tank Cleaning Nozzle, Tanks up to 5 ft. (VSM)'
-          }
+          value: { en: 'VSM' }
         }
       ],
       sortIndex: 205,
@@ -4583,10 +4131,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'TankJet\u00AE Tank Cleaning Spray Balls (63225, 63225-3A)',
-            de: 'TankJet\u00AE Tankreinigung Spray Balls (63225, 63225-3A)',
-            fr: 'TankJet\u00AE Tank Cleaning Spray Balls (63225, 63225-3A)',
-            nl: 'TankJet\u00AE Tank Cleaning Spray Ballen (63225, 63225-3A)'
+            en: '63225, 63225-3A',
+            de: '63225, 63225-3A',
+            fr: '63225, 63225-3A',
+            nl: '63225, 63225-3A'
           }
         }
       ],
@@ -4605,9 +4153,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Throttling Valve with Adjusting Cap for Flow Control (23520)'
-          }
+          value: { en: '23520' }
         }
       ],
       sortIndex: 207,
@@ -4626,10 +4172,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'TriggerJet\u00AE 22650-PP Low Pressure Trigger Valve (22650-PP)',
-            de: 'TriggerJet\u00AE 22650-PP Niederdruck-Absperrventil (22650-PP)',
-            fr: 'TriggerJet\u00AE 22650-PP Vanne de d\u00E9clenchement basse pression (22650-PP)',
-            nl: 'TriggerJet\u00AE 22650-PP lagedruk triggerklep (22650-PP)'
+            en: '22650-PP',
+            de: '22650-PP',
+            fr: '22650-PP',
+            nl: '22650-PP'
           }
         }
       ],
@@ -4648,9 +4194,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1/2\u0022 and 3/4\u0022 Inlet Connections (AA122)'
-          }
+          value: { en: 'AA122' }
         }
       ],
       sortIndex: 209,
@@ -4668,9 +4212,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1/2\u0022 and 3/4\u0022 Inlet Connections with Mounting Holes (AA122ML)'
-          }
+          value: { en: 'AA122ML' }
         }
       ],
       sortIndex: 210,
@@ -4688,9 +4230,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1/4\u0022 to 2-1/2\u0022 Connections with Removable Bottom Plug for Easy Cleaning (TWD)'
-          }
+          value: { en: 'TWD' }
         }
       ],
       sortIndex: 211,
@@ -4708,9 +4248,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1-1/4\u0022 to 2-1/2\u0022 Connections (AA124)'
-          }
+          value: { en: 'AA124' }
         }
       ],
       sortIndex: 212,
@@ -4728,9 +4266,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1-1/4\u0022 to 2-1/2\u0022 Connections with Mounting Holes (AA124ML)'
-          }
+          value: { en: 'AA124ML' }
         }
       ],
       sortIndex: 213,
@@ -4748,9 +4284,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 1-1/4\u0022 to 2-1/2\u0022 Connections, Self-Cleaning Version (AA124SC)'
-          }
+          value: { en: 'AA124SC' }
         }
       ],
       sortIndex: 214,
@@ -4768,9 +4302,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 3/4\u0022 - 1-1/2\u0022 Connections with Mounting Holes and Removable Bottom Cap for Easy Cleaning (AA430ML)'
-          }
+          value: { en: 'AA430ML' }
         }
       ],
       sortIndex: 215,
@@ -4788,9 +4320,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 3/4\u0022 and 1\u0022 Connections (AA124A)'
-          }
+          value: { en: 'AA124A' }
         }
       ],
       sortIndex: 216,
@@ -4808,9 +4338,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 3/4\u0022 and 1\u0022 Connections, Self-Cleaning Version (AA124ASC)'
-          }
+          value: { en: 'AA124ASC' }
         }
       ],
       sortIndex: 217,
@@ -4828,9 +4356,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'T-Style Liquid Strainer, 3/4\u0022 to 1-1/2\u0022 Connections with Mounting Holes, Self-Cleaning Version (AA430MLSC)'
-          }
+          value: { en: 'AA430MLSC' }
         }
       ],
       sortIndex: 218,
@@ -4849,10 +4375,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Ultra-High Pressure Flat Spray Nozzle Assemblies (FS013, FS020)',
-            de: 'Ultrahochdruck-Flachspr\u00FChd\u00FCsenbaugruppen (FS013, FS020)',
-            fr: 'Ensembles de buses de pulv\u00E9risation plates \u00E0 ultra-haute pression (FS013, FS020)',
-            nl: 'Ultrahoge druk platte sproeikopassemblages (FS013, FS020)'
+            en: 'FS013, FS020',
+            de: 'FS013, FS020',
+            fr: 'FS013, FS020',
+            nl: 'FS013, FS020'
           }
         }
       ],
@@ -4872,10 +4398,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'Ultra-High Pressure Nozzle Bodies (58833, 58834)',
-            de: 'Ultrahochdruck-D\u00FCsenk\u00F6rper (58833, 58834)',
-            fr: 'Corps de buse ultra-haute pression (58833, 58834)',
-            nl: 'Ultrahogedrukmondhuizen (58833, 58834)'
+            en: '58833, 58834',
+            de: '58833, 58834',
+            fr: '58833, 58834',
+            nl: '58833, 58834'
           }
         }
       ],
@@ -4894,12 +4420,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Ultra-High Pressure Spray Tips - Up to 15,000 psi (1000 bar) (VS940)',
-            de: 'Ultrahochdruck-Spr\u00FChspitzen - Bis zu 15.000 psi (1000 bar) (VS940)',
-            fr: 'Embouts de pulv\u00E9risation ultra-haute pression - Jusqu\u2019\u00E0 15 000 psi (1000 bar) (VS940)',
-            nl: 'Ultrahogedruksproeitips - tot 15.000 psi (1000 bar) (VS940)'
-          }
+          value: { en: 'VS940', de: 'VS940', fr: 'VS940', nl: 'VS940' }
         }
       ],
       sortIndex: 221,
@@ -4917,12 +4438,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Ultra-High Pressure Spray Tips - Up to 17,500 psi (1200 bar) (VS625)',
-            de: 'Ultrahochdruck-Spr\u00FChspitzen - Bis zu 1200 bar (17.500 psi) (VS625)',
-            fr: 'Embouts de pulv\u00E9risation ultra-haute pression - Jusqu\u2019\u00E0 17 500 psi (1200 bar) (VS625)',
-            nl: 'Ultrahogedruksproeitips - Tot 17.500 psi (1200 bar) (VS625)'
-          }
+          value: { en: 'VS625', de: 'VS625', fr: 'VS625', nl: 'VS625' }
         }
       ],
       sortIndex: 222,
@@ -4940,12 +4456,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Ultra-High Pressure Spray Tips - Up to 20,000 psi (1400 bar) (VS010)',
-            de: 'Ultrahochdruck-Spr\u00FChspitzen - Bis zu 1400 bar (20.000 psi) (VS010)',
-            fr: 'Embouts de pulv\u00E9risation ultra-haute pression - Jusqu\u2019\u00E0 20 000 psi (1400 bar) (VS010)',
-            nl: 'Ultrahogedruksproeitips - Tot 20.000 psi (1400 bar) (VS010)'
-          }
+          value: { en: 'VS010', de: 'VS010', fr: 'VS010', nl: 'VS010' }
         }
       ],
       sortIndex: 223,
@@ -4963,12 +4474,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Ultra-High Pressure Spray Tips - Up to 30,000 psi (2000 bar) (VS020)',
-            de: 'Ultrahochdruck-Spr\u00FChspitzen - Bis zu 30.000 psi (2000 bar) (VS020)',
-            fr: 'Embouts de pulv\u00E9risation ultra-haute pression - Jusqu\u2019\u00E0 30 000 psi (2000 bar) (VS020)',
-            nl: 'Ultrahogedruksproeitips - Tot 30.000 psi (2000 bar) (VS020)'
-          }
+          value: { en: 'VS020', de: 'VS020', fr: 'VS020', nl: 'VS020' }
         }
       ],
       sortIndex: 224,
@@ -4986,12 +4492,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Ultra-High Pressure Spray Tips - Up to 60,000 psi (4000 bar) (VS051)',
-            de: 'Ultrahochdruck-Spr\u00FChspitzen - Bis zu 60.000 psi (4000 bar) (VS051)',
-            fr: 'Embouts de pulv\u00E9risation ultra-haute pression - Jusqu\u2019\u00E0 60 000 psi (4000 bar) (VS051)',
-            nl: 'Ultrahogedruksproeitips - tot 60.000 psi (4000 bar) (VS051)'
-          }
+          value: { en: 'VS051', de: 'VS051', fr: 'VS051', nl: 'VS051' }
         }
       ],
       sortIndex: 225,
@@ -5009,12 +4510,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Deflected Flat Spray Nozzle Systems - Wide Angle (TK)',
-            de: 'UniJet\u00AE Deflected Flat Spray D\u00FCsensysteme - Weitwinkel (TK)',
-            fr: 'Syst\u00E8mes de buses de pulv\u00E9risation plates d\u00E9vi\u00E9es UniJet\u00AE - Grand Angle (TK)',
-            nl: 'UniJet\u00AE afgebogen platte sproeikopsystemen - groothoek (TK)'
-          }
+          value: { en: 'TK', de: 'TK', fr: 'TK', nl: 'TK' }
         }
       ],
       sortIndex: 226,
@@ -5032,9 +4528,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Flat Spray Nozzle Systems - High Pressure - EG (EG)'
-          }
+          value: { en: 'EG' }
         }
       ],
       sortIndex: 227,
@@ -5052,12 +4546,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Flat Spray Nozzle Systems - Self-Aligning (13802)',
-            de: 'UniJet\u00AE Flachspr\u00FChd\u00FCsensysteme - Selbstausrichtend (13802)',
-            fr: 'Syst\u00E8mes de buses de pulv\u00E9risation plates UniJet\u00AE - Auto-alignant (13802)',
-            nl: 'UniJet\u00AE platte sproeikopsystemen - zelfuitlijnend (13802)'
-          }
+          value: { en: '13802', de: '13802', fr: '13802', nl: '13802' }
         }
       ],
       sortIndex: 228,
@@ -5075,9 +4564,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full And Hollow Cone Nozzle Systems - Disk-Type - Spray Tip (D Spray Tip)'
-          }
+          value: { en: 'D Spray Tip' }
         }
       ],
       sortIndex: 229,
@@ -5095,9 +4582,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full And Hollow Cone Nozzle Systems - Disk-Type - Spray Tip \u002B Body (D Spray Tip \u002B T(T) Body)'
-          }
+          value: { en: 'D Spray Tip \u002B T(T) Body' }
         }
       ],
       sortIndex: 230,
@@ -5115,12 +4600,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full Cone Nozzle Systems (TG)',
-            de: 'UniJet\u00AE Full Cone D\u00FCsensysteme (TG)',
-            fr: 'Syst\u00E8mes de buses \u00E0 c\u00F4ne complet UniJet\u00AE (TG)',
-            nl: 'UniJet\u00AE Full Cone Nozzle Systemen (TG)'
-          }
+          value: { en: 'TG', de: 'TG', fr: 'TG', nl: 'TG' }
         }
       ],
       sortIndex: 231,
@@ -5138,12 +4618,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full Cone Nozzle Systems - Square Spray (TG-SQ)',
-            de: 'UniJet\u00AE Full Cone D\u00FCsensysteme - Square Spray (TG-SQ)',
-            fr: 'Syst\u00E8mes de buses \u00E0 c\u00F4ne complet UniJet\u00AE - Square Spray (TG-SQ)',
-            nl: 'UniJet\u00AE Full Cone Nozzle Systemen - Square Spray (TG-SQ)'
-          }
+          value: { en: 'TG-SQ', de: 'TG-SQ', fr: 'TG-SQ', nl: 'TG-SQ' }
         }
       ],
       sortIndex: 232,
@@ -5161,12 +4636,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full Cone Nozzle Systems - Wide Angle Spray (TG-W)',
-            de: 'UniJet\u00AE Vollkegeld\u00FCsensysteme - Weitwinkelspray (TG-W)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet UniJet\u00AE - Spray grand angle (TG-W)',
-            nl: 'UniJet\u00AE Full Cone Nozzle Systems - Groothoek spray (TG-W)'
-          }
+          value: { en: 'TG-W', de: 'TG-W', fr: 'TG-W', nl: 'TG-W' }
         }
       ],
       sortIndex: 233,
@@ -5184,12 +4654,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Full Cone Nozzle Systems - Wide Angle Spray - One-piece Tip/Retainer (TH-W)',
-            de: 'UniJet\u00AE Full Cone D\u00FCsensysteme - Weitwinkelspray - Einteilige Spitze/Halterung (TH-W)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne complet UniJet\u00AE - Spray grand angle - Embout / dispositif de retenue monobloc (TH-W)',
-            nl: 'UniJet\u00AE Full Cone Nozzle Systems - Groothoekspray - Tip/Retainer uit \u00E9\u00E9n stuk (TH-W)'
-          }
+          value: { en: 'TH-W', de: 'TH-W', fr: 'TH-W', nl: 'TH-W' }
         }
       ],
       sortIndex: 234,
@@ -5207,12 +4672,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Hollow Cone Nozzle Systems (TX)',
-            de: 'UniJet\u00AE Hohlkegeld\u00FCsensysteme (TX)',
-            fr: 'Syst\u00E8mes de buses \u00E0 c\u00F4ne creux UniJet\u00AE (TX)',
-            nl: 'UniJet\u00AE Holle Conus Nozzle Systemen (TX)'
-          }
+          value: { en: 'TX', de: 'TX', fr: 'TX', nl: 'TX' }
         }
       ],
       sortIndex: 235,
@@ -5230,12 +4690,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Hollow Cone Nozzle Systems - Fine Spray (TN)',
-            de: 'UniJet\u00AE Hohlkegeld\u00FCsensysteme - Feinspray (TN)',
-            fr: 'Syst\u00E8mes de buses \u00E0 c\u00F4ne creux UniJet\u00AE - Fine Spray (TN)',
-            nl: 'UniJet\u00AE Hollow Cone Nozzle Systems - Fijnspray (TN)'
-          }
+          value: { en: 'TN', de: 'TN', fr: 'TN', nl: 'TN' }
         }
       ],
       sortIndex: 236,
@@ -5253,12 +4708,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Hollow Cone Nozzle Systems - Fine Spray - SSTC Insert (TN-SSTC)',
-            de: 'UniJet\u00AE Hohlkegeld\u00FCsensysteme - Feinspray - SSTC-Einsatz (TN-SSTC)',
-            fr: 'Syst\u00E8mes de buses \u00E0 c\u00F4ne creux UniJet\u00AE - Fine Spray - SSTC Insert (TN-SSTC)',
-            nl: 'UniJet\u00AE Holle Conus Nozzle Systemen - Fijn Spray - SSTC Insert (TN-SSTC)'
-          }
+          value: { en: 'TN-SSTC', de: 'TN-SSTC', fr: 'TN-SSTC', nl: 'TN-SSTC' }
         }
       ],
       sortIndex: 237,
@@ -5276,12 +4726,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Hollow Cone Nozzle Systems - Fine Spray - Wide Angle Spray (T-W)',
-            de: 'UniJet\u00AE Hohlkegeld\u00FCsensysteme - Feinspray - Weitwinkelspray (T-W)',
-            fr: 'Syst\u00E8mes de buse \u00E0 c\u00F4ne creux UniJet\u00AE - Spray fin - Spray grand angle (T-W)',
-            nl: 'UniJet\u00AE Hollow Cone Nozzle Systems - Fijne Spray - Groothoek Spray (T-W)'
-          }
+          value: { en: 'T-W', de: 'T-W', fr: 'T-W', nl: 'T-W' }
         }
       ],
       sortIndex: 238,
@@ -5299,12 +4744,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Nozzle Bodies (T, TT)',
-            de: 'UniJet\u00AE D\u00FCsengeh\u00E4use (T, TT)',
-            fr: 'Corps de buse UniJet\u00AE (T, TT)',
-            nl: 'UniJet\u00AE Nozzle Behuizingen (T, TT)'
-          }
+          value: { en: 'T, TT', de: 'T, TT', fr: 'T, TT', nl: 'T, TT' }
         }
       ],
       sortIndex: 239,
@@ -5322,12 +4762,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Nozzle Body - High Pressure (11430)',
-            de: 'UniJet\u00AE D\u00FCsenk\u00F6rper - Hochdruck (11430)',
-            fr: 'Corps de buse UniJet\u00AE - Haute pression (11430)',
-            nl: 'UniJet\u00AE Nozzle Body - Hoge Druk (11430)'
-          }
+          value: { en: '11430', de: '11430', fr: '11430', nl: '11430' }
         }
       ],
       sortIndex: 240,
@@ -5345,9 +4780,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet\u00AE Nozzle Systems - Medium Flow - TPU (TPU)'
-          }
+          value: { en: 'TPU' }
         }
       ],
       sortIndex: 241,
@@ -5365,7 +4798,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Unspecified Model (Unspecified Model)' }
+          value: { en: 'Unspecified Model' }
         }
       ],
       sortIndex: 242,
@@ -5383,9 +4816,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VAA, VAU Air Atomizing Air Caps (VAA, VAU Air Atomizing Air Caps)'
-          }
+          value: { en: 'VAA, VAU Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 243,
@@ -5403,9 +4834,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VAA, VAU Air Atomizing Assemblies (VAA, VAU Air Atomizing Assemblies)'
-          }
+          value: { en: 'VAA, VAU Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 244,
@@ -5423,9 +4852,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VAA, VAU Air Atomizing Bodies (VAA, VAU Air Atomizing Bodies)'
-          }
+          value: { en: 'VAA, VAU Air Atomizing Bodies' }
         }
       ],
       sortIndex: 245,
@@ -5443,9 +4870,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VAA, VAU Air Atomizing Fluid Caps (VAA, VAU Air Atomizing Fluid Caps)'
-          }
+          value: { en: 'VAA, VAU Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 246,
@@ -5463,9 +4888,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VAA, VAU Air Atomizing Setups (VAA, VAU Air Atomizing Setups)'
-          }
+          value: { en: 'VAA, VAU Air Atomizing Setups' }
         }
       ],
       sortIndex: 247,
@@ -5483,9 +4906,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VeeJet\u00AE Flat Spray And Solid Stream Nozzles - Medium Flow (H-U, H-DU)'
-          }
+          value: { en: 'H-U, H-DU' }
         }
       ],
       sortIndex: 248,
@@ -5504,10 +4925,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'VeeJet\u00AE Flat Spray Nozzles - Low Flow (H-VV, H-DT)',
-            de: 'VeeJet\u00AE Flachspr\u00FChd\u00FCsen - Low Flow (H-VV, H-DT)',
-            fr: 'Buses de pulv\u00E9risation plates VeeJet\u00AE - Faible d\u00E9bit (H-VV, H-DT)',
-            nl: 'VeeJet\u00AE platte sproeikoppen - Laag debiet (H-VV, H-DT)'
+            en: 'H-VV, H-DT',
+            de: 'H-VV, H-DT',
+            fr: 'H-VV, H-DT',
+            nl: 'H-VV, H-DT'
           }
         }
       ],
@@ -5526,12 +4947,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VeeJet\u00AE Flat Spray Nozzles - Low Flow - Integral Strainer (H-VVL)',
-            de: 'VeeJet\u00AE Flachspr\u00FChd\u00FCsen - Low Flow - Integrales Sieb (H-VVL)',
-            fr: 'Buses de pulv\u00E9risation plates VeeJet\u00AE - Faible d\u00E9bit - Cr\u00E9pine int\u00E9grale (H-VVL)',
-            nl: 'VeeJet\u00AE platte sproeikoppen - Low Flow - Ge\u00EFntegreerde zeef (H-VVL)'
-          }
+          value: { en: 'H-VVL', de: 'H-VVL', fr: 'H-VVL', nl: 'H-VVL' }
         }
       ],
       sortIndex: 250,
@@ -5549,7 +4965,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'VeeJet\u00AE Nozzles - High Flow - U (U)' }
+          value: { en: 'U' }
         }
       ],
       sortIndex: 251,
@@ -5567,9 +4983,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VMAU Air Atomizing Air Caps (VMAU Air Atomizing Air Caps)'
-          }
+          value: { en: 'VMAU Air Atomizing Air Caps' }
         }
       ],
       sortIndex: 252,
@@ -5587,9 +5001,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VMAU Air Atomizing Assemblies (VMAU Air Atomizing Assemblies)'
-          }
+          value: { en: 'VMAU Air Atomizing Assemblies' }
         }
       ],
       sortIndex: 253,
@@ -5607,9 +5019,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VMAU Air Atomizing Bodies (VMAU Air Atomizing Bodies)'
-          }
+          value: { en: 'VMAU Air Atomizing Bodies' }
         }
       ],
       sortIndex: 254,
@@ -5627,9 +5037,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VMAU Air Atomizing Fluid Caps (VMAU Air Atomizing Fluid Caps)'
-          }
+          value: { en: 'VMAU Air Atomizing Fluid Caps' }
         }
       ],
       sortIndex: 255,
@@ -5647,9 +5055,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VMAU Air Atomizing Setups (VMAU Air Atomizing Setups)'
-          }
+          value: { en: 'VMAU Air Atomizing Setups' }
         }
       ],
       sortIndex: 256,
@@ -5667,12 +5073,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WashJet\u00AE Extra High Impact - Quick-Connect Spray Tips (QCIMEG)',
-            de: 'WashJet\u00AE Extra High Impact - Schnellverschluss-Spr\u00FChspitzen (QCIMEG)',
-            fr: 'WashJet\u00AE Extra High Impact - Conseils de pulv\u00E9risation Quick-Connect (QCIMEG)',
-            nl: 'WashJet\u00AE Extra High Impact - Quick-Connect Spuittips (QCIMEG)'
-          }
+          value: { en: 'QCIMEG', de: 'QCIMEG', fr: 'QCIMEG', nl: 'QCIMEG' }
         }
       ],
       sortIndex: 257,
@@ -5690,12 +5091,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WashJet\u00AE Extra High Impact Flat Spray Nozzles (IMEG)',
-            de: 'WashJet\u00AE Extra High Impact Flachspr\u00FChd\u00FCsen (IMEG)',
-            fr: 'Buses de pulv\u00E9risation plates WashJet\u00AE Extra High Impact (IMEG)',
-            nl: 'WashJet\u00AE Extra High Impact Platte Sproeikoppen (IMEG)'
-          }
+          value: { en: 'IMEG', de: 'IMEG', fr: 'IMEG', nl: 'IMEG' }
         }
       ],
       sortIndex: 258,
@@ -5713,9 +5109,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WashJet\u00AE High Impact Nozzles - Quick-Connect Spray Tips - MEG/WEG (MEG, WEG)'
-          }
+          value: { en: 'MEG, WEG' }
         }
       ],
       sortIndex: 259,
@@ -5733,9 +5127,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WashJet\u00AE High Impact Nozzles - Quick-Connect Spray Tips - MEG-SSTC (MEG-SSTC)'
-          }
+          value: { en: 'MEG-SSTC' }
         }
       ],
       sortIndex: 260,
@@ -5753,9 +5145,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WashJet\u00AE High Impact Nozzles - Quick-Connect Spray Tips - QCMEG (QCMEG)'
-          }
+          value: { en: 'QCMEG' }
         }
       ],
       sortIndex: 261,
@@ -5773,12 +5163,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles (AX, BX)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen (AX, BX)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE (AX, BX)',
-            nl: 'WhirlJet\u00AE Holle Conus Nozzles (AX, BX)'
-          }
+          value: { en: 'AX, BX', de: 'AX, BX', fr: 'AX, BX', nl: 'AX, BX' }
         }
       ],
       sortIndex: 262,
@@ -5796,12 +5181,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Cast - Flanged (CF)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - gegossen - Flansch (CF)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Cast - \u00C0 bride (CF)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Gegoten - Flens (CF)'
-          }
+          value: { en: 'CF', de: 'CF', fr: 'CF', nl: 'CF' }
         }
       ],
       sortIndex: 263,
@@ -5819,12 +5199,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Cast - One-piece (D)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Guss - Einteilig (D)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Cast - Monobloc (D)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Gegoten - Eendelig (D)'
-          }
+          value: { en: 'D', de: 'D', fr: 'D', nl: 'D' }
         }
       ],
       sortIndex: 264,
@@ -5842,12 +5217,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Cast - One-piece - Slope-bottom (CX)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Guss - Einteilig - Hangboden (CX)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Cast - Monobloc - Fond de pente (CX)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Gegoten - Eendelig - Hellingsbodem (CX)'
-          }
+          value: { en: 'CX', de: 'CX', fr: 'CX', nl: 'CX' }
         }
       ],
       sortIndex: 265,
@@ -5865,12 +5235,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Cast - Two-piece (CRC)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - gegossen - zweiteilig (CRC)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Cast - Deux pi\u00E8ces (CRC)',
-            nl: 'WhirlJet\u00AE Hollow Cone Nozzles - Gegoten - Tweedelig (CRC)'
-          }
+          value: { en: 'CRC', de: 'CRC', fr: 'CRC', nl: 'CRC' }
         }
       ],
       sortIndex: 266,
@@ -5888,12 +5253,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Extra Wide Angle Spray (E)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Extra Weitwinkelspray (E)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Spray extra grand angle (E)',
-            nl: 'WhirlJet\u00AE Hollow Cone Nozzles - Extra Wide Angle Spray (E)'
-          }
+          value: { en: 'E', de: 'E', fr: 'E', nl: 'E' }
         }
       ],
       sortIndex: 267,
@@ -5911,12 +5271,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Inline Style (BD)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Inline-Stil (BD)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Style en ligne (BD)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Inline Style (BD)'
-          }
+          value: { en: 'BD', de: 'BD', fr: 'BD', nl: 'BD' }
         }
       ],
       sortIndex: 268,
@@ -5934,12 +5289,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Inline Style - Nylon Body (BDM)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Inline Style - Nylonk\u00F6rper (BDM)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Style en ligne - Corps en nylon (BDM)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Inline Style - Nylon Body (BDM)'
-          }
+          value: { en: 'BDM', de: 'BDM', fr: 'BDM', nl: 'BDM' }
         }
       ],
       sortIndex: 269,
@@ -5957,12 +5307,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Offset Style (BA)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Offset-Stil (BA)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Style d\u00E9cal\u00E9 (BA)',
-            nl: 'WhirlJet\u00AE Holle Conus Nozzles - Offset Stijl (BA)'
-          }
+          value: { en: 'BA', de: 'BA', fr: 'BA', nl: 'BA' }
         }
       ],
       sortIndex: 270,
@@ -5981,10 +5326,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Polypropylene (AP, LAP, LBP)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Polypropylen (AP, LAP, LBP)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Polypropyl\u00E8ne (AP, LAP, LBP)',
-            nl: 'WhirlJet\u00AE Hollow Cone Nozzles - Polypropyleen (AP, LAP, LBP)'
+            en: 'AP, LAP, LBP',
+            de: 'AP, LAP, LBP',
+            fr: 'AP, LAP, LBP',
+            nl: 'AP, LAP, LBP'
           }
         }
       ],
@@ -6004,10 +5349,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Wide Angle Spray (AX-W, BX-W)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Weitwinkelspray (AX-W, BX-W)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Spray grand angle (AX-W, BX-W)',
-            nl: 'WhirlJet\u00AE Hollow Cone Nozzles - Groothoek Spray (AX-W, BX-W)'
+            en: 'AX-W, BX-W',
+            de: 'AX-W, BX-W',
+            fr: 'AX-W, BX-W',
+            nl: 'AX-W, BX-W'
           }
         }
       ],
@@ -6026,12 +5371,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Wide Angle Spray - Inline Style (BD-W)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Weitwinkelspray - Inline-Stil (BD-W)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Spray grand angle - Style en ligne (BD-W)',
-            nl: 'WhirlJet\u00AE Holle Kegel Nozzles - Groothoek Spray - Inline Style (BD-W)'
-          }
+          value: { en: 'BD-W', de: 'BD-W', fr: 'BD-W', nl: 'BD-W' }
         }
       ],
       sortIndex: 273,
@@ -6050,10 +5390,10 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
           variation: 'Invariant',
           unitSymbol: null,
           value: {
-            en: 'WhirlJet\u00AE Hollow Cone Nozzles - Wide Angle Spray - Polypropylene (AP-W, LAP-W, LBP-W)',
-            de: 'WhirlJet\u00AE Hohlkegeld\u00FCsen - Weitwinkelspray - Polypropylen (AP-W, LAP-W, LBP-W)',
-            fr: 'Buses \u00E0 c\u00F4ne creux WhirlJet\u00AE - Spray grand angle - Polypropyl\u00E8ne (AP-W, LAP-W, LBP-W)',
-            nl: 'WhirlJet\u00AE Hollow Cone Nozzles - Wide Angle Spray - Polypropyleen (AP-W, LAP-W, LBP-W)'
+            en: 'AP-W, LAP-W, LBP-W',
+            de: 'AP-W, LAP-W, LBP-W',
+            fr: 'AP-W, LAP-W, LBP-W',
+            nl: 'AP-W, LAP-W, LBP-W'
           }
         }
       ],
@@ -6072,9 +5412,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WindJet\u00AE Compact Flat Fan Air Nozzle, ABS (Y767)'
-          }
+          value: { en: 'Y767' }
         }
       ],
       sortIndex: 275,
@@ -6092,9 +5430,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WindJet\u00AE Flat Fan Air Nozzle, ABS / PPS / Stainless Steel (AA727)'
-          }
+          value: { en: 'AA727' }
         }
       ],
       sortIndex: 276,
@@ -6112,7 +5448,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'WindJet\u00AE Flat Fan Air Nozzle, Aluminum (Y727)' }
+          value: { en: 'Y727' }
         }
       ],
       sortIndex: 277,
@@ -6130,9 +5466,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WindJet\u00AE Flat Fan Air Nozzle, Food Grade PVDF (DAA727)'
-          }
+          value: { en: 'DAA727' }
         }
       ],
       sortIndex: 278,
@@ -6150,12 +5484,7 @@ export const modelIdFacetOptions: FacetOption<ModelIdFacetOptionKey>[] = [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'WindJet\u00AE Round Spray Air Nozzle (AA707)',
-            de: 'WindJet\u00AE Runde Spr\u00FChluftd\u00FCse (AA707)',
-            fr: 'Buse d\u2019air windJet\u00AE Round Spray (AA707)',
-            nl: 'WindJet\u00AE ronde sproeikop (AA707)'
-          }
+          value: { en: 'AA707', de: 'AA707', fr: 'AA707', nl: 'AA707' }
         }
       ],
       sortIndex: 279,

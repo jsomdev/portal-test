@@ -16,10 +16,10 @@ export async function fetchMyQuotes(
   );
   const data: OdataCollection<Quote> = await requestResource.getEntities({
     includeCount: true,
-    selectQuery: 'id,name,number,contactInfo,totalAmount,currencyCode',
+    selectQuery: 'id,number,issuedOn,totalAmount,currencyCode',
     expandQuery:
-      'notes,lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,name,number,slug;$expand=image($select=url)))',
-    //orderbyQuery: 'createdOn desc',
+      'lines($select=productId,productName,quantity,productNumber;$expand=product($select=id,name,number,slug;$expand=image($select=url)))',
+    orderbyQuery: 'issuedOn desc',
     top,
     skip
   });
@@ -37,15 +37,11 @@ export async function fetchMyQuote(
   const requestResource = new BaseResource<Quote>(
     useAccountQuotes ? '/me/account/quotes' : '/me/quotes'
   );
-  const data: Quote = await requestResource.getEntity(
-    quoteId,
-
-    {
-      selectQuery:
-        'id,name,number,contactInfo,emailAddresses,address,totalAmount,currencyCode',
-      expandQuery:
-        'notes,lines($select=productId,productName,quantity,unitAmount,totalAmount,productNumber,currencyCode;$expand=product($select=id,slug;$expand=image($select=url)))'
-    }
-  );
+  const data: Quote = await requestResource.getEntity(quoteId, {
+    selectQuery:
+      'id,name,number,contactInfo,issuedOn,emailAddresses,address,totalAmount,currencyCode',
+    expandQuery:
+      'notes,lines($select=productId,productName,quantity,unitAmount,totalAmount,productNumber,currencyCode;$expand=product($select=id,slug;$expand=image($select=url)))'
+  });
   return data;
 }

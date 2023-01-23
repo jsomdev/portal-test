@@ -557,7 +557,7 @@ export const nl: Messages = {
         detailPageError:
           'Er is een fout opgetreden bij het plaatsen van uw bestelling.',
         confirmationText:
-          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.',
+          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-957-7729.',
         overviewEmpty: 'Er zijn geen bestellingen gevonden.',
         overviewError:
           'Er is een fout opgetreden bij het laden van de bestellingen.'
@@ -571,7 +571,7 @@ export const nl: Messages = {
         viewAllLines:
           '{number, plural,=0 {Geen aanvullende producten} one {Toon 1 product meer} other {Toon {number} meer producten}}',
         confirmationText:
-          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-9577729.',
+          'Voel je vrij om contact op te nemen met de klantenservice als je vragen hebt. Een klantenservice medewerker staat klaar om u te helpen op 0800-957-7729.',
         confirmationTitle: 'Bedankt! Uw oferteaanvraag is succesvol ingediend',
         detailsHeader: 'Adres- en contact gegevens',
         addressHeader: 'Klant details',
@@ -798,6 +798,7 @@ export const nl: Messages = {
           firstName: 'Voornaam',
           name: 'Familienaam',
           company: 'Bedrijf',
+          jobTitle: 'Functie',
           companyPlaceholder: 'Bedrijfsnaam',
           country: 'Land',
           countryPlaceholder: 'Selecteer een land',
@@ -911,7 +912,7 @@ export const nl: Messages = {
           'mailto:webteam@spray.com?subject=Ik kon geen resultaten vinden voor...',
         send: 'Stuur ons uw feedback',
         subText:
-          'Neem gerust contact op met de klantenservice als je vragen hebt. Een medewerker van de klantenservice staat klaar op 1-800-9577729.',
+          'Neem gerust contact op met de klantenservice als je vragen hebt. Een medewerker van de klantenservice staat klaar op 1-800-957-7729.',
         default: {
           title:
             'Er gebeurde iets onverwachts! Neem contact op met de klantenservice.'

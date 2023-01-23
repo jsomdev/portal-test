@@ -15,6 +15,7 @@ import {
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { messageIds } from '@services/i18n';
+import { Display } from '@services/portal-api';
 import { rem } from '@utilities/rem';
 
 export interface CheckboxFacetPanelProps {
@@ -95,8 +96,8 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
     }
   };
 
-  function testSearchInput(option: string): boolean {
-    const optionLowerCase = option.trim().toLowerCase();
+  function testSearchInput(optionDisplays: Display[]): boolean {
+    const optionLowerCase = JSON.stringify(optionDisplays).trim().toLowerCase();
     const panelSearchValueLowerCase = panelSearchValue.trim().toLowerCase();
     if (panelSearchValue.trim().length > 0) {
       return optionLowerCase.includes(panelSearchValueLowerCase);
@@ -131,7 +132,9 @@ export const CheckboxFacetPanel: React.FC<CheckboxFacetPanelProps> = ({
       onRenderHeader={onRenderPanelHeader}
     >
       {options
-        .filter((option: FacetOption) => testSearchInput(option.key))
+        .filter((option: FacetOption) =>
+          testSearchInput(option.configuration.displays)
+        )
         .map(option => {
           return onRenderCheckbox(option);
         })}

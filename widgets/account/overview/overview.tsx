@@ -137,7 +137,7 @@ export const Overview: React.FC = () => {
   const styles: OverviewStyles = {
     welcomeSection: {
       root: {
-        backgroundColor: palette.neutralLighter,
+        backgroundColor: palette.neutralLight,
         padding: spacing.l1,
         borderRadius: effects.roundedCorner4
       }
@@ -165,14 +165,13 @@ export const Overview: React.FC = () => {
               })}
             </Text>
           </Stack.Item>
-          <Stack.Item>
-            {me?.contactInfo?.jobTitle && (
-              <Text
-                styles={styles.subHeader}
-              >{`${me.contactInfo.jobTitle}, `}</Text>
-            )}
-            {<Text styles={styles.subHeader}>{`${me?.account?.name}`}</Text>}
-          </Stack.Item>
+          {me?.contactInfo?.jobTitle && me?.account?.name && (
+            <Stack.Item>
+              <Text styles={styles.subHeader}>
+                {`${me.contactInfo.jobTitle}, ${me.account.name}`}
+              </Text>
+            </Stack.Item>
+          )}
         </Stack>
         <Stack tokens={{ childrenGap: spacing.m }}>
           <AccountOverviewTags />

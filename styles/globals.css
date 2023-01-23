@@ -358,3 +358,7 @@ header {
     opacity: 1;
   }
 }
+
+main {
+  min-height: 80vh;
+}

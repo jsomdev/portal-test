@@ -26,6 +26,7 @@ import { ProductCompareProvider } from '@widgets/compare/productCompareProvider'
 import { MediaContextProvider } from '@widgets/media-queries/media';
 import { AppThemeProvider } from '@widgets/themes/appThemeProvider';
 
+import '../public/klaro.css';
 import '../public/nprogress.css';
 
 initializeIcons();

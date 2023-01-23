@@ -21,6 +21,7 @@ const messages = defineMessages({
     defaultMessage: 'Purchase Order'
   }
 });
+
 export function getPaymentMethodOptions(
   paymentMethod: PaymentMethod | undefined | null,
   fields: StepFields<

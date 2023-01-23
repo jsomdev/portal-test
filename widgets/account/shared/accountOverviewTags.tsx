@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -25,40 +25,52 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.account.status.admin,
     description: 'admin tag',
     defaultMessage: 'Admin'
-  },
-  accountVerified: {
-    id: messageIds.pages.account.overview.account.status.verified,
-    description: 'verified tag',
-    defaultMessage: 'Verified'
-  },
-  accountCustomer: {
-    id: messageIds.pages.account.overview.account.status.customer,
-    description: 'customer tag',
-    defaultMessage: 'Customer'
   }
 });
 
 export const AccountOverviewTags: React.FC = () => {
   const intl = useIntl();
+  const { formatMessage } = intl;
   const { isAccountManager, isAdministrator, isEmployee } = useClaims();
   const { spacing } = useTheme();
   const { me } = useMe();
+
+  const tags: string[] = useMemo(() => {
+    const list: string[] = [];
+    if (isAccountManager) {
+      list.push(formatMessage(messages.accountManager));
+    }
+    if (isAdministrator) {
+      list.push(formatMessage(messages.accountAdmin));
+    }
+    if (isEmployee) {
+      list.push(formatMessage(messages.accountEmployee));
+    }
+    if (
+      me?.account?.paymentMethod !== null &&
+      me?.account?.paymentMethod !== undefined
+    ) {
+      list.push(getPaymentMethodText(intl, me.account.paymentMethod));
+    }
+    return list;
+  }, [
+    formatMessage,
+    intl,
+    isAccountManager,
+    isAdministrator,
+    isEmployee,
+    me?.account?.paymentMethod
+  ]);
+
+  if (!tags.length) {
+    return null;
+  }
+
   return (
-    <Stack horizontal tokens={{ childrenGap: spacing.s1 }}>
-      {isAccountManager && (
-        <OverviewTag text={intl.formatMessage(messages.accountManager)} />
-      )}
-      {isAdministrator && (
-        <OverviewTag text={intl.formatMessage(messages.accountAdmin)} />
-      )}
-      {isEmployee && (
-        <OverviewTag text={intl.formatMessage(messages.accountEmployee)} />
-      )}
-      {me?.account?.paymentMethod && (
-        <OverviewTag
-          text={getPaymentMethodText(intl, me.account.paymentMethod)}
-        />
-      )}
+    <Stack horizontal wrap tokens={{ childrenGap: spacing.s1 }}>
+      {tags.map(tag => {
+        return <OverviewTag key={tag} text={tag} />;
+      })}
     </Stack>
   );
 };

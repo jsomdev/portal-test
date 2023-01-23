@@ -12,8 +12,6 @@ import { MessageBarType, Stack, Text, useTheme } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
-import { Order } from '@services/portal-api';
-import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchMyOrders } from '@services/portal-api/orders';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { scrollToTop } from '@utilities/scrollToTop';
