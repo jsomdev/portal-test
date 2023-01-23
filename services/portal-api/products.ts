@@ -358,7 +358,7 @@ export async function getDesignsForDetailedCompare(
         .map(number => `number eq '${encodeURIComponent(number)}'`)
         .join(' or ')}`,
       selectQuery: 'id,name,description,number,slug',
-      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions,sortIndex,value,displays,settings)`
+      expandQuery: `image($select=url),attributes($select=id,typeCode,groupCode,conditions($orderby=typeCode asc),sortIndex,value,displays,settings)`
     };
 
     const products: OdataCollection<Product> =

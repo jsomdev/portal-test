@@ -13,6 +13,7 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
+import { useTabletAndDesktop } from '@widgets/media-queries';
 
 import { useProductCompare } from '../productCompareContext';
 import { ComparisonPopupStyles } from './comparisonPopup.types';
@@ -46,6 +47,7 @@ const messages = defineMessages({
 export const ComparisonPopup: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const { palette, spacing, effects } = useTheme();
+  const tabletAndDesktop = useTabletAndDesktop();
   const { formatMessage } = useIntl();
   const { products, removeProduct, getUrl, clearProducts } =
     useProductCompare();
@@ -78,7 +80,7 @@ export const ComparisonPopup: React.FC = () => {
         backgroundColor: palette.white,
         border: `1px solid ${palette.neutralLight}`,
         boxShadow: showPopup ? boxShadowVisible : boxShadowHidden,
-        zIndex: 5,
+        zIndex: 3,
         '@media(max-width: 425px)': {
           right: 0,
           width: '100vw'
@@ -149,7 +151,7 @@ export const ComparisonPopup: React.FC = () => {
     }
   };
 
-  if (products.length < 1) {
+  if (products.length < 1 || !tabletAndDesktop) {
     return null;
   }
 

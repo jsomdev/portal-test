@@ -5,7 +5,6 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { ErrorMessage } from '@components/errors/errorMessage';
 import { StickyThumbContainer } from '@components/sticky/stickyThumbContainer';
-import { TrustFactors } from '@components/trust-factor/trustFactor';
 import {
   IPanelStyles,
   IStackItemStyles,

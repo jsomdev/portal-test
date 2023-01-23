@@ -15,7 +15,7 @@ export function scrollToTop(
        * If needed to polyfill please refer to this stackOverflow  (saved for future reference: https://stackoverflow.com/questions/52276194/window-scrollto-with-options-not-working-on-microsoft-edge)
        */
       if (typeof element.scrollIntoView === 'function') {
-        element.scrollIntoView({ behavior });
+        element.scrollIntoView({ behavior, block: 'start' });
       } else {
         console.warn(
           'Element.scrollIntoView is not supported. A possible reason could be that you are using an outdated browser / browser version'

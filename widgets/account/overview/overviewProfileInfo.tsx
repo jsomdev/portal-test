@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
 import { NextLink } from '@components/link/nextLink';

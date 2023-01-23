@@ -22,6 +22,9 @@ import { useMe } from '@providers/user/userContext';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
 import pagePaths from '@utilities/pagePaths';
+import { Mobile } from '@widgets/media-queries';
+
+import { CartStickyThumb } from './cartStickyThumb';
 
 interface CartSummaryActionsStyles {
   request: IStackStyles;
@@ -250,7 +253,6 @@ export const CartSummaryActions: React.FC = () => {
                 <Stack
                   horizontal
                   verticalAlign="center"
-                  tokens={{ childrenGap: spacing.s2 }}
                   root={{ ref: calloutAnchor }}
                 >
                   <ActionButton
@@ -261,6 +263,9 @@ export const CartSummaryActions: React.FC = () => {
                   >
                     {formatMessage(messages.quotedPriceWarning)}
                   </ActionButton>
+                  <Mobile>
+                    <CartStickyThumb />
+                  </Mobile>
                 </Stack>
                 {showCallout && (
                   <Callout
@@ -270,10 +275,7 @@ export const CartSummaryActions: React.FC = () => {
                     gapSpace={3}
                     isBeakVisible={true}
                   >
-                    <Stack
-                      tokens={{ childrenGap: spacing.l1 }}
-                      styles={styles.callout}
-                    >
+                    <Stack styles={styles.callout}>
                       <Stack.Item>
                         <Text>
                           {formatMessage(messages.quotedPriceWarningTooltip)}
@@ -299,6 +301,9 @@ export const CartSummaryActions: React.FC = () => {
               styles={styles.primaryButton}
               disabled={true}
             />
+            <Mobile>
+              <CartStickyThumb />
+            </Mobile>
           </Stack.Item>
         </Stack>
       </Stack.Item>

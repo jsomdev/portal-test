@@ -137,7 +137,7 @@ export const Overview: React.FC = () => {
   const styles: OverviewStyles = {
     welcomeSection: {
       root: {
-        backgroundColor: palette.neutralLight,
+        backgroundColor: palette.themeLighterAlt,
         padding: spacing.l1,
         borderRadius: effects.roundedCorner4
       }

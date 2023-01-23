@@ -1,4 +1,4 @@
-import React, { FC, useContext, useMemo } from 'react';
+import { FC, useContext, useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -15,7 +15,6 @@ import {
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
-import { TabletAndDesktop } from '@widgets/media-queries';
 
 import { ProductCompareContext } from '../productCompareContext';
 
@@ -126,17 +125,15 @@ export const ProductCompareButton: FC<ProductCompareButtonProps> = ({
           }
         }}
       />
-      <TabletAndDesktop>
-        {products.length > 1 && checked && (
-          <NextLink href={getUrl()} passHref>
-            <a>
-              <Text styles={styles.seeComparison}>
-                {formatMessage(messages.seeComparison)}
-              </Text>
-            </a>
-          </NextLink>
-        )}
-      </TabletAndDesktop>
+      {products.length > 1 && checked && (
+        <NextLink href={getUrl()} passHref>
+          <a>
+            <Text styles={styles.seeComparison}>
+              {formatMessage(messages.seeComparison)}
+            </Text>
+          </a>
+        </NextLink>
+      )}
     </Stack>
   );
 };

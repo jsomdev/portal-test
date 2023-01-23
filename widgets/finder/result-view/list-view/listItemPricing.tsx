@@ -66,6 +66,11 @@ const messages = defineMessages({
     description: 'Text to let the user know a bulk discount is applied',
     defaultMessage: 'Quantity discount applied'
   },
+  bulkDiscountOnQuote: {
+    id: messageIds.pricing.discounts.bulkOnQuote,
+    description: 'Text to let user know a bulk discount is available on quote',
+    defaultMessage: 'Quantity discount on quote'
+  },
   bulkDiscountAvailable: {
     id: messageIds.pricing.discounts.bulkAvailable,
     description: 'Text to let the user know a bulk discount is available',
@@ -204,9 +209,11 @@ export const ProductListItemPricing: React.FC<ProductListItemPricingProps> = ({
                     allowDisabledFocus
                     onClick={() => setShowCallout(!showCallout)}
                   >
-                    {basePrice !== unitPrice
+                    {basePrice === unitPrice
+                      ? formatMessage(messages.bulkDiscountAvailable)
+                      : unitPrice !== undefined
                       ? formatMessage(messages.bulkDiscountApplied)
-                      : formatMessage(messages.bulkDiscountAvailable)}
+                      : formatMessage(messages.bulkDiscountOnQuote)}
                   </ActionButton>
                   {showCallout && (
                     <Callout

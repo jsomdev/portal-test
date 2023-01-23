@@ -27,11 +27,10 @@ import { sortCartItemsByProductNumber } from '@widgets/cart-list/cartList.helper
 import { CartListActions } from '@widgets/cart-list/cartListActions';
 import { CartMergeDialog } from '@widgets/cart-merge-dialog/cartMergeDialog';
 import { mapCartItemsToCartItemViewModels } from '@widgets/cart/cart.helper';
-import { CartStickyThumb } from '@widgets/cart/cartStickyThumb';
 import { CartSummary } from '@widgets/cart/cartSummary';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import ContentContainerStack from '@widgets/layouts/contentContainerStack';
-import { Mobile, useBetweenMobileAndTablet } from '@widgets/media-queries';
+import { useBetweenMobileAndTablet } from '@widgets/media-queries';
 
 const messages = defineMessages({
   mergeMessage: {
@@ -204,9 +203,6 @@ const Cart: React.FC<CartProps> = ({ title }) => {
           }}
         />
       </ContentContainerStack>
-      <Mobile>
-        <CartStickyThumb />
-      </Mobile>
     </React.Fragment>
   );
 };

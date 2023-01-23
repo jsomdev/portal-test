@@ -171,7 +171,8 @@ export const nl: Messages = {
     },
     discounts: {
       bulkAvailable: 'Bulkkorting mogelijk',
-      bulkApplied: 'Bulkkorting toegepast'
+      bulkApplied: 'Bulkkorting toegepast',
+      bulkOnQuote: 'Bulkkorting bij offerte'
     },
     quotedPrice: 'Prijs op aanvraag',
     unitPriceSuffix: '/ per stuk',
@@ -180,6 +181,8 @@ export const nl: Messages = {
       'Toevoegen van {quantityDisplay} {quantity, plural, one {stuk} other {stuks}} aan uw winkelwagen zal u op een totaal van {projectedQuantityDisplay} {projectedQuantity, plural, one {stuk} other {stuks}} brengen.'
   },
   finder: {
+    noResults:
+      'Er zijn geen producten gevonden. Probeer te zoeken op iets anders of pas andere filters toe.',
     compare: 'Vergelijk',
     seeComparison: 'Toon verschillen',
     filters: {

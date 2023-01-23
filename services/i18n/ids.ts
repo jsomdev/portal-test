@@ -197,7 +197,8 @@ export const messageIds: Messages = {
     },
     discounts: {
       bulkAvailable: 'pricing.discounts.bulkAvailable',
-      bulkApplied: 'pricing.discounts.bulkApplied'
+      bulkApplied: 'pricing.discounts.bulkApplied',
+      bulkOnQuote: 'pricing.discounts.bulkOnQuote'
     },
     quotedPrice: 'pricing.quotedPrice',
     addToCart: 'pricing.addToCart',
@@ -211,6 +212,7 @@ export const messageIds: Messages = {
     }
   },
   finder: {
+    noResults: 'finder.noResults',
     compare: 'finder.compare',
     seeComparison: 'finder.seeComparison',
     filters: {

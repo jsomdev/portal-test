@@ -165,7 +165,8 @@ export const en: Messages = {
     },
     discounts: {
       bulkAvailable: 'Quantity discount available',
-      bulkApplied: 'Quantity discount applied'
+      bulkApplied: 'Quantity discount applied',
+      bulkOnQuote: 'Quantity discount on quote'
     },
     quotedPrice: 'Quoted Price',
     addToCart: 'Add to cart',
@@ -174,6 +175,8 @@ export const en: Messages = {
       'Adding {quantityDisplay} {quantity, plural, one {item} other {items}} to your cart will bring you to a total of {projectedQuantityDisplay} {projectedQuantity, plural, one {item} other {items}.}'
   },
   finder: {
+    noResults:
+      'No products were found matching your criteria. Try searching something else or apply different filters.',
     compare: 'Compare',
     seeComparison: 'See Comparison',
     filters: {
