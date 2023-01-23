@@ -11,6 +11,7 @@ import {
   IButtonStyles,
   IChoiceGroupOption,
   IChoiceGroupOptionProps,
+  IIconStyles,
   ILabelStyles,
   IRenderFunction,
   IStackStyles,
@@ -32,8 +33,15 @@ const messages = defineMessages({
     id: messageIds.pages.checkout.payment.purchaseOrderInfo,
     defaultMessage:
       'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account. Uploading a document is not required, but it will help us process your order faster.'
+  },
+  fileUpload: {
+    id: messageIds.pages.checkout.payment.fileUpload,
+    defaultMessage: 'Upload a PO document',
+    description: 'Label for file upload input'
   }
 });
+
+const UPLOAD_INPUT_ID = 'purchase-order-upload-input';
 
 interface PurchaseOrderFormGroupStyles {
   textField: Partial<ITextFieldStyles>;
@@ -41,6 +49,8 @@ interface PurchaseOrderFormGroupStyles {
   inputField: CSSProperties;
   removeButton: IButtonStyles;
   uploadLabel: ILabelStyles;
+  fileUploadIcon: IIconStyles;
+  fileUploadContainer: IStackStyles;
 }
 
 type PurchaseOrderFormGroupProps = {
@@ -60,7 +70,7 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
   fields
 }) => {
   const { formatMessage } = useIntl();
-  const { spacing, palette } = useTheme();
+  const { spacing, palette, fonts } = useTheme();
   const { values, setFieldValue } = useFormikContext<Step3FormData>();
 
   const styles: PurchaseOrderFormGroupStyles = {
@@ -100,6 +110,17 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
         cursor: 'pointer',
         textAlign: 'center'
       }
+    },
+    fileUploadIcon: {
+      root: {
+        fontSize: fonts.large.fontSize
+      }
+    },
+    fileUploadContainer: {
+      root: {
+        width: '100%',
+        maxWidth: 350
+      }
     }
   };
 
@@ -129,7 +150,7 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
             <Field
               {...fields.referenceDocument}
               type="file"
-              id="purchaseOrderFileUpload"
+              id={UPLOAD_INPUT_ID}
               onChange={async (event: React.ChangeEvent<HTMLInputElement>) => {
                 setFieldValue(
                   fields.referenceDocumentFile.name,
@@ -141,12 +162,9 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
             <Stack
               horizontal
               verticalAlign="center"
-              styles={{ root: { maxWidth: 350 } }}
+              styles={styles.fileUploadContainer}
             >
-              <Label
-                styles={styles.uploadLabel}
-                htmlFor="purchaseOrderFileUpload"
-              >
+              <Label styles={styles.uploadLabel} htmlFor={UPLOAD_INPUT_ID}>
                 <Stack
                   horizontal
                   tokens={{ childrenGap: spacing.s1 }}
@@ -159,15 +177,11 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
                         ? 'FolderHorizontal'
                         : 'CloudUpload'
                     }
-                    styles={{
-                      root: {
-                        fontSize: 18
-                      }
-                    }}
+                    styles={styles.fileUploadIcon}
                   />
                   <Text styles={{ root: { fontWeight: FontWeights.regular } }}>
                     {values.referenceDocumentFile?.name ||
-                      'Upload a PO document'}
+                      formatMessage(messages.fileUpload)}
                   </Text>
                 </Stack>
               </Label>

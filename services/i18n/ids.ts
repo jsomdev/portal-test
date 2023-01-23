@@ -871,6 +871,7 @@ export const messageIds: Messages = {
         creditCard: 'pages.checkout.payment.creditCard',
         purchaseOrder: 'pages.checkout.payment.purchaseOrder',
         purchaseOrderInfo: 'pages.checkout.payment.purchaseOrderInfo',
+        fileUpload: 'pages.checkout.payment.fileUpload',
         fields: {
           paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
           shippingAddressAsBillingAddress:

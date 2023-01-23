@@ -805,6 +805,7 @@ export const en: Messages = {
         billingAddress: 'Billing Address',
         creditCard: 'Credit card',
         purchaseOrder: 'Purchase order',
+        fileUpload: 'Upload a PO document',
         purchaseOrderInfo:
           'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account. Uploading a document is not required, but it will help us process your order faster.',
         fields: {

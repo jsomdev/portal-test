@@ -1,16 +1,18 @@
 import { BaseResource } from './base/baseResource';
 import { OrderPost } from './base/types';
 import { Order } from './models/Order';
+import { Resource } from './models/Resource';
 import { OdataCollection, OdataEntity, QueryOptions } from './o-data';
 
-export const createFile = async (file: File): Promise<{ id: string }> => {
+export const createFile = async (file: File): Promise<Resource> => {
   const formData = new FormData();
   formData.append('file', file);
+
   const fileUploadResource: BaseResource<unknown> = new BaseResource(
     '/Me/Resources'
   );
 
-  const data: { id: string } = await fileUploadResource.fetch(
+  const data: Resource = await fileUploadResource.fetch(
     '/Me/Resources',
     {},
     {
@@ -26,13 +28,11 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
     '/me/cart/checkout?$expand=lines'
   );
 
-  let fileId: { id: string } | undefined = undefined;
+  let file: Resource | undefined;
 
   if (order.referenceDocumentFile) {
-    fileId = await createFile(order.referenceDocumentFile);
+    file = await createFile(order.referenceDocumentFile);
   }
-
-  delete order.referenceDocumentFile;
 
   const data: Order = await customOrderResource.fetch<Order>(
     '/me/cart/checkout?$expand=lines',
@@ -44,7 +44,8 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
       },
       body: JSON.stringify({
         ...order,
-        purchaseOrderDocumentId: fileId?.id || undefined
+        purchaseOrderDocumentId: file?.id || null,
+        purchaseOrderDocumentFile: null
       })
     }
   );
