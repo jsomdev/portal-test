@@ -202,7 +202,6 @@ export const AddBulkToCartForm: React.FC = () => {
                   </Stack>
                 </Stack.Item>
               ))}
-
             <Stack.Item>
               <Stack
                 horizontal
@@ -229,7 +228,7 @@ export const AddBulkToCartForm: React.FC = () => {
               </Stack>
             </Stack.Item>
             {validateBulk.status === 'success' &&
-              validProductNumbers.length &&
+              validProductNumbers.length > 0 &&
               invalidProductNumbers.length === 0 && (
                 <Stack.Item>
                   <PortalMessageBar messageBarType={MessageBarType.success}>
@@ -238,7 +237,7 @@ export const AddBulkToCartForm: React.FC = () => {
                 </Stack.Item>
               )}
             {validateBulk.status === 'success' &&
-              validProductNumbers.length &&
+              validProductNumbers.length > 0 &&
               invalidProductNumbers.length > 0 && (
                 <Stack.Item>
                   <PortalMessageBar messageBarType={MessageBarType.success}>
@@ -249,7 +248,7 @@ export const AddBulkToCartForm: React.FC = () => {
                 </Stack.Item>
               )}
             {validateBulk.status === 'success' &&
-              invalidProductNumbers.length && (
+              invalidProductNumbers.length > 0 && (
                 <Stack.Item>
                   <PortalMessageBar messageBarType={MessageBarType.error}>
                     {formatMessage(messages.bulkFailMessage, {
