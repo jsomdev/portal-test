@@ -16,6 +16,7 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 
 type StepField = { name: string; label: string; placeholder?: string };
 
@@ -117,7 +118,13 @@ export const FormikFileField: React.FC<FormikFileFieldProps> = ({
               styles={styles.fileUploadIcon}
             />
             <Text styles={styles.textStyles}>
-              {values?.[fileField.name]?.name || labelText}
+              {values?.[fileField.name]?.name
+                ? new TextFormatter().formatText(
+                    values?.[fileField.name]?.name,
+                    30,
+                    '...'
+                  )
+                : labelText}
             </Text>
           </Stack>
         </Label>
