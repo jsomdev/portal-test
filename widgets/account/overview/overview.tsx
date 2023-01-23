@@ -180,7 +180,7 @@ export const Overview: React.FC = () => {
           </Stack.Item>
         </Stack>
       </Stack>
-      {ordersStatus === 'success' && orders?.value.length && (
+      {ordersStatus === 'success' && orders?.value.length ? (
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack.Item>
             <Text variant="large" as={'h2'}>
@@ -207,7 +207,7 @@ export const Overview: React.FC = () => {
             </NextLink>
           </Stack>
         </Stack>
-      )}
+      ) : null}
       <Stack tokens={{ childrenGap: spacing.m }}>
         <Stack.Item>
           <Text variant="large" as={'h2'}>
