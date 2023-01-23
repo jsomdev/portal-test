@@ -80,6 +80,21 @@ const messages = defineMessages({
   }
 });
 
+const CheckoutContainer: React.FC = ({ children }) => {
+  const { spacing } = useTheme();
+  const { formatMessage } = useIntl();
+  return (
+    <ContentContainerStack
+      innerStackProps={{ tokens: { childrenGap: spacing.l1 } }}
+    >
+      <StackItem>
+        <PagesHeader title={formatMessage(messages.title)} />
+      </StackItem>
+      {children}
+    </ContentContainerStack>
+  );
+};
+
 export const Checkout: React.FC = () => {
   const { spacing } = useTheme();
   const { formatMessage } = useIntl();
@@ -163,41 +178,65 @@ export const Checkout: React.FC = () => {
     );
   }
 
-  return (
-    <ContentContainerStack
-      innerStackProps={{ tokens: { childrenGap: spacing.l1 } }}
-    >
-      {createOrderStatus === 'loading' && (
+  if (createOrderStatus === 'loading') {
+    return (
+      <CheckoutContainer>
         <LoadingOverlay spinnerText={getSpinnerText()} />
-      )}
-      <StackItem>
-        <PagesHeader title={formatMessage(messages.title)} />
-      </StackItem>
-      {/* When there is an error submitting the form */}
-      {error && <CheckoutErrorBox error={error} />}
-      {/* When the user is not currently logging in and is not authenticated */}
-      {!isAuthenticated && inProgress === InteractionStatus.None && (
+      </CheckoutContainer>
+    );
+  }
+
+  // When the user is not currently logging in and is not authenticated
+  if (!isAuthenticated && inProgress === InteractionStatus.None) {
+    return (
+      <CheckoutContainer>
         <PortalMessageBar messageBarType={MessageBarType.warning}>
           <Text>{formatMessage(messages.signInText)}</Text>
         </PortalMessageBar>
-      )}
-      {/* When fetching the persisted cart from the /me endpoint returns an error */}
-      {meStatus === 'error' && (
+      </CheckoutContainer>
+    );
+  }
+
+  //When fetching the persisted cart from the /me endpoint returns an error
+  if (meStatus === 'error') {
+    return (
+      <CheckoutContainer>
         <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingCartFailed)}</Text>
         </PortalMessageBar>
-      )}
-      {cartInfoStatus === 'error' && (
+      </CheckoutContainer>
+    );
+  }
+
+  if (cartInfoStatus === 'error') {
+    return (
+      <CheckoutContainer>
         <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingProductInfoFailed)}</Text>
         </PortalMessageBar>
-      )}
-      {createOrderStatus === 'success' && (
-        <PortalMessageBar messageBarType={MessageBarType.success}>
-          <Text>{formatMessage(messages.orderSuccess)}</Text>
-        </PortalMessageBar>
-      )}
-      {checkoutItems?.length === 0 && (
+      </CheckoutContainer>
+    );
+  }
+
+  if (createOrderStatus === 'success') {
+    return (
+      <PortalMessageBar messageBarType={MessageBarType.success}>
+        <Text>{formatMessage(messages.orderSuccess)}</Text>
+      </PortalMessageBar>
+    );
+  }
+
+  return (
+    <CheckoutContainer>
+      {/* When there is an error submitting the form */}
+      {error && <CheckoutErrorBox error={error} />}
+      {checkoutItems && checkoutItems.length > 0 ? (
+        <Stack.Item>
+          <CheckoutProvider>
+            <CheckoutForm onCreateOrder={create} />
+          </CheckoutProvider>
+        </Stack.Item>
+      ) : (
         <Stack.Item>
           <PortalMessageBar messageBarType={MessageBarType.blocked}>
             <Text>{formatMessage(messages.noItems)}</Text>
@@ -209,13 +248,6 @@ export const Checkout: React.FC = () => {
           </PortalMessageBar>
         </Stack.Item>
       )}
-      {!!checkoutItems?.length && (
-        <Stack.Item>
-          <CheckoutProvider>
-            <CheckoutForm onCreateOrder={create} />
-          </CheckoutProvider>
-        </Stack.Item>
-      )}
-    </ContentContainerStack>
+    </CheckoutContainer>
   );
 };
