@@ -34,6 +34,8 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
     file = await createFile(order.referenceDocumentFile);
   }
 
+  delete order.referenceDocumentFile;
+
   const data: Order = await customOrderResource.fetch<Order>(
     '/me/cart/checkout?$expand=lines',
     {},
@@ -44,8 +46,7 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
       },
       body: JSON.stringify({
         ...order,
-        purchaseOrderDocumentId: file?.id || null,
-        referenceDocumentFile: null
+        purchaseOrderDocumentId: file?.id || null
       })
     }
   );

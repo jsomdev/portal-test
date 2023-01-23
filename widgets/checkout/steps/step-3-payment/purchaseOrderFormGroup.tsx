@@ -1,13 +1,11 @@
 import React, { CSSProperties } from 'react';
 
-import { Field, useFormikContext } from 'formik';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { FormikFileField } from '@components/formik-wrappers/formikFileField';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
-  DefaultButton,
-  FontWeights,
   IButtonStyles,
   IChoiceGroupOption,
   IChoiceGroupOptionProps,
@@ -16,11 +14,8 @@ import {
   IRenderFunction,
   IStackStyles,
   ITextFieldStyles,
-  Icon,
-  Label,
   MessageBarType,
   Stack,
-  Text,
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
@@ -40,8 +35,6 @@ const messages = defineMessages({
     description: 'Label for file upload input'
   }
 });
-
-const UPLOAD_INPUT_ID = 'purchase-order-upload-input';
 
 interface PurchaseOrderFormGroupStyles {
   textField: Partial<ITextFieldStyles>;
@@ -71,7 +64,6 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
 }) => {
   const { formatMessage } = useIntl();
   const { spacing, palette, fonts } = useTheme();
-  const { values, setFieldValue } = useFormikContext<Step3FormData>();
 
   const styles: PurchaseOrderFormGroupStyles = {
     container: {
@@ -145,57 +137,11 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
             styles={styles.textField}
             required
           />
-          <Stack>
-            <Label>{fields.referenceDocumentFile.label}</Label>
-            <Field
-              {...fields.referenceDocument}
-              type="file"
-              id={UPLOAD_INPUT_ID}
-              onChange={async (event: React.ChangeEvent<HTMLInputElement>) => {
-                setFieldValue(
-                  fields.referenceDocumentFile.name,
-                  event?.currentTarget?.files?.[0]
-                );
-              }}
-              style={styles.inputField}
-            />
-            <Stack
-              horizontal
-              verticalAlign="center"
-              styles={styles.fileUploadContainer}
-            >
-              <Label styles={styles.uploadLabel} htmlFor={UPLOAD_INPUT_ID}>
-                <Stack
-                  horizontal
-                  tokens={{ childrenGap: spacing.s1 }}
-                  verticalAlign="center"
-                  horizontalAlign="center"
-                >
-                  <Icon
-                    iconName={
-                      values.referenceDocumentFile?.name
-                        ? 'FolderHorizontal'
-                        : 'CloudUpload'
-                    }
-                    styles={styles.fileUploadIcon}
-                  />
-                  <Text styles={{ root: { fontWeight: FontWeights.regular } }}>
-                    {values.referenceDocumentFile?.name ||
-                      formatMessage(messages.fileUpload)}
-                  </Text>
-                </Stack>
-              </Label>
-              {values.referenceDocumentFile?.name && (
-                <DefaultButton
-                  iconProps={{ iconName: 'Cancel' }}
-                  styles={styles.removeButton}
-                  onClick={() => {
-                    setFieldValue(fields.referenceDocumentFile.name, undefined);
-                  }}
-                />
-              )}
-            </Stack>
-          </Stack>
+          <FormikFileField
+            fileField={fields.referenceDocumentFile}
+            labelField={fields.referenceDocument}
+            labelText={formatMessage(messages.fileUpload)}
+          />
         </Stack>
       )}
     </Stack>
