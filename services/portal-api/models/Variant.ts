@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { ComplexLinkedEntity } from './ComplexLinkedEntity';
 import type { Display } from './Display';
 import type { MultilingualString } from './MultilingualString';
@@ -11,6 +12,7 @@ export type Variant = ComplexLinkedEntity & {
   productNumber?: string | null;
   productName?: MultilingualString | null;
   productSeoPath?: string | null;
-  displays?: Array<Display | null>;
+  productSlug?: MultilingualString | null;
+  displays?: Array<Display>;
   sortIndex?: number;
 };

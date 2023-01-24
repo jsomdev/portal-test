@@ -1,24 +1,44 @@
 import { Category } from '@services/portal-api';
 
 import { MultilingualStringFormatter } from '../multilingual-string-formatter/multilingualStringFormatter';
+import { ResourceFormatter } from './resourceFormatter';
 
 export class CategoryFormatter {
-  multilingualStringFormatter: MultilingualStringFormatter;
-  category: Partial<Category>;
-  constructor(category: Partial<Category>, locale?: string) {
+  private multilingualStringFormatter: MultilingualStringFormatter;
+  private resourceFormatter: ResourceFormatter;
+  private category: Partial<Category> | undefined;
+  constructor(category: Partial<Category> | undefined, locale?: string) {
     this.multilingualStringFormatter = new MultilingualStringFormatter(locale);
+    this.resourceFormatter = new ResourceFormatter(
+      category?.image || undefined,
+      locale
+    );
     this.category = category;
   }
 
-  formatName(): string {
-    return this.multilingualStringFormatter.format(this.category.name);
+  public formatName(): string {
+    return this.multilingualStringFormatter.format(this.category?.name);
   }
 
-  formatDescription(): string {
-    return this.multilingualStringFormatter.format(this.category.description);
+  public formatDescription(): string {
+    return this.multilingualStringFormatter.format(this.category?.description);
   }
 
-  formatSlug(): string {
-    return this.multilingualStringFormatter.format(this.category.slug);
+  public formatSlug(): string {
+    return this.multilingualStringFormatter.format(this.category?.slug);
+  }
+
+  public formatImageCaption(): string {
+    return this.resourceFormatter.formatCaption();
+  }
+  public formatThumbnailSrc(): string {
+    return this.resourceFormatter.formatThumbnailSrc();
+  }
+
+  public formatImageSrc(): string {
+    return this.resourceFormatter.formatSrc();
+  }
+  public formatHref(): string {
+    return `/categories/${this.formatSlug()}`;
   }
 }

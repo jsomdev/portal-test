@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import { AudienceFlags } from './AudienceFlags';
 import type { MultilingualString } from './MultilingualString';
 import type { Resource } from './Resource';

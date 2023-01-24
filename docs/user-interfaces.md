@@ -1,12 +1,12 @@
 ---
- description: Documentation about user interfaces and layout with fluent ui
- author: Jan Somers
- contributor(s): 
- changelog: (Date | By | Comment)
-  22/10/2021 | Jan Somers | Initial version
-  07/11/2021 | Jan Somers | Version 1
-  15/11/2021 | Jan Somers | Full rewrite to simpler version
-  17/11/2021 | Jan Somers | Definite version [1]
+ description: Documentation about user interfaces and layout with fluent ui  
+ author: Jan Somers  
+ contributor(s):   
+ changelog: (Date | By | Comment)  
+  22/10/2021 | Jan Somers | Initial version  
+  07/11/2021 | Jan Somers | Version 1  
+  15/11/2021 | Jan Somers | Full rewrite to simpler version  
+  17/11/2021 | Jan Somers | Definite version [1]  
 ---
 
 # User Interfaces, Layout and design
@@ -32,6 +32,7 @@ There are some main principles -_guidelines_- that should be considered when cre
 1. **User Friendly**: Consider the behavior of the user. All scenario's should be covered in a user friendly manner (happy path versus unhappy path).
 1. **Fluent UI Layout System**: [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) inspired _Stacks_ and _StackItems_ controls from FluentUI should be used.
 1. **CCS in JS**: Strongly typed interfaces should be used for styling our components. FluentUI comes with a built-in api that does this really well.
+
    1. Use FluentUI Api whenever possible.
    1. Use Typed Interfaces if applicable.
    1. Use Styled JSX (scoped) otherwise.
@@ -80,54 +81,67 @@ export interface ISiteHeaderProps {
  * Based on the screen size a different version will be displayed.
  * Important note: the aim is to keep this header aligned with the spray.com header.
  */
-export const SiteHeader: React.FC<ISiteHeaderProps> = ({
+export const SiteHeader: React.FC<SiteHeaderProps> = ({
+  items,
   onOpenSideNavigation
 }) => {
   const isLarge = useLarge();
+
   if (isLarge) {
-    return <LargeSiteHeader />;
+    return <DesktopSiteHeader items={items || []} />;
   }
 
-  return <DefaultSiteHeader onOpenSideNavigation={onOpenSideNavigation} />;
+  return (
+    <MobileSiteHeader
+      items={items}
+      onOpenSideNavigation={onOpenSideNavigation}
+    />
+  );
 };
 
-// ### Default Site Header
+// ### Mobile Site Header
 
-/**
- * Default version of the Site Header
- */
-interface IDefaultSiteHeaderStyles {
+interface MobileSiteHeaderStyles {
   root: IStackStyles;
-  divider: Partial<IVerticalDividerStyles>;
+  logoContainer: IStackStyles;
 }
 
-const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
+const MobileSiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenSideNavigation
 }) => {
   const { spacing } = useTheme();
-  const { locale } = useIntl();
+  const { formatMessage } = useIntl();
 
-  const styles: IDefaultSiteHeaderStyles = {
+  const messages = defineMessages({
+    searchPlaceholder: {
+      id: messageIds.searchBar.placeholder,
+      description: 'Page search bar placeholder',
+      defaultMessage: 'Search by part number...'
+    }
+  });
+
+  const styles: MobileSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(80)
+        height: rem(80),
+        position: 'relative'
       }
     },
-    divider: {
-      wrapper: {
-        padding: rem(spacing.s2),
-        height: rem(32)
+    logoContainer: {
+      root: {
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)'
       }
     }
   };
-
   return (
-    <nav>
+    <Stack>
       <Stack
         horizontal
         verticalAlign="center"
         tokens={{
-          padding: `0 ${rem(spacing.s1)}`
+          padding: `0 ${spacing.s1}`
         }}
         horizontalAlign="space-between"
         styles={styles.root}
@@ -136,10 +150,10 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           horizontal
           grow
           verticalFill
-          tokens={{ childrenGap: rem(spacing.s1) }}
+          tokens={{ childrenGap: spacing.s1 }}
           verticalAlign="center"
         >
-          <HeaderButton
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('site');
             }}
@@ -147,34 +161,22 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
               iconName: 'GlobalNavButton'
             }}
           />
+        </Stack>
+        <Stack styles={styles.logoContainer}>
           <SiteLogo />
         </Stack>
         <Stack
           horizontal
           verticalAlign="center"
-          tokens={{ childrenGap: rem(spacing.s2) }}
+          tokens={{ childrenGap: spacing.s2 }}
         >
-          <Medium>
-            <HeaderButton
-              iconProps={{
-                iconName: 'Globe'
-              }}
-              type="actionButton"
-              text={locale.toLocaleUpperCase()}
-            />
-            <VerticalDivider styles={styles.divider} />
-          </Medium>
-          <HeaderButton
-            iconProps={{
-              iconName: 'Search'
-            }}
-          />
-          <HeaderButton
+          <SiteHeaderButton
             iconProps={{
               iconName: 'ShoppingCart'
             }}
           />
-          <HeaderButton
+
+          <SiteHeaderButton
             onClick={() => {
               onOpenSideNavigation?.('user');
             }}
@@ -184,7 +186,17 @@ const DefaultSiteHeader: React.FC<ISiteHeaderProps> = ({
           />
         </Stack>
       </Stack>
-    </nav>
+      <Stack
+        tokens={{
+          padding: `0 ${rem(12)}`
+        }}
+      >
+        <TextField
+          iconProps={{ iconName: 'Search' }}
+          placeholder={formatMessage(messages.searchPlaceholder)}
+        />
+      </Stack>
+    </Stack>
   );
 };
 
@@ -248,6 +260,96 @@ export const AppHeader: React.FC<IAppHeaderProps> = ({ showMainHeader }) => {
     </header>
   );
 };
+```
+
+## Responsive Design
+
+- Mobile first: the default styling of a component should be the mobile css. Add overwrites for the larger screens. (using `...mediaQueryFrom()`)
+- The provided breakpoints:
+  - mobile: from 0px width to 1024px. This covers mobile devices, but also smaller tablet and tablets in portrait view. (eg. iPad Air in portrait is 820px wide)
+  - tablet: from 1024px to 1280px. This covers larger screens, from tablets (in landscape) to smaller laptops.
+  - desktop: from 1280px to \*. This covers everything with a lot of screen real estate.
+- In most cases, we'd try to stick to a small and a large layout ("mobile" vs. "tablet and above"), only added specific cases for desktop when relevant.
+- Use `<Mobile>`and `<TabletAndDesktop>` if different components are needed for small and larger screens.
+- For more specific breakpoint usage, use the `<Media>` component.
+- `ResponsiveStack` is provided for switching stack direction based on screen-size. (e.g. `vertical` on mobile, `horizontal` on desktop)
+
+```tsx
+import { NextPage } from 'next';
+
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
+
+import { ResponsiveStack } from '@components/stacks/responsiveStack';
+import { IStackStyles, Stack, StackItem, mergeStyles } from '@fluentui/react';
+import {
+  Mobile,
+  TabletAndDesktop,
+  mediaQueryFrom,
+  useTabletAndDesktop
+} from '@widgets/media-queries';
+
+const styles = {
+  basicExample: {
+    backgroundColor: 'red',
+    padding: 20,
+    ...mediaQueryFrom('tablet', {
+      backgroundColor: 'blue',
+      padding: 40
+    })
+  }
+};
+const stackStyles: IStackStyles = {
+  root: {
+    padding: 5,
+    ...mediaQueryFrom('tablet', {
+      padding: 40
+    })
+  }
+};
+const Responsive: NextPage = () => {
+  const isTabletOrDesktop = useTabletAndDesktop(); //try not to use the hooks, as they only work client-side and not when
+  return (
+    <div>
+      {isTabletOrDesktop && <div>Tablet or desktop</div>}
+      <div className={mergeStyles(styles.basicExample)}>Basic Responsive</div>
+      <Stack styles={stackStyles}>
+        <Mobile>
+          {(className, renderChildren) => (
+            <StackItem className={className}>
+              {renderChildren && 'Stack Item: Mobile only'}
+            </StackItem>
+          )}
+        </Mobile>
+        <TabletAndDesktop>
+          {(className, renderChildren) => (
+            <StackItem className={className}>
+              {renderChildren && 'Stack Item: Tablet/Desktop only'}
+            </StackItem>
+          )}
+        </TabletAndDesktop>
+        <StackItem>Stack Item 2</StackItem>
+        <StackItem>Stack Item 3</StackItem>
+      </Stack>
+      <div>
+        <Mobile>
+          {(className, renderChildren) => (
+            <div className={className}>
+              {renderChildren && 'Only shown on mobile'}
+            </div>
+          )}
+        </Mobile>
+        <TabletAndDesktop>Only shown on tablet/desktop</TabletAndDesktop>
+      </div>
+      <ResponsiveStack>
+        <span>One</span>
+        <span>Two</span>
+        <span>Three</span>
+      </ResponsiveStack>
+    </div>
+  );
+};
+export default Responsive;
 ```
 
 ## Testing

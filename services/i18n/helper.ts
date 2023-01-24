@@ -1,10 +1,9 @@
-import { MultilingualString } from '@services/portal-api';
 import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 
 import { en, nl } from './';
-import regions from './regions.json';
+import regions from './regions';
 import { Messages, Region } from './types';
 
 export function getMessages(locale?: string, exact: boolean = false): Messages {
@@ -19,7 +18,7 @@ export function getMessages(locale?: string, exact: boolean = false): Messages {
 
   return en;
 }
-
+// TODO: Handle fallback for different environments
 export function getAudience(locale: string | undefined): Audience {
   const countryCode: string | undefined = locale?.split('-')[1];
   if (!countryCode) {
@@ -57,7 +56,8 @@ export function getAudience(locale: string | undefined): Audience {
 }*/
 
 export const supportedRegions: Region[] = regions as unknown as Region[];
+
 export const supportedLocales: string[] | undefined =
   ENVIRONMENT_VARIABLES.supportedLocales;
 
-export const defaultLocale: string = 'en';
+export const defaultLanguage: string = 'en';

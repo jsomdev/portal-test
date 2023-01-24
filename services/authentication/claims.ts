@@ -1,25 +1,33 @@
-import { useMsal } from '@azure/msal-react';
 import { useCallback, useMemo } from 'react';
+
+import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   customerLoginRequest,
   employeeLoginRequest
-} from './authenticationConfiguration';
+} from '@services/authentication/authenticationConfiguration';
 
-enum ExtensionRole {
+export enum ExtensionRole {
   VerifiedCustomer = 'VerifiedCustomer',
   Employee = 'Employee',
+  Customer = 'Customer',
   Administrator = 'Administrator',
-  AccountManager = 'AccountManager'
+  AccountManager = 'AccountManager',
+  RegisteredUser = 'RegisteredUser'
 }
 
 interface ClaimsHook {
   accountId: string | undefined;
   accountNumber: string | undefined;
-  isVerified: boolean;
+  roles: ExtensionRole[];
+  isVerifiedCustomer: boolean;
   isEmployee: boolean;
+  isCustomer: boolean;
+  isRegisteredUser: boolean;
   isAccountManager: boolean;
-  forceRefresh: () => Promise<boolean>;
-  isAdmin: boolean;
+  forceRefreshToken: () => Promise<void>;
+  isAdministrator: boolean;
+  lastName: string;
+  firstName: string;
 }
 
 interface Claims {
@@ -45,16 +53,23 @@ interface ClaimsExtensions {
   extension_UserId?: string;
   extension_AccountNumber?: string;
   extension_AccountId?: string;
+  family_name: string;
+  given_name: string;
 }
 
 export type ExtendedClaims = Claims & ClaimsExtensions;
 
 export const useClaims = (): ClaimsHook => {
   const { accounts, instance } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
 
   const claims = useMemo(() => {
     return accounts?.[0]?.idTokenClaims as ExtendedClaims | undefined;
   }, [accounts]);
+
+  const roles: ExtensionRole[] = useMemo(() => {
+    return (claims?.extension_Roles?.split(',') || []) as ExtensionRole[];
+  }, [claims?.extension_Roles]);
 
   const isRole = useCallback(
     (role: ExtensionRole): boolean => {
@@ -67,7 +82,7 @@ export const useClaims = (): ClaimsHook => {
     return !!isRole(ExtensionRole.Employee);
   }, [isRole]);
 
-  const isVerified = useMemo(() => {
+  const isVerifiedCustomer = useMemo(() => {
     return !!isRole(ExtensionRole.VerifiedCustomer);
   }, [isRole]);
 
@@ -75,40 +90,58 @@ export const useClaims = (): ClaimsHook => {
     return !!isRole(ExtensionRole.AccountManager);
   }, [isRole]);
 
+  const isRegisteredUser = useMemo(() => {
+    return !!isRole(ExtensionRole.RegisteredUser);
+  }, [isRole]);
+
+  const isCustomer = useMemo(() => {
+    return (
+      !!isRole(ExtensionRole.Customer) ||
+      !!isRole(ExtensionRole.VerifiedCustomer)
+    );
+  }, [isRole]);
+
+  const firstName = useMemo(() => {
+    return (!!claims?.family_name && claims?.family_name) || '';
+  }, [claims]);
+
+  const lastName = useMemo(() => {
+    return (!!claims?.given_name && claims?.given_name) || '';
+  }, [claims]);
+
   const isAdmin = useMemo(() => {
     return !!isRole(ExtensionRole.Administrator);
   }, [isRole]);
 
-  const forceRefresh: () => Promise<boolean> = useCallback(async () => {
-    try {
-      const loginRequest = isEmployee
-        ? employeeLoginRequest
-        : customerLoginRequest;
+  const forceRefresh: () => Promise<void> = useCallback(async () => {
+    if (isAuthenticated) {
+      try {
+        const loginRequest = isEmployee
+          ? employeeLoginRequest
+          : customerLoginRequest;
 
-      const authResult = await instance.ssoSilent({
-        account: accounts?.[0],
-        ...loginRequest
-      });
-
-      const isVerified = (
-        authResult.idTokenClaims as ExtendedClaims | undefined
-      )?.extension_Roles
-        ?.split(',')
-        .includes(ExtensionRole.VerifiedCustomer);
-
-      return !!isVerified;
-    } catch (e) {
-      return false;
+        await instance.acquireTokenRedirect({
+          account: accounts?.[0],
+          ...loginRequest
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
-  }, [accounts, instance, isEmployee]);
+  }, [accounts, instance, isAuthenticated, isEmployee]);
 
   return {
     isEmployee,
-    isVerified,
+    isVerifiedCustomer,
+    isCustomer,
+    isRegisteredUser,
+    roles,
     accountId: claims?.extension_AccountId,
     accountNumber: claims?.extension_AccountNumber,
     isAccountManager,
-    isAdmin,
-    forceRefresh
+    isAdministrator: isAdmin,
+    forceRefreshToken: forceRefresh,
+    firstName,
+    lastName
   };
 };

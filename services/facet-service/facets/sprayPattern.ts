@@ -8,17 +8,53 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum SprayPatternFacetOptionKey {
+  _360CircularSpray = '_360CircularSpray',
+  DeflectedFlatSpray = 'DeflectedFlatSpray',
   FineSpray = 'FineSpray',
   FlatFan = 'FlatFan',
   FullCone = 'FullCone',
   HollowCone = 'HollowCone',
   RoundSpray = 'RoundSpray',
   SolidStream = 'SolidStream',
-  SquareSpray = 'SquareSpray'
+  SquareSpray = 'SquareSpray',
+  VariableSpray = 'VariableSpray',
+  WideAngleRoundSpray = 'WideAngleRoundSpray'
 }
 
 export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[] =
   [
+    {
+      key: SprayPatternFacetOptionKey._360CircularSpray,
+      ...defaultFacetOption,
+      valueId: 'd0041671-f979-4245-8dda-23971b4bb3e4',
+      value: '360°CircularSpray',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '360° Circular Spray' }
+          }
+        ],
+        sortIndex: 1
+      }
+    },
+    {
+      key: SprayPatternFacetOptionKey.DeflectedFlatSpray,
+      ...defaultFacetOption,
+      valueId: '132fe5e8-1bfa-4604-beee-4d092570e798',
+      value: 'DeflectedFlatSpray',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Deflected Flat Spray' }
+          }
+        ],
+        sortIndex: 2
+      }
+    },
     {
       key: SprayPatternFacetOptionKey.FineSpray,
       ...defaultFacetOption,
@@ -32,7 +68,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Fine Spray' }
           }
         ],
-        sortIndex: 1
+        sortIndex: 3
       }
     },
     {
@@ -42,9 +78,13 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
       value: 'FlatFan',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Flat Fan' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Flat Fan' }
+          }
         ],
-        sortIndex: 2
+        sortIndex: 4
       }
     },
     {
@@ -54,9 +94,13 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
       value: 'FullCone',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Full Cone' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Full Cone' }
+          }
         ],
-        sortIndex: 3
+        sortIndex: 5
       }
     },
     {
@@ -72,7 +116,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Hollow Cone' }
           }
         ],
-        sortIndex: 4
+        sortIndex: 6
       }
     },
     {
@@ -88,7 +132,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Round Spray' }
           }
         ],
-        sortIndex: 5
+        sortIndex: 7
       }
     },
     {
@@ -104,7 +148,7 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Solid Stream' }
           }
         ],
-        sortIndex: 6
+        sortIndex: 8
       }
     },
     {
@@ -120,7 +164,39 @@ export const sprayPatternFacetOptions: FacetOption<SprayPatternFacetOptionKey>[]
             value: { en: 'Square Spray' }
           }
         ],
-        sortIndex: 7
+        sortIndex: 9
+      }
+    },
+    {
+      key: SprayPatternFacetOptionKey.VariableSpray,
+      ...defaultFacetOption,
+      valueId: 'ed2d2260-abc6-46fc-8556-c62f25629426',
+      value: 'VariableSpray',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Variable Spray' }
+          }
+        ],
+        sortIndex: 10
+      }
+    },
+    {
+      key: SprayPatternFacetOptionKey.WideAngleRoundSpray,
+      ...defaultFacetOption,
+      valueId: '5194526c-3956-4fe3-966e-234275bdd448',
+      value: 'WideAngleRoundSpray',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Wide Angle Round Spray' }
+          }
+        ],
+        sortIndex: 11
       }
     }
   ];

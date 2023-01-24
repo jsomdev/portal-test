@@ -1,65 +1,267 @@
-import React from 'react';
+import { useEffect, useMemo } from 'react';
 
-import { useQuery } from 'react-query';
+import { defineMessages, useIntl } from 'react-intl';
+import { useMutation, useQuery } from 'react-query';
 
-import { useIsAuthenticated } from '@azure/msal-react';
-import { fetchMe } from '@services/portal-api/users';
+import { InteractionStatus } from '@azure/msal-browser';
+import { useIsAuthenticated, useMsal } from '@azure/msal-react';
+import { LoadingOverlay } from '@components/overlays/loadingOverlay';
+import { Stack, useTheme } from '@fluentui/react';
+import { useClaims } from '@services/authentication/claims';
+import { messageIds } from '@services/i18n';
+import { User } from '@services/portal-api';
+import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
+import { UserRoles } from '@services/portal-api/models/UserRolesFlags';
+import {
+  createUserVerification,
+  fetchMe,
+  updateContactDetails
+} from '@services/portal-api/users';
+import { queryClient } from '@services/react-query/config';
 import { QUERYKEYS } from '@services/react-query/constants';
+import { scrollToTop } from '@utilities/scrollToTop';
+import { CompleteSignUp } from '@widgets/complete-sign-up/completeSignUp';
+import {
+  CompleteSignUpFormValues,
+  ContactDetailsFormValues
+} from '@widgets/complete-sign-up/completeSignUp.types';
+import {
+  mapContactDetailsFieldsToContactDetailsPut,
+  mapVerificationRequestFieldsToVerificationPost
+} from '@widgets/complete-sign-up/completeSignUpFormHelper';
+import { ClientEnvironment } from '@widgets/environment/environment.types';
+import { getCurrentClientEnvironment } from '@widgets/environment/environmentHelpers';
 
 import { UserContext } from './userContext';
 
-// const messages = {
-//   verifiedRefreshFailed:
-//     'Your setup could not be completed. This can happen if your request has only just been accepted. Please try again later or contact customer support if this issue keeps occurring',
+const messages = defineMessages({
+  loading: {
+    id: messageIds.loading.default,
+    description: 'Default loading text',
+    defaultMessage: 'Loading...'
+  },
+  signingIn: {
+    id: messageIds.loading.user.signingIn,
+    description: 'Loading text while signing in',
+    defaultMessage: 'Signing in...'
+  },
+  signingOut: {
+    id: messageIds.loading.user.signingOut,
+    description: 'Loading text while signing out',
+    defaultMessage: 'Signing out...'
+  },
+  redirecting: {
+    id: messageIds.loading.user.redirecting,
+    description: 'Loading text while redirecting you from somewhere else',
+    defaultMessage: 'Redirecting...'
+  }
+});
 
-//   verifiedReloadRequired: 'Your account has been verified. Please hold on while we set things up...',
-// };
+/**
+ * Context Provider for the current user.
+ * It will provide information about the user and functionality to update its information.
+ */
 export const UserProvider: React.FC = ({ children }) => {
   const isAuthenticated = useIsAuthenticated();
-  // const { isVerified, forceRefresh } = useClaims();
-  // const [refreshCount, setRefreshCount] = useState(0);
+  const { inProgress } = useMsal();
+  const { formatMessage } = useIntl();
+  const {
+    isVerifiedCustomer,
+    forceRefreshToken,
+    isRegisteredUser,
+    isCustomer,
+    roles,
+    isEmployee
+  } = useClaims();
+  const { spacing } = useTheme();
+
   const { data: me, status: meStatus } = useQuery(
     [QUERYKEYS.appMe, isAuthenticated],
-    () => fetchMe(isAuthenticated),
+    () => fetchMe(),
     {
       keepPreviousData: true,
       enabled: isAuthenticated
     }
   );
 
-  // const isVerifiedInApi: boolean = useMemo(() => {
-  //   if (!me?.roles) {
-  //     return false;
-  //   }
-  //   const roles: UserRoles = FlaggedEnum.create<UserRoles>(UserRoles, me?.roles);
+  useEffect(() => {
+    if (meStatus === 'success' && me?.roles !== undefined) {
+      const apiRoles: Partial<UserRoles> = FlaggedEnum.create<UserRoles>(
+        UserRoles,
+        me?.roles || ''
+      );
+      const claimsRoles: Partial<UserRoles> = FlaggedEnum.create<UserRoles>(
+        UserRoles,
+        roles.join(', ')
+      );
 
-  //   if (roles & UserRoles.VerifiedCustomer) {
-  //     return true;
-  //   }
-  //   return false;
-  // }, [me]);
+      if (apiRoles !== claimsRoles) {
+        if (
+          getCurrentClientEnvironment() === ClientEnvironment.Develop ||
+          getCurrentClientEnvironment() === ClientEnvironment.Local
+        ) {
+          console.log('Api Roles', apiRoles, 'Claims Roles', claimsRoles);
+          console.log(claimsRoles);
+        }
+        forceRefreshToken();
+      }
+    }
+  }, [forceRefreshToken, me?.roles, meStatus, roles]);
 
-  // function onForceRefreshFailed() {
-  //   setRefreshCount((prevState) => prevState + 1);
-  //   alert(messages.verifiedRefreshFailed);
-  // }
-  // useEffect(() => {
-  //   if (isVerifiedInApi && !isVerified && refreshCount === 0) {
-  //     forceRefresh().then((verified) => (verified ? window.location.reload() : onForceRefreshFailed()));
-  //   }
-  // }, [isVerifiedInApi, isVerified, forceRefresh, refreshCount]);
+  const hasPricing = useMemo(() => {
+    if (isCustomer) {
+      return 'Customer';
+    }
 
-  // if (isVerifiedInApi && !isVerified && refreshCount === 0) {
-  //   return <LoadingOverlay spinnerText={messages.verifiedReloadRequired} />;
-  // }
+    if (isEmployee) {
+      return 'Standard';
+    }
+
+    if (isRegisteredUser) {
+      return 'Quoted';
+    }
+
+    return 'None';
+  }, [isCustomer, isEmployee, isRegisteredUser]);
+
+  const isRequestForQuoteEnabled: boolean = useMemo(() => {
+    if (isRegisteredUser) {
+      return true;
+    }
+    return false;
+  }, [isRegisteredUser]);
+
+  const isCheckoutEnabled: boolean = useMemo(() => {
+    if (isCustomer) {
+      return true;
+    }
+    return false;
+  }, [isCustomer]);
+
+  const isQuoteRequestHistoryEnabled: boolean = useMemo(() => {
+    if (isRegisteredUser) {
+      return true;
+    }
+    return false;
+  }, [isRegisteredUser]);
+
+  const isQuoteHistoryEnabled: boolean = useMemo(() => {
+    if (isVerifiedCustomer) {
+      return true;
+    }
+    return false;
+  }, [isVerifiedCustomer]);
+
+  const isOrderHistoryEnabled: boolean = useMemo(() => {
+    if (isVerifiedCustomer) {
+      return true;
+    }
+    return false;
+  }, [isVerifiedCustomer]);
+
+  const showCustomerDetails: boolean = useMemo(() => {
+    if (isCustomer) {
+      return true;
+    }
+    return false;
+  }, [isCustomer]);
+
+  const isInternalViewEnabled: boolean = useMemo(() => {
+    if (isEmployee) {
+      return true;
+    }
+    return false;
+  }, [isEmployee]);
+
+  function handleError(error: Error) {
+    console.error(error);
+  }
+
+  const createContactDetailsRequest = useMutation(
+    (formValues: ContactDetailsFormValues) =>
+      updateContactDetails(
+        mapContactDetailsFieldsToContactDetailsPut(formValues)
+      ),
+    {
+      onError: handleError,
+      onSuccess: (data: User) => {
+        queryClient.setQueryData([QUERYKEYS.appMe, isAuthenticated], {
+          ...me,
+          contactInfo: {
+            ...data
+          }
+        });
+      },
+      onSettled: () => {
+        setTimeout(() => createContactDetailsRequest.reset(), 5000);
+      }
+    }
+  );
+
+  const {
+    mutateAsync: createVerificationRequest,
+    status: createVerificationRequestStatus
+  } = useMutation(
+    (formValues: CompleteSignUpFormValues) =>
+      createUserVerification(
+        mapContactDetailsFieldsToContactDetailsPut(formValues),
+        mapVerificationRequestFieldsToVerificationPost(formValues, me)
+      ),
+    {
+      onError: handleError,
+      onSettled: () => scrollToTop()
+    }
+  );
+
+  function getInteractionStatusText(status: InteractionStatus): string {
+    switch (status) {
+      case InteractionStatus.Login:
+        return formatMessage(messages.signingIn);
+      case InteractionStatus.Logout:
+        return formatMessage(messages.signingOut);
+      case InteractionStatus.HandleRedirect:
+        return formatMessage(messages.redirecting);
+      default:
+        return formatMessage(messages.loading);
+    }
+  }
+
+  if (
+    ![InteractionStatus.Startup, InteractionStatus.None].includes(inProgress)
+  ) {
+    return (
+      <Stack
+        verticalAlign="center"
+        horizontalAlign="center"
+        tokens={{
+          childrenGap: spacing.l1,
+          padding: `${spacing.l1} 0 `
+        }}
+      >
+        <LoadingOverlay spinnerText={getInteractionStatusText(inProgress)} />
+      </Stack>
+    );
+  }
   return (
     <UserContext.Provider
       value={{
         me,
-        meStatus
+        meStatus,
+        hasPricing,
+        isCheckoutEnabled,
+        isOrderHistoryEnabled,
+        isQuoteRequestHistoryEnabled,
+        isQuoteHistoryEnabled,
+        isRequestForQuoteEnabled,
+        isInternalViewEnabled,
+        showCustomerDetails,
+        createVerificationRequest,
+        createContactDetailsRequest: createContactDetailsRequest.mutateAsync,
+        createContactDetailsRequestStatus: createContactDetailsRequest.status,
+        createVerificationRequestStatus
       }}
     >
-      {children}
+      {(isAuthenticated && !isRegisteredUser && <CompleteSignUp />) || children}
     </UserContext.Provider>
   );
 };

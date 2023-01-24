@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
+
+const nextConfig = {
+  productionBrowserSourceMaps: true,
+
   async redirects() {
     return process.env.Node_ENV === 'production'
       ? [
@@ -7,6 +14,11 @@ module.exports = {
             source: '/docs/i18n',
             destination: '/404',
             permanent: false
+          },
+          {
+            source: '/dev/user',
+            destination: '/404',
+            permanent: true
           }
         ]
       : [];
@@ -14,12 +26,19 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/categorieen/:categorySlug',
-        destination: '/categories/:categorySlug'
+        /*added a very generic rewrite with no real use,
+        as not having any rewrites breaks some expected i18n behavior.
+        https://github.com/vercel/next.js/issues/25019 */
+        source: '/home',
+        destination: '/'
       },
       {
-        source: '/producten/:productSlug',
-        destination: '/products/:productSlug'
+        source: '/account',
+        destination: '/account/overview'
+      },
+      {
+        source: '/frontend-api/:path*',
+        destination: '/api/:path*'
       }
     ];
   },
@@ -28,7 +47,18 @@ module.exports = {
     domains: ['spray.widen.net']
   },
   i18n: {
-    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES?.split(','),
+    locales: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES.split(','),
     defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE
+  },
+  webpack: (config, { webpack, buildId }) => {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NEXT_BUILD_DATE': JSON.stringify(new Date().toISOString()),
+        'process.env.NEXT_BUILD_ID': JSON.stringify(buildId)
+      })
+    );
+    return config;
   }
 };
+
+module.exports = withBundleAnalyzer(nextConfig);

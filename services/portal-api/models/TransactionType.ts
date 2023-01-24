@@ -3,5 +3,5 @@
 /* eslint-disable */
 
 export enum TransactionType {
-  SALE = 'Sale',
+  SALE = 'Sale'
 }

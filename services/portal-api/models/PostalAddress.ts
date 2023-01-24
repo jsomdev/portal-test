@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { ComplexEntity } from './ComplexEntity';
 
 export type PostalAddress = ComplexEntity & {

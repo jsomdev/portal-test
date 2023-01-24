@@ -7,10 +7,11 @@ export enum ResourceType {
   FLOW_IMAGE = 'FlowImage',
   VIDEO = 'Video',
   CATALOG = 'Catalog',
+  DATA_SHEET = 'DataSheet',
   CATALOG_DETAIL = 'CatalogDetail',
   PRODUCT_BULLETIN = 'ProductBulletin',
   CASE_STUDY = 'CaseStudy',
   INTERACTIVE_MODEL = 'InteractiveModel',
   WHITE_PAPER = 'WhitePaper',
-  TECHNICAL_MANUAL = 'TechnicalManual',
+  TECHNICAL_MANUAL = 'TechnicalManual'
 }

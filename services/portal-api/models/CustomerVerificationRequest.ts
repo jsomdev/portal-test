@@ -1,13 +1,15 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { CustomerVerificationRequestStatus } from './CustomerVerificationRequestStatus';
 import type { Identity } from './Identity';
 import type { TracedEntity } from './TracedEntity';
 
 export type CustomerVerificationRequest = TracedEntity & {
   accountNumber?: string | null;
+
   addressCity?: string | null;
   addressCountry?: string | null;
   addressLines?: Array<string | null>;
@@ -21,4 +23,5 @@ export type CustomerVerificationRequest = TracedEntity & {
   userId?: string;
   processedBy?: Identity | null;
   user?: Identity | null;
+  userInitializationId?: string;
 };

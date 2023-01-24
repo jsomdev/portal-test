@@ -8,6 +8,10 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum SeriesFacetOptionKey {
+  _12j = '_12j',
+  _14j = '_14j',
+  _18jj = '_18jj',
+  _1j = '_1j',
   AdjustableBallFittings = 'AdjustableBallFittings',
   AirActuatedAirAtomizing = 'AirActuatedAirAtomizing',
   AirActuatedHydraulic = 'AirActuatedHydraulic',
@@ -16,13 +20,9 @@ export enum SeriesFacetOptionKey {
   FlatFan = 'FlatFan',
   ForTanksUpTo10Ft = 'ForTanksUpTo10Ft',
   ForTanksUpTo100Ft = 'ForTanksUpTo100Ft',
-  ForTanksUpTo14M = 'ForTanksUpTo14M',
   ForTanksUpTo20Ft = 'ForTanksUpTo20Ft',
-  ForTanksUpTo3M = 'ForTanksUpTo3M',
-  ForTanksUpTo30M = 'ForTanksUpTo30M',
   ForTanksUpTo45Ft = 'ForTanksUpTo45Ft',
   ForTanksUpTo5Ft = 'ForTanksUpTo5Ft',
-  ForTanksUpTo6M = 'ForTanksUpTo6M',
   HighImpactFlatSpray = 'HighImpactFlatSpray',
   HighImpactSolidStream = 'HighImpactSolidStream',
   HighPressureGunjetSprayGuns = 'HighPressureGunjetSprayGuns',
@@ -39,6 +39,7 @@ export enum SeriesFacetOptionKey {
   PromaxQuickFulljetQuickConnect = 'PromaxQuickFulljetQuickConnect',
   PromaxQuickveejetQuickConnect = 'PromaxQuickveejetQuickConnect',
   PromaxQuickjetQuickConnect = 'PromaxQuickjetQuickConnect',
+  Qmj = 'Qmj',
   QuickFloodjetQuickConnect = 'QuickFloodjetQuickConnect',
   QuickFulljetQuickConnect = 'QuickFulljetQuickConnect',
   QuickVeejetFlatSprayQuickConnect = 'QuickVeejetFlatSprayQuickConnect',
@@ -62,12 +63,91 @@ export enum SeriesFacetOptionKey {
   UnijetHollowCone = 'UnijetHollowCone',
   UnijetNozzleBodies = 'UnijetNozzleBodies',
   UnijetSolidStream = 'UnijetSolidStream',
+  UnspecifiedSeries = 'UnspecifiedSeries',
+  VaaVau = 'VaaVau',
+  Vmau = 'Vmau',
   WideAngleDeflectedFlatSpray = 'WideAngleDeflectedFlatSpray',
   WideAngleFullCone = 'WideAngleFullCone',
   WideAngleHollowCone = 'WideAngleHollowCone'
 }
 
-export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
+export const productSeriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
+  {
+    key: SeriesFacetOptionKey._12j,
+    ...defaultFacetOption,
+    valueId: 'd52f0cb2-4d5e-4779-a105-2dd161bf13f0',
+    value: '1/2J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/2J' }
+        }
+      ],
+      sortIndex: 0,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._14j,
+    ...defaultFacetOption,
+    valueId: '37648a83-4702-4454-a416-4c80912c8dc2',
+    value: '1/4J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/4J' }
+        }
+      ],
+      sortIndex: 1,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._18jj,
+    ...defaultFacetOption,
+    valueId: '4c2ff055-8b93-4a0d-8d9c-859c0f61baae',
+    value: '1/8JJ',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1/8JJ' }
+        }
+      ],
+      sortIndex: 2,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey._1j,
+    ...defaultFacetOption,
+    valueId: 'f158e215-41f7-4cde-a804-2208a9d7fe12',
+    value: '1J',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: '1J' }
+        }
+      ],
+      sortIndex: 3,
+      seoPath: ''
+    }
+  },
   {
     key: SeriesFacetOptionKey.AdjustableBallFittings,
     ...defaultFacetOption,
@@ -88,7 +168,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 0,
+      sortIndex: 4,
       seoPath: ''
     }
   },
@@ -112,7 +192,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 1,
+      sortIndex: 5,
       seoPath: ''
     }
   },
@@ -136,7 +216,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 2,
+      sortIndex: 6,
       seoPath: ''
     }
   },
@@ -160,7 +240,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 3,
+      sortIndex: 7,
       seoPath: ''
     }
   },
@@ -184,7 +264,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 4,
+      sortIndex: 8,
       seoPath: ''
     }
   },
@@ -208,7 +288,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 5,
+      sortIndex: 9,
       seoPath: ''
     }
   },
@@ -232,7 +312,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 6,
+      sortIndex: 10,
       seoPath: ''
     }
   },
@@ -256,31 +336,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 7,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.ForTanksUpTo14M,
-    ...defaultFacetOption,
-    valueId: 'bba76df1-c9ab-4c7f-ae6e-48954a7c523c',
-    value: 'For tanks up to 14 m',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'For tanks up to 14 m',
-            de: 'Für Tanks bis 14 m',
-            fr: 'Pour réservoirs jusqu’à 14 m',
-            nl: 'Voor tanks tot 14 m'
-          }
-        }
-      ],
-      sortIndex: 8,
+      sortIndex: 11,
       seoPath: ''
     }
   },
@@ -304,50 +360,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 9,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.ForTanksUpTo3M,
-    ...defaultFacetOption,
-    valueId: 'f0aa869d-8a33-4328-940c-7da7c6ad6c95',
-    value: 'For tanks up to 3 m',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: { en: 'For tanks up to 3 m' }
-        }
-      ],
-      sortIndex: 10,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.ForTanksUpTo30M,
-    ...defaultFacetOption,
-    valueId: '1825ab3c-17a6-4f4f-8961-8f4276c6f89c',
-    value: 'For tanks up to 30 m',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'For tanks up to 30 m',
-            de: 'Für Tanks bis 30 m',
-            fr: 'Pour réservoirs jusqu’à 30 m',
-            nl: 'Voor tanks tot 30 m'
-          }
-        }
-      ],
-      sortIndex: 11,
+      sortIndex: 12,
       seoPath: ''
     }
   },
@@ -371,7 +384,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 12,
+      sortIndex: 13,
       seoPath: ''
     }
   },
@@ -392,30 +405,6 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
             nl: 'Voor tanks tot 5 ft. (1,5 m)',
             fr: 'Pour les réservoirs jusqu’à 1,5 m (5 pi)',
             de: 'Für Tanks bis zu 1,5 m (5 ft)'
-          }
-        }
-      ],
-      sortIndex: 13,
-      seoPath: ''
-    }
-  },
-  {
-    key: SeriesFacetOptionKey.ForTanksUpTo6M,
-    ...defaultFacetOption,
-    valueId: 'ff6a9708-f33d-4a45-97d0-6cd7c2a1508a',
-    value: 'For tanks up to 6 m',
-    parentId: '',
-    children: [],
-    configuration: {
-      displays: [
-        {
-          variation: 'Invariant',
-          unitSymbol: null,
-          value: {
-            en: 'For tanks up to 6 m',
-            de: 'Für Tanks bis 6 m',
-            fr: 'Pour réservoirs jusqu’à 6 m',
-            nl: 'Voor tanks tot 6 m'
           }
         }
       ],
@@ -812,6 +801,25 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
     }
   },
   {
+    key: SeriesFacetOptionKey.Qmj,
+    ...defaultFacetOption,
+    valueId: '6a87aa56-4a60-451e-a241-011315411b72',
+    value: 'QMJ',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'QMJ' }
+        }
+      ],
+      sortIndex: 31,
+      seoPath: ''
+    }
+  },
+  {
     key: SeriesFacetOptionKey.QuickFloodjetQuickConnect,
     ...defaultFacetOption,
     valueId: '940e3151-be0a-440f-a256-cff6e7b86d80',
@@ -831,7 +839,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 31,
+      sortIndex: 32,
       seoPath: ''
     }
   },
@@ -855,7 +863,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 32,
+      sortIndex: 33,
       seoPath: ''
     }
   },
@@ -880,7 +888,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 33,
+      sortIndex: 34,
       seoPath: ''
     }
   },
@@ -905,7 +913,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 34,
+      sortIndex: 35,
       seoPath: ''
     }
   },
@@ -929,7 +937,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 35,
+      sortIndex: 36,
       seoPath: ''
     }
   },
@@ -953,7 +961,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 36,
+      sortIndex: 37,
       seoPath: ''
     }
   },
@@ -977,7 +985,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 37,
+      sortIndex: 38,
       seoPath: ''
     }
   },
@@ -1001,7 +1009,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 38,
+      sortIndex: 39,
       seoPath: ''
     }
   },
@@ -1020,7 +1028,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           value: { en: 'Square/Oval Spray Full Cone Nozzles' }
         }
       ],
-      sortIndex: 39,
+      sortIndex: 40,
       seoPath: ''
     }
   },
@@ -1044,7 +1052,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 40,
+      sortIndex: 41,
       seoPath: ''
     }
   },
@@ -1068,7 +1076,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 41,
+      sortIndex: 42,
       seoPath: ''
     }
   },
@@ -1092,7 +1100,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 42,
+      sortIndex: 43,
       seoPath: ''
     }
   },
@@ -1116,7 +1124,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 43,
+      sortIndex: 44,
       seoPath: ''
     }
   },
@@ -1135,7 +1143,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           value: { en: 'Strainers', de: 'Siebe', fr: 'Crépines', nl: 'Zeven' }
         }
       ],
-      sortIndex: 44,
+      sortIndex: 45,
       seoPath: ''
     }
   },
@@ -1159,7 +1167,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 45,
+      sortIndex: 46,
       seoPath: ''
     }
   },
@@ -1183,7 +1191,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 46,
+      sortIndex: 47,
       seoPath: ''
     }
   },
@@ -1207,7 +1215,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 47,
+      sortIndex: 48,
       seoPath: ''
     }
   },
@@ -1231,7 +1239,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 48,
+      sortIndex: 49,
       seoPath: ''
     }
   },
@@ -1255,7 +1263,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 49,
+      sortIndex: 50,
       seoPath: ''
     }
   },
@@ -1279,7 +1287,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 50,
+      sortIndex: 51,
       seoPath: ''
     }
   },
@@ -1303,7 +1311,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 51,
+      sortIndex: 52,
       seoPath: ''
     }
   },
@@ -1327,7 +1335,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 52,
+      sortIndex: 53,
       seoPath: ''
     }
   },
@@ -1351,7 +1359,64 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 53,
+      sortIndex: 54,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey.UnspecifiedSeries,
+    ...defaultFacetOption,
+    valueId: '9c58413d-a53e-42b3-b904-ff3e5002489d',
+    value: 'Unspecified Series',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'Unspecified Series' }
+        }
+      ],
+      sortIndex: 55,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey.VaaVau,
+    ...defaultFacetOption,
+    valueId: '086fe2d0-3802-4c96-9fbe-0e97cd54df68',
+    value: 'VAA, VAU',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'VAA, VAU' }
+        }
+      ],
+      sortIndex: 56,
+      seoPath: ''
+    }
+  },
+  {
+    key: SeriesFacetOptionKey.Vmau,
+    ...defaultFacetOption,
+    valueId: 'ea39602d-847c-4c84-b563-73d04c7b94be',
+    value: 'VMAU',
+    parentId: '',
+    children: [],
+    configuration: {
+      displays: [
+        {
+          variation: 'Invariant',
+          unitSymbol: null,
+          value: { en: 'VMAU' }
+        }
+      ],
+      sortIndex: 57,
       seoPath: ''
     }
   },
@@ -1375,7 +1440,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 54,
+      sortIndex: 58,
       seoPath: ''
     }
   },
@@ -1399,7 +1464,7 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 55,
+      sortIndex: 59,
       seoPath: ''
     }
   },
@@ -1423,13 +1488,13 @@ export const seriesFacetOptions: FacetOption<SeriesFacetOptionKey>[] = [
           }
         }
       ],
-      sortIndex: 56,
+      sortIndex: 60,
       seoPath: ''
     }
   }
 ];
 
-export const seriesFacet: Facet<
+export const productSeriesFacet: Facet<
   SeriesFacetOptionKey,
   FacetOption<SeriesFacetOptionKey>
 > = {
@@ -1440,9 +1505,7 @@ export const seriesFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: 'Series',
-    description: 'Series',
     isFacetingEnabled: true
   },
-  options: seriesFacetOptions
+  options: productSeriesFacetOptions
 };

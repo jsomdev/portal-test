@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { Location } from './Location';
 import type { SiteArea } from './SiteArea';
 import type { TracedEntity } from './TracedEntity';

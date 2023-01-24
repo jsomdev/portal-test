@@ -26,7 +26,6 @@
  * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
  */
 /*{"last_published":"2018-07-26 20:28:23 UTC"}*/
-
 @import url('https://p.typekit.net/p.css?s=1&k=ioc1xxh&ht=tk&f=139.140.171.172.173.174.175.176.25136.25137.28439.28441.28443.28447.28448.28449&a=14452214&app=typekit&e=css');
 
 @font-face {
@@ -248,11 +247,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  background-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-body {
+html {
   overflow: auto;
 }
 
@@ -277,11 +277,88 @@ p {
 }
 
 .reactMarkdown {
-  padding: 2em;
+  padding: 0em;
+  font-family: 'proxima-nova', sans-serif;
+  line-height: 1.3rem;
 }
+.reactMarkdown p,
+.reactMarkdown h3 {
+  margin-bottom: 1rem;
+}
+
 .reactMarkdown a {
   color: darkcyan;
 }
 .reactMarkdown pre {
   display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.horizontal {
+  display: flex;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+li.horizontal {
+  display: block;
+  flex: 0 1 auto; /* Default */
+  list-style-type: none;
+}
+
+.list-scroll::-webkit-scrollbar,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar,
+.ms-Callout-main::-webkit-scrollbar,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar,
+.ms-Panel-scrollableContent::-webkit-scrollbar,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.list-scroll::-webkit-scrollbar-track,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track,
+.ms-Callout-main::-webkit-scrollbar-track,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track,
+.ms-Panel-scrollableContent::-webkit-scrollbar-track,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list-scroll::-webkit-scrollbar-thumb,
+.list-scroll .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb,
+.ms-Callout-main::-webkit-scrollbar-thumb,
+.ms-Callout-main .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb,
+.ms-Panel-scrollableContent::-webkit-scrollbar-thumb,
+.ms-Panel-scrollableContent
+  .ms-ScrollablePane--contentContainer::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 6px;
+}
+
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background-color: white;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+main {
+  min-height: 80vh;
 }

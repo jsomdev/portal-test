@@ -1,17 +1,13 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
+import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { LOCALSTORAGEKEYS } from '@services/local-storage/constants';
-import { SystemOfMeasurement } from '@utilities/measurement';
 
 import { SystemOfMeasurementContext } from './systemOfMeasurementContext';
 
 export const SystemOfMeasurementProvider: FC = ({ children }) => {
   const [systemOfMeasurement, setSystemOfMeasurement] =
-    useState<SystemOfMeasurement>(
-      (localStorage.getItem(
-        LOCALSTORAGEKEYS.systemOfMeasurement
-      ) as SystemOfMeasurement) || 'US'
-    );
+    useState<SystemOfMeasurement>('US');
 
   const changeSystemOfMeasurement = (
     systemOfMeasurement: SystemOfMeasurement
@@ -21,18 +17,30 @@ export const SystemOfMeasurementProvider: FC = ({ children }) => {
         LOCALSTORAGEKEYS.systemOfMeasurement,
         systemOfMeasurement
       );
-    } catch (ex) {
-      console.warn(ex);
+    } catch (error) {
+      console.warn(error);
     }
     setSystemOfMeasurement(systemOfMeasurement);
   };
 
-  if (
-    localStorage.getItem(LOCALSTORAGEKEYS.systemOfMeasurement) !== 'US' &&
-    localStorage.getItem(LOCALSTORAGEKEYS.systemOfMeasurement) !== 'Metric'
-  ) {
-    changeSystemOfMeasurement('US');
-  }
+  useEffect(() => {
+    const valueInLocalStorage: string | null = localStorage.getItem(
+      LOCALSTORAGEKEYS.systemOfMeasurement
+    );
+
+    if (
+      valueInLocalStorage === null ||
+      !['US', 'Metric'].includes(valueInLocalStorage)
+    ) {
+      changeSystemOfMeasurement('US');
+    } else {
+      setSystemOfMeasurement(
+        localStorage.getItem(
+          LOCALSTORAGEKEYS.systemOfMeasurement
+        ) as SystemOfMeasurement
+      );
+    }
+  }, []);
 
   return (
     <SystemOfMeasurementContext.Provider

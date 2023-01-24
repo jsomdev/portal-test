@@ -1,4 +1,6 @@
+import { DefaultSpacing, FontSizes } from '@fluentui/react';
 import { PartialTheme } from '@fluentui/theme';
+import { rem } from '@utilities/rem';
 
 export const appTheme: PartialTheme = {
   defaultFontStyle: { fontFamily: 'proxima-nova', fontWeight: 'regular' },
@@ -13,7 +15,7 @@ export const appTheme: PartialTheme = {
     themeDarkAlt: '#005b93',
     themeDark: '#064770',
     themeDarker: '#00385b',
-    neutralLighterAlt: '#EEF1F4',
+    neutralLighterAlt: '#FAFAFA',
     neutralLighter: '#f3f2f1',
     neutralLight: '#edebe9',
     neutralQuaternaryAlt: '#e1dfdd',
@@ -33,13 +35,64 @@ export const appTheme: PartialTheme = {
   },
   effects: {},
   fonts: {
+    xSmall: {
+      fontSize: rem(FontSizes.xSmall)
+    },
+    small: {
+      fontSize: rem(FontSizes.small)
+    },
+    smallPlus: {
+      fontSize: rem(FontSizes.smallPlus)
+    },
     medium: {
-      color: '#222'
+      fontSize: rem(FontSizes.medium),
+      color: '#222',
+      lineHeight: '1.25em'
+    },
+    mediumPlus: {
+      fontSize: rem(FontSizes.mediumPlus),
+      lineHeight: '1.25em'
+    },
+    large: {
+      fontSize: rem(FontSizes.large),
+      lineHeight: '1.25em'
+    },
+    superLarge: {
+      fontSize: rem(FontSizes.superLarge),
+      lineHeight: '1.25em'
+    },
+    xLarge: {
+      fontSize: rem(FontSizes.xLarge),
+      lineHeight: '1.25em'
+    },
+    xLargePlus: {
+      fontSize: rem(FontSizes.xLargePlus),
+      lineHeight: '1.25em'
+    },
+    xxLarge: {
+      fontSize: rem(FontSizes.xxLarge),
+      lineHeight: '1.25em'
+    },
+    xxLargePlus: {
+      fontSize: rem(FontSizes.xxLargePlus),
+      lineHeight: '1.25em'
+    },
+    mega: {
+      fontSize: rem(FontSizes.mega),
+      lineHeight: '1.25em'
     }
+  },
+  spacing: {
+    s1: rem(DefaultSpacing.s1),
+    s2: rem(DefaultSpacing.s2),
+    l1: rem(DefaultSpacing.l1),
+    l2: rem(DefaultSpacing.l2),
+    m: rem(DefaultSpacing.m)
   },
   semanticColors: {
     link: '#0065a4',
     linkHovered: '#0065a4',
+    bodyBackground: 'transparent',
     cardStandoutBackground: '#075671',
     bodyStandoutBackground: '#242F37',
     bodySubtext: '#AEBDC6',

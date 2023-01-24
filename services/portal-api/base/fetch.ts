@@ -3,7 +3,7 @@ import { AuthenticationResult } from '@azure/msal-common';
 import {
   customerLoginRequest,
   employeeLoginRequest,
-  msalInstance
+  getMsalInstance
 } from '@services/authentication/authenticationConfiguration';
 import { ExtendedClaims } from '@services/authentication/claims';
 
@@ -13,7 +13,7 @@ import { QueryOptions } from '../o-data/queryOptions';
 import { ErpApiError } from './erpApiError';
 import { ODataQueryHelper } from './queryHelper';
 
-async function handleResponse<T>(
+export async function handleResponse<T>(
   response: Response,
   method: string,
   shouldParseToJson: boolean
@@ -50,7 +50,8 @@ export const digitalHighWayFetch = async <T>(
   shouldParseToJson = true
 ): Promise<T | Response> => {
   let defaultHeaders = {};
-  const account: AccountInfo | undefined = msalInstance.getAllAccounts()[0];
+  const account: AccountInfo | undefined =
+    getMsalInstance()?.getAllAccounts()[0];
   let authenticationResult: AuthenticationResult | undefined = undefined;
   if (account) {
     const tfp:
@@ -63,17 +64,28 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
-      authenticationResult = await msalInstance.acquireTokenSilent({
+      const forceRefresh = account.idTokenClaims?.exp
+        ? new Date(account.idTokenClaims?.exp + 1000) < new Date()
+        : true;
+      authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
+        forceRefresh,
         account
       });
-    } catch (e) {
-      console.log('Failed the acquire token silently. Will logout the user');
+    } catch (e: unknown) {
+      console.error('Failed the acquire token silently. Will logout the user');
 
-      msalInstance.logoutRedirect({
-        ...loginRequest,
-        account
-      });
+      if ((e as any)?.errorMessage?.includes('AADB2C90077')) {
+        getMsalInstance()?.acquireTokenRedirect({
+          ...loginRequest,
+          account
+        });
+      } else {
+        getMsalInstance()?.logoutRedirect({
+          ...loginRequest,
+          account
+        });
+      }
     }
   }
 
@@ -104,7 +116,6 @@ export const digitalHighWayFetch = async <T>(
   const fetchUrl = serviceRootUri
     .concat(resourcePath)
     .concat(odataQueryOptions);
-
   // Return the parsed response as promise instead of the response itselve
   const response: Response = await fetch(fetchUrl, options);
   const result: T | Response = await handleResponse<T>(

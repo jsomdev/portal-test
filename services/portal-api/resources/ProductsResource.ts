@@ -1,12 +1,53 @@
 import { BaseResource } from '../base/baseResource';
 import { ODataQueryHelper } from '../base/queryHelper';
+import {
+  AutoCompleteOdataCollection,
+  FacetedSearchOdataCollection
+} from '../faceted-search/types';
 import { Product } from '../models/Product';
 import { OdataCollection } from '../o-data/oData';
 import { QueryOptions } from '../o-data/queryOptions';
 
 export class ProductsResource extends BaseResource<Product> {
   constructor() {
-    super('/Products');
+    super('/products');
+  }
+
+  async autoComplete(
+    encodedQuery: string
+  ): Promise<AutoCompleteOdataCollection> {
+    const resourcePath = this.getAutoCompleteResourcePath(encodedQuery);
+
+    return this.fetch(resourcePath, '', {});
+  }
+
+  async facetedSearch(
+    top: number,
+    skip: number = 0,
+    urlEncodedFilters?: string | undefined,
+    encodedQuery?: string | undefined,
+    urlEncodedOperatingConditions?: string | undefined
+  ): Promise<FacetedSearchOdataCollection> {
+    const queryOptions: Partial<QueryOptions> = {
+      top,
+      skip
+    };
+    const queryOptionsString: string =
+      ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions);
+    const combinedQueryOptionsString: string = queryOptionsString
+      .concat(queryOptionsString ? '&' : '?')
+      .concat(urlEncodedFilters ? `${urlEncodedFilters}` : '')
+      .concat(
+        `&@operatingConditions=${urlEncodedOperatingConditions || 'null'}`
+      )
+      .concat(
+        encodedQuery
+          ? `&@query='${ProductsResource.escapeSearchQuery(encodedQuery)}'`
+          : ''
+      );
+    const resourcePath = this.getFacetedSearchResourcePath(encodedQuery);
+
+    return this.fetch(resourcePath, combinedQueryOptionsString, {});
   }
   async find(
     queryOptions: Partial<QueryOptions>,
@@ -29,8 +70,21 @@ export class ProductsResource extends BaseResource<Product> {
       OdataCollection<Product>
     >;
   }
+  private getFacetedSearchResourcePath(urlEncodedQuery?: string) {
+    return `${this.getResourcePath()}/facetedSearch${
+      urlEncodedQuery
+        ? `(query=@query,operatingConditions=@operatingConditions,filters=@filters)`
+        : '(query=null,operatingConditions=@operatingConditions,filters=@filters)'
+    }`;
+  }
+  private getAutoCompleteResourcePath(urlEncodedQuery: string) {
+    return `${this.getResourcePath()}/autoComplete(query=@query)?@query='${ProductsResource.escapeSearchQuery(
+      urlEncodedQuery
+    )}'`;
+  }
+
   private getFindResourcePath(urlEncodedQuery?: string): string {
-    return `${this.getResourcePath()}/Find${
+    return `${this.getResourcePath()}/find${
       urlEncodedQuery
         ? `(operatingConditions=@operatingConditions,filters=@filters,query='${ProductsResource.escapeSearchQuery(
             urlEncodedQuery

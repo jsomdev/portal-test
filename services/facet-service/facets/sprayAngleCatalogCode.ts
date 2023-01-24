@@ -22,7 +22,11 @@ export const sprayAngleCatalogCodeFacetOptions: FacetOption<SprayAngleCatalogCod
       value: 'Narrow',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Narrow' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Narrow' }
+          }
         ],
         sortIndex: 1
       }
@@ -34,7 +38,11 @@ export const sprayAngleCatalogCodeFacetOptions: FacetOption<SprayAngleCatalogCod
       value: 'Standard',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Standard' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Standard' }
+          }
         ],
         sortIndex: 2
       }
@@ -46,7 +54,11 @@ export const sprayAngleCatalogCodeFacetOptions: FacetOption<SprayAngleCatalogCod
       value: 'Wide',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Wide' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Wide' }
+          }
         ],
         sortIndex: 3
       }

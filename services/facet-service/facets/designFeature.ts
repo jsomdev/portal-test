@@ -117,7 +117,11 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
       value: 'IsCast',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Is cast' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Is cast' }
+          }
         ],
         sortIndex: 6
       }
@@ -257,7 +261,11 @@ export const designFeatureFacetOptions: FacetOption<DesignFeatureFacetOptionKey>
       value: 'Swivel',
       configuration: {
         displays: [
-          { variation: 'Invariant', unitSymbol: '', value: { en: 'Swivel' } }
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Swivel' }
+          }
         ],
         sortIndex: 15
       }
@@ -323,8 +331,6 @@ export const designFeatureFacet: Facet<
     category: FacetCategory.Main,
     controlType: FacetControlType.Checkbox,
     selectType: FacetSelectType.MultiSelect,
-    displayName: 'Category',
-    description: 'Category',
     isFacetingEnabled: true
   },
   options: designFeatureFacetOptions

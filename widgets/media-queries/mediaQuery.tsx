@@ -1,50 +1,78 @@
 import React from 'react';
 
-import { useMediaQuery } from './mediaQuery.hook';
+import { IStyle } from '@fluentui/react';
+
 import {
+  Breakpoint,
+  Media,
+  MediaProps,
   MediaQuery,
-  MediaQueryMatchType,
-  MediaQueryPreset
-} from './mediaQuery.types';
+  getMediaQueryString
+} from './media';
 
 /**
- * Wrapper component that will render the children if the MediaQuery + MatchType matches.
+ * Wrap styles in the specified media query
  */
-export const Media: React.FC<MediaQuery> = ({ matchType, query, children }) => {
-  const { isMatch } = useMediaQuery({ query, matchType });
-
-  if (isMatch) {
-    return <React.Fragment>{children}</React.Fragment>;
-  }
-
-  return null;
+const createMediaQuery = (
+  mediaQuery: MediaQuery,
+  styles: IStyle
+): Record<string, unknown> => {
+  const queries = getMediaQueryString(mediaQuery);
+  return {
+    [`@media ${queries}`]: styles
+  };
 };
 
 /**
- * Media Wrapper component for Media matching Medium screen sizes.
- * Defaults to Medium and up.
+ * Wrap styles in the specified media query, greater or equal than breakpoint
  */
-export const Medium: React.FC<Partial<Pick<MediaQuery, 'matchType'>>> = ({
-  matchType = MediaQueryMatchType.From,
-  children
-}) => {
+export const mediaQueryFrom = (
+  breakpoint: Breakpoint,
+  styles: IStyle
+): Record<string, unknown> => {
+  return createMediaQuery({ match: 'greaterThanOrEqual', breakpoint }, styles);
+};
+
+/**
+ * Media Wrapper component for Media matching Mobile screen sizes.
+ * <Media at="sm">
+ */
+export const Mobile: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
   return (
-    <Media matchType={matchType} query={MediaQueryPreset.Medium}>
+    <Media {...otherProps} between={['mobile', 'tablet']}>
       {children}
     </Media>
   );
 };
 
 /**
- * Media Wrapper component for Media matching Large screen sizes.
- * Defaults to Large and up.
+ * Media Wrapper component for Media matching Tablet and Desktop screen sizes.
+ * <Media greaterThan="mobile">
  */
-export const Large: React.FC<Partial<Pick<MediaQuery, 'matchType'>>> = ({
-  matchType = MediaQueryMatchType.From,
-  children
-}) => {
+export const TabletAndDesktop: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
   return (
-    <Media matchType={matchType} query={MediaQueryPreset.Large}>
+    <Media {...otherProps} greaterThan="largePhone">
+      {children}
+    </Media>
+  );
+};
+
+/**
+ * Media Wrapper component for Media matching Tablet screen sizes.
+ * <Media greaterThan="mobile">
+ */
+export const Tablet: React.FC<
+  Pick<MediaProps, 'className' | 'children'>
+> = props => {
+  const { children, ...otherProps } = props;
+  return (
+    <Media {...otherProps} at="tablet">
       {children}
     </Media>
   );

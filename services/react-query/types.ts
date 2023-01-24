@@ -20,12 +20,13 @@
 export type ReactQueryStatus = 'idle' | 'loading' | 'error' | 'success';
 
 export interface ReactQueryKeys {
-  searchVerifyProduct: string;
-  orderVerifyProducts: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [x: string]: any;
+  appAudienceSetting: string;
   appBookmarkedProducts: string;
   appBookmarkedProductsSetting: string;
-  appCartItemsOld: string;
   appCartItems: string;
+  appCartItemsOld: string;
   appMainMenu: string;
   appMe: string;
   appProductPriceBreak: string;
@@ -54,17 +55,27 @@ export interface ReactQueryKeys {
   globalModels: string;
   globalSeries: string;
   homeCategoryPages: string;
+  matchEmailToCustomer: string;
   modelKeySpecifications: string;
   modelResources: string;
   orderDetail: string;
   orderLineProducts: string;
+  orderVerifyProducts: string;
   orders: string;
   productFinderGridViewItems: string;
   productFinderLiquidsWithRelativeDensity: string;
   productFinderListViewItems: string;
   productFinderPredictedResults: string;
+  productFinderResults: string;
   productFinderTableHierarchy: string;
   productFinderTableViewDesignsForModel: string;
   productFinderTableViewProductListItem: string;
+  quote: string;
+  quoteDetail: string;
+  quoteRequestDetail: string;
+  quoteRequestLineProducts: string;
+  quoteRequests: string;
+  recentOrders: string;
+  searchVerifyProduct: string;
   seriesResources: string;
 }

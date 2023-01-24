@@ -1,37 +1,26 @@
 import { MultilingualString } from '@services/portal-api';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
+/**
+ * Helper class for formatting MultilingualStrings (Data-Driven Formatting).
+ * Based on the locale (e.g.: 'en-US') it will format values using the appropriate property on the MultilingualString Object.
+ */
 export class MultilingualStringFormatter {
   protected language: string;
-  private defaultLanguage: 'en' = 'en';
   constructor(locale?: string) {
-    this.language = this.getLanguage(locale);
+    this.language = MultilingualStringHelper.getLanguage(locale);
   }
 
-  private getLanguage(locale?: string): string {
-    const language = (locale || ENVIRONMENT_VARIABLES.defaultLocale)?.split(
-      '-'
-    )[0];
-    return language || this.defaultLanguage;
-  }
-
-  private getMultilingualKey(
-    value?: MultilingualString | null | undefined
-  ): string {
-    if (this.language) {
-      if (!value) {
-        return this.language;
-      }
-      if (value[this.language]) {
-        return this.language;
-      }
-    }
-
-    return this.defaultLanguage;
-  }
-
+  /**
+   * Function that formats a MultilingualString to the correct translation
+   * @param value MultilingualString
+   * @returns The translated string
+   */
   format(value: MultilingualString | null | undefined): string {
-    const key: string = this.getMultilingualKey(value);
+    const key: string = MultilingualStringHelper.getMultilingualKey(
+      value,
+      this.language
+    );
 
     if (value) {
       return value[key];

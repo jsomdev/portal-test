@@ -7,9 +7,8 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetCategory } from '@services/facet-service/models/facet/facetCategory';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 
-import { FacetsContext, FacetsState } from './facetsContext';
+import { FacetsContext, FacetsPreFilters, FacetsState } from './facetsContext';
 import { facetsReducer } from './facetsReducer';
-import { FacetsPreFilters } from './models';
 
 export interface FacetsProviderProps {
   preFilters: FacetsPreFilters;
@@ -26,9 +25,12 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
   });
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
 
+  // Facets with the Main FacetCategory
   const mainFacets: FacetsState = useMemo(() => {
     const mainFacetKeys: string[] = Object.values(facets)
-      .filter(facet => facet.configuration.category === FacetCategory.Main)
+      .filter(facet => {
+        return facet.configuration.category === FacetCategory.Main;
+      })
       .map(facet => facet.key);
     const filteredFacets = { ...facets };
     Object.keys(filteredFacets)
@@ -37,34 +39,28 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
     return filteredFacets;
   }, [facets]);
 
-  const sprayFinderFacets: FacetsState = useMemo(() => {
-    const sprayFinderFacetKeys: string[] = Object.values(facets)
+  // Facets with the OperatingConditions FacetCategory
+  const operatingCondtionsFacets: FacetsState = useMemo(() => {
+    const operatingConditonsFacetKeys: string[] = Object.values(facets)
       .filter(
-        facet => facet.configuration.category === FacetCategory.SprayFinder
+        facet =>
+          facet.configuration.category === FacetCategory.OperatingConditions
       )
       .map(facet => facet.key);
     const filteredFacets = { ...facets };
     Object.keys(filteredFacets)
-      .filter(key => !sprayFinderFacetKeys.includes(key))
+      .filter(key => !operatingConditonsFacetKeys.includes(key))
       .forEach(key => delete filteredFacets[key]);
     return filteredFacets;
   }, [facets]);
 
-  const combinedMainFiltersParameter: string = useMemo(() => {
-    const value = combineFacetsToEncodedExternalFiltersString(
-      Object.values(mainFacets),
-      systemOfMeasurement,
-      preFilters.categoryId
-    );
-    return value;
-  }, [mainFacets, preFilters.categoryId, systemOfMeasurement]);
-
-  const combinedSprayFinderFiltersParameter: string = useMemo(() => {
+  // The @operatingConditions parameter to be used in the api call
+  const combinedOperatingConditionsApiParameter: string = useMemo(() => {
     const value = combineFacetsToEncodedOperatingConditionsParameter(
-      Object.values(sprayFinderFacets)
+      Object.values(operatingCondtionsFacets)
     );
     return value;
-  }, [sprayFinderFacets]);
+  }, [operatingCondtionsFacets]);
 
   const activeFacets: Facet[] = useMemo(() => {
     const activeFacets = Object.values(mainFacets).filter(facet => {
@@ -79,33 +75,33 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
 
   const getFacet = useCallback(
     (key: FacetKey) => {
-      return Object.values(mainFacets).find(facet => facet.key === key);
+      return Object.values(facets).find(facet => facet.key === key);
     },
-    [mainFacets]
+    [facets]
   );
 
-  function updateFacet(updatedFacet: Facet) {
-    dispatch({
-      type: 'updateFacet',
-      updatedFacet
-    });
-  }
-  function updateFacets(updatedFacets: { [key: string]: Facet }) {
-    dispatch({
-      type: 'updateFacets',
-      updatedFacets
-    });
-  }
+  // The @filters parameter to be used in the api call (may replace to finder)
+  const combinedFiltersApiParameter: string = useMemo(() => {
+    const value = combineFacetsToEncodedExternalFiltersString(
+      Object.values(mainFacets),
+      systemOfMeasurement,
+      preFilters.categoryId
+    );
+    return value;
+  }, [mainFacets, preFilters.categoryId, systemOfMeasurement]);
 
-  function clearFacetActiveOptions(facetKey: FacetKey) {
+  // Persists the facet to the current state
+  function storeFacet(facet: Facet) {
     dispatch({
-      type: 'clearFacetActiveOptions',
-      facetKey
+      type: 'storeFacet',
+      facet
     });
   }
-  function clearAllFacetsActiveOptions() {
+  // Persists multiple facets to the current state
+  function storeFacets(facets: FacetsState) {
     dispatch({
-      type: 'clearAllFacetsActiveOptions'
+      type: 'storeFacets',
+      facets
     });
   }
 
@@ -113,17 +109,15 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
     <FacetsContext.Provider
       value={{
         mainFacets,
-        sprayFinderFacets,
-        combinedMainFiltersParameter,
-        combinedSprayFinderFiltersParameter,
+        operatingConditionsFacets: operatingCondtionsFacets,
+        combinedFiltersApiParameter,
+        combinedOperatingConditionsApiParameter,
         activeFacetKeys,
         activeFacets,
         preFilters,
         getFacet,
-        clearAllFacetsActiveOptions,
-        clearFacetActiveOptions,
-        updateFacet,
-        updateFacets
+        storeFacet,
+        storeFacets
       }}
     >
       {children}

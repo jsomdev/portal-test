@@ -15,7 +15,7 @@ export const fetchRecentlySearchedQueriesSettings = async (
     return undefined;
   }
   const settingsResource: BaseResource<Setting> = new BaseResource<Setting>(
-    '/Me/settings'
+    '/me/settings'
   );
   const queryOptions: Partial<QueryOptions> = {
     filterQuery: `key eq '${SETTINGKEYS.recentlySearchedQueries}'`

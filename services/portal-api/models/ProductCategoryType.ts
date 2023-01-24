@@ -5,5 +5,5 @@
 export enum ProductCategoryType {
   PRIMARY = 'Primary',
   ALTERNATIVE = 'Alternative',
-  INFERRED = 'Inferred',
+  INFERRED = 'Inferred'
 }

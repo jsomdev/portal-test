@@ -1,7 +1,8 @@
 /* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 
+/* tslint:disable */
+
+/* eslint-disable */
 import type { Condition } from './Condition';
 import type { Display } from './Display';
 import type { LinkedEntity } from './LinkedEntity';
@@ -13,7 +14,7 @@ export type ListItem = LinkedEntity & {
   unitSymbol?: string | null;
   conditions?: Array<Condition | null>;
   value?: any;
-  displays?: Array<Display | null>;
+  displays?: Array<Display>;
   description?: MultilingualString | null;
   sortIndex?: number;
   parent?: ListItem | null;

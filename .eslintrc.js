@@ -29,12 +29,29 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended' // Make sure this is always the last element in the array.
   ],
+  ignorePatterns: [
+    '*.md',
+    '*.css',
+    '*.png',
+    '*.jpg',
+    '*.jpeg',
+    '*.svg',
+    '*.webp',
+    '*.ico'
+  ],
+  plugins: ['formatjs'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/no-unknown-property': [
+      2,
+      {
+        ignore: ['jsx']
+      }
+    ],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

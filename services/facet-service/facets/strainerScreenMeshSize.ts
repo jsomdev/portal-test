@@ -8,29 +8,41 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum StrainerScreenMeshSizeFacetOptionKey {
-  _100 = '_100',
-  _50 = '_50'
+  _100______ = '_100______',
+  _50______ = '_50______'
 }
 
 export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshSizeFacetOptionKey>[] =
   [
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._100,
+      key: StrainerScreenMeshSizeFacetOptionKey._100______,
       ...defaultFacetOption,
       valueId: '',
       value: 100,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 100 }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 100
+          }
+        ],
         sortIndex: 1
       }
     },
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._50,
+      key: StrainerScreenMeshSizeFacetOptionKey._50______,
       ...defaultFacetOption,
       valueId: '',
       value: 50,
       configuration: {
-        displays: [{ variation: 'Invariant', unitSymbol: '', value: 50 }],
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: 50
+          }
+        ],
         sortIndex: 2
       }
     }

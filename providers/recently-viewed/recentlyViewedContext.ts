@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import { Product, Setting } from '@services/portal-api';
 import { ReactQueryStatus } from '@services/react-query/types';
@@ -42,3 +42,6 @@ const initialContextProps: RecentlyViewedContextProps = {
 
 export const RecentlyViewedContext =
   createContext<RecentlyViewedContextProps>(initialContextProps);
+
+export const useRecentlyViewedProducts = (): RecentlyViewedContextProps =>
+  useContext(RecentlyViewedContext);

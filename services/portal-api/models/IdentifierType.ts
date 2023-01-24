@@ -10,5 +10,5 @@ export enum IdentifierType {
   WIDEN_EXTERNAL_ID = 'WidenExternalId',
   USER_PRINCIPAL_NAME = 'UserPrincipalName',
   HELPDESK_ISSUE = 'HelpdeskIssue',
-  OTHER = 'Other',
+  OTHER = 'Other'
 }

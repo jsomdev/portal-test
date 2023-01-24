@@ -1,7 +1,9 @@
 import path from 'path';
 
 import { DataCacheManager } from '@services/cache/dataCache';
+import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
+import { getAudience } from '..';
 import { MenuItem } from './';
 import { FlaggedEnum } from './flaggedEnum';
 import { Audience } from './models/AudienceFlags';
@@ -47,28 +49,59 @@ function filterMenuItemsByAudience(
     return !!(menuItemAudience & (audience || Audience.NorthAmerica));
   });
 }
+
+function optimize(
+  menuItems: MenuItem[],
+  locale: string | undefined
+): MenuItem[] {
+  return menuItems.map(menuItem => {
+    if (menuItem.slug) {
+      return {
+        ...menuItem,
+        slug:
+          MultilingualStringHelper.strip(menuItem.slug, locale) || undefined,
+        url: {
+          ...menuItem.url,
+          text: MultilingualStringHelper.strip(menuItem.url?.text, locale)
+        }
+      };
+    }
+
+    return {
+      ...menuItem,
+      url: {
+        ...menuItem.url,
+        text: MultilingualStringHelper.strip(menuItem.url?.text, locale)
+      }
+    };
+  });
+}
 /**
  * Function that fetches the MenuItems that should be displayed on the SiteCommandBar (Menu)
  * @returns an OdataCollection of MenuItems in the order it should be displayed.
  */
 export async function fetchMenuItemsForSiteHeader(
-  audience: Audience | undefined
+  locale: string | undefined
 ): Promise<MenuItem[]> {
+  const audience = getAudience(locale);
   const cachedData: MenuItem[] | undefined =
     await siteMenuItemsDataCacheManager.get();
   if (cachedData) {
-    return filterMenuItemsByAudience(audience, cachedData);
+    return filterMenuItemsByAudience(audience, optimize(cachedData, locale));
   }
   const menuItemsResource: MenuItemsResource = new MenuItemsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,url,audience`,
+    selectQuery: `id,url,audience,slug`,
     orderbyQuery: 'sortIndex asc',
     filterQuery: `menu eq '${Menu.SITE}' and parentId eq null`
   };
   const data = await menuItemsResource.getEntities(queryOptions);
   siteMenuItemsDataCacheManager.set(data.value);
-  return filterMenuItemsByAudience(audience, data.value);
+  return filterMenuItemsByAudience(audience, optimize(data.value, locale));
 }
+
+// /categories/formatCategory.formatSlug() query -> categorySlug (array)
+
 /**
  * Function that fetches the MenuItems that should be displayed on the MainCommandBar (Menu).
  * The reference between a parent and its children is parentId. This way no expands have to be used.
@@ -76,21 +109,22 @@ export async function fetchMenuItemsForSiteHeader(
  * It is expected that this flat array gets mapped correctly.
  */
 export async function fetchMenuItemsForMainHeader(
-  audience: Audience | undefined
+  locale: string | undefined
 ): Promise<MenuItem[]> {
+  const audience = getAudience(locale);
   const cachedData: MenuItem[] | undefined =
     await mainMenuItemsDataCacheManager.get();
+
   if (cachedData) {
-    return filterMenuItemsByAudience(audience, cachedData);
+    return filterMenuItemsByAudience(audience, optimize(cachedData, locale));
   }
   const menuItemsResource: MenuItemsResource = new MenuItemsResource();
   const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id,url,parentId,audience`,
+    selectQuery: `id,url,parentId,audience,slug`,
     orderbyQuery: 'sortIndex asc',
     filterQuery: `menu eq '${Menu.MAIN}'`
   };
   const data = await menuItemsResource.getEntities(queryOptions);
-  console.log(data.value);
   mainMenuItemsDataCacheManager.set(data.value);
-  return filterMenuItemsByAudience(audience, data.value);
+  return filterMenuItemsByAudience(audience, optimize(data.value, locale));
 }

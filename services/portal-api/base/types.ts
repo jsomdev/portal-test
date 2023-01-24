@@ -23,28 +23,19 @@ export interface OrderPost {
   referenceNumber?: string;
 }
 
-export enum CustomerVerificationRequestStatus {
-  Pending = 'Pending',
-  Denied = 'Denied',
-  Approved = 'Approved'
-}
-
-export interface CustomerVerificationRequest {
-  accountNumber: string;
-  addressCity: string;
-  addressCountry: string;
-  addressLines: string[];
-  addressPostalCode: string;
-  addressRegion: string;
-  companyName: string;
-  status: CustomerVerificationRequestStatus;
-  userId: string;
-}
-
 export interface UserContactInfoPut {
   firstName: string;
   lastName: string;
   company: string;
+  jobTitle: string;
+  emailAddresses: string[];
+  phoneNumber: string;
+  urls: string[];
+}
+
+export interface ContactDetailsPut {
+  firstName: string;
+  lastName: string;
   jobTitle: string;
   emailAddresses: string[];
   phoneNumber: string;
@@ -74,17 +65,17 @@ export type OrderPaymentInfo = {
   };
 };
 
-export interface ExternalFilter {
-  // facet key (camelCased)
-  key: string;
-  operator: 'eq' | 'in' | 'le' | 'ge';
-  // should be #Collection(String) if value is of type Array
-  'value@odata.type'?:
-    | '#Collection(String)'
-    | '#Collection(Decimal)'
-    | undefined;
-  value: number | string | Array<string> | Array<number>;
-}
+// export interface ExternalFilter {
+//   // facet key (camelCased)
+//   key: string;
+//   operator: 'eq' | 'in' | 'le' | 'ge';
+//   // should be #Collection(String) if value is of type Array
+//   'value@odata.type'?:
+//     | '#Collection(String)'
+//     | '#Collection(Decimal)'
+//     | undefined;
+//   value: number | string | Array<string> | Array<number>;
+// }
 
 export interface ListIds {
   liquidSpecificGravity: string;
@@ -94,10 +85,17 @@ export interface SettingKeys {
   productBookmarks: string;
   recentlySearchedQueries: string;
   recentlyViewedProducts: string;
+  addressBook: string;
 }
 
 export interface AttributeTypeCodes {
+  categoryId: string;
+  atomizingAirFlowRate: string;
+  fanAirFlowRate: string;
+  airFlowRate: string;
+  specificGravity: string;
   relativeDropSizeRange: string;
+  liquidPressure: string;
   maximumTransverseSprayCoverageWidthHorizontalSpray: string;
   relativeDropSizeGroup: string;
   formula: string;
@@ -202,3 +200,8 @@ export interface AttributeTypeCodes {
   brand: string;
   sprayPattern: string;
 }
+
+export type UserAddress = PostalAddress & {
+  name: string;
+  id: string;
+};
