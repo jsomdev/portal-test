@@ -1,24 +1,26 @@
 import { Audience } from '@services/portal-api/models/AudienceFlags';
 import { getSupportedRegionsWithPaths } from '@widgets/headers/site-header/language-menu/languageMenuCountry.helper';
 
+import { RegionWithPaths } from './languageMenu.types';
+
 jest.mock('@services/i18n', () => {
   const originalModule = jest.requireActual('@services/i18n');
 
   return {
     __esModule: true,
     ...originalModule,
-    supportedLocales: ['en-US', 'nl-BE', 'de-DE']
+    supportedLocales: ['en-us', 'nl-be', 'de-de']
   };
 });
 
 describe('languageMenu', () => {
   it('getSupportedRegionsWithPaths filters and returns correct paths even if localePath is missing', () => {
-    const result = getSupportedRegionsWithPaths(
+    const result: RegionWithPaths[] = getSupportedRegionsWithPaths(
       {
-        'en-US': 'us-path',
-        'nl-BE': 'nl-be-path'
+        'en-us': 'us-path',
+        'nl-be': 'nl-be-path'
       },
-      'en-US'
+      'en-us'
     );
 
     expect(result).toEqual([
@@ -33,7 +35,7 @@ describe('languageMenu', () => {
               {
                 name: 'English',
                 code: 'en',
-                locale: 'en-US',
+                locale: 'en-us',
                 path: '/us-path'
               }
             ]
@@ -51,8 +53,8 @@ describe('languageMenu', () => {
               {
                 name: 'Dutch',
                 code: 'nl',
-                locale: 'nl-BE',
-                path: '/nl-BE/nl-be-path'
+                locale: 'nl-be',
+                path: '/nl-be/nl-be-path'
               }
             ]
           },
@@ -63,8 +65,8 @@ describe('languageMenu', () => {
               {
                 code: 'de',
                 name: 'German',
-                locale: 'de-DE',
-                path: '/de-DE'
+                locale: 'de-de',
+                path: '/de-de'
               }
             ]
           }
