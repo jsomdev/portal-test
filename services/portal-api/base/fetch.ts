@@ -1,4 +1,4 @@
-import { AccountInfo } from '@azure/msal-browser';
+import { AccountInfo, SilentRequest } from '@azure/msal-browser';
 import { AuthenticationResult } from '@azure/msal-common';
 import {
   customerLoginRequest,
@@ -64,12 +64,9 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
-      const forceRefresh = account.idTokenClaims?.exp
-        ? new Date(account.idTokenClaims?.exp + 1000) < new Date()
-        : true;
+      const silentRequest: SilentRequest = { ...loginRequest, account };
       authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
-        forceRefresh,
         account
       });
     } catch (e: unknown) {

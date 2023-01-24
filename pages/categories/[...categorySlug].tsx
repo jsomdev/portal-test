@@ -22,6 +22,7 @@ import { liquidPressureFacet } from '@services/facet-service/facets/range-facets
 import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
 import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
+import { supportedLocales } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
@@ -37,6 +38,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { CategoriesBreadcrumb } from '@widgets/breadcrumbs/categories-breadcrumb/categoriesBreadcrumb';
 import {
   ResultView,
@@ -122,12 +124,12 @@ interface CategoryParsedUrlQuery extends ParsedUrlQuery {
   categorySlug: string[] | undefined;
 }
 
-export const getStaticPaths: GetStaticPaths = async (
-  context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<CategoryParsedUrlQuery>> => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+  GetStaticPathsResult<CategoryParsedUrlQuery>
+> => {
   const categoriesData: CategoryModel[] = await fetchAllCategories(undefined);
 
-  const localizedPaths = (context.locales || []).map(locale => {
+  const localizedPaths = (supportedLocales || []).map(locale => {
     const pathForLocale: {
       params: CategoryParsedUrlQuery;
       locale?: string | undefined;

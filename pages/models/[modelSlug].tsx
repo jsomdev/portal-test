@@ -18,7 +18,7 @@ import { GlobalDataContextProps } from '@providers/global-data/globalDataContext
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
 import { modelIdFacet } from '@services/facet-service/facets/modelId';
-import { messageIds } from '@services/i18n';
+import { messageIds, supportedLocales } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import { AttributeType, Model } from '@services/portal-api';
@@ -28,6 +28,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { generateProductStructuredData } from '@utilities/structuredData';
@@ -171,12 +172,12 @@ interface ModelsParsedUrlQuery extends ParsedUrlQuery {
   modelSlug: string;
 }
 
-export const getStaticPaths: GetStaticPaths = async (
-  context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<ModelsParsedUrlQuery>> => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+  GetStaticPathsResult<ModelsParsedUrlQuery>
+> => {
   const modelsData: Model[] = await fetchAllModels(undefined);
 
-  const localizedPaths = (context.locales || []).map(locale => {
+  const localizedPaths = (supportedLocales || []).map(locale => {
     const pathForLocale: {
       params: ModelsParsedUrlQuery;
       locale?: string | undefined;
