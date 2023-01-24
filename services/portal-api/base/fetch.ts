@@ -64,7 +64,6 @@ export const digitalHighWayFetch = async <T>(
         ? customerLoginRequest
         : employeeLoginRequest;
     try {
-      const silentRequest: SilentRequest = { ...loginRequest, account };
       authenticationResult = await getMsalInstance()?.acquireTokenSilent({
         ...loginRequest,
         account
@@ -72,17 +71,10 @@ export const digitalHighWayFetch = async <T>(
     } catch (e: unknown) {
       console.error('Failed the acquire token silently. Will logout the user');
 
-      if ((e as any)?.errorMessage?.includes('AADB2C90077')) {
-        getMsalInstance()?.acquireTokenRedirect({
-          ...loginRequest,
-          account
-        });
-      } else {
-        getMsalInstance()?.logoutRedirect({
-          ...loginRequest,
-          account
-        });
-      }
+      getMsalInstance()?.logoutRedirect({
+        ...loginRequest,
+        account
+      });
     }
   }
 
