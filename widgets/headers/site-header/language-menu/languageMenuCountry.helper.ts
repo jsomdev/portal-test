@@ -17,8 +17,6 @@ export function getCountryImage(code: string): string | undefined {
 const removeUnsupportedLanguagesFromCountry = (country: Country): Country => {
   const supportedLanguagesForCountry = country.languages.filter(language => {
     const locale = language.code + '-' + country.code.toUpperCase();
-    console.log(locale);
-    console.log(supportedLocales);
     return supportedLocales?.some(
       supportedLocale => supportedLocale === locale.toLowerCase()
     );

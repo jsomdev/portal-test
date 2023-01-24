@@ -14,6 +14,7 @@ export async function middleware(
     return;
   }
 
+  // If the locale is 'default' we want to redirect the user to en-us, so that there's always a suffix trailing the root url (business req)
   if (req.nextUrl.locale === 'default') {
     return NextResponse.redirect(
       new URL(`/en-us/${req.nextUrl.pathname}`, req.url)
