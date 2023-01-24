@@ -1,7 +1,6 @@
 // Import Swiper styles
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -28,7 +27,6 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
 import { generateProductStructuredData } from '@utilities/structuredData';

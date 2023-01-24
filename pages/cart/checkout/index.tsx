@@ -17,6 +17,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import pagePaths from '@utilities/pagePaths';
 import { Checkout } from '@widgets/checkout/checkout';
 import { CheckoutBreadcrumb } from '@widgets/checkout/checkout-breadcrumb/checkoutBreadcrumb';
@@ -61,18 +62,6 @@ const CheckoutPage: NextPage<
   );
 };
 
-export const getStaticPaths: GetStaticPaths =
-  async (): Promise<GetStaticPathsResult> => {
-    const localizedPaths = (supportedLocales || []).map(locale => {
-      return {
-        locale,
-        params: {}
-      };
-    });
-
-    return { paths: localizedPaths, fallback: 'blocking' };
-  };
-
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ): Promise<
@@ -80,7 +69,11 @@ export const getStaticProps: GetStaticProps = async (
     Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
   >
 > => {
-  const { locale } = context;
+  const { locale: contextLocale } = context;
+  let locale = contextLocale;
+  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
+    locale = 'en-us';
+  }
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)

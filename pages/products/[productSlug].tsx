@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -39,7 +38,6 @@ import {
 } from '@services/portal-api/menuItems';
 import { fetchAllModels } from '@services/portal-api/models';
 import { fetchProductForProductPage } from '@services/portal-api/products';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { generateProductStructuredData } from '@utilities/structuredData';
 import { ProductBreadcrumb } from '@widgets/breadcrumbs/product-breadcrumb/productBreadcrumb';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';

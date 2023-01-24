@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -38,7 +37,6 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { CategoriesBreadcrumb } from '@widgets/breadcrumbs/categories-breadcrumb/categoriesBreadcrumb';
 import {
   ResultView,
