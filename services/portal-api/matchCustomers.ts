@@ -7,7 +7,7 @@ export const matchEmailToCustomer =
       new BaseResource<MatchCustomersResponse>('/matchEmailToCustomer');
     const matchedCustomersResponse: MatchCustomersResponse =
       await baseResource.fetch<MatchCustomersResponse>(
-        `/matchEmailToCustomer`,
+        '/matchEmailToCustomer',
         {},
         {},
         true

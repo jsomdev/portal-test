@@ -1,4 +1,4 @@
-import { AccountInfo, SilentRequest } from '@azure/msal-browser';
+import { AccountInfo } from '@azure/msal-browser';
 import { AuthenticationResult } from '@azure/msal-common';
 import {
   customerLoginRequest,
@@ -105,7 +105,7 @@ export const digitalHighWayFetch = async <T>(
   const fetchUrl = serviceRootUri
     .concat(resourcePath)
     .concat(odataQueryOptions);
-  // Return the parsed response as promise instead of the response itselve
+  // Return the parsed response as promise instead of the response itself
   const response: Response = await fetch(fetchUrl, options);
   const result: T | Response = await handleResponse<T>(
     response,

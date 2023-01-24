@@ -1,11 +1,11 @@
 import {
   Messages,
   defaultLanguage,
-  en,
   getMessages,
-  nl,
   supportedLocales
 } from '@services/i18n';
+import { en } from '@services/i18n/en';
+import { nl } from '@services/i18n/nl';
 
 jest.mock('next/head', () => {
   return {
@@ -13,6 +13,17 @@ jest.mock('next/head', () => {
     default: ({ children }: { children: Array<React.ReactElement> }) => {
       return <>{children}</>;
     }
+  };
+});
+
+jest.mock('@services/i18n', () => {
+  const originalModule = jest.requireActual('@services/i18n');
+  return {
+    __esModule: true,
+    ...originalModule,
+    supportedLocales: ['default', 'en-us', 'en-gb', 'nl-be'],
+    defaultLocale: 'default',
+    defaultLanguage: 'en'
   };
 });
 
@@ -35,14 +46,6 @@ describe('I18N Tests', () => {
   });
 
   it('getMessages returns the messages for a supported locale correctly', () => {
-    if (
-      !supportedLocales?.includes('nl-be') ||
-      !supportedLocales.includes('en-us')
-    ) {
-      throw new Error(
-        'en-us and nl-be need to be supported locales for this test to pass. Change tests if this should not be the case'
-      );
-    }
     const actualMessagesNL: Messages = getMessages('nl-be');
     const expectedMessagesNL: Messages = nl;
     expect(actualMessagesNL.pages.docs.i18n.title).toBe(

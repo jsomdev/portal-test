@@ -4,7 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { NotFoundMessage } from '@components/errors/notFoundMessage';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -53,7 +53,7 @@ const Custom404: NextPage<Custom404Props> = ({
 export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<Custom404Props>> => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
 
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),

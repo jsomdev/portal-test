@@ -7,12 +7,11 @@ import {
 import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { AccountPage } from '@widgets/account/accountPage';
 import { Overview } from '@widgets/account/overview/overview';
 import { getLocalePaths } from '@widgets/page/page.helper';
@@ -54,11 +53,7 @@ export const getStaticProps: GetStaticProps = async (
     Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
   >
 > => {
-  const { locale: contextLocale } = context;
-  let locale = contextLocale;
-  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
-    locale = 'en-us';
-  }
+  const locale = getAudienceLocale(context.locale);
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)

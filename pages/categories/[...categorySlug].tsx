@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import {
   GetStaticPaths,
+  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -21,7 +22,7 @@ import { liquidPressureFacet } from '@services/facet-service/facets/range-facets
 import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
 import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
-import { supportedLocales } from '@services/i18n';
+import { getAudienceLocale } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
@@ -122,12 +123,12 @@ interface CategoryParsedUrlQuery extends ParsedUrlQuery {
   categorySlug: string[] | undefined;
 }
 
-export const getStaticPaths: GetStaticPaths = async (): Promise<
-  GetStaticPathsResult<CategoryParsedUrlQuery>
-> => {
+export const getStaticPaths: GetStaticPaths = async (
+  context: GetStaticPathsContext
+): Promise<GetStaticPathsResult<CategoryParsedUrlQuery>> => {
   const categoriesData: CategoryModel[] = await fetchAllCategories(undefined);
 
-  const localizedPaths = (supportedLocales || []).map(locale => {
+  const localizedPaths = (context.locales || []).map(locale => {
     const pathForLocale: {
       params: CategoryParsedUrlQuery;
       locale?: string | undefined;
@@ -152,7 +153,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<CategoryProps>> => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
 
   const { categorySlug } = context.params as CategoryParsedUrlQuery;
 

@@ -7,7 +7,6 @@ import {
   AutoCompleteOdataCollection,
   FacetedSearchOdataCollection
 } from './faceted-search/types';
-import { Audience } from './models/AudienceFlags';
 import { ModelSeriesGrouping } from './models/ModelSeriesGrouping';
 import { OdataCollection } from './o-data/oData';
 import { ProductsResource } from './resources/ProductsResource';

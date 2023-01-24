@@ -1,3 +1,4 @@
+import { getAudienceLocale } from '@services/i18n';
 import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { PriceBreak } from './base/types';
@@ -388,12 +389,14 @@ export async function fetchProductsForStaticPaths(): Promise<Product[]> {
 /**
  * Async function that retrieves the product with the necessary data to display on the page of a product.
  * @param slug Product slug (url identifier)
+ * @param locale
  * @returns Promise of a Product or null (if product not found)
  */
 export async function fetchProductForProductPage(
   slug: string,
   locale: string | undefined
 ): Promise<Product | null> {
+  locale = getAudienceLocale(locale);
   const productsResource: ProductsResource = new ProductsResource();
   function optimize(product: Product): Product {
     return {

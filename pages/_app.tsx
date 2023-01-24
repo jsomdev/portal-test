@@ -20,7 +20,7 @@ import { appInsightsReactPlugin } from '@services/application-insights/applicati
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
 import { Chat } from '@services/chat/chat';
 import { Consent } from '@services/consent/consent';
-import { getMessages } from '@services/i18n/helper';
+import { getAudienceLocale, getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
 import '@styles/globals.css';
 import { ProductCompareProvider } from '@widgets/compare/productCompareProvider';
@@ -42,7 +42,8 @@ const ClientSideMsalProvider: React.FC = ({ children }) => {
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
-  const { locale, defaultLocale = 'en-US' } = router;
+  const defaultLocale = 'en-US'; //since we use "default" as the default locale, we can't actually use this value vor the i18n-provider
+  const locale = getAudienceLocale(router.locale);
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
     return flatten(getMessages(locale));
   }, [locale]);

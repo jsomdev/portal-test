@@ -4,7 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { ErrorMessage } from '@components/errors/errorMessage';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -56,7 +56,7 @@ const Custom500: NextPage<Custom500Props> = ({
 export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<Custom500Props>> => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
 
   try {
     const [siteMenuData, mainMenuData] = await Promise.all([

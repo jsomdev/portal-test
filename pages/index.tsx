@@ -7,7 +7,7 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import { CATEGORY_IDS } from '@services/portal-api/constants';
@@ -15,7 +15,6 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
-import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { rem } from '@utilities/rem';
 import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
@@ -182,11 +181,7 @@ export const getStaticProps: GetStaticProps = async (
     HomeProps & Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>
   >
 > => {
-  const { locale: contextLocale } = context;
-  let locale = contextLocale;
-  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
-    locale = 'en-us';
-  }
+  const locale = getAudienceLocale(context.locale);
   const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
     fetchCategoriesForHomePage(locale),
     fetchMenuItemsForSiteHeader(locale),

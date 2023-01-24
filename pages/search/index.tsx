@@ -6,7 +6,7 @@ import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import { AttributeType } from '@services/portal-api';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import {
@@ -104,7 +104,7 @@ const Search: NextPage<SearchProps> = ({
 export const getStaticProps: GetStaticProps = async (
   context
 ): Promise<GetStaticPropsResult<SearchProps>> => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
 
   const [siteMenuData, mainMenuData, attributeTypesData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),

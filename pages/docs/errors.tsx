@@ -11,6 +11,7 @@ import { AppErrorBoundary } from '@components/errors/appErrorBoundary';
 import { ErrorMessage } from '@components/errors/errorMessage';
 import { Stack, useTheme } from '@fluentui/react';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
+import { getAudienceLocale } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -106,7 +107,8 @@ const ErrorsTestPage: NextPage<AppLayoutProps> = ({
 export const getServerSideProps: GetServerSideProps = async (
   context
 ): Promise<GetServerSidePropsResult<AppLayoutProps>> => {
-  const { locale, query } = context;
+  const { query } = context;
+  const locale = getAudienceLocale(context.locale);
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)

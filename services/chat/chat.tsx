@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Script from 'next/script';
-
 import { useTabletAndDesktop } from '@widgets/media-queries';
 
 export const Chat: React.FC = () => {

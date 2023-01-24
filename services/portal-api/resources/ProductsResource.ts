@@ -46,7 +46,6 @@ export class ProductsResource extends BaseResource<Product> {
           : ''
       );
     const resourcePath = this.getFacetedSearchResourcePath(encodedQuery);
-
     return this.fetch(resourcePath, combinedQueryOptionsString, {});
   }
   async find(

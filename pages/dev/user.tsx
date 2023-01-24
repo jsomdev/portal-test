@@ -8,6 +8,7 @@ import JsonFormatter from 'react-json-formatter';
 
 import { useMe } from '@providers/user/userContext';
 import { useClaims } from '@services/authentication/claims';
+import { getAudienceLocale } from '@services/i18n';
 import { MenuItem } from '@services/portal-api';
 import {
   fetchMenuItemsForMainHeader,
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (
 ): Promise<
   GetStaticPropsResult<{ siteMenuItems: MenuItem[]; mainMenuItems: MenuItem[] }>
 > => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)

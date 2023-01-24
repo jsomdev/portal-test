@@ -34,8 +34,6 @@ const mapToCountryWithPaths = (
   localePaths: LocalePaths,
   defaultLocale: string
 ): CountryWithPaths => {
-  console.log(localePaths);
-  console.log(defaultLocale);
   const countryWithPaths: CountryWithPaths = {
     name: country.name,
     code: country.code,
@@ -47,7 +45,6 @@ const mapToCountryWithPaths = (
         localePaths,
         'relative'
       );
-      console.log(path);
       return {
         name: language.name,
         code: language.code,

@@ -78,7 +78,10 @@ export const getAlternateLinks = (
   urlType: UrlType
 ): { hrefLang: string; path: string }[] => {
   return (Object.keys(paths) as Array<string>)
-    .filter(locale => (supportedLocales || []).includes(locale))
+    .filter(
+      locale =>
+        (supportedLocales || []).includes(locale) && locale !== 'default'
+    )
     .map(locale => {
       return {
         hrefLang: locale,

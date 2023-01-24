@@ -8,7 +8,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { getAudienceLocale, messageIds } from '@services/i18n';
 import { fetchAllAttributeGroups } from '@services/portal-api/attributeGroups';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllConditionTypes } from '@services/portal-api/conditionTypes';
@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async (
     >
   >
 > => {
-  const { locale } = context;
+  const locale = getAudienceLocale(context.locale);
   const [
     siteMenuData,
     mainMenuData,
