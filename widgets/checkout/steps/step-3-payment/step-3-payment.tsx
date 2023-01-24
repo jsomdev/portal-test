@@ -14,9 +14,7 @@ import {
   validation
 } from '@widgets/checkout/steps/step-3-payment/step-3-payment.helper';
 
-export type Step3FormData = InferType<typeof validation> & {
-  referenceDocumentFile: File | undefined;
-};
+export type Step3FormData = InferType<typeof validation>;
 
 const defaultValues: Step3FormData = {
   paymentMethod: '',
@@ -38,9 +36,7 @@ const defaultValues: Step3FormData = {
   billingState: '',
   billingCountry: '',
   billingPostalCode: '',
-  referenceNumber: '',
-  referenceDocumentFile: undefined,
-  referenceDocument: ''
+  referenceNumber: ''
 };
 
 export type Step3Props = {

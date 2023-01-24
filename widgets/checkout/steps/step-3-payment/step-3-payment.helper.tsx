@@ -153,9 +153,7 @@ export const validation = yup.object({
     .when('paymentMethod', {
       is: PaymentMethod.PURCHASE_ORDER,
       then: yup.string().trim().required()
-    }),
-  referenceDocument: yup.string(),
-  referenceDocumentFile: yup.mixed()
+    })
 });
 
 const fieldMessages = messageIds.pages.checkout.payment.fields;
@@ -232,14 +230,6 @@ export const messages = defineMessages({
   referenceNumber: {
     id: fieldMessages.referenceNumber,
     defaultMessage: 'Reference Number'
-  },
-  referenceDocument: {
-    id: fieldMessages.referenceDocument,
-    defaultMessage: 'Reference Document'
-  },
-  referenceDocumentFile: {
-    id: fieldMessages.referenceDocument,
-    defaultMessage: 'Reference Document File'
   }
 });
 
@@ -315,14 +305,6 @@ export const getFields = (intl: IntlShape): StepFields<Step3FormData> => {
     referenceNumber: {
       label: formatMessage(messages.referenceNumber),
       name: 'referenceNumber'
-    },
-    referenceDocument: {
-      label: formatMessage(messages.referenceDocument),
-      name: 'referenceDocument'
-    },
-    referenceDocumentFile: {
-      label: formatMessage(messages.referenceDocumentFile),
-      name: 'referenceDocumentFile'
     }
   };
 };

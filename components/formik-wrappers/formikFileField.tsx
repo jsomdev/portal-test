@@ -1,6 +1,6 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useCallback, useState } from 'react';
 
-import { Field, FormikContextType, useFormikContext } from 'formik';
+import { useField, useFormikContext } from 'formik';
 
 import {
   DefaultButton,
@@ -18,13 +18,14 @@ import {
 } from '@fluentui/react';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 
-type StepField = { name: string; label: string; placeholder?: string };
+import { FormikTextFieldProps } from './formikWrappers.types';
 
-interface FormikFileFieldProps {
-  fileField: StepField;
-  labelField: StepField;
-  labelText: string;
-}
+type FormikFileFieldProps = {
+  fieldProps: FormikTextFieldProps;
+  onChange?: (value: File | undefined) => void;
+} & {
+  styles?: Partial<Omit<FormikFileFieldStyles, 'inputField'>>;
+};
 
 interface FormikFileFieldStyles {
   inputField: CSSProperties;
@@ -36,16 +37,30 @@ interface FormikFileFieldStyles {
 }
 
 export const FormikFileField: React.FC<FormikFileFieldProps> = ({
-  fileField,
-  labelField,
-  labelText
+  fieldProps,
+  onChange
 }) => {
+  const { name } = fieldProps;
   const { spacing, palette, fonts } = useTheme();
-  const UPLOAD_INPUT_ID = `${fileField.name}-upload-input`;
-  const { setFieldValue, values }: FormikContextType<{ [key: string]: File }> =
-    useFormikContext();
+  const [input] = useField<File | undefined>(name);
+  const { setFieldValue } = useFormikContext();
+  const UPLOAD_INPUT_ID = `${name}-upload-input`;
+  const [fileName, setFileName] = useState<string | undefined>(undefined);
 
-  const styles: FormikFileFieldStyles = {
+  const handleOnChange = useCallback(
+    (file: File | undefined) => {
+      if (onChange) {
+        onChange(file);
+        setFileName(file?.name);
+      }
+      if (!onChange) {
+        setFieldValue(name, file);
+      }
+    },
+    [name, onChange, setFieldValue]
+  );
+
+  const defaultStyles: FormikFileFieldStyles = {
     inputField: {
       display: 'none'
     },
@@ -89,22 +104,21 @@ export const FormikFileField: React.FC<FormikFileFieldProps> = ({
 
   return (
     <Stack>
-      <Label>{fileField.label}</Label>
-      <Field
-        {...labelField}
-        type="file"
-        id={UPLOAD_INPUT_ID}
-        onChange={async (event: React.ChangeEvent<HTMLInputElement>) => {
-          setFieldValue(fileField.name, event?.currentTarget?.files?.[0]);
+      <input
+        onChange={ev => {
+          handleOnChange(ev.target.files?.[0]);
         }}
-        style={styles.inputField}
+        type="file"
+        accept=".pdf"
+        id={UPLOAD_INPUT_ID}
+        style={defaultStyles.inputField}
       />
       <Stack
         horizontal
         verticalAlign="center"
-        styles={styles.fileUploadContainer}
+        styles={defaultStyles.fileUploadContainer}
       >
-        <Label styles={styles.uploadLabel} htmlFor={UPLOAD_INPUT_ID}>
+        <Label styles={defaultStyles.uploadLabel} htmlFor={UPLOAD_INPUT_ID}>
           <Stack
             horizontal
             tokens={{ childrenGap: spacing.s1 }}
@@ -112,31 +126,26 @@ export const FormikFileField: React.FC<FormikFileFieldProps> = ({
             horizontalAlign="center"
           >
             <Icon
-              iconName={
-                values?.[fileField.name] ? 'FolderHorizontal' : 'CloudUpload'
-              }
-              styles={styles.fileUploadIcon}
+              iconName={input.value ? 'FolderHorizontal' : 'CloudUpload'}
+              styles={defaultStyles.fileUploadIcon}
             />
-            <Text styles={styles.textStyles}>
-              {values?.[fileField.name]?.name
-                ? new TextFormatter().formatText(
-                    values?.[fileField.name]?.name,
-                    30,
-                    '...'
-                  )
-                : labelText}
+            <Text styles={defaultStyles.textStyles}>
+              {input.value?.name
+                ? new TextFormatter().formatText(input.value.name, 30, '...')
+                : fileName || fieldProps.label}
             </Text>
           </Stack>
         </Label>
-        {values?.[fileField.name] && (
-          <DefaultButton
-            iconProps={{ iconName: 'Cancel' }}
-            styles={styles.removeButton}
-            onClick={() => {
-              setFieldValue(fileField.name, undefined);
-            }}
-          />
-        )}
+        {input.value ||
+          (fileName && (
+            <DefaultButton
+              iconProps={{ iconName: 'Cancel' }}
+              styles={defaultStyles.removeButton}
+              onClick={() => {
+                handleOnChange(undefined);
+              }}
+            />
+          ))}
       </Stack>
     </Stack>
   );

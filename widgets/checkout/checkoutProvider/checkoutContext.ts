@@ -32,6 +32,8 @@ export interface CheckoutContextProps {
   setFormValues: (values: CheckoutFormValues) => void;
   stepper: Stepper;
   steps: CheckoutSteps | undefined;
+  purchaseOrderFile: File | undefined;
+  setPurchaseOrderFile: (value: File | undefined) => void;
 }
 
 const initialContextProps: CheckoutContextProps = {
@@ -79,6 +81,10 @@ const initialContextProps: CheckoutContextProps = {
       throw new Error('Not implemented');
     },
     steps: []
+  },
+  purchaseOrderFile: undefined,
+  setPurchaseOrderFile: () => {
+    throw new Error('Not implemented');
   }
 };
 export const CheckoutContext =

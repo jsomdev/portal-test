@@ -9,7 +9,6 @@ import {
 
 interface PurchaseOrderPaymentMethod {
   referenceNumber: string;
-  referenceDocumentFile: File | undefined;
 }
 interface CreditCardPaymentMethod {
   card: Card;
@@ -28,9 +27,7 @@ function getPaymentInfo(
   switch (formValues.payment.paymentMethod) {
     case PaymentMethod.PURCHASE_ORDER:
       return {
-        referenceNumber: formValues.payment.referenceNumber || '',
-        referenceDocumentFile:
-          formValues.payment.referenceDocumentFile || undefined
+        referenceNumber: formValues.payment.referenceNumber || ''
       };
     case PaymentMethod.CREDIT_CARD: {
       const firstName =

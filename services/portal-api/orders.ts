@@ -4,7 +4,7 @@ import { Order } from './models/Order';
 import { Resource } from './models/Resource';
 import { OdataCollection, OdataEntity, QueryOptions } from './o-data';
 
-export const createFile = async (file: File): Promise<Resource> => {
+export const createResource = async (file: File): Promise<Resource> => {
   const formData = new FormData();
   formData.append('file', file);
 
@@ -23,18 +23,29 @@ export const createFile = async (file: File): Promise<Resource> => {
   return data;
 };
 
-export const createOrder = async (order: OrderPost): Promise<Order> => {
+export interface CreateOrderData {
+  order: OrderPost;
+  referenceDocument: File | undefined;
+}
+
+export const createOrder = async (
+  orderData: CreateOrderData
+): Promise<Order> => {
   const customOrderResource: BaseResource<unknown> = new BaseResource(
     '/me/cart/checkout?$expand=lines'
   );
 
   let file: Resource | undefined;
+  let purchaseOrderDocumentId: string | null = null;
 
-  if (order.referenceDocumentFile) {
-    file = await createFile(order.referenceDocumentFile);
+  if (orderData.referenceDocument) {
+    try {
+      file = await createResource(orderData.referenceDocument);
+      purchaseOrderDocumentId = file.id || null;
+    } catch (error) {
+      console.warn('resource could not be created');
+    }
   }
-
-  delete order.referenceDocumentFile;
 
   const data: Order = await customOrderResource.fetch<Order>(
     '/me/cart/checkout?$expand=lines',
@@ -45,8 +56,8 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        ...order,
-        purchaseOrderDocumentId: file?.id || null
+        ...orderData.order,
+        purchaseOrderDocumentId
       })
     }
   );

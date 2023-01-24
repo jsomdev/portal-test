@@ -19,7 +19,6 @@ import {
 } from '@fluentui/react';
 import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
 import { messageIds } from '@services/i18n';
-import ContentContainerStack from '@widgets/layouts/contentContainerStack';
 import { TabletAndDesktop, mediaQueryFrom } from '@widgets/media-queries';
 
 interface SignUpStyles {

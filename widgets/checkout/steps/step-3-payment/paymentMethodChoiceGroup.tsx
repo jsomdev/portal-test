@@ -21,8 +21,6 @@ type PaymentMethodChoiceGroupProps = {
     | 'creditCardCVV'
     | 'creditCardExpiration'
     | 'referenceNumber'
-    | 'referenceDocument'
-    | 'referenceDocumentFile'
   >;
 };
 

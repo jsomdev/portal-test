@@ -865,7 +865,7 @@ export const nl: Messages = {
           billingCountry: 'Land',
           billingPostalCode: 'Postcode',
           referenceNumber: 'Referentienummer',
-          referenceDocument: 'Referentiedocument'
+          referenceDocument: 'Upload PO Document'
         }
       },
       summary: {

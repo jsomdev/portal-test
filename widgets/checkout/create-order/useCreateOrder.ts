@@ -3,15 +3,16 @@ import { useMutation } from 'react-query';
 
 import { useCart } from '@providers/cart/cartContext';
 import { Order } from '@services/portal-api';
-import { OrderPost } from '@services/portal-api/base/types';
 import { createOrder } from '@services/portal-api/orders';
 import { ReactQueryStatus } from '@services/react-query/types';
 import pagePaths from '@utilities/pagePaths';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CreateOrderError } from '@widgets/checkout/create-order/CreateOrderError';
 
+import { CreateOrderData } from './../../../services/portal-api/orders';
+
 export interface CreateOrderHook {
-  create: (order: OrderPost) => Promise<Order>;
+  create: (orderData: CreateOrderData) => Promise<Order>;
   createdOrder: Order | undefined;
   status: ReactQueryStatus;
   error: CreateOrderError | null | undefined | unknown;
@@ -23,7 +24,7 @@ export const useCreateOrder = (productNumbers: string[]): CreateOrderHook => {
   const { mutateAsync, data, status, error } = useMutation<
     Order,
     CreateOrderError | unknown,
-    OrderPost
+    CreateOrderData
   >(createOrder, {
     onSuccess: (data: Order) => {
       clear(productNumbers);

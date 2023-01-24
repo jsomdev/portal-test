@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useContext, useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -19,6 +19,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
+import { CheckoutContext } from '@widgets/checkout/checkoutProvider/checkoutContext';
 import { StepFields } from '@widgets/checkout/shared/types';
 import { Step3FormData } from '@widgets/checkout/steps/step-3-payment/step-3-payment';
 import { mediaQueryFrom } from '@widgets/media-queries';
@@ -33,6 +34,10 @@ const messages = defineMessages({
     id: messageIds.pages.checkout.payment.fileUpload,
     defaultMessage: 'Upload a PO document',
     description: 'Label for file upload input'
+  },
+  referenceDocument: {
+    id: messageIds.pages.checkout.payment.fields.referenceDocument,
+    defaultMessage: 'Upload PO Document'
   }
 });
 
@@ -51,10 +56,7 @@ type PurchaseOrderFormGroupProps = {
   render: IRenderFunction<
     (IChoiceGroupOption & IChoiceGroupOptionProps) | undefined
   >;
-  fields: Pick<
-    StepFields<Step3FormData>,
-    'referenceNumber' | 'referenceDocument' | 'referenceDocumentFile'
-  >;
+  fields: Pick<StepFields<Step3FormData>, 'referenceNumber'>;
 };
 
 export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
@@ -64,6 +66,16 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
 }) => {
   const { formatMessage } = useIntl();
   const { spacing, palette, fonts } = useTheme();
+  const { setPurchaseOrderFile } = useContext(CheckoutContext);
+  const isChecked =
+    props === undefined || !('checked' in props) ? false : props.checked;
+
+  const fileField = useMemo(() => {
+    return {
+      label: formatMessage(messages.referenceDocument),
+      name: 'referenceDocument'
+    };
+  }, [formatMessage]);
 
   const styles: PurchaseOrderFormGroupStyles = {
     container: {
@@ -116,9 +128,6 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
     }
   };
 
-  const isChecked =
-    props === undefined || !('checked' in props) ? false : props.checked;
-
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
       <Stack.Item>{render && render(props)}</Stack.Item>
@@ -138,9 +147,8 @@ export const PurchaseOrderFormGroup: React.FC<PurchaseOrderFormGroupProps> = ({
             required
           />
           <FormikFileField
-            fileField={fields.referenceDocumentFile}
-            labelField={fields.referenceDocument}
-            labelText={formatMessage(messages.fileUpload)}
+            fieldProps={fileField}
+            onChange={setPurchaseOrderFile}
           />
         </Stack>
       )}

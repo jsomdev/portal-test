@@ -844,7 +844,7 @@ export const en: Messages = {
           billingCountry: 'Country',
           billingPostalCode: 'Postal Code',
           referenceNumber: 'Reference Number',
-          referenceDocument: 'Reference Document'
+          referenceDocument: 'Upload PO document'
         }
       },
       summary: {

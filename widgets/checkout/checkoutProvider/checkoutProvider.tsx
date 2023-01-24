@@ -46,6 +46,9 @@ const messages = defineMessages({
 
 export const CheckoutProvider: React.FC = ({ children }) => {
   const [formValues, setFormValues] = useState<CheckoutFormValues>();
+  const [purchaseOrderFile, setPurchaseOrderFile] = useState<File | undefined>(
+    undefined
+  );
 
   const [selectedShippingOption, setSelectedShippingOption] = useState<
     ShippingCostAmount | undefined
@@ -182,7 +185,9 @@ export const CheckoutProvider: React.FC = ({ children }) => {
         formValues,
         setFormValues,
         steps,
-        stepper
+        stepper,
+        purchaseOrderFile,
+        setPurchaseOrderFile
       }}
     >
       {children}
