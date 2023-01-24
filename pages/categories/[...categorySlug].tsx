@@ -187,17 +187,24 @@ export const getStaticProps: GetStaticProps = async (
     JSON.stringify([categoryFilter])
   );
 
-  const initialSearchResults: FacetedSearchOdataCollection =
-    await fetchFacetedSearchResults(
+  let initialSearchResults: FacetedSearchOdataCollection | undefined =
+    undefined;
+
+  try {
+    const data = await fetchFacetedSearchResults(
       encodedCategoryFilter,
       'null',
       undefined,
       10,
       0
     );
+    initialSearchResults = data;
+  } catch (e) {
+    console.warn('error fetching initial results');
+  }
 
   const usedAttributeTypeCodes: string[] = Object.keys(
-    initialSearchResults['@search.facets']
+    initialSearchResults?.['@search.facets'] || {}
   );
   const textFormatter = new TextFormatter();
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
@@ -217,9 +224,9 @@ export const getStaticProps: GetStaticProps = async (
     FacetFactory.getFacetsFromFiles([])
   ).map(facet => textFormatter.formatCamelCase(facet.attributeTypeCode));
 
-  Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+  Object.keys(initialSearchResults?.['@search.facets'] || {}).forEach(key => {
     if (!usedFacetCodes.includes(key)) {
-      delete initialSearchResults['@search.facets'][key];
+      delete initialSearchResults?.['@search.facets'][key];
     }
   });
 
