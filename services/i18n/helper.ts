@@ -58,9 +58,6 @@ export function getAudience(locale: string | undefined): Audience {
 export const supportedRegions: Region[] = regions as unknown as Region[];
 
 export const supportedLocales: string[] | undefined =
-  ENVIRONMENT_VARIABLES.supportedLocales?.filter(
-    locale =>
-      locale !== ENVIRONMENT_VARIABLES.defaultLocale && locale !== 'default'
-  );
+  ENVIRONMENT_VARIABLES.supportedLocales;
 
 export const defaultLanguage: string = 'en';
