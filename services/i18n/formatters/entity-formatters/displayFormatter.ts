@@ -43,7 +43,8 @@ export function getDisplayValueType(value: unknown): DisplayValueType {
     return DisplayValueType.Multilingual;
   }
 
-  const isNumber: boolean = !isNaN(value as number);
+  const isNumber: boolean =
+    !isNaN(value as number) && typeof value !== 'string';
   if (isNumber) {
     return DisplayValueType.Number;
   }
@@ -170,12 +171,7 @@ export class DisplayFormatter {
       return '-';
     }
     const formattedValue: string = this.formatNumericValues(value);
-
-    if (isNaN(Number(formattedValue))) {
-      return `${formattedValue}${formatUnitSymbol(unitSymbol)}`;
-    } else {
-      return this.formatNumber(Number(value), unitSymbol);
-    }
+    return `${formattedValue}${formatUnitSymbol(unitSymbol)}`;
   }
 
   private formatNumericValues(value: string): string {

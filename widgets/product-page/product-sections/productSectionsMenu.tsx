@@ -6,13 +6,25 @@ import {
   ICommandBarStyles,
   useTheme
 } from '@fluentui/react';
-import { scrollToTop } from '@utilities/scrollToTop';
 
 import { ProductSection } from './productSections.types';
 import { mapProductSectionsToCommandBarItems } from './productSectionsHelper';
 
 interface ProductSectionsMenuProps {
   sections: ProductSection[];
+}
+// Function that takes offsets of headers into account when scrolling to the section
+function scrollToSectionId(id: string) {
+  const yOffset = -200;
+  const element = document.getElementById(id);
+
+  if (typeof element?.scrollTo === 'function') {
+    const y = element.getBoundingClientRect()?.top + window.scrollY + yOffset;
+    window.scrollTo({
+      behavior: 'smooth',
+      top: y
+    });
+  }
 }
 
 /**
@@ -27,7 +39,7 @@ export const ProductSectionsMenu: React.FC<ProductSectionsMenuProps> = ({
 
   const scrollToSection = useCallback((section: ProductSection) => {
     setTimeout(() => {
-      scrollToTop(`#${section.sectionKey.toString()}`);
+      scrollToSectionId(section.sectionKey.toString());
     }, 350);
   }, []);
   const menuItems: ICommandBarItemProps[] = useMemo(() => {

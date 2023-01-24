@@ -263,7 +263,7 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
             styles={styles.textField}
             placeholder={''}
             type="number"
-            step="any"
+            step="0.1"
             onKeyDown={ev => {
               if (ev.key === 'Enter') {
                 onEnterPressed();
@@ -286,8 +286,8 @@ export const OperatingConditionItem: React.FC<OperatingConditionItemProps> = ({
                 ?.symbol
             }
             styles={styles.textField}
-            type="text"
-            step="any"
+            type="number"
+            step="0.1"
             onKeyDown={ev => {
               if (ev.key === 'Enter') {
                 onEnterPressed();

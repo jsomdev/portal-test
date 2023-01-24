@@ -7,6 +7,7 @@ import {
   useIntl
 } from 'react-intl';
 
+import { InteractionStatus } from '@azure/msal-browser';
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   IButtonStyles,
@@ -86,7 +87,7 @@ export const SignIn: React.FC = () => {
   const { palette, spacing, fonts } = useTheme();
   const isAuthenticated = useIsAuthenticated();
   const { formatMessage } = useIntl();
-  const { instance } = useMsal();
+  const { instance, inProgress } = useMsal();
   const STEP_WIDTH = 324;
   const STEP_INDEX_WIDTH = 64;
   const STEP_PADDING = 32;
@@ -153,7 +154,7 @@ export const SignIn: React.FC = () => {
     })
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticated || inProgress !== InteractionStatus.None) {
     return null;
   }
   return (

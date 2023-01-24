@@ -18,6 +18,7 @@ import { SystemOfMeasurementProvider } from '@providers/system-of-measurement/sy
 import { UserProvider } from '@providers/user/userProvider';
 import { appInsightsReactPlugin } from '@services/application-insights/applicationInsights';
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
+import { Chat } from '@services/chat/chat';
 import { Consent } from '@services/consent/consent';
 import { getMessages } from '@services/i18n/helper';
 import { ReactQueryClientProvider } from '@services/react-query/reactQueryProvider';
@@ -73,6 +74,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <AppInsightsContext.Provider value={appInsightsReactPlugin}>
       <AppErrorBoundary>
         <Consent />
+        <Chat />
         <ClientSideMsalProvider>
           <IntlProvider
             locale={locale || defaultLocale}

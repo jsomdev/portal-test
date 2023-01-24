@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 
-import { useIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   ISpinnerStyles,
   IStackItemStyles,
   IStackStyles,
   List,
+  MessageBarType,
   Spinner,
   Stack,
   useTheme
@@ -14,9 +16,19 @@ import {
 import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
+import { messageIds } from '@services/i18n';
 
 import { mapFacetedSearchProductsToProductListItems } from './listViewHelper';
 import { ProductListItem, ProductListItemProps } from './productListItem';
+
+const messages = defineMessages({
+  noResults: {
+    id: messageIds.finder.noResults,
+    description: 'Info text to display to the user when there are no results',
+    defaultMessage:
+      'No products were found matching your criteria. Try searching something else or applying different filters.'
+  }
+});
 
 interface ProductListViewStyles {
   root: IStackItemStyles;
@@ -69,6 +81,13 @@ export const ProductListView: React.FC = () => {
           <Spinner styles={styles.spinner} />
         </Stack>
       )}
+      {!isFetching &&
+        facetedSearchStatus === 'success' &&
+        listItems.length === 0 && (
+          <PortalMessageBar messageBarType={MessageBarType.info}>
+            <FormattedMessage {...messages.noResults} />
+          </PortalMessageBar>
+        )}
       <List
         items={listItems}
         onRenderCell={item => item && <ProductListItem {...item} />}

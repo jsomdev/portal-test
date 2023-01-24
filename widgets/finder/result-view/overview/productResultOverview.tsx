@@ -103,7 +103,7 @@ export const ProductResultOverview: React.FC<ProductResultOverviewProps> = ({
           })}
         </PrimaryButton>
       </Stack.Item>
-      <TrustFactors />
+      {/* <TrustFactors /> */}
     </Stack>
   );
 };

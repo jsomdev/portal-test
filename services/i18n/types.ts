@@ -57,6 +57,7 @@ type IStepsMessages = {
 };
 
 type IFinderMessages = {
+  noResults: string;
   filters: {
     clearAll: string;
     search: string;
@@ -184,6 +185,7 @@ type IPricingMessages = {
   discounts: {
     bulkAvailable: string;
     bulkApplied: string;
+    bulkOnQuote: string;
   };
   quotedPrice: string;
   unitPriceSuffix: string;
@@ -1076,4 +1078,5 @@ export interface FooterMessages {
       manageSubscriptions: string;
     };
   };
+  buildVersion: string;
 }

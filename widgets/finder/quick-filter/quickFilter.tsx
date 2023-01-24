@@ -57,10 +57,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
 
   const quickFilterFacet: Facet | undefined = useMemo(() => {
     return visibleMainFacets.filter(facet => {
-      const excludedKeys: FacetKey[] = [
-        FacetKey.CapacitySize,
-        FacetKey.CategoryId
-      ];
+      const excludedKeys: FacetKey[] = [FacetKey.CategoryId];
 
       return (
         !excludedKeys.includes(facet.key) &&
@@ -126,6 +123,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
       bottom: 0,
       width: NAVIGATION_FAILSAFE_WIDTH,
       zIndex: 1,
+      pointerEvents: 'none',
       background: 'transparent',
       cursor: 'default'
     },
@@ -135,6 +133,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
       top: 0,
       bottom: 0,
       width: NAVIGATION_FAILSAFE_WIDTH,
+      pointerEvents: 'none',
       zIndex: 1,
       cursor: 'default',
       background: 'transparent'

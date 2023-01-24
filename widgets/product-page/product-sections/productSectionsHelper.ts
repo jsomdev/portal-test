@@ -111,7 +111,7 @@ export function mapProductSectionsToCommandBarItems(
         textDecoration: 'underline'
       },
       label: {
-        fontSize: fonts.mediumPlus.fontSize,
+        fontSize: fonts.large.fontSize,
         fontWeight: FontWeights.semibold
       }
     };
