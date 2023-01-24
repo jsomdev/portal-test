@@ -1,8 +1,4 @@
-import React from 'react';
-
 import {
-  GetStaticPaths,
-  GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
@@ -12,7 +8,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds, supportedLocales } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader

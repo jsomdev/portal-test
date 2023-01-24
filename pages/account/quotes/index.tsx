@@ -1,6 +1,4 @@
 import {
-  GetStaticPaths,
-  GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
@@ -12,7 +10,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
-import { messageIds, supportedLocales } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader

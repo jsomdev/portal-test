@@ -1,10 +1,4 @@
-import type {
-  GetStaticPaths,
-  GetStaticPathsResult,
-  GetStaticProps,
-  GetStaticPropsResult,
-  NextPage
-} from 'next';
+import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useIsAuthenticated } from '@azure/msal-react';
@@ -13,7 +7,7 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
-import { messageIds, supportedLocales } from '@services/i18n';
+import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
 import { CATEGORY_IDS } from '@services/portal-api/constants';
