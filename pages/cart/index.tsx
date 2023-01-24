@@ -1,4 +1,6 @@
 import {
+  GetStaticPaths,
+  GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
@@ -8,7 +10,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { messageIds } from '@services/i18n';
+import { messageIds, supportedLocales } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -56,6 +58,18 @@ const CartPage: NextPage<
     </Page>
   );
 };
+
+export const getStaticPaths: GetStaticPaths =
+  async (): Promise<GetStaticPathsResult> => {
+    const localizedPaths = (supportedLocales || []).map(locale => {
+      return {
+        locale,
+        params: {}
+      };
+    });
+
+    return { paths: localizedPaths, fallback: 'blocking' };
+  };
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext

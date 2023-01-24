@@ -1,4 +1,6 @@
 import {
+  GetStaticPaths,
+  GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult,
@@ -7,7 +9,7 @@ import {
 import { defineMessages, useIntl } from 'react-intl';
 
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
-import { messageIds } from '@services/i18n';
+import { messageIds, supportedLocales } from '@services/i18n';
 import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
@@ -51,6 +53,18 @@ const PreferencesPage: NextPage<
     </AccountPage>
   );
 };
+
+export const getStaticPaths: GetStaticPaths =
+  async (): Promise<GetStaticPathsResult> => {
+    const localizedPaths = (supportedLocales || []).map(locale => {
+      return {
+        locale,
+        params: {}
+      };
+    });
+
+    return { paths: localizedPaths, fallback: 'blocking' };
+  };
 
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
