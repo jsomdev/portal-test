@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
+import { Audience } from '@services/portal-api/models/AudienceFlags';
 
 export type FacetsState = {
   [facetKey: string]: Facet;
@@ -10,6 +11,7 @@ export type FacetsState = {
 export interface FacetsPreFilters {
   searchQuery?: string | undefined;
   categoryId?: string | undefined;
+  audience?: Audience | undefined;
 }
 
 export interface FacetsContextProps {
@@ -32,7 +34,8 @@ export const initialFacetsContextProps: FacetsContextProps = {
   activeFacets: [],
   preFilters: {
     categoryId: undefined,
-    searchQuery: undefined
+    searchQuery: undefined,
+    audience: undefined
   },
   combinedFiltersApiParameter: '',
   combinedOperatingConditionsApiParameter: '',

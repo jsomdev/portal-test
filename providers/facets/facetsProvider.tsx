@@ -1,11 +1,14 @@
 import { useCallback, useContext, useMemo, useReducer } from 'react';
 
+import { useIntl } from 'react-intl';
+
 import { SystemOfMeasurementContext } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { combineFacetsToEncodedExternalFiltersString } from '@services/facet-service/facet-helpers/facetCombiner';
 import { combineFacetsToEncodedOperatingConditionsParameter } from '@services/facet-service/facet-helpers/operatingConditionsCombiner';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetCategory } from '@services/facet-service/models/facet/facetCategory';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
+import { getAudience } from '@services/i18n';
 
 import { FacetsContext, FacetsPreFilters, FacetsState } from './facetsContext';
 import { facetsReducer } from './facetsReducer';
@@ -23,6 +26,7 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
   const [facets, dispatch] = useReducer(facetsReducer, {
     ...initialFacets
   });
+  const { locale } = useIntl();
   const { systemOfMeasurement } = useContext(SystemOfMeasurementContext);
 
   // Facets with the Main FacetCategory
@@ -85,10 +89,11 @@ export const FacetsProvider: React.FC<FacetsProviderProps> = ({
     const value = combineFacetsToEncodedExternalFiltersString(
       Object.values(mainFacets),
       systemOfMeasurement,
-      preFilters.categoryId
+      preFilters.categoryId,
+      getAudience(locale)
     );
     return value;
-  }, [mainFacets, preFilters.categoryId, systemOfMeasurement]);
+  }, [locale, mainFacets, preFilters.categoryId, systemOfMeasurement]);
 
   // Persists the facet to the current state
   function storeFacet(facet: Facet) {
