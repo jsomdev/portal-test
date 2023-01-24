@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -20,6 +19,7 @@ import { GlobalDataContextProps } from '@providers/global-data/globalDataContext
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
 import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
+import { supportedLocales } from '@services/i18n';
 import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/productFormatter';
 import { MultilingualStringFormatter } from '@services/i18n/formatters/multilingual-string-formatter/multilingualStringFormatter';
 import {
@@ -153,13 +153,13 @@ interface ProductsParsedUrlQuery extends ParsedUrlQuery {
   productSlug: string;
 }
 
-export const getStaticPaths: GetStaticPaths = async (
-  context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<ProductsParsedUrlQuery>> => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+  GetStaticPathsResult<ProductsParsedUrlQuery>
+> => {
   // const productsData = await fetchProductsForStaticPaths();
   const productsData: Product[] = [];
 
-  const localizedPaths = (context.locales || []).map(locale => {
+  const localizedPaths = (supportedLocales || []).map(locale => {
     const pathForLocale: {
       params: ProductsParsedUrlQuery;
       locale?: string | undefined;

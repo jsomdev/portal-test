@@ -1,5 +1,7 @@
 /* eslint-disable no-case-declarations */
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
+import { FlaggedEnum } from '@services/portal-api/flaggedEnum';
+import { Audience } from '@services/portal-api/models/AudienceFlags';
 
 import {
   RangeFacetMatchType,
@@ -20,28 +22,36 @@ import { RangeFacet } from '../models/range-facets/rangeProductFacet';
 export function mapCategoryIdToExternalFilter(id: string): string {
   return `categoryId/any(c: c eq '${id}')`;
 }
+
+export function mapAudienceToExternalFilter(audience: Audience): string {
+  const audienceFlag = FlaggedEnum.toString<Audience>(Audience, audience);
+  return `audience has SSCo.DigitalHighway.Portal.Data.Enumerations'${audienceFlag}'`;
+}
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
  * At the time of writing all relevant facets are the one with FacetCategory.Main.
  * At the time of writing relevant product finder api calls are: GroupByFacets, Find, CountBySeriesModels.
  * @param facets Array of relevant facets
  * @param systemOfMeasurement SystemOfMeasurement that is currently active in the application
- * @param sprayPortalDemoCategoryPageId Guid of the category page. Should be undefined if on irrelevant page (e.g: search, model, series);
+ * @param categoryId Guid of the category page. Should be undefined if on irrelevant page (e.g: search, model, series);
  * @returns an encoded value string that represents the @filters parameter value
  */
 export function combineFacetsToEncodedExternalFiltersString(
   facets: Facet[],
   systemOfMeasurement: SystemOfMeasurement,
-  sprayPortalDemoCategoryPageId?: string | undefined
+  categoryId?: string | undefined,
+  audience?: Audience | undefined
 ): string {
   const extraFilters: string[] = [];
 
   // If a category id was included, create an external filter that will be added to the external filters array.
   // Note: Inside the application the category filter is treated as a 'Pre-filter'. However, in the api call it needs to be part of the @filters parameter
-  if (sprayPortalDemoCategoryPageId) {
-    extraFilters.push(
-      mapCategoryIdToExternalFilter(sprayPortalDemoCategoryPageId)
-    );
+  if (categoryId) {
+    extraFilters.push(mapCategoryIdToExternalFilter(categoryId));
+  }
+
+  if (audience !== undefined) {
+    extraFilters.push(mapAudienceToExternalFilter(audience));
   }
 
   // Map the facets to externalfilters and concatenate with the extra filters.

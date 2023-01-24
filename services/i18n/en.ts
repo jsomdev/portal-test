@@ -299,6 +299,8 @@ export const en: Messages = {
         'Images are representative. Products may differ in material or configuration.',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'This product may not be available in your region. However, feel free to add it to your cart and our sales team will help you accordingly.',
           configurations: {
             title: 'Product Configuration'
           },

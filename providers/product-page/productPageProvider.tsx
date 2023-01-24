@@ -114,7 +114,7 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
       product?.audience
     );
 
-    return getAudience(locale) === productAudience;
+    return productAudience & getAudience(locale);
   }, [locale, product?.audience]);
 
   function filterKeyAttribute(attribute: Attribute): boolean {
@@ -199,7 +199,7 @@ export const ProductPageProvider: React.FC<ProductPageProviderProps> = ({
         flow,
         cadenasIdentifier,
         configurations,
-        isValidAudience,
+        isValidAudience: !!isValidAudience,
         product,
         resources,
         sections

@@ -784,6 +784,7 @@ type IProductMessages = {
   imageDisclaimer: string;
   sections: {
     top: {
+      notAvailableInYourRegion: string;
       configurations: {
         title: string;
       };
