@@ -48,6 +48,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [locale]);
 
   useEffect(() => {
+    if (router.locale === 'default') {
+      router.push(router, undefined, { locale: 'en-us' });
+    }
     //used in /docs/errors to test application level error
     if (router.query['appError']) {
       throw new Error('Something went wrong');
