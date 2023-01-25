@@ -1,6 +1,6 @@
 {
   "name": "digitalhighway-next-sprayportal",
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.2",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev -p 3002",
