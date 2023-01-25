@@ -29,7 +29,6 @@ export default class MyDocument extends Document {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
     const { locale } = this.props.__NEXT_DATA__;
-    console.log('doclocale', locale);
     return (
       <Html
         lang={locale === 'default' || locale === undefined ? 'en-us' : locale}
