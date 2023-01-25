@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   useEffect(() => {
     if (router.locale === 'default') {
-      router.push(router, undefined, { locale: 'en-us' });
+      router.push(router.asPath, undefined, { locale: 'en-us' });
     }
 
     document.documentElement.lang = router.locale || 'en-us';
