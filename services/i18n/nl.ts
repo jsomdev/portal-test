@@ -180,6 +180,9 @@ export const nl: Messages = {
     priceBreakQuantityInfo:
       'Toevoegen van {quantityDisplay} {quantity, plural, one {stuk} other {stuks}} aan uw winkelwagen zal u op een totaal van {projectedQuantityDisplay} {projectedQuantity, plural, one {stuk} other {stuks}} brengen.'
   },
+  recentlyViewed: {
+    title: 'Recent bekeken'
+  },
   finder: {
     noResults:
       'Er zijn geen producten gevonden. Probeer te zoeken op iets anders of pas andere filters toe.',

@@ -174,6 +174,9 @@ export const en: Messages = {
     priceBreakQuantityInfo:
       'Adding {quantityDisplay} {quantity, plural, one {item} other {items}} to your cart will bring you to a total of {projectedQuantityDisplay} {projectedQuantity, plural, one {item} other {items}.}'
   },
+  recentlyViewed: {
+    title: 'You recently viewed'
+  },
   finder: {
     noResults:
       'No products were found matching your criteria. Try searching something else or apply different filters.',

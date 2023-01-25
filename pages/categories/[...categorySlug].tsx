@@ -11,10 +11,12 @@ import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 import { useIntl } from 'react-intl';
 
+import { useTheme } from '@fluentui/react';
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
+import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
 import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
@@ -43,9 +45,12 @@ import {
   ResultViewType
 } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import ContentContainerStack, {
+  ContentContainerStyles
+} from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
+import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 type CategoryProps = {
   category: CategoryModel;
@@ -53,6 +58,10 @@ type CategoryProps = {
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
+
+interface CategoryStyles {
+  recentlyViewedContainer: Partial<ContentContainerStyles>;
+}
 
 const Category: NextPage<CategoryProps> = ({
   category,
@@ -63,7 +72,9 @@ const Category: NextPage<CategoryProps> = ({
   initialViewAs
 }) => {
   const router = useRouter();
+  const { products } = useRecentlyViewedProducts();
   const { locale } = useIntl();
+  const { semanticColors, spacing } = useTheme();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
     category,
     locale
@@ -74,6 +85,17 @@ const Category: NextPage<CategoryProps> = ({
     }
     return initialViewAs;
   }, [initialViewAs, router.asPath]);
+
+  const styles: CategoryStyles = {
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          padding: `${spacing.m} 0`,
+          borderTop: `2px solid ${semanticColors.variantBorder}`
+        }
+      }
+    }
+  };
   return (
     <Page
       metaProps={{
@@ -110,6 +132,15 @@ const Category: NextPage<CategoryProps> = ({
                   searchQuery={router.query.query?.toString()}
                 />
               </ContentContainerStack>
+              {products?.length && (
+                <ContentContainerStack
+                  outerStackProps={{
+                    styles: styles.recentlyViewedContainer.outerContainer
+                  }}
+                >
+                  <RecentlyViewedProducts products={products} />
+                </ContentContainerStack>
+              )}
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>

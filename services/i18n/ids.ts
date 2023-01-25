@@ -15,6 +15,7 @@ export const messageIds: Messages = {
       viewAllCategories: 'navigation.main.viewAllCategories',
       viewAllCategory: 'navigation.main.viewAllCategory'
     },
+
     site: {
       navigationAriaLabel: 'navigation.site.navigationAriaLabel',
       title: 'navigation.site.title',
@@ -32,6 +33,7 @@ export const messageIds: Messages = {
     locale: {
       title: 'navigation.locale.title'
     },
+
     footer: {
       siteLinks: {
         items: {
@@ -171,6 +173,9 @@ export const messageIds: Messages = {
       },
       buildVersion: 'navigation.footer.buildVersion'
     }
+  },
+  recentlyViewed: {
+    title: 'recentlyViewed.title'
   },
   comparisonPopup: {
     title: 'comparisonPopup.title',

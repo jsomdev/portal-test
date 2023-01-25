@@ -47,11 +47,30 @@ export const RecentlyViewedProvider: React.FC = ({ children }) => {
     error: productsError
   } = useQuery(
     [QUERYKEYS.appRecentlyViewedProducts, productIds],
-    (): Promise<OdataCollection<Product>> =>
+    (): Promise<Product[]> =>
       fetchBaseDesignsByIds(
         (productIds?.filter(id => !!id) as Array<string>) || []
       )
   );
+
+  const sortedProducts: Product[] | undefined = useMemo(() => {
+    const productViews = isAuthenticated
+      ? (setting?.value?.productViews as ProductView[] | undefined) || []
+      : sessionProductViews;
+
+    if (!products) {
+      return undefined;
+    }
+
+    return productViews
+      .map(view => products?.find(product => product.id === view.id))
+      .filter(product => !!product) as Product[];
+  }, [
+    isAuthenticated,
+    products,
+    sessionProductViews,
+    setting?.value?.productViews
+  ]);
 
   const clearMutation = useMutation(
     () => {
@@ -112,12 +131,9 @@ export const RecentlyViewedProvider: React.FC = ({ children }) => {
     clearMutation.mutateAsync();
   }, [clearMutation]);
 
-  const registerView = useCallback(
-    (productView: ProductView) => {
-      addMutation.mutateAsync(productView);
-    },
-    [addMutation]
-  );
+  const registerView = (productView: ProductView) => {
+    addMutation.mutateAsync(productView);
+  };
 
   return (
     <RecentlyViewedContext.Provider
@@ -126,7 +142,7 @@ export const RecentlyViewedProvider: React.FC = ({ children }) => {
         sessionProductViews,
         settingStatus,
         settingError: settingError as Error | undefined,
-        products: products?.value,
+        products: sortedProducts,
         productsError: productsError as Error | undefined,
         productsStatus,
         refresh: refreshSetting,

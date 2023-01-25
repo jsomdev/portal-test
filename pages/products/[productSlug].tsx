@@ -14,7 +14,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { ProductBookmarkButton } from '@components/buttons/bookmarkButton';
-import { Stack } from '@fluentui/react';
+import { Stack, useTheme } from '@fluentui/react';
 import { GlobalDataContextProps } from '@providers/global-data/globalDataContext';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { ProductPageProvider } from '@providers/product-page/productPageProvider';
@@ -42,7 +42,9 @@ import { generateProductStructuredData } from '@utilities/structuredData';
 import { ProductBreadcrumb } from '@widgets/breadcrumbs/product-breadcrumb/productBreadcrumb';
 import { PagesHeader } from '@widgets/headers/page-header/pageHeader';
 import { AppLayout } from '@widgets/layouts/appLayout';
-import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import ContentContainerStack, {
+  ContentContainerStyles
+} from '@widgets/layouts/contentContainerStack';
 import { Mobile } from '@widgets/media-queries';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
@@ -57,10 +59,15 @@ import { ProductStickyHeader } from '@widgets/product-page/product-sticky/produc
 import { ProductStickyThumb } from '@widgets/product-page/product-sticky/productStickyThumb';
 import { ProductTopSection } from '@widgets/product-page/product-top-section/productTopSection';
 import { ProductSubHeader } from '@widgets/product-page/productSubHeader';
+import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 export interface ProductsProps {
   product: Product;
   model: Model | undefined;
+}
+
+interface ProductStyles {
+  recentlyViewedContainer: Partial<ContentContainerStyles>;
 }
 
 const Products: NextPage<
@@ -85,12 +92,27 @@ const Products: NextPage<
   mainMenuItems
 }) => {
   const { locale } = useRouter();
-  const { registerView } = useRecentlyViewedProducts();
+  const { registerView, products } = useRecentlyViewedProducts();
+
+  const { semanticColors, spacing } = useTheme();
   const productFormatter = new ProductFormatter(product, locale);
   useEffect(() => {
     registerView({ id: product.id, lastViewedOn: new Date() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [product.id]);
+
+  console.log(products);
+  console.log(product.id);
+  const styles: ProductStyles = {
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          padding: `${spacing.m} 0`,
+          borderTop: `2px solid ${semanticColors.variantBorder}`
+        }
+      }
+    }
+  };
   return (
     <Page
       metaProps={{
@@ -142,6 +164,20 @@ const Products: NextPage<
                 }}
               />
             </ContentContainerStack>
+            {products?.filter(recentProduct => recentProduct.id !== product.id)
+              .length && (
+              <ContentContainerStack
+                outerStackProps={{
+                  styles: styles.recentlyViewedContainer.outerContainer
+                }}
+              >
+                <RecentlyViewedProducts
+                  products={products.filter(
+                    recentProduct => recentProduct.id !== product.id
+                  )}
+                />
+              </ContentContainerStack>
+            )}
           </ProductPageProvider>
         </AppLayout>
       </GlobalDataProvider>

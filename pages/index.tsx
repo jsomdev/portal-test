@@ -7,6 +7,7 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
+import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
@@ -29,6 +30,7 @@ import ContentContainerStack, {
 } from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
+import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 export interface HomeProps {
   categories: Category[];
@@ -55,6 +57,7 @@ type HomeStyles = {
   catalogContainer: Partial<ContentContainerStyles>;
   applicationContainer: Partial<ContentContainerStyles>;
   sectionContainer: Partial<IStackStyles>;
+  recentlyViewedContainer: Partial<ContentContainerStyles>;
 };
 
 const Home: NextPage<HomeProps & AppLayoutProps> = ({
@@ -63,7 +66,8 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   mainMenuItems
 }) => {
   const { formatMessage } = useIntl();
-  const { palette } = useTheme();
+  const { products } = useRecentlyViewedProducts();
+  const { palette, semanticColors } = useTheme();
   const isAuthenticated = useIsAuthenticated();
 
   const styles: HomeStyles = {
@@ -77,6 +81,13 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       outerContainer: {
         root: {
           background: palette.neutralLighterAlt
+        }
+      }
+    },
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          borderTop: `2px solid ${semanticColors.variantBorder}`
         }
       }
     },
@@ -169,6 +180,18 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           >
             <Support />
           </ContentContainerStack>
+          {products?.length && (
+            <ContentContainerStack
+              outerStackProps={{
+                styles: mergeStyleSets(
+                  styles.recentlyViewedContainer.outerContainer,
+                  styles.sectionContainer
+                )
+              }}
+            >
+              <RecentlyViewedProducts products={products} />
+            </ContentContainerStack>
+          )}
         </AppLayout>
       </GlobalDataProvider>
     </Page>

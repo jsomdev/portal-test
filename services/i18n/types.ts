@@ -856,6 +856,9 @@ type ISeriesMessages = INextHeadMessages;
  * The messagesIds object can be used to reference their ids used when formatting messages using react-intl.
  */
 export type Messages = {
+  recentlyViewed: {
+    title: string;
+  };
   bookmarks: {
     actions: {
       bookmark: string;
