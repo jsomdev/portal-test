@@ -147,7 +147,7 @@ export const getStaticPaths: GetStaticPaths = async (
     return pathForLocale;
   });
 
-  return { paths: localizedPaths.flat(), fallback: false };
+  return { paths: [], fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps = async (
