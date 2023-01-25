@@ -247,19 +247,6 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
       if (isHiddenByConfiguration) {
         return false;
       }
-      let isHiddenByHierarchy: boolean = false;
-
-      if (facet.key === FacetKey.ModelId) {
-        const subCategoriesForCurrentCategory: number =
-          categoryIdFacet.options.find(
-            option => option.valueId === preFilters.categoryId
-          )?.children?.length || 0;
-        isHiddenByHierarchy = subCategoriesForCurrentCategory > 1;
-      }
-
-      if (isHiddenByHierarchy) {
-        return false;
-      }
 
       const facetResults: FacetedSearchFacetResult[] | undefined =
         getFacetResult(facet);
@@ -277,7 +264,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
 
       return isActiveCheckboxFacet;
     },
-    [getFacetResult, isFacetActive, preFilters.categoryId]
+    [getFacetResult, isFacetActive]
   );
 
   /**
