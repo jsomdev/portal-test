@@ -876,6 +876,7 @@ export const messageIds: Messages = {
         creditCard: 'pages.checkout.payment.creditCard',
         purchaseOrder: 'pages.checkout.payment.purchaseOrder',
         purchaseOrderInfo: 'pages.checkout.payment.purchaseOrderInfo',
+        fileUpload: 'pages.checkout.payment.fileUpload',
         fields: {
           paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
           shippingAddressAsBillingAddress:
@@ -921,7 +922,8 @@ export const messageIds: Messages = {
           billingState: 'pages.checkout.payment.fields.billingState',
           billingCountry: 'pages.checkout.payment.fields.billingCountry',
           billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode',
-          referenceNumber: 'pages.checkout.payment.fields.referenceNumber'
+          referenceNumber: 'pages.checkout.payment.fields.referenceNumber',
+          referenceDocument: 'pages.checkout.payment.fields.referenceDocument'
         }
       },
       summary: {

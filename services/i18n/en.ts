@@ -811,8 +811,9 @@ export const en: Messages = {
         billingAddress: 'Billing Address',
         creditCard: 'Credit card',
         purchaseOrder: 'Purchase order',
+        fileUpload: 'Upload a PO document',
         purchaseOrderInfo:
-          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.',
+          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account. Uploading a document is not required, but it will help us process your order faster.',
         fields: {
           paymentMethod: 'Payment Method',
           shippingAddressAsBillingAddress: 'Shipping as Billing',
@@ -848,7 +849,8 @@ export const en: Messages = {
           billingState: 'State / Province',
           billingCountry: 'Country',
           billingPostalCode: 'Postal Code',
-          referenceNumber: 'Reference Number'
+          referenceNumber: 'Reference Number',
+          referenceDocument: 'Upload PO document'
         }
       },
       summary: {

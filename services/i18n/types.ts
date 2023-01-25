@@ -206,13 +206,13 @@ type INextHeadMessages = {
 };
 
 type IAccountMessages = {
-  signOut: string; //
-  signInPrompt: string; //
+  signOut: string;
+  signInPrompt: string;
   overview: {
-    title: string; //
-    subTitle: string; //
-    welcome: string; //
-    link: string; //
+    title: string;
+    subTitle: string;
+    welcome: string;
+    link: string;
     orders: {
       title: string;
       viewAllText: string;
@@ -648,6 +648,7 @@ type ICheckoutMessages = {
     billingAddress: string;
     creditCard: string;
     purchaseOrder: string;
+    fileUpload: string;
     purchaseOrderInfo: string;
     fields: {
       paymentMethod: string;
@@ -682,6 +683,7 @@ type ICheckoutMessages = {
       billingCountry: string;
       billingPostalCode: string;
       referenceNumber: string;
+      referenceDocument: string;
     };
   };
   summary: {

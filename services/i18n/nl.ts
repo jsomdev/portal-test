@@ -831,8 +831,9 @@ export const nl: Messages = {
         billingAddress: 'Facturatie adres',
         creditCard: 'Kredietkaart',
         purchaseOrder: 'Bestelbon',
+        fileUpload: 'Upload een PO bestand',
         purchaseOrderInfo:
-          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening.',
+          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening. Het uploaden van een document is niet verplicht, maar kan de verwerking van uw bestelling versnellen.',
         fields: {
           paymentMethod: 'Betaalmethode',
           shippingAddressAsBillingAddress:
@@ -869,7 +870,8 @@ export const nl: Messages = {
           billingState: 'Provincie',
           billingCountry: 'Land',
           billingPostalCode: 'Postcode',
-          referenceNumber: 'Referentienummer'
+          referenceNumber: 'Referentienummer',
+          referenceDocument: 'Upload PO Document'
         }
       },
       summary: {

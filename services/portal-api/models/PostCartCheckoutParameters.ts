@@ -22,5 +22,6 @@ export type PostCartCheckoutParameters = {
   comment?: string | null;
   name?: string | null;
   referenceNumber?: string | null;
+  referenceDocumentId?: string | null;
   paymentMethod?: PaymentMethod;
 };
