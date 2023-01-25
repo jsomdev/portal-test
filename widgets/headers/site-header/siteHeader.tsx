@@ -368,7 +368,7 @@ const DesktopSiteHeader: React.FC = () => {
             }}
             type="actionButton"
             styles={styles.button}
-            text={locale.toLocaleUpperCase()}
+            text={locale === 'default' ? 'EN-US' : locale?.toLocaleUpperCase()}
             onClick={() => {
               setShowLanguageMenu(true);
             }}
