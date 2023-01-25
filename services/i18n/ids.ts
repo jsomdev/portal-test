@@ -328,6 +328,8 @@ export const messageIds: Messages = {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'pages.product.sections.top.notAvailableInYourRegion',
           configurations: {
             title: 'pages.product.sections.top.configurations.title'
           },

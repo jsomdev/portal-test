@@ -19,9 +19,11 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { useSystemOfMeasurement } from '@providers/system-of-measurement/systemOfMeasurementContext';
 import { STATIC_IMAGES } from '@public/media/images';
 import { COOKIESKEYS } from '@services/cookies/constants';
-import { messageIds } from '@services/i18n';
+import { combineFacetsToEncodedExternalFiltersString } from '@services/facet-service/facet-helpers/facetCombiner';
+import { getAudience, messageIds } from '@services/i18n';
 import {
   fetchAutoCompleteSearch,
   fetchFacetedSearchResults
@@ -133,6 +135,7 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
   const [searchBoxInput, setSearchBoxInput] = useState<string | undefined>(
     initialSearchInput || ''
   );
+  const { systemOfMeasurement } = useSystemOfMeasurement();
   const [cookies, setCookie] = useCookies([COOKIESKEYS.recentSearches]);
   const { spacing, palette, semanticColors, fonts, effects } = useTheme();
   const { locale, formatMessage } = useIntl();
@@ -164,14 +167,24 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
     status: suggestionsStatus,
     isFetching
   } = useQuery(
-    [QUERYKEYS.productFinderResults, debouncedSearchBoxInput],
+    [
+      QUERYKEYS.productFinderResults,
+      debouncedSearchBoxInput,
+      locale,
+      systemOfMeasurement
+    ],
     async () => {
       if (!debouncedSearchBoxInput || debouncedSearchBoxInput.length < 2) {
         return undefined;
       }
       const [productsResults, autoCompleteResults] = await Promise.all([
         fetchFacetedSearchResults(
-          'null',
+          combineFacetsToEncodedExternalFiltersString(
+            [],
+            systemOfMeasurement,
+            undefined,
+            getAudience(locale)
+          ),
           'null',
           encodeURIComponent(debouncedSearchBoxInput || ''),
           SUGGESTIONS_COUNT,

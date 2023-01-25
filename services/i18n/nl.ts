@@ -306,6 +306,8 @@ export const nl: Messages = {
         'Afbeeldingen zijn representatief. Ze kunnen afwijken van hun materiaal en configuratie.',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'Dit product is niet beschikbaar in uw regio. U kan het toevoegen aan uw winkelmandje en het sales team zal u verder helpen.',
           configurations: {
             title: 'Productconfiguratie'
           },
