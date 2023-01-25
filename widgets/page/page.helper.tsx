@@ -11,6 +11,9 @@ const getPathWithLocale = (
   defaultLocale: string,
   localePaths: LocalePaths
 ): UrlObject | undefined => {
+  if (locale === defaultLocale) {
+    locale = 'en-us';
+  }
   const path: string | undefined | UrlObject = localePaths[locale];
 
   if (path === undefined) {

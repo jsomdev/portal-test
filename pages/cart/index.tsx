@@ -14,6 +14,7 @@ import {
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
 import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
+import pagePaths from '@utilities/pagePaths';
 import Cart from '@widgets/cart/cart';
 import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { AppLayout } from '@widgets/layouts/appLayout';
@@ -42,7 +43,7 @@ const CartPage: NextPage<
         noIndex: true
       }}
       i18nProps={{
-        localePaths: getLocalePaths('cart')
+        localePaths: getLocalePaths(pagePaths.cart)
       }}
     >
       <GlobalDataProvider
