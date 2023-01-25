@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       router.push(router, undefined, { locale: 'en-us' });
     }
 
-    document.documentElement.lang = locale || 'en-us';
+    document.documentElement.lang = router.locale || 'en-us';
 
     //used in /docs/errors to test application level error
     if (router.query['appError']) {
