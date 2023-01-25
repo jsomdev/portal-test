@@ -3,7 +3,7 @@ import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 /**
  * Helper class for formatting MultilingualStrings (Data-Driven Formatting).
- * Based on the locale (e.g.: 'en-US') it will format values using the appropriate property on the MultilingualString Object.
+ * Based on the locale (e.g.: 'en-us') it will format values using the appropriate property on the MultilingualString Object.
  */
 export class MultilingualStringFormatter {
   protected language: string;

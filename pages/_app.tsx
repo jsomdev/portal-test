@@ -42,7 +42,7 @@ const ClientSideMsalProvider: React.FC = ({ children }) => {
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
-  const { locale, defaultLocale = 'en-US' } = router;
+  const { locale, defaultLocale = 'en-us' } = router;
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
     return flatten(getMessages(locale));
   }, [locale]);
