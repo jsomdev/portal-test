@@ -6,7 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   productionBrowserSourceMaps: true,
-
+  trailingSlash: true,
   async redirects() {
     return process.env.Node_ENV === 'production'
       ? [

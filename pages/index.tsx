@@ -15,6 +15,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { rem } from '@utilities/rem';
 import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
@@ -181,7 +182,11 @@ export const getStaticProps: GetStaticProps = async (
     HomeProps & Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>
   >
 > => {
-  const { locale } = context;
+  const { locale: contextLocale } = context;
+  let locale = contextLocale;
+  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
+    locale = 'en-us';
+  }
   const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
     fetchCategoriesForHomePage(locale),
     fetchMenuItemsForSiteHeader(locale),

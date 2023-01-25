@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -22,6 +21,7 @@ import { liquidPressureFacet } from '@services/facet-service/facets/range-facets
 import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
 import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
+import { supportedLocales } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
@@ -122,12 +122,12 @@ interface CategoryParsedUrlQuery extends ParsedUrlQuery {
   categorySlug: string[] | undefined;
 }
 
-export const getStaticPaths: GetStaticPaths = async (
-  context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<CategoryParsedUrlQuery>> => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+  GetStaticPathsResult<CategoryParsedUrlQuery>
+> => {
   const categoriesData: CategoryModel[] = await fetchAllCategories(undefined);
 
-  const localizedPaths = (context.locales || []).map(locale => {
+  const localizedPaths = (supportedLocales || []).map(locale => {
     const pathForLocale: {
       params: CategoryParsedUrlQuery;
       locale?: string | undefined;
@@ -146,7 +146,7 @@ export const getStaticPaths: GetStaticPaths = async (
     return pathForLocale;
   });
 
-  return { paths: localizedPaths.flat(), fallback: false };
+  return { paths: [] /*localizedPaths.flat()*/, fallback: 'blocking' };
 };
 
 export const getStaticProps: GetStaticProps = async (
@@ -187,17 +187,24 @@ export const getStaticProps: GetStaticProps = async (
     JSON.stringify([categoryFilter])
   );
 
-  const initialSearchResults: FacetedSearchOdataCollection =
-    await fetchFacetedSearchResults(
+  let initialSearchResults: FacetedSearchOdataCollection | undefined =
+    undefined;
+
+  try {
+    const data = await fetchFacetedSearchResults(
       encodedCategoryFilter,
       'null',
       undefined,
       10,
       0
     );
+    initialSearchResults = data;
+  } catch (e) {
+    console.warn('error fetching initial results');
+  }
 
   const usedAttributeTypeCodes: string[] = Object.keys(
-    initialSearchResults['@search.facets']
+    initialSearchResults?.['@search.facets'] || {}
   );
   const textFormatter = new TextFormatter();
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
@@ -217,9 +224,9 @@ export const getStaticProps: GetStaticProps = async (
     FacetFactory.getFacetsFromFiles([])
   ).map(facet => textFormatter.formatCamelCase(facet.attributeTypeCode));
 
-  Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+  Object.keys(initialSearchResults?.['@search.facets'] || {}).forEach(key => {
     if (!usedFacetCodes.includes(key)) {
-      delete initialSearchResults['@search.facets'][key];
+      delete initialSearchResults?.['@search.facets'][key];
     }
   });
 
