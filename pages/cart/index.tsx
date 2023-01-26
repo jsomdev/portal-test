@@ -13,6 +13,8 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
+import pagePaths from '@utilities/pagePaths';
 import Cart from '@widgets/cart/cart';
 import { CartBreadcrumb } from '@widgets/cart/cartBreadcrumb';
 import { AppLayout } from '@widgets/layouts/appLayout';
@@ -41,7 +43,7 @@ const CartPage: NextPage<
         noIndex: true
       }}
       i18nProps={{
-        localePaths: getLocalePaths('cart')
+        localePaths: getLocalePaths(pagePaths.cart)
       }}
     >
       <GlobalDataProvider
@@ -64,7 +66,11 @@ export const getStaticProps: GetStaticProps = async (
     Partial<Pick<GlobalDataContextProps, 'mainMenuItems' | 'siteMenuItems'>>
   >
 > => {
-  const { locale } = context;
+  const { locale: contextLocale } = context;
+  let locale = contextLocale;
+  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
+    locale = 'en-us';
+  }
   const [siteMenuData, mainMenuData] = await Promise.all([
     fetchMenuItemsForSiteHeader(locale),
     fetchMenuItemsForMainHeader(locale)

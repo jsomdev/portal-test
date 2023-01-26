@@ -52,6 +52,7 @@ export const Step3Payment: React.FC<Step3Props> = ({ values, formRef }) => {
   const { spacing } = useTheme();
   const intl = useIntl();
   const fields = getFields(intl);
+
   return (
     <Formik<Step3FormData>
       innerRef={formRef}

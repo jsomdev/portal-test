@@ -103,13 +103,10 @@ export async function fetchDesignsCadenasIdentifier(
  */
 export const fetchBaseDesignsByIds = async (
   ids: string[]
-): Promise<OdataCollection<Product>> => {
+): Promise<Product[]> => {
   const filteredIds: string[] = ids.filter(id => !!id);
   if (filteredIds.length === 0) {
-    return {
-      '@odata.context': '',
-      value: [] as Array<Product & OdataEntity>
-    };
+    return [] as Product[];
   }
   const productsResource: ProductsResource = new ProductsResource();
   const queryOptions: Partial<QueryOptions> = {
@@ -122,7 +119,7 @@ export const fetchBaseDesignsByIds = async (
     includeCount: true
   };
   const data = await productsResource.getEntities(queryOptions);
-  return data;
+  return data.value;
 };
 
 /**

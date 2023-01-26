@@ -218,23 +218,22 @@ export const OperatingConditions: React.FC = () => {
         />
         <Dialog
           dialogContentProps={{
-            showCloseButton: true
+            showCloseButton: true,
+            title: formatMessage(messages.validationTitle)
           }}
           hidden={!showInputError}
-          title={formatMessage(messages.validationTitle)}
           onDismiss={() => setShowInputError(false)}
         >
-          <Stack>
+          <Stack tokens={{ childrenGap: spacing.m }}>
             {validationResults.validatedResults
               .filter(result => !result.isValid)
               .map(result => (
                 <Stack.Item key={result.key}>
                   <Text as="h4" variant="large">
                     {/* TODO Make displayname multilingual */}
-                    {
-                      staleOperatingConditions[result.key].configuration
-                        .displayName
-                    }
+                    {getAttributeTypeTitle(
+                      staleOperatingConditions[result.key].attributeTypeCode
+                    )}
                   </Text>
                   <ul>
                     <li>

@@ -42,12 +42,18 @@ const ClientSideMsalProvider: React.FC = ({ children }) => {
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
-  const { locale, defaultLocale = 'en-US' } = router;
+  const { locale, defaultLocale = 'en-us' } = router;
   const i18nMessages: Record<string, MessageFormatElement[]> = useMemo(() => {
     return flatten(getMessages(locale));
   }, [locale]);
 
   useEffect(() => {
+    if (router.locale === 'default') {
+      router.push(router.asPath, undefined, { locale: 'en-us' });
+    }
+
+    document.documentElement.lang = router.locale || 'en-us';
+
     //used in /docs/errors to test application level error
     if (router.query['appError']) {
       throw new Error('Something went wrong');
@@ -77,7 +83,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <Chat />
         <ClientSideMsalProvider>
           <IntlProvider
-            locale={locale || defaultLocale}
+            locale={locale === 'default' ? 'en-us' : locale || defaultLocale}
             defaultLocale={defaultLocale}
             messages={i18nMessages}
           >

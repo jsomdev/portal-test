@@ -43,21 +43,21 @@ export const formatShippingMethod = (
   intl: IntlShape
 ): string => {
   switch (shippingMethod) {
-    case ShippingMethod.FREE_SHIPPING:
+    case ShippingMethod.FreeShipping:
       return intl.formatMessage(messages.freeShipping);
-    case ShippingMethod.FLAT_RATE:
+    case ShippingMethod.FlatRate:
       return intl.formatMessage(messages.flatRate);
-    case ShippingMethod.UPS_GROUND:
+    case ShippingMethod.UpsGround:
       return intl.formatMessage(messages.upsGround);
-    case ShippingMethod.UPS_SECOND_DAY_AIR:
+    case ShippingMethod.UpsSecondDayAir:
       return intl.formatMessage(messages.upsSecondDayAir);
-    case ShippingMethod.UPS_NEXT_DAY_AIR:
+    case ShippingMethod.UpsNextDayAir:
       return intl.formatMessage(messages.upsNextDayAir);
-    case ShippingMethod.UPS_NEXT_DAY_AIR_SAVER:
+    case ShippingMethod.UpsNextDayAirSaver:
       return intl.formatMessage(messages.upsNextDayAirSaver);
-    case ShippingMethod.UPS_STANDARD:
+    case ShippingMethod.UpsStandard:
       return intl.formatMessage(messages.upsStandard);
-    case ShippingMethod.UPS_WORLDWIDE_EXPEDITED:
+    case ShippingMethod.UpsWorldWideExpedited:
       return intl.formatMessage(messages.upsWorldwideExpedited);
     default:
       return shippingMethod;

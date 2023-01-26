@@ -51,8 +51,8 @@ const menuItems: MenuItem[] = [
 ];
 
 const intl = createIntl({
-  locale: 'en-US',
-  defaultLocale: 'en-US',
+  locale: 'en-us',
+  defaultLocale: 'en-us',
   messages: {}
 });
 

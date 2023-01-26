@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticProps,
   GetStaticPropsResult,
@@ -12,16 +11,19 @@ import { useRouter } from 'next/dist/client/router';
 import { ParsedUrlQuery } from 'querystring';
 import { useIntl } from 'react-intl';
 
+import { useTheme } from '@fluentui/react';
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
+import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
 import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
 import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
 import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { FacetFactory } from '@services/facet-service/factory/facetFactory';
+import { supportedLocales } from '@services/i18n';
 import { CategoryFormatter } from '@services/i18n/formatters/entity-formatters/categoryFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
 import {
@@ -43,9 +45,12 @@ import {
   ResultViewType
 } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
-import ContentContainerStack from '@widgets/layouts/contentContainerStack';
+import ContentContainerStack, {
+  ContentContainerStyles
+} from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
+import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 type CategoryProps = {
   category: CategoryModel;
@@ -53,6 +58,10 @@ type CategoryProps = {
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
+
+interface CategoryStyles {
+  recentlyViewedContainer: Partial<ContentContainerStyles>;
+}
 
 const Category: NextPage<CategoryProps> = ({
   category,
@@ -63,7 +72,9 @@ const Category: NextPage<CategoryProps> = ({
   initialViewAs
 }) => {
   const router = useRouter();
+  const { products } = useRecentlyViewedProducts();
   const { locale } = useIntl();
+  const { semanticColors, spacing } = useTheme();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
     category,
     locale
@@ -74,6 +85,17 @@ const Category: NextPage<CategoryProps> = ({
     }
     return initialViewAs;
   }, [initialViewAs, router.asPath]);
+
+  const styles: CategoryStyles = {
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          padding: `${spacing.m} 0`,
+          borderTop: `2px solid ${semanticColors.variantBorder}`
+        }
+      }
+    }
+  };
   return (
     <Page
       metaProps={{
@@ -110,6 +132,15 @@ const Category: NextPage<CategoryProps> = ({
                   searchQuery={router.query.query?.toString()}
                 />
               </ContentContainerStack>
+              {products?.length && (
+                <ContentContainerStack
+                  outerStackProps={{
+                    styles: styles.recentlyViewedContainer.outerContainer
+                  }}
+                >
+                  <RecentlyViewedProducts products={products} />
+                </ContentContainerStack>
+              )}
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>
@@ -122,12 +153,12 @@ interface CategoryParsedUrlQuery extends ParsedUrlQuery {
   categorySlug: string[] | undefined;
 }
 
-export const getStaticPaths: GetStaticPaths = async (
-  context: GetStaticPathsContext
-): Promise<GetStaticPathsResult<CategoryParsedUrlQuery>> => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+  GetStaticPathsResult<CategoryParsedUrlQuery>
+> => {
   const categoriesData: CategoryModel[] = await fetchAllCategories(undefined);
 
-  const localizedPaths = (context.locales || []).map(locale => {
+  const localizedPaths = (supportedLocales || []).map(locale => {
     const pathForLocale: {
       params: CategoryParsedUrlQuery;
       locale?: string | undefined;
@@ -187,17 +218,24 @@ export const getStaticProps: GetStaticProps = async (
     JSON.stringify([categoryFilter])
   );
 
-  const initialSearchResults: FacetedSearchOdataCollection =
-    await fetchFacetedSearchResults(
+  let initialSearchResults: FacetedSearchOdataCollection | undefined =
+    undefined;
+
+  try {
+    const data = await fetchFacetedSearchResults(
       encodedCategoryFilter,
       'null',
       undefined,
       10,
       0
     );
+    initialSearchResults = data;
+  } catch (e) {
+    console.warn('error fetching initial results');
+  }
 
   const usedAttributeTypeCodes: string[] = Object.keys(
-    initialSearchResults['@search.facets']
+    initialSearchResults?.['@search.facets'] || {}
   );
   const textFormatter = new TextFormatter();
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
@@ -217,9 +255,9 @@ export const getStaticProps: GetStaticProps = async (
     FacetFactory.getFacetsFromFiles([])
   ).map(facet => textFormatter.formatCamelCase(facet.attributeTypeCode));
 
-  Object.keys(initialSearchResults['@search.facets']).forEach(key => {
+  Object.keys(initialSearchResults?.['@search.facets'] || {}).forEach(key => {
     if (!usedFacetCodes.includes(key)) {
-      delete initialSearchResults['@search.facets'][key];
+      delete initialSearchResults?.['@search.facets'][key];
     }
   });
 

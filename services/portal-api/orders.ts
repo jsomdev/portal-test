@@ -1,12 +1,51 @@
 import { BaseResource } from './base/baseResource';
 import { OrderPost } from './base/types';
 import { Order } from './models/Order';
+import { Resource } from './models/Resource';
 import { OdataCollection, OdataEntity, QueryOptions } from './o-data';
 
-export const createOrder = async (order: OrderPost): Promise<Order> => {
+export const createResource = async (file: File): Promise<Resource> => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const fileUploadResource: BaseResource<unknown> = new BaseResource(
+    '/me/resources'
+  );
+
+  const data: Resource = await fileUploadResource.fetch(
+    '/me/resources',
+    {},
+    {
+      method: 'POST',
+      body: formData
+    }
+  );
+  return data;
+};
+
+export interface CreateOrderData {
+  order: OrderPost;
+  referenceDocument: File | undefined;
+}
+
+export const createOrder = async (
+  orderData: CreateOrderData
+): Promise<Order> => {
   const customOrderResource: BaseResource<unknown> = new BaseResource(
     '/me/cart/checkout?$expand=lines'
   );
+
+  let file: Resource | undefined;
+  let purchaseOrderDocumentId: string | null = null;
+
+  if (orderData.referenceDocument) {
+    try {
+      file = await createResource(orderData.referenceDocument);
+      purchaseOrderDocumentId = file.id || null;
+    } catch (error) {
+      console.warn('resource could not be created');
+    }
+  }
 
   const data: Order = await customOrderResource.fetch<Order>(
     '/me/cart/checkout?$expand=lines',
@@ -16,7 +55,10 @@ export const createOrder = async (order: OrderPost): Promise<Order> => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(order)
+      body: JSON.stringify({
+        ...orderData.order,
+        purchaseOrderDocumentId
+      })
     }
   );
   return data;
@@ -74,7 +116,7 @@ export const fetchMyOrder = async (
     );
     const queryOptions: Partial<QueryOptions> = {
       expandQuery:
-        'lines($expand=product($select=id,name,number,slug;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
+        'resources($select=url,fileName),lines($expand=product($select=id,name,number,slug;$expand=image($select=url))),transactions($select=card($select=number,issuer))'
     };
     const data: Order & OdataEntity = await baseResource.getEntity(
       orderId,

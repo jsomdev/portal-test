@@ -17,10 +17,12 @@ export function getCountryImage(code: string): string | undefined {
 const removeUnsupportedLanguagesFromCountry = (country: Country): Country => {
   const supportedLanguagesForCountry = country.languages.filter(language => {
     const locale = language.code + '-' + country.code.toUpperCase();
+
     return supportedLocales?.some(
-      supportedLocale => supportedLocale === locale
+      supportedLocale => supportedLocale === locale.toLowerCase()
     );
   });
+
   return {
     ...country,
     languages: supportedLanguagesForCountry
@@ -36,7 +38,7 @@ const mapToCountryWithPaths = (
     name: country.name,
     code: country.code,
     languages: country.languages.map<LanguageWithPath>(language => {
-      const locale = language.code + '-' + country.code.toUpperCase();
+      const locale = language.code + '-' + country.code.toLowerCase();
       const path = getCanonicalUrl(
         locale,
         defaultLocale,

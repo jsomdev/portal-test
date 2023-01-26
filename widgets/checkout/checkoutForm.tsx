@@ -23,6 +23,7 @@ import { messageIds } from '@services/i18n';
 import { Order } from '@services/portal-api';
 import { OrderPost } from '@services/portal-api/base/types';
 import { PaymentMethod } from '@services/portal-api/models/PaymentMethod';
+import { CreateOrderData } from '@services/portal-api/orders';
 import { scrollToTop } from '@utilities/scrollToTop';
 import { CheckoutSummary } from '@widgets/checkout/checkout-summary/checkoutSummary';
 import { CheckoutActions } from '@widgets/checkout/checkoutActions';
@@ -70,7 +71,7 @@ const defaultValues: CheckoutFormValues = {
 };
 
 export const CheckoutForm: React.FC<{
-  onCreateOrder: (order: OrderPost) => Promise<Order>;
+  onCreateOrder: (orderData: CreateOrderData) => Promise<Order>;
 }> = ({ onCreateOrder }) => {
   const { formatMessage } = useIntl();
   const {
@@ -80,7 +81,8 @@ export const CheckoutForm: React.FC<{
     formValues,
     setFormValues,
     steps,
-    stepper
+    stepper,
+    purchaseOrderFile
   } = useCheckout();
 
   //allows us the access the Formik methods of the form of the current step
@@ -126,7 +128,6 @@ export const CheckoutForm: React.FC<{
         billingState: address.region || '',
         billingPostalCode: address.postalCode || '',
         paymentMethod,
-        referenceNumber: '',
         shippingAddressAsBillingAddress: shippingAsBilling ? 'yes' : 'no',
         shippingContactAsBillingContact: 'yes',
         billingCompany: ''
@@ -175,12 +176,21 @@ export const CheckoutForm: React.FC<{
           totalCost,
           creditCardIssuer
         );
-        onCreateOrder(order).catch(e => {
+        onCreateOrder({
+          order: order,
+          referenceDocument: purchaseOrderFile
+        }).catch(e => {
           console.log(e);
         });
       }
     },
-    [me?.accountId, totalCost, creditCardIssuer, onCreateOrder]
+    [
+      me?.accountId,
+      totalCost,
+      creditCardIssuer,
+      onCreateOrder,
+      purchaseOrderFile
+    ]
   );
 
   const onProceed = useCallback(async () => {

@@ -1,10 +1,15 @@
+import { FormattedMessage, defineMessages } from 'react-intl';
+
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   IStackItemStyles,
   IStackStyles,
+  MessageBarType,
   Stack,
   useTheme
 } from '@fluentui/react';
 import { useProductPage } from '@providers/product-page/productPageContext';
+import { messageIds } from '@services/i18n';
 import { ProductCompareButton } from '@widgets/compare/product-compare-button/productCompareButton';
 import { mediaQueryFrom } from '@widgets/media-queries';
 
@@ -23,11 +28,19 @@ interface ProductTopSectionProps {
   isModel?: boolean;
 }
 
+const messages = defineMessages({
+  notAvailableInYourRegion: {
+    id: messageIds.pages.product.sections.top.notAvailableInYourRegion,
+    defaultMessage:
+      'This product may not be available in your region. However, feel free to add it to your cart and our sales team will help you accordingly.'
+  }
+});
+
 export const ProductTopSection: React.FC<ProductTopSectionProps> = ({
   isModel = false
 }) => {
   const { spacing } = useTheme();
-  const { product } = useProductPage();
+  const { product, isValidAudience } = useProductPage();
   const styles: ProductTopSectionStyles = {
     root: {
       root: {
@@ -73,6 +86,11 @@ export const ProductTopSection: React.FC<ProductTopSectionProps> = ({
           >
             <ActiveProductConfiguration />
             <ProductPagePricing product={product} />
+            {!isValidAudience && (
+              <PortalMessageBar messageBarType={MessageBarType.warning}>
+                <FormattedMessage {...messages.notAvailableInYourRegion} />
+              </PortalMessageBar>
+            )}
             <ProductCompareButton product={product} />
           </Stack>
         )}

@@ -13,6 +13,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import pagePaths from '@utilities/pagePaths';
 import { SearchBreadcrumb } from '@widgets/breadcrumbs/search-breadcrumb/searchBreadcrumb';
 import { ResultView } from '@widgets/finder/result-view/resultView';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
@@ -59,7 +60,7 @@ const Search: NextPage<SearchProps> = ({
         noIndex: true
       }}
       i18nProps={{
-        localePaths: getLocalePaths('')
+        localePaths: getLocalePaths(pagePaths.search(query.query?.toString()))
       }}
     >
       <GlobalDataProvider

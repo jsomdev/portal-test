@@ -180,6 +180,9 @@ export const nl: Messages = {
     priceBreakQuantityInfo:
       'Toevoegen van {quantityDisplay} {quantity, plural, one {stuk} other {stuks}} aan uw winkelwagen zal u op een totaal van {projectedQuantityDisplay} {projectedQuantity, plural, one {stuk} other {stuks}} brengen.'
   },
+  recentlyViewed: {
+    title: 'Recent bekeken'
+  },
   finder: {
     noResults:
       'Er zijn geen producten gevonden. Probeer te zoeken op iets anders of pas andere filters toe.',
@@ -306,6 +309,8 @@ export const nl: Messages = {
         'Afbeeldingen zijn representatief. Ze kunnen afwijken van hun materiaal en configuratie.',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'Dit product is niet beschikbaar in uw regio. U kan het toevoegen aan uw winkelmandje en het sales team zal u verder helpen.',
           configurations: {
             title: 'Productconfiguratie'
           },
@@ -829,8 +834,9 @@ export const nl: Messages = {
         billingAddress: 'Facturatie adres',
         creditCard: 'Kredietkaart',
         purchaseOrder: 'Bestelbon',
+        fileUpload: 'Upload een PO bestand',
         purchaseOrderInfo:
-          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening.',
+          'Alle aankopen via factuur worden beoordeeld en zijn afhankelijk van de status en het beschikbare krediet op de rekening. Het uploaden van een document is niet verplicht, maar kan de verwerking van uw bestelling versnellen.',
         fields: {
           paymentMethod: 'Betaalmethode',
           shippingAddressAsBillingAddress:
@@ -867,7 +873,8 @@ export const nl: Messages = {
           billingState: 'Provincie',
           billingCountry: 'Land',
           billingPostalCode: 'Postcode',
-          referenceNumber: 'Referentienummer'
+          referenceNumber: 'Referentienummer',
+          referenceDocument: 'Upload PO Document'
         }
       },
       summary: {

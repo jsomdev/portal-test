@@ -20,8 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     root: {
       marginBottom: spacing.s1,
       border: `1px solid ${semanticColors.variantBorder}`,
-      borderRadius: 7,
-      justifyContent: 'space-around'
+      borderRadius: 7
     }
   };
 

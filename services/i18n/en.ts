@@ -174,6 +174,9 @@ export const en: Messages = {
     priceBreakQuantityInfo:
       'Adding {quantityDisplay} {quantity, plural, one {item} other {items}} to your cart will bring you to a total of {projectedQuantityDisplay} {projectedQuantity, plural, one {item} other {items}.}'
   },
+  recentlyViewed: {
+    title: 'You recently viewed'
+  },
   finder: {
     noResults:
       'No products were found matching your criteria. Try searching something else or apply different filters.',
@@ -299,6 +302,8 @@ export const en: Messages = {
         'Images are representative. Products may differ in material or configuration.',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'This product may not be available in your region. However, feel free to add it to your cart and our sales team will help you accordingly.',
           configurations: {
             title: 'Product Configuration'
           },
@@ -809,8 +814,9 @@ export const en: Messages = {
         billingAddress: 'Billing Address',
         creditCard: 'Credit card',
         purchaseOrder: 'Purchase order',
+        fileUpload: 'Upload a PO document',
         purchaseOrderInfo:
-          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account.',
+          'All Pay by Invoice purchases are reviewed and subject to the status and credit available to the account. Uploading a document is not required, but it will help us process your order faster.',
         fields: {
           paymentMethod: 'Payment Method',
           shippingAddressAsBillingAddress: 'Shipping as Billing',
@@ -846,7 +852,8 @@ export const en: Messages = {
           billingState: 'State / Province',
           billingCountry: 'Country',
           billingPostalCode: 'Postal Code',
-          referenceNumber: 'Reference Number'
+          referenceNumber: 'Reference Number',
+          referenceDocument: 'Upload PO document'
         }
       },
       summary: {

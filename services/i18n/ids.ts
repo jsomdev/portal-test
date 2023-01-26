@@ -15,6 +15,7 @@ export const messageIds: Messages = {
       viewAllCategories: 'navigation.main.viewAllCategories',
       viewAllCategory: 'navigation.main.viewAllCategory'
     },
+
     site: {
       navigationAriaLabel: 'navigation.site.navigationAriaLabel',
       title: 'navigation.site.title',
@@ -32,6 +33,7 @@ export const messageIds: Messages = {
     locale: {
       title: 'navigation.locale.title'
     },
+
     footer: {
       siteLinks: {
         items: {
@@ -171,6 +173,9 @@ export const messageIds: Messages = {
       },
       buildVersion: 'navigation.footer.buildVersion'
     }
+  },
+  recentlyViewed: {
+    title: 'recentlyViewed.title'
   },
   comparisonPopup: {
     title: 'comparisonPopup.title',
@@ -328,6 +333,8 @@ export const messageIds: Messages = {
       imageDisclaimer: 'pages.product.imageDisclaimer',
       sections: {
         top: {
+          notAvailableInYourRegion:
+            'pages.product.sections.top.notAvailableInYourRegion',
           configurations: {
             title: 'pages.product.sections.top.configurations.title'
           },
@@ -874,6 +881,7 @@ export const messageIds: Messages = {
         creditCard: 'pages.checkout.payment.creditCard',
         purchaseOrder: 'pages.checkout.payment.purchaseOrder',
         purchaseOrderInfo: 'pages.checkout.payment.purchaseOrderInfo',
+        fileUpload: 'pages.checkout.payment.fileUpload',
         fields: {
           paymentMethod: 'pages.checkout.payment.fields.paymentMethod',
           shippingAddressAsBillingAddress:
@@ -919,7 +927,8 @@ export const messageIds: Messages = {
           billingState: 'pages.checkout.payment.fields.billingState',
           billingCountry: 'pages.checkout.payment.fields.billingCountry',
           billingPostalCode: 'pages.checkout.payment.fields.billingPostalCode',
-          referenceNumber: 'pages.checkout.payment.fields.referenceNumber'
+          referenceNumber: 'pages.checkout.payment.fields.referenceNumber',
+          referenceDocument: 'pages.checkout.payment.fields.referenceDocument'
         }
       },
       summary: {

@@ -15,7 +15,7 @@ export const mapShippingCostAmountToShippingMethodComboBoxOptions = (
   shippingOptions
     ?.sort(sortShippingOptionsByCostAscending)
     .filter(option => {
-      return option.shippingMethod !== ShippingMethod.UPS_NEXT_DAY_AIR_SAVER;
+      return option.shippingMethod !== ShippingMethod.UpsNextDayAirSaver;
     })
     .map(shippingOption => {
       return options.push({

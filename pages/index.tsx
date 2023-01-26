@@ -7,6 +7,7 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
+import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
@@ -15,6 +16,7 @@ import {
   fetchMenuItemsForMainHeader,
   fetchMenuItemsForSiteHeader
 } from '@services/portal-api/menuItems';
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { rem } from '@utilities/rem';
 import { Applications } from '@widgets/home-page/sections/applications';
 import { Brands } from '@widgets/home-page/sections/brands';
@@ -28,6 +30,7 @@ import ContentContainerStack, {
 } from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
+import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 export interface HomeProps {
   categories: Category[];
@@ -54,6 +57,7 @@ type HomeStyles = {
   catalogContainer: Partial<ContentContainerStyles>;
   applicationContainer: Partial<ContentContainerStyles>;
   sectionContainer: Partial<IStackStyles>;
+  recentlyViewedContainer: Partial<ContentContainerStyles>;
 };
 
 const Home: NextPage<HomeProps & AppLayoutProps> = ({
@@ -62,7 +66,8 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
   mainMenuItems
 }) => {
   const { formatMessage } = useIntl();
-  const { palette } = useTheme();
+  const { products } = useRecentlyViewedProducts();
+  const { palette, semanticColors } = useTheme();
   const isAuthenticated = useIsAuthenticated();
 
   const styles: HomeStyles = {
@@ -76,6 +81,13 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       outerContainer: {
         root: {
           background: palette.neutralLighterAlt
+        }
+      }
+    },
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          borderTop: `2px solid ${semanticColors.variantBorder}`
         }
       }
     },
@@ -168,6 +180,18 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           >
             <Support />
           </ContentContainerStack>
+          {products?.length && (
+            <ContentContainerStack
+              outerStackProps={{
+                styles: mergeStyleSets(
+                  styles.recentlyViewedContainer.outerContainer,
+                  styles.sectionContainer
+                )
+              }}
+            >
+              <RecentlyViewedProducts products={products} />
+            </ContentContainerStack>
+          )}
         </AppLayout>
       </GlobalDataProvider>
     </Page>
@@ -181,7 +205,11 @@ export const getStaticProps: GetStaticProps = async (
     HomeProps & Pick<GlobalDataProviderProps, 'mainMenuItems' | 'siteMenuItems'>
   >
 > => {
-  const { locale } = context;
+  const { locale: contextLocale } = context;
+  let locale = contextLocale;
+  if (locale === ENVIRONMENT_VARIABLES.defaultLocale || locale === 'default') {
+    locale = 'en-us';
+  }
   const [categoriesData, siteMenuData, mainMenuData] = await Promise.all([
     fetchCategoriesForHomePage(locale),
     fetchMenuItemsForSiteHeader(locale),

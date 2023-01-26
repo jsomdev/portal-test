@@ -17,7 +17,11 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
-import { customerLoginRequest } from '@services/authentication/authenticationConfiguration';
+import {
+  customerLoginRequest,
+  employeeLoginRequest
+} from '@services/authentication/authenticationConfiguration';
+import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { rem } from '@utilities/rem';
 
@@ -55,6 +59,7 @@ export const AccountSideNavigation: React.FC = () => {
   const { spacing, palette } = useTheme();
   const intl = useIntl();
   const { instance } = useMsal();
+  const { isEmployee } = useClaims();
   const isAuthenticated = useIsAuthenticated();
   const router = useRouter();
 
@@ -130,7 +135,11 @@ export const AccountSideNavigation: React.FC = () => {
         {isAuthenticated && (
           <Stack>
             <ActionButton
-              onClick={() => instance.logoutRedirect(customerLoginRequest)}
+              onClick={() =>
+                instance.logoutRedirect(
+                  isEmployee ? employeeLoginRequest : customerLoginRequest
+                )
+              }
               text={intl.formatMessage(messages.signOut)}
               styles={styles.instanceButton}
             />

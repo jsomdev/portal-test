@@ -45,13 +45,11 @@ export class MultilingualStringHelper {
 
   /**
    * Function that extracts the language part from a locale string.
-   * @param locale string that the language needs to be extracted from (usually 5 characters like 'en-US', 'nl-BE')
+   * @param locale string that the language needs to be extracted from (usually 5 characters like 'en-us', 'nl-be')
    * @returns part of the locale that represents the language.
    */
   static getLanguage(locale?: string): string {
-    const language = (locale || ENVIRONMENT_VARIABLES.defaultLocale)?.split(
-      '-'
-    )[0];
+    const language = (locale || 'en-us')?.split('-')[0];
     return language || defaultLanguage;
   }
 

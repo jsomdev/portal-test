@@ -10,8 +10,17 @@ const getPathWithLocale = (
   locale: string,
   defaultLocale: string,
   localePaths: LocalePaths
-): UrlObject => {
-  const path = localePaths[locale];
+): UrlObject | undefined => {
+  if (locale === defaultLocale) {
+    locale = 'en-us';
+  }
+  const path: string | undefined | UrlObject = localePaths[locale];
+
+  if (path === undefined) {
+    return {
+      pathname: locale
+    };
+  }
   if (locale === defaultLocale) {
     if (typeof path === 'string') {
       return {
@@ -47,10 +56,14 @@ export const getCanonicalUrl = (
   localePaths: LocalePaths,
   urlType: UrlType
 ): string => {
-  const path = getPathWithLocale(currentLocale, defaultLocale, localePaths);
+  const path: UrlObject | undefined = getPathWithLocale(
+    currentLocale,
+    defaultLocale,
+    localePaths
+  );
   const fullUrl = url.format(
     Object.assign(
-      new URL(path.pathname || '/', process.env.NEXT_PUBLIC_BASE_URL),
+      new URL(path?.pathname || '/', process.env.NEXT_PUBLIC_BASE_URL),
       path
     )
   );
