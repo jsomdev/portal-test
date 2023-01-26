@@ -101,8 +101,6 @@ const Products: NextPage<
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id]);
 
-  console.log(products);
-  console.log(product.id);
   const styles: ProductStyles = {
     recentlyViewedContainer: {
       outerContainer: {

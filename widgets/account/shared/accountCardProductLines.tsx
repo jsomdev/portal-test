@@ -19,6 +19,7 @@ import { ProductFormatter } from '@services/i18n/formatters/entity-formatters/pr
 import { OrderLine } from '@services/portal-api';
 import { QuoteLine } from '@services/portal-api/models/QuoteLine';
 import { QuoteRequestLine } from '@services/portal-api/models/QuoteRequestLine';
+import { WidenImageHelper } from '@services/widen/widenImageHelper';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import {
   mediaQueryFrom,
@@ -64,6 +65,10 @@ export const AccountCardProductLines: React.FC<
     return '';
   }, [lines, visibleItems]);
 
+  const product = lines?.[visibleItems]?.product;
+  const viewMoreImageSrc = product
+    ? new ProductFormatter(product).formatImageHref()
+    : null;
   const styles: AccountCardProductLinesStyles = {
     container: {
       root: {
@@ -81,8 +86,14 @@ export const AccountCardProductLines: React.FC<
         padding: `${spacing.s2}`,
         position: 'relative',
         backgroundImage: `url('${
-          lines?.[visibleItems]?.product?.image?.url ||
-          STATIC_IMAGES.cart.defaultItem.src
+          viewMoreImageSrc
+            ? WidenImageHelper.getOptimizedSrc(viewMoreImageSrc, {
+                dimensions: {
+                  width: 57,
+                  height: 57
+                }
+              })
+            : STATIC_IMAGES.cart.defaultItem.src
         }')`,
         backgroundSize: 'auto 57px',
         backgroundRepeat: 'no-repeat',
@@ -206,7 +217,7 @@ const AccountProductLine: React.FC<AccountProductLineProps> = ({
   };
 
   const src =
-    productLine?.product?.image?.url || STATIC_IMAGES.cart.defaultItem.src;
+    productFormatter.formatImageHref() || STATIC_IMAGES.cart.defaultItem.src;
   return (
     <Stack
       key={productLine.id}
@@ -230,9 +241,9 @@ const AccountProductLine: React.FC<AccountProductLineProps> = ({
                 alt={productFormatter.formatImageCaption()}
                 width={isTabletOrDesktop ? 120 : 70}
                 height={isTabletOrDesktop ? 90 : 70}
-                layout="fill"
+                layout="intrinsic"
                 objectFit="contain"
-                objectPosition={'center'}
+                objectPosition="center"
                 loader={getImageLoader(src)}
               />
             </Stack>

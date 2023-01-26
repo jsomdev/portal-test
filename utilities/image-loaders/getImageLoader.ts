@@ -20,6 +20,18 @@ const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
     width = 2000;
   }
 
+  //prevent up-scaling by widen for small images, that we know in this case have a width no larger than is in the filename
+  //TODO find out if there is an option to prevent widen from up-scaling any of the images
+  const widthFromFilenameMatch = src.match(
+    /(?<width>[0-9]+)x[0-9]+.*\.jp(e)?/i
+  );
+  const fileWidth = widthFromFilenameMatch?.groups?.width
+    ? parseInt(widthFromFilenameMatch.groups.width, 10)
+    : null;
+  if (fileWidth && width > fileWidth) {
+    width = fileWidth;
+  }
+
   if (width > 0) {
     searchParams.set('w', width.toString());
   }

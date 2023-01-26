@@ -5,7 +5,7 @@ import {
   MediaBreakpointProps
 } from '@artsy/fresnel/dist/Media';
 
-const breakpoints = {
+export const breakpoints = {
   mobile: 0,
   largePhone: 425,
   tablet: 1024,

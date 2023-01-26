@@ -25,6 +25,7 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { Category } from '@services/portal-api';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 
 import { QuickFilterItem } from './quickFilter.types';
@@ -234,6 +235,7 @@ export const QuickFilterCard: React.FC<QuickFilterCardProps> = ({ item }) => {
           width={48}
           objectFit="contain"
           objectPosition="center"
+          loader={getImageLoader(item.image.src)}
         />
       )}
       <NextLink
