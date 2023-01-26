@@ -80,15 +80,16 @@ export const ModelsGallerySwiper: React.FC<ModelsGallerySwiperProps> = ({
             padding-right: ${NAVIGATION_SPACING};
             padding-left: ${NAVIGATION_SPACING};
           }
-          .swiper-button-next:after {
-              margin-right: ${NAVIGATION_BUTTON_MARGIN};
+          .product-accessories-gallery-swiper .swiper-button-next:after {
+            margin-right: ${NAVIGATION_BUTTON_MARGIN};
           }
-          .swiper-button-prev:after {
-              margin-left: ${NAVIGATION_BUTTON_MARGIN};
+          .product-accessories-gallery-swiper .swiper-button-prev:after {
+            margin-left: ${NAVIGATION_BUTTON_MARGIN};
           }
-          .swiper-slide {
+          .product-accessories-gallery-swiper .swiper-slide {
             width: 260px;
-          }`}
+          }
+        `}
       </style>
     </>
   );

@@ -263,20 +263,21 @@ export const ProductMediaGallerySwiper: React.FC<
       </Modal>
       <style>
         {`
-        .product-media-gallery-swiper {
-          height: 400px;
-          background: ${palette.white};
-        }
-        .product-media-gallery-modal-swiper {
-          height: 100%;
-          background: ${palette.white};
-        }       
-        .swiper-slide {
-          display: flex;
-          height: 100%;
-          justify-content: center;
-          align-items:center;
-        }`}
+          .product-media-gallery-swiper {
+            height: 400px;
+            background: ${palette.white};
+          }
+          .product-media-gallery-modal-swiper {
+            height: 100%;
+            background: ${palette.white};
+          }
+          .product-media-gallery-modal-swiper .swiper-slide,.product-media-gallery-swiper .swiper-slide {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+          }
+        `}
       </style>
     </>
   );

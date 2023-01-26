@@ -83,16 +83,17 @@ export const RecentlyViewedProductsGallerySwiper: React.FC<
             padding-right: ${NAVIGATION_SPACING};
             padding-left: ${NAVIGATION_SPACING};
           }
-          .swiper-button-next:after {
-              margin-right: ${NAVIGATION_BUTTON_MARGIN};
+          .recently-viewed-products-gallery-swiper .swiper-button-next:after {
+            margin-right: ${NAVIGATION_BUTTON_MARGIN};
           }
-          .swiper-button-prev:after {
-              margin-left: ${NAVIGATION_BUTTON_MARGIN};
+          .recently-viewed-products-gallery-swiper .swiper-button-prev:after {
+            margin-left: ${NAVIGATION_BUTTON_MARGIN};
           }
-          .swiper-slide {
+          .recently-viewed-products-gallery-swiper .swiper-slide {
             width: 214px;
             overflow: hidden;
-          }`}
+          }
+        `}
       </style>
     </>
   );

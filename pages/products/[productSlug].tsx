@@ -265,7 +265,11 @@ export const getStaticProps: GetStaticProps = async (
   );
 
   const relevantAttributeTypeCodes: string[] =
-    productData.attributes?.map(attribute => attribute.typeCode || '') || [];
+    (productData.attributes || [])
+      .map(attribute => attribute.typeCode || '')
+      .concat(
+        (productData.options || []).map(option => option.typeCode || '')
+      ) || [];
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
     attributeType =>
       relevantAttributeTypeCodes.includes(attributeType.code || '')
