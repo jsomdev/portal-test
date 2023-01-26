@@ -301,9 +301,6 @@ export const CartSummaryActions: React.FC = () => {
               styles={styles.primaryButton}
               disabled={true}
             />
-            <Mobile>
-              <CartStickyThumb />
-            </Mobile>
           </Stack.Item>
         </Stack>
       </Stack.Item>

@@ -156,25 +156,29 @@ export const Checkout: React.FC = () => {
   }
   if (!isAuthenticated && inProgress === InteractionStatus.None) {
     return (
-      <PortalMessageBar messageBarType={MessageBarType.warning}>
-        {formatMessage(messages.needsSignIn, {
-          signInText: (
-            <FluentUILink
-              onClick={() => instance.loginRedirect(customerLoginRequest)}
-            >
-              {formatMessage(messages.signInText)}
-            </FluentUILink>
-          )
-        })}
-      </PortalMessageBar>
+      <CheckoutContainer>
+        <PortalMessageBar messageBarType={MessageBarType.warning}>
+          {formatMessage(messages.needsSignIn, {
+            signInText: (
+              <FluentUILink
+                onClick={() => instance.loginRedirect(customerLoginRequest)}
+              >
+                {formatMessage(messages.signInText)}
+              </FluentUILink>
+            )
+          })}
+        </PortalMessageBar>
+      </CheckoutContainer>
     );
   }
 
   if (!isCheckoutEnabled) {
     return (
-      <PortalMessageBar messageBarType={MessageBarType.warning}>
-        <Text>{formatMessage(messages.unauthorized)}</Text>
-      </PortalMessageBar>
+      <CheckoutContainer>
+        <PortalMessageBar messageBarType={MessageBarType.warning} styles={{}}>
+          <Text>{formatMessage(messages.unauthorized)}</Text>
+        </PortalMessageBar>
+      </CheckoutContainer>
     );
   }
 

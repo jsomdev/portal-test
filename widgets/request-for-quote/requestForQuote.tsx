@@ -149,22 +149,6 @@ export const RequestForQuote: React.FC = () => {
     );
   }
 
-  if (!isAuthenticated && inProgress === InteractionStatus.None) {
-    return (
-      <PortalMessageBar messageBarType={MessageBarType.warning}>
-        {formatMessage(messages.needsSignIn, {
-          signInText: (
-            <FluentUILink
-              onClick={() => instance.loginRedirect(customerLoginRequest)}
-            >
-              {formatMessage(messages.signInText)}
-            </FluentUILink>
-          )
-        })}
-      </PortalMessageBar>
-    );
-  }
-
   return (
     <ContentContainerStack
       innerStackProps={{ tokens: { childrenGap: spacing.l1 } }}
@@ -178,16 +162,26 @@ export const RequestForQuote: React.FC = () => {
 
       {/* When there is an error submitting the form */}
       {createRequestStatus === 'error' && <RequestForQuoteErrorMessage />}
-      {/* When the user is not currently logging in and is not authenticated */}
-      {!isAuthenticated && inProgress === InteractionStatus.None && (
-        <PortalMessageBar messageBarType={MessageBarType.warning}>
-          <Text>{formatMessage(messages.signInText)}</Text>
-        </PortalMessageBar>
-      )}
+
       {/* When fetching the persisted cart from the /me endpoint returns an error */}
       {meStatus === 'error' && (
         <PortalMessageBar messageBarType={MessageBarType.error}>
           <Text>{formatMessage(messages.loadingCartFailed)}</Text>
+        </PortalMessageBar>
+      )}
+
+      {/* When the user is not currently logging in and is not authenticated */}
+      {!isAuthenticated && inProgress === InteractionStatus.None && (
+        <PortalMessageBar messageBarType={MessageBarType.warning}>
+          {formatMessage(messages.needsSignIn, {
+            signInText: (
+              <FluentUILink
+                onClick={() => instance.loginRedirect(customerLoginRequest)}
+              >
+                {formatMessage(messages.signInText)}
+              </FluentUILink>
+            )
+          })}
         </PortalMessageBar>
       )}
       {cartInfoStatus === 'error' && (

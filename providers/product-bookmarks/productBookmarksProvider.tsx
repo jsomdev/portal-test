@@ -183,7 +183,7 @@ export const ProductBookmarksProvider: React.FC = ({ children }) => {
         setting,
         settingError: settingError as Error | undefined,
         settingStatus,
-        products: products?.value,
+        products: products,
         productsError: productsError as Error | undefined,
         productsStatus,
         refresh: refreshSetting,

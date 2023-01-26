@@ -65,7 +65,7 @@ export const ProductStickyHeader: React.FC<ProductStickyHeaderProps> = ({
         marginTop: `-${spacing.s1}`,
         position: 'sticky',
         top: SITE_HEADER_HEIGHT + MAIN_HEADER_HEIGHT,
-        zIndex: 3,
+        zIndex: 2,
         opacity: isScrolledDown ? 1 : 0,
         visibility: isScrolledDown ? 'visible' : 'hidden',
         maxHeight: isScrolledDown ? 'auto' : 0,

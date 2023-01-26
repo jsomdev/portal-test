@@ -16,7 +16,6 @@ import { combineCartItemsInformation } from '@providers/cart/cartHelper';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { messageIds } from '@services/i18n';
 import { Product } from '@services/portal-api';
-import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchBaseDesignsByIds } from '@services/portal-api/products';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { CartList } from '@widgets/cart-list/cartList';
@@ -66,18 +65,13 @@ export const CartMergeDialog: React.FC<CartItemsDialogProps> = ({
 
   const { data: products, status: productsStatus } = useQuery(
     [QUERYKEYS.cartMergeProducts, productIds],
-    (): Promise<OdataCollection<Product>> =>
-      fetchBaseDesignsByIds(productIds || [])
+    (): Promise<Product[]> => fetchBaseDesignsByIds(productIds || [])
   );
 
   const cartItems: CartItemViewModel[] = useMemo(() => {
-    const combinedItems = combineCartItemsInformation(
-      items,
-      products?.value,
-      []
-    );
+    const combinedItems = combineCartItemsInformation(items, products, []);
     return mapCartItemsToCartItemViewModels(combinedItems, locale);
-  }, [items, products?.value, locale]);
+  }, [items, products, locale]);
 
   const styles: CartItemsDialogStyles = {
     spinner: {

@@ -2,7 +2,6 @@ import { CartItem } from '@providers/cart/cartContext';
 import { BaseCartItem } from '@providers/cart/cartModels';
 import { Product } from '@services/portal-api';
 import { PriceBreak } from '@services/portal-api/base/types';
-import { OdataCollection } from '@services/portal-api/o-data';
 import {
   fetchAllPriceBreaksByNumber,
   fetchBaseDesignsByIds
@@ -70,7 +69,7 @@ export async function getCombinedCartItemsProductInformation(
     [];
 
   const dataPromises: [
-    Promise<OdataCollection<Product>>,
+    Promise<Product[]>,
     Promise<
       | {
           productNumber: string;
@@ -89,7 +88,7 @@ export async function getCombinedCartItemsProductInformation(
   ];
 
   const [products, productPriceBreaks]: [
-    OdataCollection<Product>,
+    Product[],
     (
       | {
           productNumber: string;
@@ -103,7 +102,7 @@ export async function getCombinedCartItemsProductInformation(
     (missingItems &&
       combineCartItemsInformation(
         missingItems,
-        products.value,
+        products,
         productPriceBreaks
       )) ||
     [];
