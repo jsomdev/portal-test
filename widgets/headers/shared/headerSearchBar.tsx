@@ -120,6 +120,7 @@ const MobileSearchBar: React.FC = () => {
 
 interface SearchBarStyles {
   searchBox: ISearchBoxStyles;
+  searchBoxContainer: IStackStyles;
   sectionTitle: ITextStyles;
   sectionContainer: IStackStyles;
   menu: IStackItemStyles;
@@ -381,7 +382,14 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         height: 2
       }
     },
-
+    searchBoxContainer: {
+      root: {
+        margin: 'auto',
+        position: 'relative',
+        width: '100%',
+        maxWidth: rem(560)
+      }
+    },
     searchBox: {
       clearButton: {
         margin: rem(2)
@@ -390,9 +398,7 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
         paddingLeft: spacing.s2
       },
       root: {
-        margin: 'auto',
         width: '100%',
-        maxWidth: rem(560),
         fontSize: fonts.mediumPlus.fontSize,
         position: 'relative',
         zIndex: 4,
@@ -417,175 +423,173 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
   };
 
   return (
-    <Stack
-      root={{
-        ref: rootRef
-      }}
-      styles={{
-        root: {
-          position: 'relative'
-        }
-      }}
-    >
-      <SearchBox
-        placeholder={formatMessage(messages.searchPlaceholder)}
-        value={searchBoxInput}
-        ref={searchBoxRef}
-        styles={styles.searchBox}
-        onChange={onSearchBarChange}
-        onFocus={onFocus}
-        onKeyUp={onKeyUp}
-        onSearch={onSearch}
-        onClickCapture={onClickCapture}
-        role="search"
-        id="header-search-box"
-        clearButtonProps={{}}
-        autoComplete="off"
-        onClear={onClear}
-      />
-      {showMenu && (
-        <Stack.Item
-          className="list-scroll"
-          role={'menu'}
-          tabIndex={0}
-          root={{
-            ref: menuRef
-          }}
-          styles={styles.menu}
-        >
-          {showLoadingIndicator && (
-            <ProgressIndicator styles={styles.progressIndicator} />
-          )}
-          {showAutoComplete && (
-            <Stack
-              styles={styles.sectionContainer}
-              tokens={{
-                padding: `${spacing.s1} ${spacing.s1} ${spacing.s1}`
-              }}
-            >
-              {mapAutoCompleteStringsToViewModel(
-                suggestionsData?.autoComplete?.value,
-                debouncedSearchBoxInput
-              ).map(item => (
-                <Text
-                  tabIndex={-1}
-                  role={'menuitem'}
-                  key={item.query}
-                  styles={styles.linkText}
-                  onClick={() => onSearch(item.query)}
-                >
-                  <NextLink href={pagePaths.search(item.query)}>
-                    <a dangerouslySetInnerHTML={{ __html: item.htmlText }} />
-                  </NextLink>
-                </Text>
-              ))}
-            </Stack>
-          )}
-          {showRecentSearches && (
-            <Stack
-              styles={styles.sectionContainer}
-              tokens={{
-                padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
-              }}
-            >
-              <Text styles={styles.sectionTitle}>
-                {formatMessage(messages.recentSearches)}
-              </Text>
-              {recentSearches?.map(recentSearch => {
-                return (
+    <Stack>
+      <Stack
+        root={{
+          ref: rootRef
+        }}
+        styles={styles.searchBoxContainer}
+      >
+        <SearchBox
+          placeholder={formatMessage(messages.searchPlaceholder)}
+          value={searchBoxInput}
+          ref={searchBoxRef}
+          styles={styles.searchBox}
+          onChange={onSearchBarChange}
+          onFocus={onFocus}
+          onKeyUp={onKeyUp}
+          onSearch={onSearch}
+          onClickCapture={onClickCapture}
+          role="search"
+          id="header-search-box"
+          clearButtonProps={{}}
+          autoComplete="off"
+          onClear={onClear}
+        />
+        {showMenu && (
+          <Stack.Item
+            className="list-scroll"
+            role={'menu'}
+            tabIndex={0}
+            root={{
+              ref: menuRef
+            }}
+            styles={styles.menu}
+          >
+            {showLoadingIndicator && (
+              <ProgressIndicator styles={styles.progressIndicator} />
+            )}
+            {showAutoComplete && (
+              <Stack
+                styles={styles.sectionContainer}
+                tokens={{
+                  padding: `${spacing.s1} ${spacing.s1} ${spacing.s1}`
+                }}
+              >
+                {mapAutoCompleteStringsToViewModel(
+                  suggestionsData?.autoComplete?.value,
+                  debouncedSearchBoxInput
+                ).map(item => (
                   <Text
-                    key={recentSearch}
-                    role={'menuitem'}
                     tabIndex={-1}
+                    role={'menuitem'}
+                    key={item.query}
                     styles={styles.linkText}
-                    onClick={() => onSearch(recentSearch)}
+                    onClick={() => onSearch(item.query)}
                   >
-                    <NextLink href={pagePaths.search(recentSearch)}>
-                      {recentSearch}
+                    <NextLink href={pagePaths.search(item.query)}>
+                      <a dangerouslySetInnerHTML={{ __html: item.htmlText }} />
                     </NextLink>
                   </Text>
-                );
-              })}
-            </Stack>
-          )}
-          {showNoResults && (
-            <Stack.Item
-              tokens={{
-                padding: spacing.s1
-              }}
-            >
-              <Text variant="mediumPlus" styles={styles.noReults}>
-                {formatMessage(messages.noResults)}
-              </Text>
-            </Stack.Item>
-          )}
-          {showSuggestedProducts && (
-            <Stack
-              tokens={{
-                childrenGap: spacing.m,
-                padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
-              }}
-            >
-              <Text styles={styles.sectionTitle}>
-                {formatMessage(messages.suggestedProducts)}
-              </Text>
-              {productSearchSuggestions
-                ?.slice(0, SUGGESTIONS_COUNT)
-                .map(item => {
-                  const src =
-                    item.imageUrl || STATIC_IMAGES.app.noImageAvailable;
+                ))}
+              </Stack>
+            )}
+            {showRecentSearches && (
+              <Stack
+                styles={styles.sectionContainer}
+                tokens={{
+                  padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
+                }}
+              >
+                <Text styles={styles.sectionTitle}>
+                  {formatMessage(messages.recentSearches)}
+                </Text>
+                {recentSearches?.map(recentSearch => {
                   return (
-                    <NextLink key={item.id} href={item.url}>
-                      <Stack
-                        role={'menuitem'}
-                        horizontal
-                        verticalAlign="center"
-                        styles={styles.linkText}
-                        tokens={{
-                          childrenGap: spacing.s1,
-                          padding: `0 ${spacing.s1}`
-                        }}
-                        onClick={() => {
-                          setShowMenu(false);
-                        }}
-                      >
-                        <Image
-                          height={80}
-                          style={{
-                            borderRadius: effects.roundedCorner2
-                          }}
-                          objectFit="contain"
-                          objectPosition="center"
-                          width={80}
-                          alt={item.number}
-                          src={src}
-                          loader={getImageLoader(src)}
-                        />
-
-                        <Stack tokens={{ childrenGap: spacing.s2 }}>
-                          <ProductCardTitleLink
-                            size="small"
-                            number={item.number}
-                            name={item.name}
-                            url={item.url}
-                          />
-                          <ProductListItemPricing
-                            hideAddToCart={true}
-                            hidePriceBreaks={true}
-                            product={{
-                              id: item.id,
-                              number: item.number
-                            }}
-                          />
-                        </Stack>
-                      </Stack>
-                    </NextLink>
+                    <Text
+                      key={recentSearch}
+                      role={'menuitem'}
+                      tabIndex={-1}
+                      styles={styles.linkText}
+                      onClick={() => onSearch(recentSearch)}
+                    >
+                      <NextLink href={pagePaths.search(recentSearch)}>
+                        {recentSearch}
+                      </NextLink>
+                    </Text>
                   );
                 })}
-            </Stack>
-          )}
-        </Stack.Item>
-      )}
+              </Stack>
+            )}
+            {showNoResults && (
+              <Stack.Item
+                tokens={{
+                  padding: spacing.s1
+                }}
+              >
+                <Text variant="mediumPlus" styles={styles.noReults}>
+                  {formatMessage(messages.noResults)}
+                </Text>
+              </Stack.Item>
+            )}
+            {showSuggestedProducts && (
+              <Stack
+                tokens={{
+                  childrenGap: spacing.m,
+                  padding: `${spacing.m} ${spacing.s1} ${spacing.m}`
+                }}
+              >
+                <Text styles={styles.sectionTitle}>
+                  {formatMessage(messages.suggestedProducts)}
+                </Text>
+                {productSearchSuggestions
+                  ?.slice(0, SUGGESTIONS_COUNT)
+                  .map(item => {
+                    const src =
+                      item.imageUrl || STATIC_IMAGES.app.noImageAvailable;
+                    return (
+                      <NextLink key={item.id} href={item.url}>
+                        <Stack
+                          role={'menuitem'}
+                          horizontal
+                          verticalAlign="center"
+                          styles={styles.linkText}
+                          tokens={{
+                            childrenGap: spacing.s1,
+                            padding: `0 ${spacing.s1}`
+                          }}
+                          onClick={() => {
+                            setShowMenu(false);
+                          }}
+                        >
+                          <Image
+                            height={80}
+                            style={{
+                              borderRadius: effects.roundedCorner2
+                            }}
+                            objectFit="contain"
+                            objectPosition="center"
+                            width={80}
+                            alt={item.number}
+                            src={src}
+                            loader={getImageLoader(src)}
+                          />
+
+                          <Stack tokens={{ childrenGap: spacing.s2 }}>
+                            <ProductCardTitleLink
+                              size="small"
+                              number={item.number}
+                              name={item.name}
+                              url={item.url}
+                            />
+                            <ProductListItemPricing
+                              hideAddToCart={true}
+                              hidePriceBreaks={true}
+                              product={{
+                                id: item.id,
+                                number: item.number
+                              }}
+                            />
+                          </Stack>
+                        </Stack>
+                      </NextLink>
+                    );
+                  })}
+              </Stack>
+            )}
+          </Stack.Item>
+        )}
+      </Stack>
     </Stack>
   );
 };
