@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { AccountInfo } from '@azure/msal-browser';
-import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   FontSizes,
   IButtonStyles,
@@ -12,7 +11,6 @@ import {
   ITextStyles,
   Icon,
   IconButton,
-  MessageBarType,
   Stack,
   Text,
   useTheme
@@ -59,12 +57,6 @@ const messages = defineMessages({
       .profileInformation.successMessage,
     description: 'Success message for form',
     defaultMessage: 'Your information was updated successfully'
-  },
-  errorMessage: {
-    id: messageIds.pages.account.sections.infoAndPreferences.sections
-      .profileInformation.errorMessage,
-    description: 'Error message for form',
-    defaultMessage: 'Your information was not updated. Please try again.'
   }
 });
 
@@ -81,7 +73,7 @@ interface IProfileInformationStyles {
 export const ProfileInformation: React.FC = () => {
   const { formatMessage } = useIntl();
   const { semanticColors, effects, spacing, palette, fonts } = useTheme();
-  const { me, createContactDetailsRequestStatus } = useMe();
+  const { me } = useMe();
   const claims = useClaims();
   const account: AccountInfo | undefined =
     getMsalInstance()?.getAllAccounts()[0];
@@ -156,20 +148,6 @@ export const ProfileInformation: React.FC = () => {
 
   return (
     <Stack tokens={{ childrenGap: spacing.m }}>
-      {createContactDetailsRequestStatus === 'success' && (
-        <Stack>
-          <PortalMessageBar messageBarType={MessageBarType.success}>
-            <Text>{formatMessage(messages.successMessage)}</Text>
-          </PortalMessageBar>
-        </Stack>
-      )}
-      {createContactDetailsRequestStatus === 'error' && (
-        <Stack>
-          <PortalMessageBar messageBarType={MessageBarType.error}>
-            <Text>{formatMessage(messages.errorMessage)}</Text>
-          </PortalMessageBar>
-        </Stack>
-      )}
       <Stack styles={styles.cardContainer} horizontal>
         <Stack styles={styles.iconContainer} verticalAlign="center">
           <Icon styles={styles.iconStyles} iconName="Contact" />

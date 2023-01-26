@@ -15,6 +15,7 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 
 import { ProductDownloadsGalleryItem } from './productDownloads.types';
@@ -82,21 +83,22 @@ export const ProductDownloadsGallerySwiper: React.FC<
 
       <style>
         {`
-        .product-downloads-gallery-swiper {
-          height: 240px;
-          background: ${palette.white};
-          padding-right: ${NAVIGATION_SPACING};
-          padding-left: ${NAVIGATION_SPACING};
-        }
-        .swiper-button-next:after {
+          .product-downloads-gallery-swiper {
+            height: 240px;
+            background: ${palette.white};
+            padding-right: ${NAVIGATION_SPACING};
+            padding-left: ${NAVIGATION_SPACING};
+          }
+          .swiper-button-next:after {
             margin-right: ${NAVIGATION_BUTTON_MARGIN};
-        }
-        .swiper-button-prev:after {
+          }
+          .swiper-button-prev:after {
             margin-left: ${NAVIGATION_BUTTON_MARGIN};
-        }
-        .swiper-slide {
-          width: ${rem(168)};
-        }`}
+          }
+          .swiper-slide {
+            width: ${rem(168)};
+          }
+        `}
       </style>
     </>
   );
@@ -165,10 +167,10 @@ export const ProductDownloadGallerySlide: React.FC<
         <Stack horizontalAlign="center" styles={styles.imageContainer}>
           <Image
             alt={text || ''}
-            unoptimized={true}
             width={144}
             height={144}
             src={imageSrc}
+            loader={getImageLoader(imageSrc)}
           />
         </Stack>
 

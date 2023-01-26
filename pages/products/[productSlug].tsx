@@ -101,8 +101,6 @@ const Products: NextPage<
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id]);
 
-  console.log(products);
-  console.log(product.id);
   const styles: ProductStyles = {
     recentlyViewedContainer: {
       outerContainer: {
@@ -265,7 +263,11 @@ export const getStaticProps: GetStaticProps = async (
   );
 
   const relevantAttributeTypeCodes: string[] =
-    productData.attributes?.map(attribute => attribute.typeCode || '') || [];
+    (productData.attributes || [])
+      .map(attribute => attribute.typeCode || '')
+      .concat(
+        (productData.options || []).map(option => option.typeCode || '')
+      ) || [];
   const filteredAttributeTypes: AttributeType[] = attributeTypesData.filter(
     attributeType =>
       relevantAttributeTypeCodes.includes(attributeType.code || '')

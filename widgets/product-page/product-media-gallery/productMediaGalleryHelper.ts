@@ -54,7 +54,7 @@ export function mapResourcesToProductMediaGalleryItems(
       : undefined;
 
   if (cadenasModelItem) {
-    productMediaGalleryItems.push;
+    productMediaGalleryItems.push(cadenasModelItem);
   }
 
   const flowImageResources: Resource[] = filteredResources.filter(

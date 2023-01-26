@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { useStepper } from '@components/stepper/stepperContext';
 import {
   DefaultButton,
@@ -9,6 +11,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { useClaims } from '@services/authentication/claims';
+import { messageIds } from '@services/i18n';
 import { FormStepActions } from '@widgets/forms/formStepActions';
 
 import { useMe } from '../../providers/user/userContext';
@@ -25,17 +28,33 @@ export interface CompleteSignUpStepActionsProps {
   onSelectManualEntry: () => void;
   clearSelectedMatchedCustomer: () => void;
 }
-// TODO: i18n
-const messages = {
-  continue: 'Next',
-  back: 'Back',
-  getStarted: 'Get Started',
-  existingCustomer: 'Yes',
-  newCustomer: 'No (Skip)',
-  continueWith: 'Yes, link me to this company',
-  companyNotInLIst: 'My company is not in the list',
-  manualEntry: 'No, enter details manually'
-};
+
+const messages = defineMessages({
+  backButton: {
+    id: messageIds.signupFlow.backButton,
+    defaultMessage: 'Back'
+  },
+  nextButton: {
+    id: messageIds.signupFlow.nextButton,
+    defaultMessage: 'Next'
+  },
+  startBrowsingButton: {
+    id: messageIds.signupFlow.startBrowsingButton,
+    defaultMessage: 'Start Browsing'
+  },
+  companyDetailsConfirmationButton: {
+    id: messageIds.signupFlow.companyDetailsConfirmationButton,
+    defaultMessage: 'Yes, link me to this company'
+  },
+  companyNotFoundButton: {
+    id: messageIds.signupFlow.companyNotFoundButton,
+    defaultMessage: 'My company is not in the list'
+  },
+  companyDetailsDeclineButton: {
+    id: messageIds.signupFlow.companyDetailsDeclineButton,
+    defaultMessage: 'No, enter details manually'
+  }
+});
 
 export const CompleteSignUpStepActions: React.FC<
   CompleteSignUpStepActionsProps
@@ -49,7 +68,8 @@ export const CompleteSignUpStepActions: React.FC<
   const { createVerificationRequestStatus } = useMe();
   const { forceRefreshToken } = useClaims();
   const { spacing } = useTheme();
-  // TODO: Styling conventions
+  const { formatMessage } = useIntl();
+
   const buttonStyles: IButtonStyles = {
     root: {
       height: 40
@@ -71,7 +91,7 @@ export const CompleteSignUpStepActions: React.FC<
         <Stack tokens={{ padding: `${spacing.l1} 0`, childrenGap: spacing.l1 }}>
           {currentIndex === 0 && (
             <PrimaryButton onClick={onProceed} styles={styles.primaryButton}>
-              {messages.continue}
+              {formatMessage(messages.nextButton)}
             </PrimaryButton>
           )}
 
@@ -84,7 +104,7 @@ export const CompleteSignUpStepActions: React.FC<
                   }}
                   styles={styles.primaryButton}
                 >
-                  {messages.continueWith}
+                  {formatMessage(messages.companyDetailsConfirmationButton)}
                 </PrimaryButton>
               )}
               {!!isMatchedCustomerSelected && (
@@ -92,7 +112,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={onSelectManualEntry}
                   styles={styles.defaultButton}
                 >
-                  {messages.manualEntry}
+                  {formatMessage(messages.companyDetailsDeclineButton)}
                 </DefaultButton>
               )}
               {!isMatchedCustomerSelected && (
@@ -100,7 +120,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={onSelectManualEntry}
                   styles={styles.defaultButton}
                 >
-                  {messages.companyNotInLIst}
+                  {formatMessage(messages.companyNotFoundButton)}
                 </DefaultButton>
               )}
               {!!isMatchedCustomerSelected && matchedCustomersCount > 1 && (
@@ -108,7 +128,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={clearSelectedMatchedCustomer}
                   styles={styles.defaultButton}
                 >
-                  {messages.back}
+                  {formatMessage(messages.backButton)}
                 </DefaultButton>
               )}
               {!!isMatchedCustomerSelected && matchedCustomersCount === 1 && (
@@ -116,7 +136,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={onPrevious}
                   styles={styles.defaultButton}
                 >
-                  {messages.back}
+                  {formatMessage(messages.backButton)}
                 </DefaultButton>
               )}
             </React.Fragment>
@@ -125,7 +145,7 @@ export const CompleteSignUpStepActions: React.FC<
           {currentIndex === 1 && matchedCustomersCount === 0 && (
             <React.Fragment>
               <PrimaryButton onClick={onProceed} styles={styles.primaryButton}>
-                {messages.continue}
+                {formatMessage(messages.nextButton)}
               </PrimaryButton>
               <DefaultButton
                 onClick={() => {
@@ -133,7 +153,7 @@ export const CompleteSignUpStepActions: React.FC<
                 }}
                 styles={styles.defaultButton}
               >
-                {messages.back}
+                {formatMessage(messages.backButton)}
               </DefaultButton>
             </React.Fragment>
           )}
@@ -141,10 +161,10 @@ export const CompleteSignUpStepActions: React.FC<
           {currentIndex === 2 && (
             <React.Fragment>
               <PrimaryButton onClick={onProceed} styles={styles.primaryButton}>
-                {messages.continue}
+                {formatMessage(messages.nextButton)}
               </PrimaryButton>
               <DefaultButton onClick={onPrevious} styles={styles.defaultButton}>
-                {messages.back}
+                {formatMessage(messages.backButton)}
               </DefaultButton>
             </React.Fragment>
           )}
@@ -155,7 +175,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={forceRefreshToken}
                   styles={styles.primaryButton}
                 >
-                  {messages.getStarted}
+                  {formatMessage(messages.startBrowsingButton)}
                 </PrimaryButton>
               )}
               {createVerificationRequestStatus === 'error' && (
@@ -163,7 +183,7 @@ export const CompleteSignUpStepActions: React.FC<
                   onClick={onPrevious}
                   styles={styles.defaultButton}
                 >
-                  {messages.back}
+                  {formatMessage(messages.backButton)}
                 </DefaultButton>
               )}
             </React.Fragment>

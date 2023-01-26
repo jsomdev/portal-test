@@ -30,7 +30,8 @@ export class ProductsResource extends BaseResource<Product> {
   ): Promise<FacetedSearchOdataCollection> {
     const queryOptions: Partial<QueryOptions> = {
       top,
-      skip
+      skip,
+      includeCount: true
     };
     const queryOptionsString: string =
       ODataQueryHelper.formatQueryOptionsToOdataQueryOptions(queryOptions);

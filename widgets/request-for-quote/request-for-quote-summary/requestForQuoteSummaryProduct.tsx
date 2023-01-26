@@ -7,6 +7,7 @@ import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
 import { STATIC_IMAGES } from '@public/media/images';
 import { CartItemFormatter } from '@services/i18n/formatters/cartItemFormatter';
 import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textFormatter';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 
 import {
   RequestForQuoteSummaryProductProps,
@@ -55,6 +56,11 @@ export const RequestForQuoteSummaryProduct: React.FC<
       }
     }
   };
+
+  const imageSrc =
+    item.productId && item?.image?.url
+      ? item?.image?.url
+      : STATIC_IMAGES.cart.defaultItem;
   return (
     <Stack horizontal horizontalAlign="space-between" styles={styles.root}>
       <Stack.Item>
@@ -65,11 +71,8 @@ export const RequestForQuoteSummaryProduct: React.FC<
               height={ITEM_HEIGHT}
               width={ITEM_HEIGHT}
               layout="fixed"
-              src={
-                item.productId && item?.image?.url
-                  ? item?.image?.url
-                  : STATIC_IMAGES.cart.defaultItem
-              }
+              src={imageSrc}
+              loader={getImageLoader(imageSrc)}
             />
           </Stack.Item>
           <Stack.Item>

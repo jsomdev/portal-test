@@ -29,6 +29,7 @@ import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 import { useTabletAndDesktop } from '@widgets/media-queries';
+import { breakpoints } from '@widgets/media-queries/media';
 
 import { ProductSubsectionHeader } from '../product-sections/productSubSectionHeader';
 import { ProductMediaGalleryItem } from './productMediaGallery.types';
@@ -263,20 +264,21 @@ export const ProductMediaGallerySwiper: React.FC<
       </Modal>
       <style>
         {`
-        .product-media-gallery-swiper {
-          height: 400px;
-          background: ${palette.white};
-        }
-        .product-media-gallery-modal-swiper {
-          height: 100%;
-          background: ${palette.white};
-        }       
-        .swiper-slide {
-          display: flex;
-          height: 100%;
-          justify-content: center;
-          align-items:center;
-        }`}
+          .product-media-gallery-swiper {
+            height: 400px;
+            background: ${palette.white};
+          }
+          .product-media-gallery-modal-swiper {
+            height: 100%;
+            background: ${palette.white};
+          }
+          .product-media-gallery-modal-swiper .swiper-slide,.product-media-gallery-swiper .swiper-slide {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+          }
+        `}
       </style>
     </>
   );
@@ -329,6 +331,11 @@ export const ProductMediaGallerySlide: React.FC<
           objectPosition="center"
           objectFit="contain"
           loader={getImageLoader(item.src)}
+          sizes={
+            mode === 'main'
+              ? `(max-width: ${breakpoints.tablet}) 100vw, 850px`
+              : '100vw'
+          }
         />
         {!isFallback && (
           <Stack.Item styles={imageStyles.tooltip}>

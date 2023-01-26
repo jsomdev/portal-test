@@ -1,3 +1,7 @@
+import { useMemo } from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
+
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   ISpinnerStyles,
@@ -7,26 +11,32 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
-import { contactDetailsFormFields } from './constants';
+import { getContactDetailsFormFields } from './constants';
 
 interface ContactDetailsFormGroupStyles {
-  title: ITextStyles;
   description: ITextStyles;
   textField: Partial<ITextFieldStyles>;
   spinner: ISpinnerStyles;
 }
-// TODO: i18n
-const messages = {
-  title: 'Contact details'
-};
+
+const messages = defineMessages({
+  contactDetailsTitle: {
+    id: messageIds.signupFlow.contactDetailsTitle,
+    defaultMessage: 'Contact Details'
+  }
+});
 
 export const ContactDetailsStep: React.FC = () => {
   const { fonts, palette, spacing } = useTheme();
+  const { formatMessage } = useIntl();
 
-  // TODO Styling Conventions
+  const contactDetailsFormFields = useMemo(() => {
+    return getContactDetailsFormFields(formatMessage);
+  }, [formatMessage]);
+
   const styles: ContactDetailsFormGroupStyles = {
-    title: { root: {} },
     description: {
       root: {
         textAlign: 'center'
@@ -53,13 +63,13 @@ export const ContactDetailsStep: React.FC = () => {
   };
 
   return (
-    <Stack horizontalAlign="stretch">
+    <Stack horizontalAlign="stretch" tokens={{ childrenGap: spacing.s1 }}>
       <Stack
         horizontalAlign="stretch"
         tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
       >
-        <Text variant="xLarge" styles={styles.title}>
-          {messages.title}
+        <Text variant="xLarge">
+          {formatMessage(messages.contactDetailsTitle)}
         </Text>
       </Stack>
       <FormikTextField

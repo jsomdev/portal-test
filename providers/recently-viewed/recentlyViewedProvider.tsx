@@ -4,7 +4,6 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 import { useIsAuthenticated } from '@azure/msal-react';
 import { Product, Setting } from '@services/portal-api';
-import { OdataCollection } from '@services/portal-api/o-data';
 import { fetchBaseDesignsByIds } from '@services/portal-api/products';
 import {
   addProductViewToSessionProductIds,

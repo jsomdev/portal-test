@@ -847,6 +847,39 @@ type IProductMessages = {
   };
 };
 
+type ISignupMessages = {
+  signOutButton: string;
+  nextButton: string;
+  backButton: string;
+  selectButton: string;
+  companyNotFoundButton: string;
+  startBrowsingButton: string;
+  addInvoiceButton: string;
+  submittingTitle: string;
+  submittingDescription: string;
+  companyDetailsConfirmationButton: string;
+  companyDetailsDeclineButton: string;
+  loadingDetails: string;
+  completeSignupLater: string;
+  contactDetailsTitle: string;
+  billingAddressTitle: string;
+  existingCustomerTitle: string;
+  tooltipLabel: string;
+  customerNumberTitle: string;
+  customerNumberDescription: string;
+  invoiceNumberTitle: string;
+  invoiceNumberDescription: string;
+  selectCompanyTitle: string;
+  companyDetailsTitle: string;
+  completionTitle: string;
+  completionDescription: string;
+  startBrowsingTitle: string;
+  submittingErrorTitle: string;
+  submittingErrorDescription: string;
+  customerNumberValidation: string;
+  invoiceNumberValidation: string;
+};
+
 type IModelMessages = INextHeadMessages & {
   browseAll: string;
 };
@@ -869,6 +902,7 @@ export type Messages = {
     clearAll: string;
     title: string;
   };
+  signupFlow: ISignupMessages;
   steps: IStepsMessages;
   finder: IFinderMessages;
   data: IDataMessages;

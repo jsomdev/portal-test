@@ -1,6 +1,11 @@
+import { MessageDescriptor } from 'react-intl';
 import * as yup from 'yup';
+import { RequiredStringSchema } from 'yup/lib/string';
+import { AnyObject } from 'yup/lib/types';
 
 import { Step } from '@components/stepper/stepperContext';
+import { defineMessages } from '@formatjs/intl';
+import { messageIds } from '@services/i18n';
 import setYupLocalisation from '@utilities/yup/setYupLocalisation';
 import {
   addressValidation,
@@ -13,7 +18,6 @@ import {
   postalCodeValidation,
   stateValidation
 } from '@widgets/checkout/shared/validation';
-import { formRequiredMessages } from '@widgets/forms/formMessages';
 
 import {
   CompanyDetailsFormValues,
@@ -24,65 +28,168 @@ import {
 
 setYupLocalisation();
 
-// TODO: i18n
-export const contactDetailsFormFields: CompleteSignUpFormFields = {
-  email: { label: 'Email', placeholder: 'example@domain.com', name: 'email' },
+const messages = defineMessages({
   firstName: {
-    label: 'First Name',
-    placeholder: '',
-    name: 'firstName'
+    id: messageIds.pages.checkout.details.fields.firstName,
+    description: 'First name field label',
+    defaultMessage: 'First Name'
   },
-  lastName: { label: 'Last Name', placeholder: '', name: 'lastName' },
-  phone: { label: 'Phone Number', placeholder: '', name: 'phone' },
-  jobTitle: { label: 'Job Title', placeholder: '', name: 'jobTitle' }
-};
-
-// TODO: i18n
-export const customerDetailsFormFields: CompleteSignUpFormFields = {
+  lastName: {
+    id: messageIds.pages.checkout.details.fields.name,
+    description: 'Last name field label',
+    defaultMessage: 'Last Name'
+  },
+  jobTitle: {
+    id: messageIds.pages.checkout.details.fields.jobTitle,
+    description: 'Job title field label',
+    defaultMessage: 'Job Title'
+  },
+  phone: {
+    id: messageIds.pages.checkout.details.fields.phone,
+    description: 'Phone number field label',
+    defaultMessage: 'Phone Number'
+  },
   customerNumber: {
-    label: 'Customer Number',
-    placeholder: 'e.g. 1234567',
-    name: 'customerNumber'
+    id: messageIds.signupFlow.customerNumberTitle,
+    description: 'Customer number field label',
+    defaultMessage: 'Customer Number'
   },
-  invoiceNumbers: {
-    label: 'Invoice Number',
-    placeholder: 'e.g. AB12345',
-    name: 'invoiceNumbers'
-  }
-};
-
-// TODO: i18n
-export const companyDetailsFormFields: CompleteSignUpFormFields = {
-  customerCompany: {
-    label: 'Company Name',
-    placeholder: 'Name of organization',
-    name: 'customerCompany'
+  invoiceNumber: {
+    id: messageIds.signupFlow.invoiceNumberTitle,
+    description: 'Invoice number field label',
+    defaultMessage: 'Invoice Number'
   },
-
+  companyName: {
+    id: messageIds.pages.checkout.details.fields.company,
+    description: 'Company details field label',
+    defaultMessage: 'Company Name'
+  },
+  companyPlaceholder: {
+    id: messageIds.pages.checkout.details.fields.companyPlaceholder,
+    description: 'Company details placeholder',
+    defaultMessage: 'Company Name'
+  },
   country: {
-    label: 'Country',
-    placeholder: 'Select an option',
-    name: 'country'
+    id: messageIds.pages.checkout.details.fields.country,
+    description: 'Country field label',
+    defaultMessage: 'Country'
   },
   address: {
-    label: 'Address',
-    placeholder: '',
-    name: 'address'
+    id: messageIds.pages.checkout.details.fields.address,
+    description: 'Address field label',
+    defaultMessage: 'Address'
   },
-  city: { label: 'City', placeholder: '', name: 'city' },
+  city: {
+    id: messageIds.pages.checkout.details.fields.city,
+    description: 'City field label',
+    defaultMessage: 'City'
+  },
   state: {
-    label: 'State / Province',
-    placeholder: 'Select an option',
-    name: 'state'
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .addressBook.formFields.region.label.default,
+    defaultMessage: 'Region',
+    description: 'Region label'
   },
-  zipCode: {
-    label: 'Postal Code',
-    placeholder: '',
-    name: 'zipCode'
+  postalCode: {
+    id: messageIds.pages.checkout.details.fields.postalCode,
+    description: 'Zip code field label',
+    defaultMessage: 'Postal Code'
+  },
+  invoiceNumberValidation: {
+    id: messageIds.signupFlow.invoiceNumberValidation,
+    description: 'Invoice numbers validation message',
+    defaultMessage: 'Please enter a valid invoice number'
+  },
+  customerNumberValidation: {
+    id: messageIds.signupFlow.customerNumberValidation,
+    description: 'Customer number validation message',
+    defaultMessage: 'Please enter a valid customer number'
   }
-};
+});
 
-// TODO: i18n
+export function getContactDetailsFormFields(
+  formatMessage?: (message: MessageDescriptor) => string
+): CompleteSignUpFormFields {
+  return {
+    email: { label: 'Email', placeholder: 'example@domain.com', name: 'email' },
+    firstName: {
+      label: formatMessage?.(messages.firstName) || 'First Name',
+      placeholder: '',
+      name: 'firstName'
+    },
+    lastName: {
+      label: formatMessage?.(messages.lastName) || 'Last Name',
+      placeholder: '',
+      name: 'lastName'
+    },
+    phone: {
+      label: formatMessage?.(messages.phone) || 'Phone Number',
+      placeholder: '',
+      name: 'phone'
+    },
+    jobTitle: {
+      label: formatMessage?.(messages.jobTitle) || 'Job Title',
+      placeholder: '',
+      name: 'jobTitle'
+    }
+  };
+}
+
+export function getCustomerDetailsFormFields(
+  formatMessage?: (message: MessageDescriptor) => string
+): CompleteSignUpFormFields {
+  return {
+    customerNumber: {
+      label: formatMessage?.(messages.customerNumber) || 'Customer Number',
+      placeholder: 'e.g. 1234567',
+      name: 'customerNumber'
+    },
+    invoiceNumbers: {
+      label: formatMessage?.(messages.invoiceNumber) || 'Invoice Number',
+      placeholder: 'e.g. AB12345',
+      name: 'invoiceNumbers'
+    }
+  };
+}
+
+export function getCompanyDetailsFormFields(
+  formatMessage?: (message: MessageDescriptor) => string
+): CompleteSignUpFormFields {
+  return {
+    customerCompany: {
+      label: formatMessage?.(messages.companyName) || 'Company Name',
+      placeholder:
+        formatMessage?.(messages.companyPlaceholder) || 'Name of organization',
+      name: 'customerCompany'
+    },
+    country: {
+      label: formatMessage?.(messages.country) || 'Country',
+      placeholder: 'Select an option',
+      name: 'country'
+    },
+    address: {
+      label: formatMessage?.(messages.address) || 'Address',
+      placeholder: '',
+      name: 'address'
+    },
+    city: {
+      label: formatMessage?.(messages.city) || 'City',
+      placeholder: '',
+      name: 'city'
+    },
+    state: {
+      label: formatMessage?.(messages.state) || 'State / Province',
+      placeholder: '',
+      name: 'state'
+    },
+    postalCode: {
+      label: formatMessage?.(messages.postalCode) || 'Postal Code',
+      placeholder: '',
+      name: 'postalCode'
+    }
+  };
+}
+
 export const completeSignUpContactDetailsStep: Step = {
   label: '',
   isValid: false,
@@ -90,7 +197,7 @@ export const completeSignUpContactDetailsStep: Step = {
     iconName: 'ContactInfo'
   }
 };
-// TODO: i18n
+
 export const completeSignUpChooseCustomerStep: Step = {
   label: '',
   isValid: false,
@@ -98,7 +205,7 @@ export const completeSignUpChooseCustomerStep: Step = {
     iconName: 'FollowUser'
   }
 };
-// TODO: i18n
+
 export const completeSignUpCustomerDetailsStep: Step = {
   label: '',
   isValid: false,
@@ -107,13 +214,12 @@ export const completeSignUpCustomerDetailsStep: Step = {
   }
 };
 
-// TODO: i18n
 export const completeSignUpCompanyDetailsStep: Step = {
   label: '',
   isValid: false,
   iconProps: { iconName: 'WaitlistConfirm' }
 };
-// TODO: i18n
+
 export const completeSignUpSubmitStep: Step = {
   label: '',
   isValid: true,
@@ -139,7 +245,7 @@ export const companyDetailsFormInitialValues: CompanyDetailsFormValues = {
   address: '',
   city: '',
   state: '',
-  zipCode: ''
+  postalCode: ''
 };
 
 export const contactDetailsFormInitialValues: ContactDetailsFormValues = {
@@ -150,53 +256,56 @@ export const contactDetailsFormInitialValues: ContactDetailsFormValues = {
   phone: ''
 };
 
-export const completeSignUpErrorMessages = {
-  customerNumber: 'A valid Customer Number is 7 digits long (e.g. 1234567)',
-  invoiceNumbers:
-    'A valid Invoice Number consists of 2 letters followed by 5 digits (e.g. AB12345)'
+export const jobTitleValidation = {
+  ['jobTitle']: yup.string()
 };
 
-export const customerNumberValidation = {
-  [customerDetailsFormFields.customerNumber.name]: yup
+export function customerCompanyValidation(
+  label?: string
+): RequiredStringSchema<string | undefined, AnyObject> {
+  return yup
     .string()
-    .matches(/^[0-9]{7}$/, completeSignUpErrorMessages.customerNumber)
-};
+    .label(label || messageIds.pages.checkout.details.fields.company)
+    .trim()
+    .required();
+}
 
-export const invoiceNumbersValidation = {
-  [customerDetailsFormFields.invoiceNumbers.name]: yup
-    .array()
-    .of(
+export function getCompleteSignUpValidation(
+  formatMessage?: (message: MessageDescriptor) => string
+): yup.ObjectSchema<AnyObject> {
+  return yup.object().shape({
+    email: emailValidation(),
+    phone: phoneValidation(),
+    address: addressValidation(),
+    country: countryValidation(),
+    city: cityValidation(),
+    state: stateValidation(
+      'state',
+      messageIds.pages.account.sections.infoAndPreferences.sections.addressBook
+        .formFields.region.label.default,
+      messageIds.pages.account.sections.infoAndPreferences.sections.addressBook
+        .formFields.region.label.us,
+      messageIds.pages.account.sections.infoAndPreferences.sections.addressBook
+        .formFields.region.label.ca
+    ),
+    postalCode: postalCodeValidation(),
+    firstName: firstNameValidation(),
+    lastName: lastNameValidation(),
+    ['customerNumber']: yup
+      .string()
+      .matches(
+        /^[0-9]{7}$/,
+        formatMessage?.(messages.customerNumberValidation)
+      ),
+    ['invoiceNumbers']: yup.array().of(
       yup
         .string()
+        .label(messageIds.pages.checkout.details.fields.company)
         .matches(
           /^[a-zA-Z]{2}[0-9]{5}$/,
-          completeSignUpErrorMessages.invoiceNumbers
+          formatMessage?.(messages.invoiceNumberValidation)
         )
-    )
-};
-
-export const jobTitleValidation = {
-  [contactDetailsFormFields.jobTitle.name]: yup.string()
-};
-
-export const customerCompanyValidation = {
-  [companyDetailsFormFields.customerCompany.name]: yup
-    .string()
-    .required(formRequiredMessages.company)
-};
-
-export const completeSignUpValidation = yup.object().shape({
-  email: emailValidation(),
-  phone: phoneValidation(),
-  address: addressValidation(),
-  country: countryValidation(),
-  city: cityValidation(),
-  state: stateValidation('state'),
-  zipCode: postalCodeValidation(),
-  firstName: firstNameValidation(),
-  lastName: lastNameValidation(),
-  ...customerCompanyValidation,
-  ...customerNumberValidation,
-  ...invoiceNumbersValidation,
-  ...jobTitleValidation
-});
+    ),
+    ...jobTitleValidation
+  });
+}

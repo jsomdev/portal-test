@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
 
 import {
   ISpinnerStyles,
@@ -12,22 +13,42 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { defineMessages } from '@formatjs/intl';
+import { messageIds } from '@services/i18n';
 
 import { useMe } from '../../providers/user/userContext';
 
-const messages = {
-  loading: 'We are setting things up for you....',
-  successTitle: ' All done!',
-  successDescriptionP1: 'Thank you for completing your sign up.',
-  successDescriptionP2:
-    'You will be notified by email once your information has been reviewed.',
-  successDescriptionP3: 'You are all set to start browsing!',
-  loadingTitle: 'Please wait!',
-  success: '',
-  errorTitle: 'An error occurred!',
-  errorDescription:
-    'Your request could not be completed. Please try again or contact customer support.'
-};
+const messages = defineMessages({
+  submittingDescription: {
+    id: messageIds.signupFlow.submittingDescription,
+    defaultMessage: 'We are setting things up for you....'
+  },
+  completionTitle: {
+    id: messageIds.signupFlow.completionTitle,
+    defaultMessage: ' All done!'
+  },
+  completionDescription: {
+    id: messageIds.signupFlow.completionDescription,
+    defaultMessage: 'Thank you for completing your sign up.'
+  },
+  startBrowsingTitle: {
+    id: messageIds.signupFlow.startBrowsingTitle,
+    defaultMessage: 'You are all set to start browsing!'
+  },
+  submittingTitle: {
+    id: messageIds.signupFlow.submittingTitle,
+    defaultMessage: 'Please wait!'
+  },
+  submittingErrorTitle: {
+    id: messageIds.signupFlow.submittingErrorTitle,
+    defaultMessage: 'An error occurred!'
+  },
+  submittingErrorDescription: {
+    id: messageIds.signupFlow.submittingErrorDescription,
+    defaultMessage:
+      'Your request could not be completed. Please try again or contact customer support.'
+  }
+});
 
 interface SubmitStepStyles {
   spinner: Partial<ISpinnerStyles>;
@@ -38,6 +59,7 @@ interface SubmitStepStyles {
 
 export const SubmitStep: React.FC = () => {
   const { submitForm } = useFormikContext();
+  const { formatMessage } = useIntl();
 
   const { createVerificationRequestStatus } = useMe();
   const { spacing } = useTheme();
@@ -89,8 +111,12 @@ export const SubmitStep: React.FC = () => {
           horizontalAlign="center"
           tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
         >
-          <Text variant="xLarge">{messages.errorTitle}</Text>
-          <Text variant="mediumPlus">{messages.errorDescription}</Text>
+          <Text variant="xLarge">
+            {formatMessage(messages.submittingErrorTitle)}
+          </Text>
+          <Text variant="mediumPlus">
+            {formatMessage(messages.submittingErrorDescription)}
+          </Text>
         </Stack>
       )}
       {createVerificationRequestStatus === 'loading' && (
@@ -99,11 +125,13 @@ export const SubmitStep: React.FC = () => {
           horizontalAlign="center"
           tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
         >
-          <Text variant="xLarge">{messages.loadingTitle}</Text>
+          <Text variant="xLarge">
+            {formatMessage(messages.submittingTitle)}
+          </Text>
           <Spinner
             styles={styles.spinner}
             size={SpinnerSize.large}
-            label={messages.loading}
+            label={formatMessage(messages.submittingDescription)}
           />
         </Stack>
       )}
@@ -113,19 +141,18 @@ export const SubmitStep: React.FC = () => {
           horizontalAlign="center"
           tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
         >
-          <Text variant="xLarge">{messages.successTitle}</Text>
+          <Text variant="xLarge">
+            {formatMessage(messages.completionTitle)}
+          </Text>
           <Icon styles={styles.title} iconName="Completed" />
           <Stack tokens={{ childrenGap: 4 }}>
             <Text styles={styles.paragraph} variant="large">
-              {messages.successDescriptionP1}
-            </Text>
-            <Text styles={styles.paragraph} variant="large">
-              {messages.successDescriptionP2}
+              {formatMessage(messages.completionDescription)}
             </Text>
           </Stack>
           <Stack>
             <Text styles={styles.highlightedParagraph} variant="large">
-              {messages.successDescriptionP3}
+              {formatMessage(messages.startBrowsingTitle)}
             </Text>
           </Stack>
         </Stack>

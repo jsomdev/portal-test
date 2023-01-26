@@ -3,6 +3,7 @@ import React, { CSSProperties, useMemo } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
+import _JSXStyle from 'styled-jsx/style';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -24,6 +25,7 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { AttributeTypeFormatter } from '@services/i18n/formatters/entity-formatters/attributeTypeFormatter';
 import { Category } from '@services/portal-api';
+import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
 import { rem } from '@utilities/rem';
 
 import { QuickFilterItem } from './quickFilter.types';
@@ -148,9 +150,6 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
       '--swiper-navigation-size': rem(26)
     } as CSSProperties
   };
-  if (isFetching) {
-    return null;
-  }
 
   if (quickFilterItems.length <= 1) {
     return null;
@@ -170,6 +169,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         spaceBetween={16}
         style={styles.swiper}
         navigation={true}
+        className="quick-filter-swiper"
         slidesPerView="auto"
       >
         <div style={styles.previousButtonBackground} />
@@ -181,14 +181,13 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         <div style={styles.nextButtonBackground} />
       </Swiper>
       <style>{`
-        .swiper {
+        .quick-filter-swiper {
           width: 100%;
         }
-        .swiper-slide {
-            width: auto;
-          }
-    
-        `}</style>
+        .quick-filter-swiper .swiper-slide {
+          width: auto;
+        }
+      `}</style>
     </Stack>
   );
 };
@@ -236,6 +235,7 @@ export const QuickFilterCard: React.FC<QuickFilterCardProps> = ({ item }) => {
           width={48}
           objectFit="contain"
           objectPosition="center"
+          loader={getImageLoader(item.image.src)}
         />
       )}
       <NextLink

@@ -1,21 +1,35 @@
+import { useMemo } from 'react';
+
+import { useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
+
 import { FormikComboBox } from '@components/formik-wrappers/formikComboBox';
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   IComboBoxStyles,
   ITextFieldStyles,
-  ITextStyles,
   Stack,
-  Text
+  Text,
+  useTheme
 } from '@fluentui/react';
+import { defineMessages } from '@formatjs/intl';
+import { messageIds } from '@services/i18n';
 import { MatchedCustomer } from '@services/portal-api/models/MatchCustomerResponse';
 import { allCountryOptions } from '@utilities/places';
+import {
+  AddressFormGroupValues,
+  useAddressFormGroup
+} from '@widgets/account/address-book/useAddressFormGroup';
+import { StepFields } from '@widgets/checkout/shared/types';
 
-import { companyDetailsFormFields } from './constants';
+import {
+  CompleteSignUpFormFields,
+  CompleteSignUpFormValues
+} from './completeSignUp.types';
+import { getCompanyDetailsFormFields } from './constants';
 import { CustomerSuggestions } from './customerSuggestions';
 
 interface CompanyDetailsStepStyles {
-  title: ITextStyles;
-  description: ITextStyles;
   textField: Partial<ITextFieldStyles>;
   comboBox: Partial<IComboBoxStyles>;
 }
@@ -24,24 +38,40 @@ interface CompanyDetailsStepProps {
   selectedCustomer: MatchedCustomer | undefined;
   onSelectCustomer: (customer: MatchedCustomer) => void;
 }
-// TODO: i18n
-const messages = {
-  title: 'Billing Address',
-  description: 'Please provide the name and billing address of your company.',
-  titleBillingAddress: 'Company Billing Address'
-};
+
+const messages = defineMessages({
+  billingAddressTitle: {
+    id: messageIds.signupFlow.billingAddressTitle,
+    defaultMessage: 'Billing Address'
+  }
+});
 
 export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
   matchedCustomers,
   selectedCustomer,
   onSelectCustomer
 }) => {
-  // TODO: Conventions to Styling
+  const { spacing } = useTheme();
+  const { formatMessage } = useIntl();
+  const { values } = useFormikContext<CompleteSignUpFormValues>();
+
+  const companyDetailsFormFields: CompleteSignUpFormFields = useMemo(() => {
+    return getCompanyDetailsFormFields(formatMessage);
+  }, [formatMessage]);
+
+  const {
+    defaultSelectedCountryKey,
+    regionLabel,
+    regionOptions,
+    regionPlaceholder,
+    onCountryChange
+  } = useAddressFormGroup(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (values as any)[companyDetailsFormFields.country.name],
+    companyDetailsFormFields as StepFields<AddressFormGroupValues>
+  );
+
   const styles: CompanyDetailsStepStyles = {
-    title: { root: {} },
-    description: {
-      root: {}
-    },
     comboBox: {
       container: {
         '& .ms-ComboBox.is-required': {
@@ -77,10 +107,10 @@ export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
   }
 
   return (
-    <Stack horizontalAlign="stretch">
+    <Stack horizontalAlign="stretch" tokens={{ childrenGap: spacing.s1 }}>
       <Stack tokens={{ childrenGap: 16, padding: `16px 0` }}>
-        <Text variant="xLarge" styles={styles.title}>
-          {messages.title}
+        <Text variant="xLarge">
+          {formatMessage(messages.billingAddressTitle)}
         </Text>
       </Stack>
       <FormikTextField
@@ -92,9 +122,9 @@ export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
         {...companyDetailsFormFields.country}
         options={allCountryOptions}
         required={true}
-        styles={styles.comboBox}
-        defaultSelectedKey="US"
+        onChange={onCountryChange}
         useComboBoxAsMenuWidth
+        defaultSelectedKey={defaultSelectedCountryKey}
       />
       <FormikTextField
         styles={styles.textField}
@@ -106,15 +136,25 @@ export const CompanyBillingAddressStep: React.FC<CompanyDetailsStepProps> = ({
         {...companyDetailsFormFields.city}
         required={true}
       />
+      {['US', 'CA'].includes(defaultSelectedCountryKey) && regionOptions ? (
+        <FormikComboBox
+          {...companyDetailsFormFields.state}
+          options={regionOptions}
+          label={regionLabel}
+          required={true}
+          useComboBoxAsMenuWidth
+          placeholder={regionPlaceholder}
+        />
+      ) : (
+        <FormikTextField
+          {...companyDetailsFormFields.state}
+          required={true}
+          placeholder={regionPlaceholder}
+          label={regionLabel}
+        />
+      )}
       <FormikTextField
-        styles={styles.textField}
-        {...companyDetailsFormFields.state}
-        required={true}
-      />
-
-      <FormikTextField
-        styles={styles.textField}
-        {...companyDetailsFormFields.zipCode}
+        {...companyDetailsFormFields.postalCode}
         required={true}
       />
     </Stack>

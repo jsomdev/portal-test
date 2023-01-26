@@ -10,6 +10,7 @@ import {
   useTheme
 } from '@fluentui/react';
 import { getImageLoader } from '@utilities/image-loaders/getImageLoader';
+import { breakpoints } from '@widgets/media-queries/media';
 
 type CategoryCardSize = 'small' | 'large';
 
@@ -98,6 +99,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
               }
               objectPosition="center"
               loader={getImageLoader(imageSrc)}
+              sizes={`(max-width:${breakpoints.largePhone}px) 100vw, (max-width:${breakpoints.tablet}px) 50vw, 270px`}
             />
           </Stack.Item>
           <Stack

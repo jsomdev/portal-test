@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { FieldArray, useFormikContext } from 'formik';
+import { useIntl } from 'react-intl';
 
 import { FormikTextField } from '@components/formik-wrappers/formikTextField';
 import {
   ActionButton,
   IImageStyles,
   ITextFieldStyles,
-  ITextStyles,
   IconButton,
   Image,
   Label,
@@ -16,28 +16,48 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { defineMessages } from '@formatjs/intl';
 import { STATIC_IMAGES } from '@public/media/images';
+import { messageIds } from '@services/i18n';
 
 import { CompleteSignUpFormValues } from './completeSignUp.types';
-import { customerDetailsFormFields } from './constants';
+import { getCustomerDetailsFormFields } from './constants';
 import { CustomerDetailsLabel } from './customerDetailsLabel';
 
-// TODO: i18n
-const messages = {
-  title: 'Already with Spraying Systems Co.?',
-  addInvoiceNumber: 'Add another invoice number',
-  moreInfo: 'Where can I find this?',
-  customerNumberTitle: 'Customer Number',
-  invoiceNumberTitle: 'Invoice Number',
-  customerNumberModalText:
-    "Your customer number can be found on the left side of any Spraying Systems Co. invoice. It's a 7-digit number shown as 'CUST NO'.",
-  invoiceNumberModalText:
-    "An invoice number can be found in the upper right hand corner of any Spraying Systems Co. invoice. It's a 7-character string shown as 'INVOICE NO' (Two letters followed by five digits)."
-};
+const messages = defineMessages({
+  existingCustomerTitle: {
+    id: messageIds.signupFlow.existingCustomerTitle,
+    defaultMessage: 'Already with Spraying Systems Co.?'
+  },
+  addInvoiceButton: {
+    id: messageIds.signupFlow.addInvoiceButton,
+    defaultMessage: 'Add another invoice number'
+  },
+  tooltipLabel: {
+    id: messageIds.signupFlow.tooltipLabel,
+    defaultMessage: 'Where can I find this?'
+  },
+  customerNumberTitle: {
+    id: messageIds.signupFlow.customerNumberTitle,
+    defaultMessage: 'Customer Number'
+  },
+  invoiceNumberTitle: {
+    id: messageIds.signupFlow.invoiceNumberTitle,
+    defaultMessage: 'Invoice Number'
+  },
+  customerNumberDescription: {
+    id: messageIds.signupFlow.customerNumberDescription,
+    defaultMessage:
+      "Your customer number can be found on the left side of any Spraying Systems Co. invoice. It's a 7-digit number shown as 'CUST NO'."
+  },
+  invoiceNumberDescription: {
+    id: messageIds.signupFlow.invoiceNumberDescription,
+    defaultMessage:
+      "An invoice number can be found in the upper right hand corner of any Spraying Systems Co. invoice. It's a 7-character string shown as 'INVOICE NO' (Two letters followed by five digits)."
+  }
+});
 
 interface CustomerInformationStepStyles {
-  title: ITextStyles;
-  description: ITextStyles;
   textField: Partial<ITextFieldStyles>;
   modalImage: Partial<IImageStyles>;
 }
@@ -45,15 +65,14 @@ interface CustomerInformationStepStyles {
 export const CustomerInformationStep: React.FC = () => {
   const { values } = useFormikContext<CompleteSignUpFormValues>();
   const [showModal, setShowModal] = useState<'invoice' | 'both' | false>(false);
-
+  const { formatMessage } = useIntl();
   const { spacing } = useTheme();
-  // TODO: Styling conventions
-  const styles: CustomerInformationStepStyles = {
-    title: { root: {} },
 
-    description: {
-      root: {}
-    },
+  const customerDetailsFormFields = useMemo(() => {
+    return getCustomerDetailsFormFields(formatMessage);
+  }, [formatMessage]);
+
+  const styles: CustomerInformationStepStyles = {
     textField: {
       root: {
         width: '100%'
@@ -78,16 +97,17 @@ export const CustomerInformationStep: React.FC = () => {
       }
     }
   };
+
   return (
-    <Stack horizontalAlign="stretch">
+    <Stack horizontalAlign="stretch" tokens={{ childrenGap: spacing.s1 }}>
       <Stack tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}>
-        <Text variant="xLarge" styles={styles.title}>
-          {messages.title}
+        <Text variant="xLarge">
+          {formatMessage(messages.existingCustomerTitle)}
         </Text>
       </Stack>
       <CustomerDetailsLabel
-        modalTitle={messages.customerNumberTitle}
-        modalText={messages.customerNumberModalText}
+        modalTitle={formatMessage(messages.customerNumberTitle)}
+        modalText={formatMessage(messages.customerNumberDescription)}
         labelText={customerDetailsFormFields.customerNumber.label}
         modalImage={STATIC_IMAGES.profile.invoices.customerNumber.src}
       />
@@ -134,7 +154,7 @@ export const CustomerInformationStep: React.FC = () => {
                                     setShowModal('invoice');
                                   }}
                                 >
-                                  {messages.moreInfo}
+                                  {formatMessage(messages.tooltipLabel)}
                                   <Modal
                                     isOpen={!!showModal}
                                     onDismiss={() => {
@@ -156,7 +176,9 @@ export const CustomerInformationStep: React.FC = () => {
                                         >
                                           <Stack.Item>
                                             <Text variant="xLarge">
-                                              {messages.invoiceNumberTitle}
+                                              {formatMessage(
+                                                messages.invoiceNumberTitle
+                                              )}
                                             </Text>
                                           </Stack.Item>
                                           <Stack.Item>
@@ -173,7 +195,9 @@ export const CustomerInformationStep: React.FC = () => {
                                       </Stack.Item>
                                       <Stack.Item>
                                         <Text>
-                                          {messages.invoiceNumberModalText}
+                                          {formatMessage(
+                                            messages.invoiceNumberDescription
+                                          )}
                                         </Text>
                                       </Stack.Item>
                                       <Stack.Item>
@@ -209,7 +233,7 @@ export const CustomerInformationStep: React.FC = () => {
 
             <ActionButton
               iconProps={{ iconName: 'Add' }}
-              text={messages.addInvoiceNumber}
+              text={formatMessage(messages.addInvoiceButton)}
               onClick={() => push('')}
             />
           </Stack>

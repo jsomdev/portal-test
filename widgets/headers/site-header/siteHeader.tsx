@@ -20,7 +20,6 @@ import {
 import { useGlobalData } from '@providers/global-data/globalDataContext';
 import { useMe } from '@providers/user/userContext';
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
-import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import pagePaths from '@utilities/pagePaths';
@@ -118,7 +117,6 @@ const MobileSiteHeader: React.FC = () => {
   const [showPanel, setShowPanel] = useState<'app' | 'user' | undefined>();
   const account: AccountInfo | undefined =
     getMsalInstance()?.getAllAccounts()[0];
-  const claims = useClaims();
 
   const panelHeaderText: string = useMemo(() => {
     if (showPanel === 'app') {
@@ -126,13 +124,13 @@ const MobileSiteHeader: React.FC = () => {
     }
     if (showPanel === 'user') {
       const userFormatter = new UserFormatter(me, account);
-      const name = userFormatter.formatDisplayName(claims.firstName);
+      const name = userFormatter.formatDisplayName();
       return formatMessage(messages.welcome, {
         name
       });
     }
     return '';
-  }, [account, formatMessage, me, showPanel, claims]);
+  }, [account, formatMessage, me, showPanel]);
 
   const panelType: PanelType = useMemo(() => {
     if (showPanel === 'app') {
