@@ -29,7 +29,7 @@ export interface ContactDetailsFormValues {
 export interface CompanyDetailsFormValues {
   country: string;
   address: string;
-  zipCode: string;
+  postalCode: string;
   city: string;
   state: string;
   customerCompany: string;

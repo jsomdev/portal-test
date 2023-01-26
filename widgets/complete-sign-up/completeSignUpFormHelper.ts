@@ -9,9 +9,9 @@ import {
   ContactDetailsFormValues
 } from './completeSignUp.types';
 import {
-  companyDetailsFormFields,
-  contactDetailsFormFields,
-  customerDetailsFormFields
+  getCompanyDetailsFormFields,
+  getContactDetailsFormFields,
+  getCustomerDetailsFormFields
 } from './constants';
 
 /**
@@ -30,14 +30,20 @@ export function getCompleteSignUpFieldNames(
   let fieldNames: string[] = [];
 
   if (toStepIndex >= 0 && fromStepIndex <= 0) {
-    fieldNames = fieldNames.concat(getFieldNames(contactDetailsFormFields));
+    fieldNames = fieldNames.concat(
+      getFieldNames(getContactDetailsFormFields())
+    );
   }
 
   if (toStepIndex >= 1 && fromStepIndex <= 1) {
-    fieldNames = fieldNames.concat(getFieldNames(companyDetailsFormFields));
+    fieldNames = fieldNames.concat(
+      getFieldNames(getCompanyDetailsFormFields())
+    );
   }
   if (toStepIndex >= 2 && fromStepIndex <= 2) {
-    fieldNames = fieldNames.concat(getFieldNames(customerDetailsFormFields));
+    fieldNames = fieldNames.concat(
+      getFieldNames(getCustomerDetailsFormFields())
+    );
   }
 
   return fieldNames;
@@ -71,7 +77,7 @@ export function mapVerificationRequestFieldsToVerificationPost(
     addressCity: values.city,
     addressCountry: values.country,
     addressLines: [values.address],
-    addressPostalCode: values.zipCode,
+    addressPostalCode: values.postalCode,
     addressRegion: values.state,
     companyName: values.customerCompany,
     status: CustomerVerificationRequestStatus.PENDING,

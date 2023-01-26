@@ -210,7 +210,39 @@ export const messageIds: Messages = {
     unitPriceSuffix: 'pricing.unitPriceSuffix',
     priceBreakQuantityInfo: 'pricing.priceBreakQuantityInfo'
   },
-
+  signupFlow: {
+    signOutButton: 'signupFlow.signOutButton',
+    nextButton: 'signupFlow.nextButton',
+    backButton: 'signupFlow.backButton',
+    selectButton: 'signupFlow.selectButton',
+    companyNotFoundButton: 'signupFlow.companyNotFoundButton',
+    startBrowsingButton: 'signupFlow.startBrowsingButton',
+    addInvoiceButton: 'signupFlow.addInvoiceButton',
+    submittingTitle: 'signupFlow.submittingTitle',
+    submittingDescription: 'signupFlow.submittingDescription',
+    companyDetailsConfirmationButton:
+      'signupFlow.companyDetailsConfirmationButton',
+    companyDetailsDeclineButton: 'signupFlow.companyDetailsDeclineButton',
+    loadingDetails: 'signupFlow.loadingDetails',
+    completeSignupLater: 'signupFlow.completeSignupLater',
+    contactDetailsTitle: 'signupFlow.contactDetailsTitle',
+    billingAddressTitle: 'signupFlow.billingAddressTitle',
+    existingCustomerTitle: 'signupFlow.existingCustomerTitle',
+    tooltipLabel: 'signupFlow.tooltipLabel',
+    customerNumberTitle: 'signupFlow.customerNumberTitle',
+    customerNumberDescription: 'signupFlow.customerNumberDescription',
+    invoiceNumberTitle: 'signupFlow.invoiceNumberTitle',
+    invoiceNumberDescription: 'signupFlow.invoiceNumberDescription',
+    selectCompanyTitle: 'signupFlow.selectCompanyTitle',
+    companyDetailsTitle: 'signupFlow.companyDetailsTitle',
+    completionTitle: 'signupFlow.completionTitle',
+    completionDescription: 'signupFlow.completionDescription',
+    startBrowsingTitle: 'signupFlow.startBrowsingTitle',
+    submittingErrorTitle: 'signupFlow.submittingErrorTitle',
+    submittingErrorDescription: 'signupFlow.submittingErrorDescription',
+    invoiceNumberValidation: 'signupFlow.invoiceNumberValidation',
+    customerNumberValidation: 'signupFlow.customerNumberValidation'
+  },
   bookmarks: {
     actions: {
       bookmark: 'bookmarks.actions.bookmark'

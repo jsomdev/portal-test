@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import { FontWeights, Stack, Text, useTheme } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 import { CustomerSuggestionCard } from './customerSuggestionCard';
 import {
@@ -8,13 +11,16 @@ import {
   CustomerSuggestionsStyles
 } from './customerSuggestionTypes';
 
-// TODO: i18nFormF
-const messages = {
-  multipleTitle: 'Please select your company',
-  verifyAs: 'Verify as ',
-  singleTitle: 'Company Details',
-  singleSubText: ''
-};
+const messages = defineMessages({
+  selectCompanyTitle: {
+    id: messageIds.signupFlow.selectCompanyTitle,
+    defaultMessage: 'Select your company'
+  },
+  companyDetailsTitle: {
+    id: messageIds.signupFlow.companyDetailsTitle,
+    defaultMessage: 'Company Details'
+  }
+});
 
 export const CustomerSuggestions: React.FC<CustomerSuggestionsProps> = ({
   customers,
@@ -22,6 +28,7 @@ export const CustomerSuggestions: React.FC<CustomerSuggestionsProps> = ({
   onSelect
 }) => {
   const { spacing, palette } = useTheme();
+  const { formatMessage } = useIntl();
 
   const styles: CustomerSuggestionsStyles = {
     customerCardsContainer: {
@@ -54,7 +61,9 @@ export const CustomerSuggestions: React.FC<CustomerSuggestionsProps> = ({
           horizontalAlign="stretch"
           tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
         >
-          <Text variant="xLarge">{messages.singleTitle}</Text>
+          <Text variant="xLarge">
+            {formatMessage(messages.companyDetailsTitle)}
+          </Text>
         </Stack>
         <Stack tokens={{ childrenGap: spacing.m }}>
           <Stack
@@ -102,7 +111,9 @@ export const CustomerSuggestions: React.FC<CustomerSuggestionsProps> = ({
           horizontalAlign="stretch"
           tokens={{ childrenGap: spacing.m, padding: `${spacing.m} 0` }}
         >
-          <Text variant="xLarge">{messages.multipleTitle}</Text>
+          <Text variant="xLarge">
+            {formatMessage(messages.selectCompanyTitle)}
+          </Text>
         </Stack>
         <Stack
           tokens={{ childrenGap: spacing.m }}

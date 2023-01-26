@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useIntl } from 'react-intl';
+
 import {
   FontWeights,
   PrimaryButton,
@@ -7,24 +9,28 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { defineMessages } from '@formatjs/intl';
+import { messageIds } from '@services/i18n';
 
 import {
   CustomerSuggestionCardProps,
   CustomerSuggestionCardStyles
 } from './customerSuggestionTypes';
 
-// TODO: i18N
-const messages = {
-  select: 'Select'
-};
+const messages = defineMessages({
+  selectButton: {
+    id: messageIds.signupFlow.selectButton,
+    defaultMessage: 'Select'
+  }
+});
 
 export const CustomerSuggestionCard: React.FC<CustomerSuggestionCardProps> = ({
   customer,
   onSelect
 }) => {
   const { spacing, semanticColors, effects, palette } = useTheme();
+  const { formatMessage } = useIntl();
 
-  // TODO: Styling conventions
   const styles: CustomerSuggestionCardStyles = {
     customerCard: {
       root: {
@@ -90,7 +96,7 @@ export const CustomerSuggestionCard: React.FC<CustomerSuggestionCardProps> = ({
                   return onSelect(customer);
                 }}
               >
-                {messages.select}
+                {formatMessage(messages.selectButton)}
               </PrimaryButton>
             </Stack.Item>
           </Stack>

@@ -218,7 +218,7 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
       isOpen={!!editAddress}
       headerText={formatMessage(messages.title)}
       onDismiss={() => {
-        setEditAddress(undefined);
+        createOrUpdateAddressStatus !== 'loading' && setEditAddress(undefined);
       }}
       styles={styles.panel}
       type={PanelType.custom}

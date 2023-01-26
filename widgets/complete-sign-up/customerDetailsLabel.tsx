@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { defineMessages, useIntl } from 'react-intl';
+
 import {
   ActionButton,
   IconButton,
@@ -10,16 +12,19 @@ import {
   Text,
   useTheme
 } from '@fluentui/react';
+import { messageIds } from '@services/i18n';
 
 import {
   CustomerDetailsLabelProps,
   CustomerDetailsLabelStyles
 } from './customerDetailsLabel.types';
 
-// TODO i18n
-const messages = {
-  moreInfo: 'Where can I find this?'
-};
+const messages = defineMessages({
+  tooltipLabel: {
+    id: messageIds.signupFlow.tooltipLabel,
+    defaultMessage: 'Where can I find this?'
+  }
+});
 
 export const CustomerDetailsLabel: React.FC<CustomerDetailsLabelProps> = ({
   labelText,
@@ -29,6 +34,7 @@ export const CustomerDetailsLabel: React.FC<CustomerDetailsLabelProps> = ({
 }) => {
   const { spacing } = useTheme();
   const [showModal, setShowModal] = useState(false);
+  const { formatMessage } = useIntl();
 
   // TODO: Styling Conventions
   const styles: CustomerDetailsLabelStyles = {
@@ -56,7 +62,7 @@ export const CustomerDetailsLabel: React.FC<CustomerDetailsLabelProps> = ({
               setShowModal(true);
             }}
           >
-            {messages.moreInfo}
+            {formatMessage(messages.tooltipLabel)}
             <Modal
               isOpen={showModal}
               onDismiss={() => {

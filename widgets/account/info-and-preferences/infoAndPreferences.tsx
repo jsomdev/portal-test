@@ -249,12 +249,7 @@ export const InfoAndPreferences: React.FC = () => {
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
                   {section.links.map(link => {
                     return (
-                      <NextLink
-                        key={link.text}
-                        href={link.href}
-                        shallow
-                        passHref
-                      >
+                      <NextLink key={link.text} href={link.href} passHref>
                         <a>
                           <ActionButton
                             text={link.text}

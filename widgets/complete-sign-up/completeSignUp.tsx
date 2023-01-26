@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { Form, Formik, FormikTouched } from 'formik';
+import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import { useMsal } from '@azure/msal-react';
@@ -14,10 +15,12 @@ import {
   employeeLoginRequest
 } from '@services/authentication/authenticationConfiguration';
 import { useClaims } from '@services/authentication/claims';
+import { messageIds } from '@services/i18n';
 import { matchEmailToCustomer } from '@services/portal-api/matchCustomers';
 import {
   MatchCustomersResponse,
-  MatchedCustomer
+  MatchedCustomer,
+  matchedCustomersDummyData
 } from '@services/portal-api/models/MatchCustomerResponse';
 import { QUERYKEYS } from '@services/react-query/constants';
 
@@ -34,27 +37,41 @@ import { CompleteSignUpStepActions } from './completeSignUpStepActions';
 import {
   companyDetailsFormInitialValues,
   completeSignUpSteps,
-  completeSignUpValidation,
-  customerDetailsFormInitialValues
+  customerDetailsFormInitialValues,
+  getCompleteSignUpValidation
 } from './constants';
 import { ContactDetailsStep } from './contactDetailsStep';
 import { CustomerInformationStep } from './customerDetailsStep';
 import { SubmitStep } from './submitStep';
 
-const messages = {
-  completeLater: 'Complete your sign up later?',
-  signOut: 'Sign out',
-  loadingDetail: 'Checking for existing customer...'
-};
+const messages = defineMessages({
+  completeSignupLater: {
+    id: messageIds.signupFlow.completeSignupLater,
+    description: 'Prompt to complete signup later',
+    defaultMessage: 'Complete your sign up later?'
+  },
+  signOutButton: {
+    id: messageIds.signupFlow.signOutButton,
+    description: 'Prompt to sign out',
+    defaultMessage: 'Sign out'
+  },
+  loadingDetails: {
+    id: messageIds.signupFlow.loadingDetails,
+    description: 'Loading detail',
+    defaultMessage: 'Checking for existing customer...'
+  }
+});
 
 export const CompleteSignUp: React.FC = () => {
   const { spacing, palette } = useTheme();
   const { instance } = useMsal();
+  const { formatMessage } = useIntl();
 
   const { isEmployee } = useClaims();
   const [matchedCustomers, setMatchedCustomers] = useState<MatchedCustomer[]>(
-    []
+    matchedCustomersDummyData
   );
+
   const [selectedMatchedCustomer, setSelectedMatchedCustomer] = useState<
     MatchedCustomer | undefined
   >(undefined);
@@ -120,7 +137,7 @@ export const CompleteSignUp: React.FC = () => {
           city: matchedCustomersResponse.customers[0].addressCity || ' ',
           country: matchedCustomersResponse.customers[0].addressCountry || ' ',
           state: matchedCustomersResponse.customers[0].addressRegion || ' ',
-          zipCode:
+          postalCode:
             matchedCustomersResponse.customers[0].addressPostalCode || ' '
         };
       }
@@ -191,7 +208,12 @@ export const CompleteSignUp: React.FC = () => {
       root: {
         marginTop: spacing.m,
         marginBottom: spacing.m,
-        display: 'block'
+        display: 'block',
+        maxWidth: '100%'
+      },
+      image: {
+        maxWidth: '90%',
+        margin: 'auto'
       }
     },
     inner: {
@@ -220,7 +242,11 @@ export const CompleteSignUp: React.FC = () => {
       }
     },
     bottomSeperatorText: {
-      root: { background: '#fff', padding: '0 10px' }
+      root: {
+        background: '#fff',
+        padding: '0 10px',
+        lineHeight: '1px !important'
+      }
     },
     bottomContentContainer: {
       root: {
@@ -228,7 +254,7 @@ export const CompleteSignUp: React.FC = () => {
         textAlign: 'center',
         marginTop: 32,
         borderBottom: '1px solid black',
-        lineHeight: '0.1em'
+        lineHeight: '1px !important'
       }
     },
     formContainer: {
@@ -246,7 +272,9 @@ export const CompleteSignUp: React.FC = () => {
   };
 
   if (meStatus === 'loading' || matchEmailToCustomerStatus === 'loading') {
-    return <LoadingOverlay spinnerText={messages.loadingDetail} />;
+    return (
+      <LoadingOverlay spinnerText={formatMessage(messages.loadingDetails)} />
+    );
   }
 
   return (
@@ -270,7 +298,7 @@ export const CompleteSignUp: React.FC = () => {
                   ...controlledCompanyDetailsFormValues,
                   ...controlledCustomerDetailsFormValues
                 }}
-                validationSchema={completeSignUpValidation}
+                validationSchema={getCompleteSignUpValidation(formatMessage)}
                 initialTouched={{
                   ...initialTouchedContactDetailsFields,
                   ...initialTouchedCompanyDetailsFields
@@ -301,7 +329,7 @@ export const CompleteSignUp: React.FC = () => {
                                   city: customer.addressCity || ' ',
                                   country: customer.addressCountry || ' ',
                                   state: customer.addressRegion || ' ',
-                                  zipCode: customer.addressPostalCode || ' '
+                                  postalCode: customer.addressPostalCode || ' '
                                 };
                               const updatedCustomerDetailsFormValues: CustomerDetailsFormValues =
                                 {
@@ -347,7 +375,7 @@ export const CompleteSignUp: React.FC = () => {
                           <React.Fragment>
                             <Stack.Item styles={styles.bottomContentContainer}>
                               <Text styles={styles.bottomSeperatorText}>
-                                {messages.completeLater}
+                                {formatMessage(messages.completeSignupLater)}
                               </Text>
                             </Stack.Item>
                             <DefaultButton
@@ -361,7 +389,7 @@ export const CompleteSignUp: React.FC = () => {
                               }
                               styles={styles.defaultButton}
                             >
-                              {messages.signOut}
+                              {formatMessage(messages.signOutButton)}
                             </DefaultButton>
                           </React.Fragment>
                         )}

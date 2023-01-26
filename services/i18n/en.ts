@@ -248,6 +248,44 @@ export const en: Messages = {
     clearAll: 'Clear all',
     compare: 'Compare'
   },
+  signupFlow: {
+    addInvoiceButton: 'Add another invoice number',
+    backButton: 'Back',
+    billingAddressTitle: 'Billing Address',
+    companyDetailsConfirmationButton: 'Yes, link me to this company',
+    companyDetailsDeclineButton: 'No, enter details manually',
+    companyDetailsTitle: 'Company Details',
+    companyNotFoundButton: 'My company is not in the list',
+    completeSignupLater: 'Complete your sign up later?',
+    completionDescription:
+      'Thank you for completing your sign up. You will be notified by email once your information has been reviewed.',
+    completionTitle: 'All done!',
+    contactDetailsTitle: 'Contact Details',
+    customerNumberDescription:
+      "Your customer number can be found on the left side of any Spraying Systems Co. invoice. It's a 7-digit number shown as 'CUST NO'.",
+    customerNumberTitle: 'Customer Number',
+    existingCustomerTitle: 'Already with Spraying Systems Co.?',
+    invoiceNumberDescription:
+      "An invoice number can be found in the upper right hand corner of any Spraying Systems Co. invoice. It's a 7-character string shown as 'INVOICE NO' (Two letters followed by five digits).",
+    invoiceNumberTitle: 'Invoice Number',
+    loadingDetails: 'Checking for existing customer...',
+    nextButton: 'Next',
+    selectButton: 'Select',
+    selectCompanyTitle: 'Please select your company',
+    signOutButton: 'Sign out',
+    startBrowsingButton: 'Get Started',
+    startBrowsingTitle: 'You are all set to start browsing!',
+    submittingDescription: 'We are setting things up for you...',
+    submittingTitle: 'Please wait!',
+    tooltipLabel: 'Where can I find this?',
+    submittingErrorDescription:
+      'Your request could not be completed. Please try again or contact customer support.',
+    submittingErrorTitle: 'An error occurred!',
+    customerNumberValidation:
+      'A valid Customer Number is 7 digits long (e.g. 1234567)',
+    invoiceNumberValidation:
+      'A valid Invoice Number consists of 2 letters followed by 5 digits (e.g. AB12345)'
+  },
   pages: {
     default: {
       headTitle: '{title} | Spraying Systems Co.'

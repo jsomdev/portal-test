@@ -1,16 +1,19 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Form, Formik } from 'formik';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { PortalMessageBar } from '@components/messages/portalMessageBar';
 import {
   DefaultButton,
   IButtonStyles,
   IPanelStyles,
+  MessageBarType,
   Panel,
   PanelType,
   PrimaryButton,
   Stack,
+  Text,
   useTheme
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
@@ -48,6 +51,12 @@ const messages = defineMessages({
       .profileInformation.panel.title,
     defaultMessage: 'Edit information',
     description: 'Edit information'
+  },
+  errorMessage: {
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .profileInformation.errorMessage,
+    description: 'Error message for form',
+    defaultMessage: 'Your information was not updated. Please try again.'
   }
 });
 
@@ -67,7 +76,9 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
 }) => {
   const { palette, spacing, semanticColors } = useTheme();
   const { formatMessage } = useIntl();
-  const { me, createContactDetailsRequest } = useMe();
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const { me, createContactDetailsRequest, createContactDetailsRequestStatus } =
+    useMe();
 
   const defaultAndPrefilledValues: ProfileInformationFormData =
     useMemo((): ProfileInformationFormData => {
@@ -80,19 +91,42 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
       };
     }, [me]);
 
+  useEffect(() => {
+    if (createContactDetailsRequestStatus === 'error') {
+      setShowErrorMessage(true);
+    }
+    const timeout = setTimeout(() => {
+      setShowErrorMessage(false);
+    }, 5000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [createContactDetailsRequestStatus]);
+
   const initialTouched = useMemo(() => {
     return getTouchedFields(defaultAndPrefilledValues);
   }, [defaultAndPrefilledValues]);
 
-  async function saveContactDetails(values: ProfileInformationFormData) {
-    await createContactDetailsRequest({
-      email: values.email,
-      firstName: values.firstName,
-      lastName: values.name,
-      phone: values.phone,
-      jobTitle: values.jobTitle
-    });
-  }
+  const onFormSubmit = useCallback(
+    (values: ProfileInformationFormData): void => {
+      createContactDetailsRequest({
+        email: values.email,
+        firstName: values.firstName,
+        lastName: values.name,
+        phone: values.phone,
+        jobTitle: values.jobTitle
+      })
+        .then(value => {
+          if (value) {
+            setShowEditInformation(false);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    [createContactDetailsRequest, setShowEditInformation]
+  );
 
   const styles: ProfileInformationFormStyles = {
     panel: {
@@ -140,7 +174,8 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
       headerText={formatMessage(messages.title)}
       isOpen={!!showEditInformation}
       onDismiss={() => {
-        setShowEditInformation(false);
+        createContactDetailsRequestStatus !== 'loading' &&
+          setShowEditInformation(false);
       }}
       styles={styles.panel}
       type={PanelType.custom}
@@ -155,12 +190,16 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
         enableReinitialize={true}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(false);
-          saveContactDetails(values);
-          setShowEditInformation(false);
+          onFormSubmit(values);
         }}
       >
         <Form noValidate>
-          <Stack tokens={{ padding: spacing.l1 }}>
+          <Stack tokens={{ padding: spacing.l1, childrenGap: spacing.m }}>
+            {showErrorMessage && (
+              <PortalMessageBar messageBarType={MessageBarType.error}>
+                <Text>{formatMessage(messages.errorMessage)}</Text>
+              </PortalMessageBar>
+            )}
             <ProfileInformationFormGroup />
           </Stack>
           <Stack
@@ -172,6 +211,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
               type="submit"
               text={formatMessage(messages.save)}
               styles={styles.actionButton}
+              disabled={createContactDetailsRequestStatus === 'loading'}
             />
             <DefaultButton
               onClick={() => {
@@ -179,6 +219,7 @@ export const ProfileInformationForm: React.FC<ProfileInformationFormProps> = ({
               }}
               text={formatMessage(messages.cancel)}
               styles={styles.actionButton}
+              disabled={createContactDetailsRequestStatus === 'loading'}
             />
           </Stack>
         </Form>

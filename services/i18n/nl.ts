@@ -149,6 +149,45 @@ export const nl: Messages = {
     compare: 'Vergelijk',
     title: 'Vergelijk producten'
   },
+  signupFlow: {
+    addInvoiceButton: 'Voeg een ander factuurnummer toe',
+    backButton: 'Terug',
+    billingAddressTitle: 'Factuuradres',
+    companyDetailsConfirmationButton: 'Ja, koppel mij aan deze onderneming',
+    companyDetailsDeclineButton: 'Nee, voer details handmatig in',
+    companyDetailsTitle: 'Bedrijfsgegevens',
+    companyNotFoundButton: 'Mijn bedrijf staat niet in de lijst',
+    completeSignupLater: 'Account later afwerken?',
+    completionDescription:
+      'Bedankt voor het voltooien van uw aanmelding. U ontvangt een e-mailbericht zodra uw informatie is beoordeeld.',
+    completionTitle: 'Klaar!',
+    contactDetailsTitle: 'Contactgegevens',
+    customerNumberDescription:
+      "Uw klantennummer kunt u vinden aan de linkerkant van elke factuur van Spraying Systems Co. Het is een 7-cijferig nummer dat wordt weergegeven als 'CUST NO'.",
+    customerNumberTitle: 'Klantennummer',
+    existingCustomerTitle: 'Al klant bij Spraying Systems Co.?',
+    invoiceNumberDescription:
+      "Een factuurnummer kunt u vinden in de rechterbovenhoek van elke factuur van Spraying Systems Co. Het is een 7-tekenreeks die wordt weergegeven als 'FACTUUR NR' (twee letters gevolgd door vijf cijfers).",
+    invoiceNumberTitle: 'Factuurnummer',
+    loadingDetails: 'Controleren op bestaande gegevens...',
+    nextButton: 'Volgende',
+    selectButton: 'Selecteren',
+    selectCompanyTitle: 'Selecteer uw bedrijf',
+    signOutButton: 'Uitloggen',
+    startBrowsingButton: 'Aan de slag',
+    startBrowsingTitle: 'U kunt nu beginnen met browsen!',
+    submittingDescription:
+      'We zijn bezig met het instellen van alles voor u...',
+    submittingTitle: 'Even geduld aub!',
+    tooltipLabel: 'Waar kan ik dit vinden?',
+    submittingErrorDescription:
+      'Wij konnen uw aanmelding niet voltooien. Probeer het later opnieuw. ',
+    submittingErrorTitle: 'Er is een fout opgetreden',
+    customerNumberValidation:
+      'Een geldig klantnummer is 7 cijfers lang (bijv. 1234567)',
+    invoiceNumberValidation:
+      'Een geldig factuurnummer bestaat uit 2 letters gevolgd door 5 cijfers (bijv. AB12345)'
+  },
   searchBar: {
     noResults: 'Er werden geen resultaten gevonden...',
     recentSearches: 'Recente zoekopdrachten',
