@@ -303,19 +303,19 @@ p {
   display: none;
 }
 
-ul {
+header ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-ul.horizontal {
+header ul.horizontal {
   display: flex;
   width: auto;
   margin: 0;
   padding: 0;
 }
-li.horizontal {
+header li.horizontal {
   display: block;
   flex: 0 1 auto; /* Default */
   list-style-type: none;
