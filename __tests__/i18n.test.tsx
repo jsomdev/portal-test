@@ -12,7 +12,8 @@ jest.mock('next/head', () => {
     __esModule: true,
     default: ({ children }: { children: Array<React.ReactElement> }) => {
       return <>{children}</>;
-    }
+    },
+    supportedLocales: ['en-us', 'nl-be', 'de-de']
   };
 });
 
@@ -35,14 +36,6 @@ describe('I18N Tests', () => {
   });
 
   it('getMessages returns the messages for a supported locale correctly', () => {
-    if (
-      !supportedLocales?.includes('nl-be') ||
-      !supportedLocales.includes('en-us')
-    ) {
-      throw new Error(
-        'en-us and nl-be need to be supported locales for this test to pass. Change tests if this should not be the case'
-      );
-    }
     const actualMessagesNL: Messages = getMessages('nl-be');
     const expectedMessagesNL: Messages = nl;
     expect(actualMessagesNL.pages.docs.i18n.title).toBe(
