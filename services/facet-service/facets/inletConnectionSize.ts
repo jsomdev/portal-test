@@ -11,26 +11,26 @@ export enum InletConnectionSizeFacetOptionKey {
   _0_0625 = '_0_0625',
   _0_125 = '_0_125',
   _0_139 = '_0_139',
-  _0_25_ = '_0_25_',
+  _0_25 = '_0_25',
   _0_375 = '_0_375',
-  _0_5__ = '_0_5__',
+  _0_5 = '_0_5',
   _0_716 = '_0_716',
-  _0_75_ = '_0_75_',
+  _0_75 = '_0_75',
   _0_756 = '_0_756',
   _0_992 = '_0_992',
-  _1___ = '_1___',
+  _1 = '_1',
   _1_012 = '_1_012',
-  _1_25_ = '_1_25_',
-  _1_5___ = '_1_5___',
-  _10___ = '_10___',
-  _12_ = '_12_',
-  _2___ = '_2___',
-  _2_5___ = '_2_5___',
-  _3___ = '_3___',
-  _4___ = '_4___',
-  _5____ = '_5____',
-  _6___ = '_6___',
-  _8___ = '_8___'
+  _1_25 = '_1_25',
+  _1_5 = '_1_5',
+  _10 = '_10',
+  _12 = '_12',
+  _2 = '_2',
+  _2_5 = '_2_5',
+  _3 = '_3',
+  _4 = '_4',
+  _5 = '_5',
+  _6 = '_6',
+  _8 = '_8'
 }
 
 export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFacetOptionKey>[] =
@@ -84,7 +84,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._0_25_,
+      key: InletConnectionSizeFacetOptionKey._0_25,
       ...defaultFacetOption,
       valueId: '',
       value: 0.25,
@@ -116,7 +116,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._0_5__,
+      key: InletConnectionSizeFacetOptionKey._0_5,
       ...defaultFacetOption,
       valueId: '',
       value: 0.5,
@@ -148,7 +148,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._0_75_,
+      key: InletConnectionSizeFacetOptionKey._0_75,
       ...defaultFacetOption,
       valueId: '',
       value: 0.75,
@@ -196,7 +196,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._1___,
+      key: InletConnectionSizeFacetOptionKey._1,
       ...defaultFacetOption,
       valueId: '',
       value: 1,
@@ -228,7 +228,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._1_25_,
+      key: InletConnectionSizeFacetOptionKey._1_25,
       ...defaultFacetOption,
       valueId: '',
       value: 1.25,
@@ -244,7 +244,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._1_5___,
+      key: InletConnectionSizeFacetOptionKey._1_5,
       ...defaultFacetOption,
       valueId: '',
       value: 1.5,
@@ -260,7 +260,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._10___,
+      key: InletConnectionSizeFacetOptionKey._10,
       ...defaultFacetOption,
       valueId: '',
       value: 10,
@@ -276,7 +276,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._12_,
+      key: InletConnectionSizeFacetOptionKey._12,
       ...defaultFacetOption,
       valueId: '',
       value: 12,
@@ -292,7 +292,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._2___,
+      key: InletConnectionSizeFacetOptionKey._2,
       ...defaultFacetOption,
       valueId: '',
       value: 2,
@@ -308,7 +308,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._2_5___,
+      key: InletConnectionSizeFacetOptionKey._2_5,
       ...defaultFacetOption,
       valueId: '',
       value: 2.5,
@@ -324,7 +324,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._3___,
+      key: InletConnectionSizeFacetOptionKey._3,
       ...defaultFacetOption,
       valueId: '',
       value: 3,
@@ -340,7 +340,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._4___,
+      key: InletConnectionSizeFacetOptionKey._4,
       ...defaultFacetOption,
       valueId: '',
       value: 4,
@@ -356,7 +356,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._5____,
+      key: InletConnectionSizeFacetOptionKey._5,
       ...defaultFacetOption,
       valueId: '',
       value: 5,
@@ -372,7 +372,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._6___,
+      key: InletConnectionSizeFacetOptionKey._6,
       ...defaultFacetOption,
       valueId: '',
       value: 6,
@@ -388,7 +388,7 @@ export const inletConnectionSizeFacetOptions: FacetOption<InletConnectionSizeFac
       }
     },
     {
-      key: InletConnectionSizeFacetOptionKey._8___,
+      key: InletConnectionSizeFacetOptionKey._8,
       ...defaultFacetOption,
       valueId: '',
       value: 8,

@@ -29,7 +29,7 @@ export const pressureGroupFacetOptions: FacetOption<PressureGroupFacetOptionKey>
             value: { en: 'High Pressure' }
           }
         ],
-        sortIndex: 1
+        sortIndex: 3
       }
     },
     {
@@ -45,7 +45,7 @@ export const pressureGroupFacetOptions: FacetOption<PressureGroupFacetOptionKey>
             value: { en: 'Low Pressure' }
           }
         ],
-        sortIndex: 2
+        sortIndex: 1
       }
     },
     {
@@ -61,7 +61,7 @@ export const pressureGroupFacetOptions: FacetOption<PressureGroupFacetOptionKey>
             value: { en: 'Medium Pressure' }
           }
         ],
-        sortIndex: 3
+        sortIndex: 2
       }
     },
     {

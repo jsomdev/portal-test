@@ -51,7 +51,7 @@ const messages = defineMessages({
   signInPrompt: {
     id: messageIds.pages.account.signInPrompt,
     description: 'Prompt for an unauthenticated user',
-    defaultMessage: 'Default sign in message prompt'
+    defaultMessage: 'Please sign in to view your account pages'
   }
 });
 
@@ -155,7 +155,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({
                     <AppErrorBoundary>{children}</AppErrorBoundary>
                   </Stack>
                 )}
-                {!isAuthenticated && (
+                {!isAuthenticated && inProgress === InteractionStatus.None && (
                   <PortalMessageBar
                     messageBarType={MessageBarType.warning}
                     styles={styles.signInPrompt}

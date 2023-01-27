@@ -8,25 +8,25 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum RelativeDropSizeGroupFacetOptionKey {
-  _1000to5000Microns = '_1000to5000Microns',
-  _100to500Microns = '_100to500Microns',
   _10to100Microns = '_10to100Microns',
-  _500to1000Microns = '_500to1000Microns'
+  _100to500Microns = '_100to500Microns',
+  _500to1000Microns = '_500to1000Microns',
+  _1000to5000Microns = '_1000to5000Microns'
 }
 
 export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGroupFacetOptionKey>[] =
   [
     {
-      key: RelativeDropSizeGroupFacetOptionKey._1000to5000Microns,
+      key: RelativeDropSizeGroupFacetOptionKey._10to100Microns,
       ...defaultFacetOption,
-      valueId: '4a359ecc-8acb-4512-898f-bfecd9ffc9cc',
-      value: '1000to5000Microns',
+      valueId: '98082f59-2cbf-439a-a0c5-b3f56aa8d71a',
+      value: '10to100Microns',
       configuration: {
         displays: [
           {
             variation: 'Invariant',
             unitSymbol: '',
-            value: { en: '{1000} - {5000} µm (Heavy Rain)' }
+            value: { en: '10 - 100 µm (Fog)' }
           }
         ],
         sortIndex: 1
@@ -49,22 +49,6 @@ export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGrou
       }
     },
     {
-      key: RelativeDropSizeGroupFacetOptionKey._10to100Microns,
-      ...defaultFacetOption,
-      valueId: '98082f59-2cbf-439a-a0c5-b3f56aa8d71a',
-      value: '10to100Microns',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: { en: '10 - 100 µm (Fog)' }
-          }
-        ],
-        sortIndex: 3
-      }
-    },
-    {
       key: RelativeDropSizeGroupFacetOptionKey._500to1000Microns,
       ...defaultFacetOption,
       valueId: 'c059f05f-6a87-4a82-9a62-1fd38b618377',
@@ -75,6 +59,22 @@ export const relativeDropSizeGroupFacetOptions: FacetOption<RelativeDropSizeGrou
             variation: 'Invariant',
             unitSymbol: '',
             value: { en: '500 - {1000} µm (Moderate Rain)' }
+          }
+        ],
+        sortIndex: 3
+      }
+    },
+    {
+      key: RelativeDropSizeGroupFacetOptionKey._1000to5000Microns,
+      ...defaultFacetOption,
+      valueId: '4a359ecc-8acb-4512-898f-bfecd9ffc9cc',
+      value: '1000to5000Microns',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: '{1000} - {5000} µm (Heavy Rain)' }
           }
         ],
         sortIndex: 4

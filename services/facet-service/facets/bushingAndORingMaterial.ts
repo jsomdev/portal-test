@@ -18,6 +18,22 @@ export enum BushingAndORingMaterialFacetOptionKey {
 export const bushingAndORingMaterialFacetOptions: FacetOption<BushingAndORingMaterialFacetOptionKey>[] =
   [
     {
+      key: BushingAndORingMaterialFacetOptionKey.TE,
+      ...defaultFacetOption,
+      valueId: 'a67572df-a2dd-4212-a349-2c66f0aec89b',
+      value: 'TE',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'CGTEF and EPDM', de: 'CGTEF und EPDM' }
+          }
+        ],
+        sortIndex: 1
+      }
+    },
+    {
       key: BushingAndORingMaterialFacetOptionKey.FC,
       ...defaultFacetOption,
       valueId: '812a0a79-9ec5-498c-a98f-a4386f643a23',
@@ -33,7 +49,7 @@ export const bushingAndORingMaterialFacetOptions: FacetOption<BushingAndORingMat
             }
           }
         ],
-        sortIndex: 1
+        sortIndex: 2
       }
     },
     {
@@ -50,22 +66,6 @@ export const bushingAndORingMaterialFacetOptions: FacetOption<BushingAndORingMat
               en: 'UHWMPE and EPDM (Teflon free)',
               de: 'UHWMPE und EPDM (Teflon frei)'
             }
-          }
-        ],
-        sortIndex: 2
-      }
-    },
-    {
-      key: BushingAndORingMaterialFacetOptionKey.TE,
-      ...defaultFacetOption,
-      valueId: 'a67572df-a2dd-4212-a349-2c66f0aec89b',
-      value: 'TE',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: { en: 'CGTEF and EPDM', de: 'CGTEF und EPDM' }
           }
         ],
         sortIndex: 3

@@ -46,7 +46,6 @@ export enum InletConnectionTypeFacetOptionKey {
   W19 = 'W19',
   Welded = 'Welded'
 }
-
 export const inletConnectionTypeFacetOptions: FacetOption<InletConnectionTypeFacetOptionKey>[] =
   [
     {

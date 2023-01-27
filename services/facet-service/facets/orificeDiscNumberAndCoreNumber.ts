@@ -8,84 +8,84 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum OrificeDiscNumberAndCoreNumberFacetOptionKey {
-  D1_513_ = 'D1_513_',
-  D1_523_ = 'D1_523_',
-  D1_525_ = 'D1_525_',
-  D1_531_ = 'D1_531_',
-  D1_533_ = 'D1_533_',
-  D1_535_ = 'D1_535_',
-  D1_545_ = 'D1_545_',
-  D1_546_ = 'D1_546_',
-  D1_556_ = 'D1_556_',
-  D1025_ = 'D1025_',
-  D1045_ = 'D1045_',
-  D1046_ = 'D1046_',
-  D1056_ = 'D1056_',
-  D113_ = 'D113_',
-  D1225_ = 'D1225_',
-  D123_ = 'D123_',
-  D1245_ = 'D1245_',
-  D125_ = 'D125_',
-  D131_ = 'D131_',
-  D133_ = 'D133_',
-  D135_ = 'D135_',
-  D1425_ = 'D1425_',
-  D1445_ = 'D1445_',
-  D145_ = 'D145_',
-  D146_ = 'D146_',
-  D156_ = 'D156_',
-  D1645_ = 'D1645_',
-  D213_ = 'D213_',
-  D223_ = 'D223_',
-  D225_ = 'D225_',
-  D231_ = 'D231_',
-  D233_ = 'D233_',
-  D235_ = 'D235_',
-  D245_ = 'D245_',
-  D246_ = 'D246_',
-  D256_ = 'D256_',
-  D313_ = 'D313_',
-  D323_ = 'D323_',
-  D325_ = 'D325_',
-  D331_ = 'D331_',
-  D333_ = 'D333_',
-  D335_ = 'D335_',
-  D345_ = 'D345_',
-  D346_ = 'D346_',
-  D356_ = 'D356_',
-  D413_ = 'D413_',
-  D423_ = 'D423_',
-  D425_ = 'D425_',
-  D433_ = 'D433_',
-  D435_ = 'D435_',
-  D445_ = 'D445_',
-  D446_ = 'D446_',
-  D456_ = 'D456_',
-  D523_ = 'D523_',
-  D525_ = 'D525_',
-  D535_ = 'D535_',
-  D545_ = 'D545_',
-  D546_ = 'D546_',
-  D556_ = 'D556_',
-  D623_ = 'D623_',
-  D625_ = 'D625_',
-  D645_ = 'D645_',
-  D646_ = 'D646_',
-  D656_ = 'D656_',
-  D725_ = 'D725_',
-  D745_ = 'D745_',
-  D746_ = 'D746_',
-  D756_ = 'D756_',
-  D825_ = 'D825_',
-  D845_ = 'D845_',
-  D846_ = 'D846_',
-  D856_ = 'D856_'
+  D1_513 = 'D1_513',
+  D1_523 = 'D1_523',
+  D1_525 = 'D1_525',
+  D1_531 = 'D1_531',
+  D1_533 = 'D1_533',
+  D1_535 = 'D1_535',
+  D1_545 = 'D1_545',
+  D1_546 = 'D1_546',
+  D1_556 = 'D1_556',
+  D1025 = 'D1025',
+  D1045 = 'D1045',
+  D1046 = 'D1046',
+  D1056 = 'D1056',
+  D113 = 'D113',
+  D1225 = 'D1225',
+  D123 = 'D123',
+  D1245 = 'D1245',
+  D125 = 'D125',
+  D131 = 'D131',
+  D133 = 'D133',
+  D135 = 'D135',
+  D1425 = 'D1425',
+  D1445 = 'D1445',
+  D145 = 'D145',
+  D146 = 'D146',
+  D156 = 'D156',
+  D1645 = 'D1645',
+  D213 = 'D213',
+  D223 = 'D223',
+  D225 = 'D225',
+  D231 = 'D231',
+  D233 = 'D233',
+  D235 = 'D235',
+  D245 = 'D245',
+  D246 = 'D246',
+  D256 = 'D256',
+  D313 = 'D313',
+  D323 = 'D323',
+  D325 = 'D325',
+  D331 = 'D331',
+  D333 = 'D333',
+  D335 = 'D335',
+  D345 = 'D345',
+  D346 = 'D346',
+  D356 = 'D356',
+  D413 = 'D413',
+  D423 = 'D423',
+  D425 = 'D425',
+  D433 = 'D433',
+  D435 = 'D435',
+  D445 = 'D445',
+  D446 = 'D446',
+  D456 = 'D456',
+  D523 = 'D523',
+  D525 = 'D525',
+  D535 = 'D535',
+  D545 = 'D545',
+  D546 = 'D546',
+  D556 = 'D556',
+  D623 = 'D623',
+  D625 = 'D625',
+  D645 = 'D645',
+  D646 = 'D646',
+  D656 = 'D656',
+  D725 = 'D725',
+  D745 = 'D745',
+  D746 = 'D746',
+  D756 = 'D756',
+  D825 = 'D825',
+  D845 = 'D845',
+  D846 = 'D846',
+  D856 = 'D856'
 }
 
 export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDiscNumberAndCoreNumberFacetOptionKey>[] =
   [
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_513_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_513,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-13',
@@ -101,7 +101,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_523_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_523,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-23',
@@ -117,7 +117,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_525_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_525,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-25',
@@ -133,7 +133,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_531_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_531,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-31',
@@ -149,7 +149,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_533_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_533,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-33',
@@ -165,7 +165,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_535_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_535,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-35',
@@ -181,7 +181,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_545_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_545,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-45',
@@ -197,7 +197,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_546_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_546,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-46',
@@ -213,7 +213,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_556_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1_556,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1.5-56',
@@ -229,7 +229,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1025_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1025,
       ...defaultFacetOption,
       valueId: '',
       value: 'D10-25',
@@ -245,7 +245,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1045_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1045,
       ...defaultFacetOption,
       valueId: '',
       value: 'D10-45',
@@ -261,7 +261,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1046_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1046,
       ...defaultFacetOption,
       valueId: '',
       value: 'D10-46',
@@ -277,7 +277,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1056_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1056,
       ...defaultFacetOption,
       valueId: '',
       value: 'D10-56',
@@ -293,7 +293,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D113_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D113,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-13',
@@ -309,7 +309,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1225_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1225,
       ...defaultFacetOption,
       valueId: '',
       value: 'D12-25',
@@ -325,7 +325,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D123_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D123,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-23',
@@ -341,7 +341,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1245_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1245,
       ...defaultFacetOption,
       valueId: '',
       value: 'D12-45',
@@ -357,7 +357,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D125_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D125,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-25',
@@ -373,7 +373,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D131_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D131,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-31',
@@ -389,7 +389,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D133_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D133,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-33',
@@ -405,7 +405,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D135_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D135,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-35',
@@ -421,7 +421,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1425_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1425,
       ...defaultFacetOption,
       valueId: '',
       value: 'D14-25',
@@ -437,7 +437,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1445_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1445,
       ...defaultFacetOption,
       valueId: '',
       value: 'D14-45',
@@ -453,7 +453,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D145_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D145,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-45',
@@ -469,7 +469,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D146_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D146,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-46',
@@ -485,7 +485,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D156_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D156,
       ...defaultFacetOption,
       valueId: '',
       value: 'D1-56',
@@ -501,7 +501,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1645_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D1645,
       ...defaultFacetOption,
       valueId: '',
       value: 'D16-45',
@@ -517,7 +517,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D213_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D213,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-13',
@@ -533,7 +533,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D223_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D223,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-23',
@@ -549,7 +549,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D225_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D225,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-25',
@@ -565,7 +565,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D231_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D231,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-31',
@@ -581,7 +581,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D233_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D233,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-33',
@@ -597,7 +597,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D235_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D235,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-35',
@@ -613,7 +613,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D245_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D245,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-45',
@@ -629,7 +629,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D246_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D246,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-46',
@@ -645,7 +645,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D256_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D256,
       ...defaultFacetOption,
       valueId: '',
       value: 'D2-56',
@@ -661,7 +661,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D313_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D313,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-13',
@@ -677,7 +677,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D323_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D323,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-23',
@@ -693,7 +693,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D325_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D325,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-25',
@@ -709,7 +709,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D331_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D331,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-31',
@@ -725,7 +725,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D333_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D333,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-33',
@@ -741,7 +741,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D335_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D335,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-35',
@@ -757,7 +757,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D345_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D345,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-45',
@@ -773,7 +773,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D346_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D346,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-46',
@@ -789,7 +789,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D356_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D356,
       ...defaultFacetOption,
       valueId: '',
       value: 'D3-56',
@@ -805,7 +805,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D413_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D413,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-13',
@@ -821,7 +821,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D423_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D423,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-23',
@@ -837,7 +837,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D425_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D425,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-25',
@@ -853,7 +853,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D433_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D433,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-33',
@@ -869,7 +869,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D435_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D435,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-35',
@@ -885,7 +885,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D445_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D445,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-45',
@@ -901,7 +901,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D446_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D446,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-46',
@@ -917,7 +917,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D456_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D456,
       ...defaultFacetOption,
       valueId: '',
       value: 'D4-56',
@@ -933,7 +933,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D523_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D523,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-23',
@@ -949,7 +949,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D525_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D525,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-25',
@@ -965,7 +965,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D535_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D535,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-35',
@@ -981,7 +981,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D545_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D545,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-45',
@@ -997,7 +997,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D546_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D546,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-46',
@@ -1013,7 +1013,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D556_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D556,
       ...defaultFacetOption,
       valueId: '',
       value: 'D5-56',
@@ -1029,7 +1029,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D623_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D623,
       ...defaultFacetOption,
       valueId: '',
       value: 'D6-23',
@@ -1045,7 +1045,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D625_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D625,
       ...defaultFacetOption,
       valueId: '',
       value: 'D6-25',
@@ -1061,7 +1061,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D645_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D645,
       ...defaultFacetOption,
       valueId: '',
       value: 'D6-45',
@@ -1077,7 +1077,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D646_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D646,
       ...defaultFacetOption,
       valueId: '',
       value: 'D6-46',
@@ -1093,7 +1093,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D656_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D656,
       ...defaultFacetOption,
       valueId: '',
       value: 'D6-56',
@@ -1109,7 +1109,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D725_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D725,
       ...defaultFacetOption,
       valueId: '',
       value: 'D7-25',
@@ -1125,7 +1125,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D745_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D745,
       ...defaultFacetOption,
       valueId: '',
       value: 'D7-45',
@@ -1141,7 +1141,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D746_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D746,
       ...defaultFacetOption,
       valueId: '',
       value: 'D7-46',
@@ -1157,7 +1157,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D756_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D756,
       ...defaultFacetOption,
       valueId: '',
       value: 'D7-56',
@@ -1173,7 +1173,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D825_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D825,
       ...defaultFacetOption,
       valueId: '',
       value: 'D8-25',
@@ -1189,7 +1189,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D845_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D845,
       ...defaultFacetOption,
       valueId: '',
       value: 'D8-45',
@@ -1205,7 +1205,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D846_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D846,
       ...defaultFacetOption,
       valueId: '',
       value: 'D8-46',
@@ -1221,7 +1221,7 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     },
     {
-      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D856_,
+      key: OrificeDiscNumberAndCoreNumberFacetOptionKey.D856,
       ...defaultFacetOption,
       valueId: '',
       value: 'D8-56',
@@ -1237,7 +1237,6 @@ export const orificeDiscNumberAndCoreNumberFacetOptions: FacetOption<OrificeDisc
       }
     }
   ];
-
 export const orificeDiscNumberAndCoreNumberFacet: Facet<
   OrificeDiscNumberAndCoreNumberFacetOptionKey,
   FacetOption<OrificeDiscNumberAndCoreNumberFacetOptionKey>
