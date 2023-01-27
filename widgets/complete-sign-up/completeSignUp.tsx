@@ -10,6 +10,12 @@ import { StepContent } from '@components/stepper/stepContent';
 import { StepFormValidator } from '@components/stepper/stepFormValidator';
 import { Stepper } from '@components/stepper/stepper';
 import { DefaultButton, Image, Stack, Text, useTheme } from '@fluentui/react';
+import { useAppInsightsContext } from '@microsoft/applicationinsights-react-js';
+import { SeverityLevel } from '@microsoft/applicationinsights-web';
+import {
+  ExceptionMetaDataKey,
+  TrackExceptionCustomProperties
+} from '@services/application-insights/types';
 import {
   customerLoginRequest,
   employeeLoginRequest
@@ -19,8 +25,7 @@ import { messageIds } from '@services/i18n';
 import { matchEmailToCustomer } from '@services/portal-api/matchCustomers';
 import {
   MatchCustomersResponse,
-  MatchedCustomer,
-  matchedCustomersDummyData
+  MatchedCustomer
 } from '@services/portal-api/models/MatchCustomerResponse';
 import { QUERYKEYS } from '@services/react-query/constants';
 
@@ -66,10 +71,11 @@ export const CompleteSignUp: React.FC = () => {
   const { spacing, palette } = useTheme();
   const { instance } = useMsal();
   const { formatMessage } = useIntl();
+  const { trackException } = useAppInsightsContext();
 
   const { isEmployee } = useClaims();
   const [matchedCustomers, setMatchedCustomers] = useState<MatchedCustomer[]>(
-    matchedCustomersDummyData
+    []
   );
 
   const [selectedMatchedCustomer, setSelectedMatchedCustomer] = useState<
@@ -90,6 +96,19 @@ export const CompleteSignUp: React.FC = () => {
         if (matchCustomersResponse.customers.length === 1) {
           setSelectedMatchedCustomer(matchCustomersResponse.customers[0]);
         }
+      },
+      onError: error => {
+        const customProperties: TrackExceptionCustomProperties = {
+          key: ExceptionMetaDataKey.MatchCustomer,
+          comment: 'Error occured while matching email to customer'
+        };
+        trackException(
+          {
+            exception: error as Error,
+            severityLevel: SeverityLevel.Error
+          },
+          customProperties
+        );
       }
     });
 
