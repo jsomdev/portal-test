@@ -54,13 +54,15 @@ export const AddressBookProvider: React.FC = ({ children }) => {
             });
           setBillingAddress(dataBillingAddress);
           setShippingAddress(dataShippingAddress);
-          setAddresses(
-            sortAddressBook(
-              value?.addresses,
-              dataBillingAddress,
-              dataShippingAddress
-            )
-          );
+          if (value?.addresses.length > 0) {
+            setAddresses(
+              sortAddressBook(
+                value?.addresses,
+                dataBillingAddress,
+                dataShippingAddress
+              )
+            );
+          }
         }
       }
     }

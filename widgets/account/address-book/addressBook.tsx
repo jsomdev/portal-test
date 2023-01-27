@@ -82,7 +82,7 @@ export const AddressBook: React.FC = () => {
   } = useContext(AddressBookContext);
 
   const mappedAddresses: AddressViewModel[] | undefined = useMemo(() => {
-    if (addresses === undefined || !addresses?.length) {
+    if (addresses === undefined || addresses?.length < 1) {
       return undefined;
     }
     // Filter the addresses to remove the shipping and billing address and map to the view model
