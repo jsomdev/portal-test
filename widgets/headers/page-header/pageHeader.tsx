@@ -19,7 +19,7 @@ export const PagesHeader: FC<PageHeaderProps> = ({
   const styles: PagesHeaderStyles = {
     title: {
       color: palette.themeDarker,
-      wordBreak: 'break-all'
+      overflow: 'hidden'
     },
     description: {}
   };

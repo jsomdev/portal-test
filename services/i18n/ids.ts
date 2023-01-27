@@ -332,8 +332,8 @@ export const messageIds: Messages = {
     },
     search: {
       title: 'pages.search.title',
-      headDescription: 'pages.search.headTitle',
-      headTitle: 'pages.search.headDescription'
+      headDescription: 'pages.search.headDescription',
+      headTitle: 'pages.search.headTitle'
     },
     requestForQuote: {
       actions: {
