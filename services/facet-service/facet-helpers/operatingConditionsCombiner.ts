@@ -162,7 +162,7 @@ function getOperatingConditionsFlowParameterValue(facets: Facet[]): {
   const minimumFlow: number | null =
     (convertedNearbyValue &&
       !isNaN(convertedNearbyValue) &&
-      convertedNearbyValue * 0.9) ||
+      convertedNearbyValue * 0.8) ||
     null;
 
   // Calculate the maximum value based on the converted value. (110%)
@@ -170,7 +170,7 @@ function getOperatingConditionsFlowParameterValue(facets: Facet[]): {
   const maximumFlow: number | null =
     (convertedNearbyValue &&
       !isNaN(convertedNearbyValue) &&
-      convertedNearbyValue * 1.1) ||
+      convertedNearbyValue * 1.2) ||
     null;
 
   // If the minimum value and maximum value are not null, return the mapped values

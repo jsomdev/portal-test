@@ -8,21 +8,53 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum MotorVersionFacetOptionKey {
+  E = 'E',
+  EA = 'EA',
   AG = 'AG',
   AN = 'AN',
-  AX_ = 'AX_',
-  E_ = 'E_',
-  EA = 'EA',
-  EP = 'EP',
+  AX = 'AX',
   ER = 'ER',
   ES = 'ES',
   ET = 'ET',
   EU = 'EU',
-  EV = 'EV'
+  EV = 'EV',
+  EP = 'EP'
 }
 
 export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[] =
   [
+    {
+      key: MotorVersionFacetOptionKey.E,
+      ...defaultFacetOption,
+      valueId: '77989ff7-aefc-4421-9fa4-9daa2c48eff2',
+      value: 'E',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Electric Motor, 120V, IP44, 60Hz' }
+          }
+        ],
+        sortIndex: 1
+      }
+    },
+    {
+      key: MotorVersionFacetOptionKey.EA,
+      ...defaultFacetOption,
+      valueId: '30a76ba4-fcc6-486f-ab14-5f95e707f974',
+      value: 'EA',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: { en: 'Electric Motor, 240V, IP44, 1PH, 60Hz' }
+          }
+        ],
+        sortIndex: 2
+      }
+    },
     {
       key: MotorVersionFacetOptionKey.AG,
       ...defaultFacetOption,
@@ -39,7 +71,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 1
+        sortIndex: 3
       }
     },
     {
@@ -58,11 +90,11 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 2
+        sortIndex: 4
       }
     },
     {
-      key: MotorVersionFacetOptionKey.AX_,
+      key: MotorVersionFacetOptionKey.AX,
       ...defaultFacetOption,
       valueId: 'cbb5b7f1-a094-4cec-b226-295f0c7e7d00',
       value: 'AX',
@@ -77,57 +109,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 3
-      }
-    },
-    {
-      key: MotorVersionFacetOptionKey.E_,
-      ...defaultFacetOption,
-      valueId: '77989ff7-aefc-4421-9fa4-9daa2c48eff2',
-      value: 'E',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: { en: 'Electric Motor, 120V, IP44, 60Hz' }
-          }
-        ],
-        sortIndex: 4
-      }
-    },
-    {
-      key: MotorVersionFacetOptionKey.EA,
-      ...defaultFacetOption,
-      valueId: '30a76ba4-fcc6-486f-ab14-5f95e707f974',
-      value: 'EA',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: { en: 'Electric Motor, 240V, IP44, 1PH, 60Hz' }
-          }
-        ],
         sortIndex: 5
-      }
-    },
-    {
-      key: MotorVersionFacetOptionKey.EP,
-      ...defaultFacetOption,
-      valueId: 'c3899bd8-e846-4ab7-aa85-29065f87345f',
-      value: 'EP',
-      configuration: {
-        displays: [
-          {
-            variation: 'Invariant',
-            unitSymbol: '',
-            value: {
-              en: 'Electric Motor, 120V, NEMA 4, 4x, 7 & 9 for Water Tight and EX Proof'
-            }
-          }
-        ],
-        sortIndex: 6
       }
     },
     {
@@ -146,7 +128,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 7
+        sortIndex: 6
       }
     },
     {
@@ -165,7 +147,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 8
+        sortIndex: 7
       }
     },
     {
@@ -184,7 +166,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 9
+        sortIndex: 8
       }
     },
     {
@@ -203,7 +185,7 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             }
           }
         ],
-        sortIndex: 10
+        sortIndex: 9
       }
     },
     {
@@ -219,6 +201,24 @@ export const motorVersionFacetOptions: FacetOption<MotorVersionFacetOptionKey>[]
             value: {
               en: 'El. motor 230V/400V, IP66 60 Hz ATEX',
               de: 'El. motor 230V/400V, IP66 60 Hz ATEX'
+            }
+          }
+        ],
+        sortIndex: 10
+      }
+    },
+    {
+      key: MotorVersionFacetOptionKey.EP,
+      ...defaultFacetOption,
+      valueId: 'c3899bd8-e846-4ab7-aa85-29065f87345f',
+      value: 'EP',
+      configuration: {
+        displays: [
+          {
+            variation: 'Invariant',
+            unitSymbol: '',
+            value: {
+              en: 'Electric Motor, 120V, NEMA 4, 4x, 7 & 9 for Water Tight and EX Proof'
             }
           }
         ],

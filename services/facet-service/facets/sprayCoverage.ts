@@ -9,7 +9,7 @@ import { defaultFacetOption } from './defaultFacetOption';
 
 export enum SprayCoverageFacetOptionKey {
   _120down = '_120down',
-  _180____ = '_180____',
+  _180 = '_180',
   _180countercurrent = '_180countercurrent',
   _180down = '_180down',
   _180inflowdirection = '_180inflowdirection',
@@ -22,7 +22,7 @@ export enum SprayCoverageFacetOptionKey {
   _270inflowdirection = '_270inflowdirection',
   _270up = '_270up',
   _2x175 = '_2x175',
-  _360___ = '_360___',
+  _360 = '_360',
   _360andcustomsprayangles = '_360andcustomsprayangles',
   _360Smallsprayheadwithsmallclearanceonlywith3SF = '_360Smallsprayheadwithsmallclearanceonlywith3SF',
   _360Standard = '_360Standard',
@@ -49,7 +49,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       }
     },
     {
-      key: SprayCoverageFacetOptionKey._180____,
+      key: SprayCoverageFacetOptionKey._180,
       ...defaultFacetOption,
       valueId: 'f93ccc8c-9afe-4862-8798-a7429fb6dc3f',
       value: '180°',
@@ -257,7 +257,7 @@ export const sprayCoverageFacetOptions: FacetOption<SprayCoverageFacetOptionKey>
       }
     },
     {
-      key: SprayCoverageFacetOptionKey._360___,
+      key: SprayCoverageFacetOptionKey._360,
       ...defaultFacetOption,
       valueId: '67b0a079-5064-42c1-99a2-9271038d26b8',
       value: '360°',

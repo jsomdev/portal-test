@@ -8,14 +8,13 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum StrainerScreenMeshSizeFacetOptionKey {
-  _100______ = '_100______',
-  _50______ = '_50______'
+  _100 = '_100',
+  _50 = '_50'
 }
-
 export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshSizeFacetOptionKey>[] =
   [
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._100______,
+      key: StrainerScreenMeshSizeFacetOptionKey._100,
       ...defaultFacetOption,
       valueId: '',
       value: 100,
@@ -27,11 +26,11 @@ export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshS
             value: 100
           }
         ],
-        sortIndex: 1
+        sortIndex: 2
       }
     },
     {
-      key: StrainerScreenMeshSizeFacetOptionKey._50______,
+      key: StrainerScreenMeshSizeFacetOptionKey._50,
       ...defaultFacetOption,
       valueId: '',
       value: 50,
@@ -43,7 +42,7 @@ export const strainerScreenMeshSizeFacetOptions: FacetOption<StrainerScreenMeshS
             value: 50
           }
         ],
-        sortIndex: 2
+        sortIndex: 1
       }
     }
   ];

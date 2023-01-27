@@ -8,16 +8,16 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum NozzleCountFacetOptionKey {
-  _2______ = '_2______',
-  _3______ = '_3______',
-  _4______ = '_4______',
-  _6______ = '_6______'
+  _2 = '_2',
+  _3 = '_3',
+  _4 = '_4',
+  _6 = '_6'
 }
 
 export const nozzleCountFacetOptions: FacetOption<NozzleCountFacetOptionKey>[] =
   [
     {
-      key: NozzleCountFacetOptionKey._2______,
+      key: NozzleCountFacetOptionKey._2,
       ...defaultFacetOption,
       valueId: '',
       value: 2,
@@ -33,7 +33,7 @@ export const nozzleCountFacetOptions: FacetOption<NozzleCountFacetOptionKey>[] =
       }
     },
     {
-      key: NozzleCountFacetOptionKey._3______,
+      key: NozzleCountFacetOptionKey._3,
       ...defaultFacetOption,
       valueId: '',
       value: 3,
@@ -49,7 +49,7 @@ export const nozzleCountFacetOptions: FacetOption<NozzleCountFacetOptionKey>[] =
       }
     },
     {
-      key: NozzleCountFacetOptionKey._4______,
+      key: NozzleCountFacetOptionKey._4,
       ...defaultFacetOption,
       valueId: '',
       value: 4,
@@ -65,7 +65,7 @@ export const nozzleCountFacetOptions: FacetOption<NozzleCountFacetOptionKey>[] =
       }
     },
     {
-      key: NozzleCountFacetOptionKey._6______,
+      key: NozzleCountFacetOptionKey._6,
       ...defaultFacetOption,
       valueId: '',
       value: 6,

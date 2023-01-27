@@ -1030,7 +1030,7 @@ export const categoryIdFacetOptions: FacetOption<
     key: CategoryIdFacetOptionKey.AutomaticNozzles,
     ...defaultFacetOption,
     valueId: '43c4a35a-5621-4585-b291-d8481c00c83d',
-    value: 'Automatic Nozzles',
+    value: 'Automatic Spray Nozzles',
     parentId: '',
     children: [
       'cae0584c-8fbc-40bd-82ff-6e27b664513b',
@@ -1044,12 +1044,7 @@ export const categoryIdFacetOptions: FacetOption<
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'Automatic Nozzles',
-            de: 'Automatische Düsen',
-            fr: 'Buses automatiques',
-            nl: 'Automatische nozzles'
-          }
+          value: { en: 'Automatic Spray Nozzles' }
         }
       ],
       sortIndex: 35,
@@ -1342,7 +1337,7 @@ export const categoryIdFacetOptions: FacetOption<
     key: CategoryIdFacetOptionKey.AirAtomizingNozzles,
     ...defaultFacetOption,
     valueId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
-    value: 'Air Atomizing Nozzles',
+    value: 'Air Atomizing Spray Nozzles',
     parentId: '',
     children: [
       '99845edd-d1fd-44fc-99d8-7a3d716922e3',
@@ -1355,7 +1350,7 @@ export const categoryIdFacetOptions: FacetOption<
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Air Atomizing Nozzles' }
+          value: { en: 'Air Atomizing Spray Nozzles' }
         }
       ],
       sortIndex: 47,
@@ -1753,12 +1748,7 @@ export const categoryIdFacetOptions: FacetOption<
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'FogJet®',
-            de: 'FogJet®',
-            fr: 'FogJet®',
-            nl: 'FogJet®'
-          }
+          value: { en: 'FogJet®', de: 'FogJet®', fr: 'FogJet®', nl: 'FogJet®' }
         }
       ],
       sortIndex: 63,
@@ -1903,12 +1893,7 @@ export const categoryIdFacetOptions: FacetOption<
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'UniJet®',
-            de: 'UniJet®',
-            fr: 'UniJet®',
-            nl: 'UniJet®'
-          }
+          value: { en: 'UniJet®', de: 'UniJet®', fr: 'UniJet®', nl: 'UniJet®' }
         }
       ],
       sortIndex: 69,
@@ -1928,12 +1913,7 @@ export const categoryIdFacetOptions: FacetOption<
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: {
-            en: 'VeeJet®',
-            de: 'VeeJet®',
-            fr: 'VeeJet®',
-            nl: 'VeeJet®'
-          }
+          value: { en: 'VeeJet®', de: 'VeeJet®', fr: 'VeeJet®', nl: 'VeeJet®' }
         }
       ],
       sortIndex: 70,
