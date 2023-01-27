@@ -32,6 +32,9 @@ export function sortAddressBook(
   billingAddress: UserAddress | undefined,
   shippingAddress: UserAddress | undefined
 ): UserAddress[] {
+  if (addresses.length === 0) {
+    return [];
+  }
   const sortedAddresses: UserAddress[] = addresses.sort((a, b) => {
     const aIsDefaultBilling = a.id === billingAddress?.id;
     const bIsDefaultBilling = b.id === billingAddress?.id;
