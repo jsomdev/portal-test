@@ -36,6 +36,10 @@ const messages = defineMessages({
     description: 'Page title',
     defaultMessage: `Search results for: '{query}'`
   },
+  titleBrowseAll: {
+    id: messageIds.pages.category.titleWithoutSearchOrCategory,
+    defaultMessage: 'Browse all products'
+  },
   headDescription: {
     id: messageIds.pages.search.headDescription,
     description: 'Page metadata description',
@@ -53,9 +57,11 @@ const Search: NextPage<SearchProps> = ({
   return (
     <Page
       metaProps={{
-        title: formatMessage(messages.headTitle, {
-          searchQuery: query.query?.toString()
-        }),
+        title: query.query
+          ? formatMessage(messages.headTitle, {
+              searchQuery: `'${query.query?.toString()}'`
+            })
+          : formatMessage(messages.titleBrowseAll),
         description: formatMessage(messages.headDescription),
         noIndex: true
       }}
