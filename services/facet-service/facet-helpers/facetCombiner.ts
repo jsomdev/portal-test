@@ -25,7 +25,7 @@ export function mapCategoryIdToExternalFilter(id: string): string {
 
 export function mapAudienceToExternalFilter(audience: Audience): string {
   const audienceFlag = FlaggedEnum.toString<Audience>(Audience, audience);
-  return `audience has SSCo.DigitalHighway.Portal.Data.Enumerations'${audienceFlag}'`;
+  return `audience has '${audienceFlag}'`;
 }
 /**
  * Function that will combine all relevant facets to the encoded parameter value @filters required by the product finder api calls.
