@@ -181,7 +181,12 @@ const CartItemAddedDialog: React.FC<CartListConfirmationProps> = ({
             </Stack.Item>
           ) : null}
           <Stack.Item>
-            <Stack horizontalAlign="space-between" horizontal wrap>
+            <Stack
+              styles={{ inner: { gap: spacing.s1 } }}
+              horizontalAlign="space-between"
+              horizontal
+              wrap
+            >
               <Stack.Item>
                 <DefaultButton
                   iconProps={{
