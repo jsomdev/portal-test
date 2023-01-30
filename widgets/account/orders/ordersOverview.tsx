@@ -86,7 +86,11 @@ export const OrdersOverview: React.FC = () => {
     return <LoadingSpinner />;
   }
 
-  if (!orders || !orders?.value || orders?.value.length === 0) {
+  if (ordersStatus === 'error') {
+    return <ErrorMessage error={error as Error | undefined} logError={true} />;
+  }
+
+  if (ordersStatus === 'success' && !orders?.value.length) {
     return (
       <PortalMessageBar messageBarType={MessageBarType.warning}>
         <Text>{formatMessage(messages.noData)}</Text>
@@ -94,34 +98,30 @@ export const OrdersOverview: React.FC = () => {
     );
   }
 
-  if (ordersStatus === 'error') {
-    return <ErrorMessage error={error as Error | undefined} logError={true} />;
-  }
+  if (!orders?.value) return null;
 
   return (
     <Stack>
-      {ordersStatus === 'success' && orders?.value.length && (
-        <Stack tokens={{ childrenGap: spacing.m }}>
-          <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
-              {orders.value.map(order => {
-                return (
-                  <OrderCard compactView={false} key={order.id} order={order} />
-                );
-              })}
-            </Stack>
-          </Stack.Item>
-          <ResultViewPagination
-            totalItems={orderCount}
-            currentPage={page}
-            pageSize={PAGE_SIZE}
-            onPageChange={newPage => {
-              scrollToTop('body');
-              updatePage(newPage);
-            }}
-          />
-        </Stack>
-      )}
+      <Stack tokens={{ childrenGap: spacing.m }}>
+        <Stack.Item>
+          <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
+            {orders.value.map(order => {
+              return (
+                <OrderCard compactView={false} key={order.id} order={order} />
+              );
+            })}
+          </Stack>
+        </Stack.Item>
+        <ResultViewPagination
+          totalItems={orderCount}
+          currentPage={page}
+          pageSize={PAGE_SIZE}
+          onPageChange={newPage => {
+            scrollToTop('body');
+            updatePage(newPage);
+          }}
+        />
+      </Stack>
     </Stack>
   );
 };

@@ -108,6 +108,8 @@ export const QuoteRequestsOverview: React.FC = () => {
     return null;
   }
 
+  if (!quoteRequests?.value) return null;
+
   return (
     <Stack>
       <Stack tokens={{ childrenGap: spacing.m }}>
