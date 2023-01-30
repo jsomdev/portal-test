@@ -168,7 +168,7 @@ const CartItemAddedDialog: React.FC<CartListConfirmationProps> = ({
               </Stack>
             </Stack.Item>
           )}
-          {filteredItems?.length && (
+          {filteredItems?.length ? (
             <Stack.Item
               root={{ className: 'list-scroll' }}
               styles={styles.listWrapperStyles}
@@ -179,7 +179,7 @@ const CartItemAddedDialog: React.FC<CartListConfirmationProps> = ({
                 onRenderCell={item => item && <CartItemAddedCard item={item} />}
               />
             </Stack.Item>
-          )}
+          ) : null}
           <Stack.Item>
             <Stack horizontalAlign="space-between" horizontal wrap>
               <Stack.Item>

@@ -245,7 +245,7 @@ export const InfoAndPreferences: React.FC = () => {
               <Stack>
                 <Text>{section.description}</Text>
               </Stack>
-              {section.links?.length && (
+              {section.links?.length ? (
                 <Stack tokens={{ childrenGap: spacing.s1 }}>
                   {section.links.map(link => {
                     return (
@@ -261,7 +261,7 @@ export const InfoAndPreferences: React.FC = () => {
                     );
                   })}
                 </Stack>
-              )}
+              ) : null}
             </Stack>
           </Stack>
         );

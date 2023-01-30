@@ -475,9 +475,9 @@ export const nl: Messages = {
       }
     },
     model: {
-      headTitle: '{name}',
-      browseAll: "Doorblader alle '{number}' producten",
-      headDescription: 'pages.model.headDescription'
+      headDescription: '{name}',
+      browseAll: "Doorblader alle ''{number}'' producten",
+      headTitle: 'Model'
     },
     category: {
       title: '{name}',

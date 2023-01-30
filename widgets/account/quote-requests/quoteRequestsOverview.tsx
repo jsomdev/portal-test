@@ -97,46 +97,43 @@ export const QuoteRequestsOverview: React.FC = () => {
     return <LoadingSpinner />;
   }
 
-  if (
-    !quoteRequests ||
-    !quoteRequests?.value ||
-    quoteRequests?.value.length === 0
-  ) {
+  if (quoteRequestsStatus === 'success' && !quoteRequests?.value.length) {
     return (
       <PortalMessageBar messageBarType={MessageBarType.warning}>
         <Text>{formatMessage(messages.noData)}</Text>
       </PortalMessageBar>
     );
   }
+  if (!quoteRequests?.value.length) {
+    return null;
+  }
 
   return (
     <Stack>
-      {quoteRequestsStatus === 'success' && quoteRequests?.value.length && (
-        <Stack tokens={{ childrenGap: spacing.m }}>
-          <Stack.Item>
-            <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
-              {quoteRequests.value.map(quote => {
-                return (
-                  <QuoteRequestOverviewCard
-                    compactView={false}
-                    key={quote.id}
-                    quoteRequest={quote}
-                  />
-                );
-              })}
-            </Stack>
-          </Stack.Item>
-          <ResultViewPagination
-            totalItems={quoteRequestsCount}
-            currentPage={page}
-            pageSize={PAGE_SIZE}
-            onPageChange={newPage => {
-              scrollToTop('body');
-              updatePage(newPage);
-            }}
-          />
-        </Stack>
-      )}
+      <Stack tokens={{ childrenGap: spacing.m }}>
+        <Stack.Item>
+          <Stack horizontal wrap tokens={{ childrenGap: spacing.l2 }}>
+            {quoteRequests.value.map(quote => {
+              return (
+                <QuoteRequestOverviewCard
+                  compactView={false}
+                  key={quote.id}
+                  quoteRequest={quote}
+                />
+              );
+            })}
+          </Stack>
+        </Stack.Item>
+        <ResultViewPagination
+          totalItems={quoteRequestsCount}
+          currentPage={page}
+          pageSize={PAGE_SIZE}
+          onPageChange={newPage => {
+            scrollToTop('body');
+            updatePage(newPage);
+          }}
+        />
+      </Stack>
     </Stack>
   );
 };

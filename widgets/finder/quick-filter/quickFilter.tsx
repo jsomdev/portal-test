@@ -80,7 +80,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         category?.children?.filter(category =>
           category.id ? categoryResultValues.includes(category.id) : false
         ) || [];
-      if (filteredSubCategories.length) {
+      if (filteredSubCategories.length > 1) {
         return mapCategoriesToQuickFilterItems(filteredSubCategories, locale);
       }
     }

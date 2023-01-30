@@ -58,6 +58,9 @@ export const AccountCardProductLines: React.FC<
     return 3;
   }, [isMobileOrTablet, isTablet, compactView]);
 
+  const showMoreButton: boolean = !!(
+    lines?.length && lines.length - visibleItems > 0
+  );
   const viewMoreText: string = useMemo(() => {
     if (lines?.length) {
       return `+${lines.length - visibleItems}`;
@@ -155,7 +158,7 @@ export const AccountCardProductLines: React.FC<
             />
           );
         })}
-      {lines?.length && lines.length - visibleItems > 0 && (
+      {showMoreButton && (
         <Stack styles={styles.viewMoreContainer}>
           <NextLink href={href} passHref>
             <a>

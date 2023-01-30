@@ -82,7 +82,8 @@ export function mapFacetsToExernalFilters(
       const type: 'string' | 'number' =
         facet.key === FacetKey.InletConnectionSize ||
         facet.key === FacetKey.NozzleCount ||
-        facet.key === FacetKey.StrainerScreenMeshSize
+        facet.key === FacetKey.StrainerScreenMeshSize ||
+        facet.key === FacetKey.ExtensionLength
           ? 'number'
           : 'string';
       // Based on their selectType, the external filter must be built differently.

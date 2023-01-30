@@ -132,7 +132,7 @@ const Category: NextPage<CategoryProps> = ({
                   searchQuery={router.query.query?.toString()}
                 />
               </ContentContainerStack>
-              {products?.length && (
+              {products?.length ? (
                 <ContentContainerStack
                   outerStackProps={{
                     styles: styles.recentlyViewedContainer.outerContainer
@@ -140,7 +140,7 @@ const Category: NextPage<CategoryProps> = ({
                 >
                   <RecentlyViewedProducts products={products} />
                 </ContentContainerStack>
-              )}
+              ) : null}
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>

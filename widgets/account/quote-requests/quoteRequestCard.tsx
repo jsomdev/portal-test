@@ -138,14 +138,14 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
         grow
         tokens={{ childrenGap: spacing.m }}
       >
-        {quoteRequest.id && quoteRequest.lines?.length && (
+        {quoteRequest.id && quoteRequest.lines?.length ? (
           <AccountCardProductLines
             compactView={compactView}
             lines={quoteRequest.lines}
             href={pagePaths.quoteRequestDetail(quoteRequest.id)}
           />
-        )}
-        {quoteRequest.id && (
+        ) : null}
+        {quoteRequest.id ? (
           <Stack
             horizontal
             tokens={{ childrenGap: spacing.l2 }}
@@ -164,7 +164,7 @@ export const QuoteRequestOverviewCard: React.FC<QuoteRequestCardProps> = ({
               </a>
             </NextLink>
           </Stack>
-        )}
+        ) : null}
       </Stack>
     </Stack>
   );

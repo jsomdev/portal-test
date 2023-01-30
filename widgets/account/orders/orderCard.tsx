@@ -149,14 +149,14 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
         tokens={{ childrenGap: spacing.m }}
       >
         <OrderCardTopSection order={order} />
-        {order.id && order.lines?.length && (
+        {order.id && order.lines?.length ? (
           <AccountCardProductLines
             compactView={compactView}
             lines={order.lines}
             href={pagePaths.orderDetail(order.id)}
           />
-        )}
-        {order.id && order.lines?.length && (
+        ) : null}
+        {order.id && order.lines?.length ? (
           <Stack
             horizontal
             tokens={{ childrenGap: spacing.l2 }}
@@ -172,7 +172,7 @@ export const OrderCard: React.FC<OrderCardProps> = ({ order, compactView }) => {
               </a>
             </NextLink>
           </Stack>
-        )}
+        ) : null}
       </Stack>
     </Stack>
   );

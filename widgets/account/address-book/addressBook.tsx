@@ -122,38 +122,39 @@ export const AddressBook: React.FC = () => {
           </PortalMessageBar>
         )}
 
-        {removeAddressError && (
+        {!!removeAddressError && (
           <PortalMessageBar messageBarType={MessageBarType.error}>
             <Text>{formatMessage(messages.removeAddressError)}</Text>
           </PortalMessageBar>
         )}
 
-        {setDefaultAddressError && (
+        {!!setDefaultAddressError && (
           <PortalMessageBar messageBarType={MessageBarType.error}>
             <Text>{formatMessage(messages.updateAddressError)}</Text>
           </PortalMessageBar>
         )}
 
-        {mappedAddresses?.map(address => (
-          <AddressBookAddress
-            key={address.name}
-            address={address}
-            isDefaultBilling={address.id === billingAddress?.id}
-            isDefaultShipping={address.id === shippingAddress?.id}
-            onEditClick={() => {
-              setEditAddress(address.id);
-            }}
-            onSetAsBillingClick={() => {
-              updateDefaultBillingAddress(address.id);
-            }}
-            onSetAsShippingClick={() => {
-              updateDefaultShippingAddress(address.id);
-            }}
-            onDeleteClick={() => {
-              removeAddress(address.id);
-            }}
-          />
-        ))}
+        {!!mappedAddresses &&
+          mappedAddresses?.map(address => (
+            <AddressBookAddress
+              key={address.name}
+              address={address}
+              isDefaultBilling={address.id === billingAddress?.id}
+              isDefaultShipping={address.id === shippingAddress?.id}
+              onEditClick={() => {
+                setEditAddress(address.id);
+              }}
+              onSetAsBillingClick={() => {
+                updateDefaultBillingAddress(address.id);
+              }}
+              onSetAsShippingClick={() => {
+                updateDefaultShippingAddress(address.id);
+              }}
+              onDeleteClick={() => {
+                removeAddress(address.id);
+              }}
+            />
+          ))}
       </Stack>
       <AddressBookForm
         editAddress={editAddress}
