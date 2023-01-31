@@ -13,19 +13,29 @@ export class UserFormatter {
   }
 
   public formatDisplayName(fallBack: string = ''): string {
-    // If the user has a name in the claims, we want to return that first
     if (
-      this.accountInfo?.idTokenClaims?.given_name &&
-      this.accountInfo.idTokenClaims.family_name
+      this.accountInfo?.idTokenClaims?.given_name ||
+      this.accountInfo?.idTokenClaims?.family_name
     ) {
-      return `${this.accountInfo.idTokenClaims.given_name} ${this.accountInfo.idTokenClaims.family_name}`;
-    }
-    // If the logged in user has a firstName and a lastName in the User.ContactInfo we want to return that
-    if (this.user?.contactInfo?.firstName && this.user?.contactInfo?.lastName) {
-      return `${this.user.contactInfo.firstName} ${this.user.contactInfo.lastName}`;
+      if (!this.accountInfo?.idTokenClaims?.given_name) {
+        return `${this.accountInfo?.idTokenClaims?.family_name}`;
+      }
+      if (!this.accountInfo?.idTokenClaims?.family_name) {
+        return `${this.accountInfo?.idTokenClaims?.given_name}`;
+      }
+      return `${this.accountInfo.idTokenClaims.given_name} ${this.accountInfo.idTokenClaims.family_name}`.trim();
     }
 
-    // Fallback to any of the properties in the accountInfo or the provided fallback
-    return this.accountInfo?.name || this.accountInfo?.username || fallBack;
+    if (this.user?.contactInfo?.firstName || this.user?.contactInfo?.lastName) {
+      if (!this.user?.contactInfo?.firstName) {
+        return `${this.user?.contactInfo?.lastName}`;
+      }
+      if (!this.user?.contactInfo?.lastName) {
+        return `${this.user?.contactInfo?.firstName}`;
+      }
+      return `${this.user.contactInfo.firstName} ${this.user.contactInfo.lastName}`.trim();
+    }
+
+    return fallBack;
   }
 }

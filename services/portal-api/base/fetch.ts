@@ -1,4 +1,4 @@
-import { AccountInfo, SilentRequest } from '@azure/msal-browser';
+import { AccountInfo } from '@azure/msal-browser';
 import { AuthenticationResult } from '@azure/msal-common';
 import {
   customerLoginRequest,

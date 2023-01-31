@@ -48,6 +48,7 @@ export const OrdersOverview: React.FC = () => {
     }
     return Number(pageParam);
   }, [router.query.page]);
+
   const {
     data: orders,
     status: ordersStatus,

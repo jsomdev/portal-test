@@ -8,6 +8,8 @@ import {
   ContactDetailsFormValues
 } from '@widgets/complete-sign-up/completeSignUp.types';
 
+import { ContactInfo } from './../../services/portal-api/models/ContactInfo';
+
 export interface UserContextProps {
   meStatus: ReactQueryStatus;
   me: User | undefined;
@@ -22,7 +24,7 @@ export interface UserContextProps {
   isInternalViewEnabled: boolean;
   createContactDetailsRequest: (
     formValues: ContactDetailsFormValues
-  ) => Promise<User>;
+  ) => Promise<ContactInfo>;
   createContactDetailsRequestStatus: ReactQueryStatus;
   createVerificationRequest: (
     formValues: CompleteSignUpFormValues

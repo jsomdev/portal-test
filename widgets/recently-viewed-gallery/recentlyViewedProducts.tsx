@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { defineMessages } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
 import { Stack, Text, useTheme } from '@fluentui/react';
 import { messageIds } from '@services/i18n';
@@ -21,10 +21,11 @@ export const RecentlyViewedProducts: React.FC<{ products: Product[] }> = ({
 }) => {
   const { locale } = useRouter();
   const { spacing } = useTheme();
+  const { formatMessage } = useIntl();
   return (
     <Stack tokens={{ padding: `${spacing.m} 0`, childrenGap: spacing.m }}>
       <Text variant="xLarge" as="h2">
-        You recently viewed
+        {formatMessage(messages.title)}
       </Text>
       <Stack.Item>
         <RecentlyViewedProductsGallerySwiper

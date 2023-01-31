@@ -142,31 +142,30 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
   }, [defaultAndPrefilledValues]);
 
   const onFormSubmit = useCallback(
-    (
+    async (
       formValues: AddressBookFormData | UserAddress,
       addressId: string | undefined
-    ): void => {
-      createOrUpdateAddress({
-        address: {
-          id: addressId ? addressId : `${Guid.create()}`,
-          city: formValues.city,
-          country: formValues.country,
-          lines: [formValues.address],
-          name: formValues.name,
-          postalCode: formValues.postalCode,
-          region: formValues.state
-        },
-        setAsDefaultBilling: formValues.setAsBilling,
-        setAsDefaultShipping: formValues.setAsShipping
-      })
-        .then(value => {
-          if (value) {
-            setEditAddress(undefined);
-          }
-        })
-        .catch(error => {
-          console.error(error);
+    ): Promise<void> => {
+      try {
+        const data = await createOrUpdateAddress({
+          address: {
+            id: addressId ? addressId : `${Guid.create()}`,
+            city: formValues.city,
+            country: formValues.country,
+            lines: [formValues.address],
+            name: formValues.name,
+            postalCode: formValues.postalCode,
+            region: formValues.state
+          },
+          setAsDefaultBilling: formValues.setAsBilling,
+          setAsDefaultShipping: formValues.setAsShipping
         });
+        if (data) {
+          setEditAddress(undefined);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
     [createOrUpdateAddress, setEditAddress]
   );

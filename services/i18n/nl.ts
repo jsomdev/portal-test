@@ -598,7 +598,7 @@ export const nl: Messages = {
         overviewHeader: 'Overzicht',
         shippingMethodHeader: 'Verzendmethode',
         paymentMethodHeader: 'Betalingswijze',
-        totalProducts: 'Totaal producten',
+        subTotal: 'Subtotaal',
         shippingCosts: 'Verzendkosten',
         taxHeader: 'VAT',
         confirmationTitle: 'Bedankt! Uw bestelling is succesvol ingediend.',

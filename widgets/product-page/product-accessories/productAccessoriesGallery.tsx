@@ -87,7 +87,7 @@ export const ProductAccessoriesGallerySwiper: React.FC<
             margin-left: ${NAVIGATION_BUTTON_MARGIN};
           }
           .product-accessories-gallery-swiper .swiper-slide {
-            width: 186px;
+            width: 214px;
           }
         `}
       </style>
