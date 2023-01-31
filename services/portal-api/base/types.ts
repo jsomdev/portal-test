@@ -86,6 +86,7 @@ export interface SettingKeys {
   productBookmarks: string;
   recentlySearchedQueries: string;
   recentlyViewedProducts: string;
+  operatingConditions: string;
   addressBook: string;
 }
 

@@ -6,7 +6,11 @@ import { useQuery } from 'react-query';
 
 import { useFacets } from '@providers/facets/facetsContext';
 import { categoryIdFacet } from '@services/facet-service/facets/categoryId';
+import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
+import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
+import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
 import { RangeFacetMatchType } from '@services/facet-service/facets/range-facets/rangeFacetHelper';
+import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetControlType } from '@services/facet-service/models/facet/facetControlType';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
@@ -26,11 +30,18 @@ import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import { QUERYKEYS } from '@services/react-query/constants';
 import { getTotalPages } from '@widgets/finder/result-view/product-result-view-pagination/resultViewPaginationHelper';
 
-import { FinderContext } from './finderContext';
+import {
+  FinderContext,
+  FinderOperatingConditionsConfiguration,
+  defaultFinderOperatingConditionsConfiguration
+} from './finderContext';
 import { FinderQueryHelper } from './finderQueryHelper';
 
 interface FinderProviderProps {
   initialData: FacetedSearchOdataCollection | undefined;
+  operatingConditionsConfiguration?:
+    | FinderOperatingConditionsConfiguration
+    | undefined;
 }
 /**
  * Context Provider for the Finder Functionality throughout the application.
@@ -42,7 +53,9 @@ interface FinderProviderProps {
 export const FINDER_PAGE_SIZE = 10;
 const textFormatter = new TextFormatter();
 export const FinderProvider: React.FC<FinderProviderProps> = ({
-  children
+  children,
+  operatingConditionsConfiguration = defaultFinderOperatingConditionsConfiguration
+
   // TODO: initialData may be used. Don't want to remove just yet
   // initialData
 }) => {
@@ -56,7 +69,7 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
   const {
     storeFacets,
     mainFacets,
-    operatingConditionsFacets: visibleOperatingConditionsFacets,
+    operatingConditionsFacets: operatingConditionsFacets,
     combinedFiltersApiParameter,
     combinedOperatingConditionsApiParameter,
     preFilters
@@ -267,6 +280,28 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     [getFacetResult, isFacetActive]
   );
 
+  const showOperatingConditionInPanel = useCallback((facet: Facet) => {
+    {
+      if (
+        !operatingConditionsConfiguration.enableTheoreticalFlow &&
+        [
+          liquidSpecificGravityFacet.key,
+          liquidFlowRateFacet.key,
+          liquidPressureFacet.key
+        ].includes(facet.key)
+      ) {
+        return false;
+      }
+      if (
+        !operatingConditionsConfiguration.enableSprayAngle &&
+        facet.key === sprayAngleFacet.key
+      ) {
+        return false;
+      }
+      return true;
+    }
+  }, []);
+
   /**
    * Facets that can be shown in the panel
    */
@@ -420,7 +455,11 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
         showFacetInPanel,
         isFacetActive,
         visibleMainFacets,
-        visibleOperatingConditionsFacets,
+        showSprayAngle: !!operatingConditionsConfiguration.enableSprayAngle,
+        showTheoreticalFlow:
+          !!operatingConditionsConfiguration.enableTheoreticalFlow,
+        operatingConditionsFacets,
+        showOperatingConditionInPanel,
         applyOperatingConditions,
         toggleFacetOption,
         clearAllFacets,

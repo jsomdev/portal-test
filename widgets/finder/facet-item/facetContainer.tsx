@@ -78,12 +78,14 @@ export const DesktopFacetContainer: React.FC<FacetContainerProps> = ({
   return (
     <Stack
       tokens={{
-        padding: `0 ${spacing.l1} ${spacing.l1} 0`
+        padding: `0 ${spacing.l1} ${spacing} 0`
       }}
     >
       <Stack.Item>
         <Stack verticalAlign="center" horizontal={true}>
-          <h3>{facetTitle}</h3>
+          <Text as="h3" variant="large">
+            {facetTitle}
+          </Text>
           {onShowInfo && (
             <IconButton
               iconProps={{

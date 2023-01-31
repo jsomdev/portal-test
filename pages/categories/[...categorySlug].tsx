@@ -14,6 +14,7 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '@fluentui/react';
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
+import { FinderOperatingConditionsConfiguration } from '@providers/finder/finderContext';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
 import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
@@ -29,10 +30,12 @@ import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textF
 import {
   AttributeGroup,
   AttributeType,
-  Category as CategoryModel
+  Category as CategoryModel,
+  Setting
 } from '@services/portal-api';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllCategories } from '@services/portal-api/categories';
+import { SETTINGKEYS } from '@services/portal-api/constants';
 import { FacetedSearchOdataCollection } from '@services/portal-api/faceted-search/types';
 import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import {
@@ -55,6 +58,7 @@ import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentl
 type CategoryProps = {
   category: CategoryModel;
   initialViewAs: ResultViewType;
+  finderOperatingConditionsConfiguration: FinderOperatingConditionsConfiguration | null;
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
@@ -68,6 +72,7 @@ const Category: NextPage<CategoryProps> = ({
   siteMenuItems,
   mainMenuItems,
   attributeTypeGroups,
+  finderOperatingConditionsConfiguration,
   attributeTypes,
   initialViewAs
 }) => {
@@ -124,7 +129,12 @@ const Category: NextPage<CategoryProps> = ({
             }}
             initialFacets={getInitialFacetsFromFiles([], router.query)}
           >
-            <FinderProvider initialData={undefined}>
+            <FinderProvider
+              initialData={undefined}
+              operatingConditionsConfiguration={
+                finderOperatingConditionsConfiguration || undefined
+              }
+            >
               <ContentContainerStack>
                 <ResultView
                   viewAs={viewAs}
@@ -265,6 +275,23 @@ export const getStaticProps: GetStaticProps = async (
     cat => cat.parentId === category.id
   );
 
+  let operatingConditionsConfiguration: FinderOperatingConditionsConfiguration | null =
+    null;
+
+  const operatingConditionsSetting: Setting | undefined =
+    category.settings?.find(
+      setting => setting.key === SETTINGKEYS.operatingConditions
+    );
+
+  if (operatingConditionsSetting) {
+    operatingConditionsConfiguration = {
+      enableSprayAngle: !!operatingConditionsSetting?.value?.enableSprayAngle,
+      enableTheoreticalFlow:
+        !!operatingConditionsSetting?.value?.enableTheoreticalFlow
+    };
+  }
+  console.log(operatingConditionsSetting);
+
   const props: CategoryProps = {
     attributeTypeGroups: [],
     attributeTypes: filteredAttributeTypes,
@@ -273,7 +300,7 @@ export const getStaticProps: GetStaticProps = async (
       children: categoryChildren
     },
     initialViewAs: categoryChildren.length ? 'overview' : 'list',
-
+    finderOperatingConditionsConfiguration: operatingConditionsConfiguration,
     siteMenuItems: siteMenuData,
     mainMenuItems: mainMenuData
   };

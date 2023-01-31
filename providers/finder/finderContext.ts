@@ -14,9 +14,21 @@ import {
 } from '@services/portal-api/faceted-search/types';
 import { ReactQueryStatus } from '@services/react-query/types';
 
+export type FinderOperatingConditionsConfiguration = {
+  enableSprayAngle: boolean;
+  enableTheoreticalFlow: boolean;
+};
+export const defaultFinderOperatingConditionsConfiguration: FinderOperatingConditionsConfiguration =
+  {
+    enableSprayAngle: false,
+    enableTheoreticalFlow: false
+  };
+
 interface FinderContextProps {
   visibleMainFacets: Facet[];
-  visibleOperatingConditionsFacets: Record<string, Facet>;
+  operatingConditionsFacets: Record<string, Facet>;
+  showTheoreticalFlow: boolean;
+  showSprayAngle: boolean;
   productCount: number | undefined;
   modelCount: number | undefined;
   searchQuery: string | undefined;
@@ -42,6 +54,7 @@ interface FinderContextProps {
     operatingCondition: Facet
   ) => Range | number | string | null;
   showFacetInPanel: (facet: Facet) => boolean;
+  showOperatingConditionInPanel: (facet: Facet) => boolean;
   isFacetActive: (facetKey: FacetKey) => boolean;
 }
 
@@ -49,9 +62,11 @@ const initialContext: FinderContextProps = {
   productCount: undefined,
   modelCount: undefined,
   products: [],
+  showSprayAngle: false,
+  showTheoreticalFlow: false,
   searchQuery: undefined,
   visibleMainFacets: [],
-  visibleOperatingConditionsFacets: {},
+  operatingConditionsFacets: {},
   facetedSearchError: undefined,
   facetedSearchStatus: 'idle',
   isFetching: false,
@@ -80,6 +95,9 @@ const initialContext: FinderContextProps = {
     throw Error('Not implemented');
   },
   showFacetInPanel: () => {
+    throw Error('Not implemented');
+  },
+  showOperatingConditionInPanel: () => {
     throw Error('Not implemented');
   },
   getOperatingConditionMatchType: () => {
