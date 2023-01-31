@@ -14,6 +14,10 @@ import {
 import { defineMessages } from '@formatjs/intl';
 import { useFinder } from '@providers/finder/finderContext';
 import { useGlobalData } from '@providers/global-data/globalDataContext';
+import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
+import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
+import { liquidSpecificGravityFacet } from '@services/facet-service/facets/range-facets/liquidSpecificGravity';
+import { sprayAngleFacet } from '@services/facet-service/facets/range-facets/sprayAngle';
 import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetKey } from '@services/facet-service/models/facet/facetKey';
 import { messageIds } from '@services/i18n';
@@ -74,8 +78,13 @@ export const OperatingConditions: React.FC = () => {
   const { spacing } = useTheme();
   const { getAttributeType } = useGlobalData();
   const { formatMessage, locale } = useIntl();
-  const { visibleOperatingConditionsFacets, applyOperatingConditions } =
-    useFinder();
+  const {
+    operatingConditionsFacets,
+    applyOperatingConditions,
+    showSprayAngle,
+    showTheoreticalFlow,
+    showOperatingConditionInPanel
+  } = useFinder();
 
   // AttributeTypeCode to show the information of. If undefined no information will be shown.
   const [showInfoAttributeTypeCode, setShowInfoAttributeTypeCode] = useState<
@@ -88,14 +97,14 @@ export const OperatingConditions: React.FC = () => {
   // Operating Conditions that are not immediately persisted to the Finder
   const [staleOperatingConditions, setStaleOperatingConditions] = useState<{
     [key: string]: Facet;
-  }>(visibleOperatingConditionsFacets);
+  }>(operatingConditionsFacets);
 
   const isModified = useMemo(() => {
     return diffOperatingConditionsFacets(
       Object.values(staleOperatingConditions),
-      Object.values(visibleOperatingConditionsFacets)
+      Object.values(operatingConditionsFacets)
     );
-  }, [staleOperatingConditions, visibleOperatingConditionsFacets]);
+  }, [operatingConditionsFacets, staleOperatingConditions]);
 
   const validationResults: OperatingConditionsValidationResults =
     useMemo(() => {
@@ -139,8 +148,8 @@ export const OperatingConditions: React.FC = () => {
 
   useEffect(() => {
     // Whenever the actual operatingConditions update, we want to update the stale ones as well.
-    setStaleOperatingConditions(visibleOperatingConditionsFacets);
-  }, [visibleOperatingConditionsFacets]);
+    setStaleOperatingConditions(operatingConditionsFacets);
+  }, [operatingConditionsFacets]);
 
   const styles: OperatingConditionsStyles = {
     applyButton: {
@@ -155,6 +164,10 @@ export const OperatingConditions: React.FC = () => {
     }
   };
 
+  if (!showSprayAngle && !showTheoreticalFlow) {
+    return null;
+  }
+
   return (
     <FacetContainer facetTitle="Operating Conditions">
       <Stack
@@ -164,26 +177,32 @@ export const OperatingConditions: React.FC = () => {
           padding: `${spacing.s1} ${spacing.m} 0 0`
         }}
       >
-        {Object.values(staleOperatingConditions).map(operatingCondition => (
-          <OperatingConditionItem
-            key={operatingCondition.key}
-            operatingCondition={operatingCondition}
-            onChange={updatedOperatingCondition =>
-              setStaleOperatingConditions(previousState => ({
-                ...previousState,
-                [updatedOperatingCondition.key]: updatedOperatingCondition
-              }))
-            }
-            onShowInfo={() =>
-              setShowInfoAttributeTypeCode(operatingCondition.attributeTypeCode)
-            }
-            horizontal={
-              operatingCondition.key !== FacetKey.SprayAngle &&
-              operatingCondition.key !== FacetKey.LiquidSpecificGravity
-            }
-            onEnterPressed={onApply}
-          />
-        ))}
+        {Object.values(staleOperatingConditions)
+          .filter(operatingCondition =>
+            showOperatingConditionInPanel(operatingCondition)
+          )
+          .map(operatingCondition => (
+            <OperatingConditionItem
+              key={operatingCondition.key}
+              operatingCondition={operatingCondition}
+              onChange={updatedOperatingCondition =>
+                setStaleOperatingConditions(previousState => ({
+                  ...previousState,
+                  [updatedOperatingCondition.key]: updatedOperatingCondition
+                }))
+              }
+              onShowInfo={() =>
+                setShowInfoAttributeTypeCode(
+                  operatingCondition.attributeTypeCode
+                )
+              }
+              horizontal={
+                operatingCondition.key !== FacetKey.SprayAngle &&
+                operatingCondition.key !== FacetKey.LiquidSpecificGravity
+              }
+              onEnterPressed={onApply}
+            />
+          ))}
         <Stack
           horizontal
           wrap

@@ -80,7 +80,8 @@ export const SETTINGKEYS: SettingKeys = {
   productBookmarks: 'ProductBookmarks',
   recentlyViewedProducts: 'RecentlyViewedProducts',
   recentlySearchedQueries: 'RecentlySearchedQueries',
-  addressBook: 'AddressBook'
+  addressBook: 'AddressBook',
+  operatingConditions: 'OperatingConditions'
 };
 
 export const ATTRIBUTETYPECODES: AttributeTypeCodes = {

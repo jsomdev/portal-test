@@ -35,7 +35,9 @@ const DesktopFinderPanel: React.FC = () => {
     toggleFacetOption,
     getFacetResult,
     isFacetActive,
-    visibleMainFacets
+    visibleMainFacets,
+    showSprayAngle,
+    showTheoreticalFlow
   } = useFinder();
 
   const styles: DesktopFinderPanelStyles = {
@@ -48,7 +50,7 @@ const DesktopFinderPanel: React.FC = () => {
   };
 
   return (
-    <Stack styles={styles.root}>
+    <Stack styles={styles.root} tokens={{ childrenGap: spacing.s1 }}>
       {/* TODO: Check if we can replace the current image with this text */}
       <Text
         as="h1"
@@ -62,7 +64,7 @@ const DesktopFinderPanel: React.FC = () => {
           Finder
         </Text>
       </Text>
-      <OperatingConditions />
+      {showSprayAngle || showTheoreticalFlow ? <OperatingConditions /> : null}
 
       {visibleMainFacets.map(facet => {
         if (facet.key === FacetKey.CategoryId) {
@@ -96,11 +98,13 @@ const MobileFinderPanel: React.FC = () => {
     toggleFacetOption,
     getFacetResult,
     isFacetActive,
-    visibleMainFacets
+    visibleMainFacets,
+    showSprayAngle,
+    showTheoreticalFlow
   } = useFinder();
   return (
     <Stack>
-      <OperatingConditions />
+      {showSprayAngle || showTheoreticalFlow ? <OperatingConditions /> : null}
       {visibleMainFacets.map(facet => {
         if (facet.key === FacetKey.CategoryId) {
           return (

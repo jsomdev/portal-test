@@ -13,7 +13,6 @@ export type { Card } from './models/Card';
 export type { CartItem } from './models/CartItem';
 export type { CatalogEntry } from './models/CatalogEntry';
 export type { Category } from './models/Category';
-export type { CategorySettingsFlags } from './models/CategorySettingsFlags';
 export type { ComplexEntity } from './models/ComplexEntity';
 export type { ComplexLinkedEntity } from './models/ComplexLinkedEntity';
 export type { Condition } from './models/Condition';

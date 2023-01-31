@@ -164,7 +164,7 @@ export const AddressBookForm: React.FC<AddressBookFormProps> = ({
           setEditAddress(undefined);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     [createOrUpdateAddress, setEditAddress]

@@ -100,8 +100,8 @@ export const UserProvider: React.FC = ({ children }) => {
           getCurrentClientEnvironment() === ClientEnvironment.Develop ||
           getCurrentClientEnvironment() === ClientEnvironment.Local
         ) {
-          console.log('Api Roles', apiRoles, 'Claims Roles', claimsRoles);
-          console.log(claimsRoles);
+          console.info('Api Roles', apiRoles, 'Claims Roles', claimsRoles);
+          console.info(claimsRoles);
         }
         forceRefreshToken();
       }

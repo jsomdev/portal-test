@@ -48,7 +48,7 @@ export const ActiveFilters: React.FC = () => {
     toggleFacetOption,
     searchQuery,
     visibleMainFacets,
-    visibleOperatingConditionsFacets
+    operatingConditionsFacets: visibleOperatingConditionsFacets
   } = useFinder();
   const activeFilterChips: ActiveFilterChipProps[] = useMemo(() => {
     const searchFilterChip: ActiveFilterChipProps | undefined = searchQuery
