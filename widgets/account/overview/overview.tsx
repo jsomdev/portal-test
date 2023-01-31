@@ -62,11 +62,6 @@ const messages = defineMessages({
     description: 'View all addresses link text',
     defaultMessage: 'View all addresses'
   },
-  profileInformation: {
-    id: messageIds.pages.account.overview.profileInformation.title,
-    description: 'Profile sub section title',
-    defaultMessage: 'Profile information'
-  },
   addressBookTitle: {
     id: messageIds.pages.account.overview.addressBook.title,
     description: 'Address book sub section title',
@@ -88,7 +83,6 @@ export const Overview: React.FC = () => {
     getMsalInstance()?.getAllAccounts()[0];
   const isAuthenticated = useIsAuthenticated();
   const { accountId } = useClaims();
-  const claims = useClaims();
   const { me, isOrderHistoryEnabled, showCustomerDetails } = useMe();
 
   const {
@@ -128,11 +122,8 @@ export const Overview: React.FC = () => {
 
   const name = useMemo(() => {
     const userFormatter = new UserFormatter(me, account);
-    const name = userFormatter.formatDisplayName(
-      `${claims.firstName} ${claims.lastName}`
-    );
-    return name;
-  }, [account, claims, me]);
+    return userFormatter.formatDisplayName();
+  }, [account, me]);
 
   const styles: OverviewStyles = {
     welcomeSection: {
@@ -210,11 +201,6 @@ export const Overview: React.FC = () => {
       ) : null}
       <Stack tokens={{ childrenGap: spacing.m }}>
         <Stack.Item>
-          <Text variant="large" as={'h2'}>
-            {formatMessage(messages.profileInformation)}
-          </Text>
-        </Stack.Item>
-        <Stack.Item>
           <Stack horizontal wrap tokens={{ childrenGap: spacing.m }}>
             <OverviewProfileInfo me={me} formattedName={name} />
             {showCustomerDetails && <OverviewCompanyInfo me={me} />}
@@ -248,7 +234,6 @@ export const Overview: React.FC = () => {
               )}
           </Stack>
         </Stack.Item>
-
         <Stack>
           <NextLink href={pagePaths.addressBook} passHref>
             <a>

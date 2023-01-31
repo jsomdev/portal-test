@@ -33,10 +33,17 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.companyInformation.paymentHeader,
     description: 'Header text for payment type',
     defaultMessage: 'Payment type'
+  },
+  companyInformation: {
+    id: messageIds.pages.account.sections.infoAndPreferences.sections
+      .companyInformation.title,
+    description: 'Company sub section title',
+    defaultMessage: 'Company information'
   }
 });
 
 interface OverviewCompanyInfoStyles {
+  contentContainer: IStackStyles;
   container: IStackStyles;
   headerText: ITextStyles;
   editButton: IButtonStyles;
@@ -54,7 +61,7 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
   const { formatMessage } = intl;
 
   const styles: OverviewCompanyInfoStyles = {
-    container: {
+    contentContainer: {
       root: {
         border: `1px solid ${semanticColors.variantBorder}`,
         padding: spacing.m,
@@ -72,31 +79,44 @@ export const OverviewCompanyInfo: React.FC<OverviewCompanyInfoProps> = ({
       icon: {
         fontSize: FontSizes.size20
       }
+    },
+    container: {
+      root: {
+        flex: '1 1 0',
+        minWidth: rem(300)
+      }
     }
   };
 
   return (
-    <Stack styles={styles.container}>
-      <Stack tokens={{ childrenGap: spacing.m }}>
-        <Stack tokens={{ childrenGap: spacing.s1 }}>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.companyHeader)}
-          </Text>
-          <Text variant="mediumPlus">{me?.account?.name}</Text>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s1 }} grow>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.customerHeader)}
-          </Text>
-          <Text variant="mediumPlus">{me?.account?.number}</Text>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s1 }} grow>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.paymentHeader)}
-          </Text>
-          <Text variant="mediumPlus">
-            {getPaymentMethodText(intl, me?.account?.paymentMethod)}
-          </Text>
+    <Stack styles={styles.container} tokens={{ childrenGap: spacing.l1 }}>
+      <Stack>
+        <Text variant="large" as={'h2'}>
+          {formatMessage(messages.companyInformation)}
+        </Text>
+      </Stack>
+      <Stack styles={styles.contentContainer}>
+        <Stack tokens={{ childrenGap: spacing.m }}>
+          <Stack tokens={{ childrenGap: spacing.s1 }}>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.companyHeader)}
+            </Text>
+            <Text variant="mediumPlus">{me?.account?.name}</Text>
+          </Stack>
+          <Stack tokens={{ childrenGap: spacing.s1 }} grow>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.customerHeader)}
+            </Text>
+            <Text variant="mediumPlus">{me?.account?.number}</Text>
+          </Stack>
+          <Stack tokens={{ childrenGap: spacing.s1 }} grow>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.paymentHeader)}
+            </Text>
+            <Text variant="mediumPlus">
+              {getPaymentMethodText(intl, me?.account?.paymentMethod)}
+            </Text>
+          </Stack>
         </Stack>
       </Stack>
     </Stack>

@@ -17,7 +17,6 @@ import {
 } from '@fluentui/react';
 import { useMe } from '@providers/user/userContext';
 import { getMsalInstance } from '@services/authentication/authenticationConfiguration';
-import { useClaims } from '@services/authentication/claims';
 import { messageIds } from '@services/i18n';
 import { UserFormatter } from '@services/i18n/formatters/entity-formatters/userFormatter';
 import { rem } from '@utilities/rem';
@@ -74,21 +73,14 @@ export const ProfileInformation: React.FC = () => {
   const { formatMessage } = useIntl();
   const { semanticColors, effects, spacing, palette, fonts } = useTheme();
   const { me } = useMe();
-  const claims = useClaims();
   const account: AccountInfo | undefined =
     getMsalInstance()?.getAllAccounts()[0];
   const [showEditInformation, setShowEditInformation] = useState(false);
 
   const name = useMemo(() => {
     const userFormatter = new UserFormatter(me, account);
-    if (me && me.contactInfo?.firstName && me.contactInfo?.lastName) {
-      return `${me.contactInfo?.firstName} ${me.contactInfo?.lastName}`;
-    }
-    const name = userFormatter.formatDisplayName(
-      `${claims.firstName} ${claims.lastName}`
-    );
-    return name;
-  }, [account, claims, me]);
+    return userFormatter.formatDisplayName();
+  }, [account, me]);
 
   const styles: IProfileInformationStyles = {
     cardContainer: {

@@ -28,10 +28,10 @@ const messages = defineMessages({
     description: 'Overview header text',
     defaultMessage: 'Overview'
   },
-  totalProducts: {
-    id: messageIds.pages.account.orders.totalProducts,
-    description: 'Total # of products header text',
-    defaultMessage: 'Total products'
+  subTotal: {
+    id: messageIds.pages.account.orders.subTotal,
+    description: 'Subtotal header text',
+    defaultMessage: 'Subtotal'
   },
   shippingCosts: {
     id: messageIds.pages.account.orders.shippingCosts,
@@ -272,9 +272,7 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
               {order.subTotal && (
                 <Stack horizontal horizontalAlign="space-between">
                   <Text styles={styles.lightText}>
-                    {`${formatMessage(messages.totalProducts)} (${
-                      order?.lines?.length
-                    })`}
+                    {`${formatMessage(messages.subTotal)}:`}
                   </Text>
                   <Text styles={styles.lightText}>{order.subTotal}</Text>
                 </Stack>
@@ -284,7 +282,7 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
                 <Stack horizontal horizontalAlign="space-between">
                   <Text styles={styles.lightText}>{`${formatMessage(
                     messages.shippingCosts
-                  )}`}</Text>
+                  )}:`}</Text>
                   <Text styles={styles.lightText}>{order.shippingAmount}</Text>
                 </Stack>
               )}
@@ -292,7 +290,7 @@ export const OrderDetailInfoSection: React.FC<OrderDetailInfoSectionProps> = ({
                 <Stack horizontal horizontalAlign="space-between">
                   <Text styles={styles.lightText}>{`${formatMessage(
                     messages.taxHeader
-                  )}`}</Text>
+                  )}:`}</Text>
                   <Text styles={styles.lightText}>{order.taxAmount}</Text>
                 </Stack>
               )}

@@ -475,9 +475,9 @@ export const nl: Messages = {
       }
     },
     model: {
-      headTitle: '{name}',
-      browseAll: "Doorblader alle '{number}' producten",
-      headDescription: 'pages.model.headDescription'
+      headDescription: '{name}',
+      browseAll: "Doorblader alle ''{number}'' producten",
+      headTitle: 'Model'
     },
     category: {
       title: '{name}',
@@ -598,7 +598,7 @@ export const nl: Messages = {
         overviewHeader: 'Overzicht',
         shippingMethodHeader: 'Verzendmethode',
         paymentMethodHeader: 'Betalingswijze',
-        totalProducts: 'Totaal producten',
+        subTotal: 'Subtotaal',
         shippingCosts: 'Verzendkosten',
         taxHeader: 'VAT',
         confirmationTitle: 'Bedankt! Uw bestelling is succesvol ingediend.',

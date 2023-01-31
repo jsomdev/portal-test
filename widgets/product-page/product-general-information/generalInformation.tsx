@@ -164,7 +164,7 @@ export const ProductGeneralInformation: React.FC = () => {
       </Stack>
       <Stack.Item styles={styles.rightContainer}>
         <Stack>
-          {!!keyAttributes?.length && keySpecificationsGroup && (
+          {!!keyAttributes?.length && !!keySpecificationsGroup && (
             <Stack>
               <ProductSubsectionHeader
                 title={formatMessage(messages.keySpecificationsTitle)}

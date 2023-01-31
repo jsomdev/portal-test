@@ -28,7 +28,7 @@ export async function fetchCategoriesForHomePage(
     selectQuery: 'id,name,description,settings,slug,audience',
     expandQuery:
       'image($select=url,caption),children($select=id,name,settings,slug;$expand=image($select=url,caption);$orderby=sortIndex asc)',
-    filterQuery: `parentId eq null and audience has SSCo.DigitalHighway.Portal.Data.Enumerations.Audience'${FlaggedEnum.toString(
+    filterQuery: `parentId eq null and audience has '${FlaggedEnum.toString(
       Audience,
       audience
     )}'`,

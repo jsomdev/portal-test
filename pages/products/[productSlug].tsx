@@ -163,7 +163,7 @@ const Products: NextPage<
               />
             </ContentContainerStack>
             {products?.filter(recentProduct => recentProduct.id !== product.id)
-              .length && (
+              .length ? (
               <ContentContainerStack
                 outerStackProps={{
                   styles: styles.recentlyViewedContainer.outerContainer
@@ -175,7 +175,7 @@ const Products: NextPage<
                   )}
                 />
               </ContentContainerStack>
-            )}
+            ) : null}
           </ProductPageProvider>
         </AppLayout>
       </GlobalDataProvider>

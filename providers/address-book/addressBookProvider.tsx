@@ -42,7 +42,10 @@ export const AddressBookProvider: React.FC = ({ children }) => {
     {
       enabled: isAuthenticated,
       onSuccess(data) {
-        const value = data?.value as AddressBookSettingValue;
+        const value = data?.value as
+          | Partial<AddressBookSettingValue>
+          | null
+          | undefined;
         if (value) {
           const dataBillingAddress: UserAddress | undefined =
             value?.addresses?.find(address => {
@@ -54,13 +57,15 @@ export const AddressBookProvider: React.FC = ({ children }) => {
             });
           setBillingAddress(dataBillingAddress);
           setShippingAddress(dataShippingAddress);
-          setAddresses(
-            sortAddressBook(
-              value?.addresses,
-              dataBillingAddress,
-              dataShippingAddress
-            )
-          );
+          if (value?.addresses) {
+            setAddresses(
+              sortAddressBook(
+                value.addresses,
+                dataBillingAddress,
+                dataShippingAddress
+              )
+            );
+          }
         }
       }
     }

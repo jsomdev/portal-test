@@ -180,7 +180,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           >
             <Support />
           </ContentContainerStack>
-          {products?.length && (
+          {products?.length ? (
             <ContentContainerStack
               outerStackProps={{
                 styles: mergeStyleSets(
@@ -191,7 +191,7 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
             >
               <RecentlyViewedProducts products={products} />
             </ContentContainerStack>
-          )}
+          ) : null}
         </AppLayout>
       </GlobalDataProvider>
     </Page>

@@ -192,7 +192,8 @@ const SearchBar: React.FC<{ initialSearchInput: string | undefined }> = ({
           0
         ),
         fetchAutoCompleteSearch(
-          encodeURIComponent(debouncedSearchBoxInput || '')
+          encodeURIComponent(debouncedSearchBoxInput || ''),
+          getAudience(locale)
         )
       ]);
 

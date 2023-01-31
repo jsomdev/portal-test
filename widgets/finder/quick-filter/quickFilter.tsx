@@ -3,7 +3,6 @@ import React, { CSSProperties, useMemo } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import _JSXStyle from 'styled-jsx/style';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { NextLink } from '@components/link/nextLink';
 import {
   ActionButton,
+  IStackItemStyles,
   IStackStyles,
   ITextStyles,
   Stack,
@@ -80,7 +80,7 @@ export const QuickFilter: React.FC<QuickFiltersProps> = ({ category }) => {
         category?.children?.filter(category =>
           category.id ? categoryResultValues.includes(category.id) : false
         ) || [];
-      if (filteredSubCategories.length) {
+      if (filteredSubCategories.length > 1) {
         return mapCategoriesToQuickFilterItems(filteredSubCategories, locale);
       }
     }
@@ -199,6 +199,7 @@ interface QuickFilterCardProps {
 interface QuickFilterCardStyles {
   root: IStackStyles;
   image: CSSProperties;
+  imageContainer: IStackItemStyles;
 }
 
 export const QuickFilterCard: React.FC<QuickFilterCardProps> = ({ item }) => {
@@ -217,7 +218,8 @@ export const QuickFilterCard: React.FC<QuickFilterCardProps> = ({ item }) => {
     image: {
       opacity: 0.85,
       borderRadius: 4
-    }
+    },
+    imageContainer: { root: { width: 48, height: 48, position: 'relative' } }
   };
   return (
     <Stack
@@ -227,16 +229,25 @@ export const QuickFilterCard: React.FC<QuickFilterCardProps> = ({ item }) => {
       styles={styles.root}
     >
       {item.image && (
-        <Image
-          src={item.image.src}
-          alt={item.image.alt}
-          style={styles.image}
-          height={48}
-          width={48}
-          objectFit="contain"
-          objectPosition="center"
-          loader={getImageLoader(item.image.src)}
-        />
+        <Stack.Item grow={false} styles={styles.imageContainer}>
+          <Image
+            src={item.image.src}
+            alt={item.image.alt}
+            style={styles.image}
+            layout={'fill'}
+            objectFit={
+              /* Legacy behavior:
+                 - images with a non-white background can be cropped, you can identify these by the url that has a querystring "?crop=true"
+                 - image with a white background can not be cropped and should be fully visible, as parts of the product will be cut off when cropped  */
+              item.image.src.indexOf('?crop=true') > -1 ? 'cover' : 'contain'
+            }
+            objectPosition="center"
+            loader={getImageLoader(item.image.src)}
+            sizes={
+              '80px' /* this is a larger width than the div, but some images are very wide, so loading them as 48px and afterwards zooming in with 'cover', makes them very blurry*/
+            }
+          />
+        </Stack.Item>
       )}
       <NextLink
         shallow={item.shallowNavigation}

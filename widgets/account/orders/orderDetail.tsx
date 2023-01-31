@@ -314,12 +314,12 @@ export const OrderDetail: React.FC<OrderDetailProps> = ({
             />
           </Stack>
         )}
-        {!!lastAddedItems?.length && (
+        {lastAddedItems?.length ? (
           <CartItemAddedDialog
             lastAddedItems={orderCartItems}
             setLastAddedItems={setLastAddedItems}
           />
-        )}
+        ) : null}
       </Stack>
       <Stack tokens={{ childrenGap: spacing.m }}>
         {visibleOrderLines?.map(line => {

@@ -4,6 +4,8 @@ import {
   AutoCompleteOdataCollection,
   FacetedSearchOdataCollection
 } from '../faceted-search/types';
+import { FlaggedEnum } from '../flaggedEnum';
+import { Audience, AudienceFlags } from '../models/AudienceFlags';
 import { Product } from '../models/Product';
 import { OdataCollection } from '../o-data/oData';
 import { QueryOptions } from '../o-data/queryOptions';
@@ -14,9 +16,13 @@ export class ProductsResource extends BaseResource<Product> {
   }
 
   async autoComplete(
-    encodedQuery: string
+    encodedQuery: string,
+    audience: Audience
   ): Promise<AutoCompleteOdataCollection> {
-    const resourcePath = this.getAutoCompleteResourcePath(encodedQuery);
+    const resourcePath = this.getAutoCompleteResourcePath(
+      encodedQuery,
+      audience
+    );
 
     return this.fetch(resourcePath, '', {});
   }
@@ -78,10 +84,14 @@ export class ProductsResource extends BaseResource<Product> {
         : '(query=null,operatingConditions=@operatingConditions,filters=@filters)'
     }`;
   }
-  private getAutoCompleteResourcePath(urlEncodedQuery: string) {
-    return `${this.getResourcePath()}/autoComplete(query=@query)?@query='${ProductsResource.escapeSearchQuery(
+  private getAutoCompleteResourcePath(
+    urlEncodedQuery: string,
+    audience: Audience
+  ) {
+    const audienceFlag = FlaggedEnum.toString<Audience>(Audience, audience);
+    return `${this.getResourcePath()}/autoComplete(query=@query,audience=@audience)?@query='${ProductsResource.escapeSearchQuery(
       urlEncodedQuery
-    )}'`;
+    )}'&@audience='${audienceFlag}'`;
   }
 
   private getFindResourcePath(urlEncodedQuery?: string): string {

@@ -570,7 +570,7 @@ export const en: Messages = {
         overviewHeader: 'Overview',
         shippingMethodHeader: 'Shipping method',
         paymentMethodHeader: 'Payment method',
-        totalProducts: 'Total products',
+        subTotal: 'Subtotal',
         shippingCosts: 'Shipping costs',
         taxHeader: 'Tax',
         detailPageError: 'An error occurred while loading your order details.',

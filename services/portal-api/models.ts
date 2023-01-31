@@ -4,10 +4,8 @@ import { DataCacheManager } from '@services/cache/dataCache';
 import { MultilingualStringHelper } from '@utilities/multilingualStringHelper';
 
 import { FlaggedEnum } from './flaggedEnum';
-import { Attribute } from './models/Attribute';
 import { AttributeSettings } from './models/AttributeSettingsFlags';
 import { Model } from './models/Model';
-import { Resource } from './models/Resource';
 import { OdataCollection } from './o-data/oData';
 import { QueryOptions } from './o-data/queryOptions';
 import { ModelsResource } from './resources/ModelsResource';
@@ -38,7 +36,7 @@ export async function fetchAllModels(
 
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,name,seriesId,number,description,slug`,
-    expandQuery: `image($select=id,url,thumbnail),resources($select=id,type,variation,caption,url,thumbnail),attributes($select=typeCode,value,settings,conditions,displays,sortIndex,id;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
+    expandQuery: `image($select=id,url,thumbnail),resources($select=id,type,variation,caption,url,thumbnail),attributes($select=typeCode,value,settings,conditions,displays,sortIndex,id;$filter=settings has '${FlaggedEnum.toString(
       AttributeSettings,
       AttributeSettings.DisplayOnProductCharacteristics
     )}')`
@@ -49,48 +47,4 @@ export async function fetchAllModels(
   );
   await modelsCacheDataManager.set(data.value);
   return optimize(data.value);
-}
-
-/**
- * Function that retrieves the visual resources of a model that will be displayed on the top section of a model page.
- * @param id Guid of the Model
- * @returns Array of Resource
- */
-export async function fetchModelResources(id: string): Promise<Resource[]> {
-  const modelsResource: ModelsResource = new ModelsResource();
-
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id`,
-    expandQuery: `resources($select=id,type,variation,caption,url,thumbnail)`
-  };
-  const data: Model | undefined = await modelsResource.getEntity(
-    id,
-    queryOptions
-  );
-  return data.resources || [];
-}
-
-/**
- * Function that retrieves the necessary attributes of a model that are to be displayed as (key) characteristics. (Specification Summary)
- * @param id Guid of the Model
- * @returns Array of Attributes that represent the Key Specifications of a Product Model
- */
-export async function fetchModelKeySpecifications(
-  id: string
-): Promise<Attribute[]> {
-  const modelsResource: ModelsResource = new ModelsResource();
-
-  const queryOptions: Partial<QueryOptions> = {
-    selectQuery: `id`,
-    expandQuery: `attributes($select=typeCode,value,settings,conditions,displays,sortIndex,id;$filter=settings has SSCo.DigitalHighway.Portal.Data.Enumerations.AttributeSettings'${FlaggedEnum.toString(
-      AttributeSettings,
-      AttributeSettings.DisplayOnProductCharacteristics
-    )}')`
-  };
-
-  const data: Model | undefined = await modelsResource.getEntity(
-    id,
-    queryOptions
-  );
-  return data.attributes || [];
 }
