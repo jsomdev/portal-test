@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -7,7 +9,6 @@ import {
   GlobalDataProvider,
   GlobalDataProviderProps
 } from '@providers/global-data/globalDataProvider';
-import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { messageIds } from '@services/i18n';
 import { Category } from '@services/portal-api';
 import { fetchCategoriesForHomePage } from '@services/portal-api/categories';
@@ -26,11 +27,12 @@ import { SignIn } from '@widgets/home-page/sections/signIn';
 import { Support } from '@widgets/home-page/sections/support';
 import { AppLayout, AppLayoutProps } from '@widgets/layouts/appLayout';
 import ContentContainerStack, {
+  ContentContainerProps,
   ContentContainerStyles
 } from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePaths } from '@widgets/page/page.helper';
-import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
+import { RecentlyViewedProductsContentContainerStack } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 export interface HomeProps {
   categories: Category[];
@@ -60,15 +62,25 @@ type HomeStyles = {
   recentlyViewedContainer: Partial<ContentContainerStyles>;
 };
 
+const SignInContainer: React.FC<ContentContainerProps> = props => {
+  const isAuthenticated = useIsAuthenticated();
+  if (isAuthenticated) {
+    return null;
+  }
+  return (
+    <ContentContainerStack {...props}>
+      <SignIn />
+    </ContentContainerStack>
+  );
+};
+
 const Home: NextPage<HomeProps & AppLayoutProps> = ({
   categories,
   siteMenuItems,
   mainMenuItems
 }) => {
   const { formatMessage } = useIntl();
-  const { products } = useRecentlyViewedProducts();
   const { palette, semanticColors } = useTheme();
-  const isAuthenticated = useIsAuthenticated();
 
   const styles: HomeStyles = {
     sectionContainer: {
@@ -116,15 +128,11 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
       >
         <AppLayout>
           <Hero />
-          {!isAuthenticated && (
-            <ContentContainerStack
-              outerStackProps={{
-                styles: styles.sectionContainer
-              }}
-            >
-              <SignIn />
-            </ContentContainerStack>
-          )}
+          <SignInContainer
+            outerStackProps={{
+              styles: styles.sectionContainer
+            }}
+          />
           <ContentContainerStack
             outerStackProps={{
               styles: mergeStyleSets(
@@ -180,18 +188,14 @@ const Home: NextPage<HomeProps & AppLayoutProps> = ({
           >
             <Support />
           </ContentContainerStack>
-          {products?.length ? (
-            <ContentContainerStack
-              outerStackProps={{
-                styles: mergeStyleSets(
-                  styles.recentlyViewedContainer.outerContainer,
-                  styles.sectionContainer
-                )
-              }}
-            >
-              <RecentlyViewedProducts products={products} />
-            </ContentContainerStack>
-          ) : null}
+          <RecentlyViewedProductsContentContainerStack
+            outerStackProps={{
+              styles: mergeStyleSets(
+                styles.recentlyViewedContainer.outerContainer,
+                styles.sectionContainer
+              )
+            }}
+          />
         </AppLayout>
       </GlobalDataProvider>
     </Page>

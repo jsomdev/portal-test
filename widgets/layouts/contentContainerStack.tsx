@@ -14,7 +14,7 @@ export type ContentContainerStyles = {
   innerContainer: IStackStyles;
 };
 
-type ContentContainerProps = {
+export type ContentContainerProps = {
   outerStackProps?: IStackProps;
   innerStackProps?: Partial<IStackProps>;
 };

@@ -17,7 +17,6 @@ import { FacetsProvider } from '@providers/facets/facetsProvider';
 import { FinderOperatingConditionsConfiguration } from '@providers/finder/finderContext';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
 import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
@@ -53,7 +52,7 @@ import ContentContainerStack, {
 } from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
-import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
+import { RecentlyViewedProductsContentContainerStack } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 type CategoryProps = {
   category: CategoryModel;
@@ -77,7 +76,6 @@ const Category: NextPage<CategoryProps> = ({
   initialViewAs
 }) => {
   const router = useRouter();
-  const { products } = useRecentlyViewedProducts();
   const { locale } = useIntl();
   const { semanticColors, spacing } = useTheme();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
@@ -142,15 +140,11 @@ const Category: NextPage<CategoryProps> = ({
                   searchQuery={router.query.query?.toString()}
                 />
               </ContentContainerStack>
-              {products?.length ? (
-                <ContentContainerStack
-                  outerStackProps={{
-                    styles: styles.recentlyViewedContainer.outerContainer
-                  }}
-                >
-                  <RecentlyViewedProducts products={products} />
-                </ContentContainerStack>
-              ) : null}
+              <RecentlyViewedProductsContentContainerStack
+                outerStackProps={{
+                  styles: styles.recentlyViewedContainer.outerContainer
+                }}
+              />
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>
