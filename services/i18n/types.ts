@@ -670,6 +670,7 @@ type ICheckoutMessages = {
       creditCardExpirationPlaceholder: string;
       creditCardExpirationInvalidError: string;
       creditCardCVV: string;
+      creditCardCVVInfo: string;
 
       billingFirstName: string;
       billingLastName: string;

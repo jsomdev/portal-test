@@ -946,6 +946,7 @@ export const messageIds: Messages = {
           creditCardExpirationInvalidError:
             'pages.checkout.payment.fields.creditCardExpirationInvalidError',
           creditCardCVV: 'pages.checkout.payment.fields.creditCardCVV',
+          creditCardCVVInfo: 'pages.checkout.payment.fields.creditCardCVVInfo',
 
           billingFirstName: 'pages.checkout.payment.fields.billingFirstName',
           billingLastName: 'pages.checkout.payment.fields.billingLastName',

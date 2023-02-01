@@ -900,6 +900,7 @@ export const nl: Messages = {
           creditCardExpirationPlaceholder: 'MM/JJ',
           creditCardExpirationInvalidError: 'Vervaldatum ongeldig',
           creditCardCVV: 'CVV / CVC Code',
+          creditCardCVVInfo: `De verificatiecode (ook bekend als 'CVC/CVV') is een code van 3 cijfers en staat op de achterkant van je kredietkaart, aan het einde van het handtekening-veld.`,
 
           billingFirstName: 'Voornaam',
           billingLastName: 'Familienaam',

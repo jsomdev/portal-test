@@ -878,6 +878,7 @@ export const en: Messages = {
           creditCardExpirationInvalidError:
             'Please enter a valid expiration date',
           creditCardCVV: 'CVV / CVC Code',
+          creditCardCVVInfo: `The verification code (also known as CVC/CVV) is a 3-digit code, located on the back of your credit card, at the end of the signature field.`,
 
           billingFirstName: 'First Name',
           billingLastName: 'Last Name',
