@@ -154,8 +154,8 @@ const MobileSiteHeader: React.FC = () => {
   const styles: MobileSiteHeaderStyles = {
     root: {
       root: {
-        height: rem(SITE_HEADER_HEIGHT),
-        position: 'relative'
+        position: 'relative',
+        padding: spacing.s1
       }
     },
 

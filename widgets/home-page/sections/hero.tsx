@@ -117,7 +117,7 @@ export const Hero: React.FC = () => {
     },
     callToAction: {
       root: {
-        height: 48
+        padding: `${rem(14)} ${rem(16)}`
       },
       label: {
         fontSize: fonts.large.fontSize

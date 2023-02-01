@@ -1,10 +1,25 @@
-import { DefaultSpacing, FontSizes } from '@fluentui/react';
+import { DefaultSpacing, FontSizes, IButtonStyles } from '@fluentui/react';
 import { PartialTheme } from '@fluentui/theme';
 import { rem } from '@utilities/rem';
 
+const defaultButtonStyles: IButtonStyles = {
+  root: {
+    height: 'auto',
+    padding: `${rem(10)} ${rem(16)}`,
+    wordBreak: 'break-word'
+  }
+};
+
 export const appTheme: PartialTheme = {
   defaultFontStyle: { fontFamily: 'proxima-nova', fontWeight: 'regular' },
-
+  components: {
+    PrimaryButton: {
+      styles: defaultButtonStyles
+    },
+    DefaultButton: {
+      styles: defaultButtonStyles
+    }
+  },
   palette: {
     themePrimary: '#0065a4',
     themeLighterAlt: '#f1f7fb',

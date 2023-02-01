@@ -86,8 +86,8 @@ const MobileSiteLogo: React.FC<{ className: string }> = ({ className }) => {
     logo: {
       root: {
         transition: 'all 0.3s',
-        width: rem(40),
-        height: rem(40)
+        width: '40px',
+        height: '40px'
       }
     },
     container: {
