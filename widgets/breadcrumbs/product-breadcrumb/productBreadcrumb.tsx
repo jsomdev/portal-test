@@ -11,7 +11,7 @@ import { getProductBreadcrumbItems } from './productBreadcrumbHelper';
 
 interface ProductBreadcrumbProps {
   product: Product;
-  model: Model | undefined;
+  model: Model | null | undefined;
 }
 
 /**

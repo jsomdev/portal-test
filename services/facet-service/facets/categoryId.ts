@@ -1,3 +1,5 @@
+import { MultilingualString } from '@services/portal-api';
+
 import { Facet } from '../models/facet/facet';
 import { FacetCategory } from '../models/facet/facetCategory';
 import { FacetControlType } from '../models/facet/facetControlType';
@@ -8,108 +10,108 @@ import { defaultFacet } from './defaultFacet';
 import { defaultFacetOption } from './defaultFacetOption';
 
 export enum CategoryIdFacetOptionKey {
-  Accessories = 'Accessories',
-  AdjustableBallFittings = 'AdjustableBallFittings',
-  AirActuatedAirAtomizing = 'AirActuatedAirAtomizing',
-  AirActuatedHydraulicAtomizing = 'AirActuatedHydraulicAtomizing',
-  AirAtomizingNozzles = 'AirAtomizingNozzles',
-  AirDryingBlowOff = 'AirDryingBlowOff',
-  AirNozzles = 'AirNozzles',
+  HydraulicNozzles = 'HydraulicNozzles',
+  FullConeNozzles = 'FullConeNozzles',
+  StandardFullConeNozzles = 'StandardFullConeNozzles',
+  WideAngleFullConeNozzles = 'WideAngleFullConeNozzles',
+  NarrowAngleFullConeNozzles = 'NarrowAngleFullConeNozzles',
+  LargeFreePassageFullConeNozzles = 'LargeFreePassageFullConeNozzles',
+  SquareOvalSprayFullConeNozzles = 'SquareOvalSprayFullConeNozzles',
+  UnijetFullConeNozzles = 'UnijetFullConeNozzles',
+  QuickjetFullConeNozzles = 'QuickjetFullConeNozzles',
+  FlatSprayNozzles = 'FlatSprayNozzles',
+  StandardFlatSprayNozzles = 'StandardFlatSprayNozzles',
+  DeflectedFlatSprayNozzles = 'DeflectedFlatSprayNozzles',
+  HighPressureFlatSprayNozzles = 'HighPressureFlatSprayNozzles',
+  UnijetFlatSprayNozzles = 'UnijetFlatSprayNozzles',
+  QuickjetFlatSprayNozzles = 'QuickjetFlatSprayNozzles',
+  SolidStreamNozzles = 'SolidStreamNozzles',
+  StandardSolidStreamNozzles = 'StandardSolidStreamNozzles',
+  HighPressureSolidStreamNozzles = 'HighPressureSolidStreamNozzles',
+  UltraHighPressureNozzles = 'UltraHighPressureNozzles',
+  UnijetSolidStreamNozzles = 'UnijetSolidStreamNozzles',
+  QuickjetSolidStreamNozzles = 'QuickjetSolidStreamNozzles',
+  HollowConeNozzles = 'HollowConeNozzles',
   AngleTypeHollowConeNozzles = 'AngleTypeHollowConeNozzles',
-  Applications = 'Applications',
-  ApplyingReleaseAgents = 'ApplyingReleaseAgents',
+  InLineHollowConeNozzles = 'InLineHollowConeNozzles',
+  LargeFreePassageHollowConeNozzles = 'LargeFreePassageHollowConeNozzles',
+  UnijetHollowConeNozzles = 'UnijetHollowConeNozzles',
+  FineSprayNozzles = 'FineSprayNozzles',
+  SingleOrificeFineSprayNozzles = 'SingleOrificeFineSprayNozzles',
+  MultiOrificeFineSprayNozzles = 'MultiOrificeFineSprayNozzles',
+  TankCleaningNozzles = 'TankCleaningNozzles',
+  UpTo100FtDiameter = 'UpTo100FtDiameter',
+  UpTo45FtDiameter = 'UpTo45FtDiameter',
+  UpTo20FtDiameter = 'UpTo20FtDiameter',
+  UpTo10FtDiameter = 'UpTo10FtDiameter',
+  UpTo5FtDiameter = 'UpTo5FtDiameter',
   AutomaticNozzles = 'AutomaticNozzles',
+  ElectricallyActuatedHydraulicAtomizing = 'ElectricallyActuatedHydraulicAtomizing',
+  ElectricallyActuatedAirAtomizing = 'ElectricallyActuatedAirAtomizing',
+  AirActuatedHydraulicAtomizing = 'AirActuatedHydraulicAtomizing',
+  AirActuatedAirAtomizing = 'AirActuatedAirAtomizing',
+  SprayGuns = 'SprayGuns',
+  LowPressure = 'LowPressure',
+  MediumPressure = 'MediumPressure',
+  HighPressure = 'HighPressure',
+  AirNozzles = 'AirNozzles',
+  FlatSpray = 'FlatSpray',
+  RoundSpray = 'RoundSpray',
+  AirAtomizingNozzles = 'AirAtomizingNozzles',
+  StandardAirAtomizingNozzles = 'StandardAirAtomizingNozzles',
+  QuickmistQuickConnectAirAtomizingNozzles = 'QuickmistQuickConnectAirAtomizingNozzles',
+  VariableSprayNozzles = 'VariableSprayNozzles',
+  Accessories = 'Accessories',
+  NozzleBodies = 'NozzleBodies',
+  UnijetNozzleBodies = 'UnijetNozzleBodies',
+  QuickjetNozzleBodies = 'QuickjetNozzleBodies',
+  MiniQuickjetNozzleBodies = 'MiniQuickjetNozzleBodies',
+  ThrottlingAndPressureReliefRegulatingValves = 'ThrottlingAndPressureReliefRegulatingValves',
+  SplitEyeletConnectors = 'SplitEyeletConnectors',
+  AdjustableBallFittings = 'AdjustableBallFittings',
+  Strainers = 'Strainers',
+  SprayingSystemsCoBrands = 'SprayingSystemsCoBrands',
+  Distribojet = 'Distribojet',
+  Flatjet = 'Flatjet',
+  Fogjet = 'Fogjet',
+  Floodjet = 'Floodjet',
+  Fulljet = 'Fulljet',
+  PromaxQuickjet = 'PromaxQuickjet',
+  Quickjet = 'Quickjet',
+  Spiraljet = 'Spiraljet',
+  Unijet = 'Unijet',
+  Veejet = 'Veejet',
+  Washjet = 'Washjet',
+  Whirljet = 'Whirljet',
+  Applications = 'Applications',
+  AirDryingBlowOff = 'AirDryingBlowOff',
   Cleaning = 'Cleaning',
+  HandHeldSprayGuns = 'HandHeldSprayGuns',
+  HighPressureCleaning = 'HighPressureCleaning',
+  LowPressureRinsing = 'LowPressureRinsing',
+  TankCleaning = 'TankCleaning',
   Coating = 'Coating',
   CoatingAutomaticNozzles = 'CoatingAutomaticNozzles',
   CoatingHydraulicNozzles = 'CoatingHydraulicNozzles',
   Cooling = 'Cooling',
-  CoolingAndConditioningOfGas = 'CoolingAndConditioningOfGas',
   CoolingSolids = 'CoolingSolids',
-  DeflectedFlatSprayNozzles = 'DeflectedFlatSprayNozzles',
-  DieLube = 'DieLube',
-  Distribojet = 'Distribojet',
-  DustControl = 'DustControl',
-  ElectricallyActuatedAirAtomizing = 'ElectricallyActuatedAirAtomizing',
-  ElectricallyActuatedHydraulicAtomizing = 'ElectricallyActuatedHydraulicAtomizing',
   EvaporativeCoolingOfLiquids = 'EvaporativeCoolingOfLiquids',
-  FineSprayNozzles = 'FineSprayNozzles',
+  CoolingAndConditioningOfGas = 'CoolingAndConditioningOfGas',
   FireProtection = 'FireProtection',
-  FlatSpray = 'FlatSpray',
-  FlatSprayNozzles = 'FlatSprayNozzles',
-  Flatjet = 'Flatjet',
-  Floodjet = 'Floodjet',
-  Fogjet = 'Fogjet',
-  FullConeNozzles = 'FullConeNozzles',
-  Fulljet = 'Fulljet',
-  HandHeldSprayGuns = 'HandHeldSprayGuns',
-  HighPressure = 'HighPressure',
-  HighPressureCleaning = 'HighPressureCleaning',
-  HighPressureFlatSprayNozzles = 'HighPressureFlatSprayNozzles',
-  HighPressureSolidStreamNozzles = 'HighPressureSolidStreamNozzles',
-  HollowConeNozzles = 'HollowConeNozzles',
   Humidification = 'Humidification',
   HumidifyingAndMoistening = 'HumidifyingAndMoistening',
   HumidifyingGases = 'HumidifyingGases',
-  HydraulicNozzles = 'HydraulicNozzles',
-  InLineHollowConeNozzles = 'InLineHollowConeNozzles',
-  LargeFreePassageFullConeNozzles = 'LargeFreePassageFullConeNozzles',
-  LargeFreePassageHollowConeNozzles = 'LargeFreePassageHollowConeNozzles',
-  LowPressure = 'LowPressure',
-  LowPressureRinsing = 'LowPressureRinsing',
-  Lubrication = 'Lubrication',
-  Marking = 'Marking',
-  MediumPressure = 'MediumPressure',
-  MiniQuickjetNozzleBodies = 'MiniQuickjetNozzleBodies',
   MoisteningSurfaces = 'MoisteningSurfaces',
-  MultiOrificeFineSprayNozzles = 'MultiOrificeFineSprayNozzles',
-  NarrowAngleFullConeNozzles = 'NarrowAngleFullConeNozzles',
-  NozzleBodies = 'NozzleBodies',
-  PromaxQuickjet = 'PromaxQuickjet',
-  Quickjet = 'Quickjet',
-  QuickjetFlatSprayNozzles = 'QuickjetFlatSprayNozzles',
-  QuickjetFullConeNozzles = 'QuickjetFullConeNozzles',
-  QuickjetNozzleBodies = 'QuickjetNozzleBodies',
-  QuickjetSolidStreamNozzles = 'QuickjetSolidStreamNozzles',
-  QuickmistQuickConnectAirAtomizingNozzles = 'QuickmistQuickConnectAirAtomizingNozzles',
-  RoundSpray = 'RoundSpray',
-  SingleOrificeFineSprayNozzles = 'SingleOrificeFineSprayNozzles',
-  SolidStreamNozzles = 'SolidStreamNozzles',
-  Spiraljet = 'Spiraljet',
-  SplitEyeletConnectors = 'SplitEyeletConnectors',
-  SprayGuns = 'SprayGuns',
-  SprayingSystemsCoBrands = 'SprayingSystemsCoBrands',
-  SquareOvalSprayFullConeNozzles = 'SquareOvalSprayFullConeNozzles',
-  StandardAirAtomizingNozzles = 'StandardAirAtomizingNozzles',
-  StandardFlatSprayNozzles = 'StandardFlatSprayNozzles',
-  StandardFullConeNozzles = 'StandardFullConeNozzles',
-  StandardSolidStreamNozzles = 'StandardSolidStreamNozzles',
-  Strainers = 'Strainers',
-  TankCleaning = 'TankCleaning',
-  TankCleaningNozzles = 'TankCleaningNozzles',
-  ThrottlingAndPressureReliefRegulatingValves = 'ThrottlingAndPressureReliefRegulatingValves',
-  UltraHighPressureNozzles = 'UltraHighPressureNozzles',
-  Unijet = 'Unijet',
-  UnijetFlatSprayNozzles = 'UnijetFlatSprayNozzles',
-  UnijetFullConeNozzles = 'UnijetFullConeNozzles',
-  UnijetHollowConeNozzles = 'UnijetHollowConeNozzles',
-  UnijetNozzleBodies = 'UnijetNozzleBodies',
-  UnijetSolidStreamNozzles = 'UnijetSolidStreamNozzles',
-  UpTo100FtDiameter = 'UpTo100FtDiameter',
-  UpTo10FtDiameter = 'UpTo10FtDiameter',
-  UpTo20FtDiameter = 'UpTo20FtDiameter',
-  UpTo45FtDiameter = 'UpTo45FtDiameter',
-  UpTo5FtDiameter = 'UpTo5FtDiameter',
-  VariableSprayNozzles = 'VariableSprayNozzles',
-  Veejet = 'Veejet',
-  Washjet = 'Washjet',
-  Whirljet = 'Whirljet',
-  WideAngleFullConeNozzles = 'WideAngleFullConeNozzles'
+  Lubrication = 'Lubrication',
+  DieLube = 'DieLube',
+  ApplyingReleaseAgents = 'ApplyingReleaseAgents',
+  Marking = 'Marking',
+  DustControl = 'DustControl'
 }
 
 export const categoryIdFacetOptions: FacetOption<
   CategoryIdFacetOptionKey,
-  { slug?: string }
+  { slug: MultilingualString }
 >[] = [
   {
     key: CategoryIdFacetOptionKey.HydraulicNozzles,
@@ -124,7 +126,12 @@ export const categoryIdFacetOptions: FacetOption<
       '3cb5851b-dec4-4e4c-9efb-599bca2fb27c',
       'f682ad13-4ea3-4bff-b0ff-8cd2fc500007'
     ],
-    slug: 'hydraulic-nozzles',
+    slug: {
+      en: 'hydraulic-nozzles',
+      de: 'hydraulik-düsen',
+      fr: 'buses-hydrauliques',
+      nl: 'hydraulische-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -157,7 +164,12 @@ export const categoryIdFacetOptions: FacetOption<
       '7e6211ba-add0-4e77-aa3e-820a6d6d0ade',
       '211aed31-3e85-4cfb-9b6b-ec7a301a7acb'
     ],
-    slug: 'full-cone-nozzles',
+    slug: {
+      en: 'full-cone-nozzles',
+      de: 'vollkegeldüsen',
+      fr: 'buses-à-cône-complet',
+      nl: 'full-cone-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -182,7 +194,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Standard Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'standard-full-cone-nozzles',
+    slug: {
+      en: 'standard-full-cone-nozzles',
+      de: 'standard-vollkegeldüsen',
+      fr: 'buses-standard-à-cône-plein',
+      nl: 'standaard-full-conus-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -207,7 +224,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Wide Angle Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'wide-angle-full-cone-nozzles',
+    slug: {
+      en: 'wide-angle-full-cone-nozzles',
+      de: 'weitwinkel-vollkegeldüsen',
+      fr: 'buses-grand-angle-à-cône-complet',
+      nl: 'groothoek-volle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -232,7 +254,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Narrow Angle Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'narrow-angle-full-cone-nozzles',
+    slug: {
+      en: 'narrow-angle-full-cone-nozzles',
+      de: 'narrow-angle-full-cone-düsen',
+      fr: 'buses-à-cône-plein-angle-étroit',
+      nl: 'smalle-hoek-volle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -257,7 +284,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Large Free Passage Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'large-free-passage-full-cone-nozzles',
+    slug: {
+      en: 'large-free-passage-full-cone-nozzles',
+      de: 'große-freidurchgangs-vollkegeldüsen',
+      fr: 'buses-à-cône-plein-à-grand-passage-libre',
+      nl: 'grote-vrije-doorgang-volledige-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -282,7 +314,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Square/Oval Spray Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'square-oval-spray-full-cone-nozzles',
+    slug: {
+      en: 'square-oval-spray-full-cone-nozzles',
+      de: 'quadrat-oval-spray-full-cone-düsen',
+      fr: 'buses-carrées-ovales-pulvérisées-à-cônes-pleins',
+      nl: 'vierkant-ovaal-spray-full-conus-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -307,7 +344,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet® Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'unijet-full-cone-nozzles',
+    slug: { en: 'unijet-full-cone-nozzles' },
     configuration: {
       displays: [
         {
@@ -332,7 +369,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickJet® Full Cone Nozzles',
     parentId: 'e41acecc-5491-4fa1-ae55-1bf880305962',
     children: [],
-    slug: 'quickjet-full-cone-nozzles',
+    slug: {
+      en: 'quickjet-full-cone-nozzles',
+      de: 'quickjet-full-cone-düsen',
+      fr: 'buses-quickjet-full-cone',
+      nl: 'quickjet-full-cone-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -363,7 +405,12 @@ export const categoryIdFacetOptions: FacetOption<
       '54c46a98-3f97-4793-b754-0a8316918394',
       '0f4da1bc-5133-46da-a2a4-f2b41098f191'
     ],
-    slug: 'flat-spray-nozzles',
+    slug: {
+      en: 'flat-spray-nozzles',
+      de: 'flachsprühdüsen',
+      fr: 'buses-de-pulvérisation-plates',
+      nl: 'platte-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -388,7 +435,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Standard Flat Spray Nozzles',
     parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
     children: [],
-    slug: 'standard-flat-spray-nozzles',
+    slug: {
+      en: 'standard-flat-spray-nozzles',
+      de: 'standard-flachsprühdüsen',
+      fr: 'buses-de-pulvérisation-plates-standard',
+      nl: 'standaard-platte-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -413,7 +465,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Deflected Flat Spray Nozzles',
     parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
     children: [],
-    slug: 'deflected-flat-spray-nozzles',
+    slug: {
+      en: 'deflected-flat-spray-nozzles',
+      de: 'deflected-flat-spray-düsen',
+      fr: 'buses-de-pulvérisation-à-plat-dévié',
+      nl: 'afgebogen-platte-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -438,7 +495,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'High Pressure Flat Spray Nozzles',
     parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
     children: [],
-    slug: 'high-pressure-flat-spray-nozzles',
+    slug: {
+      en: 'high-pressure-flat-spray-nozzles',
+      de: 'hochdruck-flachsprühdüsen',
+      fr: 'buses-de-pulvérisation-plates-à-haute-pression',
+      nl: 'hogedruk-platte-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -463,7 +525,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet® Flat Spray Nozzles',
     parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
     children: [],
-    slug: 'unijet-flat-spray-nozzles',
+    slug: {
+      en: 'unijet-flat-spray-nozzles',
+      de: 'unijet-flach-sprühdüsen',
+      fr: 'unijet-flat-spray-buses',
+      nl: 'unijet-flat-spray-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -488,7 +555,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickJet® Flat Spray Nozzles',
     parentId: '450fd9b1-e6ac-4e89-98d8-4341a35150c5',
     children: [],
-    slug: 'quickjet-flat-spray-nozzles',
+    slug: {
+      en: 'quickjet-flat-spray-nozzles',
+      de: 'quickjet-flat-spray-düsen',
+      fr: 'buses-quickjet-flat-spray',
+      nl: 'quickjet-flat-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -519,7 +591,12 @@ export const categoryIdFacetOptions: FacetOption<
       'fa6700aa-f174-4fd5-a0a0-7821e056f59f',
       'eae1f2f7-f707-4a8c-974e-36c201cb5e1a'
     ],
-    slug: 'solid-stream-nozzles',
+    slug: {
+      en: 'solid-stream-nozzles',
+      de: 'solid-stream-düsen',
+      fr: 'buses-à-flux-solide',
+      nl: 'solid-stream-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -544,7 +621,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Standard Solid Stream Nozzles',
     parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
     children: [],
-    slug: 'standard-solid-stream-nozzles',
+    slug: {
+      en: 'standard-solid-stream-nozzles',
+      de: 'standard-solid-stream-düsen',
+      fr: 'buses-à-flux-solide-standard',
+      nl: 'standaard-solid-stream-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -569,7 +651,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'High Pressure Solid Stream Nozzles',
     parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
     children: [],
-    slug: 'high-pressure-solid-stream-nozzles',
+    slug: {
+      en: 'high-pressure-solid-stream-nozzles',
+      de: 'hochdruck-feststoff-strömungsdüsen',
+      fr: 'buses-à-flux-solide-haute-pression',
+      nl: 'hogedruk-vaste-stroom-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -594,7 +681,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Ultra High Pressure Nozzles',
     parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
     children: [],
-    slug: 'ultra-high-pressure-nozzles',
+    slug: {
+      en: 'ultra-high-pressure-nozzles',
+      de: 'ultrahochdruck-düsen',
+      fr: 'buses-ultra-haute-pression',
+      nl: 'ultra-hoge-druk-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -619,7 +711,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet® Solid Stream Nozzles',
     parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
     children: [],
-    slug: 'unijet-solid-stream-nozzles',
+    slug: {
+      en: 'unijet-solid-stream-nozzles',
+      de: 'unijet-solid-stream-düsen',
+      fr: 'buses-unijet-solid-stream',
+      nl: 'unijet-solid-stream-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -644,7 +741,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickJet® Solid Stream Nozzles',
     parentId: '9b282e61-a940-4c4c-900f-dc057905d2a8',
     children: [],
-    slug: 'quickjet-solid-stream-nozzles',
+    slug: {
+      en: 'quickjet-solid-stream-nozzles',
+      de: 'quickjet-feststoff-stream-düsen',
+      fr: 'buses-quickjet-solid-stream',
+      nl: 'quickjet-solid-stream-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -674,7 +776,12 @@ export const categoryIdFacetOptions: FacetOption<
       'b360dc4b-0cf9-4e84-953b-791453d7e293',
       '09b345e8-de33-43ab-90ea-a81c636a553d'
     ],
-    slug: 'hollow-cone-nozzles',
+    slug: {
+      en: 'hollow-cone-nozzles',
+      de: 'hohlkegeldüsen',
+      fr: 'buses-à-cône-creux',
+      nl: 'holle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -699,7 +806,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Angle-Type Hollow Cone Nozzles',
     parentId: '3cb5851b-dec4-4e4c-9efb-599bca2fb27c',
     children: [],
-    slug: 'angle-type-hollow-cone-nozzles',
+    slug: { en: 'angle-type-hollow-cone-nozzles' },
     configuration: {
       displays: [
         {
@@ -724,7 +831,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'In-Line Hollow Cone Nozzles',
     parentId: '3cb5851b-dec4-4e4c-9efb-599bca2fb27c',
     children: [],
-    slug: 'in-line-hollow-cone-nozzles',
+    slug: {
+      en: 'in-line-hollow-cone-nozzles',
+      de: 'inline-hohlkegeldüsen',
+      fr: 'buses-creuses-en-ligne',
+      nl: 'in-line-holle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -749,7 +861,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Large Free Passage Hollow Cone Nozzles',
     parentId: '3cb5851b-dec4-4e4c-9efb-599bca2fb27c',
     children: [],
-    slug: 'large-free-passage-hollow-cone-nozzles',
+    slug: {
+      en: 'large-free-passage-hollow-cone-nozzles',
+      de: 'groß-freigang-hohlkegel-düsen',
+      fr: 'buses-à-cône-creux-à-grand-passage-libre',
+      nl: 'grote-vrije-doorgang-holle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -774,7 +891,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet® Hollow Cone Nozzles',
     parentId: '3cb5851b-dec4-4e4c-9efb-599bca2fb27c',
     children: [],
-    slug: 'unijet-hollow-cone-nozzles',
+    slug: {
+      en: 'unijet-hollow-cone-nozzles',
+      de: 'unijet-hohlkegel-düsen',
+      fr: 'buses-unijet-hollow-cone-nozzles',
+      nl: 'unijet-holle-kegel-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -802,7 +924,12 @@ export const categoryIdFacetOptions: FacetOption<
       '1c3a59c0-decb-44dd-9c3f-c5dc6d91fea1',
       '20bc051a-0842-4557-910e-06a261e01135'
     ],
-    slug: 'fine-spray-nozzles',
+    slug: {
+      en: 'fine-spray-nozzles',
+      de: 'feinsprühdüsen',
+      fr: 'buses-de-pulvérisation-fines',
+      nl: 'fijnsproeiers'
+    },
     configuration: {
       displays: [
         {
@@ -827,7 +954,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Single-Orifice Fine Spray Nozzles',
     parentId: 'f682ad13-4ea3-4bff-b0ff-8cd2fc500007',
     children: [],
-    slug: 'single-orifice-fine-spray-nozzles',
+    slug: {
+      en: 'single-orifice-fine-spray-nozzles',
+      de: 'einzelblenden-feinsprühdüsen',
+      fr: 'buses-de-pulvérisation-fine-à-orifice-unique',
+      nl: 'enkel-opening-fijne-sproeikoppen'
+    },
     configuration: {
       displays: [
         {
@@ -852,7 +984,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Multi-Orifice Fine Spray Nozzles',
     parentId: 'f682ad13-4ea3-4bff-b0ff-8cd2fc500007',
     children: [],
-    slug: 'multi-orifice-fine-spray-nozzles',
+    slug: {
+      en: 'multi-orifice-fine-spray-nozzles',
+      de: 'multi-blenden-feinsprühdüsen',
+      fr: 'buses-de-pulvérisation-fines-à-orifices-multiples',
+      nl: 'multi-opening-fine-spray-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -883,7 +1020,12 @@ export const categoryIdFacetOptions: FacetOption<
       'a24d14a1-71e8-4335-970a-e19e07ac6f1c',
       '67a0148f-82b9-4e38-baa7-f1509d6b8b5d'
     ],
-    slug: 'tank-cleaning-nozzles',
+    slug: {
+      en: 'tank-cleaning-nozzles',
+      de: 'tankreinigungsdüsen',
+      fr: 'buses-de-nettoyage-de-réservoir',
+      nl: 'tank-reinigings-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -908,7 +1050,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Up to 100 ft. (30.5 m) diameter',
     parentId: '4e65f62e-3ef1-4b64-9d5b-cb96496a62c5',
     children: [],
-    slug: 'up-to-100-ft-diameter',
+    slug: {
+      en: 'up-to-100-ft-diameter',
+      de: 'bis-zu-100-fuß-durchmesser',
+      fr: 'jusqu’à-100-pieds-de-diamètre',
+      nl: 'tot-100-ft-diameter'
+    },
     configuration: {
       displays: [
         {
@@ -933,7 +1080,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Up to 45 ft. (13.7 m) diameter',
     parentId: '4e65f62e-3ef1-4b64-9d5b-cb96496a62c5',
     children: [],
-    slug: 'up-to-45-ft-diameter',
+    slug: {
+      en: 'up-to-45-ft-diameter',
+      de: 'bis-zu-45-fuß-durchmesser',
+      fr: 'jusqu’à-45-pieds-de-diamètre',
+      nl: 'tot-45-ft-diameter'
+    },
     configuration: {
       displays: [
         {
@@ -958,7 +1110,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Up to 20 ft. (6 m) diameter',
     parentId: '4e65f62e-3ef1-4b64-9d5b-cb96496a62c5',
     children: [],
-    slug: 'up-to-20-ft-diameter',
+    slug: {
+      en: 'up-to-20-ft-diameter',
+      de: 'bis-zu-20-fuß-durchmesser',
+      fr: 'jusqu’à-20-pieds-de-diamètre',
+      nl: 'tot-20-ft-diameter'
+    },
     configuration: {
       displays: [
         {
@@ -983,7 +1140,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Up to 10 ft. (3 m) diameter',
     parentId: '4e65f62e-3ef1-4b64-9d5b-cb96496a62c5',
     children: [],
-    slug: 'up-to-10-ft-diameter',
+    slug: {
+      en: 'up-to-10-ft-diameter',
+      de: 'bis-zu-10-fuß-durchmesser',
+      fr: 'jusqu’à-10-pieds-de-diamètre',
+      nl: 'tot-10-ft-diameter'
+    },
     configuration: {
       displays: [
         {
@@ -1008,7 +1170,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Up to 5 ft. (1.5 m) diameter',
     parentId: '4e65f62e-3ef1-4b64-9d5b-cb96496a62c5',
     children: [],
-    slug: 'up-to-5-ft-diameter',
+    slug: {
+      en: 'up-to-5-ft-diameter',
+      de: 'bis-zu-5-fuß-durchmesser',
+      fr: 'jusqu’à-5-pieds-de-diamètre',
+      nl: 'tot-5-ft-diameter'
+    },
     configuration: {
       displays: [
         {
@@ -1038,7 +1205,12 @@ export const categoryIdFacetOptions: FacetOption<
       'bf851fde-6525-4fa3-9ba1-7b76b4111fbe',
       '1f1f0459-20fe-4d4f-a4c5-afec9af36f05'
     ],
-    slug: 'automatic-nozzles',
+    slug: {
+      en: 'automatic-nozzles',
+      de: 'automatik-düsen',
+      fr: 'buses-automatiques',
+      nl: 'automatische-nozzles'
+    },
     configuration: {
       displays: [
         {
@@ -1058,7 +1230,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Electrically-Actuated / Hydraulic Atomizing',
     parentId: '43c4a35a-5621-4585-b291-d8481c00c83d',
     children: [],
-    slug: 'electrically-actuated-hydraulic-atomizing',
+    slug: {
+      en: 'electrically-actuated-hydraulic-atomizing',
+      de: 'elektrisch-betätigt-hydraulisch-zerstäuben',
+      fr: 'atomisation-hydraulique-actionnée-électriquement',
+      nl: 'elektrisch-aangedreven-hydraulisch-verstuiveren'
+    },
     configuration: {
       displays: [
         {
@@ -1083,7 +1260,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Electrically-Actuated / Air Atomizing',
     parentId: '43c4a35a-5621-4585-b291-d8481c00c83d',
     children: [],
-    slug: 'electrically-actuated-air-atomizing',
+    slug: {
+      en: 'electrically-actuated-air-atomizing',
+      de: 'elektrisch-betätigt-luftzerstäubend',
+      fr: 'atomisation-à-l’air-actionné-électriquement',
+      nl: 'elektrisch-aangedreven-luchtverneveling'
+    },
     configuration: {
       displays: [
         {
@@ -1108,7 +1290,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Air-Actuated / Hydraulic Atomizing',
     parentId: '43c4a35a-5621-4585-b291-d8481c00c83d',
     children: [],
-    slug: 'air-actuated-hydraulic-atomizing',
+    slug: {
+      en: 'air-actuated-hydraulic-atomizing',
+      de: 'luftbetätigt-hydraulisch-zerstäubend',
+      fr: 'atomisation-hydraulique-actionnée-à-l’air',
+      nl: 'lucht-aangedreven-hydraulisch-verstuiving'
+    },
     configuration: {
       displays: [
         {
@@ -1133,7 +1320,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Air-Actuated / Air Atomizing',
     parentId: '43c4a35a-5621-4585-b291-d8481c00c83d',
     children: [],
-    slug: 'air-actuated-air-atomizing',
+    slug: {
+      en: 'air-actuated-air-atomizing',
+      de: 'luftbetätigt-luftzerstäubend',
+      fr: 'atomisation-à-l’air-actionné-par-l’air',
+      nl: 'lucht-aangedreven-lucht-verstuiving'
+    },
     configuration: {
       displays: [
         {
@@ -1162,7 +1354,12 @@ export const categoryIdFacetOptions: FacetOption<
       '6dd092be-3b4d-4e4a-bd2f-7f30e0da08d6',
       '4e9199f0-2b6e-42b7-a1e2-6592c9603cc1'
     ],
-    slug: 'spray-guns',
+    slug: {
+      en: 'spray-guns',
+      de: 'spritzpistolen',
+      fr: 'pistolets-de-pulvérisation',
+      nl: 'spuitpistolen'
+    },
     configuration: {
       displays: [
         {
@@ -1187,7 +1384,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Low Pressure',
     parentId: '3ba9c6a1-43f5-4862-b64e-f7ff232fa691',
     children: [],
-    slug: 'low-pressure',
+    slug: {
+      en: 'low-pressure',
+      de: 'niederdruck',
+      fr: 'basse-pression',
+      nl: 'lage-druk'
+    },
     configuration: {
       displays: [
         {
@@ -1212,7 +1414,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Medium Pressure',
     parentId: '3ba9c6a1-43f5-4862-b64e-f7ff232fa691',
     children: [],
-    slug: 'medium-pressure',
+    slug: {
+      en: 'medium-pressure',
+      de: 'mitteldruck',
+      fr: 'moyenne-pression',
+      nl: 'middelhoge-druk'
+    },
     configuration: {
       displays: [
         {
@@ -1237,7 +1444,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'High Pressure',
     parentId: '3ba9c6a1-43f5-4862-b64e-f7ff232fa691',
     children: [],
-    slug: 'high-pressure',
+    slug: {
+      en: 'high-pressure',
+      de: 'hochdruck',
+      fr: 'haute-pression',
+      nl: 'hogedruk'
+    },
     configuration: {
       displays: [
         {
@@ -1265,7 +1477,12 @@ export const categoryIdFacetOptions: FacetOption<
       '723cfc0e-8812-45fc-81f3-76490bed5b02',
       '9728a8a0-cd1c-418a-b2f9-c2ca28e96e6a'
     ],
-    slug: 'air-nozzles',
+    slug: {
+      en: 'air-nozzles',
+      de: 'luftdüsen',
+      fr: 'buses-d’air',
+      nl: 'luchtsproeiers'
+    },
     configuration: {
       displays: [
         {
@@ -1290,7 +1507,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Flat Spray',
     parentId: '4b39c56f-d0e6-4a64-b7ac-d3fcc15135a6',
     children: [],
-    slug: 'flat-spray',
+    slug: {
+      en: 'flat-spray',
+      de: 'flachspray',
+      fr: 'pulvérisation-à-plat',
+      nl: 'platte-spray'
+    },
     configuration: {
       displays: [
         {
@@ -1315,7 +1537,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Round Spray',
     parentId: '4b39c56f-d0e6-4a64-b7ac-d3fcc15135a6',
     children: [],
-    slug: 'round-spray',
+    slug: {
+      en: 'round-spray',
+      de: 'rundspray',
+      fr: 'pulvérisation-ronde',
+      nl: 'rond-spray'
+    },
     configuration: {
       displays: [
         {
@@ -1344,7 +1571,7 @@ export const categoryIdFacetOptions: FacetOption<
       '2b021a64-9287-498e-a895-185798bde18e',
       'b55953a6-a183-4e5e-a781-9d036cad38ac'
     ],
-    slug: 'air-atomizing-nozzles',
+    slug: { en: 'air-atomizing-nozzles' },
     configuration: {
       displays: [
         {
@@ -1364,7 +1591,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Standard Air Atomizing Nozzles',
     parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
     children: [],
-    slug: 'standard-air-atomizing-nozzles',
+    slug: { en: 'standard-air-atomizing-nozzles' },
     configuration: {
       displays: [
         {
@@ -1384,7 +1611,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickMist® Quick Connect Air Atomizing Nozzles',
     parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
     children: [],
-    slug: 'quickmist-quick-connect-air-atomizing-nozzles',
+    slug: { en: 'quickmist-quick-connect-air-atomizing-nozzles' },
     configuration: {
       displays: [
         {
@@ -1404,7 +1631,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Variable Spray Nozzles',
     parentId: '3ff41a3f-935f-4fb9-a0e8-a6169a5c01c8',
     children: [],
-    slug: 'variable-spray-nozzles',
+    slug: { en: 'variable-spray-nozzles' },
     configuration: {
       displays: [
         {
@@ -1430,7 +1657,7 @@ export const categoryIdFacetOptions: FacetOption<
       '858cb720-d7e3-44f7-afe7-4478b93eb44d',
       '1354b0a8-d57c-4766-a7a6-78b103e11ba0'
     ],
-    slug: 'accessories',
+    slug: { en: 'accessories' },
     configuration: {
       displays: [
         {
@@ -1459,7 +1686,12 @@ export const categoryIdFacetOptions: FacetOption<
       '8606316f-39e9-47fd-9e5b-6df01ef45f4e',
       'd9509071-00ca-4a6a-ba7f-61a95365db7f'
     ],
-    slug: 'nozzle-bodies',
+    slug: {
+      en: 'nozzle-bodies',
+      de: 'düsenkörper',
+      fr: 'corps-de-buse',
+      nl: "nozzle-body's"
+    },
     configuration: {
       displays: [
         {
@@ -1484,7 +1716,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet® Nozzle Bodies',
     parentId: 'a00c0390-eae3-4a0a-85c4-b2cfd5af8b7a',
     children: [],
-    slug: 'unijet-nozzle-bodies',
+    slug: {
+      en: 'unijet-nozzle-bodies',
+      de: 'unijet-düsenkörper',
+      fr: 'corps-de-buse-unijet',
+      nl: "unijet-nozzle-body's"
+    },
     configuration: {
       displays: [
         {
@@ -1509,7 +1746,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickJet® Nozzle Bodies',
     parentId: 'a00c0390-eae3-4a0a-85c4-b2cfd5af8b7a',
     children: [],
-    slug: 'quickjet-nozzle-bodies',
+    slug: { en: 'quickjet-nozzle-bodies' },
     configuration: {
       displays: [
         {
@@ -1534,7 +1771,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Mini QuickJet® Nozzle Bodies',
     parentId: 'a00c0390-eae3-4a0a-85c4-b2cfd5af8b7a',
     children: [],
-    slug: 'mini-quickjet-nozzle-bodies',
+    slug: { en: 'mini-quickjet-nozzle-bodies' },
     configuration: {
       displays: [
         {
@@ -1559,7 +1796,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Throttling and Pressure Relief/Regulating Valves',
     parentId: '7915b20c-1bf0-4626-b980-a83fe5991f43',
     children: [],
-    slug: 'throttling-and-pressure-relief-regulating-valves',
+    slug: {
+      en: 'throttling-and-pressure-relief-regulating-valves',
+      de: 'drossel--und-druckentlastungsregelventile',
+      fr: 'vannes-d’étranglement-et-de-régulation-de-décharge-de-pression',
+      nl: 'throttling-and-pressure-relief-regulating-valves'
+    },
     configuration: {
       displays: [
         {
@@ -1584,7 +1826,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Split-Eyelet Connectors',
     parentId: '7915b20c-1bf0-4626-b980-a83fe5991f43',
     children: [],
-    slug: 'split-eyelet-connectors',
+    slug: {
+      en: 'split-eyelet-connectors',
+      de: 'split-eyelet-steckverbinder',
+      fr: 'connecteurs-à-œillets-divisés',
+      nl: 'split-eyelet-connectoren'
+    },
     configuration: {
       displays: [
         {
@@ -1609,7 +1856,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Adjustable Ball Fittings',
     parentId: '7915b20c-1bf0-4626-b980-a83fe5991f43',
     children: [],
-    slug: 'adjustable-ball-fittings',
+    slug: {
+      en: 'adjustable-ball-fittings',
+      de: 'verstellbare-kugelbeschläge',
+      fr: 'raccords-à-billes-réglables',
+      nl: 'verstelbare-kogelfittingen'
+    },
     configuration: {
       displays: [
         {
@@ -1634,7 +1886,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Strainers',
     parentId: '7915b20c-1bf0-4626-b980-a83fe5991f43',
     children: [],
-    slug: 'strainers',
+    slug: { en: 'strainers' },
     configuration: {
       displays: [
         {
@@ -1667,7 +1919,12 @@ export const categoryIdFacetOptions: FacetOption<
       '9be19c11-4139-4a09-aeb7-a3b66913a507',
       'd38cd84f-64ae-41fd-ae1d-dd5c6a38930e'
     ],
-    slug: 'spraying-systems-co-brands',
+    slug: {
+      en: 'spraying-systems-co-brands',
+      de: 'spraying-systems-co-brands',
+      fr: 'systèmes-de-pulvérisation-co-marques',
+      nl: 'spuiten-systemen-co-merken'
+    },
     configuration: {
       displays: [
         {
@@ -1692,7 +1949,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'DistriboJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'distribojet',
+    slug: {
+      en: 'distribojet',
+      de: 'distribojet',
+      fr: 'distribojet',
+      nl: 'distribojet'
+    },
     configuration: {
       displays: [
         {
@@ -1717,7 +1979,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'FlatJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'flatjet',
+    slug: { en: 'flatjet' },
     configuration: {
       displays: [
         {
@@ -1742,7 +2004,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'FogJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'fogjet',
+    slug: { en: 'fogjet' },
     configuration: {
       displays: [
         {
@@ -1762,7 +2024,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'FloodJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'floodjet',
+    slug: {
+      en: 'floodjet',
+      de: 'flutstrahl',
+      fr: 'jet-d’inondation',
+      nl: 'floodjet'
+    },
     configuration: {
       displays: [
         {
@@ -1787,7 +2054,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'FullJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'fulljet',
+    slug: { en: 'fulljet' },
     configuration: {
       displays: [
         {
@@ -1812,7 +2079,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'ProMax® QuickJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'promax-quickjet',
+    slug: { en: 'promax-quickjet' },
     configuration: {
       displays: [
         {
@@ -1837,7 +2104,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'QuickJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'quickjet',
+    slug: { en: 'quickjet' },
     configuration: {
       displays: [
         {
@@ -1862,7 +2129,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'SpiralJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'spiraljet',
+    slug: { en: 'spiraljet' },
     configuration: {
       displays: [
         {
@@ -1887,7 +2154,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'UniJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'unijet',
+    slug: { en: 'unijet' },
     configuration: {
       displays: [
         {
@@ -1907,7 +2174,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'VeeJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'veejet',
+    slug: { en: 'veejet' },
     configuration: {
       displays: [
         {
@@ -1927,7 +2194,12 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'WashJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'washjet',
+    slug: {
+      en: 'washjet',
+      de: 'waschstrahl',
+      fr: 'jet-de-lavage',
+      nl: 'washjet'
+    },
     configuration: {
       displays: [
         {
@@ -1952,7 +2224,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'WhirlJet®',
     parentId: 'f46db9bb-6f07-4a74-97b1-11c76ce7a82b',
     children: [],
-    slug: 'whirljet',
+    slug: { en: 'whirljet' },
     configuration: {
       displays: [
         {
@@ -1988,7 +2260,7 @@ export const categoryIdFacetOptions: FacetOption<
       '14b21e18-908d-45d7-940d-433e15ee1285',
       'aa730c2c-fb95-4c54-ad27-58bbda953d16'
     ],
-    slug: 'applications',
+    slug: { en: 'applications' },
     configuration: {
       displays: [
         {
@@ -2008,7 +2280,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Air Drying / Blow-Off',
     parentId: '99b89989-636a-4869-918a-1cc9ba755944',
     children: [],
-    slug: 'air-drying-blow-off',
+    slug: { en: 'air-drying-blow-off' },
     configuration: {
       displays: [
         {
@@ -2033,7 +2305,7 @@ export const categoryIdFacetOptions: FacetOption<
       '3bce75fb-8bd2-428f-aa0b-9c549620dcd1',
       '674b4cb7-2090-41db-8674-c9819b4a0972'
     ],
-    slug: 'cleaning',
+    slug: { en: 'cleaning' },
     configuration: {
       displays: [
         {
@@ -2053,7 +2325,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Hand-held Spray Guns',
     parentId: 'c85d6be3-5dd9-4c40-99bd-af660d486522',
     children: [],
-    slug: 'hand-held-spray-guns',
+    slug: { en: 'hand-held-spray-guns' },
     configuration: {
       displays: [
         {
@@ -2073,7 +2345,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'High Pressure Cleaning',
     parentId: 'c85d6be3-5dd9-4c40-99bd-af660d486522',
     children: [],
-    slug: 'high-pressure-cleaning',
+    slug: { en: 'high-pressure-cleaning' },
     configuration: {
       displays: [
         {
@@ -2093,7 +2365,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Low Pressure Rinsing',
     parentId: 'c85d6be3-5dd9-4c40-99bd-af660d486522',
     children: [],
-    slug: 'low-pressure-rinsing',
+    slug: { en: 'low-pressure-rinsing' },
     configuration: {
       displays: [
         {
@@ -2113,7 +2385,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Tank Cleaning',
     parentId: 'c85d6be3-5dd9-4c40-99bd-af660d486522',
     children: [],
-    slug: 'tank-cleaning',
+    slug: { en: 'tank-cleaning' },
     configuration: {
       displays: [
         {
@@ -2136,7 +2408,7 @@ export const categoryIdFacetOptions: FacetOption<
       '895d913d-0f2e-46a0-bcf9-53cd97f117fe',
       'dc49369e-88e7-4766-b2eb-33427dc61d30'
     ],
-    slug: 'coating',
+    slug: { en: 'coating' },
     configuration: {
       displays: [
         {
@@ -2153,40 +2425,40 @@ export const categoryIdFacetOptions: FacetOption<
     key: CategoryIdFacetOptionKey.CoatingAutomaticNozzles,
     ...defaultFacetOption,
     valueId: '895d913d-0f2e-46a0-bcf9-53cd97f117fe',
-    value: 'Automatic Nozzles',
+    value: 'Coating Automatic Nozzles',
     parentId: '7345e417-7fa1-4c2c-93e2-499d701ade17',
     children: [],
-    slug: 'coating-automatic-nozzles',
+    slug: { en: 'coating-automatic-nozzles' },
     configuration: {
       displays: [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Automatic Nozzles' }
+          value: { en: 'Coating Automatic Nozzles' }
         }
       ],
       sortIndex: 81,
-      seoPath: 'automatic-nozzles'
+      seoPath: 'coating-automatic-nozzles'
     }
   },
   {
     key: CategoryIdFacetOptionKey.CoatingHydraulicNozzles,
     ...defaultFacetOption,
     valueId: 'dc49369e-88e7-4766-b2eb-33427dc61d30',
-    value: 'Hydraulic Nozzles',
+    value: 'Coating Hydraulic Nozzles',
     parentId: '7345e417-7fa1-4c2c-93e2-499d701ade17',
     children: [],
-    slug: 'coating-hydraulic-nozzles',
+    slug: { en: 'coating-hydraulic-nozzles' },
     configuration: {
       displays: [
         {
           variation: 'Invariant',
           unitSymbol: null,
-          value: { en: 'Hydraulic Nozzles' }
+          value: { en: 'Coating Hydraulic Nozzles' }
         }
       ],
       sortIndex: 82,
-      seoPath: 'hydraulic-nozzles'
+      seoPath: 'coating-hydraulic-nozzles'
     }
   },
   {
@@ -2200,7 +2472,7 @@ export const categoryIdFacetOptions: FacetOption<
       'b7a29d1f-43e6-4a19-be37-1ba62c51d7a9',
       '8f82acf6-4a00-4e44-bcd5-0928fbe82e83'
     ],
-    slug: 'cooling',
+    slug: { en: 'cooling' },
     configuration: {
       displays: [
         {
@@ -2220,7 +2492,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Cooling Solids',
     parentId: 'b146fbae-1cb7-44d3-a2b3-5afce739f25e',
     children: [],
-    slug: 'cooling-solids',
+    slug: { en: 'cooling-solids' },
     configuration: {
       displays: [
         {
@@ -2240,7 +2512,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Evaporative Cooling of Liquids',
     parentId: 'b146fbae-1cb7-44d3-a2b3-5afce739f25e',
     children: [],
-    slug: 'evaporative-cooling-of-liquids',
+    slug: { en: 'evaporative-cooling-of-liquids' },
     configuration: {
       displays: [
         {
@@ -2260,7 +2532,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Cooling & Conditioning of Gas',
     parentId: 'b146fbae-1cb7-44d3-a2b3-5afce739f25e',
     children: [],
-    slug: 'cooling-and-conditioning-of-gas',
+    slug: { en: 'cooling-and-conditioning-of-gas' },
     configuration: {
       displays: [
         {
@@ -2280,7 +2552,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Fire Protection',
     parentId: '99b89989-636a-4869-918a-1cc9ba755944',
     children: [],
-    slug: 'fire-protection',
+    slug: { en: 'fire-protection' },
     configuration: {
       displays: [
         {
@@ -2300,7 +2572,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Humidification',
     parentId: '99b89989-636a-4869-918a-1cc9ba755944',
     children: [],
-    slug: 'humidification',
+    slug: { en: 'humidification' },
     configuration: {
       displays: [
         {
@@ -2323,7 +2595,7 @@ export const categoryIdFacetOptions: FacetOption<
       'b7303632-c2bd-43f4-adb3-5b2c13971ebd',
       'd64caa2a-0e6d-4110-a943-d102658f877a'
     ],
-    slug: 'humidifying-and-moistening',
+    slug: { en: 'humidifying-and-moistening' },
     configuration: {
       displays: [
         {
@@ -2343,7 +2615,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Humidifying Gases',
     parentId: '808b463f-4683-4583-a538-0b880fb5d8fb',
     children: [],
-    slug: 'humidifying-gases',
+    slug: { en: 'humidifying-gases' },
     configuration: {
       displays: [
         {
@@ -2363,7 +2635,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Moistening Surfaces',
     parentId: '808b463f-4683-4583-a538-0b880fb5d8fb',
     children: [],
-    slug: 'moistening-surfaces',
+    slug: { en: 'moistening-surfaces' },
     configuration: {
       displays: [
         {
@@ -2386,7 +2658,7 @@ export const categoryIdFacetOptions: FacetOption<
       'cf4a1a25-1388-4b78-8ccc-384000012e93',
       'a1b95372-6ebc-45f5-950d-fd0da399461c'
     ],
-    slug: 'lubrication',
+    slug: { en: 'lubrication' },
     configuration: {
       displays: [
         {
@@ -2406,7 +2678,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Die Lube',
     parentId: '67be7924-a2f5-451d-8526-ad7539826b7e',
     children: [],
-    slug: 'die-lube',
+    slug: { en: 'die-lube' },
     configuration: {
       displays: [
         {
@@ -2426,7 +2698,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Applying Release Agents',
     parentId: '67be7924-a2f5-451d-8526-ad7539826b7e',
     children: [],
-    slug: 'applying-release-agents',
+    slug: { en: 'applying-release-agents' },
     configuration: {
       displays: [
         {
@@ -2446,7 +2718,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Marking',
     parentId: '99b89989-636a-4869-918a-1cc9ba755944',
     children: [],
-    slug: 'marking',
+    slug: { en: 'marking' },
     configuration: {
       displays: [
         {
@@ -2466,7 +2738,7 @@ export const categoryIdFacetOptions: FacetOption<
     value: 'Dust Control',
     parentId: '99b89989-636a-4869-918a-1cc9ba755944',
     children: [],
-    slug: 'dust-control',
+    slug: { en: 'dust-control' },
     configuration: {
       displays: [
         {

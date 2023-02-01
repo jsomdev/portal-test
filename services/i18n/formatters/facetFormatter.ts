@@ -4,10 +4,11 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { SystemOfMeasurement } from '@services/facet-service/models/facet/facetUnitOfMeasurement';
 import { messageIds } from '@services/i18n/ids';
-import { AttributeType } from '@services/portal-api';
+import { AttributeType, MultilingualString } from '@services/portal-api';
 
 import { AttributeTypeFormatter } from './entity-formatters/attributeTypeFormatter';
 import { DisplayFormatter } from './entity-formatters/displayFormatter';
+import { MultilingualStringFormatter } from './multilingual-string-formatter/multilingualStringFormatter';
 
 export class FacetFormatter {
   private facet: Partial<Facet>;
@@ -36,6 +37,7 @@ export class FacetFormatter {
 
 export class FacetOptionFormatter {
   private displayFormatter: DisplayFormatter;
+  private multilingualStringFormatter: MultilingualStringFormatter;
   private facetOption: Partial<FacetOption>;
   private result: number | undefined;
   private intl: IntlShape;
@@ -56,6 +58,7 @@ export class FacetOptionFormatter {
     this.intl = intl;
     this.result = result;
     this.facetOption = facetOption;
+    this.multilingualStringFormatter = new MultilingualStringFormatter(locale);
   }
 
   public formatDisplayValue(): string {
@@ -64,6 +67,18 @@ export class FacetOptionFormatter {
 
   public formatPredictedResult(): string {
     return ` (${this.intl.formatNumber(this.result || 0)})`;
+  }
+
+  public formatSlug(): string {
+    if (this.facetOption.slug) {
+      return this.multilingualStringFormatter.format(
+        this.facetOption?.slug as MultilingualString | undefined
+      );
+    }
+    return '';
+  }
+  public formatHref(mainPath: string): string {
+    return `${mainPath}/${this.formatSlug()}`;
   }
 
   private formatBoolean(value: boolean, intl: IntlShape): string {

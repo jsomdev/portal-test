@@ -508,7 +508,7 @@ export const en: Messages = {
         welcome: 'Welcome {name}',
         orders: {
           title: 'Your Recent Orders',
-          viewAllText: 'View all previous orders'
+          viewAllText: 'View all orders'
         },
         profileInformation: {
           title: 'Profile Information',
@@ -661,7 +661,7 @@ export const en: Messages = {
             addressBook: {
               title: 'Address Book',
               description:
-                'You can add and change addresses on this page. When ordering you can quickly select the right address.',
+                'Manage your addresses. Choose a default shipping and billing address that will be used throughout the website.',
               viewAddressBookLink: 'View address book',
               panel: {
                 title: 'Address book',

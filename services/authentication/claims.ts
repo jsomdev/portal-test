@@ -28,6 +28,7 @@ interface ClaimsHook {
   isAdministrator: boolean;
   lastName: string;
   firstName: string;
+  value: ExtendedClaims | undefined;
 }
 
 interface Claims {
@@ -141,6 +142,7 @@ export const useClaims = (): ClaimsHook => {
     isAccountManager,
     isAdministrator: isAdmin,
     forceRefreshToken: forceRefresh,
+    value: claims,
     firstName,
     lastName
   };

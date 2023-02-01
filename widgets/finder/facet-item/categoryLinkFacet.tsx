@@ -10,6 +10,7 @@ import { Facet } from '@services/facet-service/models/facet/facet';
 import { FacetOption } from '@services/facet-service/models/facet/facetOption';
 import { messageIds } from '@services/i18n';
 import { FacetOptionFormatter } from '@services/i18n/formatters/facetFormatter';
+import { MultilingualString } from '@services/portal-api';
 import { FacetedSearchFacetResult } from '@services/portal-api/faceted-search/types';
 import pagePaths from '@utilities/pagePaths';
 import { rem } from '@utilities/rem';
@@ -99,7 +100,7 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
           }}
         >
           {visibleOptions.map(
-            (option: FacetOption<never, { slug?: string }>) => {
+            (option: FacetOption<never, { slug?: MultilingualString }>) => {
               const facetOptionFormatter = new FacetOptionFormatter(
                 option,
                 getPredictedCountForOption(
@@ -110,16 +111,20 @@ export const CategoryLinkFacet: React.FC<CategoryLinkFacetProps> = ({
                 systemOfMeasurement,
                 locale
               );
+              const queryWithoutCategorySlug = { ...query };
+              delete queryWithoutCategorySlug.categorySlug;
 
               return (
                 <NextLink
                   key={option.key}
                   locale={locale}
                   href={{
-                    pathname: pagePaths.category(option.slug || ''),
+                    pathname: facetOptionFormatter.formatHref(
+                      pagePaths.categories
+                    ),
 
                     query: {
-                      ...query
+                      ...queryWithoutCategorySlug
                     }
                   }}
                 >

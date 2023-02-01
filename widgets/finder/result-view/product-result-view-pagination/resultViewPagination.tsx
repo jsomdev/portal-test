@@ -7,6 +7,7 @@ import {
   FontWeights,
   IButtonProps,
   IButtonStyles,
+  IIconProps,
   ITheme,
   Icon,
   Stack,
@@ -15,12 +16,9 @@ import {
 } from '@fluentui/react';
 import { defineMessages } from '@formatjs/intl';
 import { messageIds } from '@services/i18n';
-import { TabletAndDesktop } from '@widgets/media-queries';
+import { TabletAndDesktop, useTabletAndDesktop } from '@widgets/media-queries';
 
-import {
-  getTotalPages,
-  getVisiblePaginationPages
-} from './resultViewPaginationHelper';
+import { getPagination, getTotalPages } from './resultViewPaginationHelper';
 
 export interface ResultViewPaginationProps {
   currentPage: number;
@@ -28,14 +26,6 @@ export interface ResultViewPaginationProps {
   pageSize: number;
   totalItems: number;
 }
-
-/**
- * (Controlled) Pagination component intended to be used by the ProductListView and GridView,
- * but could be used for other views.
- *
- */
-
-const VISIBLE_BUTTONS: number = 4;
 
 const messages = defineMessages({
   next: {
@@ -56,6 +46,7 @@ export const ResultViewPagination: React.FC<
   const { totalItems, onPageChange, currentPage, pageSize } = props;
   const theme = useTheme();
   const { formatMessage } = useIntl();
+  const isTabletAndDesktop = useTabletAndDesktop();
 
   const buttonStyles = useCallback(
     (isPageActive: boolean, theme: ITheme): IButtonStyles => ({
@@ -83,21 +74,50 @@ export const ResultViewPagination: React.FC<
     []
   );
   // Memoized buttons for the page buttons (e.g: 1, 2, 3 ,4)
-  const pageButtons: IButtonProps[] = useMemo(() => {
-    const pages: number[] = getVisiblePaginationPages(
+  const pageButtons: Array<{
+    type: 'button' | 'seperator';
+    props: IButtonProps | IIconProps;
+  }> = useMemo(() => {
+    const pages: number[] = getPagination(
       currentPage,
       totalItems,
       pageSize,
-      VISIBLE_BUTTONS
+      isTabletAndDesktop ? 5 : 1
     );
-    return pages.map((page): IButtonProps => {
-      return {
-        onClick: () => onPageChange(page),
-        styles: buttonStyles(page === currentPage, theme),
-        text: page.toString()
-      };
-    });
-  }, [totalItems, currentPage, theme, pageSize, buttonStyles, onPageChange]);
+    return pages.map(
+      (
+        page
+      ): {
+        type: 'button' | 'seperator';
+        props: IButtonProps | IIconProps;
+      } => {
+        if (page === -1) {
+          return {
+            type: 'seperator',
+            props: {
+              iconName: 'More'
+            }
+          };
+        }
+        return {
+          type: 'button',
+          props: {
+            onClick: () => onPageChange(page),
+            styles: buttonStyles(page === currentPage, theme),
+            text: page.toString()
+          }
+        };
+      }
+    );
+  }, [
+    currentPage,
+    totalItems,
+    pageSize,
+    isTabletAndDesktop,
+    buttonStyles,
+    theme,
+    onPageChange
+  ]);
   return (
     <Stack
       horizontal
@@ -119,20 +139,20 @@ export const ResultViewPagination: React.FC<
             verticalAlign="center"
           >
             <Icon iconName="ChevronLeftSmall" />
-            <Text>{formatMessage(messages.previous)}</Text>
+            <TabletAndDesktop>
+              <Text>{formatMessage(messages.previous)}</Text>
+            </TabletAndDesktop>
           </Stack>
         </ActionButton>
       )}
-      {getTotalPages(totalItems, pageSize) > 1 &&
-        pageButtons.map((buttonProps, index) => {
-          return currentPage === index + 1 ? (
-            <ActionButton key={index} {...buttonProps} />
-          ) : (
-            <TabletAndDesktop key={index}>
-              <ActionButton {...buttonProps} />
-            </TabletAndDesktop>
+      {pageButtons.map((element, index) => {
+        if (element.type === 'button') {
+          return (
+            <ActionButton key={index} {...(element.props as IButtonProps)} />
           );
-        })}
+        }
+        return <Icon key={index} {...(element.props as IIconProps)} />;
+      })}
       {currentPage < getTotalPages(totalItems, pageSize) && (
         <ActionButton
           onClick={() => onPageChange(currentPage + 1)}
@@ -143,7 +163,9 @@ export const ResultViewPagination: React.FC<
             tokens={{ childrenGap: `0 ${theme.spacing.s1}` }}
             verticalAlign="center"
           >
-            <Text>{formatMessage(messages.next)}</Text>
+            <TabletAndDesktop>
+              <Text>{formatMessage(messages.next)}</Text>
+            </TabletAndDesktop>
             <Icon iconName="ChevronRightSmall" />
           </Stack>
         </ActionButton>

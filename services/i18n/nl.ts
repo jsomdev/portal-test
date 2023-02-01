@@ -676,8 +676,7 @@ export const nl: Messages = {
             },
             addressBook: {
               title: 'Adresboek',
-              description:
-                'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.',
+              description: 'Op deze pagina kunt u adressen beheren.',
               viewAddressBookLink: 'Adresboek bekijken',
               panel: {
                 title: 'Adresboek',

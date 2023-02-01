@@ -13,7 +13,7 @@
     "lint:nowarn": "next lint --dir pages --dir utilities --dir widgets --dir services --dir providers --quiet",
     "lint:fix": "next lint --dir pages --dir utilities --dir components --dir widgets --dir services --dir providers --fix",
     "test": "cross-env  NODE_ENV='test' jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --coverage=false",
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
     "format": "prettier -write -config .prettierrc",

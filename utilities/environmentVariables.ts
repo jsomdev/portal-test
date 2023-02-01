@@ -7,6 +7,7 @@ export interface EnvironmentVariables {
     resourceUrl: string;
     baseUrl: string;
   };
+  baseUrl: string;
   forceLogin: boolean;
   supportedLocales: string[] | undefined;
   defaultLocale: string;
@@ -18,6 +19,7 @@ export const ENVIRONMENT_VARIABLES: EnvironmentVariables = {
   defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'en-us',
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
   tenantId: process.env.NEXT_PUBLIC_TENANT_ID || '',
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || '',
   authorityEmployeeSignUpAndSignIn:
     process.env.NEXT_PUBLIC_AUTHORITY_EMPLOYEE_SIGN_IN || '',
   authorityCustomerSignUpAndSignIn:

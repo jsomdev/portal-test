@@ -62,7 +62,7 @@ import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentl
 
 export interface ProductsProps {
   product: Product;
-  model: Model | undefined;
+  model: Model | null;
 }
 
 interface ProductStyles {
@@ -305,11 +305,13 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       product: productData,
-      model: {
-        name: model?.name,
-        slug: model?.slug,
-        number: model?.number
-      },
+      model: model
+        ? {
+            name: model?.name,
+            slug: model?.slug,
+            number: model?.number
+          }
+        : null,
       attributeGroups: filteredAttributeGroups,
       attributeTypes: filteredAttributeTypes,
       siteMenuItems: siteMenuData || [],

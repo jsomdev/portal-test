@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { useMutation, useQuery } from 'react-query';
@@ -71,7 +71,8 @@ export const UserProvider: React.FC = ({ children }) => {
     isRegisteredUser,
     isCustomer,
     roles,
-    isEmployee
+    isEmployee,
+    value: claims
   } = useClaims();
   const { spacing } = useTheme();
 
@@ -83,6 +84,31 @@ export const UserProvider: React.FC = ({ children }) => {
       enabled: isAuthenticated
     }
   );
+  const logClaimsToConsole = useCallback(() => {
+    const currentEnvironment: ClientEnvironment = getCurrentClientEnvironment();
+
+    // Do not log on production
+    if (
+      [
+        ClientEnvironment.Develop,
+        ClientEnvironment.Test,
+        ClientEnvironment.Local
+      ].includes(currentEnvironment)
+    ) {
+      console.group('Claims');
+      console.info(
+        'These are the values of the idTokenClaims for the authenticated user'
+      );
+      console.dir(claims);
+      console.groupEnd();
+    }
+  }, [claims]);
+
+  useEffect(() => {
+    if (claims) {
+      logClaimsToConsole();
+    }
+  }, [claims, logClaimsToConsole]);
 
   useEffect(() => {
     if (meStatus === 'success' && me?.roles !== undefined) {
@@ -94,15 +120,7 @@ export const UserProvider: React.FC = ({ children }) => {
         UserRoles,
         roles.join(', ')
       );
-
       if (apiRoles !== claimsRoles) {
-        if (
-          getCurrentClientEnvironment() === ClientEnvironment.Develop ||
-          getCurrentClientEnvironment() === ClientEnvironment.Local
-        ) {
-          console.info('Api Roles', apiRoles, 'Claims Roles', claimsRoles);
-          console.info(claimsRoles);
-        }
         forceRefreshToken();
       }
     }

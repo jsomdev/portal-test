@@ -280,27 +280,30 @@ export const FinderProvider: React.FC<FinderProviderProps> = ({
     [getFacetResult, isFacetActive]
   );
 
-  const showOperatingConditionInPanel = useCallback((facet: Facet) => {
-    {
-      if (
-        !operatingConditionsConfiguration.enableTheoreticalFlow &&
-        [
-          liquidSpecificGravityFacet.key,
-          liquidFlowRateFacet.key,
-          liquidPressureFacet.key
-        ].includes(facet.key)
-      ) {
-        return false;
+  const showOperatingConditionInPanel = useCallback(
+    (facet: Facet) => {
+      {
+        if (
+          !operatingConditionsConfiguration.enableTheoreticalFlow &&
+          [
+            liquidSpecificGravityFacet.key,
+            liquidFlowRateFacet.key,
+            liquidPressureFacet.key
+          ].includes(facet.key)
+        ) {
+          return false;
+        }
+        if (
+          !operatingConditionsConfiguration.enableSprayAngle &&
+          facet.key === sprayAngleFacet.key
+        ) {
+          return false;
+        }
+        return true;
       }
-      if (
-        !operatingConditionsConfiguration.enableSprayAngle &&
-        facet.key === sprayAngleFacet.key
-      ) {
-        return false;
-      }
-      return true;
-    }
-  }, []);
+    },
+    [operatingConditionsConfiguration]
+  );
 
   /**
    * Facets that can be shown in the panel
