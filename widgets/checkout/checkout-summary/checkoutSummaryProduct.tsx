@@ -125,7 +125,7 @@ export const CheckoutSummaryProduct: React.FC<CheckoutSummaryProductProps> = ({
           </Stack.Item>
         </Stack>
       </Stack.Item>
-      <Stack.Item>
+      <Stack.Item shrink={false}>
         <Stack
           grow
           horizontalAlign="end"

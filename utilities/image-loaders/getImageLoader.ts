@@ -23,7 +23,7 @@ const widenImageLoader: ImageLoader = ({ src, width, quality }) => {
   //prevent up-scaling by widen for small images, that we know in this case have a width no larger than is in the filename
   //TODO find out if there is an option to prevent widen from up-scaling any of the images
   const widthFromFilenameMatch = src.match(
-    /(?<width>[0-9]+)x[0-9]+.*\.jp(e)?/i
+    /(?<width>[0-9]{2,})x[0-9]{2,}.*\.jp(e)?g/i
   );
   const fileWidth = widthFromFilenameMatch?.groups?.width
     ? parseInt(widthFromFilenameMatch.groups.width, 10)

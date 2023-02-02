@@ -122,6 +122,7 @@ const MobileSiteHeader: React.FC = () => {
     if (showPanel === 'app') {
       return formatMessage(messages.closeMenu);
     }
+
     if (showPanel === 'user') {
       const userFormatter = new UserFormatter(me, account);
       const name = userFormatter.formatDisplayName();

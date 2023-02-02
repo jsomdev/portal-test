@@ -508,7 +508,7 @@ export const en: Messages = {
         welcome: 'Welcome {name}',
         orders: {
           title: 'Your Recent Orders',
-          viewAllText: 'View all previous orders'
+          viewAllText: 'View all orders'
         },
         profileInformation: {
           title: 'Profile Information',
@@ -570,7 +570,7 @@ export const en: Messages = {
         overviewHeader: 'Overview',
         shippingMethodHeader: 'Shipping method',
         paymentMethodHeader: 'Payment method',
-        totalProducts: 'Total products',
+        subTotal: 'Subtotal',
         shippingCosts: 'Shipping costs',
         taxHeader: 'Tax',
         detailPageError: 'An error occurred while loading your order details.',
@@ -661,7 +661,7 @@ export const en: Messages = {
             addressBook: {
               title: 'Address Book',
               description:
-                'You can add and change addresses on this page. When ordering you can quickly select the right address.',
+                'Manage your addresses. Choose a default shipping and billing address that will be used throughout the website.',
               viewAddressBookLink: 'View address book',
               panel: {
                 title: 'Address book',
@@ -878,6 +878,7 @@ export const en: Messages = {
           creditCardExpirationInvalidError:
             'Please enter a valid expiration date',
           creditCardCVV: 'CVV / CVC Code',
+          creditCardCVVInfo: `The verification code (also known as CVC/CVV) is a 3-digit code, located on the back of your credit card, at the end of the signature field.`,
 
           billingFirstName: 'First Name',
           billingLastName: 'Last Name',

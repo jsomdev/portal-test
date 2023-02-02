@@ -88,7 +88,7 @@ export const CartSummary: React.FC = () => {
                 <Text>{formatMessage(messages.numberOfProducts)}</Text>
               </Stack.Item>
               <Stack.Item>
-                <Text>{items?.length}</Text>
+                <Text>{formatNumber(items?.length || 0)}</Text>
               </Stack.Item>
             </Stack>
             <Stack

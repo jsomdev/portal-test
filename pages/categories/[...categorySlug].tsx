@@ -14,9 +14,9 @@ import { useIntl } from 'react-intl';
 import { useTheme } from '@fluentui/react';
 import { getInitialFacetsFromFiles } from '@providers/facets/facetsHelper';
 import { FacetsProvider } from '@providers/facets/facetsProvider';
+import { FinderOperatingConditionsConfiguration } from '@providers/finder/finderContext';
 import { FinderProvider } from '@providers/finder/finderProvider';
 import { GlobalDataProvider } from '@providers/global-data/globalDataProvider';
-import { useRecentlyViewedProducts } from '@providers/recently-viewed/recentlyViewedContext';
 import { mapCategoryIdToExternalFilter } from '@services/facet-service/facet-helpers/facetCombiner';
 import { liquidFlowRateFacet } from '@services/facet-service/facets/range-facets/liquidFlowRate';
 import { liquidPressureFacet } from '@services/facet-service/facets/range-facets/liquidPressure';
@@ -29,10 +29,12 @@ import { TextFormatter } from '@services/i18n/formatters/entity-formatters/textF
 import {
   AttributeGroup,
   AttributeType,
-  Category as CategoryModel
+  Category as CategoryModel,
+  Setting
 } from '@services/portal-api';
 import { fetchAllAttributeTypes } from '@services/portal-api/attributeTypes';
 import { fetchAllCategories } from '@services/portal-api/categories';
+import { SETTINGKEYS } from '@services/portal-api/constants';
 import { FacetedSearchOdataCollection } from '@services/portal-api/faceted-search/types';
 import { fetchFacetedSearchResults } from '@services/portal-api/finder';
 import {
@@ -50,11 +52,12 @@ import ContentContainerStack, {
 } from '@widgets/layouts/contentContainerStack';
 import Page from '@widgets/page/page';
 import { getLocalePathsFromMultilingual } from '@widgets/page/page.helper';
-import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
+import { RecentlyViewedProductsContentContainerStack } from '@widgets/recently-viewed-gallery/recentlyViewedProducts';
 
 type CategoryProps = {
   category: CategoryModel;
   initialViewAs: ResultViewType;
+  finderOperatingConditionsConfiguration: FinderOperatingConditionsConfiguration | null;
   attributeTypes: AttributeType[];
   attributeTypeGroups: AttributeGroup[];
 } & AppLayoutProps;
@@ -68,11 +71,11 @@ const Category: NextPage<CategoryProps> = ({
   siteMenuItems,
   mainMenuItems,
   attributeTypeGroups,
+  finderOperatingConditionsConfiguration,
   attributeTypes,
   initialViewAs
 }) => {
   const router = useRouter();
-  const { products } = useRecentlyViewedProducts();
   const { locale } = useIntl();
   const { semanticColors, spacing } = useTheme();
   const categoryFormatter: CategoryFormatter = new CategoryFormatter(
@@ -124,7 +127,12 @@ const Category: NextPage<CategoryProps> = ({
             }}
             initialFacets={getInitialFacetsFromFiles([], router.query)}
           >
-            <FinderProvider initialData={undefined}>
+            <FinderProvider
+              initialData={undefined}
+              operatingConditionsConfiguration={
+                finderOperatingConditionsConfiguration || undefined
+              }
+            >
               <ContentContainerStack>
                 <ResultView
                   viewAs={viewAs}
@@ -132,15 +140,11 @@ const Category: NextPage<CategoryProps> = ({
                   searchQuery={router.query.query?.toString()}
                 />
               </ContentContainerStack>
-              {products?.length && (
-                <ContentContainerStack
-                  outerStackProps={{
-                    styles: styles.recentlyViewedContainer.outerContainer
-                  }}
-                >
-                  <RecentlyViewedProducts products={products} />
-                </ContentContainerStack>
-              )}
+              <RecentlyViewedProductsContentContainerStack
+                outerStackProps={{
+                  styles: styles.recentlyViewedContainer.outerContainer
+                }}
+              />
             </FinderProvider>
           </FacetsProvider>
         </AppLayout>
@@ -265,6 +269,22 @@ export const getStaticProps: GetStaticProps = async (
     cat => cat.parentId === category.id
   );
 
+  let operatingConditionsConfiguration: FinderOperatingConditionsConfiguration | null =
+    null;
+
+  const operatingConditionsSetting: Setting | undefined =
+    category.settings?.find(
+      setting => setting.key === SETTINGKEYS.operatingConditions
+    );
+
+  if (operatingConditionsSetting) {
+    operatingConditionsConfiguration = {
+      enableSprayAngle: !!operatingConditionsSetting?.value?.enableSprayAngle,
+      enableTheoreticalFlow:
+        !!operatingConditionsSetting?.value?.enableTheoreticalFlow
+    };
+  }
+
   const props: CategoryProps = {
     attributeTypeGroups: [],
     attributeTypes: filteredAttributeTypes,
@@ -273,7 +293,7 @@ export const getStaticProps: GetStaticProps = async (
       children: categoryChildren
     },
     initialViewAs: categoryChildren.length ? 'overview' : 'list',
-
+    finderOperatingConditionsConfiguration: operatingConditionsConfiguration,
     siteMenuItems: siteMenuData,
     mainMenuItems: mainMenuData
   };

@@ -475,9 +475,9 @@ export const nl: Messages = {
       }
     },
     model: {
-      headTitle: '{name}',
-      browseAll: "Doorblader alle '{number}' producten",
-      headDescription: 'pages.model.headDescription'
+      headDescription: '{name}',
+      browseAll: "Doorblader alle ''{number}'' producten",
+      headTitle: 'Model'
     },
     category: {
       title: '{name}',
@@ -598,7 +598,7 @@ export const nl: Messages = {
         overviewHeader: 'Overzicht',
         shippingMethodHeader: 'Verzendmethode',
         paymentMethodHeader: 'Betalingswijze',
-        totalProducts: 'Totaal producten',
+        subTotal: 'Subtotaal',
         shippingCosts: 'Verzendkosten',
         taxHeader: 'VAT',
         confirmationTitle: 'Bedankt! Uw bestelling is succesvol ingediend.',
@@ -676,8 +676,7 @@ export const nl: Messages = {
             },
             addressBook: {
               title: 'Adresboek',
-              description:
-                'Op deze pagina kunt u adressen toevoegen en wijzigen. Bij het bestellen kunt u snel het juiste adres selecteren.',
+              description: 'Op deze pagina kunt u adressen beheren.',
               viewAddressBookLink: 'Adresboek bekijken',
               panel: {
                 title: 'Adresboek',
@@ -900,6 +899,7 @@ export const nl: Messages = {
           creditCardExpirationPlaceholder: 'MM/JJ',
           creditCardExpirationInvalidError: 'Vervaldatum ongeldig',
           creditCardCVV: 'CVV / CVC Code',
+          creditCardCVVInfo: `De verificatiecode (ook bekend als 'CVC/CVV') is een code van 3 cijfers en staat op de achterkant van je kredietkaart, aan het einde van het handtekening-veld.`,
 
           billingFirstName: 'Voornaam',
           billingLastName: 'Familienaam',

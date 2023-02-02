@@ -1,7 +1,4 @@
-import {
-  getTotalPages,
-  getVisiblePaginationPages
-} from './resultViewPaginationHelper';
+import { getPagination, getTotalPages } from './resultViewPaginationHelper';
 
 describe('List View Pagination', () => {
   test('Total pages are retrieved correctly', () => {
@@ -25,28 +22,35 @@ describe('List View Pagination', () => {
   });
 
   test('Visible Pages are calculated correctly', () => {
-    const currentPage = 1;
+    let currentPage = 1;
     let totalItems = 1000;
     const pageSize = 10;
-    const maxLength = 4;
+    let maxLength = 4;
 
-    let totalPages: number[] = getVisiblePaginationPages(
+    let totalPages: number[] = getPagination(
       currentPage,
       totalItems,
       pageSize,
       maxLength
     );
 
-    expect(totalPages.length).toEqual(maxLength);
-    expect(totalPages[2]).toEqual(3);
+    // Trailing seperator
+    expect(totalPages).toEqual([1, 2, 3, 4, 5, 6, -1, 100]);
 
     totalItems = 11;
-    totalPages = getVisiblePaginationPages(
-      currentPage,
-      totalItems,
-      pageSize,
-      maxLength
-    );
-    expect(totalPages.length).toEqual(2);
+    totalPages = getPagination(currentPage, totalItems, pageSize, maxLength);
+    // No seperators
+    expect(totalPages).toEqual([1, 2]);
+
+    (totalItems = 1000), (maxLength = 1), (currentPage = 3);
+    totalPages = getPagination(currentPage, totalItems, pageSize, maxLength);
+    // Double seperators
+    expect(totalPages).toEqual([1, -1, 3, -1, 100]);
+
+    currentPage = 1;
+    totalPages = getPagination(currentPage, totalItems, pageSize, maxLength);
+    // Trailing and extra visual number
+    expect(totalPages).toEqual([1, 2, 3, -1, 100]);
+    console.log(totalPages);
   });
 });

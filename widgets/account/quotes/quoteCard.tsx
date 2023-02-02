@@ -151,7 +151,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
         tokens={{ childrenGap: spacing.m }}
       >
         <QuoteCardTopSection quote={quote} />
-        {quote.id && quote.lines?.length && (
+        {quote.id && quote.lines?.length ? (
           <>
             <AccountCardProductLines
               compactView={compactView}
@@ -174,7 +174,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ quote, compactView }) => {
               </NextLink>
             </Stack>
           </>
-        )}
+        ) : null}
       </Stack>
     </Stack>
   );

@@ -94,12 +94,16 @@ export const QuotesOverview: React.FC = () => {
     return <LoadingSpinner />;
   }
 
-  if (!quotes || !quotes?.value || quotes?.value.length === 0) {
+  if (quotesStatus === 'success' && !quotes?.value.length) {
     return (
       <PortalMessageBar messageBarType={MessageBarType.warning}>
         <Text>{formatMessage(messages.noData)}</Text>
       </PortalMessageBar>
     );
+  }
+
+  if (!quotes?.value) {
+    return null;
   }
 
   return (

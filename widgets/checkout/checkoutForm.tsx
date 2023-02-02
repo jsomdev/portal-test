@@ -180,7 +180,7 @@ export const CheckoutForm: React.FC<{
           order: order,
           referenceDocument: purchaseOrderFile
         }).catch(e => {
-          console.log(e);
+          console.error(e);
         });
       }
     },

@@ -272,7 +272,7 @@ type IAccountMessages = {
     overviewHeader: string;
     shippingMethodHeader: string;
     paymentMethodHeader: string;
-    totalProducts: string;
+    subTotal: string;
     shippingCosts: string;
     taxHeader: string;
     commentsHeader: string;
@@ -670,6 +670,7 @@ type ICheckoutMessages = {
       creditCardExpirationPlaceholder: string;
       creditCardExpirationInvalidError: string;
       creditCardCVV: string;
+      creditCardCVVInfo: string;
 
       billingFirstName: string;
       billingLastName: string;

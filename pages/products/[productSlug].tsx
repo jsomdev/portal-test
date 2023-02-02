@@ -1,5 +1,4 @@
-// Import Swiper styles
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import {
   GetStaticPaths,
@@ -63,14 +62,55 @@ import { RecentlyViewedProducts } from '@widgets/recently-viewed-gallery/recentl
 
 export interface ProductsProps {
   product: Product;
-  model: Model | undefined;
+  model: Model | null;
 }
 
 interface ProductStyles {
   recentlyViewedContainer: Partial<ContentContainerStyles>;
 }
 
-const Products: NextPage<
+const RecentlyViewOnProductPage: React.FC<{
+  productId: string | undefined;
+}> = ({ productId }) => {
+  const { semanticColors, spacing } = useTheme();
+  const { registerView, products } = useRecentlyViewedProducts();
+
+  useEffect(() => {
+    registerView({ id: productId, lastViewedOn: new Date() });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId]);
+
+  const styles: ProductStyles = {
+    recentlyViewedContainer: {
+      outerContainer: {
+        root: {
+          padding: `${spacing.m} 0`,
+          borderTop: `2px solid ${semanticColors.variantBorder}`
+        }
+      }
+    }
+  };
+  const productsWithoutCurrentProduct =
+    products?.filter(recentProduct => recentProduct.id !== productId) || [];
+
+  if (productsWithoutCurrentProduct.length === 0) {
+    return null;
+  }
+  return (
+    <ContentContainerStack
+      outerStackProps={{
+        styles: styles.recentlyViewedContainer.outerContainer
+      }}
+    >
+      <RecentlyViewedProducts
+        products={productsWithoutCurrentProduct.filter(
+          recentProduct => recentProduct.id !== productId
+        )}
+      />
+    </ContentContainerStack>
+  );
+};
+const ProductPage: NextPage<
   ProductsProps &
     Partial<
       Pick<
@@ -92,25 +132,9 @@ const Products: NextPage<
   mainMenuItems
 }) => {
   const { locale } = useRouter();
-  const { registerView, products } = useRecentlyViewedProducts();
 
-  const { semanticColors, spacing } = useTheme();
   const productFormatter = new ProductFormatter(product, locale);
-  useEffect(() => {
-    registerView({ id: product.id, lastViewedOn: new Date() });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product.id]);
 
-  const styles: ProductStyles = {
-    recentlyViewedContainer: {
-      outerContainer: {
-        root: {
-          padding: `${spacing.m} 0`,
-          borderTop: `2px solid ${semanticColors.variantBorder}`
-        }
-      }
-    }
-  };
   return (
     <Page
       metaProps={{
@@ -162,20 +186,7 @@ const Products: NextPage<
                 }}
               />
             </ContentContainerStack>
-            {products?.filter(recentProduct => recentProduct.id !== product.id)
-              .length && (
-              <ContentContainerStack
-                outerStackProps={{
-                  styles: styles.recentlyViewedContainer.outerContainer
-                }}
-              >
-                <RecentlyViewedProducts
-                  products={products.filter(
-                    recentProduct => recentProduct.id !== product.id
-                  )}
-                />
-              </ContentContainerStack>
-            )}
+            <RecentlyViewOnProductPage productId={product.id} />
           </ProductPageProvider>
         </AppLayout>
       </GlobalDataProvider>
@@ -294,11 +305,13 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       product: productData,
-      model: {
-        name: model?.name,
-        slug: model?.slug,
-        number: model?.number
-      },
+      model: model
+        ? {
+            name: model?.name,
+            slug: model?.slug,
+            number: model?.number
+          }
+        : null,
       attributeGroups: filteredAttributeGroups,
       attributeTypes: filteredAttributeTypes,
       siteMenuItems: siteMenuData || [],
@@ -308,4 +321,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Products;
+export default ProductPage;

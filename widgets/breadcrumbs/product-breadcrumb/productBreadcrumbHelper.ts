@@ -17,7 +17,7 @@ import { homeBreadcrumb } from '../breadcrumbHelpers';
  */
 export function getProductBreadcrumbItems(
   product: Product,
-  model: Model | undefined,
+  model: Model | undefined | null,
   onBreadcrumbItemClick: (
     url: Partial<Url> | string,
     event: React.MouseEvent<HTMLElement, MouseEvent> | undefined

@@ -39,11 +39,17 @@ const messages = defineMessages({
     id: messageIds.pages.account.overview.profileInformation.emailHeader,
     description: 'Header text for email',
     defaultMessage: 'Email'
+  },
+  profileInformation: {
+    id: messageIds.pages.account.overview.profileInformation.title,
+    description: 'Profile sub section title',
+    defaultMessage: 'Profile information'
   }
 });
 
 interface OverviewProfileInfoStyles {
-  container: IStackStyles;
+  contentContainer: IStackStyles;
+  outerContainer: IStackStyles;
   headerText: ITextStyles;
   editButton: IButtonStyles;
 }
@@ -61,7 +67,7 @@ export const OverviewProfileInfo: React.FC<OverviewProfileInfoProps> = ({
   const { formatMessage } = useIntl();
 
   const styles: OverviewProfileInfoStyles = {
-    container: {
+    contentContainer: {
       root: {
         border: `1px solid ${semanticColors.variantBorder}`,
         padding: spacing.m,
@@ -79,59 +85,72 @@ export const OverviewProfileInfo: React.FC<OverviewProfileInfoProps> = ({
       icon: {
         fontSize: FontSizes.size20
       }
+    },
+    outerContainer: {
+      root: {
+        flex: '1 1 0',
+        minWidth: rem(300)
+      }
     }
   };
 
   return (
-    <Stack styles={styles.container}>
-      <Stack tokens={{ childrenGap: spacing.m }}>
-        <Stack
-          tokens={{ childrenGap: spacing.s1 }}
-          grow
-          horizontal
-          horizontalAlign="space-between"
-          verticalAlign="center"
-        >
-          <Stack tokens={{ childrenGap: spacing.s1 }}>
-            <Text styles={styles.headerText}>
-              {formatMessage(messages.nameHeader)}
-            </Text>
-            <Text variant="mediumPlus">{formattedName}</Text>
-          </Stack>
-          <Stack>
-            <NextLink href={pagePaths.profileInformation} passHref>
-              <a>
-                <IconButton
-                  styles={styles.editButton}
-                  iconProps={{ iconName: 'EditContact' }}
-                />
-              </a>
-            </NextLink>
-          </Stack>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s1 }} grow>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.jobHeader)}
-          </Text>
-          <Text variant="mediumPlus">{me?.contactInfo?.jobTitle}</Text>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s1 }} grow>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.phoneHeader)}
-          </Text>
-          <Text variant="mediumPlus">{me?.contactInfo?.phoneNumber}</Text>
-        </Stack>
-        <Stack tokens={{ childrenGap: spacing.s1 }} grow>
-          <Text styles={styles.headerText}>
-            {formatMessage(messages.emailHeader)}
-          </Text>
-          {me?.contactInfo?.emailAddresses?.map(email => {
-            return (
-              <Text variant="mediumPlus" key={email}>
-                {email}
+    <Stack styles={styles.outerContainer} tokens={{ childrenGap: spacing.l1 }}>
+      <Stack>
+        <Text variant="large" as={'h2'}>
+          {formatMessage(messages.profileInformation)}
+        </Text>
+      </Stack>
+      <Stack styles={styles.contentContainer}>
+        <Stack tokens={{ childrenGap: spacing.m }}>
+          <Stack
+            tokens={{ childrenGap: spacing.s1 }}
+            grow
+            horizontal
+            horizontalAlign="space-between"
+            verticalAlign="center"
+          >
+            <Stack tokens={{ childrenGap: spacing.s1 }}>
+              <Text styles={styles.headerText}>
+                {formatMessage(messages.nameHeader)}
               </Text>
-            );
-          })}
+              <Text variant="mediumPlus">{formattedName}</Text>
+            </Stack>
+            <Stack>
+              <NextLink href={pagePaths.profileInformation} passHref>
+                <a>
+                  <IconButton
+                    styles={styles.editButton}
+                    iconProps={{ iconName: 'EditContact' }}
+                  />
+                </a>
+              </NextLink>
+            </Stack>
+          </Stack>
+          <Stack tokens={{ childrenGap: spacing.s1 }} grow>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.jobHeader)}
+            </Text>
+            <Text variant="mediumPlus">{me?.contactInfo?.jobTitle}</Text>
+          </Stack>
+          <Stack tokens={{ childrenGap: spacing.s1 }} grow>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.phoneHeader)}
+            </Text>
+            <Text variant="mediumPlus">{me?.contactInfo?.phoneNumber}</Text>
+          </Stack>
+          <Stack tokens={{ childrenGap: spacing.s1 }} grow>
+            <Text styles={styles.headerText}>
+              {formatMessage(messages.emailHeader)}
+            </Text>
+            {me?.contactInfo?.emailAddresses?.map(email => {
+              return (
+                <Text variant="mediumPlus" key={email}>
+                  {email}
+                </Text>
+              );
+            })}
+          </Stack>
         </Stack>
       </Stack>
     </Stack>

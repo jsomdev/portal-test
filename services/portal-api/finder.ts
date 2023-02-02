@@ -118,7 +118,8 @@ export async function fetchFacetedSearchResults(
 }
 
 export async function fetchAutoCompleteSearch(
-  encodedSearchQuery: string | undefined
+  encodedSearchQuery: string | undefined,
+  audience: Audience
 ): Promise<AutoCompleteOdataCollection | null> {
   const productsResource: ProductsResource = new ProductsResource();
 
@@ -126,7 +127,8 @@ export async function fetchAutoCompleteSearch(
     return null;
   }
   const data: AutoCompleteOdataCollection = await productsResource.autoComplete(
-    encodedSearchQuery
+    encodedSearchQuery,
+    audience
   );
   return data;
 }

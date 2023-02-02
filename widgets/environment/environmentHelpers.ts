@@ -1,3 +1,5 @@
+import { ENVIRONMENT_VARIABLES } from '@utilities/environmentVariables';
+
 import { ClientEnvironment } from './environment.types';
 
 /**
@@ -26,7 +28,7 @@ export function isValidClientEnvironment(
  * Function that returns the ClientEnvironment based on the window.location.origin
  */
 export function getCurrentClientEnvironment(): ClientEnvironment {
-  switch (window.location.origin) {
+  switch (ENVIRONMENT_VARIABLES.baseUrl) {
     case 'https://localhost:3000':
       return ClientEnvironment.Local;
     case 'https://ssco-sprayportal-as-usnc-dev.azurewebsites.net':

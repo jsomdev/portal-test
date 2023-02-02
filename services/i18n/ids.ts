@@ -585,7 +585,7 @@ export const messageIds: Messages = {
         overviewHeader: 'pages.account.orders.overviewHeader',
         shippingMethodHeader: 'pages.account.orders.shippingMethodHeader',
         paymentMethodHeader: 'pages.account.orders.paymentMethodHeader',
-        totalProducts: 'pages.account.orders.totalProducts',
+        subTotal: 'pages.account.orders.totalProducts',
         shippingCosts: 'pages.account.orders.shippingCosts',
         taxHeader: 'pages.account.orders.taxHeader',
         commentsHeader: 'pages.account.orders.commentsHeader',
@@ -946,6 +946,7 @@ export const messageIds: Messages = {
           creditCardExpirationInvalidError:
             'pages.checkout.payment.fields.creditCardExpirationInvalidError',
           creditCardCVV: 'pages.checkout.payment.fields.creditCardCVV',
+          creditCardCVVInfo: 'pages.checkout.payment.fields.creditCardCVVInfo',
 
           billingFirstName: 'pages.checkout.payment.fields.billingFirstName',
           billingLastName: 'pages.checkout.payment.fields.billingLastName',

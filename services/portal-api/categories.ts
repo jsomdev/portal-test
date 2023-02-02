@@ -28,7 +28,7 @@ export async function fetchCategoriesForHomePage(
     selectQuery: 'id,name,description,settings,slug,audience',
     expandQuery:
       'image($select=url,caption),children($select=id,name,settings,slug;$expand=image($select=url,caption);$orderby=sortIndex asc)',
-    filterQuery: `parentId eq null and audience has SSCo.DigitalHighway.Portal.Data.Enumerations.Audience'${FlaggedEnum.toString(
+    filterQuery: `parentId eq null and audience has '${FlaggedEnum.toString(
       Audience,
       audience
     )}'`,
@@ -130,7 +130,7 @@ export async function fetchAllCategories(
   const queryOptions: Partial<QueryOptions> = {
     selectQuery: `id,number,name,description,slug,settings,image,parentId`,
     expandQuery:
-      'image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug))&$format=application/json;odata.metadata=none'
+      'settings,image($select=thumbnail,caption,url),parent($select=id,name,settings,slug;$expand=parent($select=id,settings,name,slug))&$format=application/json;odata.metadata=none'
   };
   const data: OdataCollection<Category> = await categoriesResource.getEntities(
     queryOptions

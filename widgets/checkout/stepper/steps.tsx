@@ -20,7 +20,7 @@ export const Steps: React.FC<{
   const styles: StepsStyles = {
     activeLine: {
       root: {
-        width: `calc(${progressWidth}%) - ${rem('30px')})`,
+        width: `calc(${progressWidth}% - ${rem('30px')})`,
         height: rem(4),
         top: rem(19),
         background: palette.themeSecondary,

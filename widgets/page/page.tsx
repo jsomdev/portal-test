@@ -101,6 +101,11 @@ const Page: NextPage<PageProps> = ({ metaProps, i18nProps, children }) => {
             />
           ))}
         {noIndex && <meta name="robots" content="noindex" />}
+        {i18nProps.structuredData && (
+          <script type="application/ld+json">
+            {JSON.stringify(i18nProps.structuredData)}
+          </script>
+        )}
       </NextHead>
       {children}
     </PageContext.Provider>

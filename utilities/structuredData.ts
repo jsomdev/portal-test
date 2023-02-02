@@ -3,6 +3,7 @@ import { Product } from '@services/portal-api';
 
 interface ProductStructuredData {
   '@type': 'Product';
+  '@context': 'https://schema.org/';
   name: string;
   sku: string;
   image: string;
@@ -15,6 +16,7 @@ export function generateProductStructuredData(
 ): ProductStructuredData {
   const productFormatter = new ProductFormatter(product, locale);
   const data: ProductStructuredData = {
+    '@context': 'https://schema.org/',
     '@type': 'Product',
     name: productFormatter.formatName(),
     description: productFormatter.formatDescription(),
