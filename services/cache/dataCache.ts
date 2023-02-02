@@ -21,6 +21,7 @@ export class DataCacheManager<TData> implements DataCache<TData> {
 
     if (!dataCacheDirExists) {
       try {
+      // Doesn't work on vercel
       fs.mkdirSync(DATA_CACHE_DIR_PATH);
       } catch(e) {
          console.error('Could not make directory')
