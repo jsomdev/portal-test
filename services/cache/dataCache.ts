@@ -20,7 +20,11 @@ export class DataCacheManager<TData> implements DataCache<TData> {
     const dataCacheDirExists: boolean = fs.existsSync(DATA_CACHE_DIR_PATH);
 
     if (!dataCacheDirExists) {
+      try {
       fs.mkdirSync(DATA_CACHE_DIR_PATH);
+      } catch(e) {
+         console.error('Could not make directory')
+      }
     }
   }
   async get(): Promise<TData | undefined> {
